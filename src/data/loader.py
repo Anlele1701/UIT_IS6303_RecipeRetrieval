@@ -13,6 +13,7 @@ evaluation, UI) instead of re-deriving indices later.
 """
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import Optional
 
 from src.config import CONFIG
@@ -27,6 +28,29 @@ class Recipe:
     image: object  # PIL.Image.Image at runtime; left untyped to avoid a hard PIL import here
 
 
+def _subset_cache_path(split: str, subset_size: Optional[int], seed: int) -> Path:
+    size = "full" if subset_size is None else subset_size
+    rev = CONFIG.dataset_revision[:12]
+    return Path(CONFIG.data_cache_dir) / f"subset_{split}_{size}_{seed}_{rev}"
+
+
+def _load_hf_split(split: str):
+    """
+    Load a split from the Hugging Face cache, downloading only if it is absent.
+    `hf_cache_dir=None` means the shared default cache (~/.cache/huggingface/datasets),
+    so an already-downloaded copy is reused instead of re-fetching ~1 GB.
+    """
+    from datasets import load_dataset
+
+    return load_dataset(
+        CONFIG.dataset_name,
+        revision=CONFIG.dataset_revision,
+        split=split,
+        cache_dir=CONFIG.hf_cache_dir,
+        download_mode="reuse_dataset_if_exists",
+    )
+
+
 def load_subset(
     split: str = CONFIG.corpus_split,
     subset_size: int = CONFIG.subset_size,
@@ -39,17 +63,18 @@ def load_subset(
     NOTE: requires the `datasets` package. Not executed/tested as part of
     this scaffold — see docs/03_DATASET.md §6.3 for subset-size rationale.
     """
-    from datasets import load_dataset
+    from datasets import load_from_disk
 
-    ds = load_dataset(
-        CONFIG.dataset_name,
-        revision=CONFIG.dataset_revision,
-        split=split,
-    )
-    ds = ds.shuffle(seed=seed)
-
-    if subset_size is not None and subset_size < len(ds):
-        ds = ds.select(range(subset_size))
+    cache_path = _subset_cache_path(split, subset_size, seed)
+    if (cache_path / "dataset_info.json").is_file():
+        ds = load_from_disk(str(cache_path))
+    else:
+        ds = _load_hf_split(split)
+        ds = ds.shuffle(seed=seed)
+        if subset_size is not None and subset_size < len(ds):
+            ds = ds.select(range(subset_size))
+        cache_path.parent.mkdir(parents=True, exist_ok=True)
+        ds.save_to_disk(str(cache_path))
 
     recipes: list[Recipe] = []
     for idx, row in enumerate(ds):

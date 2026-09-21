@@ -8,6 +8,7 @@ and docs/17.3 (recorded run parameters).
 """
 
 from dataclasses import dataclass
+from typing import Optional
 
 
 @dataclass(frozen=True)
@@ -37,7 +38,8 @@ class Config:
     rerank_candidate_pool: int = 50  # TODO tune via Experiment 3
 
     # Paths
-    data_cache_dir: str = "data_cache"
+    data_cache_dir: str = "data_cache"  # project-local cache for the built subset
+    hf_cache_dir: Optional[str] = None  # None = default HF cache (~/.cache/huggingface/datasets)
     experiments_dir: str = "experiments"
 
 
