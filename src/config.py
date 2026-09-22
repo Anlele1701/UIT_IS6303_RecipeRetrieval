@@ -7,6 +7,7 @@ per the reproducibility requirements in docs/09_EXPERIMENTS.md
 and docs/17.3 (recorded run parameters).
 """
 
+import os
 from dataclasses import dataclass
 from typing import Optional
 
@@ -32,10 +33,19 @@ class Config:
     # Dense retrieval (docs/04_SEARCH_CONCEPT.md §4.2) — TODO finalize via
     # Experiment 2 in docs/09_EXPERIMENTS.md.
     embedding_model_name: str = "sentence-transformers/all-MiniLM-L6-v2"
+    embedding_dimension: int = 384
+    chunk_profile_name: str = "full_recipe_v1"
+    embedding_profile_name: str = "minilm_l6_v2_v1"
 
     # Reranking (docs/04_SEARCH_CONCEPT.md §4.4)
     reranker_model_name: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
     rerank_candidate_pool: int = 50  # TODO tune via Experiment 3
+
+    # Local ParadeDB (Postgres + pg_search + pgvector)
+    database_url: str = os.getenv(
+        "DATABASE_URL",
+        "postgresql://recipe:recipe@localhost:5432/recipes",
+    )
 
     # Paths
     data_cache_dir: str = "data_cache"  # project-local cache for the built subset

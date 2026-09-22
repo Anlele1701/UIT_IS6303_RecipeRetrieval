@@ -17,6 +17,7 @@ class SearchResult:
     score: float
     name: str
     image: object  # PIL.Image.Image at runtime
+    text: str = ""  # full candidate text for optional cross-encoder reranking
 
 
 class Retriever(Protocol):

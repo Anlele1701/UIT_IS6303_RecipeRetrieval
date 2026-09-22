@@ -7,8 +7,7 @@ in Experiment 3 (docs/09_EXPERIMENTS.md) — 20/50/100.
 """
 
 from src.config import CONFIG
-from src.retrieval.base import SearchResult
-from src.retrieval.hybrid import HybridRetriever
+from src.retrieval.base import Retriever, SearchResult
 
 
 class Reranker:
@@ -21,7 +20,7 @@ class Reranker:
         if not candidates:
             return []
 
-        pairs = [(query, c.name) for c in candidates]
+        pairs = [(query, c.text or c.name) for c in candidates]
         scores = self.model.predict(pairs)
 
         order = sorted(range(len(candidates)), key=lambda i: scores[i], reverse=True)[:top_k]
@@ -36,6 +35,7 @@ class Reranker:
                     score=float(scores[i]),
                     name=c.name,
                     image=c.image,
+                    text=c.text,
                 )
             )
         return results
@@ -44,7 +44,7 @@ class Reranker:
 class HybridRerankRetriever:
     """Wraps Hybrid retrieval + Reranker behind the standard search() interface."""
 
-    def __init__(self, hybrid_retriever: HybridRetriever, reranker: Reranker, candidate_pool: int = CONFIG.rerank_candidate_pool):
+    def __init__(self, hybrid_retriever: Retriever, reranker: Reranker, candidate_pool: int = CONFIG.rerank_candidate_pool):
         self.hybrid = hybrid_retriever
         self.reranker = reranker
         self.candidate_pool = candidate_pool

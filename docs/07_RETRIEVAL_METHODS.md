@@ -11,6 +11,10 @@ flowchart LR
 
 Purpose: baseline sparse/lexical retrieval.
 
+The main mode uses ParadeDB `pg_search` and `pdb.score` over
+`retrieval.recipe_chunks`. Python `rank_bm25` is retained as an ablation
+baseline.
+
 ## 7.2 Dense Retrieval
 
 ```mermaid
@@ -19,6 +23,10 @@ flowchart LR
 ```
 
 Purpose: evaluate semantic similarity, e.g. matching "vegetarian breakfast" to a yogurt bowl recipe with no literal keyword overlap.
+
+Document chunks are embedded during `npm run data:migrate`; only the query is
+embedded online. Exact cosine search runs in pgvector. FAISS `IndexFlatIP`
+remains available as a backend baseline.
 
 ## 7.3 Hybrid Retrieval
 
@@ -33,6 +41,10 @@ flowchart TB
 
 Purpose: combine lexical (exact ingredient/name terms) and semantic signals.
 
+Sparse and dense chunk hits are first aggregated to one score per recipe.
+RRF then combines the two recipe rankings in SQL, preventing recipes with
+multiple field chunks from gaining an unfair advantage.
+
 ## 7.4 Hybrid + Reranker
 
 ```mermaid
@@ -41,3 +53,6 @@ flowchart LR
 ```
 
 Purpose: test whether a more expensive second-stage reranker improves retrieval quality over hybrid alone. Candidate pool size N (20/50/100) is varied in Experiment 3 (`09_EXPERIMENTS.md`).
+
+The cross-encoder remains in Python and scores `(query, full recipe text)`;
+model inference is intentionally not placed in Postgres.

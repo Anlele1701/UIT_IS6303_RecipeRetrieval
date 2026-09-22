@@ -23,7 +23,8 @@ Build searchable text (name + ingredients + description)
 
 ```text
 Build corpus from searchable text
-Build BM25 index
+Ingest versioned chunks into ParadeDB
+Build pg_search BM25 index
 Implement search()
 Evaluate
 ```
@@ -33,7 +34,7 @@ Evaluate
 ```text
 Select embedding model (Experiment 2)
 Encode corpus
-Build FAISS index
+Store embeddings in pgvector
 Implement search()
 Evaluate
 ```
@@ -43,7 +44,8 @@ Evaluate
 ```text
 Retrieve BM25 candidates
 Retrieve dense candidates
-Apply RRF
+Aggregate chunk hits to recipe rankings
+Apply RRF in SQL
 Evaluate
 ```
 
@@ -64,6 +66,16 @@ Add query input
 Add retrieval-mode selector (BM25/Dense/Hybrid/Hybrid+Reranker)
 Add Top-k selector
 Display recipe images + name
+```
+
+## Phase 7.5 — Reproducible local pipeline
+
+```text
+Run pinned ParadeDB image with Docker Compose
+Apply numbered SQL migrations
+Track chunk and embedding profiles
+Run npm run data:migrate
+Validate counts plus sparse/dense smoke queries
 ```
 
 ## Phase 8 — Experiments

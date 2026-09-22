@@ -6,3 +6,4 @@ data_cache/
 experiments/*.json
 experiments/*.csv
 .DS_Store
+.env

@@ -1,0 +1,7 @@
+{
+  "name": "is6303-recipe-retrieval",
+  "private": true,
+  "scripts": {
+    "data:migrate": "docker compose up -d --wait paradedb && .venv/bin/python -m src.pipeline migrate"
+  }
+}
