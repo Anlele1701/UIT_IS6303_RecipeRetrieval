@@ -14,7 +14,11 @@ def reciprocal_rank_fusion(
 ) -> list[tuple[int, float]]:
     """
     Standard RRF: score(d) = sum over rankings containing d of 1 / (k + rank).
-    Returns (recipe_idx, fused_score) sorted descending by fused_score.
+    Returns (recipe_idx, fused_score) sorted descending by fused_score, with
+    ties broken on recipe_idx ascending to match the `ORDER BY fused_score
+    DESC, recipe_idx ASC` of retrieval.match_hybrid — RRF produces exact ties
+    often, so without a shared tie-break the SQL and Python paths would give
+    different rankings for identical scores.
     """
     fused_scores: dict[int, float] = {}
     ref: dict[int, SearchResult] = {}
@@ -24,7 +28,7 @@ def reciprocal_rank_fusion(
             fused_scores[result.recipe_idx] = fused_scores.get(result.recipe_idx, 0.0) + 1.0 / (k + result.rank)
             ref.setdefault(result.recipe_idx, result)
 
-    return sorted(fused_scores.items(), key=lambda kv: kv[1], reverse=True)
+    return sorted(fused_scores.items(), key=lambda kv: (-kv[1], kv[0]))
 
 
 class HybridRetriever:

@@ -86,6 +86,8 @@ def migrate(
     chunk_profile_name: str,
     embedding_profile_name: str,
     model_name: str,
+    query_prefix: str = "",
+    document_prefix: str = "",
     rebuild: bool = False,
 ) -> dict[str, int]:
     applied = apply_migrations()
@@ -134,12 +136,15 @@ def migrate(
                 model_name=model_name,
                 dimension=CONFIG.embedding_dimension,
                 normalize_embeddings=True,
+                query_prefix=query_prefix,
+                document_prefix=document_prefix,
             )
             embedded_count = embed_missing_chunks(
                 connection,
                 chunk_profile_id=chunk_profile_id,
                 embedding_profile_id=embedding_profile_id,
                 model_name=model_name,
+                document_prefix=document_prefix,
             )
             counts = validate_pipeline(
                 connection,
@@ -187,6 +192,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--model",
         default=CONFIG.embedding_model_name,
     )
+    # Asymmetric models need their own prefixes on each side (E5 wants
+    # "query: "/"passage: ", BGE wants an instruction on the query only).
+    # They are stored on the embedding profile so query encoding at search
+    # time uses the same prefix the documents were embedded with.
+    migrate_parser.add_argument("--query-prefix", default="")
+    migrate_parser.add_argument("--document-prefix", default="")
     migrate_parser.add_argument(
         "--rebuild",
         action="store_true",
@@ -202,6 +213,8 @@ def main(argv: list[str] | None = None) -> int:
             chunk_profile_name=args.chunk_profile,
             embedding_profile_name=args.embedding_profile,
             model_name=args.model,
+            query_prefix=args.query_prefix,
+            document_prefix=args.document_prefix,
             rebuild=args.rebuild,
         )
     return 0

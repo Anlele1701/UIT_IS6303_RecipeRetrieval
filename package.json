@@ -2,6 +2,9 @@
   "name": "is6303-recipe-retrieval",
   "private": true,
   "scripts": {
-    "data:migrate": "docker compose up -d --wait paradedb && .venv/bin/python -m src.pipeline migrate"
+    "data:migrate": "docker compose up -d --wait paradedb && .venv/bin/python -m src.pipeline migrate",
+    "eval:queries": ".venv/bin/python -m src.evaluation.queries",
+    "eval:all": ".venv/bin/python -m src.evaluation.run_experiments run && .venv/bin/python -m src.evaluation.error_analysis",
+    "eval:report": ".venv/bin/python -m src.evaluation.run_experiments report && .venv/bin/python -m src.evaluation.error_analysis"
   }
 }

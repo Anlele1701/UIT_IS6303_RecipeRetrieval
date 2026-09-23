@@ -1,0 +1,90 @@
+{
+  "config": {
+    "name": "hybrid_name",
+    "group": "D",
+    "method": "hybrid_sql",
+    "chunk_profile": "name_only_v1",
+    "embedding_profile": "minilm_l6_v2_v1",
+    "candidate_pool": 100,
+    "rrf_k": 60,
+    "rerank_pool": 0
+  },
+  "git_commit": "e2b6cfa",
+  "run_at": "2026-09-22T16:39:58+00:00",
+  "dataset_name": "ANDREEEWW/recipe-with-images",
+  "dataset_revision": "ddfbf91a6e33e46b69eb5b0b7faffa3b24f014bc",
+  "corpus_split": "train",
+  "subset_size": 5000,
+  "subset_seed": 42,
+  "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+  "reranker_model": null,
+  "fusion_pool": 100,
+  "query_set": {
+    "dataset_name": "ANDREEEWW/recipe-with-images",
+    "dataset_revision": "ddfbf91a6e33e46b69eb5b0b7faffa3b24f014bc",
+    "corpus_split": "train",
+    "subset_size": 5000,
+    "subset_seed": 42,
+    "query_seed": 42,
+    "per_family": 75,
+    "families": [
+      "name_kw",
+      "ingredient_combo",
+      "desc_short",
+      "synonym_hard"
+    ],
+    "num_queries": 300,
+    "near_duplicate_jaccard": 0.8,
+    "query_set_hash": "285fa9fa1cbc5f9a"
+  },
+  "results": {
+    "num_queries": 300,
+    "recall@1": 0.28444444444444444,
+    "recall@5": 0.34277777777777774,
+    "recall@10": 0.3545555555555555,
+    "mrr": 0.3169120605840411,
+    "ndcg@10": 0.3206783877260524,
+    "depth": 50,
+    "recall@10_ci_low": 0.3018888888888889,
+    "recall@10_ci_high": 0.41222499999999995,
+    "latency_p50_ms": 52.200500000000005,
+    "latency_p95_ms": 61.016999999999996,
+    "latency_mean_ms": 53.39266666666666,
+    "encode_mean_ms": 14.186673333333335,
+    "search_mean_ms": 39.20599333333334,
+    "by_family": {
+      "desc_short": {
+        "num_queries": 75,
+        "recall@1": 0.013333333333333334,
+        "recall@5": 0.02666666666666667,
+        "recall@10": 0.02666666666666667,
+        "mrr": 0.01983716984321945,
+        "ndcg@10": 0.02
+      },
+      "ingredient_combo": {
+        "num_queries": 75,
+        "recall@1": 0.12,
+        "recall@5": 0.25333333333333335,
+        "recall@10": 0.28,
+        "mrr": 0.1773806352827089,
+        "ndcg@10": 0.19710174516264237
+      },
+      "name_kw": {
+        "num_queries": 75,
+        "recall@1": 0.9377777777777777,
+        "recall@5": 0.971111111111111,
+        "recall@10": 0.9782222222222221,
+        "mrr": 0.9733333333333334,
+        "ndcg@10": 0.9664294390738947
+      },
+      "synonym_hard": {
+        "num_queries": 75,
+        "recall@1": 0.06666666666666667,
+        "recall@5": 0.12,
+        "recall@10": 0.13333333333333333,
+        "mrr": 0.09709710387690276,
+        "ndcg@10": 0.0991823666676724
+      }
+    }
+  }
+}

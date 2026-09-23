@@ -3,7 +3,8 @@ __pycache__/
 .venv/
 venv/
 data_cache/
-experiments/*.json
-experiments/*.csv
+# experiments/ is deliberately not ignored: the query set defines the ground
+# truth behind docs/08-11, and the per-query records let every table and
+# error-analysis card be regenerated without re-running retrieval.
 .DS_Store
 .env

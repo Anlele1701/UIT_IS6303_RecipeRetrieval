@@ -1,0 +1,3570 @@
+{
+  "metadata": {
+    "dataset_name": "ANDREEEWW/recipe-with-images",
+    "dataset_revision": "ddfbf91a6e33e46b69eb5b0b7faffa3b24f014bc",
+    "corpus_split": "train",
+    "subset_size": 5000,
+    "subset_seed": 42,
+    "query_seed": 42,
+    "per_family": 75,
+    "families": [
+      "name_kw",
+      "ingredient_combo",
+      "desc_short",
+      "synonym_hard"
+    ],
+    "num_queries": 300,
+    "near_duplicate_jaccard": 0.8,
+    "query_set_hash": "285fa9fa1cbc5f9a"
+  },
+  "queries": [
+    {
+      "query_id": 0,
+      "family": "name_kw",
+      "query_text": "ten bean soup",
+      "source_recipe_idx": 1383,
+      "relevant_recipe_ids": [
+        1383
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 1,
+      "family": "name_kw",
+      "query_text": "bold snack",
+      "source_recipe_idx": 1881,
+      "relevant_recipe_ids": [
+        1881
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 2,
+      "family": "name_kw",
+      "query_text": "spicy currant sauce ham",
+      "source_recipe_idx": 4901,
+      "relevant_recipe_ids": [
+        4901
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 3,
+      "family": "name_kw",
+      "query_text": "grown-up fig cookies",
+      "source_recipe_idx": 1524,
+      "relevant_recipe_ids": [
+        1524
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 4,
+      "family": "name_kw",
+      "query_text": "cake fondant",
+      "source_recipe_idx": 4654,
+      "relevant_recipe_ids": [
+        4654
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 5,
+      "family": "name_kw",
+      "query_text": "savannah seafood stuffing",
+      "source_recipe_idx": 960,
+      "relevant_recipe_ids": [
+        960
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 6,
+      "family": "name_kw",
+      "query_text": "pam's bbq flat jacks",
+      "source_recipe_idx": 376,
+      "relevant_recipe_ids": [
+        376
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 7,
+      "family": "name_kw",
+      "query_text": "orange rosemary baked olives",
+      "source_recipe_idx": 297,
+      "relevant_recipe_ids": [
+        297
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 8,
+      "family": "name_kw",
+      "query_text": "spiced applesauce cake",
+      "source_recipe_idx": 716,
+      "relevant_recipe_ids": [
+        716
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 9,
+      "family": "name_kw",
+      "query_text": "party chicken salad",
+      "source_recipe_idx": 3987,
+      "relevant_recipe_ids": [
+        3987
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 10,
+      "family": "name_kw",
+      "query_text": "canadian poutine",
+      "source_recipe_idx": 1334,
+      "relevant_recipe_ids": [
+        1334
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 11,
+      "family": "name_kw",
+      "query_text": "chicken salad balsamic",
+      "source_recipe_idx": 1173,
+      "relevant_recipe_ids": [
+        1173
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 12,
+      "family": "name_kw",
+      "query_text": "green pea poulourie",
+      "source_recipe_idx": 1859,
+      "relevant_recipe_ids": [
+        1859
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 13,
+      "family": "name_kw",
+      "query_text": "boston creme mini-cupcakes",
+      "source_recipe_idx": 4175,
+      "relevant_recipe_ids": [
+        4175
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 14,
+      "family": "name_kw",
+      "query_text": "southern honey butter",
+      "source_recipe_idx": 4182,
+      "relevant_recipe_ids": [
+        4182
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 15,
+      "family": "name_kw",
+      "query_text": "aunt karen's brussels sprouts salad",
+      "source_recipe_idx": 1250,
+      "relevant_recipe_ids": [
+        1250
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 16,
+      "family": "name_kw",
+      "query_text": "cabbage burgers",
+      "source_recipe_idx": 3161,
+      "relevant_recipe_ids": [
+        3161
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 17,
+      "family": "name_kw",
+      "query_text": "megan's amazing spaghetti meatballs",
+      "source_recipe_idx": 1778,
+      "relevant_recipe_ids": [
+        1778
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 18,
+      "family": "name_kw",
+      "query_text": "shredded beef tacos lime",
+      "source_recipe_idx": 4856,
+      "relevant_recipe_ids": [
+        4856
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 19,
+      "family": "name_kw",
+      "query_text": "candied corned beef brisket",
+      "source_recipe_idx": 2229,
+      "relevant_recipe_ids": [
+        2229
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 20,
+      "family": "name_kw",
+      "query_text": "baked walnuts",
+      "source_recipe_idx": 4888,
+      "relevant_recipe_ids": [
+        4888
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 21,
+      "family": "name_kw",
+      "query_text": "lamb meatballs spicy eggplant tomato sauce",
+      "source_recipe_idx": 165,
+      "relevant_recipe_ids": [
+        165
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 22,
+      "family": "name_kw",
+      "query_text": "grilled pizza wraps",
+      "source_recipe_idx": 2980,
+      "relevant_recipe_ids": [
+        2980
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 23,
+      "family": "name_kw",
+      "query_text": "frying pan cookies",
+      "source_recipe_idx": 4531,
+      "relevant_recipe_ids": [
+        4531,
+        2567,
+        3797
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 24,
+      "family": "name_kw",
+      "query_text": "bow tie cookies",
+      "source_recipe_idx": 1088,
+      "relevant_recipe_ids": [
+        1088
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 25,
+      "family": "name_kw",
+      "query_text": "baked corn cob",
+      "source_recipe_idx": 2720,
+      "relevant_recipe_ids": [
+        2720,
+        183
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 26,
+      "family": "name_kw",
+      "query_text": "cream tomato soup pesto",
+      "source_recipe_idx": 809,
+      "relevant_recipe_ids": [
+        809
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 27,
+      "family": "name_kw",
+      "query_text": "cheesy hash brown cups",
+      "source_recipe_idx": 833,
+      "relevant_recipe_ids": [
+        833
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 28,
+      "family": "name_kw",
+      "query_text": "skillet baked sweet potato corn bread",
+      "source_recipe_idx": 4516,
+      "relevant_recipe_ids": [
+        4516
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 29,
+      "family": "name_kw",
+      "query_text": "coconut ginger mussels",
+      "source_recipe_idx": 1446,
+      "relevant_recipe_ids": [
+        1446
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 30,
+      "family": "name_kw",
+      "query_text": "dark chocolate caramel panna cotta",
+      "source_recipe_idx": 3883,
+      "relevant_recipe_ids": [
+        3883
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 31,
+      "family": "name_kw",
+      "query_text": "campbell's healthy request green bean casserole",
+      "source_recipe_idx": 3207,
+      "relevant_recipe_ids": [
+        3207
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 32,
+      "family": "name_kw",
+      "query_text": "banana split freeze",
+      "source_recipe_idx": 998,
+      "relevant_recipe_ids": [
+        998
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 33,
+      "family": "name_kw",
+      "query_text": "sad cake",
+      "source_recipe_idx": 15,
+      "relevant_recipe_ids": [
+        15
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 34,
+      "family": "name_kw",
+      "query_text": "frank's famous barbeque sauce",
+      "source_recipe_idx": 1078,
+      "relevant_recipe_ids": [
+        1078
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 35,
+      "family": "name_kw",
+      "query_text": "chicken asparagus pasta cream sauce",
+      "source_recipe_idx": 2471,
+      "relevant_recipe_ids": [
+        2471
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 36,
+      "family": "name_kw",
+      "query_text": "mixed seafood curry",
+      "source_recipe_idx": 2772,
+      "relevant_recipe_ids": [
+        2772
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 37,
+      "family": "name_kw",
+      "query_text": "curried stuffed acorn squash",
+      "source_recipe_idx": 4386,
+      "relevant_recipe_ids": [
+        4386
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 38,
+      "family": "name_kw",
+      "query_text": "garlic sausage pasta bechamel sauce",
+      "source_recipe_idx": 3902,
+      "relevant_recipe_ids": [
+        3902
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 39,
+      "family": "name_kw",
+      "query_text": "rabbit casserole",
+      "source_recipe_idx": 1347,
+      "relevant_recipe_ids": [
+        1347
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 40,
+      "family": "name_kw",
+      "query_text": "spicy salsa",
+      "source_recipe_idx": 695,
+      "relevant_recipe_ids": [
+        695
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 41,
+      "family": "name_kw",
+      "query_text": "cocktail meatballs",
+      "source_recipe_idx": 1916,
+      "relevant_recipe_ids": [
+        1916
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 42,
+      "family": "name_kw",
+      "query_text": "wasabi trout",
+      "source_recipe_idx": 4098,
+      "relevant_recipe_ids": [
+        4098
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 43,
+      "family": "name_kw",
+      "query_text": "tomato tarte tatin",
+      "source_recipe_idx": 2311,
+      "relevant_recipe_ids": [
+        2311
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 44,
+      "family": "name_kw",
+      "query_text": "thai peanut dressing",
+      "source_recipe_idx": 933,
+      "relevant_recipe_ids": [
+        933
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 45,
+      "family": "name_kw",
+      "query_text": "campbell's kitchen chicken noodle casserole",
+      "source_recipe_idx": 630,
+      "relevant_recipe_ids": [
+        630
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 46,
+      "family": "name_kw",
+      "query_text": "chicken soup",
+      "source_recipe_idx": 3992,
+      "relevant_recipe_ids": [
+        3992
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 47,
+      "family": "name_kw",
+      "query_text": "pulled pork nachos",
+      "source_recipe_idx": 1850,
+      "relevant_recipe_ids": [
+        1850
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 48,
+      "family": "name_kw",
+      "query_text": "creamy pheasant noodle",
+      "source_recipe_idx": 155,
+      "relevant_recipe_ids": [
+        155
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 49,
+      "family": "name_kw",
+      "query_text": "poisson cru",
+      "source_recipe_idx": 2884,
+      "relevant_recipe_ids": [
+        2884
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 50,
+      "family": "name_kw",
+      "query_text": "deliciously organic carrot spread",
+      "source_recipe_idx": 1668,
+      "relevant_recipe_ids": [
+        1668
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 51,
+      "family": "name_kw",
+      "query_text": "teriyaki salmon",
+      "source_recipe_idx": 492,
+      "relevant_recipe_ids": [
+        492
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 52,
+      "family": "name_kw",
+      "query_text": "grilled prawns sichuan peppercorn salt",
+      "source_recipe_idx": 2623,
+      "relevant_recipe_ids": [
+        2623,
+        4139
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 53,
+      "family": "name_kw",
+      "query_text": "green beans bread crumbs",
+      "source_recipe_idx": 1194,
+      "relevant_recipe_ids": [
+        1194
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 54,
+      "family": "name_kw",
+      "query_text": "bacon omelette roll salsa",
+      "source_recipe_idx": 1181,
+      "relevant_recipe_ids": [
+        1181
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 55,
+      "family": "name_kw",
+      "query_text": "country banana bread",
+      "source_recipe_idx": 4883,
+      "relevant_recipe_ids": [
+        4883
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 56,
+      "family": "name_kw",
+      "query_text": "smoked bluefish pate",
+      "source_recipe_idx": 4707,
+      "relevant_recipe_ids": [
+        4707
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 57,
+      "family": "name_kw",
+      "query_text": "kielbasa hash carrots caraway",
+      "source_recipe_idx": 3564,
+      "relevant_recipe_ids": [
+        3564
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 58,
+      "family": "name_kw",
+      "query_text": "secret midnight moon better than chocolate sex cake",
+      "source_recipe_idx": 4590,
+      "relevant_recipe_ids": [
+        4590
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 59,
+      "family": "name_kw",
+      "query_text": "onion rice pilaf",
+      "source_recipe_idx": 1759,
+      "relevant_recipe_ids": [
+        1759
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 60,
+      "family": "name_kw",
+      "query_text": "microwave divinity",
+      "source_recipe_idx": 3838,
+      "relevant_recipe_ids": [
+        3838
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 61,
+      "family": "name_kw",
+      "query_text": "basic yummy stuffing",
+      "source_recipe_idx": 4486,
+      "relevant_recipe_ids": [
+        4486
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 62,
+      "family": "name_kw",
+      "query_text": "mince pie crumbly topping",
+      "source_recipe_idx": 18,
+      "relevant_recipe_ids": [
+        18
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 63,
+      "family": "name_kw",
+      "query_text": "steak tacos spicy yogurt sauce",
+      "source_recipe_idx": 2149,
+      "relevant_recipe_ids": [
+        2149
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 64,
+      "family": "name_kw",
+      "query_text": "new england crab cakes",
+      "source_recipe_idx": 2621,
+      "relevant_recipe_ids": [
+        2621
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 65,
+      "family": "name_kw",
+      "query_text": "southern-style onion rings",
+      "source_recipe_idx": 2581,
+      "relevant_recipe_ids": [
+        2581
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 66,
+      "family": "name_kw",
+      "query_text": "baked rigatoni tiny meatballs",
+      "source_recipe_idx": 4682,
+      "relevant_recipe_ids": [
+        4682
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 67,
+      "family": "name_kw",
+      "query_text": "english crumpets",
+      "source_recipe_idx": 1740,
+      "relevant_recipe_ids": [
+        1740
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 68,
+      "family": "name_kw",
+      "query_text": "slow cooked goose",
+      "source_recipe_idx": 1453,
+      "relevant_recipe_ids": [
+        1453
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 69,
+      "family": "name_kw",
+      "query_text": "sugar cookies",
+      "source_recipe_idx": 4241,
+      "relevant_recipe_ids": [
+        4241,
+        1195,
+        1926,
+        2692,
+        3769
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 70,
+      "family": "name_kw",
+      "query_text": "italian chocolate chip cookies",
+      "source_recipe_idx": 4446,
+      "relevant_recipe_ids": [
+        4446
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 71,
+      "family": "name_kw",
+      "query_text": "inca red quinoa salad sweet apple chicken sausage",
+      "source_recipe_idx": 4765,
+      "relevant_recipe_ids": [
+        4765
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 72,
+      "family": "name_kw",
+      "query_text": "chop suey cake",
+      "source_recipe_idx": 3768,
+      "relevant_recipe_ids": [
+        3768
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 73,
+      "family": "name_kw",
+      "query_text": "jg's irish lamb stew",
+      "source_recipe_idx": 1199,
+      "relevant_recipe_ids": [
+        1199
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 74,
+      "family": "name_kw",
+      "query_text": "anise pizzelles",
+      "source_recipe_idx": 1617,
+      "relevant_recipe_ids": [
+        1617
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 75,
+      "family": "ingredient_combo",
+      "query_text": "half-and-half, paprika, mushrooms, cheddar cheese",
+      "source_recipe_idx": 343,
+      "relevant_recipe_ids": [
+        343
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 76,
+      "family": "ingredient_combo",
+      "query_text": "firm tofu, sherry, pork, soy sauce",
+      "source_recipe_idx": 112,
+      "relevant_recipe_ids": [
+        112
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 77,
+      "family": "ingredient_combo",
+      "query_text": "pineapple juice, blueberries, banana, strawberries",
+      "source_recipe_idx": 684,
+      "relevant_recipe_ids": [
+        684
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 78,
+      "family": "ingredient_combo",
+      "query_text": "pitted prunes, superfine sugar, apricots, vegetable shortening",
+      "source_recipe_idx": 3736,
+      "relevant_recipe_ids": [
+        3736
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 79,
+      "family": "ingredient_combo",
+      "query_text": "scalded milk, graham cracker crumbs, egg yolks, cornstarch",
+      "source_recipe_idx": 2966,
+      "relevant_recipe_ids": [
+        2966
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 80,
+      "family": "ingredient_combo",
+      "query_text": "blue cheese, sun-dried tomatoes, steak sauce, chives",
+      "source_recipe_idx": 4854,
+      "relevant_recipe_ids": [
+        4854
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 81,
+      "family": "ingredient_combo",
+      "query_text": "coffee flavored liqueur, coffee-flavored liqueur, confectioners sugar for dusting, squares unsweetened chocolate",
+      "source_recipe_idx": 572,
+      "relevant_recipe_ids": [
+        572
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 82,
+      "family": "ingredient_combo",
+      "query_text": "mirin, sesame seeds, shallots, sesame oil",
+      "source_recipe_idx": 1560,
+      "relevant_recipe_ids": [
+        1560
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 83,
+      "family": "ingredient_combo",
+      "query_text": "processed american cheese, ham, cabbage, bread crumbs",
+      "source_recipe_idx": 1495,
+      "relevant_recipe_ids": [
+        1495
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 84,
+      "family": "ingredient_combo",
+      "query_text": "bulk italian sausage, lasagna noodles, ricotta cheese, tomato sauce",
+      "source_recipe_idx": 2854,
+      "relevant_recipe_ids": [
+        2854
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 85,
+      "family": "ingredient_combo",
+      "query_text": "cherry juice, unsweetened raspberries, orange juice concentrate, cranberries",
+      "source_recipe_idx": 4293,
+      "relevant_recipe_ids": [
+        4293
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 86,
+      "family": "ingredient_combo",
+      "query_text": "cremini mushrooms, herbes de provence, provolone cheese, chicken stock",
+      "source_recipe_idx": 2464,
+      "relevant_recipe_ids": [
+        2464
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 87,
+      "family": "ingredient_combo",
+      "query_text": "sweet red onion, avocados, lime, jalapeno peppers",
+      "source_recipe_idx": 3196,
+      "relevant_recipe_ids": [
+        3196
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 88,
+      "family": "ingredient_combo",
+      "query_text": "pace picante sauce, regular long-grain white rice, orange juice",
+      "source_recipe_idx": 1418,
+      "relevant_recipe_ids": [
+        1418
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 89,
+      "family": "ingredient_combo",
+      "query_text": "crumbled cornbread, rubbed sage, water chestnuts, poultry seasoning",
+      "source_recipe_idx": 4488,
+      "relevant_recipe_ids": [
+        4488
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 90,
+      "family": "ingredient_combo",
+      "query_text": "apple butter, demerara sugar, apple juice, quick cooking oats",
+      "source_recipe_idx": 3200,
+      "relevant_recipe_ids": [
+        3200
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 91,
+      "family": "ingredient_combo",
+      "query_text": "pumpkin, allspice, nutmeg, cinnamon",
+      "source_recipe_idx": 2776,
+      "relevant_recipe_ids": [
+        2776
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 92,
+      "family": "ingredient_combo",
+      "query_text": "pineapple juice concentrate, lemon-lime flavored carbonated beverage, orange juice concentrate, fluid ounces vodka",
+      "source_recipe_idx": 3364,
+      "relevant_recipe_ids": [
+        3364
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 93,
+      "family": "ingredient_combo",
+      "query_text": "asparagus, mustard powder, bacon, red bell pepper",
+      "source_recipe_idx": 3645,
+      "relevant_recipe_ids": [
+        3645
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 94,
+      "family": "ingredient_combo",
+      "query_text": "pineapple tidbits, marshmallows, white wine vinegar, orange",
+      "source_recipe_idx": 3287,
+      "relevant_recipe_ids": [
+        3287
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 95,
+      "family": "ingredient_combo",
+      "query_text": "shaved parmesan cheese, pine nuts, broccoli florets, vegetable broth",
+      "source_recipe_idx": 283,
+      "relevant_recipe_ids": [
+        283
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 96,
+      "family": "ingredient_combo",
+      "query_text": "baking mix, quick cooking oats, sweetened condensed milk, light brown sugar",
+      "source_recipe_idx": 813,
+      "relevant_recipe_ids": [
+        813
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 97,
+      "family": "ingredient_combo",
+      "query_text": "corn chips, crispy corn cereal squares, mini pretzels, popped popcorn",
+      "source_recipe_idx": 1971,
+      "relevant_recipe_ids": [
+        1971
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 98,
+      "family": "ingredient_combo",
+      "query_text": "condensed cream of celery soup, spaghetti, ham, spinach",
+      "source_recipe_idx": 3144,
+      "relevant_recipe_ids": [
+        3144
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 99,
+      "family": "ingredient_combo",
+      "query_text": "baby bok choy, red pepper flakes, red onion, bacon",
+      "source_recipe_idx": 1924,
+      "relevant_recipe_ids": [
+        1924
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 100,
+      "family": "ingredient_combo",
+      "query_text": "beef stew meat, egg noodles, yellow onion, cooking spray",
+      "source_recipe_idx": 2910,
+      "relevant_recipe_ids": [
+        2910
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 101,
+      "family": "ingredient_combo",
+      "query_text": "chili paste, fettuccine, tomato juice, garbanzo beans",
+      "source_recipe_idx": 922,
+      "relevant_recipe_ids": [
+        922
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 102,
+      "family": "ingredient_combo",
+      "query_text": "refrigerated pie crust, apple juice, mangos, strawberries",
+      "source_recipe_idx": 477,
+      "relevant_recipe_ids": [
+        477
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 103,
+      "family": "ingredient_combo",
+      "query_text": "leaves fresh basil, extra-virgin olive oil, almonds, parsley",
+      "source_recipe_idx": 281,
+      "relevant_recipe_ids": [
+        281
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 104,
+      "family": "ingredient_combo",
+      "query_text": "processed cheese, broccoli florets, chicken stock, cheddar cheese",
+      "source_recipe_idx": 1108,
+      "relevant_recipe_ids": [
+        1108
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 105,
+      "family": "ingredient_combo",
+      "query_text": "whole-wheat flour, sunflower seeds, golden raisins, pineapple juice",
+      "source_recipe_idx": 361,
+      "relevant_recipe_ids": [
+        361
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 106,
+      "family": "ingredient_combo",
+      "query_text": "cream-style corn, green chilies, cornmeal, kernel corn",
+      "source_recipe_idx": 968,
+      "relevant_recipe_ids": [
+        968
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 107,
+      "family": "ingredient_combo",
+      "query_text": "coconut cream, rice flour, arrowroot powder, tapioca flour",
+      "source_recipe_idx": 1547,
+      "relevant_recipe_ids": [
+        1547
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 108,
+      "family": "ingredient_combo",
+      "query_text": "loaf sourdough bread, port wine, swiss cheese, nutmeg",
+      "source_recipe_idx": 3498,
+      "relevant_recipe_ids": [
+        3498
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 109,
+      "family": "ingredient_combo",
+      "query_text": "jigger brewed espresso, white chocolate flavored syrup, sweetened whipped cream",
+      "source_recipe_idx": 3001,
+      "relevant_recipe_ids": [
+        3001
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 110,
+      "family": "ingredient_combo",
+      "query_text": "ketchup, ginger, soy sauce",
+      "source_recipe_idx": 3579,
+      "relevant_recipe_ids": [
+        3579
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 111,
+      "family": "ingredient_combo",
+      "query_text": "bone-in chicken breast halves, paprika, sour cream",
+      "source_recipe_idx": 1264,
+      "relevant_recipe_ids": [
+        1264
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 112,
+      "family": "ingredient_combo",
+      "query_text": "asian fish sauce, chili pepper, kimchi, chili",
+      "source_recipe_idx": 4490,
+      "relevant_recipe_ids": [
+        4490
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 113,
+      "family": "ingredient_combo",
+      "query_text": "chipotle chile pepper, oregano leaves, kidney beans, black beans",
+      "source_recipe_idx": 4202,
+      "relevant_recipe_ids": [
+        4202
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 114,
+      "family": "ingredient_combo",
+      "query_text": "shelled, coarse sea salt, chickpeas, garlic clove",
+      "source_recipe_idx": 3279,
+      "relevant_recipe_ids": [
+        3279
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 115,
+      "family": "ingredient_combo",
+      "query_text": "almond flour, cooking spray, honey",
+      "source_recipe_idx": 1344,
+      "relevant_recipe_ids": [
+        1344
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 116,
+      "family": "ingredient_combo",
+      "query_text": "sweet pickle, pimento-stuffed green olives, macaroni, celery seed",
+      "source_recipe_idx": 4078,
+      "relevant_recipe_ids": [
+        4078
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 117,
+      "family": "ingredient_combo",
+      "query_text": "drops hot sauce, chile pepper, lime juice, tomato",
+      "source_recipe_idx": 4472,
+      "relevant_recipe_ids": [
+        4472
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 118,
+      "family": "ingredient_combo",
+      "query_text": "pie crust, maraschino cherries, sweetened condensed milk, pineapple",
+      "source_recipe_idx": 2041,
+      "relevant_recipe_ids": [
+        2041
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 119,
+      "family": "ingredient_combo",
+      "query_text": "barbeque sauce, cooking spray, bacon",
+      "source_recipe_idx": 877,
+      "relevant_recipe_ids": [
+        877
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 120,
+      "family": "ingredient_combo",
+      "query_text": "pasta, tomato puree, tomatoes with juice, red chile pepper",
+      "source_recipe_idx": 3513,
+      "relevant_recipe_ids": [
+        3513
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 121,
+      "family": "ingredient_combo",
+      "query_text": "red chili pepper, sichuan peppercorns, cooking oil, chicken breasts",
+      "source_recipe_idx": 2678,
+      "relevant_recipe_ids": [
+        2678
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 122,
+      "family": "ingredient_combo",
+      "query_text": "fructose, confectioners sugar for decoration, almond extract, pecans",
+      "source_recipe_idx": 1705,
+      "relevant_recipe_ids": [
+        1705
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 123,
+      "family": "ingredient_combo",
+      "query_text": "romaine lettuce, poppy seeds, white wine vinegar, strawberries",
+      "source_recipe_idx": 1043,
+      "relevant_recipe_ids": [
+        1043
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 124,
+      "family": "ingredient_combo",
+      "query_text": "processed cheese, condensed cream of mushroom soup, paprika, mushrooms",
+      "source_recipe_idx": 4130,
+      "relevant_recipe_ids": [
+        4130
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 125,
+      "family": "ingredient_combo",
+      "query_text": "cardamom, granulated sugar, orange, lemon juice",
+      "source_recipe_idx": 3480,
+      "relevant_recipe_ids": [
+        3480
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 126,
+      "family": "ingredient_combo",
+      "query_text": "bay seasoning tm, italian seasoned bread crumbs, mustard, zucchini",
+      "source_recipe_idx": 3412,
+      "relevant_recipe_ids": [
+        3412
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 127,
+      "family": "ingredient_combo",
+      "query_text": "baby spinach leaves, penne pasta, chicken breasts",
+      "source_recipe_idx": 2645,
+      "relevant_recipe_ids": [
+        2645
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 128,
+      "family": "ingredient_combo",
+      "query_text": "fennel bulb, leek, red potatoes, tarragon",
+      "source_recipe_idx": 847,
+      "relevant_recipe_ids": [
+        847
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 129,
+      "family": "ingredient_combo",
+      "query_text": "yellow cornmeal, heavy cream, honey",
+      "source_recipe_idx": 2352,
+      "relevant_recipe_ids": [
+        2352
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 130,
+      "family": "ingredient_combo",
+      "query_text": "sage, vegetable broth, cranberries, rosemary",
+      "source_recipe_idx": 4384,
+      "relevant_recipe_ids": [
+        4384
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 131,
+      "family": "ingredient_combo",
+      "query_text": "white chocolate chips, maple syrup, granulated sugar, peanut butter",
+      "source_recipe_idx": 306,
+      "relevant_recipe_ids": [
+        306
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 132,
+      "family": "ingredient_combo",
+      "query_text": "shucked oysters, corn oil, crabmeat, bay leaves",
+      "source_recipe_idx": 143,
+      "relevant_recipe_ids": [
+        143
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 133,
+      "family": "ingredient_combo",
+      "query_text": "linguini pasta, clams, basil, parsley",
+      "source_recipe_idx": 2249,
+      "relevant_recipe_ids": [
+        2249
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 134,
+      "family": "ingredient_combo",
+      "query_text": "mace, cardamom, allspice, confectioners sugar",
+      "source_recipe_idx": 2424,
+      "relevant_recipe_ids": [
+        2424
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 135,
+      "family": "ingredient_combo",
+      "query_text": "horseradish, heavy cream, mayonnaise",
+      "source_recipe_idx": 3171,
+      "relevant_recipe_ids": [
+        3171
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 136,
+      "family": "ingredient_combo",
+      "query_text": "coffee beans, coffee liqueur, free-range egg yolks, milk chocolate",
+      "source_recipe_idx": 4413,
+      "relevant_recipe_ids": [
+        4413
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 137,
+      "family": "ingredient_combo",
+      "query_text": "sweet italian sausage, italian-style hoagie buns, olive oil for frying, garlic basil spread",
+      "source_recipe_idx": 3435,
+      "relevant_recipe_ids": [
+        3435
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 138,
+      "family": "ingredient_combo",
+      "query_text": "spicy mustard, peach preserves, beer, horseradish",
+      "source_recipe_idx": 2489,
+      "relevant_recipe_ids": [
+        2489
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 139,
+      "family": "ingredient_combo",
+      "query_text": "clams, parsley, tomatoes",
+      "source_recipe_idx": 2097,
+      "relevant_recipe_ids": [
+        2097
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 140,
+      "family": "ingredient_combo",
+      "query_text": "burrito-size flour tortillas, vegetarian refried beans, taco seasoning mix, salsa",
+      "source_recipe_idx": 2363,
+      "relevant_recipe_ids": [
+        2363
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 141,
+      "family": "ingredient_combo",
+      "query_text": "guacamole, refried beans, taco seasoning mix, red chile peppers",
+      "source_recipe_idx": 3588,
+      "relevant_recipe_ids": [
+        3588
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 142,
+      "family": "ingredient_combo",
+      "query_text": "coconut, maraschino cherries, unsweetened cocoa powder",
+      "source_recipe_idx": 2922,
+      "relevant_recipe_ids": [
+        2922
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 143,
+      "family": "ingredient_combo",
+      "query_text": "cauliflower, curry powder, dijon mustard, mayonnaise",
+      "source_recipe_idx": 2768,
+      "relevant_recipe_ids": [
+        2768
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 144,
+      "family": "ingredient_combo",
+      "query_text": "green food coloring, red food coloring, vegetable shortening, sifted all-purpose flour",
+      "source_recipe_idx": 2317,
+      "relevant_recipe_ids": [
+        2317
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 145,
+      "family": "ingredient_combo",
+      "query_text": "italian dressing, stuffed green olives, garbanzo beans, kidney beans",
+      "source_recipe_idx": 760,
+      "relevant_recipe_ids": [
+        760
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 146,
+      "family": "ingredient_combo",
+      "query_text": "green tomato, okra, cornmeal, jalapeno pepper",
+      "source_recipe_idx": 4711,
+      "relevant_recipe_ids": [
+        4711
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 147,
+      "family": "ingredient_combo",
+      "query_text": "pie crust, raisins, cornstarch, lemon juice",
+      "source_recipe_idx": 4258,
+      "relevant_recipe_ids": [
+        4258
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 148,
+      "family": "ingredient_combo",
+      "query_text": "canola oil, wheat flour, cooking spray, bananas",
+      "source_recipe_idx": 2459,
+      "relevant_recipe_ids": [
+        2459
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 149,
+      "family": "ingredient_combo",
+      "query_text": "seasoned salt, buttermilk, paprika, thyme",
+      "source_recipe_idx": 4577,
+      "relevant_recipe_ids": [
+        4577
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 150,
+      "family": "desc_short",
+      "query_text": "a pretty pink blender made with tofu but don't tell anyone",
+      "source_recipe_idx": 1385,
+      "relevant_recipe_ids": [
+        1385
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 151,
+      "family": "desc_short",
+      "query_text": "these are great for gifts wrap rolls in cellophane and tie",
+      "source_recipe_idx": 934,
+      "relevant_recipe_ids": [
+        934
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 152,
+      "family": "desc_short",
+      "query_text": "this highly-unusual or summer soup was called borscht' in my family it's",
+      "source_recipe_idx": 3250,
+      "relevant_recipe_ids": [
+        3250
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 153,
+      "family": "desc_short",
+      "query_text": "my partner and i invented this recipe by accident one afternoon when",
+      "source_recipe_idx": 478,
+      "relevant_recipe_ids": [
+        478
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 154,
+      "family": "desc_short",
+      "query_text": "very easy delicious recipe that the whole family loves",
+      "source_recipe_idx": 2596,
+      "relevant_recipe_ids": [
+        2596
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 155,
+      "family": "desc_short",
+      "query_text": "chewy chock full of chocolate chips and crunchy chocolate almond candy pieces",
+      "source_recipe_idx": 4218,
+      "relevant_recipe_ids": [
+        4218
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 156,
+      "family": "desc_short",
+      "query_text": "this is baked in a brown parchment paper it is so delicious",
+      "source_recipe_idx": 209,
+      "relevant_recipe_ids": [
+        209
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 157,
+      "family": "desc_short",
+      "query_text": "with and tomatoes if you prefer you can use beef instead",
+      "source_recipe_idx": 2288,
+      "relevant_recipe_ids": [
+        2288
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 158,
+      "family": "desc_short",
+      "query_text": "this and flavored with honey is built on a gingersnap crust",
+      "source_recipe_idx": 329,
+      "relevant_recipe_ids": [
+        329
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 159,
+      "family": "desc_short",
+      "query_text": "this very quick and flavorful side dish is easy for everyday dinner",
+      "source_recipe_idx": 3343,
+      "relevant_recipe_ids": [
+        3343
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 160,
+      "family": "desc_short",
+      "query_text": "this soup is full of healthy antioxidants a very hearty soup",
+      "source_recipe_idx": 4534,
+      "relevant_recipe_ids": [
+        4534
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 161,
+      "family": "desc_short",
+      "query_text": "also known as a dutch baby this is a terrific special day'",
+      "source_recipe_idx": 3468,
+      "relevant_recipe_ids": [
+        3468
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 162,
+      "family": "desc_short",
+      "query_text": "my parents ate at a diner that served a coleslaw",
+      "source_recipe_idx": 1272,
+      "relevant_recipe_ids": [
+        1272
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 163,
+      "family": "desc_short",
+      "query_text": "butter are baked with and brown sugar to make a delicious snack",
+      "source_recipe_idx": 3162,
+      "relevant_recipe_ids": [
+        3162
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 164,
+      "family": "desc_short",
+      "query_text": "these are a favorite for any occasion i made pounds",
+      "source_recipe_idx": 1508,
+      "relevant_recipe_ids": [
+        1508
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 165,
+      "family": "desc_short",
+      "query_text": "is a purple root vegetable like a sweet potato that is used",
+      "source_recipe_idx": 1285,
+      "relevant_recipe_ids": [
+        1285
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 166,
+      "family": "desc_short",
+      "query_text": "the best recipe available it is a modified version of a long",
+      "source_recipe_idx": 693,
+      "relevant_recipe_ids": [
+        693
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 167,
+      "family": "desc_short",
+      "query_text": "super tender use a thin cut of for better flavor extremely tasty",
+      "source_recipe_idx": 3708,
+      "relevant_recipe_ids": [
+        3708
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 168,
+      "family": "desc_short",
+      "query_text": "here is another practical from my mother's recipe file it makes",
+      "source_recipe_idx": 4264,
+      "relevant_recipe_ids": [
+        4264
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 169,
+      "family": "desc_short",
+      "query_text": "very tasty of roasted and i got the inspiration when i was",
+      "source_recipe_idx": 2050,
+      "relevant_recipe_ids": [
+        2050
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 170,
+      "family": "desc_short",
+      "query_text": "this makes men drool and women fight over the last piece i",
+      "source_recipe_idx": 2130,
+      "relevant_recipe_ids": [
+        2130
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 171,
+      "family": "desc_short",
+      "query_text": "easy homemade machine-free delicious also great with pie",
+      "source_recipe_idx": 1424,
+      "relevant_recipe_ids": [
+        1424
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 172,
+      "family": "desc_short",
+      "query_text": "this is a very easy to prepare version of a pasta serve",
+      "source_recipe_idx": 515,
+      "relevant_recipe_ids": [
+        515,
+        3969
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 173,
+      "family": "desc_short",
+      "query_text": "a chewy healthy no-fuss cookie great for kids",
+      "source_recipe_idx": 3797,
+      "relevant_recipe_ids": [
+        3797,
+        4531
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 174,
+      "family": "desc_short",
+      "query_text": "a desert with a crumb topping serve it with whipped cream",
+      "source_recipe_idx": 2780,
+      "relevant_recipe_ids": [
+        2780
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 175,
+      "family": "desc_short",
+      "query_text": "watch chef john refashion leftover party dip into an easy stuffed-pasta dish",
+      "source_recipe_idx": 335,
+      "relevant_recipe_ids": [
+        335
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 176,
+      "family": "desc_short",
+      "query_text": "whole-grain bread with maple syrup cinnamon and sausage is sure to be",
+      "source_recipe_idx": 2394,
+      "relevant_recipe_ids": [
+        2394
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 177,
+      "family": "desc_short",
+      "query_text": "this is a yummy recipe and great for those nights when you",
+      "source_recipe_idx": 973,
+      "relevant_recipe_ids": [
+        973
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 178,
+      "family": "desc_short",
+      "query_text": "thin and crisp cookies",
+      "source_recipe_idx": 1353,
+      "relevant_recipe_ids": [
+        1353
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 179,
+      "family": "desc_short",
+      "query_text": "this very simple makes great use of heartier greens like and watercress",
+      "source_recipe_idx": 2451,
+      "relevant_recipe_ids": [
+        2451
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 180,
+      "family": "desc_short",
+      "query_text": "no mess treat for children's parties looks like an ice cream use",
+      "source_recipe_idx": 2053,
+      "relevant_recipe_ids": [
+        2053
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 181,
+      "family": "desc_short",
+      "query_text": "this is great for vegetarians and non-vegetarians it has a wonderful light",
+      "source_recipe_idx": 1142,
+      "relevant_recipe_ids": [
+        1142
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 182,
+      "family": "desc_short",
+      "query_text": "i came up with this recipe to enter in a mango contest",
+      "source_recipe_idx": 3158,
+      "relevant_recipe_ids": [
+        3158
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 183,
+      "family": "desc_short",
+      "query_text": "it couldn't be easier to make this zesty it combines and sauce",
+      "source_recipe_idx": 2769,
+      "relevant_recipe_ids": [
+        2769
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 184,
+      "family": "desc_short",
+      "query_text": "a great tasting recipe that takes half the time",
+      "source_recipe_idx": 2306,
+      "relevant_recipe_ids": [
+        2306
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 185,
+      "family": "desc_short",
+      "query_text": "another way to use that summer squash",
+      "source_recipe_idx": 755,
+      "relevant_recipe_ids": [
+        755
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 186,
+      "family": "desc_short",
+      "query_text": "a quick family favorite and so tasty adjust the overall heat",
+      "source_recipe_idx": 2956,
+      "relevant_recipe_ids": [
+        2956
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 187,
+      "family": "desc_short",
+      "query_text": "these are and oatmeal cookie bars that have a layer of chocolate",
+      "source_recipe_idx": 1333,
+      "relevant_recipe_ids": [
+        1333
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 188,
+      "family": "desc_short",
+      "query_text": "a different and yummy it uses no mayonnaise this is a nice",
+      "source_recipe_idx": 2624,
+      "relevant_recipe_ids": [
+        2624
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 189,
+      "family": "desc_short",
+      "query_text": "looks like a lot of ingredients- but is very",
+      "source_recipe_idx": 1377,
+      "relevant_recipe_ids": [
+        1377
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 190,
+      "family": "desc_short",
+      "query_text": "style dinner pancake' integrating cabbage and meat for a delicious meal",
+      "source_recipe_idx": 489,
+      "relevant_recipe_ids": [
+        489
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 191,
+      "family": "desc_short",
+      "query_text": "tasty breasts with butter salt pepper and oniony seasoning all ages like",
+      "source_recipe_idx": 1838,
+      "relevant_recipe_ids": [
+        1838
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 192,
+      "family": "desc_short",
+      "query_text": "cardamom makes these special",
+      "source_recipe_idx": 4361,
+      "relevant_recipe_ids": [
+        4361
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 193,
+      "family": "desc_short",
+      "query_text": "a version of the classic chocolate chip cookie",
+      "source_recipe_idx": 3345,
+      "relevant_recipe_ids": [
+        3345
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 194,
+      "family": "desc_short",
+      "query_text": "this is an extremely simple recipe that i love to make when",
+      "source_recipe_idx": 3387,
+      "relevant_recipe_ids": [
+        3387
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 195,
+      "family": "desc_short",
+      "query_text": "a long-time wellington ohio friend shared this recipe with me and has",
+      "source_recipe_idx": 3954,
+      "relevant_recipe_ids": [
+        3954
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 196,
+      "family": "desc_short",
+      "query_text": "when a recipe calls for i instinctively double the amount to cook",
+      "source_recipe_idx": 1897,
+      "relevant_recipe_ids": [
+        1897
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 197,
+      "family": "desc_short",
+      "query_text": "see how to make these festive christmas cookies",
+      "source_recipe_idx": 2224,
+      "relevant_recipe_ids": [
+        2224
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 198,
+      "family": "desc_short",
+      "query_text": "a stunning delicious sweet recipe bread cubes are tossed with a sweet",
+      "source_recipe_idx": 1765,
+      "relevant_recipe_ids": [
+        1765
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 199,
+      "family": "desc_short",
+      "query_text": "make your own at home these are simple to make and can",
+      "source_recipe_idx": 392,
+      "relevant_recipe_ids": [
+        392
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 200,
+      "family": "desc_short",
+      "query_text": "these freeze well i make them mostly for the holidays",
+      "source_recipe_idx": 2567,
+      "relevant_recipe_ids": [
+        2567,
+        4531
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 201,
+      "family": "desc_short",
+      "query_text": "when i first saw this recipe on the homepage of marthastewart com",
+      "source_recipe_idx": 4696,
+      "relevant_recipe_ids": [
+        4696
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 202,
+      "family": "desc_short",
+      "query_text": "this recipe is easy and always a crowd pleaser",
+      "source_recipe_idx": 3486,
+      "relevant_recipe_ids": [
+        3486
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 203,
+      "family": "desc_short",
+      "query_text": "a natural very good flavorful",
+      "source_recipe_idx": 4422,
+      "relevant_recipe_ids": [
+        4422
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 204,
+      "family": "desc_short",
+      "query_text": "trail mix mix in a with tag attached with directions on how",
+      "source_recipe_idx": 2414,
+      "relevant_recipe_ids": [
+        2414
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 205,
+      "family": "desc_short",
+      "query_text": "i try and find any excuse to make this recipe as it",
+      "source_recipe_idx": 4771,
+      "relevant_recipe_ids": [
+        4771
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 206,
+      "family": "desc_short",
+      "query_text": "quick and delicious this marinade can be prepared in the morning",
+      "source_recipe_idx": 2932,
+      "relevant_recipe_ids": [
+        2932
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 207,
+      "family": "desc_short",
+      "query_text": "this is a cookie recipe that i got from my mother",
+      "source_recipe_idx": 1588,
+      "relevant_recipe_ids": [
+        1588
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 208,
+      "family": "desc_short",
+      "query_text": "a perfect summer meal what i love about this recipe is",
+      "source_recipe_idx": 2510,
+      "relevant_recipe_ids": [
+        2510
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 209,
+      "family": "desc_short",
+      "query_text": "a must-have at get-togethers this chunky is sooooo easy you'll find yourself",
+      "source_recipe_idx": 4458,
+      "relevant_recipe_ids": [
+        4458
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 210,
+      "family": "desc_short",
+      "query_text": "a melt in your mouth lemony surprise",
+      "source_recipe_idx": 3859,
+      "relevant_recipe_ids": [
+        3859
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 211,
+      "family": "desc_short",
+      "query_text": "i created this out of what i had on hand and when",
+      "source_recipe_idx": 4995,
+      "relevant_recipe_ids": [
+        4995
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 212,
+      "family": "desc_short",
+      "query_text": "this is so delicious and easy the combination of and complement",
+      "source_recipe_idx": 4122,
+      "relevant_recipe_ids": [
+        4122
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 213,
+      "family": "desc_short",
+      "query_text": "creamy cheesy with a hint of heat and garlic and a splash",
+      "source_recipe_idx": 2913,
+      "relevant_recipe_ids": [
+        2913
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 214,
+      "family": "desc_short",
+      "query_text": "this sweet and flavorful will make your taste buds go wild not",
+      "source_recipe_idx": 4851,
+      "relevant_recipe_ids": [
+        4851
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 215,
+      "family": "desc_short",
+      "query_text": "a tasty side dish that combines the flavors of garlic and pancetta",
+      "source_recipe_idx": 935,
+      "relevant_recipe_ids": [
+        935
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 216,
+      "family": "desc_short",
+      "query_text": "simple but seriously yummy originally submitted to thanksgivingrecipe com",
+      "source_recipe_idx": 4655,
+      "relevant_recipe_ids": [
+        4655
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 217,
+      "family": "desc_short",
+      "query_text": "i was in the mood to make something with in it",
+      "source_recipe_idx": 2758,
+      "relevant_recipe_ids": [
+        2758
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 218,
+      "family": "desc_short",
+      "query_text": "my mom's pie recipe my personal",
+      "source_recipe_idx": 4359,
+      "relevant_recipe_ids": [
+        4359,
+        2886
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 219,
+      "family": "desc_short",
+      "query_text": "it has been over a year since i salient takeaways included that",
+      "source_recipe_idx": 3915,
+      "relevant_recipe_ids": [
+        3915
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 220,
+      "family": "desc_short",
+      "query_text": "this is the i grew up with i have never had better",
+      "source_recipe_idx": 479,
+      "relevant_recipe_ids": [
+        479
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 221,
+      "family": "desc_short",
+      "query_text": "the original recipe calls for italian sausage but this cheesy is great",
+      "source_recipe_idx": 4912,
+      "relevant_recipe_ids": [
+        4912
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 222,
+      "family": "desc_short",
+      "query_text": "based on an old south american spoon treat",
+      "source_recipe_idx": 3340,
+      "relevant_recipe_ids": [
+        3340
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 223,
+      "family": "desc_short",
+      "query_text": "surprise your friends and indeed yourself with a batch of these",
+      "source_recipe_idx": 2995,
+      "relevant_recipe_ids": [
+        2995
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 224,
+      "family": "desc_short",
+      "query_text": "this is a refreshing cold be sure to use the freshest",
+      "source_recipe_idx": 3662,
+      "relevant_recipe_ids": [
+        3662
+      ],
+      "base_query_text": "",
+      "substitutions": []
+    },
+    {
+      "query_id": 225,
+      "family": "synonym_hard",
+      "query_text": "banana pudding mix, digestive biscuit crumbs, whipped topping, bananas",
+      "source_recipe_idx": 2065,
+      "relevant_recipe_ids": [
+        2065
+      ],
+      "base_query_text": "banana pudding mix, graham cracker crumbs, whipped topping, bananas",
+      "substitutions": [
+        "graham -> digestive",
+        "cracker -> biscuit"
+      ]
+    },
+    {
+      "query_id": 226,
+      "family": "synonym_hard",
+      "query_text": "pork sausage, pumpkin pie spice, sifted plain flour, sultanas",
+      "source_recipe_idx": 2397,
+      "relevant_recipe_ids": [
+        2397
+      ],
+      "base_query_text": "pork sausage, pumpkin pie spice, sifted all-purpose flour, raisins",
+      "substitutions": [
+        "all-purpose -> plain",
+        "raisins -> sultanas"
+      ]
+    },
+    {
+      "query_id": 227,
+      "family": "synonym_hard",
+      "query_text": "candied fruit, pecan halves, rapeseed oil, sultanas",
+      "source_recipe_idx": 3862,
+      "relevant_recipe_ids": [
+        3862
+      ],
+      "base_query_text": "candied fruit, pecan halves, canola oil, raisins",
+      "substitutions": [
+        "canola -> rapeseed",
+        "raisins -> sultanas"
+      ]
+    },
+    {
+      "query_id": 228,
+      "family": "synonym_hard",
+      "query_text": "amaretto liqueur, digestive biscuit crumbs, almond extract, sour cream",
+      "source_recipe_idx": 2165,
+      "relevant_recipe_ids": [
+        2165
+      ],
+      "base_query_text": "amaretto liqueur, graham cracker crumbs, almond extract, sour cream",
+      "substitutions": [
+        "graham -> digestive",
+        "cracker -> biscuit"
+      ]
+    },
+    {
+      "query_id": 229,
+      "family": "synonym_hard",
+      "query_text": "amaretto liqueur, unflavored gelatin, digestive biscuit crumbs, evaporated milk",
+      "source_recipe_idx": 694,
+      "relevant_recipe_ids": [
+        694
+      ],
+      "base_query_text": "amaretto liqueur, unflavored gelatin, graham cracker crumbs, evaporated milk",
+      "substitutions": [
+        "graham -> digestive",
+        "cracker -> biscuit"
+      ]
+    },
+    {
+      "query_id": 230,
+      "family": "synonym_hard",
+      "query_text": "beef stew meat, beef stock, vegetable stock, bay leaves",
+      "source_recipe_idx": 1978,
+      "relevant_recipe_ids": [
+        1978
+      ],
+      "base_query_text": "beef stew meat, beef broth, vegetable broth, bay leaves",
+      "substitutions": [
+        "broth -> stock",
+        "broth -> stock"
+      ]
+    },
+    {
+      "query_id": 231,
+      "family": "synonym_hard",
+      "query_text": "natural cane sugar, wholemeal pastry flour, golden sultanas, unbleached plain flour",
+      "source_recipe_idx": 4749,
+      "relevant_recipe_ids": [
+        4749
+      ],
+      "base_query_text": "natural cane sugar, wheat pastry flour, golden raisins, unbleached all-purpose flour",
+      "substitutions": [
+        "wheat -> wholemeal",
+        "raisins -> sultanas",
+        "all-purpose -> plain"
+      ]
+    },
+    {
+      "query_id": 232,
+      "family": "synonym_hard",
+      "query_text": "beef consomme, lean minced beef, tomato ketchup, margarine",
+      "source_recipe_idx": 1360,
+      "relevant_recipe_ids": [
+        1360
+      ],
+      "base_query_text": "beef consomme, lean ground beef, ketchup, margarine",
+      "substitutions": [
+        "ground -> minced",
+        "ketchup -> tomato ketchup"
+      ]
+    },
+    {
+      "query_id": 233,
+      "family": "synonym_hard",
+      "query_text": "sifted plain flour, peanut butter, pecans, icing sugar",
+      "source_recipe_idx": 2628,
+      "relevant_recipe_ids": [
+        2628
+      ],
+      "base_query_text": "sifted all-purpose flour, peanut butter, pecans, confectioners sugar",
+      "substitutions": [
+        "all-purpose -> plain",
+        "confectioners -> icing"
+      ]
+    },
+    {
+      "query_id": 234,
+      "family": "synonym_hard",
+      "query_text": "condensed chicken stock, buttermilk baking mix, cubes chicken stock, poultry seasoning",
+      "source_recipe_idx": 3022,
+      "relevant_recipe_ids": [
+        3022
+      ],
+      "base_query_text": "condensed chicken broth, buttermilk baking mix, cubes chicken bouillon, poultry seasoning",
+      "substitutions": [
+        "broth -> stock",
+        "bouillon -> stock"
+      ]
+    },
+    {
+      "query_id": 235,
+      "family": "synonym_hard",
+      "query_text": "refrigerated buttermilk scone dough, oil for deep frying, icing sugar",
+      "source_recipe_idx": 4074,
+      "relevant_recipe_ids": [
+        4074
+      ],
+      "base_query_text": "refrigerated buttermilk biscuit dough, oil for deep frying, confectioners sugar",
+      "substitutions": [
+        "biscuit -> scone",
+        "confectioners -> icing"
+      ]
+    },
+    {
+      "query_id": 236,
+      "family": "synonym_hard",
+      "query_text": "apples, sultanas, walnuts, icing sugar",
+      "source_recipe_idx": 2361,
+      "relevant_recipe_ids": [
+        2361
+      ],
+      "base_query_text": "apples, raisins, walnuts, confectioners sugar",
+      "substitutions": [
+        "raisins -> sultanas",
+        "confectioners -> icing"
+      ]
+    },
+    {
+      "query_id": 237,
+      "family": "synonym_hard",
+      "query_text": "plum sauce, long grain white rice, mangetout peas, chicken stock granules",
+      "source_recipe_idx": 277,
+      "relevant_recipe_ids": [
+        277
+      ],
+      "base_query_text": "plum sauce, long grain white rice, snow peas, chicken bouillon granules",
+      "substitutions": [
+        "snow -> mangetout",
+        "bouillon -> stock"
+      ]
+    },
+    {
+      "query_id": 238,
+      "family": "synonym_hard",
+      "query_text": "miniature marshmallows, groundnuts, sweetened condensed milk, plain chocolate chips",
+      "source_recipe_idx": 409,
+      "relevant_recipe_ids": [
+        409
+      ],
+      "base_query_text": "miniature marshmallows, peanuts, sweetened condensed milk, semisweet chocolate chips",
+      "substitutions": [
+        "peanuts -> groundnuts",
+        "semisweet -> plain"
+      ]
+    },
+    {
+      "query_id": 239,
+      "family": "synonym_hard",
+      "query_text": "buttery round biscuits, crabmeat, white wine, chicken stock",
+      "source_recipe_idx": 2504,
+      "relevant_recipe_ids": [
+        2504
+      ],
+      "base_query_text": "buttery round crackers, crabmeat, white wine, chicken broth",
+      "substitutions": [
+        "crackers -> biscuits",
+        "broth -> stock"
+      ]
+    },
+    {
+      "query_id": 240,
+      "family": "synonym_hard",
+      "query_text": "coconut extract, unbleached plain flour, plain chocolate chips, shortening",
+      "source_recipe_idx": 1112,
+      "relevant_recipe_ids": [
+        1112
+      ],
+      "base_query_text": "coconut extract, unbleached all-purpose flour, semisweet chocolate chips, shortening",
+      "substitutions": [
+        "all-purpose -> plain",
+        "semisweet -> plain"
+      ]
+    },
+    {
+      "query_id": 241,
+      "family": "synonym_hard",
+      "query_text": "pomegranate treacle, wholemeal bread, cumin seeds, walnuts",
+      "source_recipe_idx": 3075,
+      "relevant_recipe_ids": [
+        3075
+      ],
+      "base_query_text": "pomegranate molasses, wheat bread, cumin seeds, walnuts",
+      "substitutions": [
+        "molasses -> treacle",
+        "wheat -> wholemeal"
+      ]
+    },
+    {
+      "query_id": 242,
+      "family": "synonym_hard",
+      "query_text": "chocolate biscuit crumb crust, chocolate sandwich biscuits, smooth peanut butter, chocolate pudding mix",
+      "source_recipe_idx": 675,
+      "relevant_recipe_ids": [
+        675
+      ],
+      "base_query_text": "chocolate cookie crumb crust, chocolate sandwich cookies, smooth peanut butter, chocolate pudding mix",
+      "substitutions": [
+        "cookie -> biscuit",
+        "cookies -> biscuits"
+      ]
+    },
+    {
+      "query_id": 243,
+      "family": "synonym_hard",
+      "query_text": "gingersnap biscuit crumbs, unflavored gelatin powder, strong brewed coffee, double cream",
+      "source_recipe_idx": 1425,
+      "relevant_recipe_ids": [
+        1425
+      ],
+      "base_query_text": "gingersnap cookie crumbs, unflavored gelatin powder, strong brewed coffee, heavy cream",
+      "substitutions": [
+        "cookie -> biscuit",
+        "heavy -> double"
+      ]
+    },
+    {
+      "query_id": 244,
+      "family": "synonym_hard",
+      "query_text": "pumpkin, splenda no calorie sweetener, treacle, rapeseed oil",
+      "source_recipe_idx": 3135,
+      "relevant_recipe_ids": [
+        3135
+      ],
+      "base_query_text": "pumpkin, splenda no calorie sweetener, molasses, canola oil",
+      "substitutions": [
+        "molasses -> treacle",
+        "canola -> rapeseed"
+      ]
+    },
+    {
+      "query_id": 245,
+      "family": "synonym_hard",
+      "query_text": "treacle, white vinegar, allspice, tomato ketchup",
+      "source_recipe_idx": 2434,
+      "relevant_recipe_ids": [
+        2434
+      ],
+      "base_query_text": "molasses, white vinegar, allspice, ketchup",
+      "substitutions": [
+        "molasses -> treacle",
+        "ketchup -> tomato ketchup"
+      ]
+    },
+    {
+      "query_id": 246,
+      "family": "synonym_hard",
+      "query_text": "thin spaghetti, swanson chicken stock, red pepper, prawns",
+      "source_recipe_idx": 4337,
+      "relevant_recipe_ids": [
+        4337
+      ],
+      "base_query_text": "thin spaghetti, swanson chicken broth, red pepper, shrimp",
+      "substitutions": [
+        "broth -> stock",
+        "shrimp -> prawns"
+      ]
+    },
+    {
+      "query_id": 247,
+      "family": "synonym_hard",
+      "query_text": "treacle, wholemeal flour, buttermilk",
+      "source_recipe_idx": 3625,
+      "relevant_recipe_ids": [
+        3625
+      ],
+      "base_query_text": "molasses, wheat flour, buttermilk",
+      "substitutions": [
+        "molasses -> treacle",
+        "wheat -> wholemeal"
+      ]
+    },
+    {
+      "query_id": 248,
+      "family": "synonym_hard",
+      "query_text": "polenta for dusting, soy flour, treacle, wholemeal flour",
+      "source_recipe_idx": 2226,
+      "relevant_recipe_ids": [
+        2226
+      ],
+      "base_query_text": "cornmeal for dusting, soy flour, molasses, wheat flour",
+      "substitutions": [
+        "cornmeal -> polenta",
+        "molasses -> treacle",
+        "wheat -> wholemeal"
+      ]
+    },
+    {
+      "query_id": 249,
+      "family": "synonym_hard",
+      "query_text": "milk chocolate sweets kisses, squares plain chocolate, shortening, icing sugar",
+      "source_recipe_idx": 2812,
+      "relevant_recipe_ids": [
+        2812
+      ],
+      "base_query_text": "milk chocolate candy kisses, squares semisweet chocolate, shortening, confectioners sugar",
+      "substitutions": [
+        "candy -> sweets",
+        "semisweet -> plain",
+        "confectioners -> icing"
+      ]
+    },
+    {
+      "query_id": 250,
+      "family": "synonym_hard",
+      "query_text": "pineapple slices in juice, pineapple juice, rapeseed oil, wholemeal flour",
+      "source_recipe_idx": 3308,
+      "relevant_recipe_ids": [
+        3308
+      ],
+      "base_query_text": "pineapple slices in juice, pineapple juice, canola oil, wheat flour",
+      "substitutions": [
+        "canola -> rapeseed",
+        "wheat -> wholemeal"
+      ]
+    },
+    {
+      "query_id": 251,
+      "family": "synonym_hard",
+      "query_text": "chocolate-hazelnut spread, digestive biscuit crust, cream cheese",
+      "source_recipe_idx": 4584,
+      "relevant_recipe_ids": [
+        4584
+      ],
+      "base_query_text": "chocolate-hazelnut spread, graham cracker crust, cream cheese",
+      "substitutions": [
+        "graham -> digestive",
+        "cracker -> biscuit"
+      ]
+    },
+    {
+      "query_id": 252,
+      "family": "synonym_hard",
+      "query_text": "blueberry pie filling, double whipping cream, bananas, icing sugar",
+      "source_recipe_idx": 1364,
+      "relevant_recipe_ids": [
+        1364
+      ],
+      "base_query_text": "blueberry pie filling, heavy whipping cream, bananas, confectioners sugar",
+      "substitutions": [
+        "heavy -> double",
+        "confectioners -> icing"
+      ]
+    },
+    {
+      "query_id": 253,
+      "family": "synonym_hard",
+      "query_text": "chicken or turkey, generous dash minced black pepper, swanson chicken stock, carrot",
+      "source_recipe_idx": 2848,
+      "relevant_recipe_ids": [
+        2848
+      ],
+      "base_query_text": "chicken or turkey, generous dash ground black pepper, swanson chicken broth, carrot",
+      "substitutions": [
+        "ground -> minced",
+        "broth -> stock"
+      ]
+    },
+    {
+      "query_id": 254,
+      "family": "synonym_hard",
+      "query_text": "sour milk, sifted plain flour, courgette, plain chocolate chips",
+      "source_recipe_idx": 1171,
+      "relevant_recipe_ids": [
+        1171
+      ],
+      "base_query_text": "sour milk, sifted all-purpose flour, zucchini, semisweet chocolate chips",
+      "substitutions": [
+        "all-purpose -> plain",
+        "zucchini -> courgette",
+        "semisweet -> plain"
+      ]
+    },
+    {
+      "query_id": 255,
+      "family": "synonym_hard",
+      "query_text": "lemon extract, golden sultanas, sifted plain flour, lemon zest",
+      "source_recipe_idx": 2055,
+      "relevant_recipe_ids": [
+        2055
+      ],
+      "base_query_text": "lemon extract, golden raisins, sifted all-purpose flour, lemon zest",
+      "substitutions": [
+        "raisins -> sultanas",
+        "all-purpose -> plain"
+      ]
+    },
+    {
+      "query_id": 256,
+      "family": "synonym_hard",
+      "query_text": "cranberries or sultanas, fat free single cream, walnut pieces, quick-cooking oats",
+      "source_recipe_idx": 126,
+      "relevant_recipe_ids": [
+        126
+      ],
+      "base_query_text": "cranberries or raisins, fat free half-and-half, walnut pieces, quick-cooking oats",
+      "substitutions": [
+        "raisins -> sultanas",
+        "half-and-half -> single cream"
+      ]
+    },
+    {
+      "query_id": 257,
+      "family": "synonym_hard",
+      "query_text": "jumbo prawns, steak sauce, rapeseed oil, worcestershire sauce",
+      "source_recipe_idx": 4757,
+      "relevant_recipe_ids": [
+        4757
+      ],
+      "base_query_text": "jumbo shrimp, steak sauce, canola oil, worcestershire sauce",
+      "substitutions": [
+        "shrimp -> prawns",
+        "canola -> rapeseed"
+      ]
+    },
+    {
+      "query_id": 258,
+      "family": "synonym_hard",
+      "query_text": "american cheese, green pepper, single cream, vegetable stock",
+      "source_recipe_idx": 804,
+      "relevant_recipe_ids": [
+        804
+      ],
+      "base_query_text": "american cheese, green pepper, half-and-half, vegetable broth",
+      "substitutions": [
+        "half-and-half -> single cream",
+        "broth -> stock"
+      ]
+    },
+    {
+      "query_id": 259,
+      "family": "synonym_hard",
+      "query_text": "jumbo prawns, orange zest, rapeseed oil, cayenne pepper",
+      "source_recipe_idx": 412,
+      "relevant_recipe_ids": [
+        412
+      ],
+      "base_query_text": "jumbo shrimp, orange zest, canola oil, cayenne pepper",
+      "substitutions": [
+        "shrimp -> prawns",
+        "canola -> rapeseed"
+      ]
+    },
+    {
+      "query_id": 260,
+      "family": "synonym_hard",
+      "query_text": "rapeseed oil, wholemeal flour, courgette, honey",
+      "source_recipe_idx": 3936,
+      "relevant_recipe_ids": [
+        3936
+      ],
+      "base_query_text": "canola oil, wheat flour, zucchini, honey",
+      "substitutions": [
+        "canola -> rapeseed",
+        "wheat -> wholemeal",
+        "zucchini -> courgette"
+      ]
+    },
+    {
+      "query_id": 261,
+      "family": "synonym_hard",
+      "query_text": "orange food color, vegetable or rapeseed oil, red chili powder, ginger puree",
+      "source_recipe_idx": 3491,
+      "relevant_recipe_ids": [
+        3491
+      ],
+      "base_query_text": "orange food color, vegetable or canola oil, red chili powder, ginger paste",
+      "substitutions": [
+        "canola -> rapeseed",
+        "paste -> puree"
+      ]
+    },
+    {
+      "query_id": 262,
+      "family": "synonym_hard",
+      "query_text": "lemon pudding mix, cherry pie filling, digestive biscuit crust, whipped topping",
+      "source_recipe_idx": 2742,
+      "relevant_recipe_ids": [
+        2742
+      ],
+      "base_query_text": "lemon pudding mix, cherry pie filling, graham cracker crust, whipped topping",
+      "substitutions": [
+        "graham -> digestive",
+        "cracker -> biscuit"
+      ]
+    },
+    {
+      "query_id": 263,
+      "family": "synonym_hard",
+      "query_text": "pears, single cream cream, double cream, cinnamon",
+      "source_recipe_idx": 1009,
+      "relevant_recipe_ids": [
+        1009
+      ],
+      "base_query_text": "pears, half-and-half cream, heavy cream, cinnamon",
+      "substitutions": [
+        "half-and-half -> single cream",
+        "heavy -> double"
+      ]
+    },
+    {
+      "query_id": 264,
+      "family": "synonym_hard",
+      "query_text": "oregano leaves, aubergine, courgette, mushrooms",
+      "source_recipe_idx": 4066,
+      "relevant_recipe_ids": [
+        4066
+      ],
+      "base_query_text": "oregano leaves, eggplant, zucchini, mushrooms",
+      "substitutions": [
+        "eggplant -> aubergine",
+        "zucchini -> courgette"
+      ]
+    },
+    {
+      "query_id": 265,
+      "family": "synonym_hard",
+      "query_text": "chicken stock granules, butter or margarine, sage, lean minced beef",
+      "source_recipe_idx": 1177,
+      "relevant_recipe_ids": [
+        1177
+      ],
+      "base_query_text": "chicken bouillon granules, butter or margarine, sage, lean ground beef",
+      "substitutions": [
+        "bouillon -> stock",
+        "ground -> minced"
+      ]
+    },
+    {
+      "query_id": 266,
+      "family": "synonym_hard",
+      "query_text": "milk chocolate, square unsweetened chocolate, digestive biscuit crumbs, double whipping cream",
+      "source_recipe_idx": 4052,
+      "relevant_recipe_ids": [
+        4052
+      ],
+      "base_query_text": "milk chocolate, square unsweetened chocolate, graham cracker crumbs, heavy whipping cream",
+      "substitutions": [
+        "graham -> digestive",
+        "cracker -> biscuit",
+        "heavy -> double"
+      ]
+    },
+    {
+      "query_id": 267,
+      "family": "synonym_hard",
+      "query_text": "digestive biscuit crumbs, peanut butter, double cream, icing sugar",
+      "source_recipe_idx": 4923,
+      "relevant_recipe_ids": [
+        4923
+      ],
+      "base_query_text": "graham cracker crumbs, peanut butter, heavy cream, confectioners sugar",
+      "substitutions": [
+        "graham -> digestive",
+        "cracker -> biscuit",
+        "heavy -> double",
+        "confectioners -> icing"
+      ]
+    },
+    {
+      "query_id": 268,
+      "family": "synonym_hard",
+      "query_text": "digestive biscuit pie crust, neufchatel cheese, pure vanilla extract, strawberries",
+      "source_recipe_idx": 1001,
+      "relevant_recipe_ids": [
+        1001
+      ],
+      "base_query_text": "graham cracker pie crust, neufchatel cheese, pure vanilla extract, strawberries",
+      "substitutions": [
+        "graham -> digestive",
+        "cracker -> biscuit"
+      ]
+    },
+    {
+      "query_id": 269,
+      "family": "synonym_hard",
+      "query_text": "coriander leaves, single cream, corn, garlic cloves",
+      "source_recipe_idx": 3451,
+      "relevant_recipe_ids": [
+        3451
+      ],
+      "base_query_text": "cilantro leaves, half-and-half, corn, garlic cloves",
+      "substitutions": [
+        "cilantro -> coriander",
+        "half-and-half -> single cream"
+      ]
+    },
+    {
+      "query_id": 270,
+      "family": "synonym_hard",
+      "query_text": "swanson beef stock, broccoli flowerets, rice, cornflour",
+      "source_recipe_idx": 1751,
+      "relevant_recipe_ids": [
+        1751
+      ],
+      "base_query_text": "swanson beef broth, broccoli flowerets, rice, cornstarch",
+      "substitutions": [
+        "broth -> stock",
+        "cornstarch -> cornflour"
+      ]
+    },
+    {
+      "query_id": 271,
+      "family": "synonym_hard",
+      "query_text": "unbaked tart shells, dark brown sugar, sultanas, double cream",
+      "source_recipe_idx": 1807,
+      "relevant_recipe_ids": [
+        1807
+      ],
+      "base_query_text": "unbaked tart shells, dark brown sugar, raisins, heavy cream",
+      "substitutions": [
+        "raisins -> sultanas",
+        "heavy -> double"
+      ]
+    },
+    {
+      "query_id": 272,
+      "family": "synonym_hard",
+      "query_text": "vanilla yogurt, single cream cream, wholemeal flour, cooking spray",
+      "source_recipe_idx": 9,
+      "relevant_recipe_ids": [
+        9
+      ],
+      "base_query_text": "vanilla yogurt, half-and-half cream, wheat flour, cooking spray",
+      "substitutions": [
+        "half-and-half -> single cream",
+        "wheat -> wholemeal"
+      ]
+    },
+    {
+      "query_id": 273,
+      "family": "synonym_hard",
+      "query_text": "dark treacle, quick cooking oats, groundnuts, buttermilk",
+      "source_recipe_idx": 4126,
+      "relevant_recipe_ids": [
+        4126
+      ],
+      "base_query_text": "dark molasses, quick cooking oats, peanuts, buttermilk",
+      "substitutions": [
+        "molasses -> treacle",
+        "peanuts -> groundnuts"
+      ]
+    },
+    {
+      "query_id": 274,
+      "family": "synonym_hard",
+      "query_text": "miniature plain chocolate chips, brandy, plain chocolate chips, egg yolks",
+      "source_recipe_idx": 2833,
+      "relevant_recipe_ids": [
+        2833
+      ],
+      "base_query_text": "miniature semisweet chocolate chips, brandy, semisweet chocolate chips, egg yolks",
+      "substitutions": [
+        "semisweet -> plain",
+        "semisweet -> plain"
+      ]
+    },
+    {
+      "query_id": 275,
+      "family": "synonym_hard",
+      "query_text": "icing milk, italian sausage, cabbage, lean minced beef",
+      "source_recipe_idx": 2515,
+      "relevant_recipe_ids": [
+        2515
+      ],
+      "base_query_text": "powdered milk, italian sausage, cabbage, lean ground beef",
+      "substitutions": [
+        "powdered -> icing",
+        "ground -> minced"
+      ]
+    },
+    {
+      "query_id": 276,
+      "family": "synonym_hard",
+      "query_text": "dark brown sugar, single cream cream, pecans, icing sugar",
+      "source_recipe_idx": 4021,
+      "relevant_recipe_ids": [
+        4021
+      ],
+      "base_query_text": "dark brown sugar, half-and-half cream, pecans, confectioners sugar",
+      "substitutions": [
+        "half-and-half -> single cream",
+        "confectioners -> icing"
+      ]
+    },
+    {
+      "query_id": 277,
+      "family": "synonym_hard",
+      "query_text": "white vinegar, strawberries, double cream, cornflour",
+      "source_recipe_idx": 3370,
+      "relevant_recipe_ids": [
+        3370
+      ],
+      "base_query_text": "white vinegar, strawberries, heavy cream, cornstarch",
+      "substitutions": [
+        "heavy -> double",
+        "cornstarch -> cornflour"
+      ]
+    },
+    {
+      "query_id": 278,
+      "family": "synonym_hard",
+      "query_text": "rapeseed oil, rolled oats, sultanas, nutmeg",
+      "source_recipe_idx": 1325,
+      "relevant_recipe_ids": [
+        1325
+      ],
+      "base_query_text": "canola oil, rolled oats, raisins, nutmeg",
+      "substitutions": [
+        "canola -> rapeseed",
+        "raisins -> sultanas"
+      ]
+    },
+    {
+      "query_id": 279,
+      "family": "synonym_hard",
+      "query_text": "garlic puree, cod fillets, ginger puree, tomatoes with juice",
+      "source_recipe_idx": 4423,
+      "relevant_recipe_ids": [
+        4423
+      ],
+      "base_query_text": "garlic paste, cod fillets, ginger paste, tomatoes with juice",
+      "substitutions": [
+        "paste -> puree",
+        "paste -> puree"
+      ]
+    },
+    {
+      "query_id": 280,
+      "family": "synonym_hard",
+      "query_text": "soy flour, whole-wheat flour, wholemeal germ, treacle",
+      "source_recipe_idx": 3963,
+      "relevant_recipe_ids": [
+        3963
+      ],
+      "base_query_text": "soy flour, whole-wheat flour, wheat germ, molasses",
+      "substitutions": [
+        "wheat -> wholemeal",
+        "molasses -> treacle"
+      ]
+    },
+    {
+      "query_id": 281,
+      "family": "synonym_hard",
+      "query_text": "adobo seasoning, onion flakes, chile puree, beetroot",
+      "source_recipe_idx": 4894,
+      "relevant_recipe_ids": [
+        4894
+      ],
+      "base_query_text": "adobo seasoning, onion flakes, chile paste, beets",
+      "substitutions": [
+        "paste -> puree",
+        "beets -> beetroot"
+      ]
+    },
+    {
+      "query_id": 282,
+      "family": "synonym_hard",
+      "query_text": "digestive biscuits, pecans, sour cream, cream cheese",
+      "source_recipe_idx": 1204,
+      "relevant_recipe_ids": [
+        1204
+      ],
+      "base_query_text": "graham crackers, pecans, sour cream, cream cheese",
+      "substitutions": [
+        "graham -> digestive",
+        "crackers -> biscuits"
+      ]
+    },
+    {
+      "query_id": 283,
+      "family": "synonym_hard",
+      "query_text": "brewers yeast, beef stock, polenta, wholemeal flour",
+      "source_recipe_idx": 2476,
+      "relevant_recipe_ids": [
+        2476
+      ],
+      "base_query_text": "brewers yeast, beef broth, cornmeal, wheat flour",
+      "substitutions": [
+        "broth -> stock",
+        "cornmeal -> polenta",
+        "wheat -> wholemeal"
+      ]
+    },
+    {
+      "query_id": 284,
+      "family": "synonym_hard",
+      "query_text": "curry puree, prawns peeled and deveined, dijon mustard, soy sauce",
+      "source_recipe_idx": 1500,
+      "relevant_recipe_ids": [
+        1500
+      ],
+      "base_query_text": "curry paste, shrimp peeled and deveined, dijon mustard, soy sauce",
+      "substitutions": [
+        "paste -> puree",
+        "shrimp -> prawns"
+      ]
+    },
+    {
+      "query_id": 285,
+      "family": "synonym_hard",
+      "query_text": "reduced fat milk, porridge, wholemeal flour, active dry yeast",
+      "source_recipe_idx": 2283,
+      "relevant_recipe_ids": [
+        2283
+      ],
+      "base_query_text": "reduced fat milk, oatmeal, wheat flour, active dry yeast",
+      "substitutions": [
+        "oatmeal -> porridge",
+        "wheat -> wholemeal"
+      ]
+    },
+    {
+      "query_id": 286,
+      "family": "synonym_hard",
+      "query_text": "coriander leaves, cumin seeds, green chile peppers, groundnuts",
+      "source_recipe_idx": 2747,
+      "relevant_recipe_ids": [
+        2747
+      ],
+      "base_query_text": "cilantro leaves, cumin seeds, green chile peppers, peanuts",
+      "substitutions": [
+        "cilantro -> coriander",
+        "peanuts -> groundnuts"
+      ]
+    },
+    {
+      "query_id": 287,
+      "family": "synonym_hard",
+      "query_text": "wholemeal tortillas, chunky salsa, extra-lean minced beef, chili powder",
+      "source_recipe_idx": 2446,
+      "relevant_recipe_ids": [
+        2446
+      ],
+      "base_query_text": "wheat tortillas, chunky salsa, extra-lean ground beef, chili powder",
+      "substitutions": [
+        "wheat -> wholemeal",
+        "ground -> minced"
+      ]
+    },
+    {
+      "query_id": 288,
+      "family": "synonym_hard",
+      "query_text": "chicken stock, tomato puree, paprika, cornflour",
+      "source_recipe_idx": 2670,
+      "relevant_recipe_ids": [
+        2670
+      ],
+      "base_query_text": "chicken stock, tomato paste, paprika, cornstarch",
+      "substitutions": [
+        "paste -> puree",
+        "cornstarch -> cornflour"
+      ]
+    },
+    {
+      "query_id": 289,
+      "family": "synonym_hard",
+      "query_text": "white rice, almonds, sultanas, chicken stock",
+      "source_recipe_idx": 3318,
+      "relevant_recipe_ids": [
+        3318
+      ],
+      "base_query_text": "white rice, almonds, raisins, chicken broth",
+      "substitutions": [
+        "raisins -> sultanas",
+        "broth -> stock"
+      ]
+    },
+    {
+      "query_id": 290,
+      "family": "synonym_hard",
+      "query_text": "pork loin, brandy, rapeseed oil, cornflour",
+      "source_recipe_idx": 3225,
+      "relevant_recipe_ids": [
+        3225
+      ],
+      "base_query_text": "pork loin, brandy, canola oil, cornstarch",
+      "substitutions": [
+        "canola -> rapeseed",
+        "cornstarch -> cornflour"
+      ]
+    },
+    {
+      "query_id": 291,
+      "family": "synonym_hard",
+      "query_text": "black-eyed peas, vegetable stock, bay leaves, courgette",
+      "source_recipe_idx": 396,
+      "relevant_recipe_ids": [
+        396
+      ],
+      "base_query_text": "black-eyed peas, vegetable broth, bay leaves, zucchini",
+      "substitutions": [
+        "broth -> stock",
+        "zucchini -> courgette"
+      ]
+    },
+    {
+      "query_id": 292,
+      "family": "synonym_hard",
+      "query_text": "beef stock, cooking oil, red wine, tomato puree",
+      "source_recipe_idx": 3307,
+      "relevant_recipe_ids": [
+        3307
+      ],
+      "base_query_text": "beef broth, cooking oil, red wine, tomato paste",
+      "substitutions": [
+        "broth -> stock",
+        "paste -> puree"
+      ]
+    },
+    {
+      "query_id": 293,
+      "family": "synonym_hard",
+      "query_text": "chicken thighs, saltine biscuits, double whipping cream, basil",
+      "source_recipe_idx": 3691,
+      "relevant_recipe_ids": [
+        3691
+      ],
+      "base_query_text": "chicken thighs, saltine crackers, heavy whipping cream, basil",
+      "substitutions": [
+        "crackers -> biscuits",
+        "heavy -> double"
+      ]
+    },
+    {
+      "query_id": 294,
+      "family": "synonym_hard",
+      "query_text": "coffee, sifted icing sugar, single cream",
+      "source_recipe_idx": 4774,
+      "relevant_recipe_ids": [
+        4774
+      ],
+      "base_query_text": "coffee, sifted confectioners sugar, half-and-half",
+      "substitutions": [
+        "confectioners -> icing",
+        "half-and-half -> single cream"
+      ]
+    },
+    {
+      "query_id": 295,
+      "family": "synonym_hard",
+      "query_text": "mandarin orange segments, beetroot, apple cider vinegar, cornflour",
+      "source_recipe_idx": 644,
+      "relevant_recipe_ids": [
+        644
+      ],
+      "base_query_text": "mandarin orange segments, beets, apple cider vinegar, cornstarch",
+      "substitutions": [
+        "beets -> beetroot",
+        "cornstarch -> cornflour"
+      ]
+    },
+    {
+      "query_id": 296,
+      "family": "synonym_hard",
+      "query_text": "sifted icing sugar, treacle, ginger, nutmeg",
+      "source_recipe_idx": 1072,
+      "relevant_recipe_ids": [
+        1072
+      ],
+      "base_query_text": "sifted confectioners sugar, molasses, ginger, nutmeg",
+      "substitutions": [
+        "confectioners -> icing",
+        "molasses -> treacle"
+      ]
+    },
+    {
+      "query_id": 297,
+      "family": "synonym_hard",
+      "query_text": "milk chocolate sweets kisses, marshmallow creme, digestive biscuit crumbs",
+      "source_recipe_idx": 3833,
+      "relevant_recipe_ids": [
+        3833
+      ],
+      "base_query_text": "milk chocolate candy kisses, marshmallow creme, graham cracker crumbs",
+      "substitutions": [
+        "candy -> sweets",
+        "graham -> digestive",
+        "cracker -> biscuit"
+      ]
+    },
+    {
+      "query_id": 298,
+      "family": "synonym_hard",
+      "query_text": "gruyere cheese, leek, beef stock, double cream",
+      "source_recipe_idx": 1514,
+      "relevant_recipe_ids": [
+        1514
+      ],
+      "base_query_text": "gruyere cheese, leek, beef broth, heavy cream",
+      "substitutions": [
+        "broth -> stock",
+        "heavy -> double"
+      ]
+    },
+    {
+      "query_id": 299,
+      "family": "synonym_hard",
+      "query_text": "peppermint sweets canes, icing sugar for decoration, pecans, icing sugar",
+      "source_recipe_idx": 3831,
+      "relevant_recipe_ids": [
+        3831
+      ],
+      "base_query_text": "peppermint candy canes, confectioners sugar for decoration, pecans, confectioners sugar",
+      "substitutions": [
+        "candy -> sweets",
+        "confectioners -> icing",
+        "confectioners -> icing"
+      ]
+    }
+  ]
+}

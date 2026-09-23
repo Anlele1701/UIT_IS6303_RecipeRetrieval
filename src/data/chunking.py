@@ -36,9 +36,18 @@ def _make_chunk(
     )
 
 
+# One combined chunk per recipe, varying only which fields go into it.
+# The reduced profiles are Ablation D in docs/10_ABLATION_STUDY.md.
+FULL_RECIPE_PROFILES = {
+    "full_recipe_v1": ("name", "ingredients", "description"),
+    "name_only_v1": ("name",),
+    "name_ingredients_v1": ("name", "ingredients"),
+}
+
+
 def chunk_recipe(recipe: Recipe, profile_name: str) -> list[RecipeChunk]:
-    if profile_name == "full_recipe_v1":
-        text = build_searchable_text(recipe)
+    if profile_name in FULL_RECIPE_PROFILES:
+        text = build_searchable_text(recipe, fields=FULL_RECIPE_PROFILES[profile_name])
         return [_make_chunk(recipe.recipe_idx, text)] if text else []
 
     if profile_name == "field_chunk_v1":
