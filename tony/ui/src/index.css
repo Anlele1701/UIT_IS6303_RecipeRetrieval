@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-sparse: var(--sparse);
+  --color-dense: var(--dense);
+  --color-hybrid: var(--hybrid);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-danger: var(--danger);
+}
+
+:root {
+  --page: #f5f6f8;
+  --surface: #ffffff;
+  --line: #e2e5ea;
+  --ink: #161a22;
+  --ink-soft: #3d4452;
+  --muted: #6a7282;
+  --sparse: #2f6bd6;
+  --dense: #0e8f80;
+  --hybrid: #6a4fd6;
+  --ok: #1f8a4c;
+  --warn: #c98a00;
+  --danger: #c0352b;
+  color-scheme: light;
+}
+
+.dark {
+  --page: #0f1217;
+  --surface: #171b22;
+  --line: #29303b;
+  --ink: #e9ecf1;
+  --ink-soft: #bcc3cf;
+  --muted: #8b94a3;
+  --sparse: #74a3f2;
+  --dense: #3fc3b1;
+  --hybrid: #a28ff5;
+  --ok: #4cc27f;
+  --warn: #e7b43c;
+  --danger: #f0776c;
+  color-scheme: dark;
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 2px solid var(--hybrid);
+  outline-offset: 2px;
+}
+
+/* The connector lines draw in once per search; pathLength=1 makes the dash span the whole path. */
+.connector {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 700ms ease-out 150ms forwards;
+}
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .connector { animation: none; stroke-dashoffset: 0; }
+}

@@ -1,0 +1,3 @@
+# Local dataset and logs (recipe.csv is ~61 MB)
+data/
+.pytest_cache/

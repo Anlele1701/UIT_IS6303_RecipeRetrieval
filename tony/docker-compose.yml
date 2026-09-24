@@ -1,0 +1,20 @@
+services:
+  paradedb:
+    image: paradedb/paradedb:pg17
+    container_name: recipe-paradedb
+    environment:
+      POSTGRES_USER: recipe
+      POSTGRES_PASSWORD: recipe
+      POSTGRES_DB: recipe
+    ports:
+      - "5434:5432"
+    volumes:
+      - recipe-pgdata:/var/lib/postgresql/data
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/10-schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U recipe -d recipe"]
+      interval: 5s
+      retries: 20
+
+volumes:
+  recipe-pgdata:
