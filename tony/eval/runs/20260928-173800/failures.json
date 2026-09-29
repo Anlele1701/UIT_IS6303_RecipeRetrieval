@@ -1,0 +1,102 @@
+{
+  "configs": [
+    "fusion"
+  ],
+  "bucket_names": [],
+  "buckets": {
+    "fixed": {},
+    "semantic": {},
+    "sentence": {}
+  },
+  "counts": {
+    "fixed": {
+      "queries": 298
+    },
+    "semantic": {
+      "queries": 298
+    },
+    "sentence": {
+      "queries": 298
+    }
+  },
+  "group_sizes": {
+    "high": 154,
+    "low": 144
+  },
+  "overlap": [
+    {
+      "config": "fusion",
+      "strategy": "fixed",
+      "overlap": "high",
+      "recall@5": 0.7792207792207793,
+      "recall@10": 0.8961038961038961,
+      "recall@20": 0.9545454545454546,
+      "mrr": 0.6376032056179115,
+      "ndcg@5": 0.6584254025045118,
+      "ndcg@10": 0.6958368980820097,
+      "queries": 154
+    },
+    {
+      "config": "fusion",
+      "strategy": "fixed",
+      "overlap": "low",
+      "recall@5": 0.5,
+      "recall@10": 0.6111111111111112,
+      "recall@20": 0.7569444444444444,
+      "mrr": 0.36784965216337767,
+      "ndcg@5": 0.38151698567601444,
+      "ndcg@10": 0.41760507620503473,
+      "queries": 144
+    },
+    {
+      "config": "fusion",
+      "strategy": "semantic",
+      "overlap": "high",
+      "recall@5": 0.8116883116883117,
+      "recall@10": 0.9025974025974026,
+      "recall@20": 0.961038961038961,
+      "mrr": 0.6702450057157849,
+      "ndcg@5": 0.6928894540290812,
+      "ndcg@10": 0.7222955525289405,
+      "queries": 154
+    },
+    {
+      "config": "fusion",
+      "strategy": "semantic",
+      "overlap": "low",
+      "recall@5": 0.5138888888888888,
+      "recall@10": 0.6458333333333334,
+      "recall@20": 0.7361111111111112,
+      "mrr": 0.364028466958356,
+      "ndcg@5": 0.3842446888754198,
+      "ndcg@10": 0.42570288583329446,
+      "queries": 144
+    },
+    {
+      "config": "fusion",
+      "strategy": "sentence",
+      "overlap": "high",
+      "recall@5": 0.8051948051948052,
+      "recall@10": 0.8636363636363636,
+      "recall@20": 0.9415584415584416,
+      "mrr": 0.6348297535797536,
+      "ndcg@5": 0.6668234262169176,
+      "ndcg@10": 0.6861202544527358,
+      "queries": 154
+    },
+    {
+      "config": "fusion",
+      "strategy": "sentence",
+      "overlap": "low",
+      "recall@5": 0.4722222222222222,
+      "recall@10": 0.6388888888888888,
+      "recall@20": 0.7430555555555556,
+      "mrr": 0.3663931554556555,
+      "ndcg@5": 0.37077107436394385,
+      "ndcg@10": 0.42392477528100997,
+      "queries": 144
+    }
+  ],
+  "rerank_net": {},
+  "hybrid_kinds": {}
+}

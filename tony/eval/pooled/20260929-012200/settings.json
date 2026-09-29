@@ -1,0 +1,74 @@
+{
+  "started_at": "2026-09-29T01:22:00",
+  "seconds": 1579.9,
+  "git_commit": "d0f71d4",
+  "configs": [
+    "dense",
+    "fusion",
+    "hybrid"
+  ],
+  "strategies": [
+    "fixed",
+    "semantic",
+    "sentence"
+  ],
+  "query_set": "eval/queries.jsonl",
+  "query_set_sha256": "c1877d4d8f1f17c2c8c1161b8074bfbac03f4311e94b83542e21bceef720501e",
+  "queries": 298,
+  "limit": null,
+  "chunk_pool": 100,
+  "depth": 20,
+  "hybrid_candidates": 50,
+  "rerank_top": 50,
+  "rrf_k": 60,
+  "embed_model": "nomic-embed-text",
+  "rerank_model": "BAAI/bge-reranker-base",
+  "warmup_queries": 1,
+  "config_order": "rotated",
+  "arm": {
+    "key": "hnsw-dense",
+    "configs": [
+      "dense",
+      "fusion",
+      "hybrid"
+    ],
+    "set": {
+      "dense_index": "hnsw",
+      "ef_search": 200
+    },
+    "hnsw_indexes": [
+      {
+        "partition": "chunk_fixed",
+        "index": "chunk_fixed_embedding_hnsw",
+        "bytes": 679837696,
+        "options": [
+          "m=16",
+          "ef_construction=64"
+        ]
+      },
+      {
+        "partition": "chunk_semantic",
+        "index": "chunk_semantic_embedding_hnsw",
+        "bytes": 681730048,
+        "options": [
+          "m=16",
+          "ef_construction=64"
+        ]
+      },
+      {
+        "partition": "chunk_sentence",
+        "index": "chunk_sentence_embedding_hnsw",
+        "bytes": 719880192,
+        "options": [
+          "m=16",
+          "ef_construction=64"
+        ]
+      }
+    ]
+  },
+  "pg_search_version": "0.25.9",
+  "vector_cluster_max_probe": 0.02,
+  "rescored_from": "eval/runs/20260929-012200",
+  "qrels": "eval/qrels.csv",
+  "qrels_sha256": "6744a9691cd9f6f0477c6146c223919d06531bd84e3ccb753fc4f181b60b3213"
+}

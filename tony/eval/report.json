@@ -1,0 +1,29 @@
+{
+  "report_run": "eval/pooled/20260928-122309",
+  "check_run": "eval/runs/20260929-074612",
+  "single_answer_run": "eval/runs/20260928-122309",
+  "qrels": "eval/qrels.csv",
+  "qrels_check": "eval/qrels_check.json",
+  "timing_repeats": [
+    "eval/pooled/20260928-225129",
+    "eval/pooled/20260928-230501",
+    "eval/pooled/20260928-232332"
+  ],
+  "ablation_runs": {
+    "reranker-minilm-l6": "eval/pooled/20260928-195437",
+    "reranker-mxbai-base": "eval/pooled/20260928-200823",
+    "reranker-bge-v2-m3": "eval/pooled/20260928-203429",
+    "rrf-k-10": "eval/pooled/20260928-173800",
+    "rrf-k-100": "eval/pooled/20260928-173839",
+    "rerank-top-20": "eval/pooled/20260928-173927",
+    "rerank-top-100": "eval/pooled/20260928-181242",
+    "exact-dense": "eval/pooled/20260928-190954",
+    "hnsw-dense": "eval/pooled/20260929-012200"
+  },
+  "labels": {
+    "query_edits": "eval/query_edits.csv",
+    "error_groups": "eval/error_groups.csv",
+    "cases": "eval/cases.csv",
+    "label_check": "eval/label_check.csv"
+  }
+}

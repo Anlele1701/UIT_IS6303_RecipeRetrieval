@@ -1,0 +1,6031 @@
+{
+  "configs": [
+    "sparse",
+    "dense",
+    "fusion",
+    "hybrid"
+  ],
+  "bucket_names": [
+    "sparse_win",
+    "dense_win",
+    "rerank_hurt",
+    "rerank_help"
+  ],
+  "buckets": {
+    "fixed": {
+      "sparse_win": [
+        {
+          "query_id": "q005",
+          "text": "chocolate cupcakes with cherry cream cheese filling",
+          "recipe_title": "PHILLY Blackforest Stuffed Cupcakes",
+          "ranks": {
+            "sparse": 3,
+            "dense": null,
+            "fusion": 7,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q012",
+          "text": "yellow split pea soup with curry powder",
+          "recipe_title": "Vegan Split Pea Soup II",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q019",
+          "text": "apple and nutmeg fried bites",
+          "recipe_title": "Apple Fritters I",
+          "ranks": {
+            "sparse": 6,
+            "dense": null,
+            "fusion": 12,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q037",
+          "text": "baked salmon with maple mustard and nuts",
+          "recipe_title": "Easy Pistachio-Crusted Salmon",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 10,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q039",
+          "text": "rich buttery pastry layers",
+          "recipe_title": "Danish Pastry",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 5,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q051",
+          "text": "flattened meatball with onions and herbs",
+          "recipe_title": "German Hamburgers (Frikadellen)",
+          "ranks": {
+            "sparse": 3,
+            "dense": null,
+            "fusion": 11,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q088",
+          "text": "cool cucumber avocado rolls",
+          "recipe_title": "Homemade Vegetarian Sushi Rolls",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 14,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q113",
+          "text": "maple syrup tart with raisins and nuts",
+          "recipe_title": "Real Canadian Butter Tarts, eh?",
+          "ranks": {
+            "sparse": 3,
+            "dense": null,
+            "fusion": 7,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q123",
+          "text": "kale and bean side dish",
+          "recipe_title": "Kale and Adzuki Beans",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 10,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q127",
+          "text": "spicy lime chicken and bean salad",
+          "recipe_title": "Southwest Chicken Salad I",
+          "ranks": {
+            "sparse": 5,
+            "dense": 14,
+            "fusion": 9,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q145",
+          "text": "crunchy apple grape bean salad",
+          "recipe_title": "Holiday Apple Side Salad",
+          "ranks": {
+            "sparse": 7,
+            "dense": 16,
+            "fusion": 3,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q168",
+          "text": "multigrain bagel with cream cheese and pickles",
+          "recipe_title": "School Lunch Bagel Sandwich",
+          "ranks": {
+            "sparse": 1,
+            "dense": 15,
+            "fusion": 6,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q190",
+          "text": "creamy seafood soup with dill and potatoes",
+          "recipe_title": "Matt's Crab & Clam Bisque",
+          "ranks": {
+            "sparse": 7,
+            "dense": null,
+            "fusion": 12,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q216",
+          "text": "chicken and creamy seafood sauce dinner",
+          "recipe_title": "Chicken with Shrimp Sauce",
+          "ranks": {
+            "sparse": 9,
+            "dense": 12,
+            "fusion": 17,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q226",
+          "text": "hamburger sausage cheese sauce snack",
+          "recipe_title": "Hanky Panky",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 8,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q229",
+          "text": "cauliflower pasta bake with cheese",
+          "recipe_title": "Cauliflower \"Mac and Cheese\" Bake",
+          "ranks": {
+            "sparse": 2,
+            "dense": 11,
+            "fusion": 7,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q257",
+          "text": "gluten-free pastry with raspberry filling",
+          "recipe_title": "Gluten Free Danish",
+          "ranks": {
+            "sparse": 2,
+            "dense": 18,
+            "fusion": 4,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q258",
+          "text": "coconut-flavored meringue cookies",
+          "recipe_title": "Perfect Coconut Macaroons",
+          "ranks": {
+            "sparse": 1,
+            "dense": 15,
+            "fusion": 5,
+            "hybrid": 15
+          }
+        }
+      ],
+      "dense_win": [
+        {
+          "query_id": "q002",
+          "text": "creamy tomato based dressing with vinegar",
+          "recipe_title": "Dorothy Lynch\u00ae Style Salad Dressing",
+          "ranks": {
+            "sparse": null,
+            "dense": 4,
+            "fusion": 15,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q006",
+          "text": "chicken breast with green olives",
+          "recipe_title": "Chicken and Olives",
+          "ranks": {
+            "sparse": null,
+            "dense": 2,
+            "fusion": 8,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q040",
+          "text": "grilled potato cold side dish",
+          "recipe_title": "Grilled Potato Salad",
+          "ranks": {
+            "sparse": null,
+            "dense": 6,
+            "fusion": 16,
+            "hybrid": 10
+          }
+        },
+        {
+          "query_id": "q046",
+          "text": "creamy chicken artichoke spread",
+          "recipe_title": "Chicken Artichoke Dip",
+          "ranks": {
+            "sparse": null,
+            "dense": 6,
+            "fusion": 13,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q054",
+          "text": "fresh veggie and chicken wraps",
+          "recipe_title": "Easy Spring Rolls",
+          "ranks": {
+            "sparse": null,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q081",
+          "text": "grilled pork chops herby lemony",
+          "recipe_title": "Grilled Lemon Herb Pork Chops",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q110",
+          "text": "sweet buttermilk butter bread",
+          "recipe_title": "Buttermilk Honey Bread",
+          "ranks": {
+            "sparse": 11,
+            "dense": 3,
+            "fusion": 5,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q148",
+          "text": "fluffy marshmallow frosting with egg whites",
+          "recipe_title": "Marshmallow Icing",
+          "ranks": {
+            "sparse": null,
+            "dense": 8,
+            "fusion": 13,
+            "hybrid": 10
+          }
+        },
+        {
+          "query_id": "q155",
+          "text": "creamy black bean and tomato stew",
+          "recipe_title": "Black Bean and Tomato Soup",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q156",
+          "text": "rich chocolate mayonnaise cake",
+          "recipe_title": "Chocolate Mayo Cake",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q185",
+          "text": "refreshing shrimp with lime and jalape\u00f1o",
+          "recipe_title": "Authentic Mexican Shrimp Cocktail (Coctel de Camarones estilo Mexicano)",
+          "ranks": {
+            "sparse": null,
+            "dense": 6,
+            "fusion": 15,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q188",
+          "text": "sugar free barbecue sauce for ribs",
+          "recipe_title": "Sugar-Free BBQ Sauce",
+          "ranks": {
+            "sparse": 13,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q218",
+          "text": "basic fruit muffins you can freeze",
+          "recipe_title": "Breakfast Muffins",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 10,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q242",
+          "text": "simple sweet muffins",
+          "recipe_title": "Sweeter Muffins",
+          "ranks": {
+            "sparse": 16,
+            "dense": 1,
+            "fusion": 5,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q248",
+          "text": "creamy egg crab casserole",
+          "recipe_title": "Bunch's Crab Casserole",
+          "ranks": {
+            "sparse": null,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q256",
+          "text": "lemon cream cheese bite-sized treat",
+          "recipe_title": "Lemon Cheese Ball",
+          "ranks": {
+            "sparse": 20,
+            "dense": 2,
+            "fusion": 8,
+            "hybrid": 2
+          }
+        }
+      ],
+      "rerank_hurt": [
+        {
+          "query_id": "q007",
+          "text": "creamy crawfish soup with vegetables",
+          "recipe_title": "Louisiana Crawfish Bisque",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q016",
+          "text": "baked beef and rice rolled tortillas",
+          "recipe_title": "Baked Beef Taquitos",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q017",
+          "text": "japanese banana custard cold snack",
+          "recipe_title": "Japanese Banana Rice Pudding",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q018",
+          "text": "rich brie and garlic wine dip",
+          "recipe_title": "Matty's Brie Cheese Fondue",
+          "ranks": {
+            "sparse": 4,
+            "dense": 2,
+            "fusion": 6,
+            "hybrid": 9
+          }
+        },
+        {
+          "query_id": "q021",
+          "text": "watermelon mint cooling dessert",
+          "recipe_title": "Watermelon Mint Ice Cream",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q026",
+          "text": "sliced tomatoes with basil and mozzarella",
+          "recipe_title": "Tomato-Basil Salad",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q028",
+          "text": "zucchini corn pepper cheese pan fry",
+          "recipe_title": "Calabacitas",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q036",
+          "text": "creamy potato casserole with sour cream",
+          "recipe_title": "Easy Sour Cream Scalloped Potatoes",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q038",
+          "text": "smoked bacon collard greens southern style",
+          "recipe_title": "Easy Collard Greens",
+          "ranks": {
+            "sparse": 2,
+            "dense": 4,
+            "fusion": 2,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q042",
+          "text": "creamy onion dip with cheese",
+          "recipe_title": "French Onion Dip",
+          "ranks": {
+            "sparse": 5,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q048",
+          "text": "spicy lemon harissa baked wings",
+          "recipe_title": "Baked Lemon-Pepper-Harissa Wings",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q055",
+          "text": "blueberry oatmeal breakfast",
+          "recipe_title": "Blueberry Oatmeal",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q057",
+          "text": "grilled chicken veggies with pesto marinade",
+          "recipe_title": "Grilled Pesto Chicken Kabobs",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q063",
+          "text": "creamy oatmeal raisin cookies with spices",
+          "recipe_title": "Grandma's Oatmeal Raisin Cookies",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q066",
+          "text": "moist white cake with sour cream",
+          "recipe_title": "Wedding Cake",
+          "ranks": {
+            "sparse": 9,
+            "dense": 1,
+            "fusion": 4,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q067",
+          "text": "tuna salad with veggies",
+          "recipe_title": "Where's the Tuna Salad",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q073",
+          "text": "chicken rice southeast asia",
+          "recipe_title": "Singapore Chicken Rice",
+          "ranks": {
+            "sparse": 6,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q074",
+          "text": "rich coffee cream with whiskey",
+          "recipe_title": "Homemade Irish (Whiskey) Cream",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q080",
+          "text": "quick biscuits with sourdough starter",
+          "recipe_title": "Sourdough Drop Biscuits",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q090",
+          "text": "cereal popcorn candy mix for parties",
+          "recipe_title": "Sweet and Crunchy Popcorn Snack Mix",
+          "ranks": {
+            "sparse": 5,
+            "dense": 4,
+            "fusion": 5,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q122",
+          "text": "spiced chickpea stew with kale",
+          "recipe_title": "Moroccan Chickpea Stew",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q131",
+          "text": "spicy meat and cheese lasagna",
+          "recipe_title": "Italian Lasagna",
+          "ranks": {
+            "sparse": 8,
+            "dense": 2,
+            "fusion": 5,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q132",
+          "text": "sweet tomato pepper stew",
+          "recipe_title": "Jersey Fresh Stewed Tomatoes",
+          "ranks": {
+            "sparse": 3,
+            "dense": 9,
+            "fusion": 2,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q136",
+          "text": "lemon garlic dressing with veggies",
+          "recipe_title": "Salata",
+          "ranks": {
+            "sparse": 7,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q145",
+          "text": "crunchy apple grape bean salad",
+          "recipe_title": "Holiday Apple Side Salad",
+          "ranks": {
+            "sparse": 7,
+            "dense": 16,
+            "fusion": 3,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q150",
+          "text": "homemade tomato sauce for canning",
+          "recipe_title": "Canning Pizza or Spaghetti Sauce from Fresh Tomatoes",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q160",
+          "text": "red velvet cake cups",
+          "recipe_title": "Chef John's Red Velvet Cupcakes",
+          "ranks": {
+            "sparse": 7,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q162",
+          "text": "roasted red pepper baguette sandwich",
+          "recipe_title": "Roasted Red Pepper Panini",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q165",
+          "text": "cheesy artichoke dip with cream",
+          "recipe_title": "Hot Artichoke Dip",
+          "ranks": {
+            "sparse": 8,
+            "dense": 5,
+            "fusion": 4,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q174",
+          "text": "healthy biscuits made with applesauce",
+          "recipe_title": "Whole Wheat Applesauce Biscuits",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q199",
+          "text": "fresh corn and avocado dip for chips",
+          "recipe_title": "Corn and Avocado Salsa",
+          "ranks": {
+            "sparse": 6,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q201",
+          "text": "spicy pinto beans with onions",
+          "recipe_title": "Fab-u-lous Refried Beans!",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q202",
+          "text": "spicy cabbage broth with masala",
+          "recipe_title": "Masala Cabbage Soup",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q204",
+          "text": "cherry and chocolate quick bread",
+          "recipe_title": "Cherry-Chocolate Loaf",
+          "ranks": {
+            "sparse": 7,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q213",
+          "text": "grilled tuna creamy dill",
+          "recipe_title": "Grilled Tuna Steaks with Dill Sauce",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q217",
+          "text": "venison chops in sweet ketchup sauce",
+          "recipe_title": "Deer Chop Hurry",
+          "ranks": {
+            "sparse": 4,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q220",
+          "text": "balsamic marinated pork loin",
+          "recipe_title": "Balsamic Roasted Pork Loin",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q243",
+          "text": "cajun shrimp stew with roux",
+          "recipe_title": "Audry's Shrimp Stew",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q244",
+          "text": "gluten free zucchini soup creamy",
+          "recipe_title": "Zucchini Soup",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q245",
+          "text": "potato and meat pie with vegetables",
+          "recipe_title": "Cornish Finnish Michigan Pasties",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q247",
+          "text": "spicy chocolate pumpkin bread",
+          "recipe_title": "Chocolate-Pumpkin Spice Cake",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q249",
+          "text": "grilled pineapple relish with spices",
+          "recipe_title": "Grilled Pineapple Salsa",
+          "ranks": {
+            "sparse": 5,
+            "dense": 5,
+            "fusion": 2,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q251",
+          "text": "avocado pasta salad with veggies",
+          "recipe_title": "Avocado Whole Wheat Pasta Salad",
+          "ranks": {
+            "sparse": 5,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q252",
+          "text": "grilled beef tri-tip herb rub",
+          "recipe_title": "Grilled Tri-Tip with Oregon Herb Rub",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q258",
+          "text": "coconut-flavored meringue cookies",
+          "recipe_title": "Perfect Coconut Macaroons",
+          "ranks": {
+            "sparse": 1,
+            "dense": 15,
+            "fusion": 5,
+            "hybrid": 15
+          }
+        },
+        {
+          "query_id": "q270",
+          "text": "quick creamy pasta with bacon",
+          "recipe_title": "Quick and Creamy Pasta Carbonara",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q278",
+          "text": "red wine beef broth reduction",
+          "recipe_title": "Red Wine Reduction Sauce",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q279",
+          "text": "cinnamon walnut bread with raisins",
+          "recipe_title": "Walnut Cinnamon Swirl",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q281",
+          "text": "warm, coffee-flavored dessert in mug",
+          "recipe_title": "Easy Coffee Mug Cake",
+          "ranks": {
+            "sparse": 5,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q288",
+          "text": "hot sweet grilled salmon",
+          "recipe_title": "Dad's Candied Salmon",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q289",
+          "text": "white fish with mustard sauce",
+          "recipe_title": "Tilapia de Jonghe",
+          "ranks": {
+            "sparse": 2,
+            "dense": 4,
+            "fusion": 3,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q300",
+          "text": "light sponge cake with lemon",
+          "recipe_title": "High-Altitude Angel Food Cake",
+          "ranks": {
+            "sparse": 1,
+            "dense": 6,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        }
+      ],
+      "rerank_help": [
+        {
+          "query_id": "q002",
+          "text": "creamy tomato based dressing with vinegar",
+          "recipe_title": "Dorothy Lynch\u00ae Style Salad Dressing",
+          "ranks": {
+            "sparse": null,
+            "dense": 4,
+            "fusion": 15,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q005",
+          "text": "chocolate cupcakes with cherry cream cheese filling",
+          "recipe_title": "PHILLY Blackforest Stuffed Cupcakes",
+          "ranks": {
+            "sparse": 3,
+            "dense": null,
+            "fusion": 7,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q006",
+          "text": "chicken breast with green olives",
+          "recipe_title": "Chicken and Olives",
+          "ranks": {
+            "sparse": null,
+            "dense": 2,
+            "fusion": 8,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q009",
+          "text": "easy chicken in white wine sauce",
+          "recipe_title": "Easy After Work Chicken Francaise",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q010",
+          "text": "garlic roasted kale",
+          "recipe_title": "Easy Garlic Kale",
+          "ranks": {
+            "sparse": 6,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q011",
+          "text": "strawberry infused syrup for drinks",
+          "recipe_title": "Strawberry Soda Syrup",
+          "ranks": {
+            "sparse": 8,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q012",
+          "text": "yellow split pea soup with curry powder",
+          "recipe_title": "Vegan Split Pea Soup II",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q019",
+          "text": "apple and nutmeg fried bites",
+          "recipe_title": "Apple Fritters I",
+          "ranks": {
+            "sparse": 6,
+            "dense": null,
+            "fusion": 12,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q035",
+          "text": "quinoa vegetable stir fry",
+          "recipe_title": "Quinoa with Veggies",
+          "ranks": {
+            "sparse": 4,
+            "dense": 8,
+            "fusion": 15,
+            "hybrid": 8
+          }
+        },
+        {
+          "query_id": "q037",
+          "text": "baked salmon with maple mustard and nuts",
+          "recipe_title": "Easy Pistachio-Crusted Salmon",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 10,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q039",
+          "text": "rich buttery pastry layers",
+          "recipe_title": "Danish Pastry",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 5,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q040",
+          "text": "grilled potato cold side dish",
+          "recipe_title": "Grilled Potato Salad",
+          "ranks": {
+            "sparse": null,
+            "dense": 6,
+            "fusion": 16,
+            "hybrid": 10
+          }
+        },
+        {
+          "query_id": "q043",
+          "text": "crescent roll veggie pizza with ranch cream cheese",
+          "recipe_title": "Veggie Pizza",
+          "ranks": {
+            "sparse": 1,
+            "dense": 4,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q046",
+          "text": "creamy chicken artichoke spread",
+          "recipe_title": "Chicken Artichoke Dip",
+          "ranks": {
+            "sparse": null,
+            "dense": 6,
+            "fusion": 13,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q050",
+          "text": "cold pasta vegetable salad",
+          "recipe_title": "Cold Tortellini Salad",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q051",
+          "text": "flattened meatball with onions and herbs",
+          "recipe_title": "German Hamburgers (Frikadellen)",
+          "ranks": {
+            "sparse": 3,
+            "dense": null,
+            "fusion": 11,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q053",
+          "text": "canned salmon stew with garlic and tomatoes",
+          "recipe_title": "Salmon Stew (Abalos Style)",
+          "ranks": {
+            "sparse": 1,
+            "dense": 4,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q054",
+          "text": "fresh veggie and chicken wraps",
+          "recipe_title": "Easy Spring Rolls",
+          "ranks": {
+            "sparse": null,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q060",
+          "text": "silky chocolate and cream cheese spread",
+          "recipe_title": "Chocolate Cream Frosting",
+          "ranks": {
+            "sparse": 16,
+            "dense": null,
+            "fusion": null,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q064",
+          "text": "smoked ham and kidney bean stew",
+          "recipe_title": "Ham and Bean Soup I",
+          "ranks": {
+            "sparse": 1,
+            "dense": 5,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q075",
+          "text": "gluten-free cream cheese bites",
+          "recipe_title": "Gluten-Free Cheesecake Cupcakes",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q076",
+          "text": "greek yogurt with fruit and nuts frozen dessert",
+          "recipe_title": "Yogurt Bark",
+          "ranks": {
+            "sparse": null,
+            "dense": null,
+            "fusion": null,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q081",
+          "text": "grilled pork chops herby lemony",
+          "recipe_title": "Grilled Lemon Herb Pork Chops",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q084",
+          "text": "smoky spicy egg appetizer",
+          "recipe_title": "Spicy Bacon Deviled Eggs",
+          "ranks": {
+            "sparse": null,
+            "dense": 12,
+            "fusion": null,
+            "hybrid": 18
+          }
+        },
+        {
+          "query_id": "q087",
+          "text": "cheesy kale baked dish",
+          "recipe_title": "Cheesy Kale Quiche",
+          "ranks": {
+            "sparse": 5,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q088",
+          "text": "cool cucumber avocado rolls",
+          "recipe_title": "Homemade Vegetarian Sushi Rolls",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 14,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q094",
+          "text": "cashew crusted fish with panko",
+          "recipe_title": "Cashew Crusted Trout",
+          "ranks": {
+            "sparse": 1,
+            "dense": 4,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q101",
+          "text": "creamy pumpkin soup with spices",
+          "recipe_title": "Cream of Pumpkin Soup",
+          "ranks": {
+            "sparse": 9,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q108",
+          "text": "bbq seasoned tuna bites",
+          "recipe_title": "BBQ Tuna Fritters",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q109",
+          "text": "creamy corn chile dip with jalape\u00f1o",
+          "recipe_title": "Corn Dip",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q110",
+          "text": "sweet buttermilk butter bread",
+          "recipe_title": "Buttermilk Honey Bread",
+          "ranks": {
+            "sparse": 11,
+            "dense": 3,
+            "fusion": 5,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q111",
+          "text": "easy crab sour cream enchiladas",
+          "recipe_title": "Easy Crabmeat Enchiladas",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q113",
+          "text": "maple syrup tart with raisins and nuts",
+          "recipe_title": "Real Canadian Butter Tarts, eh?",
+          "ranks": {
+            "sparse": 3,
+            "dense": null,
+            "fusion": 7,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q120",
+          "text": "spicy chicken okra gumbo",
+          "recipe_title": "Chicken Andouille Gumbo",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q123",
+          "text": "kale and bean side dish",
+          "recipe_title": "Kale and Adzuki Beans",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 10,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q126",
+          "text": "crispy yuca fries with lime",
+          "recipe_title": "Yuca Frita",
+          "ranks": {
+            "sparse": 1,
+            "dense": 6,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q127",
+          "text": "spicy lime chicken and bean salad",
+          "recipe_title": "Southwest Chicken Salad I",
+          "ranks": {
+            "sparse": 5,
+            "dense": 14,
+            "fusion": 9,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q135",
+          "text": "fettuccine with spring vegetables",
+          "recipe_title": "Chef John's Pasta Primavera",
+          "ranks": {
+            "sparse": 1,
+            "dense": 6,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q138",
+          "text": "sorghum flour pita for gyros",
+          "recipe_title": "Gluten-Free Flatbread",
+          "ranks": {
+            "sparse": 17,
+            "dense": null,
+            "fusion": null,
+            "hybrid": 11
+          }
+        },
+        {
+          "query_id": "q139",
+          "text": "chicken and cheese stuffed peppers",
+          "recipe_title": "Dila's Chicken-Stuffed Peppers",
+          "ranks": {
+            "sparse": 2,
+            "dense": 4,
+            "fusion": 5,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q142",
+          "text": "ham and asparagus quiche",
+          "recipe_title": "Impossibly Easy Ham and Asparagus Pie",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q147",
+          "text": "breaded pork chops fried in oil",
+          "recipe_title": "Deep Fried Pork Steak",
+          "ranks": {
+            "sparse": 2,
+            "dense": 3,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q148",
+          "text": "fluffy marshmallow frosting with egg whites",
+          "recipe_title": "Marshmallow Icing",
+          "ranks": {
+            "sparse": null,
+            "dense": 8,
+            "fusion": 13,
+            "hybrid": 10
+          }
+        },
+        {
+          "query_id": "q155",
+          "text": "creamy black bean and tomato stew",
+          "recipe_title": "Black Bean and Tomato Soup",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q167",
+          "text": "mexican meatball soup with salsa",
+          "recipe_title": "Albondigas",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q168",
+          "text": "multigrain bagel with cream cheese and pickles",
+          "recipe_title": "School Lunch Bagel Sandwich",
+          "ranks": {
+            "sparse": 1,
+            "dense": 15,
+            "fusion": 6,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q170",
+          "text": "gluten-free turkey patty with herbs",
+          "recipe_title": "Easy Gluten-Free Turkey Burgers",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q172",
+          "text": "stuffed pork with herbs and veggies",
+          "recipe_title": "Stuffed Pork Loin",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 6,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q176",
+          "text": "pasta with pancetta vodka cream",
+          "recipe_title": "Penne and Vodka Sauce",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q185",
+          "text": "refreshing shrimp with lime and jalape\u00f1o",
+          "recipe_title": "Authentic Mexican Shrimp Cocktail (Coctel de Camarones estilo Mexicano)",
+          "ranks": {
+            "sparse": null,
+            "dense": 6,
+            "fusion": 15,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q188",
+          "text": "sugar free barbecue sauce for ribs",
+          "recipe_title": "Sugar-Free BBQ Sauce",
+          "ranks": {
+            "sparse": 13,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q190",
+          "text": "creamy seafood soup with dill and potatoes",
+          "recipe_title": "Matt's Crab & Clam Bisque",
+          "ranks": {
+            "sparse": 7,
+            "dense": null,
+            "fusion": 12,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q194",
+          "text": "rich chocolate brownie with caramel and nuts",
+          "recipe_title": "Layers Of Love Chocolate Brownies",
+          "ranks": {
+            "sparse": 2,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q195",
+          "text": "mexican flavored rice with tomatoes",
+          "recipe_title": "Mexican Rice I",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q197",
+          "text": "crunchy broccoli bacon cheese salad",
+          "recipe_title": "Broccoli Salad IV",
+          "ranks": {
+            "sparse": 4,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q205",
+          "text": "no-churn chocolate ice cream with condensed milk",
+          "recipe_title": "Chocolate Syrup Ice Cream",
+          "ranks": {
+            "sparse": 4,
+            "dense": 5,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q212",
+          "text": "dandelion greens saut\u00e9ed spicy",
+          "recipe_title": "Dandelion Greens with a Kick",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q214",
+          "text": "rich creamy potato pork casserole",
+          "recipe_title": "Scalloped Potatoes and Pork Chops",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q216",
+          "text": "chicken and creamy seafood sauce dinner",
+          "recipe_title": "Chicken with Shrimp Sauce",
+          "ranks": {
+            "sparse": 9,
+            "dense": 12,
+            "fusion": 17,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q218",
+          "text": "basic fruit muffins you can freeze",
+          "recipe_title": "Breakfast Muffins",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 10,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q219",
+          "text": "soft indian flatbread with oil",
+          "recipe_title": "Roomali Roti",
+          "ranks": {
+            "sparse": 1,
+            "dense": 5,
+            "fusion": 8,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q221",
+          "text": "slow cooked chicken with tomatoes mushrooms",
+          "recipe_title": "Instant Pot\u00ae Chicken Cacciatore",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q225",
+          "text": "cheesy chicken and tot casserole",
+          "recipe_title": "Chicken Tater Tot\u00ae Casserole",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q226",
+          "text": "hamburger sausage cheese sauce snack",
+          "recipe_title": "Hanky Panky",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 8,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q227",
+          "text": "spicy mexican quinoa potluck dish",
+          "recipe_title": "Instant Pot\u00ae Mexican Quinoa",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q229",
+          "text": "cauliflower pasta bake with cheese",
+          "recipe_title": "Cauliflower \"Mac and Cheese\" Bake",
+          "ranks": {
+            "sparse": 2,
+            "dense": 11,
+            "fusion": 7,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q233",
+          "text": "meat-filled dumplings with beef onions",
+          "recipe_title": "Russian Pelmeni",
+          "ranks": {
+            "sparse": 2,
+            "dense": 10,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q238",
+          "text": "rich chocolate cake with coconut pecan frosting",
+          "recipe_title": "German Sweet Chocolate Cake I",
+          "ranks": {
+            "sparse": 4,
+            "dense": 6,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q241",
+          "text": "bacon wrapped fries sriracha ketchup",
+          "recipe_title": "Bacon Fries",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q248",
+          "text": "creamy egg crab casserole",
+          "recipe_title": "Bunch's Crab Casserole",
+          "ranks": {
+            "sparse": null,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q253",
+          "text": "chocolate sheet cake with coffee",
+          "recipe_title": "Texas Sheet Cake IV",
+          "ranks": {
+            "sparse": 6,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q255",
+          "text": "chicken and dumplings with cream of chicken soup",
+          "recipe_title": "Irish Chicken and Dumplings",
+          "ranks": {
+            "sparse": 2,
+            "dense": 4,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q256",
+          "text": "lemon cream cheese bite-sized treat",
+          "recipe_title": "Lemon Cheese Ball",
+          "ranks": {
+            "sparse": 20,
+            "dense": 2,
+            "fusion": 8,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q262",
+          "text": "lighter pecan cookies with butter and oil",
+          "recipe_title": "Pecan Shortbread Cookies",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q268",
+          "text": "soft chewy coconut chocolate chip cookies",
+          "recipe_title": "Soft Oatmeal Coconut Chocolate Chip Cookies",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q272",
+          "text": "buttery crescent pastries",
+          "recipe_title": "Butter Crescents",
+          "ranks": {
+            "sparse": 8,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q274",
+          "text": "fried wontons with chicken and cream cheese",
+          "recipe_title": "Chicken Rangoon",
+          "ranks": {
+            "sparse": 5,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q276",
+          "text": "fresh avocado jalape\u00f1o cilantro salsa",
+          "recipe_title": "Mean Green Guacamole Salsa",
+          "ranks": {
+            "sparse": 4,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q280",
+          "text": "grilled bell peppers with jalapeno and cheese",
+          "recipe_title": "Grilled Peppers",
+          "ranks": {
+            "sparse": 1,
+            "dense": 7,
+            "fusion": 13,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q284",
+          "text": "baked shrimp dumplings appetizer",
+          "recipe_title": "Baked Shrimp Wontons",
+          "ranks": {
+            "sparse": 4,
+            "dense": 6,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q293",
+          "text": "quick cheese spinach pie",
+          "recipe_title": "Quick Spinach Quiche",
+          "ranks": {
+            "sparse": 1,
+            "dense": 4,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q299",
+          "text": "spicy cheese sandwich with bacon and jalape\u00f1o",
+          "recipe_title": "Spicy Pimento Cheese Sandwiches with Avocado and Bacon",
+          "ranks": {
+            "sparse": 1,
+            "dense": 9,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        }
+      ]
+    },
+    "semantic": {
+      "sparse_win": [
+        {
+          "query_id": "q005",
+          "text": "chocolate cupcakes with cherry cream cheese filling",
+          "recipe_title": "PHILLY Blackforest Stuffed Cupcakes",
+          "ranks": {
+            "sparse": 3,
+            "dense": 20,
+            "fusion": 5,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q012",
+          "text": "yellow split pea soup with curry powder",
+          "recipe_title": "Vegan Split Pea Soup II",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q019",
+          "text": "apple and nutmeg fried bites",
+          "recipe_title": "Apple Fritters I",
+          "ranks": {
+            "sparse": 7,
+            "dense": 14,
+            "fusion": 14,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q029",
+          "text": "creamy soy ginger pasta with beef and veggies",
+          "recipe_title": "Asian Pasta Salad with Beef, Broccoli and Bean Sprouts",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q037",
+          "text": "baked salmon with maple mustard and nuts",
+          "recipe_title": "Easy Pistachio-Crusted Salmon",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 7,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q051",
+          "text": "flattened meatball with onions and herbs",
+          "recipe_title": "German Hamburgers (Frikadellen)",
+          "ranks": {
+            "sparse": 3,
+            "dense": null,
+            "fusion": 9,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q064",
+          "text": "smoked ham and kidney bean stew",
+          "recipe_title": "Ham and Bean Soup I",
+          "ranks": {
+            "sparse": 1,
+            "dense": 17,
+            "fusion": 7,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q071",
+          "text": "sweet hush puppies for breakfast",
+          "recipe_title": "Crispy Cornmeal Drop Doughnuts",
+          "ranks": {
+            "sparse": 7,
+            "dense": null,
+            "fusion": 12,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q091",
+          "text": "garlic marinated carrots",
+          "recipe_title": "Marinated Carrots Antipasto",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 8,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q113",
+          "text": "maple syrup tart with raisins and nuts",
+          "recipe_title": "Real Canadian Butter Tarts, eh?",
+          "ranks": {
+            "sparse": 3,
+            "dense": null,
+            "fusion": 5,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q132",
+          "text": "sweet tomato pepper stew",
+          "recipe_title": "Jersey Fresh Stewed Tomatoes",
+          "ranks": {
+            "sparse": 2,
+            "dense": 14,
+            "fusion": 4,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q145",
+          "text": "crunchy apple grape bean salad",
+          "recipe_title": "Holiday Apple Side Salad",
+          "ranks": {
+            "sparse": 6,
+            "dense": null,
+            "fusion": 3,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q165",
+          "text": "cheesy artichoke dip with cream",
+          "recipe_title": "Hot Artichoke Dip",
+          "ranks": {
+            "sparse": 8,
+            "dense": 12,
+            "fusion": 7,
+            "hybrid": 16
+          }
+        },
+        {
+          "query_id": "q216",
+          "text": "chicken and creamy seafood sauce dinner",
+          "recipe_title": "Chicken with Shrimp Sauce",
+          "ranks": {
+            "sparse": 10,
+            "dense": 12,
+            "fusion": 19,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q250",
+          "text": "baked fish with steak sauce ranch",
+          "recipe_title": "Baked Fish Sandwiches",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 10,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q257",
+          "text": "gluten-free pastry with raspberry filling",
+          "recipe_title": "Gluten Free Danish",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 5,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q258",
+          "text": "coconut-flavored meringue cookies",
+          "recipe_title": "Perfect Coconut Macaroons",
+          "ranks": {
+            "sparse": 1,
+            "dense": 14,
+            "fusion": 4,
+            "hybrid": 12
+          }
+        }
+      ],
+      "dense_win": [
+        {
+          "query_id": "q002",
+          "text": "creamy tomato based dressing with vinegar",
+          "recipe_title": "Dorothy Lynch\u00ae Style Salad Dressing",
+          "ranks": {
+            "sparse": null,
+            "dense": 3,
+            "fusion": 14,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q006",
+          "text": "chicken breast with green olives",
+          "recipe_title": "Chicken and Olives",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 11,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q040",
+          "text": "grilled potato cold side dish",
+          "recipe_title": "Grilled Potato Salad",
+          "ranks": {
+            "sparse": 19,
+            "dense": 5,
+            "fusion": 6,
+            "hybrid": 9
+          }
+        },
+        {
+          "query_id": "q044",
+          "text": "warm spiced wine with cloves",
+          "recipe_title": "Gluehwein",
+          "ranks": {
+            "sparse": null,
+            "dense": 5,
+            "fusion": 12,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q054",
+          "text": "fresh veggie and chicken wraps",
+          "recipe_title": "Easy Spring Rolls",
+          "ranks": {
+            "sparse": null,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q081",
+          "text": "grilled pork chops herby lemony",
+          "recipe_title": "Grilled Lemon Herb Pork Chops",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q148",
+          "text": "fluffy marshmallow frosting with egg whites",
+          "recipe_title": "Marshmallow Icing",
+          "ranks": {
+            "sparse": 18,
+            "dense": 1,
+            "fusion": 6,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q155",
+          "text": "creamy black bean and tomato stew",
+          "recipe_title": "Black Bean and Tomato Soup",
+          "ranks": {
+            "sparse": 20,
+            "dense": 2,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q156",
+          "text": "rich chocolate mayonnaise cake",
+          "recipe_title": "Chocolate Mayo Cake",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q185",
+          "text": "refreshing shrimp with lime and jalape\u00f1o",
+          "recipe_title": "Authentic Mexican Shrimp Cocktail (Coctel de Camarones estilo Mexicano)",
+          "ranks": {
+            "sparse": null,
+            "dense": 10,
+            "fusion": null,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q188",
+          "text": "sugar free barbecue sauce for ribs",
+          "recipe_title": "Sugar-Free BBQ Sauce",
+          "ranks": {
+            "sparse": 13,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q218",
+          "text": "basic fruit muffins you can freeze",
+          "recipe_title": "Breakfast Muffins",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 10,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q242",
+          "text": "simple sweet muffins",
+          "recipe_title": "Sweeter Muffins",
+          "ranks": {
+            "sparse": 18,
+            "dense": 1,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q248",
+          "text": "creamy egg crab casserole",
+          "recipe_title": "Bunch's Crab Casserole",
+          "ranks": {
+            "sparse": null,
+            "dense": 2,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q249",
+          "text": "grilled pineapple relish with spices",
+          "recipe_title": "Grilled Pineapple Salsa",
+          "ranks": {
+            "sparse": 14,
+            "dense": 3,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q251",
+          "text": "avocado pasta salad with veggies",
+          "recipe_title": "Avocado Whole Wheat Pasta Salad",
+          "ranks": {
+            "sparse": 11,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q256",
+          "text": "lemon cream cheese bite-sized treat",
+          "recipe_title": "Lemon Cheese Ball",
+          "ranks": {
+            "sparse": 19,
+            "dense": 3,
+            "fusion": 8,
+            "hybrid": 2
+          }
+        }
+      ],
+      "rerank_hurt": [
+        {
+          "query_id": "q014",
+          "text": "cheesy breakfast casserole with spinach and sausage",
+          "recipe_title": "Spinach, Sausage, and Egg Casserole",
+          "ranks": {
+            "sparse": 4,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q017",
+          "text": "japanese banana custard cold snack",
+          "recipe_title": "Japanese Banana Rice Pudding",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q021",
+          "text": "watermelon mint cooling dessert",
+          "recipe_title": "Watermelon Mint Ice Cream",
+          "ranks": {
+            "sparse": 4,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q038",
+          "text": "smoked bacon collard greens southern style",
+          "recipe_title": "Easy Collard Greens",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q040",
+          "text": "grilled potato cold side dish",
+          "recipe_title": "Grilled Potato Salad",
+          "ranks": {
+            "sparse": 19,
+            "dense": 5,
+            "fusion": 6,
+            "hybrid": 9
+          }
+        },
+        {
+          "query_id": "q045",
+          "text": "pasta salad with olives and lemon",
+          "recipe_title": "Orzo Pasta Salad",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q048",
+          "text": "spicy lemon harissa baked wings",
+          "recipe_title": "Baked Lemon-Pepper-Harissa Wings",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q055",
+          "text": "blueberry oatmeal breakfast",
+          "recipe_title": "Blueberry Oatmeal",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q056",
+          "text": "easy mac and cheese with pasta shells",
+          "recipe_title": "Fancy-But-Easy Mac N' Cheese",
+          "ranks": {
+            "sparse": 4,
+            "dense": 5,
+            "fusion": 1,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q057",
+          "text": "grilled chicken veggies with pesto marinade",
+          "recipe_title": "Grilled Pesto Chicken Kabobs",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q063",
+          "text": "creamy oatmeal raisin cookies with spices",
+          "recipe_title": "Grandma's Oatmeal Raisin Cookies",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q066",
+          "text": "moist white cake with sour cream",
+          "recipe_title": "Wedding Cake",
+          "ranks": {
+            "sparse": 9,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q067",
+          "text": "tuna salad with veggies",
+          "recipe_title": "Where's the Tuna Salad",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q069",
+          "text": "sweet date couscous",
+          "recipe_title": "Sweet and Nutty Moroccan Couscous",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q073",
+          "text": "chicken rice southeast asia",
+          "recipe_title": "Singapore Chicken Rice",
+          "ranks": {
+            "sparse": 6,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q074",
+          "text": "rich coffee cream with whiskey",
+          "recipe_title": "Homemade Irish (Whiskey) Cream",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q090",
+          "text": "cereal popcorn candy mix for parties",
+          "recipe_title": "Sweet and Crunchy Popcorn Snack Mix",
+          "ranks": {
+            "sparse": 3,
+            "dense": 4,
+            "fusion": 1,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q092",
+          "text": "creamy avocado tomato corn salsa",
+          "recipe_title": "Guacamole with Corn",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q093",
+          "text": "quick shrimp and rice dish",
+          "recipe_title": "Easy Shrimp Fried Rice",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q095",
+          "text": "grilled salmon with vegetables in foil",
+          "recipe_title": "Grilled Salmon Supper in Foil",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q107",
+          "text": "sweet pineapple teriyaki sauce",
+          "recipe_title": "Asian Pineapple Sauce",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q114",
+          "text": "warm milk yeast rolls",
+          "recipe_title": "Angie's Perfect Dinner Rolls",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q120",
+          "text": "spicy chicken okra gumbo",
+          "recipe_title": "Chicken Andouille Gumbo",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q123",
+          "text": "kale and bean side dish",
+          "recipe_title": "Kale and Adzuki Beans",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 8
+          }
+        },
+        {
+          "query_id": "q131",
+          "text": "spicy meat and cheese lasagna",
+          "recipe_title": "Italian Lasagna",
+          "ranks": {
+            "sparse": 9,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q136",
+          "text": "lemon garlic dressing with veggies",
+          "recipe_title": "Salata",
+          "ranks": {
+            "sparse": 4,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q138",
+          "text": "sorghum flour pita for gyros",
+          "recipe_title": "Gluten-Free Flatbread",
+          "ranks": {
+            "sparse": 16,
+            "dense": 17,
+            "fusion": 6,
+            "hybrid": 8
+          }
+        },
+        {
+          "query_id": "q145",
+          "text": "crunchy apple grape bean salad",
+          "recipe_title": "Holiday Apple Side Salad",
+          "ranks": {
+            "sparse": 6,
+            "dense": null,
+            "fusion": 3,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q150",
+          "text": "homemade tomato sauce for canning",
+          "recipe_title": "Canning Pizza or Spaghetti Sauce from Fresh Tomatoes",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q159",
+          "text": "homemade gefilte fish with snapper",
+          "recipe_title": "Best Gefilte Fish",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q165",
+          "text": "cheesy artichoke dip with cream",
+          "recipe_title": "Hot Artichoke Dip",
+          "ranks": {
+            "sparse": 8,
+            "dense": 12,
+            "fusion": 7,
+            "hybrid": 16
+          }
+        },
+        {
+          "query_id": "q169",
+          "text": "italian pasta with mozzarella peppers olives",
+          "recipe_title": "Kathy's Delicious Italian Pasta Salad",
+          "ranks": {
+            "sparse": 1,
+            "dense": 4,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q171",
+          "text": "greek-inspired veggie pasta salad",
+          "recipe_title": "Greek Goddess Pasta Salad",
+          "ranks": {
+            "sparse": 6,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q174",
+          "text": "healthy biscuits made with applesauce",
+          "recipe_title": "Whole Wheat Applesauce Biscuits",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q199",
+          "text": "fresh corn and avocado dip for chips",
+          "recipe_title": "Corn and Avocado Salsa",
+          "ranks": {
+            "sparse": 6,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q201",
+          "text": "spicy pinto beans with onions",
+          "recipe_title": "Fab-u-lous Refried Beans!",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q202",
+          "text": "spicy cabbage broth with masala",
+          "recipe_title": "Masala Cabbage Soup",
+          "ranks": {
+            "sparse": 4,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q206",
+          "text": "vegan mushroom creamy sauce",
+          "recipe_title": "Vegan Mushroom Gravy",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 2,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q214",
+          "text": "rich creamy potato pork casserole",
+          "recipe_title": "Scalloped Potatoes and Pork Chops",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q217",
+          "text": "venison chops in sweet ketchup sauce",
+          "recipe_title": "Deer Chop Hurry",
+          "ranks": {
+            "sparse": 3,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q219",
+          "text": "soft indian flatbread with oil",
+          "recipe_title": "Roomali Roti",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 6,
+            "hybrid": 8
+          }
+        },
+        {
+          "query_id": "q220",
+          "text": "balsamic marinated pork loin",
+          "recipe_title": "Balsamic Roasted Pork Loin",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q228",
+          "text": "shrimp zucchini farro bowl with lemon",
+          "recipe_title": "Shrimp Grain Bowl",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q229",
+          "text": "cauliflower pasta bake with cheese",
+          "recipe_title": "Cauliflower \"Mac and Cheese\" Bake",
+          "ranks": {
+            "sparse": 1,
+            "dense": 6,
+            "fusion": 4,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q244",
+          "text": "gluten free zucchini soup creamy",
+          "recipe_title": "Zucchini Soup",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q245",
+          "text": "potato and meat pie with vegetables",
+          "recipe_title": "Cornish Finnish Michigan Pasties",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q247",
+          "text": "spicy chocolate pumpkin bread",
+          "recipe_title": "Chocolate-Pumpkin Spice Cake",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q252",
+          "text": "grilled beef tri-tip herb rub",
+          "recipe_title": "Grilled Tri-Tip with Oregon Herb Rub",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q258",
+          "text": "coconut-flavored meringue cookies",
+          "recipe_title": "Perfect Coconut Macaroons",
+          "ranks": {
+            "sparse": 1,
+            "dense": 14,
+            "fusion": 4,
+            "hybrid": 12
+          }
+        },
+        {
+          "query_id": "q270",
+          "text": "quick creamy pasta with bacon",
+          "recipe_title": "Quick and Creamy Pasta Carbonara",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q279",
+          "text": "cinnamon walnut bread with raisins",
+          "recipe_title": "Walnut Cinnamon Swirl",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q281",
+          "text": "warm, coffee-flavored dessert in mug",
+          "recipe_title": "Easy Coffee Mug Cake",
+          "ranks": {
+            "sparse": 6,
+            "dense": 4,
+            "fusion": 1,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q283",
+          "text": "spicy beef tomato chili",
+          "recipe_title": "Award Winning Chili Con Carne",
+          "ranks": {
+            "sparse": 2,
+            "dense": 4,
+            "fusion": 2,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q288",
+          "text": "hot sweet grilled salmon",
+          "recipe_title": "Dad's Candied Salmon",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q289",
+          "text": "white fish with mustard sauce",
+          "recipe_title": "Tilapia de Jonghe",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q298",
+          "text": "pumpkin spice bread with cinnamon",
+          "recipe_title": "Pumpkin Bread",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q300",
+          "text": "light sponge cake with lemon",
+          "recipe_title": "High-Altitude Angel Food Cake",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        }
+      ],
+      "rerank_help": [
+        {
+          "query_id": "q002",
+          "text": "creamy tomato based dressing with vinegar",
+          "recipe_title": "Dorothy Lynch\u00ae Style Salad Dressing",
+          "ranks": {
+            "sparse": null,
+            "dense": 3,
+            "fusion": 14,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q005",
+          "text": "chocolate cupcakes with cherry cream cheese filling",
+          "recipe_title": "PHILLY Blackforest Stuffed Cupcakes",
+          "ranks": {
+            "sparse": 3,
+            "dense": 20,
+            "fusion": 5,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q006",
+          "text": "chicken breast with green olives",
+          "recipe_title": "Chicken and Olives",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 11,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q011",
+          "text": "strawberry infused syrup for drinks",
+          "recipe_title": "Strawberry Soda Syrup",
+          "ranks": {
+            "sparse": 10,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q012",
+          "text": "yellow split pea soup with curry powder",
+          "recipe_title": "Vegan Split Pea Soup II",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q018",
+          "text": "rich brie and garlic wine dip",
+          "recipe_title": "Matty's Brie Cheese Fondue",
+          "ranks": {
+            "sparse": 4,
+            "dense": 2,
+            "fusion": 9,
+            "hybrid": 8
+          }
+        },
+        {
+          "query_id": "q019",
+          "text": "apple and nutmeg fried bites",
+          "recipe_title": "Apple Fritters I",
+          "ranks": {
+            "sparse": 7,
+            "dense": 14,
+            "fusion": 14,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q029",
+          "text": "creamy soy ginger pasta with beef and veggies",
+          "recipe_title": "Asian Pasta Salad with Beef, Broccoli and Bean Sprouts",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q035",
+          "text": "quinoa vegetable stir fry",
+          "recipe_title": "Quinoa with Veggies",
+          "ranks": {
+            "sparse": 8,
+            "dense": 9,
+            "fusion": 8,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q037",
+          "text": "baked salmon with maple mustard and nuts",
+          "recipe_title": "Easy Pistachio-Crusted Salmon",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 7,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q042",
+          "text": "creamy onion dip with cheese",
+          "recipe_title": "French Onion Dip",
+          "ranks": {
+            "sparse": 6,
+            "dense": 1,
+            "fusion": 5,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q043",
+          "text": "crescent roll veggie pizza with ranch cream cheese",
+          "recipe_title": "Veggie Pizza",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q044",
+          "text": "warm spiced wine with cloves",
+          "recipe_title": "Gluehwein",
+          "ranks": {
+            "sparse": null,
+            "dense": 5,
+            "fusion": 12,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q046",
+          "text": "creamy chicken artichoke spread",
+          "recipe_title": "Chicken Artichoke Dip",
+          "ranks": {
+            "sparse": null,
+            "dense": 12,
+            "fusion": null,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q050",
+          "text": "cold pasta vegetable salad",
+          "recipe_title": "Cold Tortellini Salad",
+          "ranks": {
+            "sparse": 1,
+            "dense": 5,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q051",
+          "text": "flattened meatball with onions and herbs",
+          "recipe_title": "German Hamburgers (Frikadellen)",
+          "ranks": {
+            "sparse": 3,
+            "dense": null,
+            "fusion": 9,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q053",
+          "text": "canned salmon stew with garlic and tomatoes",
+          "recipe_title": "Salmon Stew (Abalos Style)",
+          "ranks": {
+            "sparse": 1,
+            "dense": 7,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q054",
+          "text": "fresh veggie and chicken wraps",
+          "recipe_title": "Easy Spring Rolls",
+          "ranks": {
+            "sparse": null,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q060",
+          "text": "silky chocolate and cream cheese spread",
+          "recipe_title": "Chocolate Cream Frosting",
+          "ranks": {
+            "sparse": 15,
+            "dense": 14,
+            "fusion": 5,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q064",
+          "text": "smoked ham and kidney bean stew",
+          "recipe_title": "Ham and Bean Soup I",
+          "ranks": {
+            "sparse": 1,
+            "dense": 17,
+            "fusion": 7,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q071",
+          "text": "sweet hush puppies for breakfast",
+          "recipe_title": "Crispy Cornmeal Drop Doughnuts",
+          "ranks": {
+            "sparse": 7,
+            "dense": null,
+            "fusion": 12,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q072",
+          "text": "classic pumpkin pie with evaporated milk",
+          "recipe_title": "Libby's\u00ae Famous Pumpkin Pie",
+          "ranks": {
+            "sparse": 2,
+            "dense": 3,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q076",
+          "text": "greek yogurt with fruit and nuts frozen dessert",
+          "recipe_title": "Yogurt Bark",
+          "ranks": {
+            "sparse": null,
+            "dense": 17,
+            "fusion": null,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q081",
+          "text": "grilled pork chops herby lemony",
+          "recipe_title": "Grilled Lemon Herb Pork Chops",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q084",
+          "text": "smoky spicy egg appetizer",
+          "recipe_title": "Spicy Bacon Deviled Eggs",
+          "ranks": {
+            "sparse": null,
+            "dense": 12,
+            "fusion": null,
+            "hybrid": 14
+          }
+        },
+        {
+          "query_id": "q091",
+          "text": "garlic marinated carrots",
+          "recipe_title": "Marinated Carrots Antipasto",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 8,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q102",
+          "text": "weeknight chicken breast with ham cheese",
+          "recipe_title": "Weeknight Chicken Cordon Bleu",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q108",
+          "text": "bbq seasoned tuna bites",
+          "recipe_title": "BBQ Tuna Fritters",
+          "ranks": {
+            "sparse": 3,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q110",
+          "text": "sweet buttermilk butter bread",
+          "recipe_title": "Buttermilk Honey Bread",
+          "ranks": {
+            "sparse": 5,
+            "dense": 4,
+            "fusion": 4,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q113",
+          "text": "maple syrup tart with raisins and nuts",
+          "recipe_title": "Real Canadian Butter Tarts, eh?",
+          "ranks": {
+            "sparse": 3,
+            "dense": null,
+            "fusion": 5,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q126",
+          "text": "crispy yuca fries with lime",
+          "recipe_title": "Yuca Frita",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q127",
+          "text": "spicy lime chicken and bean salad",
+          "recipe_title": "Southwest Chicken Salad I",
+          "ranks": {
+            "sparse": 16,
+            "dense": 12,
+            "fusion": null,
+            "hybrid": 15
+          }
+        },
+        {
+          "query_id": "q135",
+          "text": "fettuccine with spring vegetables",
+          "recipe_title": "Chef John's Pasta Primavera",
+          "ranks": {
+            "sparse": 1,
+            "dense": 5,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q147",
+          "text": "breaded pork chops fried in oil",
+          "recipe_title": "Deep Fried Pork Steak",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q148",
+          "text": "fluffy marshmallow frosting with egg whites",
+          "recipe_title": "Marshmallow Icing",
+          "ranks": {
+            "sparse": 18,
+            "dense": 1,
+            "fusion": 6,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q155",
+          "text": "creamy black bean and tomato stew",
+          "recipe_title": "Black Bean and Tomato Soup",
+          "ranks": {
+            "sparse": 20,
+            "dense": 2,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q157",
+          "text": "peruvian potato ceviche with fish shrimp",
+          "recipe_title": "Ceviche Peruano",
+          "ranks": {
+            "sparse": 4,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q158",
+          "text": "egyptian hazelnut sesame dip",
+          "recipe_title": "Dukkah",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q163",
+          "text": "creamy crawfish appetizer with spices",
+          "recipe_title": "Easy Cheesy Crawfish Dip",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q164",
+          "text": "tangy honey orange ham",
+          "recipe_title": "Tangy Honey Glazed Ham",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q167",
+          "text": "mexican meatball soup with salsa",
+          "recipe_title": "Albondigas",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q172",
+          "text": "stuffed pork with herbs and veggies",
+          "recipe_title": "Stuffed Pork Loin",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 6,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q185",
+          "text": "refreshing shrimp with lime and jalape\u00f1o",
+          "recipe_title": "Authentic Mexican Shrimp Cocktail (Coctel de Camarones estilo Mexicano)",
+          "ranks": {
+            "sparse": null,
+            "dense": 10,
+            "fusion": null,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q188",
+          "text": "sugar free barbecue sauce for ribs",
+          "recipe_title": "Sugar-Free BBQ Sauce",
+          "ranks": {
+            "sparse": 13,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q191",
+          "text": "herb-roasted chicken breast",
+          "recipe_title": "Juicy Baked Chicken Breast",
+          "ranks": {
+            "sparse": 3,
+            "dense": 4,
+            "fusion": 4,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q194",
+          "text": "rich chocolate brownie with caramel and nuts",
+          "recipe_title": "Layers Of Love Chocolate Brownies",
+          "ranks": {
+            "sparse": 2,
+            "dense": 3,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q195",
+          "text": "mexican flavored rice with tomatoes",
+          "recipe_title": "Mexican Rice I",
+          "ranks": {
+            "sparse": 2,
+            "dense": 3,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q197",
+          "text": "crunchy broccoli bacon cheese salad",
+          "recipe_title": "Broccoli Salad IV",
+          "ranks": {
+            "sparse": 4,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q203",
+          "text": "summer blackberry dessert with butter",
+          "recipe_title": "Mama's Blackberry Cobbler",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q205",
+          "text": "no-churn chocolate ice cream with condensed milk",
+          "recipe_title": "Chocolate Syrup Ice Cream",
+          "ranks": {
+            "sparse": 4,
+            "dense": 6,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q216",
+          "text": "chicken and creamy seafood sauce dinner",
+          "recipe_title": "Chicken with Shrimp Sauce",
+          "ranks": {
+            "sparse": 10,
+            "dense": 12,
+            "fusion": 19,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q218",
+          "text": "basic fruit muffins you can freeze",
+          "recipe_title": "Breakfast Muffins",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 10,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q225",
+          "text": "cheesy chicken and tot casserole",
+          "recipe_title": "Chicken Tater Tot\u00ae Casserole",
+          "ranks": {
+            "sparse": 1,
+            "dense": 4,
+            "fusion": 5,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q227",
+          "text": "spicy mexican quinoa potluck dish",
+          "recipe_title": "Instant Pot\u00ae Mexican Quinoa",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q238",
+          "text": "rich chocolate cake with coconut pecan frosting",
+          "recipe_title": "German Sweet Chocolate Cake I",
+          "ranks": {
+            "sparse": 4,
+            "dense": 4,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q241",
+          "text": "bacon wrapped fries sriracha ketchup",
+          "recipe_title": "Bacon Fries",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q242",
+          "text": "simple sweet muffins",
+          "recipe_title": "Sweeter Muffins",
+          "ranks": {
+            "sparse": 18,
+            "dense": 1,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q246",
+          "text": "banana chocolate crumb muffins",
+          "recipe_title": "Banana Chip Muffins I",
+          "ranks": {
+            "sparse": 4,
+            "dense": 7,
+            "fusion": 7,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q248",
+          "text": "creamy egg crab casserole",
+          "recipe_title": "Bunch's Crab Casserole",
+          "ranks": {
+            "sparse": null,
+            "dense": 2,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q249",
+          "text": "grilled pineapple relish with spices",
+          "recipe_title": "Grilled Pineapple Salsa",
+          "ranks": {
+            "sparse": 14,
+            "dense": 3,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q250",
+          "text": "baked fish with steak sauce ranch",
+          "recipe_title": "Baked Fish Sandwiches",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 10,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q251",
+          "text": "avocado pasta salad with veggies",
+          "recipe_title": "Avocado Whole Wheat Pasta Salad",
+          "ranks": {
+            "sparse": 11,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q255",
+          "text": "chicken and dumplings with cream of chicken soup",
+          "recipe_title": "Irish Chicken and Dumplings",
+          "ranks": {
+            "sparse": 2,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q256",
+          "text": "lemon cream cheese bite-sized treat",
+          "recipe_title": "Lemon Cheese Ball",
+          "ranks": {
+            "sparse": 19,
+            "dense": 3,
+            "fusion": 8,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q257",
+          "text": "gluten-free pastry with raspberry filling",
+          "recipe_title": "Gluten Free Danish",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 5,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q261",
+          "text": "macaroni salad with chicken and pineapple",
+          "recipe_title": "Classic Macaroni Salad with a Twist",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q262",
+          "text": "lighter pecan cookies with butter and oil",
+          "recipe_title": "Pecan Shortbread Cookies",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 6,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q266",
+          "text": "egg muffin cups with bacon and ham",
+          "recipe_title": "Egg Cupcakes",
+          "ranks": {
+            "sparse": null,
+            "dense": 13,
+            "fusion": 10,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q268",
+          "text": "soft chewy coconut chocolate chip cookies",
+          "recipe_title": "Soft Oatmeal Coconut Chocolate Chip Cookies",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q276",
+          "text": "fresh avocado jalape\u00f1o cilantro salsa",
+          "recipe_title": "Mean Green Guacamole Salsa",
+          "ranks": {
+            "sparse": 4,
+            "dense": 2,
+            "fusion": 5,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q284",
+          "text": "baked shrimp dumplings appetizer",
+          "recipe_title": "Baked Shrimp Wontons",
+          "ranks": {
+            "sparse": 4,
+            "dense": 8,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q293",
+          "text": "quick cheese spinach pie",
+          "recipe_title": "Quick Spinach Quiche",
+          "ranks": {
+            "sparse": 1,
+            "dense": 6,
+            "fusion": 5,
+            "hybrid": 1
+          }
+        }
+      ]
+    },
+    "sentence": {
+      "sparse_win": [
+        {
+          "query_id": "q003",
+          "text": "mediterranean chicken hoagie with olives",
+          "recipe_title": "Mediterranean Chicken Sandwich",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 13,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q005",
+          "text": "chocolate cupcakes with cherry cream cheese filling",
+          "recipe_title": "PHILLY Blackforest Stuffed Cupcakes",
+          "ranks": {
+            "sparse": 3,
+            "dense": 15,
+            "fusion": 7,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q012",
+          "text": "yellow split pea soup with curry powder",
+          "recipe_title": "Vegan Split Pea Soup II",
+          "ranks": {
+            "sparse": 1,
+            "dense": 19,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q019",
+          "text": "apple and nutmeg fried bites",
+          "recipe_title": "Apple Fritters I",
+          "ranks": {
+            "sparse": 8,
+            "dense": null,
+            "fusion": 15,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q037",
+          "text": "baked salmon with maple mustard and nuts",
+          "recipe_title": "Easy Pistachio-Crusted Salmon",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 13,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q051",
+          "text": "flattened meatball with onions and herbs",
+          "recipe_title": "German Hamburgers (Frikadellen)",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 10,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q113",
+          "text": "maple syrup tart with raisins and nuts",
+          "recipe_title": "Real Canadian Butter Tarts, eh?",
+          "ranks": {
+            "sparse": 3,
+            "dense": null,
+            "fusion": 9,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q126",
+          "text": "crispy yuca fries with lime",
+          "recipe_title": "Yuca Frita",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 6,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q145",
+          "text": "crunchy apple grape bean salad",
+          "recipe_title": "Holiday Apple Side Salad",
+          "ranks": {
+            "sparse": 5,
+            "dense": 20,
+            "fusion": 3,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q158",
+          "text": "egyptian hazelnut sesame dip",
+          "recipe_title": "Dukkah",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q164",
+          "text": "tangy honey orange ham",
+          "recipe_title": "Tangy Honey Glazed Ham",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 7,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q168",
+          "text": "multigrain bagel with cream cheese and pickles",
+          "recipe_title": "School Lunch Bagel Sandwich",
+          "ranks": {
+            "sparse": 1,
+            "dense": 14,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q170",
+          "text": "gluten-free turkey patty with herbs",
+          "recipe_title": "Easy Gluten-Free Turkey Burgers",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 6,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q226",
+          "text": "hamburger sausage cheese sauce snack",
+          "recipe_title": "Hanky Panky",
+          "ranks": {
+            "sparse": 1,
+            "dense": 17,
+            "fusion": 12,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q228",
+          "text": "shrimp zucchini farro bowl with lemon",
+          "recipe_title": "Shrimp Grain Bowl",
+          "ranks": {
+            "sparse": 4,
+            "dense": null,
+            "fusion": 15,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q233",
+          "text": "meat-filled dumplings with beef onions",
+          "recipe_title": "Russian Pelmeni",
+          "ranks": {
+            "sparse": 3,
+            "dense": 14,
+            "fusion": 5,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q250",
+          "text": "baked fish with steak sauce ranch",
+          "recipe_title": "Baked Fish Sandwiches",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 1,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q257",
+          "text": "gluten-free pastry with raspberry filling",
+          "recipe_title": "Gluten Free Danish",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 2,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q258",
+          "text": "coconut-flavored meringue cookies",
+          "recipe_title": "Perfect Coconut Macaroons",
+          "ranks": {
+            "sparse": 1,
+            "dense": 18,
+            "fusion": 5,
+            "hybrid": 11
+          }
+        }
+      ],
+      "dense_win": [
+        {
+          "query_id": "q002",
+          "text": "creamy tomato based dressing with vinegar",
+          "recipe_title": "Dorothy Lynch\u00ae Style Salad Dressing",
+          "ranks": {
+            "sparse": null,
+            "dense": 3,
+            "fusion": 13,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q006",
+          "text": "chicken breast with green olives",
+          "recipe_title": "Chicken and Olives",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 9,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q046",
+          "text": "creamy chicken artichoke spread",
+          "recipe_title": "Chicken Artichoke Dip",
+          "ranks": {
+            "sparse": null,
+            "dense": 10,
+            "fusion": 19,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q054",
+          "text": "fresh veggie and chicken wraps",
+          "recipe_title": "Easy Spring Rolls",
+          "ranks": {
+            "sparse": null,
+            "dense": 3,
+            "fusion": 6,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q101",
+          "text": "creamy pumpkin soup with spices",
+          "recipe_title": "Cream of Pumpkin Soup",
+          "ranks": {
+            "sparse": 11,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q110",
+          "text": "sweet buttermilk butter bread",
+          "recipe_title": "Buttermilk Honey Bread",
+          "ranks": {
+            "sparse": 11,
+            "dense": 3,
+            "fusion": 6,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q131",
+          "text": "spicy meat and cheese lasagna",
+          "recipe_title": "Italian Lasagna",
+          "ranks": {
+            "sparse": 17,
+            "dense": 3,
+            "fusion": 12,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q148",
+          "text": "fluffy marshmallow frosting with egg whites",
+          "recipe_title": "Marshmallow Icing",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 4,
+            "hybrid": 8
+          }
+        },
+        {
+          "query_id": "q155",
+          "text": "creamy black bean and tomato stew",
+          "recipe_title": "Black Bean and Tomato Soup",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q156",
+          "text": "rich chocolate mayonnaise cake",
+          "recipe_title": "Chocolate Mayo Cake",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q184",
+          "text": "smoky beef with ketchup and vinegar",
+          "recipe_title": "Slow Cooked Barbecue Beer Beef",
+          "ranks": {
+            "sparse": 17,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q188",
+          "text": "sugar free barbecue sauce for ribs",
+          "recipe_title": "Sugar-Free BBQ Sauce",
+          "ranks": {
+            "sparse": 15,
+            "dense": 2,
+            "fusion": 8,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q218",
+          "text": "basic fruit muffins you can freeze",
+          "recipe_title": "Breakfast Muffins",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 9,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q242",
+          "text": "simple sweet muffins",
+          "recipe_title": "Sweeter Muffins",
+          "ranks": {
+            "sparse": 16,
+            "dense": 1,
+            "fusion": 5,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q248",
+          "text": "creamy egg crab casserole",
+          "recipe_title": "Bunch's Crab Casserole",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q256",
+          "text": "lemon cream cheese bite-sized treat",
+          "recipe_title": "Lemon Cheese Ball",
+          "ranks": {
+            "sparse": 19,
+            "dense": 4,
+            "fusion": 12,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q297",
+          "text": "baked mac n cheese with cayenne",
+          "recipe_title": "Tasty Baked Mac n Cheese",
+          "ranks": {
+            "sparse": 11,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 1
+          }
+        }
+      ],
+      "rerank_hurt": [
+        {
+          "query_id": "q007",
+          "text": "creamy crawfish soup with vegetables",
+          "recipe_title": "Louisiana Crawfish Bisque",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q010",
+          "text": "garlic roasted kale",
+          "recipe_title": "Easy Garlic Kale",
+          "ranks": {
+            "sparse": 5,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q017",
+          "text": "japanese banana custard cold snack",
+          "recipe_title": "Japanese Banana Rice Pudding",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q018",
+          "text": "rich brie and garlic wine dip",
+          "recipe_title": "Matty's Brie Cheese Fondue",
+          "ranks": {
+            "sparse": 4,
+            "dense": 2,
+            "fusion": 8,
+            "hybrid": 11
+          }
+        },
+        {
+          "query_id": "q038",
+          "text": "smoked bacon collard greens southern style",
+          "recipe_title": "Easy Collard Greens",
+          "ranks": {
+            "sparse": 2,
+            "dense": 3,
+            "fusion": 5,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q048",
+          "text": "spicy lemon harissa baked wings",
+          "recipe_title": "Baked Lemon-Pepper-Harissa Wings",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q055",
+          "text": "blueberry oatmeal breakfast",
+          "recipe_title": "Blueberry Oatmeal",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q056",
+          "text": "easy mac and cheese with pasta shells",
+          "recipe_title": "Fancy-But-Easy Mac N' Cheese",
+          "ranks": {
+            "sparse": 7,
+            "dense": 9,
+            "fusion": 1,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q063",
+          "text": "creamy oatmeal raisin cookies with spices",
+          "recipe_title": "Grandma's Oatmeal Raisin Cookies",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q066",
+          "text": "moist white cake with sour cream",
+          "recipe_title": "Wedding Cake",
+          "ranks": {
+            "sparse": 8,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q067",
+          "text": "tuna salad with veggies",
+          "recipe_title": "Where's the Tuna Salad",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q068",
+          "text": "turkey chili cornbread casserole",
+          "recipe_title": "Speedy Chili Pot Pie",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q069",
+          "text": "sweet date couscous",
+          "recipe_title": "Sweet and Nutty Moroccan Couscous",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q072",
+          "text": "classic pumpkin pie with evaporated milk",
+          "recipe_title": "Libby's\u00ae Famous Pumpkin Pie",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q073",
+          "text": "chicken rice southeast asia",
+          "recipe_title": "Singapore Chicken Rice",
+          "ranks": {
+            "sparse": 6,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q080",
+          "text": "quick biscuits with sourdough starter",
+          "recipe_title": "Sourdough Drop Biscuits",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q087",
+          "text": "cheesy kale baked dish",
+          "recipe_title": "Cheesy Kale Quiche",
+          "ranks": {
+            "sparse": 5,
+            "dense": 3,
+            "fusion": 2,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q090",
+          "text": "cereal popcorn candy mix for parties",
+          "recipe_title": "Sweet and Crunchy Popcorn Snack Mix",
+          "ranks": {
+            "sparse": 5,
+            "dense": 6,
+            "fusion": 4,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q100",
+          "text": "stir-fried vegetables with mushrooms corn",
+          "recipe_title": "Stir-Fried Mushrooms with Baby Corn",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q114",
+          "text": "warm milk yeast rolls",
+          "recipe_title": "Angie's Perfect Dinner Rolls",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q123",
+          "text": "kale and bean side dish",
+          "recipe_title": "Kale and Adzuki Beans",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q136",
+          "text": "lemon garlic dressing with veggies",
+          "recipe_title": "Salata",
+          "ranks": {
+            "sparse": 6,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q140",
+          "text": "apple cheesecake bars with streusel",
+          "recipe_title": "Apple Cheesecake Snack Bars",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q145",
+          "text": "crunchy apple grape bean salad",
+          "recipe_title": "Holiday Apple Side Salad",
+          "ranks": {
+            "sparse": 5,
+            "dense": 20,
+            "fusion": 3,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q148",
+          "text": "fluffy marshmallow frosting with egg whites",
+          "recipe_title": "Marshmallow Icing",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 4,
+            "hybrid": 8
+          }
+        },
+        {
+          "query_id": "q150",
+          "text": "homemade tomato sauce for canning",
+          "recipe_title": "Canning Pizza or Spaghetti Sauce from Fresh Tomatoes",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q160",
+          "text": "red velvet cake cups",
+          "recipe_title": "Chef John's Red Velvet Cupcakes",
+          "ranks": {
+            "sparse": 6,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q162",
+          "text": "roasted red pepper baguette sandwich",
+          "recipe_title": "Roasted Red Pepper Panini",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q165",
+          "text": "cheesy artichoke dip with cream",
+          "recipe_title": "Hot Artichoke Dip",
+          "ranks": {
+            "sparse": 8,
+            "dense": 5,
+            "fusion": 2,
+            "hybrid": 14
+          }
+        },
+        {
+          "query_id": "q169",
+          "text": "italian pasta with mozzarella peppers olives",
+          "recipe_title": "Kathy's Delicious Italian Pasta Salad",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q171",
+          "text": "greek-inspired veggie pasta salad",
+          "recipe_title": "Greek Goddess Pasta Salad",
+          "ranks": {
+            "sparse": 6,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q176",
+          "text": "pasta with pancetta vodka cream",
+          "recipe_title": "Penne and Vodka Sauce",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q198",
+          "text": "chopped cucumber and tomatoes with lemon juice",
+          "recipe_title": "Tomato Cucumber Salad",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q201",
+          "text": "spicy pinto beans with onions",
+          "recipe_title": "Fab-u-lous Refried Beans!",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q204",
+          "text": "cherry and chocolate quick bread",
+          "recipe_title": "Cherry-Chocolate Loaf",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q210",
+          "text": "ham and cheese stuffed buns",
+          "recipe_title": "Hawaiian Ham and Cheese Sliders",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q214",
+          "text": "rich creamy potato pork casserole",
+          "recipe_title": "Scalloped Potatoes and Pork Chops",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q216",
+          "text": "chicken and creamy seafood sauce dinner",
+          "recipe_title": "Chicken with Shrimp Sauce",
+          "ranks": {
+            "sparse": 10,
+            "dense": 4,
+            "fusion": 2,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q217",
+          "text": "venison chops in sweet ketchup sauce",
+          "recipe_title": "Deer Chop Hurry",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q219",
+          "text": "soft indian flatbread with oil",
+          "recipe_title": "Roomali Roti",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 7,
+            "hybrid": 8
+          }
+        },
+        {
+          "query_id": "q220",
+          "text": "balsamic marinated pork loin",
+          "recipe_title": "Balsamic Roasted Pork Loin",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q222",
+          "text": "cold pasta with salmon and dill",
+          "recipe_title": "Salmon Pasta Salad with Dill",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q244",
+          "text": "gluten free zucchini soup creamy",
+          "recipe_title": "Zucchini Soup",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q245",
+          "text": "potato and meat pie with vegetables",
+          "recipe_title": "Cornish Finnish Michigan Pasties",
+          "ranks": {
+            "sparse": 4,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q246",
+          "text": "banana chocolate crumb muffins",
+          "recipe_title": "Banana Chip Muffins I",
+          "ranks": {
+            "sparse": 3,
+            "dense": 4,
+            "fusion": 4,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q247",
+          "text": "spicy chocolate pumpkin bread",
+          "recipe_title": "Chocolate-Pumpkin Spice Cake",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q252",
+          "text": "grilled beef tri-tip herb rub",
+          "recipe_title": "Grilled Tri-Tip with Oregon Herb Rub",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q257",
+          "text": "gluten-free pastry with raspberry filling",
+          "recipe_title": "Gluten Free Danish",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 2,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q258",
+          "text": "coconut-flavored meringue cookies",
+          "recipe_title": "Perfect Coconut Macaroons",
+          "ranks": {
+            "sparse": 1,
+            "dense": 18,
+            "fusion": 5,
+            "hybrid": 11
+          }
+        },
+        {
+          "query_id": "q262",
+          "text": "lighter pecan cookies with butter and oil",
+          "recipe_title": "Pecan Shortbread Cookies",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q280",
+          "text": "grilled bell peppers with jalapeno and cheese",
+          "recipe_title": "Grilled Peppers",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q281",
+          "text": "warm, coffee-flavored dessert in mug",
+          "recipe_title": "Easy Coffee Mug Cake",
+          "ranks": {
+            "sparse": 6,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q283",
+          "text": "spicy beef tomato chili",
+          "recipe_title": "Award Winning Chili Con Carne",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q288",
+          "text": "hot sweet grilled salmon",
+          "recipe_title": "Dad's Candied Salmon",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q289",
+          "text": "white fish with mustard sauce",
+          "recipe_title": "Tilapia de Jonghe",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q300",
+          "text": "light sponge cake with lemon",
+          "recipe_title": "High-Altitude Angel Food Cake",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 1,
+            "hybrid": 2
+          }
+        }
+      ],
+      "rerank_help": [
+        {
+          "query_id": "q002",
+          "text": "creamy tomato based dressing with vinegar",
+          "recipe_title": "Dorothy Lynch\u00ae Style Salad Dressing",
+          "ranks": {
+            "sparse": null,
+            "dense": 3,
+            "fusion": 13,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q003",
+          "text": "mediterranean chicken hoagie with olives",
+          "recipe_title": "Mediterranean Chicken Sandwich",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 13,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q005",
+          "text": "chocolate cupcakes with cherry cream cheese filling",
+          "recipe_title": "PHILLY Blackforest Stuffed Cupcakes",
+          "ranks": {
+            "sparse": 3,
+            "dense": 15,
+            "fusion": 7,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q006",
+          "text": "chicken breast with green olives",
+          "recipe_title": "Chicken and Olives",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 9,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q009",
+          "text": "easy chicken in white wine sauce",
+          "recipe_title": "Easy After Work Chicken Francaise",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 5,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q011",
+          "text": "strawberry infused syrup for drinks",
+          "recipe_title": "Strawberry Soda Syrup",
+          "ranks": {
+            "sparse": 8,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q012",
+          "text": "yellow split pea soup with curry powder",
+          "recipe_title": "Vegan Split Pea Soup II",
+          "ranks": {
+            "sparse": 1,
+            "dense": 19,
+            "fusion": 4,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q019",
+          "text": "apple and nutmeg fried bites",
+          "recipe_title": "Apple Fritters I",
+          "ranks": {
+            "sparse": 8,
+            "dense": null,
+            "fusion": 15,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q035",
+          "text": "quinoa vegetable stir fry",
+          "recipe_title": "Quinoa with Veggies",
+          "ranks": {
+            "sparse": 13,
+            "dense": 18,
+            "fusion": null,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q037",
+          "text": "baked salmon with maple mustard and nuts",
+          "recipe_title": "Easy Pistachio-Crusted Salmon",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 13,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q039",
+          "text": "rich buttery pastry layers",
+          "recipe_title": "Danish Pastry",
+          "ranks": {
+            "sparse": 1,
+            "dense": 8,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q040",
+          "text": "grilled potato cold side dish",
+          "recipe_title": "Grilled Potato Salad",
+          "ranks": {
+            "sparse": null,
+            "dense": 14,
+            "fusion": null,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q043",
+          "text": "crescent roll veggie pizza with ranch cream cheese",
+          "recipe_title": "Veggie Pizza",
+          "ranks": {
+            "sparse": 2,
+            "dense": 5,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q046",
+          "text": "creamy chicken artichoke spread",
+          "recipe_title": "Chicken Artichoke Dip",
+          "ranks": {
+            "sparse": null,
+            "dense": 10,
+            "fusion": 19,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q050",
+          "text": "cold pasta vegetable salad",
+          "recipe_title": "Cold Tortellini Salad",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q051",
+          "text": "flattened meatball with onions and herbs",
+          "recipe_title": "German Hamburgers (Frikadellen)",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 10,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q053",
+          "text": "canned salmon stew with garlic and tomatoes",
+          "recipe_title": "Salmon Stew (Abalos Style)",
+          "ranks": {
+            "sparse": 1,
+            "dense": 6,
+            "fusion": 4,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q054",
+          "text": "fresh veggie and chicken wraps",
+          "recipe_title": "Easy Spring Rolls",
+          "ranks": {
+            "sparse": null,
+            "dense": 3,
+            "fusion": 6,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q060",
+          "text": "silky chocolate and cream cheese spread",
+          "recipe_title": "Chocolate Cream Frosting",
+          "ranks": {
+            "sparse": 12,
+            "dense": null,
+            "fusion": null,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q064",
+          "text": "smoked ham and kidney bean stew",
+          "recipe_title": "Ham and Bean Soup I",
+          "ranks": {
+            "sparse": 1,
+            "dense": 4,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q070",
+          "text": "vanilla oreo cream cheese frosting cupcakes",
+          "recipe_title": "Minnie Mouse\u00ae Cupcakes",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q071",
+          "text": "sweet hush puppies for breakfast",
+          "recipe_title": "Crispy Cornmeal Drop Doughnuts",
+          "ranks": {
+            "sparse": 6,
+            "dense": 3,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q076",
+          "text": "greek yogurt with fruit and nuts frozen dessert",
+          "recipe_title": "Yogurt Bark",
+          "ranks": {
+            "sparse": null,
+            "dense": 14,
+            "fusion": null,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q078",
+          "text": "garlic asparagus in the oven",
+          "recipe_title": "Quick and Easy Baked Asparagus",
+          "ranks": {
+            "sparse": 5,
+            "dense": 2,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q084",
+          "text": "smoky spicy egg appetizer",
+          "recipe_title": "Spicy Bacon Deviled Eggs",
+          "ranks": {
+            "sparse": null,
+            "dense": 14,
+            "fusion": null,
+            "hybrid": 20
+          }
+        },
+        {
+          "query_id": "q088",
+          "text": "cool cucumber avocado rolls",
+          "recipe_title": "Homemade Vegetarian Sushi Rolls",
+          "ranks": {
+            "sparse": 1,
+            "dense": 4,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q089",
+          "text": "detox water with ginger and cinnamon sticks",
+          "recipe_title": "Lemon, Ginger, and Cinnamon Flavored Water",
+          "ranks": {
+            "sparse": 2,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q091",
+          "text": "garlic marinated carrots",
+          "recipe_title": "Marinated Carrots Antipasto",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q094",
+          "text": "cashew crusted fish with panko",
+          "recipe_title": "Cashew Crusted Trout",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q101",
+          "text": "creamy pumpkin soup with spices",
+          "recipe_title": "Cream of Pumpkin Soup",
+          "ranks": {
+            "sparse": 11,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q107",
+          "text": "sweet pineapple teriyaki sauce",
+          "recipe_title": "Asian Pineapple Sauce",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q109",
+          "text": "creamy corn chile dip with jalape\u00f1o",
+          "recipe_title": "Corn Dip",
+          "ranks": {
+            "sparse": 3,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q110",
+          "text": "sweet buttermilk butter bread",
+          "recipe_title": "Buttermilk Honey Bread",
+          "ranks": {
+            "sparse": 11,
+            "dense": 3,
+            "fusion": 6,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q113",
+          "text": "maple syrup tart with raisins and nuts",
+          "recipe_title": "Real Canadian Butter Tarts, eh?",
+          "ranks": {
+            "sparse": 3,
+            "dense": null,
+            "fusion": 9,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q118",
+          "text": "mexican lasagna with ground turkey and ricotta",
+          "recipe_title": "Smothered Mexican Lasagna",
+          "ranks": {
+            "sparse": 2,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q119",
+          "text": "baked eggplant with cheese and sauce",
+          "recipe_title": "Baked Eggplant Parmesan",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q126",
+          "text": "crispy yuca fries with lime",
+          "recipe_title": "Yuca Frita",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 6,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q127",
+          "text": "spicy lime chicken and bean salad",
+          "recipe_title": "Southwest Chicken Salad I",
+          "ranks": {
+            "sparse": 14,
+            "dense": 20,
+            "fusion": 12,
+            "hybrid": 7
+          }
+        },
+        {
+          "query_id": "q131",
+          "text": "spicy meat and cheese lasagna",
+          "recipe_title": "Italian Lasagna",
+          "ranks": {
+            "sparse": 17,
+            "dense": 3,
+            "fusion": 12,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q132",
+          "text": "sweet tomato pepper stew",
+          "recipe_title": "Jersey Fresh Stewed Tomatoes",
+          "ranks": {
+            "sparse": 1,
+            "dense": 6,
+            "fusion": 5,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q138",
+          "text": "sorghum flour pita for gyros",
+          "recipe_title": "Gluten-Free Flatbread",
+          "ranks": {
+            "sparse": 18,
+            "dense": null,
+            "fusion": null,
+            "hybrid": 8
+          }
+        },
+        {
+          "query_id": "q146",
+          "text": "strawberry cobbler with cinnamon",
+          "recipe_title": "Southern-Style Strawberry Cobbler",
+          "ranks": {
+            "sparse": 4,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q147",
+          "text": "breaded pork chops fried in oil",
+          "recipe_title": "Deep Fried Pork Steak",
+          "ranks": {
+            "sparse": 5,
+            "dense": 2,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q156",
+          "text": "rich chocolate mayonnaise cake",
+          "recipe_title": "Chocolate Mayo Cake",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 3,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q157",
+          "text": "peruvian potato ceviche with fish shrimp",
+          "recipe_title": "Ceviche Peruano",
+          "ranks": {
+            "sparse": 3,
+            "dense": 2,
+            "fusion": 9,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q158",
+          "text": "egyptian hazelnut sesame dip",
+          "recipe_title": "Dukkah",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q164",
+          "text": "tangy honey orange ham",
+          "recipe_title": "Tangy Honey Glazed Ham",
+          "ranks": {
+            "sparse": 1,
+            "dense": null,
+            "fusion": 7,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q167",
+          "text": "mexican meatball soup with salsa",
+          "recipe_title": "Albondigas",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q168",
+          "text": "multigrain bagel with cream cheese and pickles",
+          "recipe_title": "School Lunch Bagel Sandwich",
+          "ranks": {
+            "sparse": 1,
+            "dense": 14,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q170",
+          "text": "gluten-free turkey patty with herbs",
+          "recipe_title": "Easy Gluten-Free Turkey Burgers",
+          "ranks": {
+            "sparse": 2,
+            "dense": null,
+            "fusion": 6,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q172",
+          "text": "stuffed pork with herbs and veggies",
+          "recipe_title": "Stuffed Pork Loin",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 5,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q183",
+          "text": "triple layer chocolate cake with whipped cream filling",
+          "recipe_title": "Perfect Chocolate Cake",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q184",
+          "text": "smoky beef with ketchup and vinegar",
+          "recipe_title": "Slow Cooked Barbecue Beer Beef",
+          "ranks": {
+            "sparse": 17,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q185",
+          "text": "refreshing shrimp with lime and jalape\u00f1o",
+          "recipe_title": "Authentic Mexican Shrimp Cocktail (Coctel de Camarones estilo Mexicano)",
+          "ranks": {
+            "sparse": null,
+            "dense": 13,
+            "fusion": null,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q188",
+          "text": "sugar free barbecue sauce for ribs",
+          "recipe_title": "Sugar-Free BBQ Sauce",
+          "ranks": {
+            "sparse": 15,
+            "dense": 2,
+            "fusion": 8,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q190",
+          "text": "creamy seafood soup with dill and potatoes",
+          "recipe_title": "Matt's Crab & Clam Bisque",
+          "ranks": {
+            "sparse": 12,
+            "dense": null,
+            "fusion": 19,
+            "hybrid": 6
+          }
+        },
+        {
+          "query_id": "q191",
+          "text": "herb-roasted chicken breast",
+          "recipe_title": "Juicy Baked Chicken Breast",
+          "ranks": {
+            "sparse": 3,
+            "dense": 4,
+            "fusion": 5,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q194",
+          "text": "rich chocolate brownie with caramel and nuts",
+          "recipe_title": "Layers Of Love Chocolate Brownies",
+          "ranks": {
+            "sparse": 2,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q195",
+          "text": "mexican flavored rice with tomatoes",
+          "recipe_title": "Mexican Rice I",
+          "ranks": {
+            "sparse": 2,
+            "dense": 2,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q197",
+          "text": "crunchy broccoli bacon cheese salad",
+          "recipe_title": "Broccoli Salad IV",
+          "ranks": {
+            "sparse": 5,
+            "dense": 3,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q199",
+          "text": "fresh corn and avocado dip for chips",
+          "recipe_title": "Corn and Avocado Salsa",
+          "ranks": {
+            "sparse": 7,
+            "dense": 6,
+            "fusion": 7,
+            "hybrid": 5
+          }
+        },
+        {
+          "query_id": "q202",
+          "text": "spicy cabbage broth with masala",
+          "recipe_title": "Masala Cabbage Soup",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 4,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q203",
+          "text": "summer blackberry dessert with butter",
+          "recipe_title": "Mama's Blackberry Cobbler",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q205",
+          "text": "no-churn chocolate ice cream with condensed milk",
+          "recipe_title": "Chocolate Syrup Ice Cream",
+          "ranks": {
+            "sparse": 4,
+            "dense": 6,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q206",
+          "text": "vegan mushroom creamy sauce",
+          "recipe_title": "Vegan Mushroom Gravy",
+          "ranks": {
+            "sparse": 1,
+            "dense": 4,
+            "fusion": 7,
+            "hybrid": 4
+          }
+        },
+        {
+          "query_id": "q212",
+          "text": "dandelion greens saut\u00e9ed spicy",
+          "recipe_title": "Dandelion Greens with a Kick",
+          "ranks": {
+            "sparse": 1,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q218",
+          "text": "basic fruit muffins you can freeze",
+          "recipe_title": "Breakfast Muffins",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 9,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q221",
+          "text": "slow cooked chicken with tomatoes mushrooms",
+          "recipe_title": "Instant Pot\u00ae Chicken Cacciatore",
+          "ranks": {
+            "sparse": 1,
+            "dense": 4,
+            "fusion": 3,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q225",
+          "text": "cheesy chicken and tot casserole",
+          "recipe_title": "Chicken Tater Tot\u00ae Casserole",
+          "ranks": {
+            "sparse": 1,
+            "dense": 4,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q226",
+          "text": "hamburger sausage cheese sauce snack",
+          "recipe_title": "Hanky Panky",
+          "ranks": {
+            "sparse": 1,
+            "dense": 17,
+            "fusion": 12,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q227",
+          "text": "spicy mexican quinoa potluck dish",
+          "recipe_title": "Instant Pot\u00ae Mexican Quinoa",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q228",
+          "text": "shrimp zucchini farro bowl with lemon",
+          "recipe_title": "Shrimp Grain Bowl",
+          "ranks": {
+            "sparse": 4,
+            "dense": null,
+            "fusion": 15,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q229",
+          "text": "cauliflower pasta bake with cheese",
+          "recipe_title": "Cauliflower \"Mac and Cheese\" Bake",
+          "ranks": {
+            "sparse": 1,
+            "dense": 6,
+            "fusion": 5,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q233",
+          "text": "meat-filled dumplings with beef onions",
+          "recipe_title": "Russian Pelmeni",
+          "ranks": {
+            "sparse": 3,
+            "dense": 14,
+            "fusion": 5,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q238",
+          "text": "rich chocolate cake with coconut pecan frosting",
+          "recipe_title": "German Sweet Chocolate Cake I",
+          "ranks": {
+            "sparse": 4,
+            "dense": 5,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q241",
+          "text": "bacon wrapped fries sriracha ketchup",
+          "recipe_title": "Bacon Fries",
+          "ranks": {
+            "sparse": 1,
+            "dense": 4,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q242",
+          "text": "simple sweet muffins",
+          "recipe_title": "Sweeter Muffins",
+          "ranks": {
+            "sparse": 16,
+            "dense": 1,
+            "fusion": 5,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q248",
+          "text": "creamy egg crab casserole",
+          "recipe_title": "Bunch's Crab Casserole",
+          "ranks": {
+            "sparse": null,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q251",
+          "text": "avocado pasta salad with veggies",
+          "recipe_title": "Avocado Whole Wheat Pasta Salad",
+          "ranks": {
+            "sparse": 7,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q253",
+          "text": "chocolate sheet cake with coffee",
+          "recipe_title": "Texas Sheet Cake IV",
+          "ranks": {
+            "sparse": 9,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q256",
+          "text": "lemon cream cheese bite-sized treat",
+          "recipe_title": "Lemon Cheese Ball",
+          "ranks": {
+            "sparse": 19,
+            "dense": 4,
+            "fusion": 12,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q266",
+          "text": "egg muffin cups with bacon and ham",
+          "recipe_title": "Egg Cupcakes",
+          "ranks": {
+            "sparse": 7,
+            "dense": 6,
+            "fusion": 6,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q268",
+          "text": "soft chewy coconut chocolate chip cookies",
+          "recipe_title": "Soft Oatmeal Coconut Chocolate Chip Cookies",
+          "ranks": {
+            "sparse": 3,
+            "dense": 1,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q272",
+          "text": "buttery crescent pastries",
+          "recipe_title": "Butter Crescents",
+          "ranks": {
+            "sparse": 8,
+            "dense": 1,
+            "fusion": 12,
+            "hybrid": 3
+          }
+        },
+        {
+          "query_id": "q274",
+          "text": "fried wontons with chicken and cream cheese",
+          "recipe_title": "Chicken Rangoon",
+          "ranks": {
+            "sparse": 5,
+            "dense": 6,
+            "fusion": 5,
+            "hybrid": 2
+          }
+        },
+        {
+          "query_id": "q276",
+          "text": "fresh avocado jalape\u00f1o cilantro salsa",
+          "recipe_title": "Mean Green Guacamole Salsa",
+          "ranks": {
+            "sparse": 4,
+            "dense": 2,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q284",
+          "text": "baked shrimp dumplings appetizer",
+          "recipe_title": "Baked Shrimp Wontons",
+          "ranks": {
+            "sparse": 4,
+            "dense": 8,
+            "fusion": 4,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q293",
+          "text": "quick cheese spinach pie",
+          "recipe_title": "Quick Spinach Quiche",
+          "ranks": {
+            "sparse": 1,
+            "dense": 2,
+            "fusion": 6,
+            "hybrid": 1
+          }
+        },
+        {
+          "query_id": "q299",
+          "text": "spicy cheese sandwich with bacon and jalape\u00f1o",
+          "recipe_title": "Spicy Pimento Cheese Sandwiches with Avocado and Bacon",
+          "ranks": {
+            "sparse": 1,
+            "dense": 3,
+            "fusion": 2,
+            "hybrid": 1
+          }
+        }
+      ]
+    }
+  },
+  "counts": {
+    "fixed": {
+      "queries": 298,
+      "sparse_win": 18,
+      "dense_win": 16,
+      "rerank_hurt": 52,
+      "rerank_help": 82
+    },
+    "semantic": {
+      "queries": 298,
+      "sparse_win": 17,
+      "dense_win": 17,
+      "rerank_hurt": 57,
+      "rerank_help": 72
+    },
+    "sentence": {
+      "queries": 298,
+      "sparse_win": 19,
+      "dense_win": 17,
+      "rerank_hurt": 56,
+      "rerank_help": 89
+    }
+  },
+  "group_sizes": {
+    "high": 154,
+    "low": 144
+  },
+  "overlap": [
+    {
+      "config": "sparse",
+      "strategy": "fixed",
+      "overlap": "high",
+      "recall@5": 0.9285714285714286,
+      "recall@10": 0.9805194805194806,
+      "recall@20": 0.987012987012987,
+      "mrr": 0.8073959886985097,
+      "ndcg@5": 0.832042663349349,
+      "ndcg@10": 0.8493624554092591,
+      "queries": 154
+    },
+    {
+      "config": "sparse",
+      "strategy": "fixed",
+      "overlap": "low",
+      "recall@5": 0.7361111111111112,
+      "recall@10": 0.8333333333333334,
+      "recall@20": 0.875,
+      "mrr": 0.5634115498698832,
+      "ndcg@5": 0.5938202616632998,
+      "ndcg@10": 0.6260421369187436,
+      "queries": 144
+    },
+    {
+      "config": "sparse",
+      "strategy": "semantic",
+      "overlap": "high",
+      "recall@5": 0.9285714285714286,
+      "recall@10": 0.974025974025974,
+      "recall@20": 0.9805194805194806,
+      "mrr": 0.798274840239126,
+      "ndcg@5": 0.8257836154308885,
+      "ndcg@10": 0.8410549342649173,
+      "queries": 154
+    },
+    {
+      "config": "sparse",
+      "strategy": "semantic",
+      "overlap": "low",
+      "recall@5": 0.7083333333333334,
+      "recall@10": 0.8125,
+      "recall@20": 0.8888888888888888,
+      "mrr": 0.5198945430990387,
+      "ndcg@5": 0.5524493211978972,
+      "ndcg@10": 0.5868715537870379,
+      "queries": 144
+    },
+    {
+      "config": "sparse",
+      "strategy": "sentence",
+      "overlap": "high",
+      "recall@5": 0.9285714285714286,
+      "recall@10": 0.974025974025974,
+      "recall@20": 0.987012987012987,
+      "mrr": 0.8052594591555631,
+      "ndcg@5": 0.8308963374973215,
+      "ndcg@10": 0.845903095874712,
+      "queries": 154
+    },
+    {
+      "config": "sparse",
+      "strategy": "sentence",
+      "overlap": "low",
+      "recall@5": 0.7083333333333334,
+      "recall@10": 0.7986111111111112,
+      "recall@20": 0.8819444444444444,
+      "mrr": 0.5218243775882128,
+      "ndcg@5": 0.5543299865817964,
+      "ndcg@10": 0.5840708641148409,
+      "queries": 144
+    },
+    {
+      "config": "dense",
+      "strategy": "fixed",
+      "overlap": "high",
+      "recall@5": 0.8961038961038961,
+      "recall@10": 0.935064935064935,
+      "recall@20": 0.9545454545454546,
+      "mrr": 0.7317849178238789,
+      "ndcg@5": 0.7680920277231479,
+      "ndcg@10": 0.7806691220425974,
+      "queries": 154
+    },
+    {
+      "config": "dense",
+      "strategy": "fixed",
+      "overlap": "low",
+      "recall@5": 0.8055555555555556,
+      "recall@10": 0.8680555555555556,
+      "recall@20": 0.9027777777777778,
+      "mrr": 0.6483837632275132,
+      "ndcg@5": 0.6787338752953918,
+      "ndcg@10": 0.7004309590685002,
+      "queries": 144
+    },
+    {
+      "config": "dense",
+      "strategy": "semantic",
+      "overlap": "high",
+      "recall@5": 0.8831168831168831,
+      "recall@10": 0.922077922077922,
+      "recall@20": 0.961038961038961,
+      "mrr": 0.7426981981603831,
+      "ndcg@5": 0.7717736844873305,
+      "ndcg@10": 0.7850673657086507,
+      "queries": 154
+    },
+    {
+      "config": "dense",
+      "strategy": "semantic",
+      "overlap": "low",
+      "recall@5": 0.8333333333333334,
+      "recall@10": 0.8680555555555556,
+      "recall@20": 0.9236111111111112,
+      "mrr": 0.6487412789189749,
+      "ndcg@5": 0.6885332733541797,
+      "ndcg@10": 0.7000766246041734,
+      "queries": 144
+    },
+    {
+      "config": "dense",
+      "strategy": "sentence",
+      "overlap": "high",
+      "recall@5": 0.8571428571428571,
+      "recall@10": 0.9025974025974026,
+      "recall@20": 0.9415584415584416,
+      "mrr": 0.7201883967916697,
+      "ndcg@5": 0.7474499336877276,
+      "ndcg@10": 0.7632828760144296,
+      "queries": 154
+    },
+    {
+      "config": "dense",
+      "strategy": "sentence",
+      "overlap": "low",
+      "recall@5": 0.8263888888888888,
+      "recall@10": 0.8611111111111112,
+      "recall@20": 0.9097222222222222,
+      "mrr": 0.6601300705467372,
+      "ndcg@5": 0.6962383630419064,
+      "ndcg@10": 0.707574536334305,
+      "queries": 144
+    },
+    {
+      "config": "fusion",
+      "strategy": "fixed",
+      "overlap": "high",
+      "recall@5": 0.9285714285714286,
+      "recall@10": 0.974025974025974,
+      "recall@20": 0.9935064935064936,
+      "mrr": 0.7998965320393892,
+      "ndcg@5": 0.8267142476376594,
+      "ndcg@10": 0.8412073207544252,
+      "queries": 154
+    },
+    {
+      "config": "fusion",
+      "strategy": "fixed",
+      "overlap": "low",
+      "recall@5": 0.8194444444444444,
+      "recall@10": 0.8680555555555556,
+      "recall@20": 0.9305555555555556,
+      "mrr": 0.622245696954643,
+      "ndcg@5": 0.6634007480330318,
+      "ndcg@10": 0.6791422222212451,
+      "queries": 144
+    },
+    {
+      "config": "fusion",
+      "strategy": "semantic",
+      "overlap": "high",
+      "recall@5": 0.9285714285714286,
+      "recall@10": 0.9805194805194806,
+      "recall@20": 0.9935064935064936,
+      "mrr": 0.8215009557542025,
+      "ndcg@5": 0.8417361540573349,
+      "ndcg@10": 0.858658289795241,
+      "queries": 154
+    },
+    {
+      "config": "fusion",
+      "strategy": "semantic",
+      "overlap": "low",
+      "recall@5": 0.8263888888888888,
+      "recall@10": 0.8958333333333334,
+      "recall@20": 0.9236111111111112,
+      "mrr": 0.6210224635663232,
+      "ndcg@5": 0.6641205354335997,
+      "ndcg@10": 0.6868998177459799,
+      "queries": 144
+    },
+    {
+      "config": "fusion",
+      "strategy": "sentence",
+      "overlap": "high",
+      "recall@5": 0.922077922077922,
+      "recall@10": 0.961038961038961,
+      "recall@20": 0.987012987012987,
+      "mrr": 0.7911299018441875,
+      "ndcg@5": 0.8183093654950152,
+      "ndcg@10": 0.8315322111031627,
+      "queries": 154
+    },
+    {
+      "config": "fusion",
+      "strategy": "sentence",
+      "overlap": "low",
+      "recall@5": 0.7777777777777778,
+      "recall@10": 0.8611111111111112,
+      "recall@20": 0.9166666666666666,
+      "mrr": 0.6092182245142772,
+      "ndcg@5": 0.6399632015058905,
+      "ndcg@10": 0.6669889385073166,
+      "queries": 144
+    },
+    {
+      "config": "hybrid",
+      "strategy": "fixed",
+      "overlap": "high",
+      "recall@5": 0.961038961038961,
+      "recall@10": 0.9935064935064936,
+      "recall@20": 1.0,
+      "mrr": 0.8459520998482037,
+      "ndcg@5": 0.8708766682999467,
+      "ndcg@10": 0.8821447736765099,
+      "queries": 154
+    },
+    {
+      "config": "hybrid",
+      "strategy": "fixed",
+      "overlap": "low",
+      "recall@5": 0.8680555555555556,
+      "recall@10": 0.9375,
+      "recall@20": 0.9513888888888888,
+      "mrr": 0.6831101190476191,
+      "ndcg@5": 0.7214121090459834,
+      "ndcg@10": 0.7443912326151427,
+      "queries": 144
+    },
+    {
+      "config": "hybrid",
+      "strategy": "semantic",
+      "overlap": "high",
+      "recall@5": 0.9675324675324676,
+      "recall@10": 0.9935064935064936,
+      "recall@20": 1.0,
+      "mrr": 0.85116341991342,
+      "ndcg@5": 0.8773316263942336,
+      "ndcg@10": 0.8860546402110356,
+      "queries": 154
+    },
+    {
+      "config": "hybrid",
+      "strategy": "semantic",
+      "overlap": "low",
+      "recall@5": 0.8680555555555556,
+      "recall@10": 0.9305555555555556,
+      "recall@20": 0.9513888888888888,
+      "mrr": 0.657716049382716,
+      "ndcg@5": 0.7029573476368451,
+      "ndcg@10": 0.723794717849064,
+      "queries": 144
+    },
+    {
+      "config": "hybrid",
+      "strategy": "sentence",
+      "overlap": "high",
+      "recall@5": 0.961038961038961,
+      "recall@10": 0.9935064935064936,
+      "recall@20": 1.0,
+      "mrr": 0.8433905380333953,
+      "ndcg@5": 0.8691261706543322,
+      "ndcg@10": 0.8801297155742569,
+      "queries": 154
+    },
+    {
+      "config": "hybrid",
+      "strategy": "sentence",
+      "overlap": "low",
+      "recall@5": 0.8611111111111112,
+      "recall@10": 0.9305555555555556,
+      "recall@20": 0.9513888888888888,
+      "mrr": 0.6726581289081289,
+      "ndcg@5": 0.7108307270023319,
+      "ndcg@10": 0.7342072407631804,
+      "queries": 144
+    }
+  ],
+  "rerank_net": {
+    "fixed": {
+      "hurt": 52,
+      "help": 82,
+      "same": 164,
+      "hurt_left_top5": 9,
+      "help_entered_top5": 21,
+      "net_into_top5": 12,
+      "median_drop_when_hurt": 1.0,
+      "hurt_left_top20": 0,
+      "help_from_outside_top20": 4
+    },
+    "semantic": {
+      "hurt": 57,
+      "help": 72,
+      "same": 169,
+      "hurt_left_top5": 7,
+      "help_entered_top5": 19,
+      "net_into_top5": 12,
+      "median_drop_when_hurt": 1,
+      "hurt_left_top20": 0,
+      "help_from_outside_top20": 5
+    },
+    "sentence": {
+      "hurt": 56,
+      "help": 89,
+      "same": 153,
+      "hurt_left_top5": 9,
+      "help_entered_top5": 27,
+      "net_into_top5": 18,
+      "median_drop_when_hurt": 1.0,
+      "hurt_left_top20": 0,
+      "help_from_outside_top20": 7
+    }
+  },
+  "hybrid_kinds": {}
+}

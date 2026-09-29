@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe Retrieval Pipeline</title>
+<style>
+  @page { size: A4; margin: 0; }
+  /* One A4 page: nine pipeline stages top to bottom, each a colored rail plus a body. Colors match architecture-a4. */
+  :root {
+    --ink: #1c2330; --ink2: #4a5566; --mute: #6f7a8a; --line: #8a94a4; --edge: #d3d8df;
+    --bg: #ffffff; --soft: #f5f6f8;
+    --build: #b7791f; --build-bg: #fdf6e7;
+    --serve: #2b6cb0; --serve-bg: #ebf3fc;
+    --eval: #2f855a; --eval-bg: #eaf6ef;
+    --db: #475569; --db-bg: #eef1f5;
+    --mono: ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--ink); font-size: 9.7px; line-height: 1.28;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .page { width: 794px; height: 1123px; padding: 28px 36px 20px; display: flex; flex-direction: column; overflow: hidden; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 11px; }
+  h1 { font-size: 23px; letter-spacing: -0.02em; }
+  .sub { font-size: 12px; color: var(--ink2); margin-top: 3px; }
+  .meta { text-align: right; font-size: 10.5px; color: var(--mute); line-height: 1.5; }
+  code { font-family: var(--mono); font-size: 9.4px; white-space: nowrap; }
+  b { font-weight: 650; }
+
+  .rows { display: flex; flex-direction: column; gap: 6px; }
+  .row { display: grid; grid-template-columns: 92px 1fr; border: 1px solid var(--edge); border-radius: 8px; overflow: hidden; }
+  .rail { background: var(--c-bg); border-right: 2px solid var(--c); padding: 7px 9px; display: flex; flex-direction: column; gap: 2px; }
+  .rail .n { font-size: 17px; font-weight: 750; color: var(--c); line-height: 1; font-variant-numeric: tabular-nums; }
+  .rail .s { font-size: 9px; font-weight: 700; letter-spacing: 0.08em; color: var(--c); text-transform: uppercase; }
+  .build { --c: var(--build); --c-bg: var(--build-bg); }
+  .db { --c: var(--db); --c-bg: var(--db-bg); }
+  .serve { --c: var(--serve); --c-bg: var(--serve-bg); }
+  .eval { --c: var(--eval); --c-bg: var(--eval-bg); }
+
+  .body { padding: 6px 11px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 14px; align-items: start; }
+  .body.one { grid-template-columns: 1fr; gap: 5px; }
+  .body.wide { grid-template-columns: 1.5fr 1fr; }
+  .body.mid { grid-template-columns: 1.25fr 1fr; }
+  .body > * { min-width: 0; }
+  .why { color: var(--ink2); }
+  .why li { list-style: none; padding-left: 10px; position: relative; }
+  .why li + li { margin-top: 1px; }
+  .why li::before { content: ""; position: absolute; left: 1px; top: 5.5px; width: 4px; height: 4px; border-radius: 50%; background: var(--c); }
+  .h { font-weight: 650; margin-bottom: 2px; }
+
+  .flow { display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+  .chip { border: 1px solid var(--edge); background: #fff; border-radius: 5px; padding: 3px 6px; line-height: 1.25; }
+  .chip.hi { border-color: var(--c); background: var(--c-bg); }
+  .chip small { display: block; color: var(--mute); font-size: 8.8px; }
+  .arr { display: inline-block; width: 13px; height: 7px; position: relative; flex: none; }
+  .arr::before { content: ""; position: absolute; left: 0; right: 4px; top: 3px; border-top: 1.2px solid var(--line); }
+  .arr::after { content: ""; position: absolute; right: 0; top: 0; border-left: 5px solid var(--line); border-top: 3.5px solid transparent; border-bottom: 3.5px solid transparent; }
+  .stack { display: flex; flex-direction: column; gap: 3px; }
+
+  table { border-collapse: collapse; width: 100%; font-variant-numeric: tabular-nums; }
+  th { text-align: left; font-size: 8.6px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--mute); padding: 0 6px 2px 0; border-bottom: 1px solid var(--edge); white-space: nowrap; }
+  td { padding: 1.2px 6px 1.2px 0; border-bottom: 1px solid var(--soft); vertical-align: middle; }
+  table.nw td, td.nw { white-space: nowrap; }
+  td.r, th.r { text-align: right; }
+  td.wrap { white-space: normal; }
+  td.ex { color: var(--mute); }
+  tr.pick td { font-weight: 650; }
+  .bar { display: inline-block; height: 7px; border-radius: 2px; background: var(--c); vertical-align: middle; margin-right: 3px; }
+  .bar.g { background: var(--line); }
+  .tag { font-size: 8.4px; font-weight: 700; letter-spacing: 0.04em; color: var(--c); text-transform: uppercase; }
+
+  .chunks { display: flex; gap: 4px; align-items: stretch; }
+  .ck { border: 1px solid var(--edge); border-radius: 4px; padding: 3px 5px; background: #fff; font-size: 9.4px; }
+  .ck.step { background: var(--c-bg); border-color: var(--c); }
+  .brace { display: flex; gap: 4px; font-size: 8.6px; color: var(--mute); margin-top: 3px; }
+
+  svg { display: block; }
+  svg text { font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; fill: var(--ink); font-size: 9.4px; }
+  svg .m { font-family: var(--mono); font-size: 9px; }
+  svg .mute { fill: var(--mute); font-size: 8.4px; }
+  svg .ln { fill: none; stroke: var(--line); stroke-width: 1.2; }
+
+  .lat { display: flex; height: 12px; border-radius: 3px; overflow: hidden; border: 1px solid var(--edge); width: 100%; }
+  .lat span { display: block; height: 100%; }
+  .legend { display: flex; gap: 12px; font-size: 9px; color: var(--ink2); margin-top: 3px; flex-wrap: wrap; }
+  .sw { display: inline-block; width: 8px; height: 8px; border-radius: 2px; vertical-align: -1px; margin-right: 3px; }
+
+  .r9 .bar:not(.g) { background: var(--serve); }
+  footer { margin-top: auto; font-size: 9px; color: var(--mute); border-top: 1px solid var(--edge); padding-top: 6px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div>
+      <h1>Recipe Retrieval pipeline</h1>
+      <p class="sub">From the raw CSV to a ranked answer. Every model is used as downloaded and runs locally.</p>
+    </div>
+    <div class="meta">IS603<br>September 2026</div>
+  </header>
+
+  <div class="rows">
+
+    <!-- 1 Ingest -->
+    <section class="row build">
+      <div class="rail"><span class="n">1</span><span class="s">Ingest</span></div>
+      <div class="body wide">
+        <div>
+          <div class="h">Parse and clean the Shengtao/recipe CSV</div>
+          <table>
+            <tr><th>Field</th><th>What we do</th><th>Example</th></tr>
+            <tr><td>url</td><td>drop duplicate rows</td><td class="ex">32,722 rows to 32,719</td></tr>
+            <tr><td>prep, cook, total time</td><td>text to minutes</td><td class="ex">"1 hr 10 mins" to 70</td></tr>
+            <tr><td>ingredients</td><td>one row per line</td><td class="ex">kept as written</td></tr>
+            <tr><td>fractions</td><td>rewrite as plain text</td><td class="ex">"1 ½ cups" to "1 1/2 cups"</td></tr>
+            <tr><td>nutrition</td><td>keep 19 of 32 columns</td><td class="ex">13 dropped, over 99% empty</td></tr>
+            <tr><td>category, author</td><td>move to lookup tables</td><td class="ex">22 categories</td></tr>
+            <tr><td>directions</td><td>split into sentences</td><td class="ex">used to cut Step chunks</td></tr>
+          </table>
+        </div>
+        <div>
+          <div class="h">Models used while ingesting</div>
+          <table>
+            <tr><th>Model</th><th>Used for</th></tr>
+            <tr><td rowspan="2" style="vertical-align:top"><code>nomic-embed-text</code></td><td>one vector per Chunk</td></tr>
+            <tr><td>one vector per sentence</td></tr>
+            <tr><td><code>bert-base-uncased</code></td><td>token counts for fixed cuts</td></tr>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 Database design -->
+    <section class="row db">
+      <div class="rail"><span class="n">2</span><span class="s">Database design</span></div>
+      <div class="body">
+        <svg viewBox="0 0 342 98" width="342" height="98" role="img" aria-label="Tables and how they relate">
+          <path class="ln" d="M78,12 L108,24"/><path class="ln" d="M78,40 L108,32"/>
+          <path class="ln" d="M196,24 L230,11"/><path class="ln" d="M196,32 L230,36"/>
+          <path class="ln" d="M152,40 L262,64"/><path class="ln" d="M220,78 L230,78"/>
+          <rect x="0" y="2" width="78" height="20" rx="4" fill="#fff" stroke="#d3d8df"/><text x="39" y="15" class="m" text-anchor="middle">category</text>
+          <rect x="0" y="30" width="78" height="20" rx="4" fill="#fff" stroke="#d3d8df"/><text x="39" y="43" class="m" text-anchor="middle">author</text>
+          <rect x="108" y="16" width="88" height="24" rx="4" fill="#eef1f5" stroke="#475569" stroke-width="1.3"/><text x="152" y="31.5" class="m" text-anchor="middle" style="font-weight:700">recipe</text>
+          <rect x="230" y="1" width="112" height="20" rx="4" fill="#fff" stroke="#d3d8df"/><text x="286" y="14" class="m" text-anchor="middle">recipe_nutrition</text>
+          <rect x="230" y="26" width="112" height="20" rx="4" fill="#fff" stroke="#d3d8df"/><text x="286" y="39" class="m" text-anchor="middle">recipe_ingredient</text>
+          <rect x="108" y="67" width="112" height="22" rx="4" fill="#fff" stroke="#d3d8df"/><text x="164" y="81.5" class="m" text-anchor="middle">chunking_strategy</text>
+          <rect x="230" y="60" width="112" height="36" rx="4" fill="#eef1f5" stroke="#475569" stroke-width="1.3"/>
+          <text x="286" y="74" class="m" text-anchor="middle" style="font-weight:700">chunk</text>
+          <text x="286" y="88" class="mute" text-anchor="middle">one partition per strategy</text>
+          <text x="0" y="68" class="mute">Source tables in 3NF</text>
+          <text x="0" y="80" class="mute">chunk is built from them</text>
+          <text x="0" y="91" class="mute">and never edited by hand</text>
+        </svg>
+        <table>
+          <tr><th>Choice</th><th>Reason</th></tr>
+          <tr><td>12 filter columns on <code>chunk</code></td><td>index filters only its own table</td></tr>
+          <tr><td>one partition per strategy</td><td>keeps BM25 counts apart</td></tr>
+          <tr><td><code>loaded_at</code> flag</td><td>half-built ones stay hidden</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- 3 Chunking -->
+    <section class="row build">
+      <div class="rail"><span class="n">3</span><span class="s">Chunking</span></div>
+      <div class="body" style="grid-template-columns:1fr 1.05fr">
+        <div>
+          <div class="h">One Recipe becomes</div>
+          <div class="chunks">
+            <span class="ck">Summary<br><span style="color:var(--mute)">title, description</span></span>
+            <span class="ck">Ingredients<br><span style="color:var(--mute)">whole list</span></span>
+            <span class="ck step">Step 1</span><span class="ck step">Step 2</span><span class="ck step">Step 3</span>
+          </div>
+          <div class="brace"><span style="width:137px">same in every strategy</span><span>only this part changes</span></div>
+          <div class="why" style="margin-top:3px">Every Chunk starts with the Recipe title. Chunks do not overlap.</div>
+        </div>
+        <table>
+          <tr><th>Strategy</th><th>Step chunk cut</th><th class="r">Steps</th><th class="r">Median</th></tr>
+          <tr><td><code>semantic</code></td><td>topic change, 80 to 400 chars</td><td class="r">101,000</td><td class="r">185 ch</td></tr>
+          <tr><td><code>fixed</code></td><td>every 56 tokens</td><td class="r">100,536</td><td class="r">224 ch</td></tr>
+          <tr><td><code>sentence</code></td><td>every 3 sentences</td><td class="r">110,314</td><td class="r">178 ch</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- 4 Models -->
+    <section class="row build">
+      <div class="rail"><span class="n">4</span><span class="s">Choosing models</span></div>
+      <div class="body one">
+        <table>
+          <tr><th>Job</th><th>Model</th><th>Size</th><th>Runs in</th><th>Input</th></tr>
+          <tr><td>Embed text</td><td><code>nomic-embed-text</code></td><td>768 dims</td><td>Ollama</td><td>prefix <code>search_document:</code> or <code>search_query:</code></td></tr>
+          <tr><td>Rerank Hybrid results</td><td><b><code>mxbai-rerank-base-v1</code></b></td><td>184M params</td><td><span style="white-space:nowrap">sentence-transformers</span></td><td>query and Chunk together</td></tr>
+          <tr><td>Write test queries</td><td><code>qwen2.5:7b</code></td><td>7B params</td><td>Ollama</td><td>evaluation only</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- 5 Index -->
+    <section class="row db">
+      <div class="rail"><span class="n">5</span><span class="s">Index</span></div>
+      <div class="body">
+        <div>
+          <div class="h">One ParadeDB index per partition holds</div>
+          <table>
+            <tr><td style="width:66px"><span class="tag">BM25 text</span></td><td><code>content</code>, with English stemming</td></tr>
+            <tr><td><span class="tag">Exact</span></td><td><code>category</code>, <code>kind</code>, <code>strategy</code></td></tr>
+            <tr><td><span class="tag">Numbers</span></td><td>minutes, rating, calories, protein and 5 more</td></tr>
+            <tr><td><span class="tag">Vector</span></td><td><code>embedding</code>, cosine, cluster index with probe 0.02</td></tr>
+          </table>
+        </div>
+        <div>
+          <div class="h">Vector index tested</div>
+          <table>
+            <tr><th>Index</th><th class="r">Dense R@5</th><th class="r">Hybrid R@5</th></tr>
+            <tr class="pick"><td>ParadeDB cluster index <span class="tag">used</span></td><td class="r">0.859</td><td class="r">0.919</td></tr>
+            <tr><td>pgvector HNSW</td><td class="r">0.872</td><td class="r">0.916</td></tr>
+          </table>
+          <div class="why" style="margin-top:3px">One index serves BM25, vectors and filters together.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 Search -->
+    <section class="row serve">
+      <div class="rail"><span class="n">6</span><span class="s">Search</span></div>
+      <div class="body one">
+        <div class="flow">
+          <span class="chip">query</span><span class="arr"></span>
+          <span class="chip">embed<small>23 ms</small></span><span class="arr"></span>
+          <span class="stack"><span class="chip">BM25 top 50 <small style="display:inline">18 ms</small></span><span class="chip">cosine top 50 <small style="display:inline">32 ms</small></span></span>
+          <span class="arr"></span>
+          <span class="chip">merge with RRF<small>k is 60, under 1 ms</small></span><span class="arr"></span>
+          <span class="chip hi">rerank top 50<small>mxbai, 837 ms</small></span><span class="arr"></span>
+          <span class="chip">top 5 Recipes</span>
+        </div>
+        <div>
+          <div class="lat" aria-label="Hybrid latency by stage">
+            <span style="width:2.5%;background:#9fb8d6"></span>
+            <span style="width:2.0%;background:#b7791f"></span>
+            <span style="width:3.5%;background:#2f855a"></span>
+            <span style="width:90.9%;background:#2b6cb0"></span>
+          </div>
+          <div class="legend">
+            <span><i class="sw" style="background:#9fb8d6"></i>embed</span>
+            <span><i class="sw" style="background:#b7791f"></i>BM25</span>
+            <span><i class="sw" style="background:#2f855a"></i>cosine</span>
+            <span><i class="sw" style="background:#2b6cb0"></i>rerank takes 91% of 921 ms</span>
+            <span>Sparse stops after BM25, Dense after cosine</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7 Reranker choice -->
+    <section class="row serve">
+      <div class="rail"><span class="n">7</span><span class="s">Testing the reranker</span></div>
+      <div class="body mid">
+        <table class="nw">
+          <tr><th>Reranker</th><th class="r">Recall@5</th><th class="r">MRR</th><th>Relative time</th></tr>
+          <tr><td><code>MiniLM-L6-v2</code></td><td class="r">0.923</td><td class="r">0.799</td><td><span class="bar g" style="width:6px"></span>0.26</td></tr>
+          <tr><td><code>bge-reranker-base</code></td><td class="r">0.919</td><td class="r">0.758</td><td><span class="bar g" style="width:24px"></span>1.00</td></tr>
+          <tr class="pick"><td><code>mxbai-rerank-base-v1</code></td><td class="r">0.966</td><td class="r">0.895</td><td><span class="bar" style="width:30px"></span>1.25</td></tr>
+          <tr><td><code>bge-reranker-v2-m3</code></td><td class="r">0.943</td><td class="r">0.838</td><td><span class="bar g" style="width:70px"></span>2.90</td></tr>
+        </table>
+        <table>
+          <tr><th>Setting</th><th>Tried</th><th>Kept</th></tr>
+          <tr><td>Reranker</td><td>4 models</td><td>mxbai</td></tr>
+          <tr><td>Candidates reranked</td><td>20, 50, 100</td><td>50</td></tr>
+          <tr><td>RRF k</td><td>10, 60, 100</td><td>60</td></tr>
+          <tr><td>Changed per test</td><td colspan="2">one setting, same queries</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- 8 Evaluate -->
+    <section class="row eval">
+      <div class="rail"><span class="n">8</span><span class="s">Evaluate</span></div>
+      <div class="body one">
+        <div class="flow">
+          <span class="chip">300 Recipes<small>seed 603</small></span><span class="arr"></span>
+          <span class="chip">qwen2.5 writes queries<small>3 to 8 words</small></span><span class="arr"></span>
+          <span class="chip">298 kept<small>57 fixed by hand</small></span><span class="arr"></span>
+          <span class="chip hi">pooled answer key<small>see table below</small></span><span class="arr"></span>
+          <span class="chip">score 4 configs<small>Recall@k, MRR, nDCG</small></span>
+        </div>
+        <table>
+          <tr><th style="width:62px">Answer key</th><th>What happens</th><th class="r">Count</th></tr>
+          <tr><td><b>Pool</b></td><td>collect the top 5 Recipes of every config, strategy and test for each query</td><td class="r nw">5,428 pairs</td></tr>
+          <tr><td><b>Judge</b></td><td>an LLM marks a pair right if the searcher would be as happy with it as with the source Recipe</td><td class="r nw">691 right</td></tr>
+          <tr><td><b>Score</b></td><td>a query counts at the rank of its first right Recipe, not only the one it came from</td><td class="r nw">180 queries gained one</td></tr>
+          <tr><td><b>Check</b></td><td>judge 120 pairs again, blind</td><td class="r nw">110 agreed</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <!-- 9 Results -->
+    <section class="row eval r9">
+      <div class="rail"><span class="n">9</span><span class="s">Results</span></div>
+      <div class="body wide">
+        <table class="nw">
+          <tr><th>Config</th><th>Recall@5</th><th class="r">MRR</th><th>Median time</th></tr>
+          <tr><td>Sparse, BM25</td><td><span class="bar g" style="width:65.8px"></span>0.822</td><td class="r">0.664</td><td><span class="bar g" style="width:1.1px"></span>19 ms</td></tr>
+          <tr><td>Dense, cosine</td><td><span class="bar g" style="width:68.7px"></span>0.859</td><td class="r">0.697</td><td><span class="bar g" style="width:4.1px"></span>69 ms</td></tr>
+          <tr><td>Fusion, RRF only</td><td><span class="bar g" style="width:70.3px"></span>0.879</td><td class="r">0.725</td><td><span class="bar g" style="width:2.7px"></span>46 ms</td></tr>
+          <tr><td>Hybrid, bge-reranker-base</td><td><span class="bar g" style="width:73.5px"></span>0.919</td><td class="r">0.758</td><td><span class="bar g" style="width:47.8px"></span>805 ms</td></tr>
+          <tr class="pick"><td>Hybrid, mxbai</td><td><span class="bar" style="width:77.3px"></span>0.966</td><td class="r">0.895</td><td><span class="bar" style="width:60px"></span>1,010 ms</td></tr>
+        </table>
+        <table>
+          <tr><th>Question</th><th>Answer</th></tr>
+          <tr><td>Best quality</td><td>Hybrid with mxbai</td></tr>
+          <tr><td>Fastest</td><td>Sparse</td></tr>
+          <tr><td>Sparse wins on</td><td>exact words</td></tr>
+          <tr><td>Dense wins on</td><td>synonyms, like stew for soup</td></tr>
+          <tr><td>Chunking strategy</td><td>no clear winner</td></tr>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <footer>Rows 7 and 9 use the semantic strategy. Report run 20260928-122309, 298 queries. Row 9 times are medians of three timing runs on an M-series MacBook. The mxbai time is estimated from its test run, where it took 1.25 times as long as bge. Row 6 times come from that run.</footer>
+</div>
+</body>
+</html>
