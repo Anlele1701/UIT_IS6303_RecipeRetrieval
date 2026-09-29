@@ -4,6 +4,7 @@ import { Connectors } from './components/Connectors'
 import { CloseIcon, SearchIcon, SlidersIcon } from './components/icons'
 import { ResultColumn, type ColumnState } from './components/ResultColumn'
 import { SettingsDrawer } from './components/SettingsDrawer'
+import { SiteNav } from './components/SiteNav'
 import { activeChips, DEFAULT_FILTERS, toParams, type Filters } from './filters'
 import { COLUMN_ORDER } from './methods'
 import { useStrategy } from './useStrategy'
@@ -111,6 +112,8 @@ export default function App() {
             <h1 className="text-xl font-semibold tracking-tight text-ink">Recipe Search</h1>
             <p className="text-sm text-muted">Compare how three retrieval methods rank the same query.</p>
           </div>
+          <div className="flex items-center gap-3">
+          <SiteNav current="/" />
           <button
             ref={settingsButton}
             type="button"
@@ -125,6 +128,7 @@ export default function App() {
               <span className="rounded-full bg-ink px-1.5 text-xs font-semibold tabular-nums text-surface">{chips.length}</span>
             )}
           </button>
+          </div>
         </header>
 
         {serviceProblem && (
