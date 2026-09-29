@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe Retrieval Results</title>
+<style>
+  /* Every results figure for the report, one per #hash (table, overlap, reranker, rerank), rendered at 794 px
+     like pipeline-a4. One set of tokens: blue marks the series each figure is about, grey is everything else. */
+  :root {
+    --ink: #1c2330; --ink2: #4a5566; --mute: #6f7a8a; --grid: #e6e9ee; --axis: #b9c0ca; --rule: #d3d8df; --soft: #f5f6f8;
+    --bg: #ffffff; --neutral: #8a94a4; --accent: #2b6cb0; --accent-bg: #ebf3fc; --warm: #b7791f;
+    --sans: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; --mono: ui-monospace, Menlo, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body { font-family: var(--sans); color: var(--ink); font-size: 12px; line-height: 1.3; font-variant-numeric: tabular-nums;
+         -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .fig { width: 794px; padding: 18px 36px 16px; }
+  .fig[hidden] { display: none !important; }
+
+  /* shared header row: legend left, scope right */
+  .head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 8px; font-size: 11px; }
+  .legend { display: flex; gap: 18px; color: var(--ink2); }
+  .legend i { display: inline-block; vertical-align: -1px; margin-right: 6px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ink2); }
+  .ring { width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--ink2); }
+  .sq { width: 12px; height: 9px; border-radius: 2px; }
+  .scope { color: var(--mute); }
+  .mono { font-family: var(--mono); font-size: 11.5px; color: var(--ink2); }
+
+  /* table */
+  table { border-collapse: collapse; width: 100%; }
+  th { font-size: 11px; font-weight: 650; color: var(--mute); text-align: right; padding: 0 8px 6px; border-bottom: 2px solid var(--ink); white-space: nowrap; }
+  th.l, td.l { text-align: left; }
+  td { padding: 5px 8px; text-align: right; border-bottom: 1px solid var(--soft); }
+  td.s { vertical-align: top; padding-top: 6px; }
+  tr.g td { border-top: 1px solid var(--rule); }
+  tr.best td:not(.s) { background: var(--accent-bg); font-weight: 650; }
+
+  svg { display: block; }
+  svg text { font-family: var(--sans); font-size: 11px; fill: var(--ink2); }
+  svg .lab { fill: var(--ink); font-size: 12px; }
+  svg .hi { fill: var(--ink); font-weight: 650; }
+  svg .tick { fill: var(--mute); font-size: 10px; }
+  svg .mono { font-family: var(--mono); font-size: 11.5px; fill: var(--ink2); }
+</style>
+</head>
+<body>
+
+<section class="fig" id="table">
+  <table>
+    <tr><th class="l">Chiến lược</th><th class="l">Cấu hình</th><th>Recall@5</th><th>Recall@10</th><th>Recall@20</th><th>MRR</th><th>nDCG@5</th><th>nDCG@10</th></tr>
+    <tbody id="t-body"></tbody>
+  </table>
+</section>
+
+<section class="fig" id="overlap">
+  <div class="head">
+    <div class="legend"><span><i class="dot"></i>Trùng từ cao, 154 truy vấn</span><span><i class="ring"></i>Trùng từ thấp, 144 truy vấn</span></div>
+    <div class="scope">Recall@5, chiến lược semantic</div>
+  </div>
+  <svg id="s-overlap" width="722" height="212"></svg>
+</section>
+
+<section class="fig" id="reranker">
+  <div class="head">
+    <div class="legend"><span><i class="dot" style="background:var(--accent)"></i>Mô hình được chọn</span><span><i class="dot" style="background:var(--neutral)"></i>Mô hình khác</span></div>
+    <div class="scope">Hybrid, chiến lược semantic</div>
+  </div>
+  <svg id="s-reranker" width="722" height="276"></svg>
+</section>
+
+<section class="fig" id="rerank">
+  <div class="head">
+    <div class="legend"><span><i class="sq" style="background:var(--warm)"></i>Kém hơn sau khi xếp hạng lại</span><span><i class="sq" style="background:var(--accent)"></i>Tốt hơn sau khi xếp hạng lại</span></div>
+    <div class="scope">Số truy vấn, trên 298</div>
+  </div>
+  <svg id="s-rerank" width="722" height="124"></svg>
+</section>
+
+<script>
+const NS = 'http://www.w3.org/2000/svg';
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const f3 = v => v.toFixed(3);
+function el(parent, tag, attrs, text) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (text !== undefined) e.textContent = text;
+  parent.appendChild(e); return e;
+}
+
+// Bảng 1: Report run, pooled qrels, 298 queries. Columns: R@5, R@10, R@20, MRR, nDCG@5, nDCG@10.
+(function () {
+  const data = {
+    fixed:    { Sparse: [.836, .909, .933, .689, .717, .741], Dense: [.852, .903, .930, .691, .725, .742],
+                Fusion: [.876, .923, .963, .714, .748, .763], Hybrid: [.916, .966, .977, .767, .799, .816] },
+    semantic: { Sparse: [.822, .896, .936, .664, .694, .718], Dense: [.859, .896, .943, .697, .732, .744],
+                Fusion: [.879, .940, .960, .725, .756, .776], Hybrid: [.919, .963, .977, .758, .793, .808] },
+    sentence: { Sparse: [.822, .889, .936, .668, .697, .719], Dense: [.842, .883, .926, .691, .723, .736],
+                Fusion: [.852, .913, .953, .703, .732, .752], Hybrid: [.913, .963, .977, .761, .793, .810] },
+  };
+  const body = document.getElementById('t-body');
+  for (const [strategy, configs] of Object.entries(data)) {
+    Object.entries(configs).forEach(([name, vals], i) => {
+      const tr = document.createElement('tr');
+      if (i === 0) tr.className = 'g';
+      if (name === 'Hybrid') tr.classList.add('best');
+      tr.innerHTML = (i === 0 ? `<td class="l s mono" rowspan="4">${strategy}</td>` : '') +
+        `<td class="l">${name}</td>` + vals.map(v => `<td>${f3(v)}</td>`).join('');
+      body.appendChild(tr);
+    });
+  }
+})();
+
+// Hình 2: dumbbell, Recall@5 on high vs low word overlap (semantic)
+(function () {
+  const svg = document.getElementById('s-overlap');
+  const rows = [['Sparse', .929, .708], ['Dense', .883, .833], ['Fusion', .929, .826], ['Hybrid', .968, .868]];
+  const x0 = 110, x1 = 700, d0 = .65, d1 = 1.0, X = v => x0 + (v - d0) / (d1 - d0) * (x1 - x0);
+  const top = 22, step = 44, bottom = top + step * (rows.length - 1) + 24;
+  [.7, .8, .9, 1.0].forEach(t => {
+    el(svg, 'line', { x1: X(t), x2: X(t), y1: 4, y2: bottom, stroke: css('--grid') });
+    el(svg, 'text', { x: X(t), y: bottom + 15, 'text-anchor': 'middle', class: 'tick' }, t.toFixed(1));
+  });
+  rows.forEach(([name, hi, lo], i) => {
+    const y = top + i * step, key = name === 'Hybrid', c = key ? css('--accent') : css('--neutral');
+    el(svg, 'text', { x: 0, y: y + 4, class: key ? 'lab hi' : 'lab' }, name);
+    el(svg, 'line', { x1: X(lo), x2: X(hi), y1: y, y2: y, stroke: c, 'stroke-width': 2 });
+    el(svg, 'circle', { cx: X(hi), cy: y, r: 5.5, fill: c, stroke: '#fff', 'stroke-width': 2 });
+    el(svg, 'circle', { cx: X(lo), cy: y, r: 4.5, fill: '#fff', stroke: c, 'stroke-width': 2 });
+    el(svg, 'text', { x: X(hi) + 10, y: y + 4, class: key ? 'hi' : '' }, f3(hi));
+    el(svg, 'text', { x: X(lo) - 10, y: y + 4, 'text-anchor': 'end', class: key ? 'hi' : '' }, f3(lo));
+    el(svg, 'text', { x: (X(lo) + X(hi)) / 2, y: y - 9, 'text-anchor': 'middle', class: 'tick' }, 'giảm ' + f3(hi - lo));
+  });
+})();
+
+// Hình 3: scatter, MRR vs relative rerank time (semantic)
+(function () {
+  const svg = document.getElementById('s-reranker');
+  const pts = [['ms-marco-MiniLM-L6-v2', .26, .799, 'r'], ['bge-reranker-base', 1.0, .758, 'r'],
+               ['mxbai-rerank-base-v1', 1.25, .895, 'r'], ['bge-reranker-v2-m3', 2.90, .838, 'l']];
+  const x0 = 54, x1 = 710, y0 = 222, y1 = 10, dx = [0, 3.1], dy = [.72, .92];
+  const X = v => x0 + (v - dx[0]) / (dx[1] - dx[0]) * (x1 - x0), Y = v => y0 - (v - dy[0]) / (dy[1] - dy[0]) * (y0 - y1);
+  [.75, .80, .85, .90].forEach(t => {
+    el(svg, 'line', { x1: x0, x2: x1, y1: Y(t), y2: Y(t), stroke: css('--grid') });
+    el(svg, 'text', { x: x0 - 8, y: Y(t) + 3.5, 'text-anchor': 'end', class: 'tick' }, t.toFixed(2));
+  });
+  [0, 1, 2, 3].forEach(t => el(svg, 'text', { x: X(t), y: y0 + 15, 'text-anchor': 'middle', class: 'tick' }, t));
+  el(svg, 'line', { x1: x0, x2: x1, y1: y0, y2: y0, stroke: css('--axis') });
+  el(svg, 'text', { x: (x0 + x1) / 2, y: y0 + 36, 'text-anchor': 'middle' }, 'Thời gian xếp hạng lại so với bge-reranker-base (lần)');
+  el(svg, 'text', { x: 10, y: (y0 + y1) / 2, 'text-anchor': 'middle', transform: `rotate(-90 10 ${(y0 + y1) / 2})` }, 'MRR');
+  pts.forEach(([name, t, m, side]) => {
+    const key = name.startsWith('mxbai'), c = key ? css('--accent') : css('--neutral');
+    el(svg, 'circle', { cx: X(t), cy: Y(m), r: key ? 7 : 6, fill: c, stroke: '#fff', 'stroke-width': 2 });
+    const tx = side === 'r' ? X(t) + 12 : X(t) - 12, anchor = side === 'r' ? 'start' : 'end';
+    el(svg, 'text', { x: tx, y: Y(m) - 1, 'text-anchor': anchor, class: key ? 'lab hi' : 'lab' }, name);
+    el(svg, 'text', { x: tx, y: Y(m) + 13, 'text-anchor': anchor, class: 'tick' }, `MRR ${f3(m)}, ${t.toFixed(2)} lần`);
+  });
+})();
+
+// Hình 4: diverging bars, queries where reranking helped vs hurt
+(function () {
+  const svg = document.getElementById('s-rerank');
+  const rows = [['fixed', 82, 52], ['semantic', 72, 57], ['sentence', 89, 56]];
+  const mid = 330, k = 2.9, top = 8, h = 26, step = 38;
+  rows.forEach(([name, help, hurt], i) => {
+    const y = top + i * step;
+    el(svg, 'text', { x: 0, y: y + h / 2 + 4, class: 'mono' }, name);
+    el(svg, 'rect', { x: mid - hurt * k, y, width: hurt * k - 1, height: h, rx: 4, fill: css('--warm') });
+    el(svg, 'rect', { x: mid + 1, y, width: help * k, height: h, rx: 4, fill: css('--accent') });
+    el(svg, 'text', { x: mid - hurt * k - 8, y: y + h / 2 + 4, 'text-anchor': 'end' }, hurt);
+    el(svg, 'text', { x: mid + help * k + 8, y: y + h / 2 + 4 }, help);
+    el(svg, 'text', { x: 722, y: y + h / 2 + 4, 'text-anchor': 'end', class: 'tick' }, 'chênh lệch +' + (help - hurt));
+  });
+  el(svg, 'line', { x1: mid, x2: mid, y1: top - 4, y2: top + step * 2 + h + 4, stroke: css('--ink2') });
+})();
+
+// Show only the figure named in the hash, so each renders alone.
+const want = location.hash.slice(1);
+if (want) document.querySelectorAll('.fig').forEach(f => { f.hidden = f.id !== want; });
+</script>
+</body>
+</html>

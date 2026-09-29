@@ -5,7 +5,8 @@ import os
 DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://recipe:recipe@localhost:5434/recipe")
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
 EMBED_MODEL = os.environ.get("EMBED_MODEL", "nomic-embed-text")
-RERANK_MODEL = os.environ.get("RERANK_MODEL", "BAAI/bge-reranker-base")
+# Switched from BAAI/bge-reranker-base after its ablation; the Report run was measured with bge-reranker-base.
+RERANK_MODEL = os.environ.get("RERANK_MODEL", "mixedbread-ai/mxbai-rerank-base-v1")
 
 DEFAULT_K = 5
 MAX_K = 50

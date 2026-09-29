@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe Retrieval Results</title>
+<style>
+  /* One column of report sections, ~880px wide. Same tokens as docs/results-figures.html:
+     blue marks what each section is about, grey is the rest, amber only for "reranking hurt". */
+  :root {
+    --ink: #1c2330; --ink2: #4a5566; --mute: #6f7a8a; --grid: #e6e9ee; --axis: #b9c0ca; --rule: #d3d8df; --soft: #f5f6f8;
+    --bg: #ffffff; --panel: #fafbfc; --neutral: #8a94a4; --accent: #2b6cb0; --accent-bg: #ebf3fc; --warm: #b7791f;
+    --good: #2f855a;
+    --sans: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; --mono: ui-monospace, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink: #e7eaef; --ink2: #b8c0cc; --mute: #8d97a5; --grid: #2a313b; --axis: #4a5361; --rule: #3a424e; --soft: #20262e;
+            --bg: #14181d; --panel: #1a1f26; --neutral: #7d8796; --accent: #5b9be0; --accent-bg: #1c2a3b; --warm: #d49a3a;
+            --good: #4fb07f; color-scheme: dark; }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body { font-family: var(--sans); color: var(--ink); font-size: 14px; line-height: 1.5; font-variant-numeric: tabular-nums; }
+  main { max-width: 900px; margin: 0 auto; padding-inline: 20px; padding-block: 36px 60px; }
+  header { border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 8px; }
+  h1 { font-size: 26px; letter-spacing: -0.02em; text-wrap: balance; }
+  .meta { color: var(--mute); font-size: 12.5px; margin-top: 4px; }
+  .bar-top { position: sticky; top: env(safe-area-inset-top, 0px); background: var(--bg); padding-block: 10px; z-index: 2;
+             display: flex; gap: 10px; align-items: center; flex-wrap: wrap; border-bottom: 1px solid var(--rule); }
+  .bar-top span { color: var(--mute); font-size: 12.5px; }
+  .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 7px; overflow: hidden; }
+  .seg button { font: inherit; font-family: var(--mono); font-size: 12.5px; background: var(--bg); color: var(--ink2); border: 0;
+                padding: 5px 12px; cursor: pointer; }
+  .seg button + button { border-left: 1px solid var(--rule); }
+  .seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+  .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  section { margin-top: 34px; }
+  h2 { font-size: 18px; letter-spacing: -0.01em; margin-bottom: 4px; }
+  .lead { color: var(--ink2); max-width: 68ch; margin-bottom: 12px; }
+  .note { color: var(--mute); font-size: 12.5px; max-width: 72ch; margin-top: 8px; }
+  .note b { color: var(--ink2); font-weight: 600; }
+  .scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  th { font-size: 12px; font-weight: 650; color: var(--mute); text-align: right; padding: 0 8px 6px; border-bottom: 2px solid var(--ink); white-space: nowrap; }
+  th.l, td.l { text-align: left; }
+  td { padding: 5px 8px; text-align: right; border-bottom: 1px solid var(--soft); white-space: nowrap; }
+  td.s { vertical-align: top; font-family: var(--mono); font-size: 12.5px; color: var(--ink2); }
+  tr.g td { border-top: 1px solid var(--rule); }
+  tr.best td:not(.s) { background: var(--accent-bg); font-weight: 650; }
+  tr.sel td { background: var(--accent-bg); }
+  .pill { display: inline-block; font-size: 11px; font-weight: 650; padding: 1px 7px; border-radius: 10px; }
+  .pill.yes { color: var(--good); border: 1px solid var(--good); }
+  .pill.no { color: var(--mute); border: 1px solid var(--rule); }
+  .head { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 12px; margin-bottom: 6px; }
+  .legend { display: flex; gap: 16px; color: var(--ink2); flex-wrap: wrap; }
+  .legend i { display: inline-block; vertical-align: -1px; margin-right: 6px; }
+  .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ink2); }
+  .ring { width: 9px; height: 9px; border-radius: 50%; border: 2px solid var(--ink2); }
+  .sq { width: 12px; height: 9px; border-radius: 2px; }
+  .scope { color: var(--mute); }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .fact { border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; background: var(--panel); min-width: 0; }
+  .fact b { display: block; font-size: 20px; letter-spacing: -0.01em; }
+  .fact span { color: var(--mute); font-size: 12.5px; }
+  svg { display: block; max-width: 100%; height: auto; }
+  svg text { font-family: var(--sans); font-size: 11px; fill: var(--ink2); }
+  svg .lab { fill: var(--ink); font-size: 12px; }
+  svg .hi { fill: var(--ink); font-weight: 650; }
+  svg .tick { fill: var(--mute); font-size: 10px; }
+  svg .mono { font-family: var(--mono); font-size: 11.5px; fill: var(--ink2); }
+  footer { margin-top: 40px; color: var(--mute); font-size: 12px; border-top: 1px solid var(--rule); padding-top: 10px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Recipe Retrieval results</h1>
+    <p class="meta" id="meta"></p>
+  </header>
+
+  <div class="bar-top">
+    <span>Chunking strategy for the charts</span>
+    <div class="seg" id="strategy" role="group" aria-label="Chunking strategy"></div>
+  </div>
+
+  <section>
+    <h2>Main results</h2>
+    <p class="lead">Four search configurations on every Chunking strategy, scored against the pooled qrels. Hybrid is highlighted: it merges Sparse and Dense with RRF, then reranks with a cross-encoder.</p>
+    <div class="scroll"><table id="main"></table></div>
+    <p class="note" id="lat-note"></p>
+  </section>
+
+  <section>
+    <h2>Where Sparse and Dense differ</h2>
+    <p class="lead">Queries split by whether every content word appears in the right Recipe. Sparse needs the exact words and drops the most when they are missing.</p>
+    <div class="head">
+      <div class="legend"><span><i class="dot"></i>High word overlap, <b id="n-high"></b> queries</span><span><i class="ring"></i>Low word overlap, <b id="n-low"></b> queries</span></div>
+      <div class="scope" id="scope-overlap"></div>
+    </div>
+    <svg id="overlap" viewBox="0 0 840 210"></svg>
+  </section>
+
+  <section>
+    <h2>Choosing the reranker</h2>
+    <p class="lead">Each cross-encoder ran in place of bge-reranker-base on the same queries, in the same run. Time is relative to bge-reranker-base.</p>
+    <div class="head">
+      <div class="legend"><span><i class="dot" style="background:var(--accent)"></i>Best MRR</span><span><i class="dot" style="background:var(--neutral)"></i>Other models</span></div>
+      <div class="scope" id="scope-reranker"></div>
+    </div>
+    <svg id="reranker" viewBox="0 0 840 290"></svg>
+  </section>
+
+  <section>
+    <h2>Does reranking always help?</h2>
+    <p class="lead">Queries where Hybrid ranks the right Recipe better or worse than the same candidates before reranking.</p>
+    <div class="head">
+      <div class="legend"><span><i class="sq" style="background:var(--warm)"></i>Worse after reranking</span><span><i class="sq" style="background:var(--accent)"></i>Better after reranking</span></div>
+      <div class="scope" id="scope-rerank"></div>
+    </div>
+    <svg id="rerank" viewBox="0 0 840 130"></svg>
+  </section>
+
+  <section>
+    <h2>Is the difference real?</h2>
+    <p class="lead">Paired bootstrap on per-query differences, 95% interval, with the Holm correction across every test in the report. A difference counts only when the Holm p is below <span id="alpha"></span>.</p>
+    <div class="scroll"><table id="sig"></table></div>
+  </section>
+
+  <section>
+    <h2>Ablations</h2>
+    <p class="lead">One setting changed per run, compared with the default in the same run. Time is the arm's median scaled to the main run.</p>
+    <div class="scroll"><table id="abl"></table></div>
+  </section>
+
+  <section>
+    <h2>Test set and answer key</h2>
+    <div class="facts" id="facts"></div>
+    <p class="note">Each query was written by qwen2.5:7b from one Recipe, then checked by hand. The qrels pool the top 5 Recipes of every configuration, strategy and ablation, and an LLM judged each pair. Recall@5 is exact; Recall@10, Recall@20 and MRR may be slightly low because the pool stops at rank 5.</p>
+  </section>
+
+  <footer id="foot"></footer>
+</main>
+
+<script>
+const DATA = /*__DATA__*/null;
+const NS = 'http://www.w3.org/2000/svg';
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const f3 = v => v.toFixed(3);
+const ms = v => v >= 100 ? Math.round(v).toLocaleString('en-US') : v.toFixed(1);
+const CFG = { sparse: 'Sparse', dense: 'Dense', fusion: 'Fusion', hybrid: 'Hybrid' };
+const STRATS = DATA.run.strategies;
+const ARM = {
+  'reranker-minilm-l6': 'Reranker: ms-marco-MiniLM-L6-v2', 'reranker-mxbai-base': 'Reranker: mxbai-rerank-base-v1',
+  'reranker-bge-v2-m3': 'Reranker: bge-reranker-v2-m3', 'rrf-k-10': 'RRF k = 10', 'rrf-k-100': 'RRF k = 100',
+  'rerank-top-20': 'Rerank 20 candidates', 'rerank-top-100': 'Rerank 100 candidates',
+  'exact-dense': 'Exact Dense search', 'hnsw-dense': 'pgvector HNSW index',
+};
+const MODEL = { 'reranker-minilm-l6': 'ms-marco-MiniLM-L6-v2', 'reranker-mxbai-base': 'mxbai-rerank-base-v1', 'reranker-bge-v2-m3': 'bge-reranker-v2-m3' };
+let strategy = STRATS.includes('semantic') ? 'semantic' : STRATS[0];
+try { const s = localStorage.getItem('strategy'); if (STRATS.includes(s)) strategy = s; } catch (e) {}
+
+function el(parent, tag, attrs = {}, text) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (text !== undefined) e.textContent = text;
+  parent.appendChild(e); return e;
+}
+const clear = svg => { while (svg.firstChild) svg.firstChild.remove(); };
+const row = (config, s) => DATA.metrics.find(m => m.config === config && m.strategy === s);
+
+// header, footer, facts: fixed
+(function () {
+  const r = DATA.run;
+  document.getElementById('meta').textContent =
+    `Report run ${r.name.split('/').pop()}, commit ${r.git_commit}, ${r.queries} queries, strategies ${r.strategies.join(', ')}. ` +
+    `Embedding ${r.embed_model}, reranker ${r.rerank_model}.`;
+  document.getElementById('alpha').textContent = DATA.alpha;
+  document.getElementById('foot').textContent =
+    `Built ${DATA.built_at.slice(0, 16).replace('T', ' ')} from ui/public/report.json by scripts/static_report.py. Latency is the median across ${DATA.timing_repeats.length} timing runs on one laptop.`;
+  const q = DATA.qrels, qs = DATA.query_set, c = DATA.corpus;
+  const facts = [
+    [c.recipes.toLocaleString('en-US'), `Recipes in ${c.categories} categories`],
+    [qs.queries, `test queries, ${qs.rewritten} rewritten by hand`],
+    [q.judged_pairs.toLocaleString('en-US'), 'query and Recipe pairs judged'],
+    [q.relevant_judged, 'pairs judged relevant'],
+    [`${q.agreement.agree} of ${q.agreement.pairs}`, `agreed when judged again, kappa ${q.agreement.kappa}`],
+  ];
+  document.getElementById('facts').innerHTML = facts.map(([b, s]) => `<div class="fact"><b>${b}</b><span>${s}</span></div>`).join('');
+})();
+
+// main table: all strategies, fixed
+(function () {
+  const cols = ['recall@5', 'recall@10', 'recall@20', 'mrr', 'ndcg@5', 'ndcg@10'];
+  let h = '<tr><th class="l">Strategy</th><th class="l">Config</th><th>Recall@5</th><th>Recall@10</th><th>Recall@20</th><th>MRR</th><th>nDCG@5</th><th>nDCG@10</th><th>p50 ms</th><th>p95 ms</th></tr>';
+  for (const s of STRATS) Object.keys(CFG).forEach((c, i) => {
+    const m = row(c, s); if (!m) return;
+    h += `<tr class="${i === 0 ? 'g' : ''} ${c === 'hybrid' ? 'best' : ''}">` +
+      (i === 0 ? `<td class="l s" rowspan="4">${s}</td>` : '') + `<td class="l">${CFG[c]}</td>` +
+      cols.map(k => `<td>${f3(m[k])}</td>`).join('') + `<td>${ms(m.latency.total.p50)}</td><td>${ms(m.latency.total.p95)}</td></tr>`;
+  });
+  document.getElementById('main').innerHTML = h;
+  const pool = DATA.run.chunk_pool, lists = DATA.run.hybrid_candidates;
+  const depth = pool === lists ? `the same depth as each list in Fusion and Hybrid`
+                               : `while Fusion and Hybrid fetch ${lists} for each list, so their times are not comparable`;
+  document.getElementById('lat-note').innerHTML = `<b>Reading the latency.</b> Sparse and Dense each fetch ${pool} Chunks, ${depth}. ` +
+    `In the eval, Sparse always runs right after Hybrid's reranker and Dense right after Sparse, and a database query right after the reranker is slower. ` +
+    `Sparse and Dense times are therefore higher than the same searches inside Fusion. Compare Fusion and Hybrid for cost.`;
+})();
+
+function drawOverlap() {
+  const svg = document.getElementById('overlap'); clear(svg);
+  const pick = (c, o) => DATA.failures.overlap.find(x => x.config === c && x.strategy === strategy && x.overlap === o)['recall@5'];
+  const rows = Object.keys(CFG).map(c => [CFG[c], pick(c, 'high'), pick(c, 'low')]);
+  document.getElementById('n-high').textContent = DATA.failures.group_sizes.high;
+  document.getElementById('n-low').textContent = DATA.failures.group_sizes.low;
+  document.getElementById('scope-overlap').textContent = `Recall@5, ${strategy}`;
+  const lo = Math.floor(Math.min(...rows.map(r => r[2])) * 20) / 20 - 0.05;
+  const x0 = 110, x1 = 810, X = v => x0 + (v - lo) / (1 - lo) * (x1 - x0), top = 22, step = 44, bottom = top + step * 3 + 24;
+  for (let t = Math.ceil(lo * 10) / 10; t <= 1.0001; t += 0.1) {
+    el(svg, 'line', { x1: X(t), x2: X(t), y1: 4, y2: bottom, stroke: css('--grid') });
+    el(svg, 'text', { x: X(t), y: bottom + 15, 'text-anchor': 'middle', class: 'tick' }, t.toFixed(1));
+  }
+  rows.forEach(([name, hi, low], i) => {
+    const y = top + i * step, key = name === 'Hybrid', c = key ? css('--accent') : css('--neutral');
+    el(svg, 'text', { x: 0, y: y + 4, class: key ? 'lab hi' : 'lab' }, name);
+    el(svg, 'line', { x1: X(low), x2: X(hi), y1: y, y2: y, stroke: c, 'stroke-width': 2 });
+    el(svg, 'circle', { cx: X(hi), cy: y, r: 5.5, fill: c, stroke: css('--bg'), 'stroke-width': 2 });
+    el(svg, 'circle', { cx: X(low), cy: y, r: 4.5, fill: css('--bg'), stroke: c, 'stroke-width': 2 });
+    el(svg, 'text', { x: X(hi) + 10, y: y + 4, class: key ? 'hi' : '' }, f3(hi));
+    el(svg, 'text', { x: X(low) - 10, y: y + 4, 'text-anchor': 'end', class: key ? 'hi' : '' }, f3(low));
+    el(svg, 'text', { x: (X(low) + X(hi)) / 2, y: y - 9, 'text-anchor': 'middle', class: 'tick' }, 'drops ' + f3(hi - low));
+  });
+}
+
+function drawReranker() {
+  const svg = document.getElementById('reranker'); clear(svg);
+  const arms = DATA.ablations.filter(a => a.arm in MODEL && a.strategy === strategy && a.config === 'hybrid');
+  if (!arms.length) return;
+  const pts = [[DATA.run.rerank_model.split('/').pop(), 1, arms[0].default.mrr],
+               ...arms.map(a => [MODEL[a.arm], a.latency_ratio.total, a.arm_metrics.mrr])];
+  const best = Math.max(...pts.map(p => p[2]));
+  document.getElementById('scope-reranker').textContent = `MRR of Hybrid, ${strategy}`;
+  const tmax = Math.ceil(Math.max(...pts.map(p => p[1])) + 0.2), mlo = Math.floor(Math.min(...pts.map(p => p[2])) * 50) / 50 - 0.02,
+        mhi = Math.ceil(best * 50) / 50 + 0.02;
+  const x0 = 60, x1 = 810, y0 = 232, y1 = 10, X = v => x0 + v / tmax * (x1 - x0), Y = v => y0 - (v - mlo) / (mhi - mlo) * (y0 - y1);
+  for (let t = Math.ceil(mlo * 20) / 20; t <= mhi; t += 0.05) {
+    el(svg, 'line', { x1: x0, x2: x1, y1: Y(t), y2: Y(t), stroke: css('--grid') });
+    el(svg, 'text', { x: x0 - 8, y: Y(t) + 3.5, 'text-anchor': 'end', class: 'tick' }, t.toFixed(2));
+  }
+  for (let t = 0; t <= tmax; t++) el(svg, 'text', { x: X(t), y: y0 + 15, 'text-anchor': 'middle', class: 'tick' }, t);
+  el(svg, 'line', { x1: x0, x2: x1, y1: y0, y2: y0, stroke: css('--axis') });
+  el(svg, 'text', { x: (x0 + x1) / 2, y: y0 + 38, 'text-anchor': 'middle' }, 'Rerank time relative to bge-reranker-base (times)');
+  el(svg, 'text', { x: 12, y: (y0 + y1) / 2, 'text-anchor': 'middle', transform: `rotate(-90 12 ${(y0 + y1) / 2})` }, 'MRR');
+  pts.forEach(([name, t, m]) => {
+    const key = m === best, c = key ? css('--accent') : css('--neutral'), right = X(t) < (x0 + x1) / 2 + 150;
+    el(svg, 'circle', { cx: X(t), cy: Y(m), r: key ? 7 : 6, fill: c, stroke: css('--bg'), 'stroke-width': 2 });
+    const tx = right ? X(t) + 12 : X(t) - 12, anchor = right ? 'start' : 'end';
+    el(svg, 'text', { x: tx, y: Y(m) - 1, 'text-anchor': anchor, class: key ? 'lab hi' : 'lab' }, name);
+    el(svg, 'text', { x: tx, y: Y(m) + 13, 'text-anchor': anchor, class: 'tick' }, `MRR ${f3(m)}, ${t.toFixed(2)} times`);
+  });
+}
+
+function drawRerank() {
+  const svg = document.getElementById('rerank'); clear(svg);
+  const counts = DATA.failures.counts;
+  document.getElementById('scope-rerank').textContent = `Queries, out of ${DATA.run.queries}`;
+  const max = Math.max(...STRATS.flatMap(s => [counts[s].rerank_help, counts[s].rerank_hurt]));
+  const mid = 380, k = 300 / max, top = 8, h = 26, step = 38;
+  STRATS.forEach((s, i) => {
+    const y = top + i * step, help = counts[s].rerank_help, hurt = counts[s].rerank_hurt;
+    el(svg, 'text', { x: 0, y: y + h / 2 + 4, class: s === strategy ? 'mono hi' : 'mono' }, s);
+    el(svg, 'rect', { x: mid - hurt * k, y, width: hurt * k - 1, height: h, rx: 4, fill: css('--warm') });
+    el(svg, 'rect', { x: mid + 1, y, width: help * k, height: h, rx: 4, fill: css('--accent') });
+    el(svg, 'text', { x: mid - hurt * k - 8, y: y + h / 2 + 4, 'text-anchor': 'end' }, hurt);
+    el(svg, 'text', { x: mid + help * k + 8, y: y + h / 2 + 4 }, help);
+  });
+  el(svg, 'line', { x1: mid, x2: mid, y1: top - 4, y2: top + step * (STRATS.length - 1) + h + 4, stroke: css('--ink2') });
+}
+
+function drawSig() {
+  const alpha = DATA.alpha, name = x => `${CFG[x.config]} ${x.strategy === strategy ? '' : x.strategy}`.trim();
+  const tests = DATA.significance.filter(t => t.arm === null &&
+    ((t.a.strategy === strategy && t.b.strategy === strategy) || (t.a.config === t.b.config && t.a.strategy === strategy)));
+  let h = '<tr><th class="l">Comparison</th><th class="l">Metric</th><th>Difference</th><th>95% interval</th><th>Holm p</th><th class="l">Significant</th></tr>';
+  for (const t of tests) {
+    const cmp = t.a.strategy === t.b.strategy ? `${CFG[t.a.config]} vs ${CFG[t.b.config]}` : `${CFG[t.a.config]} ${t.a.strategy} vs ${t.b.strategy}`;
+    const yes = t.p_holm < alpha;
+    h += `<tr><td class="l">${cmp}</td><td class="l">${t.metric === 'mrr' ? 'MRR' : 'Recall@5'}</td><td>${t.diff >= 0 ? '+' : ''}${f3(t.diff)}</td>` +
+      `<td>${f3(t.ci_lo)} to ${f3(t.ci_hi)}</td><td>${t.p_holm >= 1 ? '1.000' : t.p_holm.toFixed(3)}</td>` +
+      `<td class="l"><span class="pill ${yes ? 'yes' : 'no'}">${yes ? 'yes' : 'no'}</span></td></tr>`;
+  }
+  document.getElementById('sig').innerHTML = h;
+}
+
+function drawAbl() {
+  const alpha = DATA.alpha, rows = DATA.ablations.filter(a => a.strategy === strategy);
+  let h = '<tr><th class="l">Change</th><th class="l">Config</th><th>Recall@5</th><th>MRR</th><th>MRR Holm p</th><th>Median ms</th></tr>';
+  for (const a of rows) {
+    const p = a.tests.mrr.p_holm, sel = a.arm === 'reranker-mxbai-base';
+    h += `<tr class="${sel ? 'sel' : ''}"><td class="l">${ARM[a.arm] || a.arm}</td><td class="l">${CFG[a.config]}</td>` +
+      `<td>${f3(a.default['recall@5'])} to ${f3(a.arm_metrics['recall@5'])}</td><td>${f3(a.default.mrr)} to ${f3(a.arm_metrics.mrr)}</td>` +
+      `<td>${p >= 1 ? '1.000' : p.toFixed(3)} <span class="pill ${p < alpha ? 'yes' : 'no'}">${p < alpha ? 'yes' : 'no'}</span></td>` +
+      `<td>${a.p50_on_report_scale ? ms(a.p50_on_report_scale.total ?? a.p50_on_report_scale) : ''}</td></tr>`;
+  }
+  document.getElementById('abl').innerHTML = h;
+}
+
+function drawAll() { drawOverlap(); drawReranker(); drawRerank(); drawSig(); drawAbl(); }
+
+const seg = document.getElementById('strategy');
+STRATS.forEach(s => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.id = 'strategy-' + s; b.textContent = s; b.setAttribute('aria-pressed', String(s === strategy));
+  b.addEventListener('click', () => {
+    strategy = s;
+    seg.querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', String(x === b)));
+    try { localStorage.setItem('strategy', s); } catch (e) {}
+    drawAll();
+  });
+  seg.appendChild(b);
+});
+drawAll();
+</script>
+</body>
+</html>

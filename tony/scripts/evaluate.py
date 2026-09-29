@@ -43,7 +43,7 @@ from api.filters import SearchParams, where_clause  # noqa: E402
 QUERY_SET = ROOT / "eval" / "queries.jsonl"
 QRELS = ROOT / "eval" / "qrels.csv"
 RUNS = ROOT / "eval" / "runs"
-POOL = 100  # Chunks Sparse and Dense pull before deduping to the top metrics.DEPTH Recipes
+POOL = 50  # Chunks Sparse and Dense pull before deduping; same depth as each list in Fusion and Hybrid
 
 Embedder = Callable[[str], str]  # query text -> pgvector literal
 Scorer = Callable[[str, list[str]], list[float]]  # the reranker: query, Chunk texts -> scores

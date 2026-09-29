@@ -2,7 +2,9 @@
 
 Sparse (BM25), Dense (embedding) and Hybrid (RRF + Reranking) retrieval over the [Shengtao/recipe](https://huggingface.co/datasets/Shengtao/recipe) dataset, stored in ParadeDB under three Chunking strategies (`fixed`, `sentence`, `semantic`). An evaluation scores four configs on a fixed Query set with Recall@k, MRR, nDCG@k and latency. Text only: images in the dataset aren't used.
 
-The write-up is the Report page at `/report` (see [Report](#report)). The headline numbers are in [Results](#results).
+To see the results with no setup, open [`report.html`](report.html) in a browser. To install and run the app, follow [GETTING_STARTED.md](GETTING_STARTED.md).
+
+The full write-up is the Report page at `/report` (see [Report](#report)). The headline numbers are in [Results](#results).
 
 Terms like Chunk, Chunking strategy and Fusion baseline are defined in [CONTEXT.md](CONTEXT.md). Design decisions are in [docs/adr/](docs/adr/). Dense search uses ParadeDB's own vector index rather than pgvector HNSW, so one index per partition serves BM25, vectors and Filters; [ADR 0003](docs/adr/0003-serve-dense-from-paradedb-index.md) explains why, and the report measures HNSW as an ablation.
 
@@ -24,6 +26,7 @@ To rebuild the bundle after changing a run or a label file (needs `data/recipe.c
 
 ```sh
 uv run python scripts/report_bundle.py
+uv run python scripts/static_report.py   # rebuilds report.html from the bundle
 ```
 
 It reads only what the manifest `eval/report.json` names and fails if the check run, a Timing repeat or an Ablation run ranks a query differently from the Report run. A test fails when the committed bundle is older than its inputs.
@@ -57,7 +60,7 @@ ollama pull nomic-embed-text
 ollama pull qwen2.5:7b   # optional, see step 4
 ```
 
-Two Hugging Face models download on first use, no account needed: `bert-base-uncased` (tokenizer for the `fixed` strategy) and `BAAI/bge-reranker-base` (~1 GB, the reranker used by Hybrid).
+Two Hugging Face models download on first use, no account needed: `bert-base-uncased` (tokenizer for the `fixed` strategy) and `mixedbread-ai/mxbai-rerank-base-v1` (~0.7 GB, the reranker used by Hybrid).
 
 Every setting has a default that matches `docker-compose.yml`. Override with env vars if yours differ: `DATABASE_URL`, `OLLAMA_URL`, `EMBED_MODEL`, `RERANK_MODEL`, `HYBRID_CANDIDATES`, `RERANK_TOP` (all in `api/config.py`) and `QUERY_MODEL` (in `scripts/make_queries.py`).
 
@@ -125,6 +128,12 @@ The API isn't needed for the eval, which calls the retrieval code directly.
 
 ```sh
 uv run scripts/evaluate.py
+```
+
+The Report run was measured with `BAAI/bge-reranker-base`, which Hybrid served until the reranker ablation picked `mxbai-rerank-base-v1`. To reproduce the Report run's Hybrid numbers, run with the old reranker:
+
+```sh
+RERANK_MODEL=BAAI/bge-reranker-base uv run scripts/evaluate.py
 ```
 
 Runs every query through four configs under every loaded Chunking strategy:
