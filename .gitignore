@@ -1,10 +1,15 @@
-__pycache__/
-*.pyc
+# Local dataset and logs (recipe.csv is ~61 MB)
+data/
+.pytest_cache/
 .venv/
-venv/
-data_cache/
-# experiments/ is deliberately not ignored: the query set defines the ground
-# truth behind docs/08-11, and the per-query records let every table and
-# error-analysis card be regenerated without re-running retrieval.
+__pycache__/
+node_modules/
 .DS_Store
+# built by `npm run build` in ui/
+api/static/
+# Evaluation run folders; keep one for the report with `git add -f`
+eval/runs/
+# Local secrets, never committed
 .env
+.env.*
+!.env.example

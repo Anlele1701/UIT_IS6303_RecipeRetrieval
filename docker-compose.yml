@@ -1,20 +1,23 @@
+name: is603  # the live data is in volume is603_recipe-pgdata; the folder name would pick another volume
+
 services:
   paradedb:
-    image: paradedb/paradedb:0.25.6-pg17
+    image: paradedb/paradedb@sha256:8da5d202fe31875af32a49e802ce17cfbc146b0672306f4109809efee1e6f916  # pg17, pg_search 0.25.9
+    container_name: recipe-paradedb
     environment:
-      POSTGRES_DB: recipes
       POSTGRES_USER: recipe
       POSTGRES_PASSWORD: recipe
+      POSTGRES_DB: recipe
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - "5434:5432"
     volumes:
-      - paradedb_data:/var/lib/postgresql/data
+      - recipe-pgdata:/var/lib/postgresql/data
+      - ./sql/docker-init.sql:/docker-entrypoint-initdb.d/10-schema.sql:ro
+      - ./sql:/docker-entrypoint-initdb.d/sql:ro  # a folder, so the image doesn't run these itself
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U recipe -d recipes"]
-      interval: 2s
-      timeout: 5s
-      retries: 30
-    restart: unless-stopped
+      test: ["CMD-SHELL", "pg_isready -U recipe -d recipe"]
+      interval: 5s
+      retries: 20
 
 volumes:
-  paradedb_data:
+  recipe-pgdata:

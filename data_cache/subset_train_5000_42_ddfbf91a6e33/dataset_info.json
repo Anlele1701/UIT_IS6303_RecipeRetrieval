@@ -1,0 +1,53 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "recipe-with-images",
+  "dataset_size": 1012214047,
+  "description": "",
+  "download_size": 948066949,
+  "features": {
+    "image": {
+      "_type": "Image"
+    },
+    "name": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "ingredients": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "description": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 1960280996,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 707823373,
+      "num_examples": 36404,
+      "shard_lengths": [
+        27002,
+        9402
+      ],
+      "dataset_name": "recipe-with-images"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 304390674,
+      "num_examples": 15603,
+      "dataset_name": "recipe-with-images"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
