@@ -1,0 +1,37 @@
+{
+  "started_at": "2026-09-28T17:38:39",
+  "seconds": 36.9,
+  "git_commit": "07211b9",
+  "configs": [
+    "fusion"
+  ],
+  "strategies": [
+    "fixed",
+    "semantic",
+    "sentence"
+  ],
+  "query_set": "eval/queries.jsonl",
+  "query_set_sha256": "c1877d4d8f1f17c2c8c1161b8074bfbac03f4311e94b83542e21bceef720501e",
+  "queries": 298,
+  "limit": null,
+  "chunk_pool": 100,
+  "depth": 20,
+  "hybrid_candidates": 50,
+  "rerank_top": 50,
+  "rrf_k": 60,
+  "embed_model": "nomic-embed-text",
+  "rerank_model": null,
+  "warmup_queries": 1,
+  "config_order": "rotated",
+  "arm": {
+    "key": "rrf-k-100",
+    "configs": [
+      "fusion"
+    ],
+    "set": {
+      "rrf_k": 100
+    }
+  },
+  "pg_search_version": "0.25.9",
+  "vector_cluster_max_probe": 0.02
+}

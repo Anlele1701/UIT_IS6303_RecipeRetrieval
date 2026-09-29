@@ -1,0 +1,40 @@
+{
+  "started_at": "2026-09-28T17:39:27",
+  "seconds": 1980.5,
+  "git_commit": "07211b9",
+  "configs": [
+    "hybrid"
+  ],
+  "strategies": [
+    "fixed",
+    "semantic",
+    "sentence"
+  ],
+  "query_set": "eval/queries.jsonl",
+  "query_set_sha256": "c1877d4d8f1f17c2c8c1161b8074bfbac03f4311e94b83542e21bceef720501e",
+  "queries": 298,
+  "limit": null,
+  "chunk_pool": 100,
+  "depth": 20,
+  "hybrid_candidates": 50,
+  "rerank_top": 50,
+  "rrf_k": 60,
+  "embed_model": "nomic-embed-text",
+  "rerank_model": "BAAI/bge-reranker-base",
+  "warmup_queries": 1,
+  "config_order": "rotated",
+  "arm": {
+    "key": "rerank-top-20",
+    "configs": [
+      "hybrid"
+    ],
+    "set": {
+      "rerank_top": 20
+    }
+  },
+  "pg_search_version": "0.25.9",
+  "vector_cluster_max_probe": 0.02,
+  "rescored_from": "eval/runs/20260928-173927",
+  "qrels": "eval/qrels.csv",
+  "qrels_sha256": "6744a9691cd9f6f0477c6146c223919d06531bd84e3ccb753fc4f181b60b3213"
+}

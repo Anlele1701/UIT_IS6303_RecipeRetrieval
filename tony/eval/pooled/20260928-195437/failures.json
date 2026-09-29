@@ -1,0 +1,102 @@
+{
+  "configs": [
+    "hybrid"
+  ],
+  "bucket_names": [],
+  "buckets": {
+    "fixed": {},
+    "semantic": {},
+    "sentence": {}
+  },
+  "counts": {
+    "fixed": {
+      "queries": 298
+    },
+    "semantic": {
+      "queries": 298
+    },
+    "sentence": {
+      "queries": 298
+    }
+  },
+  "group_sizes": {
+    "high": 154,
+    "low": 144
+  },
+  "overlap": [
+    {
+      "config": "hybrid",
+      "strategy": "fixed",
+      "overlap": "high",
+      "recall@5": 0.961038961038961,
+      "recall@10": 0.9935064935064936,
+      "recall@20": 1.0,
+      "mrr": 0.8459520998482037,
+      "ndcg@5": 0.8708766682999467,
+      "ndcg@10": 0.8821447736765099,
+      "queries": 154
+    },
+    {
+      "config": "hybrid",
+      "strategy": "fixed",
+      "overlap": "low",
+      "recall@5": 0.8680555555555556,
+      "recall@10": 0.9375,
+      "recall@20": 0.9513888888888888,
+      "mrr": 0.6831101190476191,
+      "ndcg@5": 0.7214121090459834,
+      "ndcg@10": 0.7443912326151427,
+      "queries": 144
+    },
+    {
+      "config": "hybrid",
+      "strategy": "semantic",
+      "overlap": "high",
+      "recall@5": 0.9675324675324676,
+      "recall@10": 0.9935064935064936,
+      "recall@20": 1.0,
+      "mrr": 0.85116341991342,
+      "ndcg@5": 0.8773316263942336,
+      "ndcg@10": 0.8860546402110356,
+      "queries": 154
+    },
+    {
+      "config": "hybrid",
+      "strategy": "semantic",
+      "overlap": "low",
+      "recall@5": 0.8680555555555556,
+      "recall@10": 0.9305555555555556,
+      "recall@20": 0.9513888888888888,
+      "mrr": 0.657716049382716,
+      "ndcg@5": 0.7029573476368451,
+      "ndcg@10": 0.723794717849064,
+      "queries": 144
+    },
+    {
+      "config": "hybrid",
+      "strategy": "sentence",
+      "overlap": "high",
+      "recall@5": 0.961038961038961,
+      "recall@10": 0.9935064935064936,
+      "recall@20": 1.0,
+      "mrr": 0.8433905380333953,
+      "ndcg@5": 0.8691261706543322,
+      "ndcg@10": 0.8801297155742569,
+      "queries": 154
+    },
+    {
+      "config": "hybrid",
+      "strategy": "sentence",
+      "overlap": "low",
+      "recall@5": 0.8611111111111112,
+      "recall@10": 0.9305555555555556,
+      "recall@20": 0.9513888888888888,
+      "mrr": 0.6726581289081289,
+      "ndcg@5": 0.7108307270023319,
+      "ndcg@10": 0.7342072407631804,
+      "queries": 144
+    }
+  ],
+  "rerank_net": {},
+  "hybrid_kinds": {}
+}
