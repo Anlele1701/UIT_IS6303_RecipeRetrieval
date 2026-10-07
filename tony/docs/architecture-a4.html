@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe Retrieval Architecture</title>
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --ink: #1c2330; --ink2: #4a5566; --mute: #6f7a8a; --line: #8a94a4; --edge: #d3d8df;
+    --bg: #ffffff; --soft: #f5f6f8;
+    --build: #b7791f; --build-bg: #fdf6e7;
+    --serve: #2b6cb0; --serve-bg: #ebf3fc;
+    --eval: #2f855a; --eval-bg: #eaf6ef;
+    --report: #6b46c1; --report-bg: #f2edfc;
+    --ui: #b83280; --ui-bg: #fcedf5;
+    --db: #475569; --db-bg: #eef1f5;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .page { width: 794px; height: 1123px; padding: 36px 40px 30px; display: flex; flex-direction: column; overflow: hidden; }
+  header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--ink); padding-bottom: 10px; margin-bottom: 22px; }
+  h1 { font-size: 25px; letter-spacing: -0.02em; }
+  .sub { font-size: 12.5px; color: var(--ink2); margin-top: 4px; }
+  .meta { text-align: right; font-size: 11px; color: var(--mute); line-height: 1.5; }
+  svg { display: block; }
+  svg text { font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; fill: var(--ink); }
+  svg .mono { font-family: ui-monospace, Menlo, monospace; }
+  svg .lab { font-size: 9.5px; font-weight: 700; letter-spacing: 0.08em; }
+  svg .ttl { font-size: 12.5px; font-weight: 700; }
+  svg .txt { font-size: 10.5px; fill: var(--ink2); }
+  svg .code { font-family: ui-monospace, Menlo, monospace; font-size: 10px; fill: var(--ink); }
+  svg .edge { font-size: 9.5px; fill: var(--mute); }
+  svg .arrow { fill: none; stroke: var(--line); stroke-width: 1.5; }
+  footer { margin-top: auto; font-size: 10px; color: var(--mute); border-top: 1px solid var(--edge); padding-top: 7px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div>
+      <h1>Recipe Retrieval architecture</h1>
+      <p class="sub">How a recipe gets from the CSV into search results and into the report.</p>
+    </div>
+    <div class="meta">IS603<br>September 2026</div>
+  </header>
+
+  <svg viewBox="0 0 714 946" width="714" height="946" role="img" aria-label="Architecture diagram, top to bottom">
+    <defs>
+      <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0,0 L10,5 L0,10 z" fill="#8a94a4"/>
+      </marker>
+    </defs>
+
+    <!-- Dataset -->
+    <rect x="352" y="0" width="200" height="52" rx="9" fill="#fff" stroke="#b9c0ca" stroke-dasharray="4 3"/>
+    <text x="452" y="21" class="ttl" text-anchor="middle">Shengtao/recipe dataset</text>
+    <text x="452" y="39" class="code" text-anchor="middle">data/recipe.csv</text>
+
+    <path class="arrow" d="M452,52 L452,86" marker-end="url(#ah)"/>
+
+    <!-- Build -->
+    <rect x="302" y="88" width="300" height="76" rx="10" fill="var(--build-bg)" stroke="var(--build)" stroke-width="1.5"/>
+    <text x="318" y="107" class="lab" style="fill:var(--build)">BUILD</text>
+    <text x="318" y="124" class="code" style="font-weight:700">scripts/ingest.py</text>
+    <text x="318" y="141" class="txt"><tspan class="code">load</tspan>   puts the CSV into the source tables</text>
+    <text x="318" y="156" class="txt"><tspan class="code">chunk</tspan>  splits Recipes, embeds, builds the index</text>
+
+    <path class="arrow" d="M452,164 L452,198" marker-end="url(#ah)"/>
+
+    <!-- Ollama (side column) -->
+    <rect x="0" y="88" width="140" height="160" rx="10" fill="#fff" stroke="#b9c0ca" stroke-dasharray="4 3"/>
+    <text x="14" y="107" class="lab" style="fill:var(--mute)">OLLAMA</text>
+    <text x="14" y="124" class="ttl">Local models</text>
+    <text x="14" y="150" class="code" style="font-weight:700">nomic-embed-text</text>
+    <text x="14" y="165" class="txt">768-dim vectors for</text>
+    <text x="14" y="179" class="txt">Chunks and queries</text>
+    <text x="14" y="205" class="code" style="font-weight:700">qwen2.5:7b</text>
+    <text x="14" y="220" class="txt">wrote one search query</text>
+    <text x="14" y="234" class="txt">per sampled Recipe</text>
+
+    <path class="arrow" d="M140,126 L300,126" marker-end="url(#ah)"/>
+    <text x="220" y="119" class="edge" text-anchor="middle">Chunk vectors</text>
+    <path class="arrow" d="M70,248 L70,560 L198,560" marker-end="url(#ah)"/>
+    <text x="78" y="400" class="edge">query vectors</text>
+
+    <!-- ParadeDB -->
+    <rect x="210" y="200" width="484" height="250" rx="12" fill="var(--db-bg)" stroke="var(--db)" stroke-width="1.5"/>
+    <text x="226" y="220" class="lab" style="fill:var(--db)">DATABASE</text>
+    <text x="226" y="237" class="ttl">ParadeDB <tspan class="txt" style="font-weight:400">(Postgres 17 with pg_search), Docker, port 5434</tspan></text>
+
+    <rect x="226" y="250" width="452" height="42" rx="7" fill="#fff" stroke="var(--edge)"/>
+    <text x="240" y="267" class="txt" style="fill:var(--ink);font-weight:700">Source tables</text>
+    <text x="240" y="283" class="code" style="font-size:9.5px">recipe, category, author, recipe_ingredient, recipe_nutrition</text>
+
+    <path class="arrow" d="M452,292 L452,310" marker-end="url(#ah)"/>
+    <text x="460" y="305" class="edge">Chunks are built from these</text>
+
+    <rect x="226" y="312" width="452" height="90" rx="7" fill="#fff" stroke="var(--edge)"/>
+    <text x="240" y="330" class="txt" style="fill:var(--ink);font-weight:700"><tspan class="code" style="font-weight:700">chunk</tspan> table, one partition per Chunking strategy</text>
+    <g text-anchor="middle">
+      <rect x="240" y="342" width="136" height="48" rx="6" fill="var(--db-bg)" stroke="var(--edge)"/>
+      <text x="308" y="361" class="code" style="font-weight:700">semantic</text>
+      <text x="308" y="378" class="edge">80 to 400 characters</text>
+      <rect x="384" y="342" width="136" height="48" rx="6" fill="var(--db-bg)" stroke="var(--edge)"/>
+      <text x="452" y="361" class="code" style="font-weight:700">fixed</text>
+      <text x="452" y="378" class="edge">56 tokens</text>
+      <rect x="528" y="342" width="136" height="48" rx="6" fill="var(--db-bg)" stroke="var(--edge)"/>
+      <text x="596" y="361" class="code" style="font-weight:700">sentence</text>
+      <text x="596" y="378" class="edge">3 sentences</text>
+    </g>
+
+    <rect x="226" y="410" width="452" height="28" rx="6" fill="#fff" stroke="var(--edge)"/>
+    <text x="240" y="428" class="txt"><tspan class="code">chunking_strategy</tspan>  a strategy can be searched once <tspan class="code">loaded_at</tspan> is set</text>
+
+    <!-- DB to API and Evaluation -->
+    <path class="arrow" d="M305,450 L305,484" marker-end="url(#ah)"/>
+    <text x="313" y="471" class="edge">BM25 and vector queries</text>
+    <path class="arrow" d="M604,450 L604,484" marker-end="url(#ah)"/>
+    <text x="612" y="471" class="edge">same queries</text>
+
+    <!-- Search API -->
+    <rect x="200" y="486" width="210" height="126" rx="10" fill="var(--serve-bg)" stroke="var(--serve)" stroke-width="1.5"/>
+    <text x="216" y="505" class="lab" style="fill:var(--serve)">SEARCH API</text>
+    <text x="216" y="522" class="txt" style="fill:var(--ink)"><tspan class="code" style="font-weight:700">api/</tspan>, FastAPI on port 8000</text>
+    <text x="216" y="542" class="code">/search/sparse</text>
+    <text x="216" y="557" class="code">/search/dense</text>
+    <text x="216" y="572" class="code">/search/hybrid</text>
+    <text x="216" y="592" class="txt">Hybrid reranks with</text>
+    <text x="216" y="605" class="txt"><tspan class="code">bge-reranker-base</tspan></text>
+
+    <!-- API to Evaluation -->
+    <path class="arrow" d="M410,560 L492,560" marker-end="url(#ah)"/>
+    <text x="451" y="541" class="edge" text-anchor="middle">imports</text>
+    <text x="451" y="553" class="edge" text-anchor="middle">retrieval.py</text>
+
+    <!-- Evaluation -->
+    <rect x="494" y="486" width="220" height="126" rx="10" fill="var(--eval-bg)" stroke="var(--eval)" stroke-width="1.5"/>
+    <text x="510" y="505" class="lab" style="fill:var(--eval)">EVALUATION</text>
+    <text x="510" y="522" class="code" style="font-weight:700">scripts/evaluate.py</text>
+    <text x="510" y="542" class="txt">298 queries</text>
+    <text x="510" y="557" class="txt">4 configs, 3 Chunking strategies</text>
+    <text x="510" y="572" class="txt">Recall@k, MRR, nDCG@k, latency</text>
+    <text x="510" y="597" class="txt">writes <tspan class="code">eval/runs/&lt;id&gt;/</tspan></text>
+
+    <path class="arrow" d="M604,612 L604,646" marker-end="url(#ah)"/>
+
+    <!-- Scoring -->
+    <rect x="494" y="648" width="220" height="74" rx="10" fill="var(--eval-bg)" stroke="var(--eval)" stroke-width="1.5"/>
+    <text x="510" y="667" class="lab" style="fill:var(--eval)">SCORING</text>
+    <text x="510" y="684" class="txt"><tspan class="code">rescore.py</tspan> against <tspan class="code">eval/qrels.csv</tspan></text>
+    <text x="510" y="699" class="txt"><tspan class="code">significance.py</tspan>, <tspan class="code">failures.py</tspan></text>
+    <text x="510" y="714" class="txt">writes <tspan class="code">eval/pooled/&lt;id&gt;/</tspan></text>
+
+    <path class="arrow" d="M604,722 L604,756" marker-end="url(#ah)"/>
+
+    <!-- Report bundle -->
+    <rect x="494" y="758" width="220" height="62" rx="10" fill="var(--report-bg)" stroke="var(--report)" stroke-width="1.5"/>
+    <text x="510" y="777" class="lab" style="fill:var(--report)">REPORT BUNDLE</text>
+    <text x="510" y="794" class="code" style="font-weight:700">scripts/report_bundle.py</text>
+    <text x="510" y="810" class="txt">writes <tspan class="code">ui/public/report.json</tspan></text>
+
+    <!-- UI -->
+    <rect x="0" y="856" width="714" height="90" rx="12" fill="var(--ui-bg)" stroke="var(--ui)" stroke-width="1.5"/>
+    <text x="16" y="876" class="lab" style="fill:var(--ui)">WEB UI</text>
+    <text x="16" y="893" class="txt" style="fill:var(--ink)"><tspan class="code" style="font-weight:700">ui/</tspan></text>
+    <text x="16" y="908" class="txt">React 19, Vite,</text>
+    <text x="16" y="922" class="txt">Tailwind</text>
+
+    <rect x="200" y="880" width="210" height="52" rx="8" fill="#fff" stroke="var(--edge)"/>
+    <text x="305" y="901" class="ttl" text-anchor="middle">Search page</text>
+    <text x="305" y="918" class="txt" text-anchor="middle">calls the search API</text>
+
+    <rect x="494" y="880" width="208" height="52" rx="8" fill="#fff" stroke="var(--edge)"/>
+    <text x="598" y="901" class="ttl" text-anchor="middle">Report page <tspan class="code" style="font-weight:400">/report</tspan></text>
+    <text x="598" y="918" class="txt" text-anchor="middle">reads only report.json</text>
+
+    <path class="arrow" d="M305,612 L305,878" marker-end="url(#ah)"/>
+    <text x="313" y="750" class="edge">results</text>
+    <path class="arrow" d="M598,820 L598,878" marker-end="url(#ah)"/>
+    <text x="612" y="843" class="edge">report.json</text>
+  </svg>
+
+  <footer>Arrows point the way data moves. Numbers are from report run 20260928-122309. Terms are defined in CONTEXT.md.</footer>
+</div>
+</body>
+</html>

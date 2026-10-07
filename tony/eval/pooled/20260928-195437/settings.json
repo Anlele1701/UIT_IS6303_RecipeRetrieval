@@ -36,5 +36,5 @@
   "vector_cluster_max_probe": 0.02,
   "rescored_from": "eval/runs/20260928-195437",
   "qrels": "eval/qrels.csv",
-  "qrels_sha256": "6744a9691cd9f6f0477c6146c223919d06531bd84e3ccb753fc4f181b60b3213"
+  "qrels_sha256": "86282b2ba0f09b712a636b8eefc68ad44b859aca94669d190181b0ec2ffac5a2"
 }

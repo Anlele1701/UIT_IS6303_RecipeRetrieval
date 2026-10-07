@@ -1,0 +1,32 @@
+{
+  "started_at": "2026-10-06T22:41:00",
+  "seconds": 743.7,
+  "git_commit": "80e3c33",
+  "configs": [
+    "fusion",
+    "hybrid"
+  ],
+  "strategies": [
+    "fixed",
+    "semantic",
+    "sentence"
+  ],
+  "query_set": "eval/queries.jsonl",
+  "query_set_sha256": "c1877d4d8f1f17c2c8c1161b8074bfbac03f4311e94b83542e21bceef720501e",
+  "qrels": "eval/qrels.csv",
+  "qrels_sha256": "86282b2ba0f09b712a636b8eefc68ad44b859aca94669d190181b0ec2ffac5a2",
+  "queries": 298,
+  "limit": null,
+  "chunk_pool": 50,
+  "depth": 20,
+  "hybrid_candidates": 50,
+  "rerank_top": 50,
+  "rrf_k": 60,
+  "embed_model": "nomic-embed-text",
+  "rerank_model": "mixedbread-ai/mxbai-rerank-base-v1",
+  "warmup_queries": 1,
+  "config_order": "rotated",
+  "arm": null,
+  "pg_search_version": "0.25.9",
+  "vector_cluster_max_probe": 0.02
+}

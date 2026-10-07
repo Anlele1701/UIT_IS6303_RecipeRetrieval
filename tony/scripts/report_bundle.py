@@ -59,7 +59,8 @@ def read_csv(path: Path) -> list[dict]:
 
 def input_files(manifest: dict) -> list[Path]:
     """Every file the bundle reads, so the freshness test can hash the same list."""
-    runs = [manifest["report_run"], manifest["check_run"], *manifest["timing_repeats"],
+    runs = [manifest["report_run"], manifest["check_run"], manifest["rerank_run"], manifest["rerank_check_run"],
+            *manifest["timing_repeats"],
             *manifest["ablation_runs"].values()]
     single = ROOT / manifest["single_answer_run"]
     files = [MANIFEST, ROOT / "eval" / "queries.jsonl", ROOT / manifest["qrels"], ROOT / manifest["qrels_check"],
@@ -113,6 +114,26 @@ def best_rows(rows: list[dict], metric: str = "recall@5") -> set[tuple[str, str]
     return out
 
 
+SERVED = "hybrid"  # the one config whose served settings changed after the Report run (its reranker)
+
+
+def served(report: dict, rerank: dict) -> dict:
+    """Values keyed (config, ...) from the Report run, with Hybrid's from the rerank run."""
+    return {**{k: v for k, v in report.items() if k[0] != SERVED},
+            **{k: v for k, v in rerank.items() if k[0] == SERVED}}
+
+
+def served_rows(report: list[dict], rerank: list[dict]) -> list[dict]:
+    """Rows from the Report run, with Hybrid's from the rerank run."""
+    return [r for r in report if r["config"] != SERVED] + [r for r in rerank if r["config"] == SERVED]
+
+
+def served_tests(report: list[dict], rerank: list[dict]) -> list[dict]:
+    """The Report run's comparisons, with every one that involves Hybrid taken from the rerank run instead."""
+    involves = lambda t: SERVED in (t["a"]["config"], t["b"]["config"])  # noqa: E731
+    return [t for t in report if not involves(t)] + [t for t in rerank if involves(t)]
+
+
 # ---------------------------------------------------------------------------
 # Blocks
 # ---------------------------------------------------------------------------
@@ -125,10 +146,33 @@ def check_ranks(report_run: Path, runs: dict[str, Path]) -> None:
         raise ValueError("ranks differ from the Report run:\n  " + "\n  ".join(lines))
 
 
-def significance_block(report_run: Path, ablations: dict[str, Path]) -> list[dict]:
-    """Every test in the family, tagged by run, with raw p and Holm p over the whole family."""
-    tests = []
-    for arm, run in [(None, report_run), *ablations.items()]:
+def rerank_block(report_run: Path, rerank_run: Path, rerank_check_run: Path) -> dict:
+    """Hybrid against the Fusion baseline under the served reranker.
+
+    The Report run measured bge-reranker-base; Hybrid now serves mxbai-rerank-base-v1. The rerank run holds
+    Fusion and Hybrid with the served reranker. Its Fusion ranks must match the Report run's, so the two runs can
+    be spliced, and its check run (scored by evaluate.py itself, which knows the Chunk kinds) must rank like it.
+    """
+    fusion = [m for m in runcheck.rank_mismatches(report_run, rerank_run) if m.startswith("fusion/")]
+    if fusion:
+        raise ValueError(f"rerank run's Fusion ranks differ from the Report run: {len(fusion)}, e.g. {fusion[0]}")
+    if check := runcheck.rank_mismatches(rerank_run, rerank_check_run):
+        raise ValueError(f"rerank check run ranks differ from the rerank run: {len(check)}, e.g. {check[0]}")
+    fails = failures.analyze(failures.read_query_set(rerank_run), failures.read_ranks(rerank_run))
+    return {"run": rel(rerank_run), "rerank_model": read_json(rerank_run / "settings.json")["rerank_model"],
+            "counts": {s: {b: c[b] for b in ("rerank_help", "rerank_hurt")} for s, c in fails["counts"].items()},
+            "net": fails["rerank_net"]}
+
+
+def significance_block(report_run: Path, rerank_run: Path, ablations: dict[str, Path]) -> list[dict]:
+    """Every test in the family, tagged by run, with raw p and Holm p over the whole family.
+
+    The main tests (arm None) are the Report run's, with those involving Hybrid from the rerank run.
+    """
+    main = served_tests(read_json(report_run / "significance.json")["comparisons"],
+                        read_json(rerank_run / "significance.json")["comparisons"])
+    tests = [{"arm": None, **t} for t in main]
+    for arm, run in ablations.items():
         for t in read_json(run / "significance.json")["comparisons"]:
             tests.append({"arm": arm, **t})
     for t, p in zip(tests, holm([t["p_raw"] for t in tests])):
@@ -136,8 +180,8 @@ def significance_block(report_run: Path, ablations: dict[str, Path]) -> list[dic
     return tests
 
 
-def metrics_block(report_run: Path, latency: dict, intervals: list[dict]) -> list[dict]:
-    rows = [r for r in read_json(report_run / "metrics.json") if r.get("variant", "default") == "default"]
+def metrics_block(rows: list[dict], latency: dict, intervals: list[dict]) -> list[dict]:
+    rows = [r for r in rows if r.get("variant", "default") == "default"]
     ci = {(i["config"], i["strategy"], i["metric"]): i for i in intervals if i["variant"] == "default"}
     best = best_rows(rows)
     out = []
@@ -178,10 +222,10 @@ def ablation_block(ablations: dict[str, Path], tests: list[dict], latency: dict)
     return out
 
 
-def per_query_block(report_run: Path, fails: dict) -> tuple[list[dict], dict]:
+def per_query_block(per_query: list[dict], fails: dict) -> tuple[list[dict], dict]:
     """Rows per (strategy, query): ranks and top-20 ids per config, and the buckets the query falls in there."""
     rows: dict[tuple[str, str], dict] = {}
-    for r in read_csv(report_run / "per_query.csv"):
+    for r in per_query:
         if r.get("variant", "default") != "default":
             continue
         row = rows.setdefault((r["strategy"], r["query_id"]),
@@ -318,8 +362,13 @@ def cases_block(cases: list[dict], queries: dict, rows_by_url: dict[str, dict], 
     return out
 
 
-def headline_block(rows: list[dict], tests: list[dict], fails: dict, bucket_counts: dict) -> dict:
-    """The numbers the prose quotes, so no sentence on the page does arithmetic."""
+def headline_block(rows: list[dict], tests: list[dict], fails: dict, bucket_counts: dict,
+                   same_run: dict, repeats: dict) -> dict:
+    """The numbers the prose quotes, so no sentence on the page does arithmetic.
+
+    Hybrid's latency is from the rerank run alone, so its ratio to Fusion uses that run's Fusion (`same_run`), and
+    the run-to-run spread comes from the Timing repeats (`repeats`), which measured the earlier reranker.
+    """
     get = {(r["config"], r["strategy"]): r for r in rows}
     strategies = sorted({r["strategy"] for r in rows})
     main = [t for t in tests if t["arm"] is None]
@@ -329,15 +378,14 @@ def headline_block(rows: list[dict], tests: list[dict], fails: dict, bucket_coun
                 and t["a"]["strategy"] == t["b"]["strategy"]]
 
     rng = lambda xs: {"min": min(xs), "max": max(xs)}  # noqa: E731
-    ratio = [get[("hybrid", s)]["latency"]["total"]["p50"] / get[("fusion", s)]["latency"]["total"]["p50"]
-             for s in strategies]
+    ratio = [same_run[("hybrid", s)]["total"]["p50"] / same_run[("fusion", s)]["total"]["p50"] for s in strategies]
     rerank_share = [get[("hybrid", s)]["latency"]["rerank"]["p50"] / get[("hybrid", s)]["latency"]["total"]["p50"]
                     for s in strategies]
     strategy_pairs = [t for t in main if t["a"]["strategy"] != t["b"]["strategy"]]
     # The Chunking strategy whose Hybrid p50 moved most across Timing repeats, same code and same strategy.
-    widest = max(strategies, key=lambda s: get[("hybrid", s)]["latency"]["total"]["p50_max"]
-                 / get[("hybrid", s)]["latency"]["total"]["p50_min"])
-    t = get[("hybrid", widest)]["latency"]["total"]
+    widest = max(strategies, key=lambda s: repeats[("hybrid", s)]["total"]["p50_max"]
+                 / repeats[("hybrid", s)]["total"]["p50_min"])
+    t = repeats[("hybrid", widest)]["total"]
     spread = {"strategy": widest, "min": t["p50_min"], "max": t["p50_max"]}
     net = fails["rerank_net"]
     return {
@@ -367,12 +415,15 @@ def build(manifest_path: Path = MANIFEST) -> dict:
     report_run = ROOT / manifest["report_run"]
     repeats = [ROOT / p for p in manifest["timing_repeats"]]
     ablations = {arm: ROOT / p for arm, p in manifest["ablation_runs"].items()}
-    missing = [rel(p) for p in [report_run, ROOT / manifest["check_run"], *repeats, *ablations.values()]
+    rerank_run, rerank_check_run = ROOT / manifest["rerank_run"], ROOT / manifest["rerank_check_run"]
+    missing = [rel(p) for p in [report_run, ROOT / manifest["check_run"], rerank_run, rerank_check_run, *repeats,
+                                *ablations.values()]
                if not (p / "per_query.csv").exists()]
     if missing:
         raise ValueError(f"manifest names runs that aren't there: {', '.join(missing)}")
     check_run = ROOT / manifest["check_run"]
     check_ranks(report_run, {rel(check_run): check_run, **{rel(p): p for p in repeats}, **ablations})
+    rerank = rerank_block(report_run, rerank_run, rerank_check_run)
 
     queries = [json.loads(line) for line in (ROOT / "eval" / "queries.jsonl").read_text().splitlines() if line.strip()]
     qids = {q["query_id"] for q in queries}
@@ -383,16 +434,25 @@ def build(manifest_path: Path = MANIFEST) -> dict:
     edits = {r["query_id"]: r["reason"] for r in labels["query_edits"]}
     groups = {r["query_id"]: r["group"] for r in labels["error_groups"]}
 
-    tests = significance_block(report_run, ablations)
-    latency = repeat_latency([read_json(p / "metrics.json") for p in repeats])
-    rows = metrics_block(report_run, latency, read_json(report_run / "significance.json")["intervals"])
-    # The rescored runs only know the kind of the written-from Recipe's Chunk; the check run knows the first right
-    # Recipe's and ranks identically (checked above).
-    fails = failures.as_json(failures.analyze(failures.read_query_set(report_run), failures.read_ranks(report_run),
-                                              failures.read_kinds(check_run)))
-    per_query, bucket_counts = per_query_block(report_run, fails)
+    # Every Hybrid number below is the served reranker's, from the rerank run; the rest is the Report run's.
+    # Ablations keep their own runs: each arm is measured against a default that used the earlier reranker.
+    tests = significance_block(report_run, rerank_run, ablations)
+    repeats_latency = repeat_latency([read_json(p / "metrics.json") for p in repeats])
+    rerank_latency = repeat_latency([read_json(rerank_run / "metrics.json")])  # one run: no range
+    rows = metrics_block(served_rows(read_json(report_run / "metrics.json"), read_json(rerank_run / "metrics.json")),
+                         served(repeats_latency, rerank_latency),
+                         served_rows(read_json(report_run / "significance.json")["intervals"],
+                                     read_json(rerank_run / "significance.json")["intervals"]))
+    # The rescored runs only know the kind of the written-from Recipe's Chunk; the check runs know the first right
+    # Recipe's and rank identically (checked above).
+    fails = failures.as_json(failures.analyze(
+        failures.read_query_set(report_run),
+        served(failures.read_ranks(report_run), failures.read_ranks(rerank_run)),
+        served(failures.read_kinds(check_run), failures.read_kinds(rerank_check_run))))
+    served_per_query = served_rows(read_csv(report_run / "per_query.csv"), read_csv(rerank_run / "per_query.csv"))
+    per_query, bucket_counts = per_query_block(served_per_query, fails)
     del fails["buckets"]  # the members live in per_query; the page needs only the counts
-    recipes = {int(r["recipe_id"]): r for r in read_csv(report_run / "recipes.csv")}
+    recipes = {int(r["recipe_id"]): r for run in (report_run, rerank_run) for r in read_csv(run / "recipes.csv")}
     urls = {rid: r["url"] for rid, r in recipes.items()}
     rows_by_url = read_recipe_rows({urls[q["recipe_id"]] for q in queries})
     corpus = read_json(report_run / "corpus.json")
@@ -403,14 +463,16 @@ def build(manifest_path: Path = MANIFEST) -> dict:
 
     return {
         "meta": {"manifest": manifest, "runs": {rel(p): read_json(p / "settings.json")
-                                                 for p in [report_run, check_run, *repeats, *ablations.values()]},
+                                                 for p in [report_run, check_run, rerank_run, rerank_check_run, *repeats,
+                           *ablations.values()]},
                  "input_hashes": {rel(p): sha256(p) for p in input_files(manifest)},
                  "built_at": datetime.now(timezone.utc).isoformat(timespec="seconds"), "alpha": ALPHA},
         "metrics": rows,
         "significance": tests,
-        "ablations": ablation_block(ablations, tests, latency),
+        "ablations": ablation_block(ablations, tests, repeats_latency),
         "failures": {**fails, "bucket_counts": bucket_counts, "found_at": failures.FOUND_AT,
                      "high_overlap": failures.HIGH_OVERLAP},
+        "rerank": rerank,
         "per_query": per_query,
         "queries": query_map,
         "recipes": {str(rid): r["title"] for rid, r in recipes.items()},
@@ -418,10 +480,10 @@ def build(manifest_path: Path = MANIFEST) -> dict:
         "qrels": qrels_block(read_csv(ROOT / manifest["qrels"]), read_json(single / "metrics.json"),
                              read_json(ROOT / manifest["qrels_check"]), labels["label_check"],
                              every_miss_ids(read_csv(single / "per_query.csv")),
-                             every_miss_ids(read_csv(report_run / "per_query.csv")), groups),
+                             every_miss_ids(served_per_query), groups),
         "corpus": corpus,
         "query_set": query_set_block(queries, edits, rows_by_url, urls, corpus),
-        "headline": headline_block(rows, tests, fails, bucket_counts),
+        "headline": headline_block(rows, tests, fails, bucket_counts, rerank_latency, repeats_latency),
     }
 
 

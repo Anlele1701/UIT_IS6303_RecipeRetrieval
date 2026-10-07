@@ -90,15 +90,16 @@ function el(parent, tag, attrs, text) {
   parent.appendChild(e); return e;
 }
 
-// Bảng 1: Report run, pooled qrels, 298 queries. Columns: R@5, R@10, R@20, MRR, nDCG@5, nDCG@10.
+// Bảng 1: Report run, pooled qrels, 298 queries; Hybrid from eval/pooled/20261006-224100 (mxbai-rerank-base-v1).
+// Columns: R@5, R@10, R@20, MRR, nDCG@5, nDCG@10.
 (function () {
   const data = {
     fixed:    { Sparse: [.836, .909, .933, .689, .717, .741], Dense: [.852, .903, .930, .691, .725, .742],
-                Fusion: [.876, .923, .963, .714, .748, .763], Hybrid: [.916, .966, .977, .767, .799, .816] },
+                Fusion: [.876, .923, .963, .714, .748, .763], Hybrid: [.970, .977, .980, .894, .913, .915] },
     semantic: { Sparse: [.822, .896, .936, .664, .694, .718], Dense: [.859, .896, .943, .697, .732, .744],
-                Fusion: [.879, .940, .960, .725, .756, .776], Hybrid: [.919, .963, .977, .758, .793, .808] },
+                Fusion: [.879, .940, .960, .725, .756, .776], Hybrid: [.966, .977, .977, .895, .912, .916] },
     sentence: { Sparse: [.822, .889, .936, .668, .697, .719], Dense: [.842, .883, .926, .691, .723, .736],
-                Fusion: [.852, .913, .953, .703, .732, .752], Hybrid: [.913, .963, .977, .761, .793, .810] },
+                Fusion: [.852, .913, .953, .703, .732, .752], Hybrid: [.966, .977, .980, .888, .907, .910] },
   };
   const body = document.getElementById('t-body');
   for (const [strategy, configs] of Object.entries(data)) {
@@ -116,7 +117,7 @@ function el(parent, tag, attrs, text) {
 // Hình 2: dumbbell, Recall@5 on high vs low word overlap (semantic)
 (function () {
   const svg = document.getElementById('s-overlap');
-  const rows = [['Sparse', .929, .708], ['Dense', .883, .833], ['Fusion', .929, .826], ['Hybrid', .968, .868]];
+  const rows = [['Sparse', .929, .708], ['Dense', .883, .833], ['Fusion', .929, .826], ['Hybrid', .987, .944]];
   const x0 = 110, x1 = 700, d0 = .65, d1 = 1.0, X = v => x0 + (v - d0) / (d1 - d0) * (x1 - x0);
   const top = 22, step = 44, bottom = top + step * (rows.length - 1) + 24;
   [.7, .8, .9, 1.0].forEach(t => {
@@ -162,8 +163,8 @@ function el(parent, tag, attrs, text) {
 // Hình 4: diverging bars, queries where reranking helped vs hurt
 (function () {
   const svg = document.getElementById('s-rerank');
-  const rows = [['fixed', 82, 52], ['semantic', 72, 57], ['sentence', 89, 56]];
-  const mid = 330, k = 2.9, top = 8, h = 26, step = 38;
+  const rows = [['fixed', 105, 18], ['semantic', 99, 13], ['sentence', 108, 19]];  // mxbai-rerank-base-v1, eval/pooled/20261006-224100
+  const mid = 250, k = 2.9, top = 8, h = 26, step = 38;
   rows.forEach(([name, help, hurt], i) => {
     const y = top + i * step;
     el(svg, 'text', { x: 0, y: y + h / 2 + 4, class: 'mono' }, name);

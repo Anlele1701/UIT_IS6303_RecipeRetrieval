@@ -1,0 +1,768 @@
+{
+  "seed": 603,
+  "resamples": 10000,
+  "metrics": [
+    "recall@5",
+    "mrr"
+  ],
+  "intervals": [
+    {
+      "config": "dense",
+      "variant": "default",
+      "strategy": "fixed",
+      "metric": "recall@5",
+      "mean": 0.8523489932885906,
+      "ci_lo": 0.8120805369127517,
+      "ci_hi": 0.889261744966443
+    },
+    {
+      "config": "dense",
+      "variant": "default",
+      "strategy": "fixed",
+      "metric": "mrr",
+      "mean": 0.6914836887571787,
+      "ci_lo": 0.6485949363602468,
+      "ci_hi": 0.7330788091243208
+    },
+    {
+      "config": "dense",
+      "variant": "default",
+      "strategy": "semantic",
+      "metric": "recall@5",
+      "mean": 0.8590604026845637,
+      "ci_lo": 0.8187919463087249,
+      "ci_hi": 0.8959731543624161
+    },
+    {
+      "config": "dense",
+      "variant": "default",
+      "strategy": "semantic",
+      "metric": "mrr",
+      "mean": 0.6972961969162127,
+      "ci_lo": 0.6553620878096549,
+      "ci_hi": 0.7392800563694759
+    },
+    {
+      "config": "dense",
+      "variant": "default",
+      "strategy": "sentence",
+      "metric": "recall@5",
+      "mean": 0.8422818791946308,
+      "ci_lo": 0.7986577181208053,
+      "ci_hi": 0.8825503355704698
+    },
+    {
+      "config": "dense",
+      "variant": "default",
+      "strategy": "sentence",
+      "metric": "mrr",
+      "mean": 0.69116692370687,
+      "ci_lo": 0.6477040484076231,
+      "ci_hi": 0.7338225441205838
+    },
+    {
+      "config": "fusion",
+      "variant": "default",
+      "strategy": "fixed",
+      "metric": "recall@5",
+      "mean": 0.8758389261744967,
+      "ci_lo": 0.8355704697986577,
+      "ci_hi": 0.912751677852349
+    },
+    {
+      "config": "fusion",
+      "variant": "default",
+      "strategy": "fixed",
+      "metric": "mrr",
+      "mean": 0.7140518332064916,
+      "ci_lo": 0.6725030468884101,
+      "ci_hi": 0.7555984667474255
+    },
+    {
+      "config": "fusion",
+      "variant": "default",
+      "strategy": "semantic",
+      "metric": "recall@5",
+      "mean": 0.8791946308724832,
+      "ci_lo": 0.8422818791946308,
+      "ci_hi": 0.9161073825503355
+    },
+    {
+      "config": "fusion",
+      "variant": "default",
+      "strategy": "semantic",
+      "metric": "mrr",
+      "mean": 0.7246254427506635,
+      "ci_lo": 0.6836107108260278,
+      "ci_hi": 0.7661290637298452
+    },
+    {
+      "config": "fusion",
+      "variant": "default",
+      "strategy": "sentence",
+      "metric": "recall@5",
+      "mean": 0.8523489932885906,
+      "ci_lo": 0.8120805369127517,
+      "ci_hi": 0.889261744966443
+    },
+    {
+      "config": "fusion",
+      "variant": "default",
+      "strategy": "sentence",
+      "metric": "mrr",
+      "mean": 0.7032262725304054,
+      "ci_lo": 0.6606546114900054,
+      "ci_hi": 0.7451042548129487
+    },
+    {
+      "config": "hybrid",
+      "variant": "default",
+      "strategy": "fixed",
+      "metric": "recall@5",
+      "mean": 0.9161073825503355,
+      "ci_lo": 0.8825503355704698,
+      "ci_hi": 0.9463087248322147
+    },
+    {
+      "config": "hybrid",
+      "variant": "default",
+      "strategy": "fixed",
+      "metric": "mrr",
+      "mean": 0.7672633574479212,
+      "ci_lo": 0.7288521329062436,
+      "ci_hi": 0.8051096142392282
+    },
+    {
+      "config": "hybrid",
+      "variant": "default",
+      "strategy": "semantic",
+      "metric": "recall@5",
+      "mean": 0.9194630872483222,
+      "ci_lo": 0.8859060402684564,
+      "ci_hi": 0.9496644295302014
+    },
+    {
+      "config": "hybrid",
+      "variant": "default",
+      "strategy": "semantic",
+      "metric": "mrr",
+      "mean": 0.7576854958985831,
+      "ci_lo": 0.7188599426067966,
+      "ci_hi": 0.796158866650687
+    },
+    {
+      "config": "hybrid",
+      "variant": "default",
+      "strategy": "sentence",
+      "metric": "recall@5",
+      "mean": 0.912751677852349,
+      "ci_lo": 0.8791946308724832,
+      "ci_hi": 0.9429530201342282
+    },
+    {
+      "config": "hybrid",
+      "variant": "default",
+      "strategy": "sentence",
+      "metric": "mrr",
+      "mean": 0.7608889712077631,
+      "ci_lo": 0.7221315625090793,
+      "ci_hi": 0.7994322449083354
+    },
+    {
+      "config": "sparse",
+      "variant": "default",
+      "strategy": "fixed",
+      "metric": "recall@5",
+      "mean": 0.8355704697986577,
+      "ci_lo": 0.7919463087248322,
+      "ci_hi": 0.8758389261744967
+    },
+    {
+      "config": "sparse",
+      "variant": "default",
+      "strategy": "fixed",
+      "metric": "mrr",
+      "mean": 0.6894974679222605,
+      "ci_lo": 0.6457490111204209,
+      "ci_hi": 0.7327691564121932
+    },
+    {
+      "config": "sparse",
+      "variant": "default",
+      "strategy": "semantic",
+      "metric": "recall@5",
+      "mean": 0.8221476510067114,
+      "ci_lo": 0.7785234899328859,
+      "ci_hi": 0.8624161073825504
+    },
+    {
+      "config": "sparse",
+      "variant": "default",
+      "strategy": "semantic",
+      "metric": "mrr",
+      "mean": 0.6637555020237819,
+      "ci_lo": 0.6192067142892822,
+      "ci_hi": 0.7082156082393409
+    },
+    {
+      "config": "sparse",
+      "variant": "default",
+      "strategy": "sentence",
+      "metric": "recall@5",
+      "mean": 0.8221476510067114,
+      "ci_lo": 0.7785234899328859,
+      "ci_hi": 0.8657718120805369
+    },
+    {
+      "config": "sparse",
+      "variant": "default",
+      "strategy": "sentence",
+      "metric": "mrr",
+      "mean": 0.6682975405458368,
+      "ci_lo": 0.6240959666699766,
+      "ci_hi": 0.7124897896336746
+    }
+  ],
+  "comparisons": [
+    {
+      "a": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "b": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": 0.040268456375838924,
+      "ci_lo": 0.003355704697986577,
+      "ci_hi": 0.07718120805369127,
+      "p_raw": 0.0332
+    },
+    {
+      "a": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "b": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": 0.0532115242414295,
+      "ci_lo": 0.014034112819890556,
+      "ci_hi": 0.09177017051110267,
+      "p_raw": 0.0086
+    },
+    {
+      "a": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "b": {
+        "config": "sparse",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": 0.040268456375838924,
+      "ci_lo": -0.003355704697986577,
+      "ci_hi": 0.08389261744966443,
+      "p_raw": 0.0746
+    },
+    {
+      "a": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "b": {
+        "config": "sparse",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": 0.02455436528423106,
+      "ci_lo": -0.015558074126656342,
+      "ci_hi": 0.0640551015788506,
+      "p_raw": 0.2244
+    },
+    {
+      "a": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "b": {
+        "config": "dense",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": 0.02348993288590604,
+      "ci_lo": -0.006711409395973154,
+      "ci_hi": 0.053691275167785234,
+      "p_raw": 0.149
+    },
+    {
+      "a": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "b": {
+        "config": "dense",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": 0.022568144449313026,
+      "ci_lo": -0.007548644967404839,
+      "ci_hi": 0.05188461064503551,
+      "p_raw": 0.1356
+    },
+    {
+      "a": {
+        "config": "sparse",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "b": {
+        "config": "dense",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": -0.016778523489932886,
+      "ci_lo": -0.06711409395973154,
+      "ci_hi": 0.030201342281879196,
+      "p_raw": 0.5464
+    },
+    {
+      "a": {
+        "config": "sparse",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "b": {
+        "config": "dense",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": -0.0019862208349180326,
+      "ci_lo": -0.050303059102037584,
+      "ci_hi": 0.046881503036321846,
+      "p_raw": 0.945
+    },
+    {
+      "a": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "b": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": 0.040268456375838924,
+      "ci_lo": 0.006711409395973154,
+      "ci_hi": 0.0738255033557047,
+      "p_raw": 0.0206
+    },
+    {
+      "a": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "b": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": 0.03306005314791963,
+      "ci_lo": -0.007195132335873241,
+      "ci_hi": 0.07282890037912555,
+      "p_raw": 0.1072
+    },
+    {
+      "a": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "b": {
+        "config": "sparse",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": 0.05704697986577181,
+      "ci_lo": 0.016778523489932886,
+      "ci_hi": 0.09731543624161074,
+      "p_raw": 0.0044
+    },
+    {
+      "a": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "b": {
+        "config": "sparse",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": 0.06086994072688175,
+      "ci_lo": 0.020839460657822103,
+      "ci_hi": 0.10056614515998345,
+      "p_raw": 0.0032
+    },
+    {
+      "a": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "b": {
+        "config": "dense",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": 0.020134228187919462,
+      "ci_lo": -0.013422818791946308,
+      "ci_hi": 0.053691275167785234,
+      "p_raw": 0.3018
+    },
+    {
+      "a": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "b": {
+        "config": "dense",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": 0.02732924583445081,
+      "ci_lo": -0.007250596920383361,
+      "ci_hi": 0.06094195044954884,
+      "p_raw": 0.126
+    },
+    {
+      "a": {
+        "config": "sparse",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "b": {
+        "config": "dense",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": -0.03691275167785235,
+      "ci_lo": -0.08389261744966443,
+      "ci_hi": 0.010067114093959731,
+      "p_raw": 0.147
+    },
+    {
+      "a": {
+        "config": "sparse",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "b": {
+        "config": "dense",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": -0.03354069489243092,
+      "ci_lo": -0.08441287696041719,
+      "ci_hi": 0.01591589874445652,
+      "p_raw": 0.1862
+    },
+    {
+      "a": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "b": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": 0.06040268456375839,
+      "ci_lo": 0.02348993288590604,
+      "ci_hi": 0.10067114093959731,
+      "p_raw": 0.002
+    },
+    {
+      "a": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "b": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": 0.05766269867735781,
+      "ci_lo": 0.015430180150906045,
+      "ci_hi": 0.09988555629042646,
+      "p_raw": 0.0086
+    },
+    {
+      "a": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "b": {
+        "config": "sparse",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": 0.030201342281879196,
+      "ci_lo": -0.010067114093959731,
+      "ci_hi": 0.07046979865771812,
+      "p_raw": 0.1774
+    },
+    {
+      "a": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "b": {
+        "config": "sparse",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": 0.034928731984568626,
+      "ci_lo": -0.004488184100946947,
+      "ci_hi": 0.07461408727009047,
+      "p_raw": 0.0842
+    },
+    {
+      "a": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "b": {
+        "config": "dense",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": 0.010067114093959731,
+      "ci_lo": -0.026845637583892617,
+      "ci_hi": 0.04697986577181208,
+      "p_raw": 0.6614
+    },
+    {
+      "a": {
+        "config": "fusion",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "b": {
+        "config": "dense",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": 0.012059348823535246,
+      "ci_lo": -0.02111079961017366,
+      "ci_hi": 0.045043962581590886,
+      "p_raw": 0.4754
+    },
+    {
+      "a": {
+        "config": "sparse",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "b": {
+        "config": "dense",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": -0.020134228187919462,
+      "ci_lo": -0.07046979865771812,
+      "ci_hi": 0.030201342281879196,
+      "p_raw": 0.4696
+    },
+    {
+      "a": {
+        "config": "sparse",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "b": {
+        "config": "dense",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": -0.022869383161033374,
+      "ci_lo": -0.0739719503767329,
+      "ci_hi": 0.02724342050356424,
+      "p_raw": 0.3812
+    },
+    {
+      "a": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "b": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": -0.003355704697986577,
+      "ci_lo": -0.026845637583892617,
+      "ci_hi": 0.020134228187919462,
+      "p_raw": 0.8978
+    },
+    {
+      "a": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "b": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": 0.009577861549338058,
+      "ci_lo": -0.015395207770417502,
+      "ci_hi": 0.03384258603532932,
+      "p_raw": 0.4496
+    },
+    {
+      "a": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "b": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": 0.003355704697986577,
+      "ci_lo": -0.013422818791946308,
+      "ci_hi": 0.020134228187919462,
+      "p_raw": 0.8438
+    },
+    {
+      "a": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "fixed"
+      },
+      "b": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": 0.006374386240158052,
+      "ci_lo": -0.015956975071907957,
+      "ci_hi": 0.02827081638532979,
+      "p_raw": 0.56
+    },
+    {
+      "a": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "b": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "metric": "recall@5",
+      "queries": 298,
+      "diff": 0.006711409395973154,
+      "ci_lo": -0.013422818791946308,
+      "ci_hi": 0.026845637583892617,
+      "p_raw": 0.6224
+    },
+    {
+      "a": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "semantic"
+      },
+      "b": {
+        "config": "hybrid",
+        "variant": "default",
+        "strategy": "sentence"
+      },
+      "metric": "mrr",
+      "queries": 298,
+      "diff": -0.003203475309180006,
+      "ci_lo": -0.025156676726517335,
+      "ci_hi": 0.01941842169296028,
+      "p_raw": 0.7868
+    }
+  ]
+}

@@ -112,7 +112,7 @@
 
   <section>
     <h2>Does reranking always help?</h2>
-    <p class="lead">Queries where Hybrid ranks the right Recipe better or worse than the same candidates before reranking.</p>
+    <p class="lead">Queries where Hybrid ranks the right Recipe better or worse than the same candidates before reranking, with the served reranker, <span id="rerank-model"></span>.</p>
     <div class="head">
       <div class="legend"><span><i class="sq" style="background:var(--warm)"></i>Worse after reranking</span><span><i class="sq" style="background:var(--accent)"></i>Better after reranking</span></div>
       <div class="scope" id="scope-rerank"></div>
@@ -173,10 +173,11 @@ const row = (config, s) => DATA.metrics.find(m => m.config === config && m.strat
   const r = DATA.run;
   document.getElementById('meta').textContent =
     `Report run ${r.name.split('/').pop()}, commit ${r.git_commit}, ${r.queries} queries, strategies ${r.strategies.join(', ')}. ` +
-    `Embedding ${r.embed_model}, reranker ${r.rerank_model}.`;
+    `Embedding ${r.embed_model}. Every Hybrid number is from rerank run ${DATA.rerank.run.split('/').pop()} with the served reranker, ${DATA.rerank.rerank_model}; ` +
+    `the Report run used ${r.rerank_model}, which the reranker comparison still measures against.`;
   document.getElementById('alpha').textContent = DATA.alpha;
   document.getElementById('foot').textContent =
-    `Built ${DATA.built_at.slice(0, 16).replace('T', ' ')} from ui/public/report.json by scripts/static_report.py. Latency is the median across ${DATA.timing_repeats.length} timing runs on one laptop.`;
+    `Built ${DATA.built_at.slice(0, 16).replace('T', ' ')} from ui/public/report.json by scripts/static_report.py. Latency is the median across ${DATA.timing_repeats.length} timing runs on one laptop, except Hybrid's, which is the rerank run alone.`;
   const q = DATA.qrels, qs = DATA.query_set, c = DATA.corpus;
   const facts = [
     [c.recipes.toLocaleString('en-US'), `Recipes in ${c.categories} categories`],
@@ -262,7 +263,8 @@ function drawReranker() {
 
 function drawRerank() {
   const svg = document.getElementById('rerank'); clear(svg);
-  const counts = DATA.failures.counts;
+  const counts = DATA.rerank.counts;
+  document.getElementById('rerank-model').textContent = DATA.rerank.rerank_model;
   document.getElementById('scope-rerank').textContent = `Queries, out of ${DATA.run.queries}`;
   const max = Math.max(...STRATS.flatMap(s => [counts[s].rerank_help, counts[s].rerank_hurt]));
   const mid = 380, k = 300 / max, top = 8, h = 26, step = 38;

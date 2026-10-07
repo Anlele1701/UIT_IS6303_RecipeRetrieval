@@ -16,7 +16,7 @@ BUNDLE = ROOT / "ui" / "public" / "report.json"
 OUT = ROOT / "report.html"
 TEMPLATE = Path(__file__).resolve().parent / "static_report.html"
 
-KEEP = ["metrics", "significance", "ablations", "qrels", "query_set", "headline"]
+KEEP = ["metrics", "significance", "ablations", "qrels", "query_set", "headline", "rerank"]
 
 
 def page_data(bundle: dict) -> dict:

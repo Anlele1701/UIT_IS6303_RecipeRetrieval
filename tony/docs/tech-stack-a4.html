@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipe Retrieval Tech Stack</title>
+<style>
+  @page { size: A4; margin: 0; }
+  :root {
+    --ink: #1c2330; --ink2: #4a5566; --mute: #6f7a8a; --line: #8a94a4; --edge: #d3d8df;
+    --bg: #ffffff;
+    --fe: #b83280; --fe-bg: #fcedf5;
+    --be: #2b6cb0; --be-bg: #ebf3fc;
+    --ai: #b7791f; --ai-bg: #fdf6e7;
+    --db: #475569; --db-bg: #eef1f5;
+    --off: #2f855a; --off-bg: #eaf6ef;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: var(--bg); }
+  body {
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .page { width: 794px; height: 1123px; padding: 40px 40px 30px; display: flex; flex-direction: column; overflow: hidden; }
+  header { border-bottom: 2px solid var(--ink); padding-bottom: 12px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: flex-end; }
+  h1 { font-size: 28px; letter-spacing: -0.02em; }
+  .sub { font-size: 13.5px; color: var(--ink2); margin-top: 5px; }
+  .meta { text-align: right; font-size: 11px; color: var(--mute); line-height: 1.5; }
+
+  .user { align-self: center; border: 1.5px solid var(--ink); border-radius: 999px; padding: 10px 26px; font-size: 14px; font-weight: 600; }
+
+  .layer { border-width: 1.5px; border-style: solid; border-radius: 14px; padding: 18px 20px; display: grid; grid-template-columns: 150px 1fr; gap: 16px; align-items: start; }
+  .layer h2, .half h2 { font-size: 12px; font-weight: 800; letter-spacing: 0.09em; text-transform: uppercase; }
+  .layer .q, .half .q { font-size: 13px; color: var(--ink2); margin-top: 4px; line-height: 1.35; }
+  .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 10px; }
+  .chip { background: #fff; border: 1px solid var(--edge); border-radius: 8px; padding: 6px 12px; font-size: 14.5px; font-weight: 700; }
+  .chip small { font-weight: 400; color: var(--mute); font-size: 11.5px; margin-left: 3px; }
+  .does { font-size: 13.5px; color: var(--ink2); line-height: 1.5; }
+
+  .fe { border-color: var(--fe); background: var(--fe-bg); } .fe h2 { color: var(--fe); }
+  .be { border-color: var(--be); background: var(--be-bg); } .be h2 { color: var(--be); }
+  .ai { border-color: var(--ai); background: var(--ai-bg); } .ai h2 { color: var(--ai); }
+  .db { border-color: var(--db); background: var(--db-bg); } .db h2 { color: var(--db); }
+  .off { border-color: var(--off); background: var(--off-bg); } .off h2 { color: var(--off); }
+
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  .half { border-width: 1.5px; border-style: solid; border-radius: 14px; padding: 20px 20px; }
+  .half .chips { margin-top: 12px; }
+
+  .arrow { display: block; margin: 0 auto; }
+  .split { display: block; }
+
+  .offline { margin-top: 28px; border-top: 1.5px dashed var(--line); padding-top: 14px; }
+  .offline-title { font-size: 13px; color: var(--mute); margin-bottom: 12px; }
+  .offline-title b { color: var(--ink); }
+
+  footer { margin-top: auto; margin-bottom: 0; padding-bottom: 0; font-size: 10.5px; color: var(--mute); border-top: 1px solid var(--edge); padding-top: 8px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div>
+      <h1>Recipe Retrieval tech stack</h1>
+      <p class="sub">What each part is built with, and what it does.</p>
+    </div>
+    <div class="meta">IS603<br>September 2026</div>
+  </header>
+
+  <div class="user">Someone looking for a recipe</div>
+
+  <svg class="arrow" width="20" height="40" viewBox="0 0 20 40" style="margin:4px auto"><path d="M10,0 L10,32" stroke="#8a94a4" stroke-width="1.8"/><path d="M4,30 L10,39 L16,30 z" fill="#8a94a4"/></svg>
+
+  <section class="layer fe">
+    <div><h2>Frontend</h2><p class="q">The web page</p></div>
+    <div>
+      <div class="chips"><span class="chip">React 19</span><span class="chip">TypeScript</span><span class="chip">Vite</span><span class="chip">Tailwind CSS</span></div>
+      <p class="does">A search box with filters and a results list. A second page shows the evaluation report.</p>
+    </div>
+  </section>
+
+  <svg class="arrow" width="20" height="40" viewBox="0 0 20 40" style="margin:4px auto"><path d="M10,0 L10,32" stroke="#8a94a4" stroke-width="1.8"/><path d="M4,30 L10,39 L16,30 z" fill="#8a94a4"/></svg>
+
+  <section class="layer be">
+    <div><h2>Backend</h2><p class="q">The search service</p></div>
+    <div>
+      <div class="chips"><span class="chip">Python 3.11</span><span class="chip">FastAPI</span><span class="chip">Uvicorn</span></div>
+      <p class="does">Takes the search, gets matches from the database, asks the models for help, and sends back the best recipes.</p>
+    </div>
+  </section>
+
+  <svg class="split" width="714" height="36" style="margin:4px 0" viewBox="0 0 714 36">
+    <path d="M357,0 L357,10 L173,10 L173,26" fill="none" stroke="#8a94a4" stroke-width="1.8"/>
+    <path d="M167,24 L173,34 L179,24 z" fill="#8a94a4"/>
+    <path d="M357,10 L541,10 L541,26" fill="none" stroke="#8a94a4" stroke-width="1.8"/>
+    <path d="M535,24 L541,34 L547,24 z" fill="#8a94a4"/>
+  </svg>
+
+  <div class="row">
+    <section class="half ai">
+      <h2>AI models</h2><p class="q">Run on this machine, no cloud API</p>
+      <div class="chips"><span class="chip">Ollama <small>nomic-embed-text</small></span><span class="chip">bge-reranker-base</span><span class="chip">PyTorch</span></div>
+      <p class="does">One model turns text into vectors, so a search can match on meaning and not only on exact words. The other re-orders the top results.</p>
+    </section>
+    <section class="half db">
+      <h2>Database</h2><p class="q">Where the recipes live</p>
+      <div class="chips"><span class="chip">ParadeDB</span><span class="chip">PostgreSQL 17</span><span class="chip">Docker</span></div>
+      <p class="does">Stores the recipes and the small text pieces cut from them. Runs keyword search and meaning search in the same place.</p>
+    </section>
+  </div>
+
+  <div class="offline">
+    <p class="offline-title"><b>Offline scripts</b>, run by hand, not part of a search</p>
+    <div class="row">
+      <section class="half off">
+        <h2>Load the data</h2><p class="q">Fills the database</p>
+        <div class="chips"><span class="chip">Hugging Face <small>Shengtao/recipe</small></span><span class="chip">Python</span></div>
+        <p class="does">Reads the recipe dataset, cuts each recipe into pieces, and saves them with their vectors.</p>
+      </section>
+      <section class="half off">
+        <h2>Measure quality</h2><p class="q">Feeds the report page</p>
+        <div class="chips"><span class="chip">Python</span><span class="chip">NumPy</span><span class="chip">pytest</span><span class="chip">uv</span></div>
+        <p class="does">Runs 298 test searches, checks how often the right recipe comes back near the top, and saves the numbers.</p>
+      </section>
+    </div>
+  </div>
+
+  <footer>Source code: ui/ (frontend), api/ (backend), scripts/ (offline), sql/ (database schema).</footer>
+</div>
+</body>
+</html>

@@ -162,6 +162,9 @@ export function Errors({ b }: { b: Bundle }) {
   const gap = (s: string, g: 'high' | 'low') => overlapRow(b, 'sparse', s, g) - overlapRow(b, 'dense', s, g)
   const highGap = STRATEGIES.map(s => gap(s, 'high')), lowGap = STRATEGIES.map(s => gap(s, 'low'))
   const drop = (c: Config) => STRATEGIES.map(s => overlapRow(b, c, s, 'high') - overlapRow(b, c, s, 'low'))
+  const hurtIngr = STRATEGIES.map(s => kindShare(b, s, 'rerank_hurt', 'ingredients'))
+  const allIngr = STRATEGIES.map(s => kindShare(b, s, 'all', 'ingredients'))
+  const leans = STRATEGIES.every((_, i) => hurtIngr[i] > allIngr[i])
   const rr = (xs: number[]) => {
     const lo = pct(Math.min(...xs), 0), hi = pct(Math.max(...xs), 0)
     return lo === hi ? lo : `${lo} to ${hi}`
@@ -220,14 +223,16 @@ export function Errors({ b }: { b: Bundle }) {
         <NetTable b={b} />
         <P>
           One explanation is that the reranker judges a Recipe by a single Chunk, not by the whole Recipe. If so, the queries it moves
-          down should often be won by a Chunk that says little about the dish. The data leans that way: when Reranking moved the Recipe
-          down, its best Chunk in Hybrid's list was the Ingredients Chunk {rr(STRATEGIES.map(s => kindShare(b, s, 'rerank_hurt', 'ingredients')))}% of
-          the time, against {rr(STRATEGIES.map(s => kindShare(b, s, 'all', 'ingredients')))}% over all queries. An ingredient list gives the
-          reranker little to match a dish description against. The groups are small ({h.rerank_hurt.min} to {h.rerank_hurt.max} queries) and
-          this split wasn't tested for significance, so it is supporting evidence, not proof.
+          down should often be won by a Chunk that says little about the dish, such as the ingredient list. When Reranking moved the Recipe
+          down, its best Chunk in Hybrid's list was the Ingredients Chunk {rr(hurtIngr)}% of
+          the time, against {rr(allIngr)}% over all queries.{' '}
+          {leans
+            ? 'The data leans that way: an ingredient list gives the reranker little to match a dish description against.'
+            : 'With the served reranker the data doesn’t support it: Ingredients Chunks are no more common among the hurts than overall.'}
+          {' '}The groups are small ({h.rerank_hurt.min} to {h.rerank_hurt.max} queries) and this split wasn't tested for significance.
         </P>
         <Toggle><KindTable b={b} /></Toggle>
-        <Note>Chunk kinds come from the check run, which ranks every query exactly as the Report run does and records the Chunk that ranked the first right Recipe. Queries Hybrid missed are left out of the shares.</Note>
+        <Note>Chunk kinds come from the check runs, which rank every query exactly as the runs they check and record the Chunk that ranked the first right Recipe. Hybrid's come from the rerank check run. Queries Hybrid missed are left out of the shares.</Note>
       </Sub>
 
       <Sub id="s6-4" title="6.4 Case studies">

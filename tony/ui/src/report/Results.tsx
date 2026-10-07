@@ -102,7 +102,7 @@ function AlignedPanels({ b }: { b: Bundle }) {
       ))}
       <div className={`${cols} mt-3 items-start text-muted`}>
         <div /><p>Tick: Recall@5. Shaded bar: 95% bootstrap CI.</p><div />
-        <p>Tick: median p50 of the 3 Timing repeats. Shaded bar: lowest to highest p50. Thin line: out to the median p95.</p><div />
+        <p>Tick: median p50 of the 3 Timing repeats (Hybrid: one run with the served reranker, so no range). Shaded bar: lowest to highest p50. Thin line: out to the median p95.</p><div />
       </div>
     </div>
   )
@@ -238,8 +238,8 @@ export function Results({ b }: { b: Bundle }) {
         </Figure>
         <Figure><StageBar b={b} /></Figure>
         <Note>
-          On {STRATEGY_NAME[h.hybrid_p50_spread.strategy]}, Hybrid's p50 moved between {ms(h.hybrid_p50_spread.min)} and {ms(h.hybrid_p50_spread.max)} ms
-          across the three Timing repeats on the same code, which is why latency is shown as a range. Its p95 tail reaches {numRange({ min: Math.min(...STRATEGIES.map(s => row(b, 'hybrid', s).latency.total.p95)), max: Math.max(...STRATEGIES.map(s => row(b, 'hybrid', s).latency.total.p95)) }, ms)} ms.
+          On {STRATEGY_NAME[h.hybrid_p50_spread.strategy]}, Hybrid's p50 with bge-reranker-base moved between {ms(h.hybrid_p50_spread.min)} and {ms(h.hybrid_p50_spread.max)} ms
+          across the three Timing repeats on the same code, which is why latency is shown as a range. Hybrid with the served mxbai-rerank-base-v1 was timed in one run only. Its p95 tail reaches {numRange({ min: Math.min(...STRATEGIES.map(s => row(b, 'hybrid', s).latency.total.p95)), max: Math.max(...STRATEGIES.map(s => row(b, 'hybrid', s).latency.total.p95)) }, ms)} ms.
         </Note>
       </Sub>
     </Section>

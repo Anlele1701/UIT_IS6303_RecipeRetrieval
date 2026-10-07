@@ -15,6 +15,8 @@ export function Conclusion({ b }: { b: Bundle }) {
   const fusionR5 = range(STRATEGIES.map(s => get('fusion', s)['recall@5']))
   const hybridR5 = range(STRATEGIES.map(s => get('hybrid', s)['recall@5']))
   const fusionP50 = range(STRATEGIES.map(s => get('fusion', s).latency.total.p50))
+  const hybridP50 = range(STRATEGIES.map(s => get('hybrid', s).latency.total.p50))
+  const bgeR5 = range(mini.rows.map(r => r.default['recall@5']))
   const pctR = (x: Range) => numRange(x, v => pct(v))
   const h = b.headline
   const hnswGap = hnswExactGap(b)
@@ -35,20 +37,21 @@ export function Conclusion({ b }: { b: Bundle }) {
         <Table
           head={['When', 'Config', 'R@5 (%)', 'p50 ms']} right={[2, 3]}
           rows={[
-            ['Quality matters most', <><ConfigLabel config="hybrid" /> with mxbai-rerank-base-v1</>, pctR(r5(mxbai.rows)), numRange(mxbai.p50, ms)],
+            ['Quality matters most', <><ConfigLabel config="hybrid" /> with mxbai-rerank-base-v1</>, pctR(hybridR5), numRange(hybridP50, ms)],
             ['Latency matters', <><ConfigLabel config="hybrid" /> with MiniLM-L6</>, pctR(r5(mini.rows)), numRange(mini.p50, ms)],
             ['Latency is critical', <ConfigLabel config="fusion" />, pctR(fusionR5), numRange(fusionP50, ms)],
           ]}
         />
         <P>
-          mxbai-rerank-base-v1 is the headline recommendation. Its MRR gain over the served bge-reranker-base
+          mxbai-rerank-base-v1 is the served reranker and the headline recommendation. In the reranker comparison its MRR gain over
+          bge-reranker-base, the reranker the runs first served,
           ({numRange(mxbai.mrr, v => (v >= 0 ? '+' : '−') + Math.abs(v).toFixed(3))}) is {holmWords(mxbai.mrrHolm, a)}, and
-          its R@5 gain of {numRange(mxbai.r5, v => pts(v))} points is {holmWords(mxbai.r5Holm, a)}. It is the same size as the served model and
-          costs about {numRange(mxbai.ratio, times)}× the latency. This report still measures bge-reranker-base everywhere else, because that is what the search
-          page served when the runs were made; switching is a follow-up.
+          its R@5 gain of {numRange(mxbai.r5, v => pts(v))} points is {holmWords(mxbai.r5Holm, a)}. It is the same size as bge-reranker-base and
+          costs about {numRange(mxbai.ratio, times)}× the latency. Every Hybrid number in this report comes from a run with mxbai-rerank-base-v1;
+          the Ablations still compare against bge-reranker-base.
         </P>
         <P>
-          MiniLM-L6 keeps today's R@5 ({pctR(hybridR5)}% with bge-reranker-base) at about {numRange(mini.ratio, times)}× the latency. The Fusion baseline
+          MiniLM-L6 keeps bge-reranker-base's R@5 ({pctR(bgeR5)}%) at about {numRange(mini.ratio, times)}× the latency. The Fusion baseline
           answers in under 50 ms but gives up the Reranking gain. RRF k = 10 raises its MRR by {numRange(k10.mrr, v => v.toFixed(3))} at no cost
           ({holmWords(k10.mrrHolm, a)}), and its R@5 by {numRange(k10.r5, v => pts(v))} points ({holmWords(k10.r5Holm, a)}).
           Reranking 20 or 100 Chunks instead of 50 doesn't help: 20 leaves most lists short of 20 Recipes, and 100 costs more for nothing.
@@ -61,7 +64,7 @@ export function Conclusion({ b }: { b: Bundle }) {
       <Sub title="7.2 What the method taught">
         <P>
           Two things would have gone wrong without the checks. Hybrid's p50 moved by up to{' '}
-          {pct(h.hybrid_p50_spread.max / h.hybrid_p50_spread.min - 1, 0)}% between runs of the same code, so latency needs repeats and a range, and
+          {pct(h.hybrid_p50_spread.max / h.hybrid_p50_spread.min - 1, 0)}% between runs of the same code (with bge-reranker-base), so latency needs repeats and a range, and
           a fixed config order had later configs running on a warm cache. And the headline Sparse against Dense result hides a sign flip:
           which one wins depends on how many of the Recipe's words the query uses. Finally, the first answer key counted one right
           Recipe per query. Pooling it raised every config's R@5 by {ptsRange(lift)} points and showed that most of the queries every
@@ -73,13 +76,13 @@ export function Conclusion({ b }: { b: Bundle }) {
           <li>The queries are synthetic and favour Sparse (Section 6.2).</li>
           <li>The other right Recipes were judged by an LLM, only down to each config's top 5, and as right or wrong with no partial credit (Section 3.1).</li>
           <li>Lists with fewer than 20 unique Recipes count the empty places as misses.</li>
-          <li>Everything ran on one laptop; on {h.hybrid_p50_spread.strategy[0].toUpperCase() + h.hybrid_p50_spread.strategy.slice(1)}, Hybrid's p50 varied between {ms(h.hybrid_p50_spread.min)} and {ms(h.hybrid_p50_spread.max)} ms across Timing repeats.</li>
+          <li>Everything ran on one laptop; on {h.hybrid_p50_spread.strategy[0].toUpperCase() + h.hybrid_p50_spread.strategy.slice(1)}, Hybrid's p50 with bge-reranker-base varied between {ms(h.hybrid_p50_spread.min)} and {ms(h.hybrid_p50_spread.max)} ms across Timing repeats. Hybrid's latency with mxbai-rerank-base-v1 is from a single run.</li>
           <li>Text only: images in the dataset were not used.</li>
         </ul>
       </Sub>
       <Sub title="7.4 Future work">
         <ul className="max-w-[46rem] list-disc space-y-1 pl-5 text-[15px] leading-relaxed text-ink-soft">
-          <li>Serve mxbai-rerank-base-v1 and rerun the main tables.</li>
+          <li>Repeat the Hybrid timing with mxbai-rerank-base-v1, so its latency has a range like the other configs.</li>
           {hnswGap != null && hnswGap <= 2 && <li>Try serving Dense from pgvector HNSW, which {hnswGap === 0 ? 'matched exact search on R@5' : `came within ${hnswGap} ${hnswGap === 1 ? 'query' : 'queries'} of exact search on R@5`} here in less Dense-stage time than the served index (Section 5.4). It means a second index per partition and fresh runs (ADR 0003).</li>}
           <li>Evaluate on real user queries, with a person checking a sample of the judged pairs and graded relevance instead of right or wrong.</li>
           <li>Re-time on a GPU server, where the cross-encoders' latency ranking may change. A hosted reranker API is another option, at the cost of a network hop and sending queries to a third party.</li>

@@ -249,7 +249,9 @@ export function Setup({ b }: { b: Bundle }) {
         again. A fresh run that scores with the answer key itself ranks every query identically. Latency comes from three Timing repeats of the same run on
         commit {commits}, which added a rotating config order, so no config always runs on a cache the others warmed. Their
         ranks were checked to be identical to the Report run's before any latency was used. Each number is the median over the
-        three repeats, with the lowest and highest shown as a range.
+        three repeats, with the lowest and highest shown as a range. Hybrid is the exception: the search page now serves
+        mxbai-rerank-base-v1, so every Hybrid number, ranks and latency, comes from a separate run with that reranker, whose Fusion
+        ranks were checked to be identical to the Report run's.
       </P>
       <P>
         Significance comes from a paired bootstrap on per-query scores: 10,000 resamples of the {s.queries} queries, a 95%

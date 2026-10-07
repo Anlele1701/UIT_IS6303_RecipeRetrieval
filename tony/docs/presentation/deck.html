@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Truy hồi công thức nấu ăn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+  /* Layout: one 16:9 stage fitted to the window; every size inside a slide is in cqw so it scales as a picture */
+  :root {
+    --blue: #3f6fb0;
+    --blue-soft: #dce7f5;
+    --orange: #ef7d2d;
+    --sand: #f6c46e;
+    --ink: #1c2532;
+    --muted: #5b6676;
+    --line: #dde2ea;
+    --paper: #f7f9fc;
+    --card: #ffffff;
+    --good: #2f6fb3;
+    --bad: #c27a1f;
+    --grey: #cfd6e0;
+    --display: "Montserrat", "Segoe UI", system-ui, sans-serif;
+    --body: "Be Vietnam Pro", "Segoe UI", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body { margin: 0; background: #1a2230; color: var(--ink); font-family: var(--body); display: grid; place-items: center; overflow: hidden; }
+
+  .stage { width: min(100vw, 177.78vh); aspect-ratio: 16 / 9; position: relative; container-type: inline-size; background: var(--paper); }
+  .slide { position: absolute; inset: 0; padding: 3.4cqw 5cqw 3.2cqw; display: none; flex-direction: column; overflow: hidden; }
+  .slide.on { display: flex; }
+
+  /* soft corner shapes, echoing the Canva template */
+  .slide::before, .slide::after { content: ""; position: absolute; pointer-events: none; }
+  .slide::before { right: -6cqw; top: -6cqw; width: 18cqw; height: 18cqw; background: var(--blue-soft); transform: rotate(45deg); opacity: .7; }
+  .slide::after { left: -4cqw; bottom: -7cqw; width: 14cqw; height: 14cqw; background: var(--blue-soft); transform: rotate(45deg); opacity: .5; }
+  .slide > * { position: relative; z-index: 1; }
+
+  .kicker { font: 700 1.05cqw var(--display); letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin: 0 0 .8cqw; }
+  .title { font: 800 2.9cqw/1.15 var(--display); color: var(--blue); margin: 0; text-wrap: balance; max-width: 82cqw; }
+  .lead { font: 500 1.55cqw/1.45 var(--body); color: var(--muted); margin: 1cqw 0 0; max-width: 78cqw; }
+  .body { flex: 1; min-height: 0; margin-top: 2.4cqw; padding-bottom: 2cqw; display: flex; flex-direction: column; }
+  .pageno { position: absolute; right: 2.4cqw; bottom: 1.6cqw; font: 700 1.1cqw var(--display); color: var(--muted); z-index: 2; }
+  .src { position: absolute; left: 5cqw; right: 8cqw; bottom: 1.6cqw; font: 400 1cqw var(--body); color: var(--muted); z-index: 2; }
+  b, strong { font-weight: 700; }
+  .num { font-variant-numeric: tabular-nums; }
+  .o { color: var(--orange); }
+  .bl { color: var(--blue); }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 1cqw; padding: 1.6cqw 1.8cqw; }
+  .grid { display: grid; gap: 1.6cqw; }
+  .g2 { grid-template-columns: 1fr 1fr; }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .note { font: 500 1.45cqw/1.45 var(--body); margin: 1.6cqw 0 0; max-width: 85cqw; }
+  .why { margin-top: 1.8cqw; font: 500 1.45cqw/1.45 var(--body); background: #fff6ea; border: 1px solid #f3d3a8; border-radius: .8cqw; padding: 1.1cqw 1.4cqw; }
+
+  /* relational diagram: tables placed in cqw, relationship lines in an SVG with the same units */
+  .er { position: relative; width: 90cqw; }
+  .er svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .er .rel path { fill: none; stroke: #8794a8; stroke-width: .16; }
+  .er .card text { font: 700 1.1px "Be Vietnam Pro", sans-serif; fill: var(--muted); }
+  .er .grp { position: absolute; top: 0; font: 700 1.05cqw var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--blue); border-bottom: 2px solid var(--blue); padding-bottom: .4cqw; }
+  .er .grp.o { color: var(--orange); border-color: var(--orange); }
+  .tb { position: absolute; background: var(--card); border: 1px solid #c9d1dc; border-radius: .6cqw; overflow: hidden; }
+  .tb .th { height: 2.4cqw; display: flex; align-items: center; padding: 0 .8cqw; font: 600 1.15cqw var(--mono); color: #fff; background: var(--ink); }
+  .tb.chunk .th { background: var(--orange); }
+  .tb > div:not(.th) { height: 1.85cqw; display: flex; align-items: center; justify-content: space-between; gap: .4cqw; padding: 0 .8cqw; font: 500 1.02cqw var(--mono); border-top: 1px solid #eef1f5; white-space: nowrap; }
+  .tb > div.more span { font: italic 400 1cqw var(--body); color: var(--muted); }
+  .tb em { font: 700 .8cqw var(--display); font-style: normal; padding: .1cqw .4cqw; border-radius: .3cqw; margin-left: .2cqw; }
+  .tb em.pk { background: #fde3cc; color: #9a4a10; }
+  .tb em.fk { background: var(--blue-soft); color: #2a4f86; }
+  .tb > div > span { overflow: hidden; text-overflow: ellipsis; }
+  .er .plabel { position: absolute; font: 600 1.05cqw var(--body); color: var(--muted); }
+  .er .part { position: absolute; height: 3.2cqw; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: .1cqw; border: 0; padding: 0 .8cqw; background: #fbe1cb; border-radius: .5cqw; font: 500 1.02cqw var(--mono); }
+  .er .part em { font: 400 .95cqw var(--body); font-style: normal; color: var(--muted); }
+  /* chevron steps: the deck's way of showing order without arrow symbols */
+  .chevrow { display: grid; gap: 1cqw; }
+  .chev { height: 5cqw; background: var(--grey); display: grid; place-items: center; text-align: center; padding: 0 2.4cqw;
+          clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%, 10% 50%);
+          font: 800 1.6cqw/1.15 var(--display); color: var(--ink); font-variant-numeric: tabular-nums; }
+  .chevrow > div:first-child .chev { clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%); }
+  .chev.big { font-size: 2.5cqw; }
+  .chev.blue { background: var(--blue); color: #fff; }
+  .chev.orange { background: var(--orange); color: #fff; }
+  .chev.sand { background: var(--sand); }
+  .under { margin-top: .9cqw; }
+  .under b { display: block; font: 700 1.4cqw/1.25 var(--display); text-align: center; }
+  .under span { display: block; font: 400 1.2cqw/1.4 var(--body); color: var(--muted); text-align: center; margin-top: .3cqw; }
+
+  /* cover */
+  .cover { padding: 4cqw 6cqw; }
+  .school { font: 700 1.25cqw var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--blue); padding-bottom: 1cqw; border-bottom: 2px solid var(--blue); align-self: flex-start; }
+  .subject { display: inline-block; margin-top: 4.2cqw; font: 700 1.25cqw var(--display); letter-spacing: .06em; color: #fff; background: var(--orange); padding: .5cqw 1.2cqw; border-radius: 3cqw; align-self: flex-start; }
+  .cover h1 { font: 800 5cqw/1.08 var(--display); color: var(--blue); margin: 1.6cqw 0 0; max-width: 70cqw; }
+  .cover .sub { font: 600 2cqw var(--display); color: var(--ink); margin: 1.2cqw 0 0; }
+  .people { margin-top: auto; margin-bottom: 4cqw; display: grid; grid-template-columns: 1fr 1.3fr; gap: 3cqw; }
+  .people .lbl { font: 600 1.1cqw var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: .6cqw; }
+  .teacher { font: 700 2cqw var(--display); color: var(--ink); }
+  .members { display: grid; grid-template-columns: 1fr 1fr; gap: .4cqw 2cqw; font: 500 1.5cqw/1.5 var(--body); }
+
+  /* agenda */
+  .parts { display: grid; grid-template-columns: 1fr 1fr; gap: 2cqw; }
+  .part { background: var(--card); border: 1px solid var(--line); border-radius: 1cqw; padding: 1.8cqw 2cqw; }
+  .part h3 { font: 800 1.9cqw var(--display); margin: 0 0 1.2cqw; color: var(--blue); }
+  .part h3 small { display: block; font: 700 1.05cqw var(--display); letter-spacing: .12em; text-transform: uppercase; color: var(--orange); margin-bottom: .4cqw; }
+  .part p { font: 500 1.45cqw/1.5 var(--body); margin: 0; padding: .7cqw 0; border-top: 1px solid var(--line); }
+  .bookends { display: grid; grid-template-columns: 1fr 1fr; gap: 2cqw; margin-bottom: 1.6cqw; }
+  .bookends div { font: 600 1.45cqw var(--body); color: var(--muted); }
+  .bookends b { color: var(--ink); }
+
+  /* part divider */
+  .divider { justify-content: center; }
+  .divider .big { font: 800 9cqw/1 var(--display); color: var(--orange); }
+  .divider h2 { font: 800 4cqw/1.1 var(--display); color: var(--blue); margin: .6cqw 0 0; }
+  .divider p { font: 500 1.7cqw/1.5 var(--body); color: var(--muted); margin: 1.6cqw 0 0; max-width: 62cqw; }
+
+  /* goals */
+  .problem { font: 600 2cqw/1.4 var(--body); color: var(--ink); border-left: .5cqw solid var(--orange); padding-left: 1.6cqw; margin: 0 0 2.4cqw; max-width: 74cqw; }
+  .goal i { font: 800 1.3cqw var(--display); font-style: normal; color: #fff; background: var(--blue); width: 2.6cqw; height: 2.6cqw; border-radius: 50%; display: grid; place-items: center; }
+  .goal h3 { font: 800 1.6cqw/1.2 var(--display); margin: 1.1cqw 0 .6cqw; }
+  .goal p { font: 400 1.35cqw/1.45 var(--body); color: var(--muted); margin: 0; }
+
+  /* stat tiles */
+  .stat b { display: block; font: 800 4cqw/1 var(--display); color: var(--orange); font-variant-numeric: tabular-nums; }
+  .stat span { display: block; font: 600 1.5cqw/1.3 var(--body); margin-top: .8cqw; }
+  .stat small { display: block; font: 400 1.25cqw/1.4 var(--body); color: var(--muted); margin-top: .4cqw; }
+  .cols h3 { font: 800 1.5cqw var(--display); margin: 0 0 1cqw; }
+  .chips { display: flex; flex-wrap: wrap; gap: .6cqw; }
+  .chip { font: 500 1.2cqw var(--mono); background: var(--blue-soft); color: var(--ink); padding: .35cqw .8cqw; border-radius: .5cqw; }
+  .chip.f { background: #fbe7cf; }
+
+  /* step cards under chevrons */
+  .stepcard { background: var(--card); border: 1px solid var(--line); border-radius: .9cqw; padding: 1.2cqw 1.4cqw; margin-top: 1cqw; }
+  .stepcard p { font: 400 1.3cqw/1.45 var(--body); color: var(--ink); margin: 0 0 .6cqw; }
+  .stepcard p:last-child { margin-bottom: 0; }
+  .tbl { font: 500 1.15cqw var(--mono); background: var(--blue-soft); border-radius: .6cqw; padding: .55cqw .9cqw; margin-top: .6cqw; display: flex; justify-content: space-between; gap: 1cqw; }
+  .tbl em { font: 400 1.05cqw var(--body); font-style: normal; color: var(--muted); }
+  .tbl.hot { background: #fbe1cb; }
+  .ms { font: 700 1.3cqw var(--display); color: var(--blue); }
+  .flow .stepcard { padding: .9cqw 1.2cqw; margin-top: .8cqw; }
+  .flow .stepcard p { font-size: 1.15cqw; margin-bottom: .35cqw; }
+  .flow .chev { height: 4.2cqw; font-size: 1.4cqw; }
+  /* boxes in one row share width and height */
+  .chevrow > div { display: flex; flex-direction: column; }
+  .chevrow > div > .stepcard { flex: 1; }
+  .grid.g2.models { grid-auto-rows: 1fr; }
+  .stepcard.rr { background: #fff1e4; border-color: #f3c9a3; }
+  .stepcard.rr .ms { color: var(--orange); }
+
+  /* tables */
+  table { border-collapse: collapse; width: 100%; font: 400 1.3cqw var(--body); }
+  th { text-align: left; font: 700 1.05cqw var(--display); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding: .8cqw 1cqw; border-bottom: 2px solid var(--ink); }
+  td { padding: .75cqw 1cqw; border-bottom: 1px solid var(--line); }
+  table.dense td { padding: .45cqw 1cqw; }
+  table.dense th { padding: .5cqw 1cqw; }
+  td.r, th.r { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.hy td { background: #fff1e4; font-weight: 700; }
+  td.best { color: var(--orange); font-weight: 800; }
+  .strat { font: 500 1.2cqw var(--mono); color: var(--muted); }
+
+  .splitbar { display: flex; height: 3.2cqw; border-radius: .6cqw; overflow: hidden; margin-top: .8cqw; }
+  .splitbar div { display: grid; place-items: center; font: 700 1.15cqw var(--display); color: #fff; white-space: nowrap; }
+  /* RRF formula: a real fraction and a sum with its range underneath */
+  .formula { display: flex; align-items: center; gap: 3cqw; margin-top: 1.4cqw; background: var(--card); border: 1px solid var(--line); border-radius: 1cqw; padding: 1.2cqw 2cqw; }
+  .math { display: inline-flex; align-items: center; gap: .8cqw; font: italic 500 1.9cqw "Times New Roman", "STIX Two Math", serif; color: var(--ink); white-space: nowrap; }
+  .math .up { font-style: normal; }
+  .sum { display: inline-flex; flex-direction: column; align-items: center; line-height: 1; }
+  .sum .sig { font: 400 3.2cqw "Times New Roman", serif; font-style: normal; }
+  .sum small { font: italic 400 1.1cqw "Times New Roman", serif; margin-top: .2cqw; }
+  .frac { display: inline-flex; flex-direction: column; align-items: center; }
+  .frac span:first-child { padding: 0 .6cqw .2cqw; font-style: normal; }
+  .frac span:last-child { border-top: 2px solid var(--ink); padding: .2cqw .6cqw 0; }
+  /* math type: italic variables, upright function names, a real lowered subscript */
+  .math sub, .mi sub { font-size: .68em; vertical-align: -.4em; line-height: 0; font-style: italic; }
+  .math .fn, .mi .fn { font-style: normal; }
+  .mi { font-family: "Times New Roman", "STIX Two Math", serif; font-size: 1.18em; white-space: nowrap; }
+  .mi i { font-style: italic; }
+  th { white-space: nowrap; }
+  .formula p { font: 400 1.2cqw/1.45 var(--body); color: var(--muted); margin: 0; }
+  .label-sm { font: 700 1.1cqw var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+
+  /* models */
+  .model h3 { font: 500 1.4cqw var(--mono); color: var(--blue); margin: 0; word-break: break-word; }
+  .model .role { display: inline-block; font: 700 1.05cqw var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--orange); margin-bottom: .7cqw; }
+  .model p { font: 400 1.35cqw/1.45 var(--body); color: var(--muted); margin: .7cqw 0 0; }
+
+  /* eval setup */
+  .panel { background: #fff; border: 1px solid var(--line); border-radius: 1cqw; padding: 1.4cqw 1.8cqw 1.6cqw; }
+  .sec-h { display: flex; align-items: baseline; gap: 1cqw; margin: 0 0 1.2cqw; flex-wrap: wrap; }
+  .sec-h b { font: 800 1.7cqw/1 var(--display); text-transform: uppercase; letter-spacing: .02em; }
+  .sec-h span { font: 500 1.3cqw var(--body); color: var(--muted); }
+
+  /* bar chart */
+  .bars { display: grid; grid-template-columns: 8cqw 1fr 1fr; column-gap: 2.4cqw; row-gap: 1.2cqw; align-items: center; }
+  .ch { font: 700 1.05cqw var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .name { font: 700 1.6cqw var(--display); }
+  .bar { position: relative; height: 3.2cqw; background: #e4e8ee; border-radius: .5cqw; }
+  .fill { position: absolute; inset: 0 auto 0 0; background: #9aa6b8; border-radius: .5cqw; }
+  .val { position: absolute; top: 50%; transform: translateY(-50%); font: 700 1.45cqw var(--display); font-variant-numeric: tabular-nums; padding-left: .7cqw; white-space: nowrap; }
+  .hl .fill { background: var(--orange); }
+  .name.hl { color: var(--orange); }
+  .take { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 2cqw; }
+  .take p { border-left: .45cqw solid var(--blue); padding: .2cqw 0 .2cqw 1.3cqw; margin: 0; font: 500 1.45cqw/1.45 var(--body); }
+  .take p.or { border-color: var(--orange); }
+
+  /* plots */
+  .plot { position: relative; background: #fff; border: 1px solid var(--line); border-radius: 1cqw; }
+  .gridline { position: absolute; border-color: #e6eaf0; border-style: solid; border-width: 0; }
+  .tick { position: absolute; font: 500 1.05cqw var(--body); color: var(--muted); font-variant-numeric: tabular-nums; }
+  .dot { position: absolute; width: 1.5cqw; height: 1.5cqw; border-radius: 50%; transform: translate(-50%, -50%); background: #9aa6b8; }
+  .dot.pick { background: var(--orange); width: 2cqw; height: 2cqw; }
+  .dlabel { position: absolute; font: 600 1.2cqw/1.3 var(--body); white-space: nowrap; }
+  .dlabel small { display: block; font: 400 1.05cqw var(--body); color: var(--muted); }
+  .axis-t { position: absolute; font: 600 1.05cqw var(--display); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+
+  .db-row { display: grid; grid-template-columns: 8cqw 1fr; align-items: center; height: 6.2cqw; }
+  .db-track { position: relative; height: 100%; }
+  .db-line { position: absolute; top: 50%; height: .35cqw; background: #b8c3d3; transform: translateY(-50%); }
+  .db-dot { position: absolute; top: 50%; width: 1.6cqw; height: 1.6cqw; border-radius: 50%; transform: translate(-50%, -50%); }
+  .db-dot.hi { background: var(--blue); }
+  .db-dot.lo { background: #fff; border: .3cqw solid var(--blue); }
+  .db-v { position: absolute; top: 50%; transform: translateY(-50%); font: 700 1.2cqw var(--display); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .db-gap { position: absolute; top: .1cqw; transform: translateX(-50%); font: 600 1.05cqw var(--body); color: var(--muted); white-space: nowrap; }
+  .legend { display: flex; gap: 2cqw; font: 500 1.2cqw var(--body); color: var(--muted); margin-bottom: 1cqw; }
+  .legend span { display: inline-flex; align-items: center; gap: .6cqw; }
+  .legend i { width: 1.2cqw; height: 1.2cqw; border-radius: 50%; display: inline-block; }
+
+  .div-row { display: grid; grid-template-columns: 7.5cqw 3cqw 1fr 1fr 3.6cqw; align-items: center; height: 5cqw; }
+  .div-row .lab { font: 500 1.35cqw var(--mono); color: var(--muted); }
+  .div-row .n { font: 700 1.4cqw var(--display); font-variant-numeric: tabular-nums; }
+  .div-row .n.l { text-align: right; padding-right: .7cqw; }
+  .div-row .n.r { padding-left: .7cqw; }
+  .div-row .neg { display: flex; justify-content: flex-end; border-right: 2px solid var(--ink); height: 3cqw; }
+  .div-row .pos { height: 3cqw; }
+  .div-row .neg div { background: var(--bad); height: 100%; border-radius: .5cqw 0 0 .5cqw; }
+  .div-row .pos div { background: var(--good); height: 100%; border-radius: 0 .5cqw .5cqw 0; }
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 2cqw; }
+  .compare h4 { font: 800 1.4cqw var(--display); margin: 0 0 .6cqw; }
+  .compare h4 small { font: 500 1.15cqw var(--body); color: var(--muted); }
+  .compare .sum { font: 500 1.25cqw/1.4 var(--body); color: var(--muted); margin: .8cqw 0 0; }
+
+  /* error groups */
+  .errs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.1cqw; }
+  .err { background: #fff; border: 1px solid var(--line); border-radius: .9cqw; padding: 1.2cqw; display: flex; flex-direction: column; gap: .6cqw; }
+  .err .code { font: 800 1.2cqw var(--display); color: #fff; background: var(--blue); align-self: flex-start; padding: .2cqw .7cqw; border-radius: .4cqw; }
+  .err .code.rr { background: var(--orange); }
+  .err .code.ev { background: var(--muted); }
+  .err h3 { font: 800 1.4cqw/1.2 var(--display); margin: 0; }
+  .err .layer { font: 600 1.05cqw var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .err .cnt { font: 800 1.8cqw var(--display); color: var(--ink); white-space: nowrap; }
+  .err .cnt small { font: 500 1.05cqw var(--body); color: var(--muted); }
+  .err p { font: 400 1.12cqw/1.4 var(--body); color: var(--muted); margin: 0; }
+  .err .ex { margin-top: auto; font: 400 1.05cqw/1.4 var(--body); border-top: 1px solid var(--line); padding-top: .6cqw; color: var(--ink); }
+  .err .ex q { font-style: italic; }
+
+  /* numbered findings */
+  .finds { display: grid; gap: 2cqw; max-width: 82cqw; margin-top: 1cqw; }
+  .find { display: grid; grid-template-columns: 3.4cqw 1fr; gap: 1.4cqw; align-items: start; }
+  .find i { font: 800 1.5cqw var(--display); font-style: normal; color: #fff; background: var(--blue); width: 3cqw; height: 3cqw; border-radius: .7cqw; display: grid; place-items: center; }
+  .find h3 { font: 800 1.85cqw/1.2 var(--display); margin: .2cqw 0 .4cqw; }
+  .find p { font: 400 1.5cqw/1.45 var(--body); color: var(--muted); margin: 0; }
+
+  /* conclusion */
+  .kpis { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6cqw; }
+  .kpi b { display: block; font: 800 4.4cqw/1 var(--display); color: var(--orange); font-variant-numeric: tabular-nums; }
+  .kpi span { display: block; font: 700 1.3cqw var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: .6cqw; }
+  .next { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4cqw; margin-top: auto; }
+  .next div { border-top: .4cqw solid var(--blue); padding-top: .8cqw; }
+  .next b { display: block; font: 800 1.35cqw var(--display); }
+  .next span { font: 400 1.25cqw/1.45 var(--body); color: var(--muted); }
+
+  .thanks { justify-content: center; align-items: center; text-align: center; }
+  .thanks h2 { font: 800 4.6cqw/1.15 var(--display); color: var(--blue); margin: 0; max-width: 70cqw; text-wrap: balance; }
+  .thanks p { font: 500 1.9cqw/1.5 var(--body); margin: 2cqw 0 0; max-width: 60cqw; color: var(--muted); }
+
+  /* presenter chrome (hidden in export mode) */
+  .hud { position: fixed; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; align-items: center; z-index: 10; font: 600 13px var(--display); }
+  .hud button { font: inherit; background: rgba(255,255,255,.12); color: #fff; border: 1px solid rgba(255,255,255,.25); border-radius: 6px; padding: 6px 12px; cursor: pointer; }
+  .hud button:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  .hud .count { color: #cfd6e0; min-width: 60px; text-align: center; }
+  .notes { position: fixed; left: 50%; bottom: 52px; transform: translateX(-50%); width: min(900px, 92vw); background: rgba(16,22,32,.94); color: #e8edf4; font: 400 15px/1.5 var(--body); padding: 12px 16px; border-radius: 8px; z-index: 10; }
+  body.export .hud, body.export .notes { display: none !important; }
+  body.export { background: var(--paper); }
+  @media (prefers-reduced-motion: no-preference) { .slide.on { animation: in .25s ease-out; } @keyframes in { from { opacity: .4; } to { opacity: 1; } } }
+  body.export .slide.on { animation: none; }
+  /* print: every slide on its own 16:9 page */
+  @page { size: 1600px 900px; margin: 0; }
+  @media print {
+    html, body { height: auto; overflow: visible; background: var(--paper); display: block; }
+    .stage { width: 1600px; aspect-ratio: auto; }
+    .slide { display: flex !important; position: relative; width: 1600px; height: 900px; break-after: page; animation: none !important; }
+    .hud, .notes { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+
+<!-- 1 cover -->
+<section class="slide cover" data-notes="Giới thiệu nhóm và đề tài trong khoảng 15 giây.">
+  <div class="school">Trường Đại học Công nghệ Thông tin, ĐHQG TP.HCM</div>
+  <span class="subject">Môn học IS603, năm 2026</span>
+  <h1>Hệ thống truy hồi công thức nấu ăn</h1>
+  <p class="sub">Nhóm 1, Bài tập A1</p>
+  <div class="people">
+    <div><div class="lbl">Giảng viên hướng dẫn</div><div class="teacher">TS. Phạm Đỗ Kim Chi</div></div>
+    <div><div class="lbl">Thành viên nhóm</div>
+      <div class="members"><span>Châu Ngọc Hoa Thy</span><span>Lê Thành Duy Ân</span><span>Triệu Thị Thùy Dung</span><span>Trịnh Huỳnh Đăng</span></div></div>
+  </div>
+</section>
+
+<!-- 2 agenda -->
+<section class="slide" data-notes="Bài trình bày có hai phần chính: xây dựng hệ thống và đánh giá hệ thống.">
+  <p class="kicker">Nội dung</p>
+  <h2 class="title">Bài trình bày gồm hai phần: xây dựng và đánh giá</h2>
+  <div class="body">
+    <div class="bookends"><div><b>Mở đầu:</b> vấn đề và mục tiêu</div><div><b>Cuối bài:</b> kết luận và hướng phát triển</div></div>
+    <div class="parts">
+      <div class="part"><h3><small>Phần 1</small>Xây dựng hệ thống</h3>
+        <p>Dữ liệu công thức</p><p>Thiết kế cơ sở dữ liệu</p><p>Cách chia đoạn văn bản</p><p>Các mô hình sử dụng</p><p>Chọn mô hình xếp hạng lại</p><p>Luồng xử lý một truy vấn</p></div>
+      <div class="part"><h3><small>Phần 2</small>Đánh giá hệ thống</h3>
+        <p>Bộ dữ liệu đánh giá</p><p>So sánh bốn cấu hình</p><p>Ảnh hưởng của việc trùng từ</p><p>Phân tích lỗi</p><p>Hạn chế của nghiên cứu</p></div>
+    </div>
+  </div>
+  <span class="pageno">2</span>
+</section>
+
+<!-- 3 problem -->
+<section class="slide" data-notes="Ví dụ nói miệng: người dùng gõ 'creamy black bean and tomato stew' nhưng công thức có tên 'Black Bean and Tomato Soup'.">
+  <p class="kicker">Mở đầu</p>
+  <h2 class="title">Người dùng nhớ món ăn qua mô tả, không nhớ tên món</h2>
+  <div class="body">
+    <p class="problem">Nếu chỉ tìm theo từ khóa, hệ thống sẽ bỏ sót công thức đúng khi người dùng dùng từ khác với công thức.</p>
+    <div class="grid g4">
+      <div class="card goal"><i>1</i><h3>Tìm kết hợp</h3><p>Hệ thống tìm cả theo từ khóa (BM25) và theo vector, chạy trên PostgreSQL và ParadeDB.</p></div>
+      <div class="card goal"><i>2</i><h3>So sánh công bằng</h3><p>Bốn cách tìm được chạy trên cùng dữ liệu và cùng số đoạn đầu vào.</p></div>
+      <div class="card goal"><i>3</i><h3>Hai tầng</h3><p>Tầng 1 lấy nhiều kết quả để không bỏ sót. Tầng 2 sắp xếp lại để đưa kết quả đúng lên đầu.</p></div>
+      <div class="card goal"><i>4</i><h3>Đo bằng chỉ số chuẩn</h3><p>Nhóm dùng Recall@k, MRR và nDCG@k trên một bộ truy vấn được kiểm tra riêng.</p></div>
+    </div>
+  </div>
+  <span class="pageno">3</span>
+</section>
+
+<!-- 4 part 1 divider -->
+<section class="slide divider" data-notes="Chuyển sang phần 1.">
+  <div class="big">Phần 1</div>
+  <h2>Xây dựng hệ thống</h2>
+  <p>Phần này trình bày dữ liệu, cách lưu trữ, cách chia đoạn, các mô hình, cách chọn mô hình xếp hạng lại và luồng xử lý một truy vấn.</p>
+  <span class="pageno">4</span>
+</section>
+
+<!-- 5 data -->
+<section class="slide" data-notes="Nguồn là bộ shengtao/recipe trên Hugging Face, lấy từ Allrecipes. Chỉ 4 trường văn bản dùng để tìm, các cột còn lại dùng để lọc.">
+  <p class="kicker">Phần 1: Xây dựng hệ thống</p>
+  <h2 class="title">Dữ liệu gồm 32,719 công thức từ Allrecipes</h2>
+  <div class="body">
+    <div class="grid g3">
+      <div class="card stat"><b>32,719</b><span>công thức</span><small>Bộ gốc có 32,722 dòng, nhóm bỏ 3 dòng trùng URL.</small></div>
+      <div class="card stat"><b>22</b><span>danh mục món ăn</span><small>Nhiều nhất là món khai vị, món tráng miệng và món phụ.</small></div>
+      <div class="card stat"><b>19 / 32</b><span>cột dinh dưỡng được giữ</span><small>13 cột bị bỏ vì trống ở hơn 99% số dòng.</small></div>
+    </div>
+    <div class="grid g2 cols" style="margin-top:2cqw">
+      <div class="card"><h3>Bốn trường dùng để <span class="bl">tìm kiếm</span></h3>
+        <div class="chips"><span class="chip">title</span><span class="chip">description</span><span class="chip">ingredients</span><span class="chip">directions</span></div></div>
+      <div class="card"><h3>Các trường dùng để <span class="o">lọc</span></h3>
+        <div class="chips"><span class="chip f">category</span><span class="chip f">rating</span><span class="chip f">rating_count</span><span class="chip f">prep_time</span><span class="chip f">cook_time</span><span class="chip f">total_time</span><span class="chip f">servings</span><span class="chip f">calories</span><span class="chip f">protein</span><span class="chip f">fat</span><span class="chip f">carbohydrates</span><span class="chip f">sodium</span></div></div>
+    </div>
+  </div>
+  <span class="src">Nguồn dữ liệu là bộ shengtao/recipe trên Hugging Face.</span>
+  <span class="pageno">5</span>
+</section>
+
+<!-- 6 database -->
+<section class="slide" data-notes="Bên trái là các bảng nguồn đã chuẩn hóa, mỗi công thức lưu một lần. Bên phải là bảng chunk dùng để tìm kiếm. Khi nạp dữ liệu, mỗi công thức được chia thành các đoạn, chép các cột lọc sang và tạo vector cho từng đoạn.">
+  <p class="kicker">Phần 1: Xây dựng hệ thống</p>
+  <h2 class="title">Cơ sở dữ liệu quan hệ gồm 7 bảng trên PostgreSQL</h2>
+  <div class="body" style="margin-top:1.6cqw">
+    <div class="er" style="height:32.2cqw">
+      <div class="grp" style="left:0;width:52.5cqw">Bảng nguồn, chuẩn hóa</div>
+      <div class="grp o" style="left:57cqw;width:33cqw">Bảng dùng để tìm kiếm</div>
+      <svg viewBox="0 0 90 32.2" preserveAspectRatio="none" aria-hidden="true">
+        <g class="rel"><path d="M13.00 7.12 L14.80 7.12 L14.80 16.38 L17.00 16.38"/><path d="M13.00 19.12 L15.80 19.12 L15.80 18.23 L17.00 18.23"/><path d="M33.00 7.12 L37.00 7.12"/><path d="M35.00 7.12 L35.00 22.12 L37.00 22.12"/><path d="M35.00 17.12 L55.00 17.12 L55.00 15.83 L57.00 15.83"/><path d="M76.50 7.12 L74.80 7.12 L74.80 13.98 L73.00 13.98"/></g>
+        <g class="card"><text x="13.50" y="6.67" text-anchor="start">1</text><text x="16.50" y="15.93" text-anchor="end">n</text><text x="13.50" y="20.23" text-anchor="start">1</text><text x="16.50" y="17.78" text-anchor="end">n</text><text x="33.50" y="6.67" text-anchor="start">1</text><text x="36.50" y="6.67" text-anchor="end">1</text><text x="36.50" y="21.68" text-anchor="end">n</text><text x="56.50" y="15.38" text-anchor="end">n</text><text x="76.00" y="6.67" text-anchor="end">1</text><text x="73.50" y="13.53" text-anchor="start">n</text></g>
+      </svg>
+      <div class="tb base" style="left:0cqw;top:3.8cqw;width:13cqw"><div class="th">category</div><div><span>id</span><em class="pk">PK</em></div><div><span>name</span></div></div><div class="tb base" style="left:0cqw;top:15.8cqw;width:13cqw"><div class="th">author</div><div><span>id</span><em class="pk">PK</em></div><div><span>name</span></div></div><div class="tb base" style="left:17cqw;top:3.8cqw;width:16cqw"><div class="th">recipe</div><div><span>id</span><em class="pk">PK</em></div><div><span>url</span></div><div><span>title</span></div><div><span>description</span></div><div><span>directions</span></div><div><span>category_id</span><em class="fk">FK</em></div><div><span>author_id</span><em class="fk">FK</em></div><div><span>rating</span></div><div><span>rating_count</span></div><div><span>total_minutes</span></div><div><span>servings</span></div><div class="more"><span>5 cột khác</span></div></div><div class="tb base" style="left:37cqw;top:3.8cqw;width:15.5cqw"><div class="th">recipe_nutrition</div><div><span>recipe_id</span><em class="pk">PK</em><em class="fk">FK</em></div><div><span>calories</span></div><div><span>protein_g</span></div><div><span>fat_g</span></div><div class="more"><span>15 cột khác</span></div></div><div class="tb base" style="left:37cqw;top:18.8cqw;width:15.5cqw"><div class="th">recipe_ingredient</div><div><span>recipe_id</span><em class="pk">PK</em><em class="fk">FK</em></div><div><span>position</span><em class="pk">PK</em></div><div><span>line</span></div></div><div class="tb chunk" style="left:57cqw;top:8.8cqw;width:16cqw"><div class="th">chunk</div><div><span>id</span><em class="pk">PK</em></div><div><span>strategy</span><em class="pk">PK</em><em class="fk">FK</em></div><div><span>recipe_id</span><em class="fk">FK</em></div><div><span>kind</span></div><div><span>position</span></div><div><span>content</span></div><div><span>embedding vector(768)</span></div><div class="more"><span>11 cột lọc chép từ recipe</span></div></div><div class="tb chunk" style="left:76.5cqw;top:3.8cqw;width:13.5cqw"><div class="th">chunking_strategy</div><div><span>name</span><em class="pk">PK</em></div><div><span>method</span></div><div><span>parameters</span></div><div><span>loaded_at</span></div></div>
+      <div class="plabel" style="left:57cqw;top:27.10cqw">Ba phân vùng theo strategy, kèm số đoạn</div><div class="part" style="left:57.00cqw;top:28.80cqw;width:10.33cqw"><span>chunk_fixed</span><em>165,974</em></div><div class="part" style="left:68.33cqw;top:28.80cqw;width:10.33cqw"><span>chunk_semantic</span><em>166,438</em></div><div class="part" style="left:79.67cqw;top:28.80cqw;width:10.33cqw"><span>chunk_sentence</span><em>175,752</em></div>
+    </div>
+    <p class="why" style="margin-top:1.2cqw"><b>Vì sao bảng chunk chép lại các cột lọc?</b> ParadeDB chỉ lọc được trên cột của chính bảng có chỉ mục. Khi cột lọc nằm sẵn trong bảng chunk, việc tìm theo từ khóa, theo vector và lọc đều chạy trong một chỉ mục.</p>
+  </div>
+  <span class="pageno">6</span>
+</section>
+
+<!-- 7 chunking -->
+<section class="slide" data-notes="Ý chính: ba cách chia tạo ra số đoạn gần bằng nhau, nên khác biệt kết quả đến từ vị trí cắt chứ không phải số đoạn.">
+  <p class="kicker">Phần 1: Xây dựng hệ thống</p>
+  <h2 class="title">Ba cách chia phần hướng dẫn nấu, cho số đoạn gần bằng nhau</h2>
+  <p class="lead">Mỗi công thức có một đoạn tóm tắt, một đoạn nguyên liệu và nhiều đoạn hướng dẫn. Chỉ các đoạn hướng dẫn thay đổi giữa ba cách chia, nên tổng số đoạn bằng số đoạn hướng dẫn cộng 65,438.</p>
+  <div class="body">
+    <table>
+      <thead><tr><th>Cách chia</th><th>Cách cắt phần hướng dẫn</th><th class="r">Đoạn hướng dẫn</th><th class="r">Tổng số đoạn</th><th class="r">Độ dài trung vị</th></tr></thead>
+      <tbody>
+        <tr><td><b>Fixed</b></td><td>Cắt sau mỗi 56 token, tại ranh giới từ</td><td class="r">100,536</td><td class="r">165,974</td><td class="r">224 ký tự</td></tr>
+        <tr><td><b>Semantic</b></td><td>Cắt ở chỗ hai câu liền nhau ít giống nhau nhất, mỗi đoạn dài 80 đến 400 ký tự</td><td class="r">101,000</td><td class="r">166,438</td><td class="r">185 ký tự</td></tr>
+        <tr><td><b>Sentence</b></td><td>Gộp 3 câu liên tiếp thành một đoạn</td><td class="r">110,314</td><td class="r">175,752</td><td class="r">178 ký tự</td></tr>
+      </tbody>
+    </table>
+    <p class="why">Tham số được chỉnh để ba cách chia cho số đoạn hướng dẫn tương đương. Vì vậy khác biệt về kết quả đến từ vị trí cắt, không phải từ số lượng đoạn.</p>
+  </div>
+  <span class="pageno">7</span>
+</section>
+
+<!-- 8 models -->
+<section class="slide" data-notes="Mỗi mô hình một câu. bert-base-uncased chỉ dùng để đếm token khi chia theo cách fixed.">
+  <p class="kicker">Phần 1: Xây dựng hệ thống</p>
+  <h2 class="title">Hệ thống dùng bốn mô hình có sẵn, mỗi mô hình làm một việc</h2>
+  <div class="body">
+    <div class="grid g2 models">
+      <div class="card model"><span class="role">Tạo vector</span><h3>nomic-embed-text</h3><p>Biến đoạn văn và truy vấn thành vector 768 chiều. Dense xếp hạng theo độ tương đồng cosine.</p></div>
+      <div class="card model"><span class="role">Xếp hạng lại</span><h3>mxbai-rerank-base-v1</h3><p>Đọc truy vấn và từng đoạn cùng lúc rồi chấm điểm lại 50 đoạn đầu trong Hybrid. Cách nhóm chọn mô hình này ở trang sau.</p></div>
+      <div class="card model"><span class="role">Đếm token</span><h3>bert-base-uncased</h3><p>Dùng để đếm token khi chia đoạn theo cách fixed.</p></div>
+      <div class="card model"><span class="role">Viết truy vấn thử</span><h3>qwen2.5:7b</h3><p>Viết truy vấn đánh giá dài 3 đến 8 từ và không dùng tên món.</p></div>
+    </div>
+  </div>
+  <span class="pageno">8</span>
+</section>
+
+<!-- 15 reranker choice -->
+<section class="slide" data-notes="Đây là cách nhóm chọn mô hình xếp hạng lại. Nhóm chọn mxbai vì MRR cao nhất mà chỉ chậm hơn bge-reranker-base 25%. bge-reranker-v2-m3 vừa kém hơn vừa chậm gần 3 lần. MiniLM là lựa chọn nếu cần nhanh.">
+  <p class="kicker">Phần 1: Xây dựng hệ thống</p>
+  <h2 class="title">Nhóm chọn mxbai-rerank-base vì có MRR cao nhất mà chỉ chậm hơn bge-reranker-base 25%</h2>
+  <p class="lead">Nhóm thử bốn cross-encoder, lần lượt thay vào bước xếp hạng lại của Hybrid. Mỗi mô hình chạy trên cùng 298 truy vấn của bộ đánh giá ở phần 2, và nhóm so sánh hai tiêu chí: MRR và thời gian.</p>
+  <div class="body" style="margin-top:1.6cqw">
+    <div class="plot" style="flex:1">
+      <!-- x: 0..3 over left 9%..95%; y: 0.75..0.90 over top 8%..86% -->
+      <div class="gridline" style="left:9%;right:5%;top:8%;border-top-width:1px"></div>
+      <div class="gridline" style="left:9%;right:5%;top:34%;border-top-width:1px"></div>
+      <div class="gridline" style="left:9%;right:5%;top:60%;border-top-width:1px"></div>
+      <div class="gridline" style="left:9%;right:5%;top:86%;border-top-width:1px;border-color:#b8c3d3"></div>
+      <span class="tick" style="left:3.5%;top:6.5%">0.90</span>
+      <span class="tick" style="left:3.5%;top:32.5%">0.85</span>
+      <span class="tick" style="left:3.5%;top:58.5%">0.80</span>
+      <span class="tick" style="left:3.5%;top:84.5%">0.75</span>
+      <span class="tick" style="left:9%;top:89%">0</span>
+      <span class="tick" style="left:36.5%;top:89%">1 lần</span>
+      <span class="tick" style="left:65%;top:89%">2 lần</span>
+      <span class="tick" style="left:92.5%;top:89%">3 lần</span>
+      <span class="axis-t" style="left:9%;top:94%">Thời gian so với bge-reranker-base</span>
+      <span class="axis-t" style="left:9%;top:1.5%">MRR của Hybrid, cách chia semantic</span>
+
+      <div class="dot pick" style="left:44.8%;top:10.6%"></div>
+      <span class="dlabel" style="left:47%;top:6.5%"><b class="o">mxbai-rerank-base-v1</b><small>MRR 0.895, thời gian 1.25 lần</small></span>
+      <div class="dot" style="left:93.3%;top:40.2%"></div>
+      <span class="dlabel" style="left:70%;top:43.5%">bge-reranker-v2-m3<small>MRR 0.838, thời gian 2.94 lần</small></span>
+      <div class="dot" style="left:16.5%;top:60.5%"></div>
+      <span class="dlabel" style="left:18.5%;top:56%">ms-marco-MiniLM-L6-v2<small>MRR 0.799, thời gian 0.26 lần</small></span>
+      <div class="dot" style="left:37.7%;top:81.8%"></div>
+      <span class="dlabel" style="left:39.7%;top:72%">bge-reranker-base<small>MRR 0.758, mốc so sánh</small></span>
+    </div>
+  </div>
+  <span class="src">Mỗi mô hình chạy thay cho bge-reranker-base trên cùng 298 truy vấn và trong cùng lần chạy.</span>
+  <span class="pageno">9</span>
+</section>
+
+<!-- 9 query flow -->
+<section class="slide" data-notes="Chỉ vào thanh thời gian: tầng 1 rất nhanh, gần như toàn bộ thời gian nằm ở bước xếp hạng lại.">
+  <p class="kicker">Phần 1: Xây dựng hệ thống</p>
+  <h2 class="title">Một truy vấn mất khoảng 725 ms, trong đó 93% là bước xếp hạng lại</h2>
+  <div class="body">
+    <div class="chevrow flow g4">
+      <div><div class="chev">Truy vấn</div>
+        <div class="stepcard"><p>Người dùng nhập mô tả món ăn và có thể chọn bộ lọc.</p></div></div>
+      <div><div class="chev">Tầng 1: lấy kết quả</div>
+        <div class="stepcard"><p>BM25 lấy 50 đoạn đầu theo từ khóa. <span class="ms">8 ms</span></p>
+          <p>Truy vấn được đổi thành vector. <span class="ms">20 ms</span></p>
+          <p>Dense lấy 50 đoạn gần nhất theo vector. <span class="ms">14 ms</span></p>
+          <p>RRF gộp hai danh sách theo thứ hạng. <span class="ms">dưới 1 ms</span></p></div></div>
+      <div><div class="chev orange">Tầng 2: xếp hạng lại</div>
+        <div class="stepcard rr"><p>mxbai-rerank-base-v1 chấm điểm lại các đoạn đã gộp.</p><p><span class="ms">673 ms</span></p></div></div>
+      <div><div class="chev blue">Kết quả</div>
+        <div class="stepcard"><p>Hệ thống trả về danh sách công thức, không tự viết câu trả lời.</p></div></div>
+    </div>
+    <div style="margin-top:1.4cqw">
+      <span class="label-sm">Thời gian của một truy vấn Hybrid, trung vị 725 ms</span>
+      <div class="splitbar">
+        <div style="width:6%;background:var(--blue)">42</div>
+        <div style="width:94%;background:var(--orange)">Xếp hạng lại 673 ms</div>
+      </div>
+    </div>
+    <div class="formula">
+      <span class="math"><span><span class="up">RRF</span>(<i>d</i>) =</span>
+        <span class="sum"><span class="sig">&sum;</span><small>r &isin; {BM25, Dense}</small></span>
+        <span class="frac"><span>1</span><span><i>k</i> + <span class="fn">rank</span><sub>r</sub>(<i>d</i>)</span></span></span>
+      <p>Trong đó <span class="mi"><span class="fn">rank</span><sub>r</sub>(<i>d</i>)</span> là thứ hạng của đoạn <span class="mi"><i>d</i></span> trong danh sách <span class="mi"><i>r</i></span>, bắt đầu từ 1, và <span class="mi"><i>k</i> = 60</span>. Công thức chỉ dùng thứ hạng, nên không cần đưa điểm BM25 và điểm cosine về cùng một thang.</p>
+    </div>
+  </div>
+  <span class="src">Trung vị trên 298 truy vấn, cách chia semantic, lần chạy 20261006-224100.</span>
+  <span class="pageno">10</span>
+</section>
+
+<!-- 10 part 2 divider -->
+<section class="slide divider" data-notes="Chuyển sang phần 2.">
+  <div class="big">Phần 2</div>
+  <h2>Đánh giá hệ thống</h2>
+  <p>Phần này trình bày bộ dữ liệu đánh giá, kết quả của bốn cấu hình và các lỗi còn lại.</p>
+  <span class="pageno">11</span>
+</section>
+
+<!-- 11 eval set -->
+<section class="slide" data-notes="Pooling theo cách của TREC: lấy 5 công thức đầu của mọi cấu hình, gộp lại rồi mới chấm, để không cấu hình nào bị chấm thiệt. Mọi cấu hình đều lấy 50 đoạn đầu để so sánh công bằng.">
+  <p class="kicker">Phần 2: Đánh giá hệ thống</p>
+  <h2 class="title">Bộ đánh giá có 298 truy vấn và 691 cặp được chấm là liên quan</h2>
+  <div class="body" style="gap:1.4cqw;margin-top:1.8cqw">
+    <div class="panel">
+      <p class="sec-h"><b>Bộ dữ liệu đánh giá</b><span>Tạo truy vấn, chọn cặp để chấm, rồi chấm nhãn.</span></p>
+      <div class="chevrow g4">
+        <div><div class="chev big">298</div><div class="under"><b>truy vấn</b><span>Lấy từ 300 công thức ngẫu nhiên, bỏ 2 truy vấn không hợp lệ.</span></div></div>
+        <div><div class="chev big">5,431</div><div class="under"><b>cặp được chấm</b><span>Gộp 5 công thức đầu của mọi cấu hình.</span></div></div>
+        <div><div class="chev big">691</div><div class="under"><b>cặp liên quan</b><span>Do LLM chấm là đúng.</span></div></div>
+        <div><div class="chev big blue">91.7%</div><div class="under"><b>độ đồng thuận</b><span>Chấm lại 120 cặp, 110 cặp khớp.</span></div></div>
+      </div>
+    </div>
+    <div class="panel">
+      <p class="sec-h"><b>Bốn cấu hình được so sánh</b><span>Mỗi cấu hình lấy 50 đoạn đầu và được chấm trên 20 công thức đầu.</span></p>
+      <div class="chevrow g3">
+        <div><div class="chev sand">Sparse và Dense</div><div class="under"><span>Tìm riêng theo từ khóa (BM25) và theo vector (cosine).</span></div></div>
+        <div><div class="chev sand">Fusion</div><div class="under"><span>Gộp hai danh sách của Sparse và Dense bằng RRF.</span></div></div>
+        <div><div class="chev orange">Hybrid</div><div class="under"><span>Xếp hạng lại kết quả của Fusion bằng cross-encoder.</span></div></div>
+      </div>
+    </div>
+  </div>
+  <span class="pageno">12</span>
+</section>
+
+<!-- 12 main result -->
+<section class="slide" data-notes="Đây là slide quan trọng nhất. Fusion tốt hơn một chút mà gần như không chậm hơn. Hybrid tốt hơn rõ rệt nhưng mỗi truy vấn mất khoảng 0.7 giây.">
+  <p class="kicker">Phần 2: Đánh giá hệ thống</p>
+  <h2 class="title">Hybrid có nDCG@10 cao nhất là 0.916, nhưng mỗi truy vấn mất khoảng 0.7 giây</h2>
+  <div class="body">
+    <div class="bars">
+      <div></div><div class="ch">Chất lượng: nDCG@10, càng cao càng tốt</div><div class="ch">Độ trễ: trung vị ms, càng thấp càng tốt</div>
+      <div class="name">Sparse</div>
+      <div class="bar"><div class="fill" style="width:71.8%"></div><span class="val" style="left:71.8%">0.718</span></div>
+      <div class="bar"><div class="fill" style="width:1.8%"></div><span class="val" style="left:1.8%">14</span></div>
+      <div class="name">Dense</div>
+      <div class="bar"><div class="fill" style="width:74.4%"></div><span class="val" style="left:74.4%">0.744</span></div>
+      <div class="bar"><div class="fill" style="width:6.1%"></div><span class="val" style="left:6.1%">49</span></div>
+      <div class="name">Fusion</div>
+      <div class="bar"><div class="fill" style="width:77.6%"></div><span class="val" style="left:77.6%">0.776</span></div>
+      <div class="bar"><div class="fill" style="width:6.1%"></div><span class="val" style="left:6.1%">49</span></div>
+      <div class="name hl">Hybrid</div>
+      <div class="bar hl"><div class="fill" style="width:91.6%"></div><span class="val" style="left:91.6%">0.916</span></div>
+      <div class="bar hl"><div class="fill" style="width:90.6%"></div><span class="val" style="left:90.6%">725</span></div>
+    </div>
+    <div class="take">
+      <p>Fusion cao hơn Dense 0.032 mà thời gian gần như không đổi.</p>
+      <p class="or">Hybrid cao hơn Fusion thêm 0.140, nhưng chậm hơn rất nhiều vì bước xếp hạng lại.</p>
+    </div>
+  </div>
+  <span class="src">Số liệu trên 298 truy vấn, cách chia semantic. Độ trễ của Hybrid đo trong một lần chạy, các cấu hình khác là trung vị của ba lần chạy. Thang độ trễ từ 0 đến 800 ms.</span>
+  <span class="pageno">13</span>
+</section>
+
+<!-- 13 full table -->
+<section class="slide" data-notes="Không đọc bảng. Chỉ ra hai điều: hàng Hybrid cao nhất ở mọi cột, và ba cách chia đoạn chênh nhau rất ít.">
+  <p class="kicker">Phần 2: Đánh giá hệ thống</p>
+  <h2 class="title">Hybrid cao nhất ở mọi chỉ số, còn cách chia đoạn gần như không đổi kết quả</h2>
+  <div class="body" style="margin-top:1.6cqw">
+    <table class="dense" style="font-size:1.15cqw">
+      <thead><tr><th>Cách chia</th><th>Cấu hình</th><th class="r">R@5</th><th class="r">R@10</th><th class="r">R@20</th><th class="r">MRR</th><th class="r">nDCG@5</th><th class="r">nDCG@10</th></tr></thead>
+      <tbody>
+        <tr><td class="strat" rowspan="4">fixed</td><td>Sparse</td><td class="r">0.836</td><td class="r">0.909</td><td class="r">0.933</td><td class="r">0.689</td><td class="r">0.717</td><td class="r">0.741</td></tr>
+        <tr><td>Dense</td><td class="r">0.852</td><td class="r">0.903</td><td class="r">0.930</td><td class="r">0.691</td><td class="r">0.725</td><td class="r">0.742</td></tr>
+        <tr><td>Fusion</td><td class="r">0.876</td><td class="r">0.923</td><td class="r">0.963</td><td class="r">0.714</td><td class="r">0.748</td><td class="r">0.763</td></tr>
+        <tr class="hy"><td>Hybrid</td><td class="r best">0.970</td><td class="r best">0.977</td><td class="r best">0.980</td><td class="r">0.894</td><td class="r best">0.913</td><td class="r">0.915</td></tr>
+        <tr><td class="strat" rowspan="4">semantic</td><td>Sparse</td><td class="r">0.822</td><td class="r">0.896</td><td class="r">0.936</td><td class="r">0.664</td><td class="r">0.694</td><td class="r">0.718</td></tr>
+        <tr><td>Dense</td><td class="r">0.859</td><td class="r">0.896</td><td class="r">0.943</td><td class="r">0.697</td><td class="r">0.732</td><td class="r">0.744</td></tr>
+        <tr><td>Fusion</td><td class="r">0.879</td><td class="r">0.940</td><td class="r">0.960</td><td class="r">0.725</td><td class="r">0.756</td><td class="r">0.776</td></tr>
+        <tr class="hy"><td>Hybrid</td><td class="r">0.966</td><td class="r best">0.977</td><td class="r">0.977</td><td class="r best">0.895</td><td class="r">0.912</td><td class="r best">0.916</td></tr>
+        <tr><td class="strat" rowspan="4">sentence</td><td>Sparse</td><td class="r">0.822</td><td class="r">0.889</td><td class="r">0.936</td><td class="r">0.668</td><td class="r">0.697</td><td class="r">0.719</td></tr>
+        <tr><td>Dense</td><td class="r">0.842</td><td class="r">0.883</td><td class="r">0.926</td><td class="r">0.691</td><td class="r">0.723</td><td class="r">0.736</td></tr>
+        <tr><td>Fusion</td><td class="r">0.852</td><td class="r">0.913</td><td class="r">0.953</td><td class="r">0.703</td><td class="r">0.732</td><td class="r">0.752</td></tr>
+        <tr class="hy"><td>Hybrid</td><td class="r">0.966</td><td class="r best">0.977</td><td class="r best">0.980</td><td class="r">0.888</td><td class="r">0.907</td><td class="r">0.910</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <span class="src">Hybrid dùng mxbai-rerank-base-v1. Số màu cam là giá trị cao nhất của mỗi cột.</span>
+  <span class="pageno">14</span>
+</section>
+
+<!-- 14 overlap -->
+<section class="slide" data-notes="Chia truy vấn thành hai nhóm: dùng nhiều từ giống công thức và dùng ít từ giống. BM25 giảm mạnh nhất ở nhóm ít trùng từ, đúng vấn đề nêu ở phần mở đầu. Hybrid xử lý tốt nhóm này.">
+  <p class="kicker">Phần 2: Đánh giá hệ thống</p>
+  <h2 class="title">Khi truy vấn ít trùng từ với công thức, BM25 giảm 0.221 còn Hybrid chỉ giảm 0.043</h2>
+  <div class="body">
+    <div class="legend"><span><i style="background:var(--blue)"></i>Trùng từ nhiều, 154 truy vấn</span><span><i style="border:.25cqw solid var(--blue);background:#fff"></i>Trùng từ ít, 144 truy vấn</span><span style="margin-left:auto">Recall@5, cách chia semantic</span></div>
+    <div class="card" style="padding:1.2cqw 2cqw">
+      <!-- x: 0.65..1.0 over 0..100% of the track -->
+      <div class="db-row"><div class="name">Sparse</div><div class="db-track">
+        <div class="db-line" style="left:16.6%;width:63.1%"></div>
+        <div class="db-dot lo" style="left:16.6%"></div><div class="db-dot hi" style="left:79.7%"></div>
+        <span class="db-v" style="left:16.6%;margin-left:-6cqw">0.708</span><span class="db-v" style="left:79.7%;margin-left:1.4cqw">0.929</span>
+        <span class="db-gap" style="left:48%">giảm 0.221</span></div></div>
+      <div class="db-row"><div class="name">Dense</div><div class="db-track">
+        <div class="db-line" style="left:52.3%;width:14.3%"></div>
+        <div class="db-dot lo" style="left:52.3%"></div><div class="db-dot hi" style="left:66.6%"></div>
+        <span class="db-v" style="left:52.3%;margin-left:-6cqw">0.833</span><span class="db-v" style="left:66.6%;margin-left:1.4cqw">0.883</span>
+        <span class="db-gap" style="left:59.4%">giảm 0.050</span></div></div>
+      <div class="db-row"><div class="name">Fusion</div><div class="db-track">
+        <div class="db-line" style="left:50.3%;width:29.4%"></div>
+        <div class="db-dot lo" style="left:50.3%"></div><div class="db-dot hi" style="left:79.7%"></div>
+        <span class="db-v" style="left:50.3%;margin-left:-6cqw">0.826</span><span class="db-v" style="left:79.7%;margin-left:1.4cqw">0.929</span>
+        <span class="db-gap" style="left:65%">giảm 0.103</span></div></div>
+      <div class="db-row"><div class="name hl">Hybrid</div><div class="db-track">
+        <div class="db-line" style="left:84%;width:12.3%;background:var(--orange)"></div>
+        <div class="db-dot lo" style="left:84%;border-color:var(--orange)"></div><div class="db-dot hi" style="left:96.3%;background:var(--orange)"></div>
+        <span class="db-v" style="left:84%;margin-left:-6cqw">0.944</span><span class="db-v" style="left:96.3%;margin-left:1.4cqw">0.987</span>
+        <span class="db-gap" style="left:90%">giảm 0.043</span></div></div>
+    </div>
+    <p class="note">Đây chính là vấn đề ở phần mở đầu: người dùng mô tả món ăn bằng từ khác với công thức. Hybrid gần như không bị ảnh hưởng.</p>
+  </div>
+  <span class="src">Thang đo từ 0.65 đến 1.0.</span>
+  <span class="pageno">15</span>
+</section>
+
+<!-- 17 errors -->
+<section class="slide" data-notes="Đi từ trái sang phải theo tầng của hệ thống: ba nhóm lỗi ở tầng lấy kết quả, một nhóm ở bước xếp hạng lại, một nhóm ở chính bộ đánh giá.">
+  <p class="kicker">Phần 2: Đánh giá hệ thống</p>
+  <h2 class="title">Phần lớn lỗi nằm ở tầng lấy kết quả, không nằm ở bước xếp hạng lại</h2>
+  <div class="body">
+    <div class="errs">
+      <div class="err"><span class="code">E1</span><span class="layer">Tầng 1, BM25</span><h3>Lệch từ vựng</h3><span class="cnt">16 đến 17 <small>truy vấn</small></span><p>Truy vấn và công thức dùng từ khác nhau cho cùng một ý.</p><p class="ex">Truy vấn <q>creamy black bean and tomato stew</q> tìm món Black Bean and Tomato Soup. BM25 xếp hạng 20, Dense hạng 2, Hybrid hạng 1.</p></div>
+      <div class="err"><span class="code">E2</span><span class="layer">Tầng 1, Dense</span><h3>Mất chi tiết cụ thể</h3><span class="cnt">17 đến 19 <small>truy vấn</small></span><p>Nguyên liệu hiếm, con số hoặc phủ định bị bỏ qua.</p><p class="ex">Truy vấn <q>yellow split pea soup with curry powder</q> tìm món Vegan Split Pea Soup II. BM25 xếp hạng 1, Dense ngoài top 20, Hybrid hạng 1.</p></div>
+      <div class="err"><span class="code">E3</span><span class="layer">Tầng 1</span><h3>Không tìm thấy</h3><span class="cnt">6 đến 7 <small>truy vấn</small></span><p>Không có công thức đúng nào trong 20 kết quả đầu của Hybrid.</p><p class="ex">Truy vấn <q>citrusy alcoholic drink with cola</q> tìm món Long Island Iced Tea. Cả bốn cấu hình đều không tìm thấy.</p></div>
+      <div class="err"><span class="code rr">E4</span><span class="layer">Tầng 2</span><h3>Xếp hạng lại sai</h3><span class="cnt">0 đến 2 <small>truy vấn</small></span><p>Công thức đúng nằm trong top 5 sau RRF nhưng bị đẩy ra ngoài.</p><p class="ex">Truy vấn <q>warm, coffee-flavored dessert in mug</q> tìm món Easy Coffee Mug Cake. Sau RRF hạng 1, sau xếp hạng lại hạng 7.</p></div>
+      <div class="err"><span class="code ev">E6</span><span class="layer">Bộ đánh giá</span><h3>Lỗi nhãn hoặc truy vấn</h3><span class="cnt">55 <small>truy vấn mơ hồ</small></span><p>Truy vấn quá mơ hồ hoặc nhãn bị chấm sai. Có thêm 30 nhãn chỉ đúng một phần.</p><p class="ex">Truy vấn <q>creamy tomato based dressing with vinegar</q> tìm món Dorothy Lynch Style Salad Dressing, nhưng công thức không nói món này có kem.</p></div>
+    </div>
+  </div>
+  <span class="src">Số lượng là khoảng giá trị qua ba cách chia đoạn. Ví dụ lấy ở cách chia semantic.</span>
+  <span class="pageno">16</span>
+</section>
+
+<!-- 18 findings -->
+<section class="slide" data-notes="Bốn ý, mỗi ý một câu. Ý 4 quan trọng khi bị hỏi: một số chênh lệch nhỏ giữa các cấu hình nằm trong mức nhiễu của bộ đánh giá.">
+  <p class="kicker">Phần 2: Đánh giá hệ thống</p>
+  <h2 class="title">Bốn điều rút ra từ phân tích lỗi</h2>
+  <div class="body">
+    <div class="finds">
+      <div class="find"><i>1</i><div><h3>BM25 và Dense bù cho nhau</h3><p>E1 và E2 là hai nhóm lỗi lớn nhất, khoảng 17 truy vấn mỗi cách chia. Hybrid sửa được phần lớn các trường hợp này.</p></div></div>
+      <div class="find"><i>2</i><div><h3>Cách chia đoạn không phải nguồn lỗi chính</h3><p>Ba cách chia cho kết quả chênh nhau rất ít trong bảng kết quả.</p></div></div>
+      <div class="find"><i>3</i><div><h3>Xếp hạng lại là bước cải thiện nhiều nhất</h3><p>Với mxbai, chỉ 13 đến 19 truy vấn bị xuống hạng, và trung vị chỉ xuống 1 hạng. Chỉ 0 đến 2 truy vấn bị đẩy ra khỏi top 5.</p></div></div>
+      <div class="find"><i>4</i><div><h3>Bộ đánh giá vẫn có nhiễu</h3><p>18.5% truy vấn bị đánh giá là mơ hồ và 8.3% số cặp chấm lại không khớp. Mức nhiễu này lớn hơn một số chênh lệch giữa các cấu hình.</p></div></div>
+    </div>
+  </div>
+  <span class="pageno">17</span>
+</section>
+
+<!-- 19 limits -->
+<section class="slide" data-notes="Nói thẳng các hạn chế trước khi bị hỏi. Ý 4 là rủi ro lớn nhất về phương pháp.">
+  <p class="kicker">Phần 2: Đánh giá hệ thống</p>
+  <h2 class="title">Bốn hạn chế của nghiên cứu</h2>
+  <div class="body">
+    <div class="finds">
+      <div class="find"><i>1</i><div><h3>Hybrid còn chậm</h3><p>Mỗi truy vấn mất khoảng 725 ms, trong đó 93% là bước xếp hạng lại. Nếu cần nhanh hơn, ms-marco-MiniLM-L6-v2 nhanh hơn khoảng 4 lần nhưng MRR chỉ đạt 0.799.</p></div></div>
+      <div class="find"><i>2</i><div><h3>Độ trễ của Hybrid mới đo một lần</h3><p>Lần chạy chính cho trung vị 725 ms, còn một lần chạy khác cho 921 ms. Máy đo có dao động giữa các lần chạy.</p></div></div>
+      <div class="find"><i>3</i><div><h3>Truy vấn có thể thiên lệch</h3><p>Truy vấn do LLM viết nên có thể dễ hơn truy vấn thật. Nhãn chưa được người chấm kiểm tra lại.</p></div></div>
+      <div class="find"><i>4</i><div><h3>Kết quả có thể hơi lạc quan</h3><p>Cùng một bộ 298 truy vấn vừa dùng để chọn mô hình và tham số, vừa dùng để báo cáo kết quả cuối.</p></div></div>
+    </div>
+  </div>
+  <span class="pageno">18</span>
+</section>
+
+<!-- 20 conclusion -->
+<section class="slide" data-notes="Kết bằng một câu: hệ thống hai tầng tốt hơn rõ rệt, và chọn mô hình xếp hạng lại quan trọng hơn chọn cách chia đoạn.">
+  <p class="kicker">Kết luận</p>
+  <h2 class="title">Nhóm đề xuất dùng Hybrid với mxbai-rerank-base và cách chia semantic</h2>
+  <div class="body">
+    <div class="kpis">
+      <div class="card kpi"><b>0.966</b><span>Recall@5</span></div>
+      <div class="card kpi"><b>0.895</b><span>MRR</span></div>
+      <div class="card kpi"><b>0.916</b><span>nDCG@10</span></div>
+    </div>
+    <div class="grid g2" style="margin-top:2cqw">
+      <p class="problem" style="margin:0;font-size:1.6cqw">Hệ thống hai tầng cho kết quả tốt hơn rõ rệt so với Sparse, Dense và Fusion.</p>
+      <p class="problem" style="margin:0;font-size:1.6cqw">Chọn mô hình xếp hạng lại và xử lý lệch từ vựng quan trọng hơn chọn cách chia đoạn.</p>
+    </div>
+    <div class="next">
+      <div><b>Hướng phát triển cho E1</b><span>Mở rộng truy vấn hoặc dùng SPLADE để xử lý lệch từ vựng.</span></div>
+      <div><b>Hướng phát triển cho E2</b><span>Thêm bộ lọc theo nguyên liệu và con số cụ thể.</span></div>
+      <div><b>Hướng phát triển cho E4</b><span>Kết hợp điểm xếp hạng lại với điểm RRF.</span></div>
+    </div>
+  </div>
+  <span class="pageno">19</span>
+</section>
+
+<!-- 21 thanks -->
+<section class="slide thanks" data-notes="">
+  <h2>Cảm ơn cô và các bạn đã lắng nghe</h2>
+  <p>Nhóm rất mong nhận được câu hỏi và góp ý từ cô và các bạn.</p>
+  <span class="pageno">20</span>
+</section>
+
+</div>
+
+<div class="notes" id="notes" hidden></div>
+<div class="hud">
+  <button type="button" id="prev" aria-label="Slide trước">Trước</button>
+  <span class="count" id="count"></span>
+  <button type="button" id="next" aria-label="Slide sau">Sau</button>
+  <button type="button" id="ntoggle">Ghi chú (N)</button>
+</div>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  const notes = document.getElementById('notes');
+  const count = document.getElementById('count');
+  let i = 0;
+  function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('on', k === i));
+    count.textContent = (i + 1) + ' / ' + slides.length;
+    notes.textContent = slides[i].dataset.notes || '';
+    if (!document.body.classList.contains('export')) history.replaceState(null, '', '#' + (i + 1));
+  }
+  // #7 opens slide 7; #7p opens it with no controls, for screenshots
+  const m = location.hash.match(/^#(\d+)(p?)$/);
+  if (m && m[2]) document.body.classList.add('export');
+  show(m ? +m[1] - 1 : 0);
+  document.getElementById('prev').onclick = () => show(i - 1);
+  document.getElementById('next').onclick = () => show(i + 1);
+  document.getElementById('ntoggle').onclick = () => { notes.hidden = !notes.hidden; };
+  document.getElementById('stage').addEventListener('click', e => show(e.clientX > innerWidth / 2 ? i + 1 : i - 1));
+  addEventListener('keydown', e => {
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); show(i + 1); }
+    else if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); show(i - 1); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+    else if (e.key.toLowerCase() === 'n') notes.hidden = !notes.hidden;
+  });
+</script>
+</body>
+</html>

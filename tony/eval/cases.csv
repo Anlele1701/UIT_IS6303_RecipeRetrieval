@@ -1,6 +1,6 @@
 query_id,bucket,why
 q155,dense_win,"The query says stew and the Recipe says soup. Sparse needs the word itself, while Dense treats the two as the same kind of dish."
 q012,sparse_win,"The query names exact ingredients. Dense blurs it into every other split pea soup, while Sparse matches curry powder directly."
-q048,rerank_hurt,"The typical way Reranking hurts: it swaps the Recipe with a near-duplicate, Harissa and Lemon-Pepper Wings, and moves it down one rank."
-q076,rerank_help,The Fusion baseline misses it under every Chunking strategy and Hybrid puts it first under all three. It is the strongest help in the run.
+q059,rerank_hurt,"The typical way Reranking hurts: it swaps the Recipe with a near-duplicate, Blueberry Pie, and moves it down one rank under every Chunking strategy."
+q076,rerank_help,"The Fusion baseline misses it under every Chunking strategy and Hybrid puts it second under all three, from outside the top 20."
 q117,every_miss,"The Recipe has cola, orange juice and lemon, so the query is right, yet every config misses it. The word cola pulls in cola cakes and icings, and the title Long Island Iced Tea names neither cola nor citrus."
