@@ -1,6 +1,6 @@
 # Môi trường máy build
 
-Sinh tự động bởi `scripts/check_env.py` lúc 2026-10-11T23:46:59. Số liệu gốc: `eval/env.json`. Không sửa tay file này.
+Sinh tự động bởi `scripts/check_env.py` lúc 2026-10-12T00:22:49. Số liệu gốc: `eval/env.json`. Không sửa tay file này.
 
 ## Phần cứng
 
@@ -11,7 +11,7 @@ Sinh tự động bởi `scripts/check_env.py` lúc 2026-10-11T23:46:59. Số li
 | RAM | 31.1 GB |
 | GPU | AMD Radeon(TM) 860M Graphics (driver 32.0.13058.8001) |
 | GPU NVIDIA (`nvidia-smi`) | không có |
-| Ổ đĩa trống (ổ chứa repo) | 482.8 GB |
+| Ổ đĩa trống (ổ chứa repo) | 465.2 GB |
 
 ## Docker
 
@@ -21,8 +21,8 @@ Sinh tự động bởi `scripts/check_env.py` lúc 2026-10-11T23:46:59. Số li
 | Engine | 29.7.2 trên Docker Desktop (kernel 6.18.33.2-microsoft-standard-WSL2) |
 | Tài nguyên cấp cho Docker | 16 CPU, 15.2 GB RAM |
 | Volume A1 `is603_recipe-pgdata` có trên máy | không (A3 không bao giờ dùng) |
-| Volume A3 `is603a3_a3-pgdata` | không |
-| Container `a3-paradedb` đang chạy | không |
+| Volume A3 `is603a3_a3-pgdata` | có |
+| Container `a3-paradedb` đang chạy | có |
 | Port 5435 dùng được | có |
 | Bind mount đường dẫn có dấu cách và tiếng Việt | được |
 
@@ -30,10 +30,10 @@ Sinh tự động bởi `scripts/check_env.py` lúc 2026-10-11T23:46:59. Số li
 
 | Mục | Giá trị |
 |---|---|
-| CLI | ollama: not found |
-| Server | not reachable: ConnectError (http://localhost:11434) |
-| Model đã có | – |
-| Model còn thiếu | nomic-embed-text, qwen2.5:7b, llama3.1:8b |
+| CLI | ollama version is 0.40.3 |
+| Server | 0.40.3 (http://localhost:11434) |
+| Model đã có | llama3.1:8b, nomic-embed-text:latest, qwen2.5:7b |
+| Model còn thiếu | không |
 
 ## Công cụ
 
@@ -48,4 +48,7 @@ Sinh tự động bởi `scripts/check_env.py` lúc 2026-10-11T23:46:59. Số li
 
 ## Benchmark
 
-Chưa chạy (`uv run scripts/check_env.py --bench`).
+- **Embedding `nomic-embed-text`:** 33.3 đoạn/giây (256 đoạn trong 7.69 s). `chunk semantic` cần embed khoảng 464,631 đoạn (298,193 câu + 166,438 chunk; nguồn: database), ước tính **3.88 giờ**.
+- **`qwen2.5:7b`:** sinh 8.8 token/giây, TTFT (đã nạp) 0.16 s, 128 token mất 6.9 s, nạp lần đầu 10.45 s, chạy trên CPU (size_vram = 0).
+- **`llama3.1:8b`:** sinh 8.0 token/giây, TTFT (đã nạp) 0.15 s, 128 token mất 11.57 s, nạp lần đầu 11.51 s, chạy trên CPU (size_vram = 0).
+- **Reranker `mixedbread-ai/mxbai-rerank-base-v1`** trên `cpu`: 50 cặp mất p50 7580.3 ms (nạp model 20.3 s).

@@ -37,12 +37,16 @@ MODELS = {"embed": config.EMBED_MODEL, "generate": "qwen2.5:7b", "judge": "llama
 A1_SEMANTIC_CHUNKS = 32719 + 32719 + 101000
 EMBED_SAMPLE = 256
 SEED = 42
+# The Windows Ollama installer does not always put ollama.exe on PATH.
+FALLBACK_PATHS = {"ollama": [Path(os.environ.get("LOCALAPPDATA", "")) / "Programs" / "Ollama" / "ollama.exe"]}
 
 
 def sh(*cmd: str, timeout: int = 60) -> tuple[int, str]:
     """Run a command; (exit code, stdout+stderr). A missing program is exit code 127."""
-    if shutil.which(cmd[0]) is None:
+    exe = shutil.which(cmd[0]) or next((str(p) for p in FALLBACK_PATHS.get(cmd[0], []) if p.exists()), None)
+    if exe is None:
         return 127, f"{cmd[0]}: not found"
+    cmd = (exe, *cmd[1:])
     try:
         p = subprocess.run(cmd, capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=timeout)
     except subprocess.TimeoutExpired:
