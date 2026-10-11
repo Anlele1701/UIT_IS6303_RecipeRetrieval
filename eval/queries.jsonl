@@ -1,0 +1,298 @@
+{"query_id": "q001", "text": "memphis-style pulled pork totchos", "recipe_id": 24955, "recipe_title": "Memphis BBQ Pork Totchos", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q002", "text": "creamy tomato based dressing with vinegar", "recipe_id": 23494, "recipe_title": "Dorothy Lynch® Style Salad Dressing", "word_overlap": 0.6, "model": "qwen2.5:7b"}
+{"query_id": "q003", "text": "mediterranean chicken hoagie with olives", "recipe_id": 20870, "recipe_title": "Mediterranean Chicken Sandwich", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q004", "text": "pork lettuce wraps coconut lime", "recipe_id": 31183, "recipe_title": "Asian Pork Lettuce Wraps with Coconut-Lime Rice", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q005", "text": "chocolate cupcakes with cherry cream cheese filling", "recipe_id": 17139, "recipe_title": "PHILLY Blackforest Stuffed Cupcakes", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q007", "text": "creamy crawfish soup with vegetables", "recipe_id": 23134, "recipe_title": "Louisiana Crawfish Bisque", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q008", "text": "turkey salad with mayo mustard and cheese", "recipe_id": 21392, "recipe_title": "Black Friday Turkey Salad", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q009", "text": "easy chicken in white wine sauce", "recipe_id": 4172, "recipe_title": "Easy After Work Chicken Francaise", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q011", "text": "strawberry infused syrup for drinks", "recipe_id": 27994, "recipe_title": "Strawberry Soda Syrup", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q012", "text": "yellow split pea soup with curry powder", "recipe_id": 25856, "recipe_title": "Vegan Split Pea Soup II", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "vegan split pea curry soup"}
+{"query_id": "q006", "text": "chicken breast with green olives", "recipe_id": 2393, "recipe_title": "Chicken and Olives", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "chicken and olive stewed dish"}
+{"query_id": "q010", "text": "garlic roasted kale", "recipe_id": 748, "recipe_title": "Easy Garlic Kale", "word_overlap": 0.667, "model": "qwen2.5:7b"}
+{"query_id": "q013", "text": "tuna and pickle pita sandwich", "recipe_id": 11438, "recipe_title": "Tuna Pita Melt", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q014", "text": "cheesy breakfast casserole with spinach and sausage", "recipe_id": 3933, "recipe_title": "Spinach, Sausage, and Egg Casserole", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q015", "text": "cherry mascarpone creamy dessert", "recipe_id": 18929, "recipe_title": "Cherry-Mascarpone Cheese Dessert", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q016", "text": "baked beef and rice rolled tortillas", "recipe_id": 30850, "recipe_title": "Baked Beef Taquitos", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "spicy beef and rice corn tortlets"}
+{"query_id": "q017", "text": "japanese banana custard cold snack", "recipe_id": 30380, "recipe_title": "Japanese Banana Rice Pudding", "word_overlap": 0.6, "model": "qwen2.5:7b"}
+{"query_id": "q018", "text": "rich brie and garlic wine dip", "recipe_id": 30628, "recipe_title": "Matty's Brie Cheese Fondue", "word_overlap": 0.6, "model": "qwen2.5:7b"}
+{"query_id": "q019", "text": "apple and nutmeg fried bites", "recipe_id": 26360, "recipe_title": "Apple Fritters I", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q020", "text": "beefy ricotta lasagna rolls", "recipe_id": 2405, "recipe_title": "Lasagna Roll Ups II", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q021", "text": "watermelon mint cooling dessert", "recipe_id": 27648, "recipe_title": "Watermelon Mint Ice Cream", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q023", "text": "moroccan flavors shrimp couscous", "recipe_id": 9778, "recipe_title": "One-Pot Moroccan Shrimp Tagine", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q024", "text": "chocolate cookie with cherry and walnut", "recipe_id": 28495, "recipe_title": "Chocolate Thumbprints with Cherries and Walnuts", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q025", "text": "spicy roasted cauliflower sheet pan meal", "recipe_id": 7427, "recipe_title": "Easy Sheet Pan Roasted Cauliflower with Curry", "word_overlap": 0.833, "model": "qwen2.5:7b"}
+{"query_id": "q026", "text": "sliced tomatoes with basil and mozzarella", "recipe_id": 20919, "recipe_title": "Tomato-Basil Salad", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "light summer vegetable and herb mix"}
+{"query_id": "q027", "text": "sausage cheese balls", "recipe_id": 31715, "recipe_title": "Easy Sausage Balls", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q028", "text": "zucchini corn pepper cheese pan fry", "recipe_id": 18155, "recipe_title": "Calabacitas", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q029", "text": "creamy soy ginger pasta with beef and veggies", "recipe_id": 16873, "recipe_title": "Asian Pasta Salad with Beef, Broccoli and Bean Sprouts", "word_overlap": 0.833, "model": "qwen2.5:7b"}
+{"query_id": "q030", "text": "crunchy ramen noodle and bok choy", "recipe_id": 22134, "recipe_title": "Crunchy Ramen-Bok Choy Salad", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q031", "text": "sweet red curry chicken noodles", "recipe_id": 4374, "recipe_title": "Five-Ingredient Red Curry Chicken", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q032", "text": "freezer chicken parmesan for busy nights", "recipe_id": 4504, "recipe_title": "Make-Ahead Freezer Chicken Parmesan", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "make-ahead chicken parmesan breadcrumbsParmesan tomato sauce"}
+{"query_id": "q033", "text": "creamy cheese and broccoli spread", "recipe_id": 32417, "recipe_title": "Broccoli Cheddar Dip", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q034", "text": "homemade swiss Sunday bread loaf", "recipe_id": 26158, "recipe_title": "Zopf", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q035", "text": "quinoa vegetable stir fry", "recipe_id": 5897, "recipe_title": "Quinoa with Veggies", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q036", "text": "creamy potato casserole with sour cream", "recipe_id": 8218, "recipe_title": "Easy Sour Cream Scalloped Potatoes", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q037", "text": "baked salmon with maple mustard and nuts", "recipe_id": 10198, "recipe_title": "Easy Pistachio-Crusted Salmon", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "smoked salmon with pistachio topping"}
+{"query_id": "q038", "text": "smoked bacon collard greens southern style", "recipe_id": 5294, "recipe_title": "Easy Collard Greens", "word_overlap": 0.667, "model": "qwen2.5:7b"}
+{"query_id": "q039", "text": "rich buttery pastry layers", "recipe_id": 2365, "recipe_title": "Danish Pastry", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q040", "text": "grilled potato cold side dish", "recipe_id": 19514, "recipe_title": "Grilled Potato Salad", "word_overlap": 0.4, "model": "qwen2.5:7b"}
+{"query_id": "q041", "text": "ham, broccoli, creamy quiche", "recipe_id": 18097, "recipe_title": "Ham and Broccoli Quiche with Hash Brown Crust", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q042", "text": "creamy onion dip with cheese", "recipe_id": 3953, "recipe_title": "French Onion Dip", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q043", "text": "crescent roll veggie pizza with ranch cream cheese", "recipe_id": 1127, "recipe_title": "Veggie Pizza", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "veggie-filled crescent roll casserole"}
+{"query_id": "q044", "text": "warm spiced wine with cloves", "recipe_id": 8356, "recipe_title": "Gluehwein", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q045", "text": "pasta salad with olives and lemon", "recipe_id": 23042, "recipe_title": "Orzo Pasta Salad", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q046", "text": "creamy chicken artichoke spread", "recipe_id": 31582, "recipe_title": "Chicken Artichoke Dip", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q047", "text": "crispy potato breakfast side", "recipe_id": 488, "recipe_title": "Quick and Easy Home Fries", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q048", "text": "spicy lemon harissa baked wings", "recipe_id": 32468, "recipe_title": "Baked Lemon-Pepper-Harissa Wings", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q049", "text": "no-bake edible cookie dough with peanut butter and banana", "recipe_id": 27699, "recipe_title": "Cream of Wheat® Edible Cookie Dough", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "creamy peanut butter banana cluster"}
+{"query_id": "q050", "text": "cold pasta vegetable salad", "recipe_id": 22589, "recipe_title": "Cold Tortellini Salad", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q051", "text": "flattened meatball with onions and herbs", "recipe_id": 261, "recipe_title": "German Hamburgers (Frikadellen)", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q052", "text": "garlic infused pasta with lots of cloves", "recipe_id": 23573, "recipe_title": "Death By Garlic", "word_overlap": 0.6, "model": "qwen2.5:7b"}
+{"query_id": "q053", "text": "canned salmon stew with garlic and tomatoes", "recipe_id": 11337, "recipe_title": "Salmon Stew (Abalos Style)", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "smoked salmon stew with garlic onions tomatoes"}
+{"query_id": "q054", "text": "fresh veggie and chicken wraps", "recipe_id": 24278, "recipe_title": "Easy Spring Rolls", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q055", "text": "blueberry oatmeal breakfast", "recipe_id": 17298, "recipe_title": "Blueberry Oatmeal", "word_overlap": 0.667, "model": "qwen2.5:7b"}
+{"query_id": "q056", "text": "easy mac and cheese with pasta shells", "recipe_id": 8913, "recipe_title": "Fancy-But-Easy Mac N' Cheese", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "rich cheese pasta with brown sugar"}
+{"query_id": "q057", "text": "grilled chicken veggies with pesto marinade", "recipe_id": 4284, "recipe_title": "Grilled Pesto Chicken Kabobs", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q058", "text": "leftover pulled pork sloppy joes", "recipe_id": 21661, "recipe_title": "Mini Sloppy Joes with Pulled Pork", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q059", "text": "wild blueberry pie with cinnamon", "recipe_id": 16938, "recipe_title": "Mystery Ingredient Wild Blueberry Pie", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q060", "text": "silky chocolate and cream cheese spread", "recipe_id": 13252, "recipe_title": "Chocolate Cream Frosting", "word_overlap": 0.4, "model": "qwen2.5:7b"}
+{"query_id": "q061", "text": "shrimp tomato onion cilantro salsa", "recipe_id": 19317, "recipe_title": "Shrimp Salsa", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q062", "text": "steak sauce burgers with tomato basil spread", "recipe_id": 22820, "recipe_title": "Sonoma Burgers", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q063", "text": "creamy oatmeal raisin cookies with spices", "recipe_id": 6003, "recipe_title": "Grandma's Oatmeal Raisin Cookies", "word_overlap": 0.6, "model": "qwen2.5:7b"}
+{"query_id": "q064", "text": "smoked ham and kidney bean stew", "recipe_id": 25961, "recipe_title": "Ham and Bean Soup I", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q065", "text": "vegetable cheese omelet on toast", "recipe_id": 2376, "recipe_title": "Yummy Veggie Omelet", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "veggie and cheese toast top"}
+{"query_id": "q066", "text": "moist white cake with sour cream", "recipe_id": 6505, "recipe_title": "Wedding Cake", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "white cake with sour cream frosting"}
+{"query_id": "q067", "text": "tuna salad with veggies", "recipe_id": 9619, "recipe_title": "Where's the Tuna Salad", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q068", "text": "turkey chili cornbread casserole", "recipe_id": 19876, "recipe_title": "Speedy Chili Pot Pie", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q069", "text": "sweet date couscous", "recipe_id": 24319, "recipe_title": "Sweet and Nutty Moroccan Couscous", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q070", "text": "vanilla oreo cream cheese frosting cupcakes", "recipe_id": 28628, "recipe_title": "Minnie Mouse® Cupcakes", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q071", "text": "sweet hush puppies for breakfast", "recipe_id": 27129, "recipe_title": "Crispy Cornmeal Drop Doughnuts", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "crispy cornmeal fried doughnuts with cinnamon sugar"}
+{"query_id": "q072", "text": "classic pumpkin pie with evaporated milk", "recipe_id": 1872, "recipe_title": "Libby's® Famous Pumpkin Pie", "word_overlap": 0.8, "model": "qwen2.5:7b", "edited_from": "spicy pumpkin tart with cream cheese"}
+{"query_id": "q073", "text": "chicken rice southeast asia", "recipe_id": 5756, "recipe_title": "Singapore Chicken Rice", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q074", "text": "rich coffee cream with whiskey", "recipe_id": 17547, "recipe_title": "Homemade Irish (Whiskey) Cream", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q075", "text": "gluten-free cream cheese bites", "recipe_id": 17302, "recipe_title": "Gluten-Free Cheesecake Cupcakes", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q076", "text": "greek yogurt with fruit and nuts frozen dessert", "recipe_id": 30357, "recipe_title": "Yogurt Bark", "word_overlap": 0.667, "model": "qwen2.5:7b"}
+{"query_id": "q077", "text": "spicy beef tripe soup with chiles", "recipe_id": 13059, "recipe_title": "Menudo Rojo (Red Menudo)", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q078", "text": "garlic asparagus in the oven", "recipe_id": 5133, "recipe_title": "Quick and Easy Baked Asparagus", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "quick baked asparagus with garlic"}
+{"query_id": "q079", "text": "grilled portobello with peppers mozzarella tomato", "recipe_id": 20219, "recipe_title": "Grilled Portobello Sandwich with Roasted Red Pepper and Mozzarella", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q080", "text": "quick biscuits with sourdough starter", "recipe_id": 25804, "recipe_title": "Sourdough Drop Biscuits", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "sourdough buttery bites"}
+{"query_id": "q081", "text": "grilled pork chops herby lemony", "recipe_id": 24714, "recipe_title": "Grilled Lemon Herb Pork Chops", "word_overlap": 0.6, "model": "qwen2.5:7b"}
+{"query_id": "q082", "text": "german-style pasta salad with brats", "recipe_id": 21938, "recipe_title": "Oktoberfest Pasta Salad", "word_overlap": 0.6, "model": "qwen2.5:7b"}
+{"query_id": "q083", "text": "smoked fish mayo dip with hot sauce", "recipe_id": 9651, "recipe_title": "Mackerel Dip", "word_overlap": 0.833, "model": "qwen2.5:7b"}
+{"query_id": "q084", "text": "smoky spicy egg appetizer", "recipe_id": 31319, "recipe_title": "Spicy Bacon Deviled Eggs", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q085", "text": "spicy quorn and chickpea stew", "recipe_id": 13562, "recipe_title": "Quorn™ and Chickpea Curry", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q086", "text": "pan-fried prawns with feta and tomatoes", "recipe_id": 9981, "recipe_title": "Prawn Saganaki", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q087", "text": "cheesy kale baked dish", "recipe_id": 24970, "recipe_title": "Cheesy Kale Quiche", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q088", "text": "cool cucumber avocado rolls", "recipe_id": 22571, "recipe_title": "Homemade Vegetarian Sushi Rolls", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q089", "text": "detox water with ginger and cinnamon sticks", "recipe_id": 14924, "recipe_title": "Lemon, Ginger, and Cinnamon Flavored Water", "word_overlap": 0.8, "model": "qwen2.5:7b", "edited_from": "lemon, ginger, cinnamon infused water"}
+{"query_id": "q090", "text": "cereal popcorn candy mix for parties", "recipe_id": 32446, "recipe_title": "Sweet and Crunchy Popcorn Snack Mix", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "sweet, crunchy popcorn mix"}
+{"query_id": "q091", "text": "garlic marinated carrots", "recipe_id": 31594, "recipe_title": "Marinated Carrots Antipasto", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q092", "text": "creamy avocado tomato corn salsa", "recipe_id": 31049, "recipe_title": "Guacamole with Corn", "word_overlap": 0.6, "model": "qwen2.5:7b"}
+{"query_id": "q093", "text": "quick shrimp and rice dish", "recipe_id": 10832, "recipe_title": "Easy Shrimp Fried Rice", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q094", "text": "cashew crusted fish with panko", "recipe_id": 11473, "recipe_title": "Cashew Crusted Trout", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q095", "text": "grilled salmon with vegetables in foil", "recipe_id": 12285, "recipe_title": "Grilled Salmon Supper in Foil", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q096", "text": "stout-infused slow cooker corned beef", "recipe_id": 2913, "recipe_title": "Stout Slow Cooker Corned Beef and Veggies", "word_overlap": 0.833, "model": "qwen2.5:7b"}
+{"query_id": "q097", "text": "pork, mushrooms, sour cream sauce", "recipe_id": 8452, "recipe_title": "Pork Stroganoff", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q098", "text": "powdered sugar almond sandwich cookies", "recipe_id": 2848, "recipe_title": "Macarons", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q099", "text": "grilled fish with lime dill", "recipe_id": 10271, "recipe_title": "Spicy Lime and Dill Grilled Fish", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q100", "text": "stir-fried vegetables with mushrooms corn", "recipe_id": 8050, "recipe_title": "Stir-Fried Mushrooms with Baby Corn", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q101", "text": "creamy pumpkin soup with spices", "recipe_id": 27698, "recipe_title": "Cream of Pumpkin Soup", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q102", "text": "weeknight chicken breast with ham cheese", "recipe_id": 14041, "recipe_title": "Weeknight Chicken Cordon Bleu", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q103", "text": "creamy chicken and broccoli pasta", "recipe_id": 24926, "recipe_title": "Ziti Chicken and Broccoli", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q104", "text": "no-bake oat chocolate squares", "recipe_id": 18045, "recipe_title": "No-Bake Chocolate Oatmeal Bars", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q105", "text": "creamy pumpkin and bean soup", "recipe_id": 26135, "recipe_title": "Pumpkin Black Bean Soup", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q106", "text": "smoky slow cooker pork with cabbage", "recipe_id": 5848, "recipe_title": "Homestyle Kalua Pork with Cabbage in a Slow Cooker", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q107", "text": "sweet pineapple teriyaki sauce", "recipe_id": 23184, "recipe_title": "Asian Pineapple Sauce", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q108", "text": "bbq seasoned tuna bites", "recipe_id": 9288, "recipe_title": "BBQ Tuna Fritters", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q109", "text": "creamy corn chile dip with jalapeño", "recipe_id": 3204, "recipe_title": "Corn Dip", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q110", "text": "sweet buttermilk butter bread", "recipe_id": 26501, "recipe_title": "Buttermilk Honey Bread", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q111", "text": "easy crab sour cream enchiladas", "recipe_id": 11278, "recipe_title": "Easy Crabmeat Enchiladas", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q112", "text": "espresso-flavored chocolate brownies", "recipe_id": 28605, "recipe_title": "Espresso Brownies", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q113", "text": "maple syrup tart with raisins and nuts", "recipe_id": 17352, "recipe_title": "Real Canadian Butter Tarts, eh?", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q114", "text": "warm milk yeast rolls", "recipe_id": 6553, "recipe_title": "Angie's Perfect Dinner Rolls", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q115", "text": "blue cheese mayonnaise dip", "recipe_id": 8546, "recipe_title": "Bill's Blue Cheese Dressing", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q116", "text": "purple sweet potato whole wheat bread", "recipe_id": 22345, "recipe_title": "Purple Sweet Potato Whole Wheat Bun", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q117", "text": "citrusy alcoholic drink with cola", "recipe_id": 6127, "recipe_title": "Long Island Iced Tea", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q118", "text": "mexican lasagna with ground turkey and ricotta", "recipe_id": 19021, "recipe_title": "Smothered Mexican Lasagna", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "smoked chili turkey layered dish"}
+{"query_id": "q119", "text": "baked eggplant with cheese and sauce", "recipe_id": 1533, "recipe_title": "Baked Eggplant Parmesan", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q120", "text": "spicy chicken okra gumbo", "recipe_id": 29015, "recipe_title": "Chicken Andouille Gumbo", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q121", "text": "peanut butter mango frosty blend", "recipe_id": 15052, "recipe_title": "Peanut Butter Mango Smoothie", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q122", "text": "spiced chickpea stew with kale", "recipe_id": 24023, "recipe_title": "Moroccan Chickpea Stew", "word_overlap": 0.75, "model": "qwen2.5:7b", "edited_from": "spiced lentil and vegetable stew"}
+{"query_id": "q123", "text": "kale and bean side dish", "recipe_id": 24782, "recipe_title": "Kale and Adzuki Beans", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q124", "text": "tangy pear and cheese lettuce mix", "recipe_id": 29678, "recipe_title": "Tangy Pear and Blue Cheese Salad", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q125", "text": "hash brown cheese cup muffins", "recipe_id": 5256, "recipe_title": "Bird's Nest Breakfast Cups", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q126", "text": "crispy yuca fries with lime", "recipe_id": 21140, "recipe_title": "Yuca Frita", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q127", "text": "spicy lime chicken and bean salad", "recipe_id": 30006, "recipe_title": "Southwest Chicken Salad I", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q128", "text": "hard boiled eggs wrapped in sausage", "recipe_id": 20915, "recipe_title": "Donna's Nest Eggs", "word_overlap": 0.8, "model": "qwen2.5:7b", "edited_from": "hard-boiled eggs in spicy sausage milk batter"}
+{"query_id": "q129", "text": "sweet meatballs with garlic and honey", "recipe_id": 30724, "recipe_title": "Honey-Garlic Moose Meatballs", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q130", "text": "roasted pork with garlic rosemary", "recipe_id": 62, "recipe_title": "Roasted Pork Loin", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q131", "text": "spicy meat and cheese lasagna", "recipe_id": 8229, "recipe_title": "Italian Lasagna", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q132", "text": "sweet tomato pepper stew", "recipe_id": 8121, "recipe_title": "Jersey Fresh Stewed Tomatoes", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q133", "text": "light tuna salad with apples and walnuts", "recipe_id": 12588, "recipe_title": "A Smarter Tuna Salad", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q134", "text": "no-bake chocolate oatmeal cookies", "recipe_id": 13208, "recipe_title": "No-Bake Chocolate-Oatmeal Drop Cookies", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q135", "text": "fettuccine with spring vegetables", "recipe_id": 2497, "recipe_title": "Chef John's Pasta Primavera", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "spring vegetable pasta salad"}
+{"query_id": "q136", "text": "lemon garlic dressing with veggies", "recipe_id": 23975, "recipe_title": "Salata", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q137", "text": "quick no-yeast dinner rolls", "recipe_id": 20960, "recipe_title": "No-Yeast \"Everything\" Dinner Rolls", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q138", "text": "sorghum flour pita for gyros", "recipe_id": 22590, "recipe_title": "Gluten-Free Flatbread", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "gluten-free pita alternative for中东风味小吃"}
+{"query_id": "q139", "text": "chicken and cheese stuffed peppers", "recipe_id": 20087, "recipe_title": "Dila's Chicken-Stuffed Peppers", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q140", "text": "apple cheesecake bars with streusel", "recipe_id": 28617, "recipe_title": "Apple Cheesecake Snack Bars", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q141", "text": "hearty beef stew with potatoes and onions", "recipe_id": 19558, "recipe_title": "Kyle's Favorite Beef Stew", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q142", "text": "ham and asparagus quiche", "recipe_id": 18411, "recipe_title": "Impossibly Easy Ham and Asparagus Pie", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q143", "text": "grilled tortilla stuffed with pizza toppings", "recipe_id": 23077, "recipe_title": "Grilled Pizza Wraps", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q145", "text": "crunchy apple grape bean salad", "recipe_id": 21313, "recipe_title": "Holiday Apple Side Salad", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q146", "text": "strawberry cobbler with cinnamon", "recipe_id": 16081, "recipe_title": "Southern-Style Strawberry Cobbler", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q147", "text": "breaded pork chops fried in oil", "recipe_id": 15093, "recipe_title": "Deep Fried Pork Steak", "word_overlap": 0.6, "model": "qwen2.5:7b", "edited_from": "deep fried pork belly slices"}
+{"query_id": "q148", "text": "fluffy marshmallow frosting with egg whites", "recipe_id": 13662, "recipe_title": "Marshmallow Icing", "word_overlap": 0.6, "model": "qwen2.5:7b", "edited_from": "marshmallow sugar cream whites"}
+{"query_id": "q149", "text": "hake neapolitan red wine pasta", "recipe_id": 12425, "recipe_title": "Hake in Neapolitan Sauce with Gluten-Free Pasta", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q150", "text": "homemade tomato sauce for canning", "recipe_id": 17761, "recipe_title": "Canning Pizza or Spaghetti Sauce from Fresh Tomatoes", "word_overlap": 0.75, "model": "qwen2.5:7b", "edited_from": "chunky tomatoes onions garlic peppers"}
+{"query_id": "q151", "text": "tomato oregano bell pepper freezer sauce", "recipe_id": 8104, "recipe_title": "Stephanie's Freezer Spaghetti Sauce", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q152", "text": "bright crunchy summer salad", "recipe_id": 20202, "recipe_title": "Chop Chop Salad", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q153", "text": "spiced cauliflower and coconut milk soup", "recipe_id": 26124, "recipe_title": "Curried Cauliflower Soup", "word_overlap": 0.8, "model": "qwen2.5:7b", "edited_from": "warm spiced vegetable soup"}
+{"query_id": "q154", "text": "summer dessert layers ice cream cake", "recipe_id": 1468, "recipe_title": "Easy Incredible Ice Cream Cake", "word_overlap": 0.833, "model": "qwen2.5:7b"}
+{"query_id": "q155", "text": "creamy black bean and tomato stew", "recipe_id": 26058, "recipe_title": "Black Bean and Tomato Soup", "word_overlap": 0.6, "model": "qwen2.5:7b"}
+{"query_id": "q156", "text": "rich chocolate mayonnaise cake", "recipe_id": 13532, "recipe_title": "Chocolate Mayo Cake", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q157", "text": "peruvian potato ceviche with fish shrimp", "recipe_id": 5917, "recipe_title": "Ceviche Peruano", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q158", "text": "egyptian hazelnut sesame dip", "recipe_id": 14190, "recipe_title": "Dukkah", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q159", "text": "homemade gefilte fish with snapper", "recipe_id": 12531, "recipe_title": "Best Gefilte Fish", "word_overlap": 0.75, "model": "qwen2.5:7b", "edited_from": "smoked fish appetizer with vegetables"}
+{"query_id": "q160", "text": "red velvet cake cups", "recipe_id": 15613, "recipe_title": "Chef John's Red Velvet Cupcakes", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q161", "text": "creamy crab and corn soup", "recipe_id": 11678, "recipe_title": "Crab and Sweet Corn Soup", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q162", "text": "roasted red pepper baguette sandwich", "recipe_id": 22288, "recipe_title": "Roasted Red Pepper Panini", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q163", "text": "creamy crawfish appetizer with spices", "recipe_id": 10235, "recipe_title": "Easy Cheesy Crawfish Dip", "word_overlap": 0.25, "model": "qwen2.5:7b"}
+{"query_id": "q164", "text": "tangy honey orange ham", "recipe_id": 1584, "recipe_title": "Tangy Honey Glazed Ham", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q165", "text": "cheesy artichoke dip with cream", "recipe_id": 30642, "recipe_title": "Hot Artichoke Dip", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q166", "text": "purple, red, white potato salad", "recipe_id": 22242, "recipe_title": "Red, White and Blue Potato Salad", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q167", "text": "mexican meatball soup with salsa", "recipe_id": 1774, "recipe_title": "Albondigas", "word_overlap": 0.75, "model": "qwen2.5:7b", "edited_from": "beef and vegetable soup with salsa"}
+{"query_id": "q168", "text": "multigrain bagel with cream cheese and pickles", "recipe_id": 19846, "recipe_title": "School Lunch Bagel Sandwich", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q169", "text": "italian pasta with mozzarella peppers olives", "recipe_id": 25348, "recipe_title": "Kathy's Delicious Italian Pasta Salad", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q170", "text": "gluten-free turkey patty with herbs", "recipe_id": 15393, "recipe_title": "Easy Gluten-Free Turkey Burgers", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q171", "text": "greek-inspired veggie pasta salad", "recipe_id": 20178, "recipe_title": "Greek Goddess Pasta Salad", "word_overlap": 0.6, "model": "qwen2.5:7b"}
+{"query_id": "q172", "text": "stuffed pork with herbs and veggies", "recipe_id": 4003, "recipe_title": "Stuffed Pork Loin", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q173", "text": "philly-style sloppy joe with cheese", "recipe_id": 16357, "recipe_title": "Philly Cheese Steak Sloppy Joes", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q174", "text": "healthy biscuits made with applesauce", "recipe_id": 27862, "recipe_title": "Whole Wheat Applesauce Biscuits", "word_overlap": 0.75, "model": "qwen2.5:7b", "edited_from": "whole wheat apple oil biscuits"}
+{"query_id": "q175", "text": "southwest grilled chicken sandwich", "recipe_id": 22226, "recipe_title": "Southwest Chicken Panini", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q176", "text": "pasta with pancetta vodka cream", "recipe_id": 4270, "recipe_title": "Penne and Vodka Sauce", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q177", "text": "sauteed chicken with sesame soy sauce", "recipe_id": 1726, "recipe_title": "Simple Sauteed Sesame Chicken", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q178", "text": "southern pecan butter bars", "recipe_id": 3964, "recipe_title": "Carolina Butter Pecan Cake Bars", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "butter pecan cake bars cold"}
+{"query_id": "q179", "text": "eggy cheese ham quiche", "recipe_id": 13025, "recipe_title": "Quiche Supreme", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q180", "text": "roast beef with wine and herbs", "recipe_id": 5023, "recipe_title": "English Roast Beef", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q181", "text": "black bean stew with smoked meats", "recipe_id": 25940, "recipe_title": "Chef John's Brazilian Feijoada", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q182", "text": "homemade mexican corn cakes with toppings", "recipe_id": 5004, "recipe_title": "Easy Mexican Sopes", "word_overlap": 0.4, "model": "qwen2.5:7b"}
+{"query_id": "q183", "text": "triple layer chocolate cake with whipped cream filling", "recipe_id": 14798, "recipe_title": "Perfect Chocolate Cake", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "rich chocolate layer cake with cream cheese frosting"}
+{"query_id": "q184", "text": "smoky beef with ketchup and vinegar", "recipe_id": 20391, "recipe_title": "Slow Cooked Barbecue Beer Beef", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q185", "text": "refreshing shrimp with lime and jalapeño", "recipe_id": 607, "recipe_title": "Authentic Mexican Shrimp Cocktail (Coctel de Camarones estilo Mexicano)", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q186", "text": "creamy clam soup with potatoes", "recipe_id": 19262, "recipe_title": "Quick and Easy Clam Chowder", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q187", "text": "creamy marshmallow fruit dip", "recipe_id": 30540, "recipe_title": "Marshmallow Creme Fruit Dip", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q188", "text": "sugar free barbecue sauce for ribs", "recipe_id": 14801, "recipe_title": "Sugar-Free BBQ Sauce", "word_overlap": 0.8, "model": "qwen2.5:7b", "edited_from": "smoke-infused tomato sauce no sugar"}
+{"query_id": "q189", "text": "grilled bread with garlic and basil", "recipe_id": 32036, "recipe_title": "Great Grilled Garlic Bread", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q190", "text": "creamy seafood soup with dill and potatoes", "recipe_id": 10518, "recipe_title": "Matt's Crab & Clam Bisque", "word_overlap": 0.6, "model": "qwen2.5:7b"}
+{"query_id": "q191", "text": "herb-roasted chicken breast", "recipe_id": 8135, "recipe_title": "Juicy Baked Chicken Breast", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q192", "text": "italian calamari tomato wine sauce", "recipe_id": 10020, "recipe_title": "Calamari in Red Wine and Tomato Sauce", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q193", "text": "mediterranean chicken pasta bake", "recipe_id": 1403, "recipe_title": "Mediterranean Chicken and Pepper Casserole", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q194", "text": "rich chocolate brownie with caramel and nuts", "recipe_id": 2083, "recipe_title": "Layers Of Love Chocolate Brownies", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q195", "text": "mexican flavored rice with tomatoes", "recipe_id": 23509, "recipe_title": "Mexican Rice I", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q196", "text": "no-yeast pizza base quick", "recipe_id": 218, "recipe_title": "No-Yeast Pizza Crust", "word_overlap": 0.667, "model": "qwen2.5:7b"}
+{"query_id": "q197", "text": "crunchy broccoli bacon cheese salad", "recipe_id": 29529, "recipe_title": "Broccoli Salad IV", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q198", "text": "chopped cucumber and tomatoes with lemon juice", "recipe_id": 5308, "recipe_title": "Tomato Cucumber Salad", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "fresh veggie mix with lemon"}
+{"query_id": "q199", "text": "fresh corn and avocado dip for chips", "recipe_id": 6536, "recipe_title": "Corn and Avocado Salsa", "word_overlap": 0.8, "model": "qwen2.5:7b", "edited_from": "fresh and spicy veggie salsa"}
+{"query_id": "q200", "text": "marinated tofu with capers and veggies", "recipe_id": 20779, "recipe_title": "Marinated Tofu Salad with Capers", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q201", "text": "spicy pinto beans with onions", "recipe_id": 20518, "recipe_title": "Fab-u-lous Refried Beans!", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q202", "text": "spicy cabbage broth with masala", "recipe_id": 20675, "recipe_title": "Masala Cabbage Soup", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q203", "text": "summer blackberry dessert with butter", "recipe_id": 5508, "recipe_title": "Mama's Blackberry Cobbler", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q204", "text": "cherry and chocolate quick bread", "recipe_id": 17001, "recipe_title": "Cherry-Chocolate Loaf", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q205", "text": "no-churn chocolate ice cream with condensed milk", "recipe_id": 18424, "recipe_title": "Chocolate Syrup Ice Cream", "word_overlap": 0.833, "model": "qwen2.5:7b", "edited_from": "creamy chocolate dessert with cinnamon"}
+{"query_id": "q206", "text": "vegan mushroom creamy sauce", "recipe_id": 29636, "recipe_title": "Vegan Mushroom Gravy", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q207", "text": "asparagus lemon herb soup", "recipe_id": 16038, "recipe_title": "Asparagus, Lemon, and Mint Soup", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q208", "text": "crunchy broccoli fritters with eggs and cheese", "recipe_id": 32535, "recipe_title": "Stacey's Fabulous Broccoli Fritters", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q209", "text": "asian chicken salad bread bowls", "recipe_id": 20265, "recipe_title": "Asian Chicken Salad Cups", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q210", "text": "ham and cheese stuffed buns", "recipe_id": 8751, "recipe_title": "Hawaiian Ham and Cheese Sliders", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q211", "text": "applesauce spice cake with pecans", "recipe_id": 13513, "recipe_title": "Never Fail Applesauce Spice Cake", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "spiced apple cake with walnuts and pecans"}
+{"query_id": "q212", "text": "dandelion greens sautéed spicy", "recipe_id": 1422, "recipe_title": "Dandelion Greens with a Kick", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q213", "text": "grilled tuna creamy dill", "recipe_id": 9405, "recipe_title": "Grilled Tuna Steaks with Dill Sauce", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q214", "text": "rich creamy potato pork casserole", "recipe_id": 7032, "recipe_title": "Scalloped Potatoes and Pork Chops", "word_overlap": 0.4, "model": "qwen2.5:7b"}
+{"query_id": "q215", "text": "creamy zucchini oat breakfast waffles", "recipe_id": 18569, "recipe_title": "Zucchini Oatmeal Waffles", "word_overlap": 0.6, "model": "qwen2.5:7b"}
+{"query_id": "q216", "text": "chicken and creamy seafood sauce dinner", "recipe_id": 11151, "recipe_title": "Chicken with Shrimp Sauce", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q217", "text": "venison chops in sweet ketchup sauce", "recipe_id": 28141, "recipe_title": "Deer Chop Hurry", "word_overlap": 0.6, "model": "qwen2.5:7b", "edited_from": "sweet and tangy venison stew"}
+{"query_id": "q218", "text": "basic fruit muffins you can freeze", "recipe_id": 26264, "recipe_title": "Breakfast Muffins", "word_overlap": 0.5, "model": "qwen2.5:7b", "edited_from": "blueberry muffin"}
+{"query_id": "q219", "text": "soft indian flatbread with oil", "recipe_id": 26250, "recipe_title": "Roomali Roti", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q220", "text": "balsamic marinated pork loin", "recipe_id": 1510, "recipe_title": "Balsamic Roasted Pork Loin", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q221", "text": "slow cooked chicken with tomatoes mushrooms", "recipe_id": 1275, "recipe_title": "Instant Pot® Chicken Cacciatore", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q222", "text": "cold pasta with salmon and dill", "recipe_id": 11115, "recipe_title": "Salmon Pasta Salad with Dill", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "smoked fish and dill pasta salad"}
+{"query_id": "q223", "text": "croatian grilled beef and veal sausages", "recipe_id": 24570, "recipe_title": "Croatian Cevapi", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "beef and veal skewers marinated grilled"}
+{"query_id": "q224", "text": "mini cheesecakes with vanilla wafer crust", "recipe_id": 18894, "recipe_title": "Cheesecake Cups", "word_overlap": 0.6, "model": "qwen2.5:7b", "edited_from": "cheesecake bites no bake"}
+{"query_id": "q225", "text": "cheesy chicken and tot casserole", "recipe_id": 24449, "recipe_title": "Chicken Tater Tot® Casserole", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q226", "text": "hamburger sausage cheese sauce snack", "recipe_id": 30492, "recipe_title": "Hanky Panky", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q227", "text": "spicy mexican quinoa potluck dish", "recipe_id": 17251, "recipe_title": "Instant Pot® Mexican Quinoa", "word_overlap": 0.4, "model": "qwen2.5:7b"}
+{"query_id": "q228", "text": "shrimp zucchini farro bowl with lemon", "recipe_id": 9274, "recipe_title": "Shrimp Grain Bowl", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "shrimp, zucchini, farro, lemon, mediterranean风味"}
+{"query_id": "q229", "text": "cauliflower pasta bake with cheese", "recipe_id": 16906, "recipe_title": "Cauliflower \"Mac and Cheese\" Bake", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q230", "text": "peanut butter cream cheese pie", "recipe_id": 17906, "recipe_title": "Smooth and Creamy Peanut Butter Pie", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q231", "text": "crispy yuca sticks with salt", "recipe_id": 5690, "recipe_title": "Yuca French Fries", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q232", "text": "grilled swordfish cucumber sauce", "recipe_id": 10210, "recipe_title": "Grilled Swordfish Steaks with Cucumber Sauce", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q233", "text": "meat-filled dumplings with beef onions", "recipe_id": 24121, "recipe_title": "Russian Pelmeni", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q234", "text": "tomato broccoli soup", "recipe_id": 20387, "recipe_title": "Tomato and Broccoli Soup", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "vegetable broth soup creamy"}
+{"query_id": "q235", "text": "banana peanut butter tortilla wrap for kids", "recipe_id": 20392, "recipe_title": "Emmi's Banana Wraps", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "bananas, peanut butter, honey, tortillas"}
+{"query_id": "q236", "text": "oven roasted chicken with nuts and cheese", "recipe_id": 1318, "recipe_title": "Oven Roasted Stuffed Chicken Breasts", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q237", "text": "creamy celeriac mash with dill", "recipe_id": 18896, "recipe_title": "Creamy Celery Root Mash", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q238", "text": "rich chocolate cake with coconut pecan frosting", "recipe_id": 1237, "recipe_title": "German Sweet Chocolate Cake I", "word_overlap": 0.833, "model": "qwen2.5:7b"}
+{"query_id": "q239", "text": "green beans soy sauce sesame seeds lightly cooked", "recipe_id": 6419, "recipe_title": "Japanese-Style Sesame Green Beans", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q240", "text": "sour cream white cake almonds", "recipe_id": 1515, "recipe_title": "White Almond Wedding Cake", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q241", "text": "bacon wrapped fries sriracha ketchup", "recipe_id": 30747, "recipe_title": "Bacon Fries", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q242", "text": "simple sweet muffins", "recipe_id": 26991, "recipe_title": "Sweeter Muffins", "word_overlap": 0.333, "model": "qwen2.5:7b", "edited_from": "sweet corn muffins"}
+{"query_id": "q243", "text": "cajun shrimp stew with roux", "recipe_id": 12821, "recipe_title": "Audry's Shrimp Stew", "word_overlap": 0.75, "model": "qwen2.5:7b", "edited_from": "smoky roux shrimp stew"}
+{"query_id": "q244", "text": "gluten free zucchini soup creamy", "recipe_id": 23004, "recipe_title": "Zucchini Soup", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q245", "text": "potato and meat pie with vegetables", "recipe_id": 30038, "recipe_title": "Cornish Finnish Michigan Pasties", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q246", "text": "banana chocolate crumb muffins", "recipe_id": 4921, "recipe_title": "Banana Chip Muffins I", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q247", "text": "spicy chocolate pumpkin bread", "recipe_id": 28991, "recipe_title": "Chocolate-Pumpkin Spice Cake", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q248", "text": "creamy egg crab casserole", "recipe_id": 11698, "recipe_title": "Bunch's Crab Casserole", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q249", "text": "grilled pineapple relish with spices", "recipe_id": 28591, "recipe_title": "Grilled Pineapple Salsa", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q250", "text": "baked fish with steak sauce ranch", "recipe_id": 9781, "recipe_title": "Baked Fish Sandwiches", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q251", "text": "avocado pasta salad with veggies", "recipe_id": 22162, "recipe_title": "Avocado Whole Wheat Pasta Salad", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q252", "text": "grilled beef tri-tip herb rub", "recipe_id": 24137, "recipe_title": "Grilled Tri-Tip with Oregon Herb Rub", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q253", "text": "chocolate sheet cake with coffee", "recipe_id": 14666, "recipe_title": "Texas Sheet Cake IV", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "rich chocolate cake pan"}
+{"query_id": "q254", "text": "cheesy pizza bake with bisquick", "recipe_id": 25077, "recipe_title": "Impossibly Easy Pizza Bake", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q255", "text": "chicken and dumplings with cream of chicken soup", "recipe_id": 7291, "recipe_title": "Irish Chicken and Dumplings", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "chicken and vegetable creamy soup"}
+{"query_id": "q256", "text": "lemon cream cheese bite-sized treat", "recipe_id": 31181, "recipe_title": "Lemon Cheese Ball", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q257", "text": "gluten-free pastry with raspberry filling", "recipe_id": 16941, "recipe_title": "Gluten Free Danish", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q258", "text": "coconut-flavored meringue cookies", "recipe_id": 5455, "recipe_title": "Perfect Coconut Macaroons", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q259", "text": "chicken corn cumin chili soup", "recipe_id": 18824, "recipe_title": "Southwestern Chicken and Corn Soup", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q260", "text": "grilled cajun salmon with potatoes", "recipe_id": 11671, "recipe_title": "Jacob's Grilled Cajun Salmon with Roasted Fingerling Potatoes", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q261", "text": "macaroni salad with chicken and pineapple", "recipe_id": 21270, "recipe_title": "Classic Macaroni Salad with a Twist", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "coleslaw meets macaroni creamy chicken tossed"}
+{"query_id": "q262", "text": "lighter pecan cookies with butter and oil", "recipe_id": 28961, "recipe_title": "Pecan Shortbread Cookies", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q263", "text": "light summertime pasta shrimp veggies", "recipe_id": 11513, "recipe_title": "Pasta Salad with Avocado and Shrimp", "word_overlap": 0.8, "model": "qwen2.5:7b"}
+{"query_id": "q264", "text": "pan-fried tilapia with salsa", "recipe_id": 10322, "recipe_title": "Kelly's Pan Fried Tilapia", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q265", "text": "pizza burgers with ham and american cheese", "recipe_id": 21950, "recipe_title": "Quick and Easy Pizza Burgers", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "quick ham and cheese burger patties"}
+{"query_id": "q266", "text": "egg muffin cups with bacon and ham", "recipe_id": 15141, "recipe_title": "Egg Cupcakes", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "eggy bacon ham cheese muffins"}
+{"query_id": "q267", "text": "thai shrimp chicken fruit coconut salad", "recipe_id": 12114, "recipe_title": "Thai Shrimp, Chicken, Grapefruit, and Coconut Salad", "word_overlap": 0.833, "model": "qwen2.5:7b"}
+{"query_id": "q268", "text": "soft chewy coconut chocolate chip cookies", "recipe_id": 16675, "recipe_title": "Soft Oatmeal Coconut Chocolate Chip Cookies", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q269", "text": "quick chicken zucchini mushroom cream", "recipe_id": 24943, "recipe_title": "Easy Chicken with Mushrooms and Zucchini in Cream Sauce", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q270", "text": "quick creamy pasta with bacon", "recipe_id": 7886, "recipe_title": "Quick and Creamy Pasta Carbonara", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q271", "text": "slow cooker pork and veggies", "recipe_id": 3645, "recipe_title": "Slow Cooker Pork and Sauerkraut", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q272", "text": "buttery crescent pastries", "recipe_id": 26347, "recipe_title": "Butter Crescents", "word_overlap": 0.333, "model": "qwen2.5:7b"}
+{"query_id": "q273", "text": "blueberry quinoa dessert", "recipe_id": 29172, "recipe_title": "Blueberry Quinoa with Lemon Glaze", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q274", "text": "fried wontons with chicken and cream cheese", "recipe_id": 31252, "recipe_title": "Chicken Rangoon", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "creamy chicken dumplings"}
+{"query_id": "q275", "text": "japanese garlic mayo shrimp", "recipe_id": 11144, "recipe_title": "Monica's Japanese Garlic Dollop Shrimp", "word_overlap": 0.75, "model": "qwen2.5:7b", "edited_from": "garlic mayonnaise shrimp pasta"}
+{"query_id": "q276", "text": "fresh avocado jalapeño cilantro salsa", "recipe_id": 30309, "recipe_title": "Mean Green Guacamole Salsa", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q277", "text": "broccoli cauliflower soup", "recipe_id": 30133, "recipe_title": "Vegetarian Broccoli and Cauliflower Soup", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "creamy vegetable soup with potatoes"}
+{"query_id": "q278", "text": "red wine beef broth reduction", "recipe_id": 2743, "recipe_title": "Red Wine Reduction Sauce", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q279", "text": "cinnamon walnut bread with raisins", "recipe_id": 27156, "recipe_title": "Walnut Cinnamon Swirl", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q280", "text": "grilled bell peppers with jalapeno and cheese", "recipe_id": 14997, "recipe_title": "Grilled Peppers", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q281", "text": "warm, coffee-flavored dessert in mug", "recipe_id": 27543, "recipe_title": "Easy Coffee Mug Cake", "word_overlap": 0.4, "model": "qwen2.5:7b"}
+{"query_id": "q282", "text": "cinnamon nutmeg cake doughnuts fried", "recipe_id": 764, "recipe_title": "Plain Cake Doughnuts", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q283", "text": "spicy beef tomato chili", "recipe_id": 2612, "recipe_title": "Award Winning Chili Con Carne", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q284", "text": "baked shrimp dumplings appetizer", "recipe_id": 11668, "recipe_title": "Baked Shrimp Wontons", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q285", "text": "halloween cheese ball shaped like a face", "recipe_id": 30768, "recipe_title": "Flayed Man Cheese Ball", "word_overlap": 0.6, "model": "qwen2.5:7b", "edited_from": "smoked cheese face snack"}
+{"query_id": "q286", "text": "pomegranate feta lemon salad", "recipe_id": 29782, "recipe_title": "Pomegranate Feta Salad with Lemon Dijon Vinaigrette", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q287", "text": "sweet creamy pasta with chicken cashews", "recipe_id": 25430, "recipe_title": "Chicken Cashew Salad", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q288", "text": "hot sweet grilled salmon", "recipe_id": 10933, "recipe_title": "Dad's Candied Salmon", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q289", "text": "white fish with mustard sauce", "recipe_id": 12562, "recipe_title": "Tilapia de Jonghe", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q290", "text": "spiced apple pie with caramel sauce", "recipe_id": 25477, "recipe_title": "Salted Caramel Apple Pie", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q291", "text": "sweet fried doughnut pastry", "recipe_id": 26592, "recipe_title": "Malasadas Dois", "word_overlap": 0.5, "model": "qwen2.5:7b"}
+{"query_id": "q292", "text": "slow cooked beef with wine", "recipe_id": 5922, "recipe_title": "Wine-Braised Beef Brisket", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q293", "text": "quick cheese spinach pie", "recipe_id": 4662, "recipe_title": "Quick Spinach Quiche", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q294", "text": "refreshing japanese coffee jelly", "recipe_id": 1769, "recipe_title": "Coffee Jelly", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q295", "text": "watermelon feta salad with mint", "recipe_id": 7706, "recipe_title": "Herb Watermelon Feta Salad", "word_overlap": 1.0, "model": "qwen2.5:7b", "edited_from": "fresh herb summer fruit salad"}
+{"query_id": "q296", "text": "grilled corn tomato herb salad", "recipe_id": 21657, "recipe_title": "Grilled Corn and Heirloom Tomato Salad", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q297", "text": "baked mac n cheese with cayenne", "recipe_id": 2248, "recipe_title": "Tasty Baked Mac n Cheese", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q298", "text": "pumpkin spice bread with cinnamon", "recipe_id": 25969, "recipe_title": "Pumpkin Bread", "word_overlap": 0.75, "model": "qwen2.5:7b"}
+{"query_id": "q299", "text": "spicy cheese sandwich with bacon and jalapeño", "recipe_id": 21239, "recipe_title": "Spicy Pimento Cheese Sandwiches with Avocado and Bacon", "word_overlap": 1.0, "model": "qwen2.5:7b"}
+{"query_id": "q300", "text": "light sponge cake with lemon", "recipe_id": 17180, "recipe_title": "High-Altitude Angel Food Cake", "word_overlap": 0.75, "model": "qwen2.5:7b"}

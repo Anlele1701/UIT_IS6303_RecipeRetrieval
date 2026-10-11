@@ -1,0 +1,4 @@
+# Keep LF everywhere so SQL, shell and Python files behave the same in Docker (Linux) and on Windows.
+* text=auto eol=lf
+*.png binary
+*.pdf binary
