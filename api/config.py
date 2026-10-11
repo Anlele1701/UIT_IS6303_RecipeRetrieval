@@ -2,7 +2,7 @@
 
 import os
 
-DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://recipe:recipe@localhost:5434/recipe")
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://recipe:recipe@localhost:5435/recipe")
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
 EMBED_MODEL = os.environ.get("EMBED_MODEL", "nomic-embed-text")
 # Switched from BAAI/bge-reranker-base after its ablation; the Report run was measured with bge-reranker-base.

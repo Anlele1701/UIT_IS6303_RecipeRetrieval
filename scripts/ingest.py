@@ -35,7 +35,7 @@ from tokenizers import Tokenizer
 ROOT = Path(__file__).resolve().parent.parent
 CSV_PATH = ROOT / "data" / "recipe.csv"
 CSV_URL = "https://huggingface.co/datasets/Shengtao/recipe/resolve/main/recipe.csv"
-DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://recipe:recipe@localhost:5434/recipe")
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://recipe:recipe@localhost:5435/recipe")
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
 EMBED_MODEL = "nomic-embed-text"
 EMBED_BATCH = 256

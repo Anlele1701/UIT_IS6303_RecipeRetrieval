@@ -27,7 +27,7 @@ import snowballstemmer
 
 ROOT = Path(__file__).resolve().parent.parent
 QUERY_SET = ROOT / "eval" / "queries.jsonl"
-DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://recipe:recipe@localhost:5434/recipe")
+DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://recipe:recipe@localhost:5435/recipe")
 OLLAMA_URL = os.environ.get("OLLAMA_URL", "http://localhost:11434")
 QUERY_MODEL = os.environ.get("QUERY_MODEL", "qwen2.5:7b")
 

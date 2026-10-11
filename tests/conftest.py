@@ -1,4 +1,4 @@
-"""A throwaway `recipe_test` database, built from sql/schema.sql inside the recipe-paradedb container.
+"""A throwaway `recipe_test` database, built from sql/schema.sql inside the a3-paradedb container.
 
 Tests that use it are skipped when the container isn't running.
 """
@@ -12,7 +12,7 @@ import pytest
 import ingest
 from api import config
 
-CONTAINER = "recipe-paradedb"
+CONTAINER = "a3-paradedb"
 TEST_DB = "recipe_test"
 TEST_URL = config.DATABASE_URL.rsplit("/", 1)[0] + f"/{TEST_DB}"
 
@@ -22,7 +22,7 @@ def test_db_url():
     try:
         admin = psycopg.connect(config.DATABASE_URL, autocommit=True, connect_timeout=3)
     except psycopg.OperationalError:
-        pytest.skip("recipe-paradedb is not running")
+        pytest.skip("a3-paradedb is not running")
     with admin:
         admin.execute(f"DROP DATABASE IF EXISTS {TEST_DB} WITH (FORCE)")
         admin.execute(f"CREATE DATABASE {TEST_DB}")
