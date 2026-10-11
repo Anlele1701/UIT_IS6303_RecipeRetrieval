@@ -1,0 +1,3 @@
+config,variant,strategy,queries,recall@5,recall@10,recall@20,mrr,ndcg@5,ndcg@10,short_lists,total_p50_ms,total_p95_ms,sparse_p50_ms,sparse_p95_ms,embed_p50_ms,embed_p95_ms,dense_p50_ms,dense_p95_ms,rrf_p50_ms,rrf_p95_ms,rerank_p50_ms,rerank_p95_ms
+hybrid,default,semantic,298,0.9664,0.9765,0.9765,0.8926,0.9104,0.9139,4,33149.69,47501.81,11.91,27.97,2062.36,2090.43,71.18,149.43,0.13,0.21,30993.43,45342.01
+fusion,default,semantic,298,0.8859,0.9262,0.9564,0.7219,0.7577,0.7702,4,2148.75,2277.88,12.32,33.6,2062.36,2090.43,72.87,181.22,0.15,0.23,,
