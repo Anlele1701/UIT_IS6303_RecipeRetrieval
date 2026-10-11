@@ -1,0 +1,8 @@
+[
+  "Current medications: {{med1}} daily, {{med2}} as prescribed, and a multivitamin.",
+  "Medication list reviewed: {{med1}}, {{med2}}. No new allergies reported.",
+  "Continues {{med1}} and {{med2}}. Adherence reported as good over the past month.",
+  "Pharmacy reconciliation lists {{med1}} and {{med2}}. No recent dose changes.",
+  "Takes {{med1}} in the morning and {{med2}} at bedtime. Denies side effects today.",
+  "Active prescriptions include {{med1}} and {{med2}}. Patient brings bottles to visits."
+]

@@ -111,6 +111,20 @@ uv run scripts/make_queries.py --out eval/my-queries.jsonl
 
 A regenerated set won't match the committed one: it lacks the hand rewrites, and LLM output can differ across machines and Ollama versions. The sample of Recipes is the same, since it uses a fixed seed (603). A rerun skips Recipes already in the output file, so a crash resumes. Pass the new file to the eval with `--queries eval/my-queries.jsonl`.
 
+## 4b. Synthetic patient records (no LLM)
+
+Template-built charts for nutrition-constrained search experiments. **Markdown under `eval/records/` is the source of truth** (for PageIndex / eval). PDFs are demo/hand-in only and are rebuilt from the Markdown.
+
+```sh
+uv sync --group dev
+uv run scripts/make_records.py              # 40 patients, seed 603 -> eval/records/*.md + answer_key.json
+uv run scripts/make_records.py --limit 5    # smoke
+uv run scripts/export_record_pdfs.py        # -> eval/records/pdf/ via fpdf2 (gitignored; rebuild anytime)
+uv run scripts/export_record_pdfs.py --ids p001 p002
+```
+
+Each record has dated visits, at least one superseded diet order and a later active order (so “latest wins” is testable), and an exact answer key of `(nutrient, max, value, evidence_section_id)`. Numbers are inserted by code, not by a model. Re-running skips patients already in `answer_key.json` unless you pass `--force`.
+
 ## 5. Run the API and UI
 
 ```sh
@@ -216,9 +230,9 @@ Tests that need the database build a throwaway `recipe_test` DB inside the `reci
 ```
 api/            FastAPI app: retrieval, filters, reranking, config
 ui/             React + Tailwind search page and the Report page (/report), built into api/static
-scripts/        ingest, search, make_queries, evaluate, failures, metrics, significance, runcheck, report_bundle
+scripts/        ingest, search, make_queries, make_records, export_record_pdfs, evaluate, failures, metrics, significance, runcheck, report_bundle
 sql/            schema, BM25 + vector indexes, one-off migrations; ablation/ holds the HNSW DDL
-eval/           the Query set, label files, the report manifest report.json; runs/ holds Evaluation runs (gitignored, report runs kept with -f)
+eval/           the Query set, label files, the report manifest report.json; records/ holds synthetic patient Markdown + answer_key.json; runs/ holds Evaluation runs (gitignored, report runs kept with -f)
 docs/adr/       architecture decisions
 tests/          pytest
 ```

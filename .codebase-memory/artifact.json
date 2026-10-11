@@ -1,11 +1,11 @@
 {
     "schema_version": 2,
-    "commit": "530fb4b5bdb3b0e7ad6d14c9fad4fdbdd43d2dfd",
-    "indexed_at": "2026-10-11T15:30:58Z",
+    "commit": "3deab025cb9b131c78fd5b81c3f2c764955b25f5",
+    "indexed_at": "2026-10-11T15:47:24Z",
     "project": "Users-anle-Documents-Study-UIT-first_year-HK3-IS6303_RAG-project-repo",
-    "nodes": 17909,
-    "edges": 22361,
-    "original_size": 59834368,
-    "compressed_size": 2766320,
+    "nodes": 18623,
+    "edges": 23329,
+    "original_size": 61472768,
+    "compressed_size": 2921907,
     "compression_level": 3
 }

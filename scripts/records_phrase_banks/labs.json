@@ -1,0 +1,7 @@
+[
+  "Labs from {{lab_date}}: BMP largely unremarkable; creatinine {{creat}} mg/dL; eGFR {{egfr}}.",
+  "Recent panel ({{lab_date}}): glucose {{glucose}} mg/dL fasting; A1c {{a1c}}%; creatinine {{creat}} mg/dL.",
+  "Chemistry drawn {{lab_date}}: sodium {{na}} mmol/L, potassium {{k}} mmol/L, creatinine {{creat}} mg/dL.",
+  "Outpatient labs {{lab_date}}: lipid panel pending; BMP shows creatinine {{creat}} mg/dL, eGFR {{egfr}}.",
+  "Results dated {{lab_date}}: fasting glucose {{glucose}} mg/dL, A1c {{a1c}}%, creatinine {{creat}} mg/dL."
+]
