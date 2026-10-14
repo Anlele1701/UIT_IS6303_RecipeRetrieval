@@ -137,3 +137,12 @@ def test_golden_set():
               "failures": [r for r in results if not r["all_ok"]]}
     (ROOT / "eval" / "m1_golden.json").write_text(json.dumps(report, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     assert report["slot_accuracy"] >= 0.9, report["failures"]
+
+
+def test_thuan_chay_means_vegan_and_a_plain_nut_covers_peanuts():
+    assert m1.postprocess(raw(diet="vegetarian"), "món thuần chay", lex()).constraints.diet == "vegan"
+    assert m1.postprocess(raw(diet="vegetarian"), "món chay", lex()).constraints.diet == "vegetarian"
+    u = m1.postprocess(raw(allergens_exclude=["tree_nuts"]), "nut-free cookies", lex())
+    assert u.constraints.allergens_exclude == ["tree_nuts", "peanut"]
+    u = m1.postprocess(raw(allergens_exclude=["tree_nuts"]), "no tree nuts please", lex())
+    assert u.constraints.allergens_exclude == ["tree_nuts"]

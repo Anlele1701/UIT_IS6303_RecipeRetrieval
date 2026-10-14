@@ -1,53 +1,6 @@
 {
   "cases": 30,
-  "all_slots_ok": 28,
-  "slot_accuracy": 0.989,
-  "failures": [
-    {
-      "id": "vi06",
-      "message": "món thuần chay nấu trong 1 tiếng",
-      "ok": {
-        "intent": true,
-        "allergens": true,
-        "excl": true,
-        "diet": false,
-        "minutes": true,
-        "remove": true
-      },
-      "got": {
-        "intent": "search",
-        "allergens": [],
-        "excl": [],
-        "diet": "vegetarian",
-        "minutes": 60,
-        "remove_allergens": [],
-        "ref": null
-      },
-      "all_ok": false
-    },
-    {
-      "id": "en03",
-      "message": "nut-free cookies for a school party",
-      "ok": {
-        "intent": true,
-        "allergens": false,
-        "excl": true,
-        "diet": true,
-        "minutes": true,
-        "remove": true
-      },
-      "got": {
-        "intent": "search",
-        "allergens": [
-          "tree_nuts"
-        ],
-        "excl": [],
-        "diet": null,
-        "minutes": null,
-        "remove_allergens": [],
-        "ref": null
-      },
-      "all_ok": false
-    }
-  ]
+  "all_slots_ok": 30,
+  "slot_accuracy": 1.0,
+  "failures": []
 }

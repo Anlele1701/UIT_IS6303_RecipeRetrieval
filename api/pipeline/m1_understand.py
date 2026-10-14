@@ -142,6 +142,8 @@ def keep_grounded(items: list[str], message: str, lex: RuntimeLexicon, notes: li
     return kept
 
 
+VEGAN_CUE = re.compile(r"thuần chay|thuan chay|\bvegan\b|plant[- ]based", re.I)
+GENERIC_NUT = re.compile(r"(?<!tree )\bnuts?\b(?!\s*(?:milk|meg))", re.I)  # "nut-free", "no nuts"; not "tree nuts"
 TIME_CUE = re.compile(r"\d|phút|phut|giờ|gio|tiếng|tieng|minute|min\b|hour|hr\b", re.I)
 RULE_TRIGGER = re.compile(r"(?:dị ứng|di ung|không có|khong co|không|khong|kiêng|kieng|allergic to|allergy to|"
                           r"\bno\b|without|free of)\s+([^,.;!?]+)", re.I)
@@ -223,6 +225,13 @@ def postprocess(raw: dict, message: str, lex: RuntimeLexicon) -> Understanding:
     if minutes and not TIME_CUE.search(message):
         notes.append(f"dropped a {minutes}-minute limit the message does not state")
         minutes = None
+    if diet == "vegetarian" and VEGAN_CUE.search(message):
+        notes.append("diet set to vegan: the message says vegan / thuần chay")
+        diet = "vegan"
+    if "tree_nuts" in allergens and "peanut" not in allergens and GENERIC_NUT.search(message) \
+            and "peanut" not in lifted_codes(raw, removing, rem_codes):
+        notes.append("added peanut: a plain 'nut' covers peanuts too (safe side)")
+        allergens = valid_allergens(allergens + ["peanut"])
     u = Understanding(
         intent=raw.get("intent") if raw.get("intent") in INTENTS else "search",
         lang=detect_lang(message), query_en=query,
