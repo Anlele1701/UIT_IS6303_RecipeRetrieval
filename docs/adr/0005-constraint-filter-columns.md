@@ -27,7 +27,11 @@ Thẻ dùng trong spike là regex thô, chỉ để bộ lọc có độ chọn 
 
 - Cả ba biến thể đều được đẩy vào ParadeDB Custom Scan (Top-K), không có node `Filter` nào của Postgres phía trên. Không biến thể nào trả thiếu kết quả hay lọt công thức vi phạm.
 - Overlap dense có lọc **không thấp hơn** khi không lọc (0,888, do index IVF ở probe 0,02, xem ADR-0003). Như vậy filter được áp trong lúc tìm vector, không phải lọc sau rồi bị hụt.
-- Tổ hợp với `total_minutes <= 30` và `category = ANY(…)` cũng đạt cả 4 tiêu chí.
+- Tổ hợp `term_set` với `total_minutes <= 30` và `category = ANY(…)` (biến thể `D_combined`) cũng đạt cả 4 tiêu chí:
+  - Không truy vấn nào có đáp án rỗng, 0 vi phạm.
+  - BM25 trùng exact. Overlap dense ≥ 0,999.
+  - p50 khoảng 8–9 ms với BM25 và 12–23 ms với dense.
+- *Đính chính (14/10):* bản đầu của spike lọc `category` theo tên viết hoa, trong khi DB lưu dạng slug. Vì vậy đáp án của `D_combined` rỗng với mọi truy vấn, và câu kết luận trên chưa có căn cứ. Script đã được sửa và chạy lại. Giờ script cũng báo rõ những dòng có đáp án rỗng là "không đo được".
 
 ## Các phương án đã xét
 

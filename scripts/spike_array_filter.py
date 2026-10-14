@@ -88,7 +88,7 @@ def where(variant: str, f: dict) -> tuple[str, list]:
 
 
 VARIANTS = ["A1_overlap", "A2_term_set", "B_bool", "D_combined"]
-CATEGORIES = ["Main Dishes", "Side Dish", "Desserts", "Soups, Stews and Chili Recipes"]
+CATEGORIES = ["main-dish", "side-dish", "desserts", "soups-stews-and-chili"]  # category slugs as stored
 
 
 def plain_where(f: dict, combined: bool = False) -> tuple[str, list]:
@@ -244,7 +244,8 @@ def measure(conn, t: str, texts: list[str], vecs: list[str]) -> list[dict]:
                         exact_n.append(len(exact))
                         short += len(got) < len(exact)
                         viol += violations(conn, t, got, f, combined)
-                        overlap.append(len(set(got) & set(exact)) / max(len(exact), 1) if exact else 1.0)
+                        if exact:  # an empty right answer says nothing about the filter
+                            overlap.append(len(set(got) & set(exact)) / len(exact))
                     rows.append({
                         "retriever": retriever, "variant": variant, "filter": fname,
                         "pushdown": plan["custom_scan"] and not plan["postgres_filter_above"],
@@ -252,7 +253,8 @@ def measure(conn, t: str, texts: list[str], vecs: list[str]) -> list[dict]:
                                                and not plan["postgres_filter_above"],
                         "heap_filter": plan["heap_filter"], "topk": plan["topk"],
                         "queries_short": short, "violations": viol,
-                        "overlap_exact": round(statistics.mean(overlap), 3),
+                        "overlap_exact": round(statistics.mean(overlap), 3) if overlap else None,
+                        "queries_empty": sum(n == 0 for n in exact_n),
                         "exact_min_results": min(exact_n),
                         "p50_ms": round(statistics.median(ms), 1),
                         "plan": plan["plan"],
@@ -276,16 +278,20 @@ def selectivity(conn, t: str) -> dict:
 
 
 def verdict(rows: list[dict]) -> dict:
-    """Which variants pass criteria 1-4 on both retrievers (D_combined is reported, not voted)."""
+    """Which variants pass criteria 1-4 on both retrievers. A row whose right answer is empty for
+    every query is not measured, and a variant with such a row does not pass."""
     out = {}
-    for variant in VARIANTS[:3]:
+    for variant in VARIANTS:
         rs = [r for r in rows if r["variant"] == variant]
-        ok = all("error" not in r and r["pushdown"] and r["violations"] == 0 and r["queries_short"] == 0
-                 and (r["retriever"] == "dense" or r["overlap_exact"] == 1.0) for r in rs)
-        out[variant] = {"passes": ok, "errors": sum("error" in r for r in rs),
+        unmeasured = sum("error" not in r and r["overlap_exact"] is None for r in rs)
+        ok = not unmeasured and all(
+            "error" not in r and r["pushdown"] and r["violations"] == 0 and r["queries_short"] == 0
+            and (r["retriever"] == "dense" or r["overlap_exact"] == 1.0) for r in rs)
+        out[variant] = {"passes": ok, "errors": sum("error" in r for r in rs), "unmeasured_rows": unmeasured,
                         "native": all(r.get("native_index_filter") for r in rs),
                         "min_dense_overlap": min((r["overlap_exact"] for r in rs
-                                                  if r["retriever"] == "dense" and "error" not in r), default=None)}
+                                                  if r["retriever"] == "dense" and "error" not in r and r["overlap_exact"] is not None),
+                                                 default=None)}
     return out
 
 
@@ -297,23 +303,25 @@ def render(res: dict) -> str:
     sel = res["selectivity"]
     lines += [f"| {k} | {v['kept']:,} / {sel['rows']:,} | {v['kept_share']:.1%} |" for k, v in sel.items() if k != "rows"]
     lines += ["", "## Kết quả theo biến thể", "",
-              "| Retriever | Biến thể | Bộ lọc | Pushdown | Lọc native | heap_filter | TopK | Truy vấn hụt | Vi phạm | Overlap với exact | p50 ms |",
-              "|---|---|---|---|---|---|---|---:|---:|---:|---:|"]
+              "| Retriever | Biến thể | Bộ lọc | Pushdown | Lọc native | heap_filter | TopK | Đáp án rỗng | Truy vấn hụt | Vi phạm | Overlap với exact | p50 ms |",
+              "|---|---|---|---|---|---|---|---:|---:|---:|---:|---:|"]
     for r in res["rows"]:
         if "error" in r:
-            lines.append(f"| {r['retriever']} | {r['variant']} | {r['filter']} | LỖI: {r['error'][:80]} |||||||| |")
+            lines.append(f"| {r['retriever']} | {r['variant']} | {r['filter']} | LỖI: {r['error'][:80]} ||||||||| |")
         elif r["variant"] == "none":
-            lines.append(f"| {r['retriever']} | (không lọc) | – | | | | | | | {r['overlap_exact']} | {r['p50_ms']} |")
+            lines.append(f"| {r['retriever']} | (không lọc) | – | | | | | | | | {r['overlap_exact']} | {r['p50_ms']} |")
         else:
             y = lambda b: "có" if b else "không"  # noqa: E731
             lines.append(f"| {r['retriever']} | {r['variant']} | {r['filter']} | {y(r['pushdown'])} | "
                          f"{y(r['native_index_filter'])} | {y(r['heap_filter'])} | {y(r['topk'])} | "
-                         f"{r['queries_short']} | {r['violations']} | {r['overlap_exact']} | {r['p50_ms']} |")
+                         f"{r['queries_empty']}/{N_QUERIES} | {r['queries_short']} | {r['violations']} | "
+                         f"{'không đo được' if r['overlap_exact'] is None else r['overlap_exact']} | {r['p50_ms']} |")
     lines += ["", "## Đánh giá theo luật quyết định (tiêu chí 1–4)", "",
-              "| Biến thể | Đạt | Lọc native trong index | Overlap dense thấp nhất | Lỗi |", "|---|---|---|---:|---:|"]
+              "| Biến thể | Đạt | Lọc native trong index | Overlap dense thấp nhất | Dòng không đo được | Lỗi |",
+              "|---|---|---|---:|---:|---:|"]
     for v, d in res["verdict"].items():
         lines.append(f"| {v} | {'có' if d['passes'] else 'không'} | {'có' if d['native'] else 'không'} | "
-                     f"{d['min_dense_overlap']} | {d['errors']} |")
+                     f"{d['min_dense_overlap']} | {d['unmeasured_rows']} | {d['errors']} |")
     return "\n".join(lines) + "\n"
 
 

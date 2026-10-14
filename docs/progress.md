@@ -44,6 +44,7 @@ Mỗi mục ghi theo một gate. Số liệu dẫn từ các file sinh tự đ�
   - Overlap dense với exact không thấp hơn khi không lọc.
 - **Đề xuất:** cột `text[]` kiểu `pdb.literal` + `NOT (col @@@ pdb.term_set(...))`. BM25 có lọc khoảng 8 ms, so với 6,6 ms khi không lọc.
 - `&&` chạy dạng `heap_filter`, chậm hơn khoảng 4 lần. `=== ANY` bị lỗi CBOR trên bản 0.25.9.
+- *Đính chính đầu M1 (14/10):* biến thể tổ hợp `D_combined` (thêm thời gian và danh mục) ban đầu lọc sai tên danh mục, nên đáp án rỗng. Sau khi sửa và chạy lại, biến thể này đạt đủ tiêu chí. Số mới ở `eval/spike/array_filter_real.json`.
 
 ### Môi trường và độ trễ (`docs/env.md`, `eval/env.json`, `eval/latency_probe.json`)
 - Máy chỉ có CPU (Ryzen AI 7 350, 31 GB RAM). Ollama 0.40.3 **không nhận iGPU Radeon 860M**: chạy với `OLLAMA_VULKAN=1` vẫn ở CPU, tốc độ 8,2 so với 8,5 token/giây.
