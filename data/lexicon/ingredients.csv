@@ -929,6 +929,7 @@ acorn squash,diced acorn squash,,rule,21
 italian herb seasoning,dried italian herb seasoning,,rule,21
 butter flavored extract,,,rule,21
 montreal steak seasoning,,,rule,21
+star anise,star anise pod|whole star anise,,manual,20
 ziti pasta,dry ziti pasta|uncooked ziti pasta,,rule,20
 ditalini pasta,dry ditalini pasta|uncooked ditalini pasta,,rule,20
 red seedless grape,halved red seedless grape,,rule,20
@@ -946,7 +947,6 @@ pretzel,crushed pretzel|finely crushed pretzel|coarsely crushed pretzel|chopped 
 turkey bacon,cooked turkey bacon,meat,rule,20
 pork sparerib,,meat,rule,20
 corn muffin mix,dry corn muffin mix,,rule,20
-star anise pod,,,rule,20
 brown rice flour,,,rule,20
 red chile powder,,,rule,20
 butter flavored cooking spray,,,rule,20
@@ -1464,6 +1464,7 @@ sweetened whipped cream,,dairy,rule,10
 oatmeal,,,rule,10
 chardonnay wine,,,rule,10
 red chili pepper,fresh red chili pepper|ground red chili pepper|dried red chili pepper,,rule,10
+rice paper,rice paper wrapper,,manual,9
 toffee baking bit,,dairy,rule,9
 crumbled feta,,dairy,rule,9
 thick slice italian bread,,,rule,9
@@ -1532,9 +1533,17 @@ baby kale,packed baby kale,,rule,9
 unbaked 9 inch pie crust,,,rule,9
 naan bread,warm naan bread,dairy,rule,9
 dashi granule,,fish,rule,9
-rice paper wrapper,,,rule,9
 quick rise yeast,,,rule,9
 thin rice noodle,dried thin rice noodle,,rule,9
 mini marshmallow,,gelatin,rule,9
 italian plum tomato,diced italian plum tomato|canned italian plum tomato,,rule,9
 dill pickle spear,,,rule,9
+hot buffalo wing sauce,,,rule,9
+powdered buttermilk,,dairy,rule,9
+duck,duck breast|duck leg|whole duck|duck meat,poultry,manual,0
+noodle,noodles,,manual,0
+chocolate,baking chocolate,,manual,0
+shrimp paste,,shellfish,manual,0
+taro,taro root,,manual,0
+lychee,lychees|litchi,,manual,0
+jackfruit,,,manual,0

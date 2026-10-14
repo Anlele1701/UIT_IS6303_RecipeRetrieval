@@ -1,0 +1,522 @@
+alias,target_type,target,note
+đậu phộng,allergen,peanut,
+dau phong,allergen,peanut,không dấu
+đậu phụng,allergen,peanut,biến thể chính tả
+dau phung,allergen,peanut,không dấu; biến thể chính tả
+lạc,allergen,peanut,miền Bắc
+lac,allergen,peanut,không dấu; miền Bắc
+hạt lạc,allergen,peanut,
+hat lac,allergen,peanut,không dấu
+sữa,allergen,milk,
+sua,allergen,milk,không dấu
+sữa bò,allergen,milk,
+sua bo,allergen,milk,không dấu
+đồ sữa,allergen,milk,
+do sua,allergen,milk,không dấu
+chế phẩm từ sữa,allergen,milk,
+che pham tu sua,allergen,milk,không dấu
+lactose,allergen,milk,không dung nạp lactose → tránh sữa
+trứng,allergen,egg,
+trung,allergen,egg,không dấu
+trứng gà,allergen,egg,
+trung ga,allergen,egg,không dấu
+cá,allergen,fish,
+ca,allergen,fish,không dấu
+hải sản,allergen,fish,hải sản = cá + giáp xác (bảo thủ)
+hai san,allergen,fish,không dấu; hải sản = cá + giáp xác (bảo thủ)
+hải sản,allergen,crustacean_shellfish,
+hai san,allergen,crustacean_shellfish,không dấu
+tôm,allergen,crustacean_shellfish,
+tom,allergen,crustacean_shellfish,không dấu
+cua,allergen,crustacean_shellfish,
+ghẹ,allergen,crustacean_shellfish,
+ghe,allergen,crustacean_shellfish,không dấu
+tôm hùm,allergen,crustacean_shellfish,
+tom hum,allergen,crustacean_shellfish,không dấu
+tép,allergen,crustacean_shellfish,
+tep,allergen,crustacean_shellfish,không dấu
+giáp xác,allergen,crustacean_shellfish,
+giap xac,allergen,crustacean_shellfish,không dấu
+động vật có vỏ,allergen,crustacean_shellfish,shellfish
+dong vat co vo,allergen,crustacean_shellfish,không dấu; shellfish
+các loại hạt,allergen,tree_nuts,
+cac loai hat,allergen,tree_nuts,không dấu
+hạt cây,allergen,tree_nuts,
+hat cay,allergen,tree_nuts,không dấu
+quả hạch,allergen,tree_nuts,
+qua hach,allergen,tree_nuts,không dấu
+hạt điều,allergen,tree_nuts,
+hat dieu,allergen,tree_nuts,không dấu
+hạnh nhân,allergen,tree_nuts,
+hanh nhan,allergen,tree_nuts,không dấu
+óc chó,allergen,tree_nuts,
+oc cho,allergen,tree_nuts,không dấu
+hạt óc chó,allergen,tree_nuts,
+hat oc cho,allergen,tree_nuts,không dấu
+hồ đào,allergen,tree_nuts,pecan
+ho dao,allergen,tree_nuts,không dấu; pecan
+hạt dẻ cười,allergen,tree_nuts,pistachio
+hat de cuoi,allergen,tree_nuts,không dấu; pistachio
+hạt phỉ,allergen,tree_nuts,hazelnut
+hat phi,allergen,tree_nuts,không dấu; hazelnut
+hạt mắc ca,allergen,tree_nuts,macadamia
+hat mac ca,allergen,tree_nuts,không dấu; macadamia
+hạt thông,allergen,tree_nuts,pine nut
+hat thong,allergen,tree_nuts,không dấu; pine nut
+hạt dẻ,allergen,tree_nuts,"chestnut, bảo thủ"
+hat de,allergen,tree_nuts,"không dấu; chestnut, bảo thủ"
+lúa mì,allergen,wheat,
+lua mi,allergen,wheat,không dấu
+bột mì,allergen,wheat,
+bot mi,allergen,wheat,không dấu
+gluten,allergen,wheat,gluten ≈ lúa mì (gần đúng)
+đậu nành,allergen,soy,
+dau nanh,allergen,soy,không dấu
+đậu tương,allergen,soy,miền Bắc
+dau tuong,allergen,soy,không dấu; miền Bắc
+mè,allergen,sesame,
+me,allergen,sesame,không dấu
+vừng,allergen,sesame,miền Bắc
+vung,allergen,sesame,không dấu; miền Bắc
+hạt mè,allergen,sesame,
+hat me,allergen,sesame,không dấu
+hạt vừng,allergen,sesame,
+hat vung,allergen,sesame,không dấu
+thịt gà,ingredient,chicken,
+thit ga,ingredient,chicken,không dấu
+gà,ingredient,chicken,
+ga,ingredient,chicken,không dấu
+ức gà,ingredient,chicken breast,
+uc ga,ingredient,chicken breast,không dấu
+đùi gà,ingredient,chicken thigh,
+dui ga,ingredient,chicken thigh,không dấu
+cánh gà,ingredient,chicken wing,
+canh ga,ingredient,chicken wing,không dấu
+thịt bò,ingredient,beef,
+thit bo,ingredient,beef,không dấu
+bò,ingredient,beef,
+bò băm,ingredient,beef,ground beef
+bo bam,ingredient,beef,không dấu; ground beef
+thịt heo,ingredient,pork,
+thit heo,ingredient,pork,không dấu
+thịt lợn,ingredient,pork,
+thit lon,ingredient,pork,không dấu
+heo,ingredient,pork,
+lợn,ingredient,pork,
+lon,ingredient,pork,không dấu
+ba chỉ,ingredient,pork belly,
+ba chi,ingredient,pork belly,không dấu
+ba rọi,ingredient,pork belly,
+ba roi,ingredient,pork belly,không dấu
+sườn heo,ingredient,pork sparerib,
+suon heo,ingredient,pork sparerib,không dấu
+thịt xông khói,ingredient,bacon,
+thit xong khoi,ingredient,bacon,không dấu
+giăm bông,ingredient,ham,
+giam bong,ingredient,ham,không dấu
+thịt nguội,ingredient,ham,
+thit nguoi,ingredient,ham,không dấu
+xúc xích,ingredient,sausage,
+xuc xich,ingredient,sausage,không dấu
+lạp xưởng,ingredient,sausage,
+lap xuong,ingredient,sausage,không dấu
+thịt cừu,ingredient,lamb,
+thit cuu,ingredient,lamb,không dấu
+cừu,ingredient,lamb,
+cuu,ingredient,lamb,không dấu
+gà tây,ingredient,turkey,
+ga tay,ingredient,turkey,không dấu
+vịt,ingredient,duck,
+vit,ingredient,duck,không dấu
+thịt vịt,ingredient,duck,
+thit vit,ingredient,duck,không dấu
+cá hồi,ingredient,salmon,
+ca hoi,ingredient,salmon,không dấu
+cá ngừ,ingredient,tuna,
+ca ngu,ingredient,tuna,không dấu
+cá tuyết,ingredient,cod,
+ca tuyet,ingredient,cod,không dấu
+cá rô phi,ingredient,tilapia,
+ca ro phi,ingredient,tilapia,không dấu
+cá cơm,ingredient,anchovy fillet,
+ca com,ingredient,anchovy fillet,không dấu
+mực,ingredient,squid,
+muc,ingredient,squid,không dấu
+nghêu,ingredient,clam,
+ngheu,ingredient,clam,không dấu
+ngao,ingredient,clam,miền Bắc
+hàu,ingredient,oyster,
+hau,ingredient,oyster,không dấu
+sò điệp,ingredient,scallop,
+so diep,ingredient,scallop,không dấu
+vẹm,ingredient,mussel,
+vem,ingredient,mussel,không dấu
+chem chép,ingredient,mussel,
+chem chep,ingredient,mussel,không dấu
+tôm,ingredient,shrimp,
+tom,ingredient,shrimp,không dấu
+cua,ingredient,crab,
+tôm hùm,ingredient,lobster,
+tom hum,ingredient,lobster,không dấu
+thịt cua,ingredient,crabmeat,
+thit cua,ingredient,crabmeat,không dấu
+mỡ heo,ingredient,lard,
+mo heo,ingredient,lard,không dấu
+mỡ lợn,ingredient,lard,
+mo lon,ingredient,lard,không dấu
+gelatin,ingredient,unflavored gelatin,
+gelatine,ingredient,unflavored gelatin,
+trứng,ingredient,egg,
+trung,ingredient,egg,không dấu
+lòng đỏ trứng,ingredient,egg yolk,
+long do trung,ingredient,egg yolk,không dấu
+lòng trắng trứng,ingredient,egg white,
+long trang trung,ingredient,egg white,không dấu
+sữa tươi,ingredient,milk,
+sua tuoi,ingredient,milk,không dấu
+sữa,ingredient,milk,
+sua,ingredient,milk,không dấu
+bơ,ingredient,butter,nghĩa nấu ăn
+bơ lạt,ingredient,butter,
+bo lat,ingredient,butter,không dấu
+bơ nhạt,ingredient,butter,
+bo nhat,ingredient,butter,không dấu
+bơ thực vật,ingredient,margarine,
+bo thuc vat,ingredient,margarine,không dấu
+phô mai,ingredient,cheese,
+pho mai,ingredient,cheese,không dấu
+phó mát,ingredient,cheese,
+pho mat,ingredient,cheese,không dấu
+pho mát,ingredient,cheese,
+phô mai kem,ingredient,cream cheese,
+pho mai kem,ingredient,cream cheese,không dấu
+cream cheese,ingredient,cream cheese,
+kem tươi,ingredient,heavy cream,
+kem tuoi,ingredient,heavy cream,không dấu
+kem whipping,ingredient,heavy cream,
+kem chua,ingredient,sour cream,
+sữa chua,ingredient,yogurt,
+sua chua,ingredient,yogurt,không dấu
+sữa đặc,ingredient,sweetened condensed milk,
+sua dac,ingredient,sweetened condensed milk,không dấu
+sữa đặc có đường,ingredient,sweetened condensed milk,
+sua dac co duong,ingredient,sweetened condensed milk,không dấu
+sữa bột,ingredient,milk powder,
+sua bot,ingredient,milk powder,không dấu
+mayonnaise,ingredient,mayonnaise,
+sốt mayonnaise,ingredient,mayonnaise,
+sot mayonnaise,ingredient,mayonnaise,không dấu
+kem,ingredient,vanilla ice cream,kem ăn; 'kem tươi' là heavy cream
+quả bơ,ingredient,avocado,
+qua bo,ingredient,avocado,không dấu
+trái bơ,ingredient,avocado,
+trai bo,ingredient,avocado,không dấu
+tỏi,ingredient,garlic,
+toi,ingredient,garlic,không dấu
+hành tây,ingredient,onion,
+hanh tay,ingredient,onion,không dấu
+hành,ingredient,onion,
+hanh,ingredient,onion,không dấu
+hành lá,ingredient,green onion,
+hanh la,ingredient,green onion,không dấu
+hành tím,ingredient,shallot,
+hanh tim,ingredient,shallot,không dấu
+hẹ tây,ingredient,shallot,
+he tay,ingredient,shallot,không dấu
+ngò,ingredient,cilantro,
+ngò rí,ingredient,cilantro,
+ngo ri,ingredient,cilantro,không dấu
+rau mùi,ingredient,cilantro,miền Bắc
+rau mui,ingredient,cilantro,không dấu; miền Bắc
+gừng,ingredient,ginger,
+gung,ingredient,ginger,không dấu
+sả,ingredient,lemongrass,
+sa,ingredient,lemongrass,không dấu
+ớt,ingredient,chile pepper,
+ot,ingredient,chile pepper,không dấu
+ớt chuông,ingredient,bell pepper,
+ot chuong,ingredient,bell pepper,không dấu
+chanh,ingredient,lime,chanh ta = lime
+chanh vàng,ingredient,lemon,
+chanh vang,ingredient,lemon,không dấu
+nước cốt chanh,ingredient,lime juice,
+nuoc cot chanh,ingredient,lime juice,không dấu
+cà chua,ingredient,tomato,
+ca chua,ingredient,tomato,không dấu
+cà rốt,ingredient,carrot,
+ca rot,ingredient,carrot,không dấu
+khoai tây,ingredient,potato,
+khoai tay,ingredient,potato,không dấu
+khoai lang,ingredient,sweet potato,
+khoai môn,ingredient,taro,
+khoai mon,ingredient,taro,không dấu
+nấm,ingredient,mushroom,
+nam,ingredient,mushroom,không dấu
+dưa leo,ingredient,cucumber,
+dua leo,ingredient,cucumber,không dấu
+dưa chuột,ingredient,cucumber,miền Bắc
+dua chuot,ingredient,cucumber,không dấu; miền Bắc
+bắp cải,ingredient,cabbage,
+bap cai,ingredient,cabbage,không dấu
+cải thảo,ingredient,napa cabbage,
+cai thao,ingredient,napa cabbage,không dấu
+cải chíp,ingredient,bok choy,
+cai chip,ingredient,bok choy,không dấu
+cải bó xôi,ingredient,spinach,
+cai bo xoi,ingredient,spinach,không dấu
+rau bina,ingredient,spinach,
+bông cải xanh,ingredient,broccoli,
+bong cai xanh,ingredient,broccoli,không dấu
+súp lơ xanh,ingredient,broccoli,
+sup lo xanh,ingredient,broccoli,không dấu
+bông cải trắng,ingredient,cauliflower,
+bong cai trang,ingredient,cauliflower,không dấu
+súp lơ,ingredient,cauliflower,
+sup lo,ingredient,cauliflower,không dấu
+cà tím,ingredient,eggplant,
+ca tim,ingredient,eggplant,không dấu
+bí ngòi,ingredient,zucchini,
+bi ngoi,ingredient,zucchini,không dấu
+bí đỏ,ingredient,pumpkin,
+bi do,ingredient,pumpkin,không dấu
+bắp,ingredient,corn,
+bap,ingredient,corn,không dấu
+ngô,ingredient,corn,miền Bắc
+đậu hà lan,ingredient,pea,
+dau ha lan,ingredient,pea,không dấu
+đậu que,ingredient,green bean,
+dau que,ingredient,green bean,không dấu
+giá,ingredient,bean sprout,
+gia,ingredient,bean sprout,không dấu
+giá đỗ,ingredient,bean sprout,
+gia do,ingredient,bean sprout,không dấu
+cần tây,ingredient,celery,
+can tay,ingredient,celery,không dấu
+rau diếp,ingredient,lettuce,
+rau diep,ingredient,lettuce,không dấu
+xà lách,ingredient,lettuce,
+xa lach,ingredient,lettuce,không dấu
+củ cải,ingredient,radish,
+cu cai,ingredient,radish,không dấu
+củ cải trắng,ingredient,daikon radish,
+cu cai trang,ingredient,daikon radish,không dấu
+đậu bắp,ingredient,okra,
+dau bap,ingredient,okra,không dấu
+tỏi tây,ingredient,leek,
+toi tay,ingredient,leek,không dấu
+chuối,ingredient,banana,
+chuoi,ingredient,banana,không dấu
+xoài,ingredient,mango,
+xoai,ingredient,mango,không dấu
+dứa,ingredient,pineapple,
+thơm,ingredient,pineapple,miền Nam
+thom,ingredient,pineapple,không dấu; miền Nam
+khóm,ingredient,pineapple,miền Nam
+khom,ingredient,pineapple,không dấu; miền Nam
+táo,ingredient,apple,
+tao,ingredient,apple,không dấu
+cam,ingredient,orange,
+dâu tây,ingredient,strawberry,
+dau tay,ingredient,strawberry,không dấu
+dừa,ingredient,coconut,
+vải,ingredient,lychee,
+vai,ingredient,lychee,không dấu
+mít,ingredient,jackfruit,
+mit,ingredient,jackfruit,không dấu
+đu đủ,ingredient,papaya,
+du du,ingredient,papaya,không dấu
+dưa hấu,ingredient,watermelon,
+dua hau,ingredient,watermelon,không dấu
+đào,ingredient,peach,
+dao,ingredient,peach,không dấu
+lê,ingredient,pear,
+le,ingredient,pear,không dấu
+nho,ingredient,grape,
+việt quất,ingredient,blueberry,
+viet quat,ingredient,blueberry,không dấu
+nho khô,ingredient,raisin,
+nho kho,ingredient,raisin,không dấu
+anh đào,ingredient,cherry,
+anh dao,ingredient,cherry,không dấu
+húng quế,ingredient,basil,
+hung que,ingredient,basil,không dấu
+rau quế,ingredient,basil,
+rau que,ingredient,basil,không dấu
+bạc hà,ingredient,mint,
+bac ha,ingredient,mint,không dấu
+húng lủi,ingredient,mint,
+hung lui,ingredient,mint,không dấu
+ngò tây,ingredient,parsley,
+ngo tay,ingredient,parsley,không dấu
+mùi tây,ingredient,parsley,
+mui tay,ingredient,parsley,không dấu
+thì là,ingredient,dill,
+thi la,ingredient,dill,không dấu
+hương thảo,ingredient,rosemary,
+huong thao,ingredient,rosemary,không dấu
+cỏ xạ hương,ingredient,thyme,
+co xa huong,ingredient,thyme,không dấu
+lá oregano,ingredient,oregano,
+la oregano,ingredient,oregano,không dấu
+thìa là ai cập,ingredient,cumin,
+thia la ai cap,ingredient,cumin,không dấu
+quế,ingredient,cinnamon,
+que,ingredient,cinnamon,không dấu
+hoa hồi,ingredient,star anise,
+hoa hoi,ingredient,star anise,không dấu
+hồi,ingredient,star anise,
+hoi,ingredient,star anise,không dấu
+nghệ,ingredient,turmeric,
+nghe,ingredient,turmeric,không dấu
+bột nghệ,ingredient,turmeric,
+bot nghe,ingredient,turmeric,không dấu
+bột cà ri,ingredient,curry powder,
+bot ca ri,ingredient,curry powder,không dấu
+ớt bột,ingredient,chili powder,
+ot bot,ingredient,chili powder,không dấu
+bột ớt,ingredient,chili powder,
+bot ot,ingredient,chili powder,không dấu
+ớt paprika,ingredient,paprika,
+ot paprika,ingredient,paprika,không dấu
+ngũ vị hương,ingredient,chinese five spice powder,
+ngu vi huong,ingredient,chinese five spice powder,không dấu
+tiêu,ingredient,black pepper,
+tieu,ingredient,black pepper,không dấu
+hạt tiêu,ingredient,black pepper,
+hat tieu,ingredient,black pepper,không dấu
+muối,ingredient,salt,
+muoi,ingredient,salt,không dấu
+bột tỏi,ingredient,garlic powder,
+bot toi,ingredient,garlic powder,không dấu
+bột hành,ingredient,onion powder,
+bot hanh,ingredient,onion powder,không dấu
+đường,ingredient,white sugar,
+duong,ingredient,white sugar,không dấu
+đường trắng,ingredient,white sugar,
+duong trang,ingredient,white sugar,không dấu
+đường nâu,ingredient,brown sugar,
+duong nau,ingredient,brown sugar,không dấu
+đường bột,ingredient,confectioners sugar,
+duong bot,ingredient,confectioners sugar,không dấu
+mật ong,ingredient,honey,
+mat ong,ingredient,honey,không dấu
+bột mì,ingredient,all purpose flour,
+bot mi,ingredient,all purpose flour,không dấu
+bột bắp,ingredient,cornstarch,
+bot bap,ingredient,cornstarch,không dấu
+bột ngô,ingredient,cornstarch,
+bot ngo,ingredient,cornstarch,không dấu
+bột nở,ingredient,baking powder,
+bot no,ingredient,baking powder,không dấu
+muối nở,ingredient,baking soda,
+muoi no,ingredient,baking soda,không dấu
+baking soda,ingredient,baking soda,
+men nở,ingredient,yeast,
+men no,ingredient,yeast,không dấu
+gạo,ingredient,rice,
+gao,ingredient,rice,không dấu
+cơm,ingredient,rice,
+com,ingredient,rice,không dấu
+bánh mì,ingredient,bread,
+banh mi,ingredient,bread,không dấu
+vụn bánh mì,ingredient,bread crumb,
+vun banh mi,ingredient,bread crumb,không dấu
+mì,ingredient,noodle,
+mi,ingredient,noodle,không dấu
+mì ống,ingredient,pasta,
+mi ong,ingredient,pasta,không dấu
+nui,ingredient,pasta,
+mì ý,ingredient,spaghetti,
+mi y,ingredient,spaghetti,không dấu
+bún,ingredient,rice noodle,
+bun,ingredient,rice noodle,không dấu
+phở,ingredient,rice noodle,bánh phở
+pho,ingredient,rice noodle,không dấu; bánh phở
+bánh tráng,ingredient,rice paper,
+banh trang,ingredient,rice paper,không dấu
+yến mạch,ingredient,rolled oat,
+yen mach,ingredient,rolled oat,không dấu
+đậu gà,ingredient,chickpea,
+dau ga,ingredient,chickpea,không dấu
+đậu đen,ingredient,black bean,
+dau den,ingredient,black bean,không dấu
+đậu lăng,ingredient,lentil,
+dau lang,ingredient,lentil,không dấu
+diêm mạch,ingredient,quinoa,
+diem mach,ingredient,quinoa,không dấu
+đậu hũ,ingredient,tofu,
+dau hu,ingredient,tofu,không dấu
+đậu phụ,ingredient,tofu,miền Bắc
+dau phu,ingredient,tofu,không dấu; miền Bắc
+tàu hũ,ingredient,tofu,
+tau hu,ingredient,tofu,không dấu
+đậu phộng,ingredient,peanut,
+dau phong,ingredient,peanut,không dấu
+bơ đậu phộng,ingredient,peanut butter,
+bo dau phong,ingredient,peanut butter,không dấu
+hạt điều,ingredient,cashew,
+hat dieu,ingredient,cashew,không dấu
+hạnh nhân,ingredient,almond,
+hanh nhan,ingredient,almond,không dấu
+óc chó,ingredient,walnut,
+oc cho,ingredient,walnut,không dấu
+hồ đào,ingredient,pecan,
+ho dao,ingredient,pecan,không dấu
+hạt dẻ cười,ingredient,pistachio,
+hat de cuoi,ingredient,pistachio,không dấu
+hạt phỉ,ingredient,hazelnut,
+hat phi,ingredient,hazelnut,không dấu
+hạt mè,ingredient,sesame seed,
+hat me,ingredient,sesame seed,không dấu
+mè,ingredient,sesame seed,
+me,ingredient,sesame seed,không dấu
+dầu mè,ingredient,sesame oil,
+dau me,ingredient,sesame oil,không dấu
+dầu vừng,ingredient,sesame oil,
+dau vung,ingredient,sesame oil,không dấu
+nước tương,ingredient,soy sauce,
+nuoc tuong,ingredient,soy sauce,không dấu
+xì dầu,ingredient,soy sauce,
+xi dau,ingredient,soy sauce,không dấu
+nước mắm,ingredient,fish sauce,
+nuoc mam,ingredient,fish sauce,không dấu
+dầu hào,ingredient,oyster sauce,
+dau hao,ingredient,oyster sauce,không dấu
+mắm tôm,ingredient,shrimp paste,
+mam tom,ingredient,shrimp paste,không dấu
+tương đen,ingredient,hoisin sauce,
+tuong den,ingredient,hoisin sauce,không dấu
+tương ớt,ingredient,chili sauce,
+tuong ot,ingredient,chili sauce,không dấu
+sriracha,ingredient,sriracha sauce,
+giấm,ingredient,vinegar,
+giam,ingredient,vinegar,không dấu
+giấm gạo,ingredient,rice vinegar,
+giam gao,ingredient,rice vinegar,không dấu
+dầu ô liu,ingredient,olive oil,
+dau o liu,ingredient,olive oil,không dấu
+dầu oliu,ingredient,olive oil,
+dau oliu,ingredient,olive oil,không dấu
+dầu ăn,ingredient,vegetable oil,
+dau an,ingredient,vegetable oil,không dấu
+dầu dừa,ingredient,coconut oil,
+dau dua,ingredient,coconut oil,không dấu
+nước cốt dừa,ingredient,coconut milk,
+nuoc cot dua,ingredient,coconut milk,không dấu
+sữa dừa,ingredient,coconut milk,
+sua dua,ingredient,coconut milk,không dấu
+sô cô la,ingredient,chocolate,
+so co la,ingredient,chocolate,không dấu
+socola,ingredient,chocolate,
+vani,ingredient,vanilla extract,
+tương cà,ingredient,ketchup,
+tuong ca,ingredient,ketchup,không dấu
+mù tạt,ingredient,mustard,
+mu tat,ingredient,mustard,không dấu
+bia,ingredient,beer,
+rượu vang đỏ,ingredient,red wine,
+ruou vang do,ingredient,red wine,không dấu
+rượu vang trắng,ingredient,white wine,
+ruou vang trang,ingredient,white wine,không dấu
+nước,ingredient,water,
+nuoc,ingredient,water,không dấu

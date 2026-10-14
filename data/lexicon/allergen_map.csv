@@ -237,6 +237,9 @@ unbaked 9 inch pie crust,wheat,hidden,pie crust,9
 unbleached bread flour,wheat,hidden,bread|flour,9
 vanilla wafer cookie,milk|egg|wheat,hidden,vanilla wafer|cookie,9
 white sandwich bread,wheat,hidden,bread,9
+chocolate,milk|soy,hidden,chocolate,0
+noodle,wheat,hidden,noodle,0
+shrimp paste,crustacean_shellfish,hidden,shrimp paste,0
 butter,milk,direct,butter,10239
 egg,egg,direct,egg,7925
 milk,milk,direct,milk,4546
@@ -463,6 +466,7 @@ i cant believe its not butter spread,milk,direct,butter,9
 mozzarella ball,milk,direct,mozzarella,9
 pecan piece,tree_nuts,direct,pecan,9
 pink salmon,fish,direct,salmon,9
+powdered buttermilk,milk,direct,buttermilk,9
 red salmon,fish,direct,salmon,9
 sole,fish,direct,sole,9
 tempeh,soy,direct,tempeh,9
