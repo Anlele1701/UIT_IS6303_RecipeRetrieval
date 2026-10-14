@@ -181,3 +181,40 @@ Số liệu lấy từ `eval/labels/report_allergen.{json,md}`, lần lặp 1, s
   - Con số tổng của holdout đã được xem ở lần lặp 1.
   - Không chỉnh gì thêm sau thời điểm đó.
 - **Tiêu chí G4** được diễn đạt lại thành "P/R so với nhãn bạc (Claude Sonnet 5.5, mù)".
+
+---
+
+## M3 – Pipeline hội thoại M1–M7 (15/10/2026) · ⏸ code xong, chưa qua gate
+
+Bàn giao sang máy khác: xem `docs/handoff.md`.
+
+### Quyết định đầu M3 (Thy, 15/10/2026)
+- Thêm trường `remove` vào schema M1, để người dùng gỡ ràng buộc bằng lời. Đây là sai khác so với mục 6.1.
+- Luôn dùng reranker mxbai, không có chế độ nhanh.
+
+### Việc đã làm
+- `api/pipeline/`: `flags`, `schemas`, `llm`, `lexicon`, `m1_understand` … `m7_verify`, `orchestrator`. Bảng chat ở migration 005.
+- `scripts/chat_cli.py`: chat nhiều lượt; có lệnh `/state`, `/trace`, `/reset` và tham số `--preset`.
+- **Golden M1** (`eval/m1_golden.json`): 30/30 câu đúng mọi slot. Lần chạy đầu được 28/30, sau đó thêm 2 quy tắc tất định: "thuần chay" thành vegan, và "nut" chung chung thì thêm cả peanut.
+- **M4:**
+  - Đường B0 trùng `fused_candidates` của A1 ở 8/8 truy vấn.
+  - Khi lọc bằng thẻ: 0 công thức vi phạm thẻ chắc chắn.
+  - S−Norm (ILIKE): còn 1 vi phạm. Đây là kết quả dự kiến của nhánh yếu hơn.
+- **M7:** câu trả lời không trích dẫn món nào vẫn được tính là hợp lệ. Nhờ vậy câu từ chối đúng ("không có món phù hợp") không bị ép phải trích dẫn.
+- **Test:**
+  - `pytest` nhanh: 341 pass.
+  - `-m slow`: golden M1 và 4 kịch bản demo đều pass (11 phút trên CPU). Kết quả ở `eval/m3_demo.json`.
+
+### Nhận xét từ 4 kịch bản demo (để xử lý ở gate M3)
+1. **Lỗi parser làm lọt chất gây dị ứng** (phát hiện ở kịch bản 1):
+   - Hiện tượng: R18880 "Chicken Stir-Fry with Thai Peanut Sauce" lọt qua bộ lọc đậu phộng. Dòng `"creamy, low-salt peanut butter"` bị cắt ở dấu phẩy thành "creamy"; dòng `"unsalted, dry-roasted peanuts"` thành "unsalted". Cả hai dòng không khớp nguyên liệu nào nhưng vẫn được ghi `parse_status = ok`, nên cũng không bị tính là `has_unknown`.
+   - Quy mô: khoảng 196 dòng ở 190 công thức chỉ còn lại một tính từ. 44 dòng không khớp nguyên liệu nào có chứa từ chỉ chất gây dị ứng (đếm bằng SQL, 15/10).
+   - **Cần quyết định:** sửa quy tắc dấu phẩy (khi phần trước dấu phẩy chỉ toàn tính từ thì lấy phần sau) và chuyển dòng không khớp nguyên liệu nào sang `fail`. Sau đó chạy `retag`, rồi đo lại M2 trên các mẫu bị ảnh hưởng. Việc này đổi bộ gắn thẻ đã duyệt, nên chưa làm.
+2. Câu trả lời có trích R18880 nhưng ghi rõ "không phù hợp vì chứa đậu phộng". M7 không bỏ trích dẫn này, vì nó chỉ kiểm thẻ.
+3. "không gạo nếp" bị M1 chuyển thành loại `rice` (rộng hơn ý người dùng), nhưng món xôi xoài vẫn lọt, có lẽ vì canonical là "sticky rice". Cần xem lại cách ánh xạ cho các nguyên liệu con.
+4. Câu trả lời tiếng Việt đôi khi chép nguyên định dạng thẻ ngữ cảnh (`| 55 phút |`). Cần chỉnh prompt M6.
+5. Độ trễ trên CPU: 28 giây (chat) đến 109 giây (có sinh lại) mỗi lượt.
+
+### Việc còn lại trước gate M3
+- Thử khoảng 20 câu bằng `chat_cli`, ghi lỗi.
+- Quyết định cách xử lý lỗi parser ở mục 1.
