@@ -27,9 +27,9 @@ def test_m7_removes_citations_outside_the_context_and_breaking_definite_tags():
     assert m7.strip("Try [R11] or [R22].", v.removed) == "Try or [R22]."
 
 
-def test_possible_tags_are_not_a_break_and_no_citation_with_context_fails():
+def test_possible_tags_are_not_a_break_and_citing_nothing_passes():
     assert m7.verify("[R22]", CARDS, Constraints(allergens_exclude=["milk"], diet="vegan")).verified
-    assert not m7.verify("Here are some ideas.", CARDS, NO_PEANUT).verified
+    assert m7.verify("None of these fit, try fewer conditions.", CARDS, NO_PEANUT).verified
     assert m7.verify("Nothing found.", [], NO_PEANUT).verified
 
 

@@ -2,7 +2,8 @@
 
 A citation outside the context, or to a Recipe whose definite tags break an allergen, ingredient or diet
 constraint, is removed. Possible tags never count as a break (they are warnings, Thy M1). When any citation was
-removed, or the context had Recipes but the answer cites none, the orchestrator regenerates once.
+removed (valid-citation rate below 1), the orchestrator regenerates once. An answer citing nothing passes: an
+honest "nothing fits" must not be pushed into citing a Recipe.
 """
 
 import re
@@ -29,7 +30,7 @@ def verify(answer: str, cards: list[RecipeCard], c: Constraints) -> Verification
     ids = cited(answer)
     removed = [i for i in ids if i not in by_id or violations(by_id[i], c)]
     kept = [i for i in ids if i not in removed]
-    return Verification(verified=not removed and (bool(kept) or not cards), citations=kept, removed=removed)
+    return Verification(verified=not removed, citations=kept, removed=removed)
 
 
 def strip(answer: str, removed: list[int]) -> str:
@@ -40,6 +41,6 @@ def strip(answer: str, removed: list[int]) -> str:
 
 def retry_note(v: Verification, cards: list[RecipeCard], c: Constraints) -> str:
     allowed = ", ".join(f"[R{r.id}]" for r in cards if not violations(r, c)) or "none (say nothing fits)"
-    why = f"It cited {', '.join(f'[R{i}]' for i in v.removed)}, which are not allowed. " if v.removed else \
-        "It cited no recipe. "
-    return f"Your previous answer failed the citation check. {why}Rewrite it citing only: {allowed}."
+    bad = ", ".join(f"[R{i}]" for i in v.removed)
+    return (f"Your previous answer failed the citation check: it cited {bad}, which are not allowed. "
+            f"Rewrite it citing only: {allowed}.")
