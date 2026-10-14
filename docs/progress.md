@@ -77,7 +77,14 @@ Mỗi mục ghi theo một gate. Số liệu dẫn từ các file sinh tự đ�
 
 ---
 
-## M1 – Pipeline dữ liệu · 🚦 chờ Thy duyệt gate M1 (14/10/2026)
+## M1 – Pipeline dữ liệu · ✅ gate M1 đã duyệt (14/10/2026)
+
+### Quyết định ở gate M1 (Thy, 14/10/2026)
+1. **Duyệt** phân bố thẻ và tỉ lệ `unknown`. M1 đóng.
+2. **Xóa `chunk_semantic_legacy`** (1.479 MB) ngay. Đã xóa. Nếu cần lại, dữ liệu vẫn khôi phục được từ `recipe.dump`.
+3. **M4 đọc thẳng vào phân vùng `chunk_<strategy>`** và lọc bằng `NOT (col @@@ pdb.term_set(...))` cho mọi cấu hình, cả B0 lẫn S. ADR-0005: phương án (a).
+4. **B0 chạy lại ở M6 trên index mới**, cùng index với hệ S. Run M0 `20261012-002242` chỉ còn là bằng chứng tái lập.
+
 
 ### Số liệu chính (`eval/corpus.json`, `docs/corpus_report.md`)
 | Quy tắc | Kết quả |
@@ -114,10 +121,3 @@ Mỗi mục ghi theo một gate. Số liệu dẫn từ các file sinh tự đ�
   - Top-20 trùng 297/298 (dense) và 296/298 (fusion).
   - Tính khoảng cách bằng SQL thường trên phân vùng mới và trên legacy cho kết quả trùng nhau, nghĩa là dữ liệu không đổi.
 - **Phát hiện:** ngay cả ở probe 1,0, tìm vector của ParadeDB **vẫn xấp xỉ**. Ví dụ q080: công thức 16048 có trong top-50 khi tính chính xác bằng SQL nhưng index bỏ sót. Nhánh "exact-dense" của A1 (ADR-0003) vì thế không hoàn toàn exact. Cần ghi vào báo cáo.
-
-### Cần Thy quyết ở gate M1
-1. Duyệt phân bố thẻ và tỉ lệ `unknown` (bảng trên).
-2. Xóa `chunk_semantic_legacy` (khoảng 1 GB, kèm index) hay giữ đến hết M6.
-3. Hai điểm để ngỏ từ trước, chốt trước M4:
-   - (a) M4 truy vấn thẳng vào phân vùng và dùng `term_set` (đề xuất), hay truy vấn qua bảng cha và dùng `&&`.
-   - Baseline B0 phải chạy lại trên index mới ở M6.

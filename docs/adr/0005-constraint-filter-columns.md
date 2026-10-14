@@ -58,6 +58,6 @@ Lỗi xảy ra cả với phân vùng build mới, không phải do `retag`. Nh�
 
 Có hai test ghi nhận hành vi này trong `tests/test_tag_db.py`. Test sẽ báo đỏ nếu một bản nâng cấp pg_search gỡ được giới hạn.
 
-**Chưa chốt (Thy quyết trước M4):**
+**Đã chốt (Thy, gate M1, 14/10/2026): phương án (a).** Các phương án đã xét:
 - (a) M4 truy vấn thẳng vào phân vùng `chunk_<strategy>` cho mọi cấu hình (B0 lẫn S), và giữ `term_set`. Index đã tách theo phân vùng (ADR-0002), nên thứ hạng không đổi. **Đề xuất.**
 - (b) Giữ truy vấn qua bảng cha và dùng `&&`. Cách này chậm hơn khoảng 4 lần với BM25 (khoảng 30 ms so với 8 ms), không đáng kể so với rerank.
