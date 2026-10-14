@@ -70,6 +70,9 @@ CREATE TABLE recipe_ingredient (
 -- Ingredient normalization and Recipe tags (D4-D8)
 \ir tags.sql
 
+-- Chat sessions, traces and feedback (M3)
+\ir chat.sql
+
 -- ---------------------------------------------------------------------------
 -- Chunking strategies (ADR-0002). A strategy is searchable only once loaded_at
 -- is set: every Recipe has its complete set of Chunks under it.

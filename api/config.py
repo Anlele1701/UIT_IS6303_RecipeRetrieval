@@ -13,3 +13,14 @@ MAX_K = 50
 HYBRID_CANDIDATES = int(os.environ.get("HYBRID_CANDIDATES", 50))  # top N from each retriever
 RERANK_TOP = int(os.environ.get("RERANK_TOP", 50))  # fused candidates sent to the reranker
 RRF_K = int(os.environ.get("RRF_K", 60))
+
+# Chat pipeline (api/pipeline, A3). Query understanding and generation share the model; the judge and the
+# independent checker use another family (scripts/checker.py, CHECKER_MODEL).
+QU_MODEL = os.environ.get("QU_MODEL", "qwen2.5:7b")
+GEN_MODEL = os.environ.get("GEN_MODEL", "qwen2.5:7b")
+QU_TEMPERATURE = 0.0
+GEN_TEMPERATURE = 0.2
+SEED = 42
+CHAT_STRATEGY = os.environ.get("CHAT_STRATEGY", "semantic")
+CONTEXT_RECIPES = int(os.environ.get("CONTEXT_RECIPES", 5))  # k Recipes in the generation context
+HISTORY_TURNS = 3  # user+assistant turns M1 sees
