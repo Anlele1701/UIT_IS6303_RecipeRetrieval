@@ -124,7 +124,7 @@ Mỗi mục ghi theo một gate. Số liệu dẫn từ các file sinh tự đ�
 
 ---
 
-## M2 – Bộ 200 mẫu, bộ kiểm độc lập, P/R · ⏸ tạm dừng (14/10/2026)
+## M2 – Bộ 200 mẫu, bộ kiểm độc lập, P/R · ✅ gate M2 đã duyệt (15/10/2026)
 
 ### Đã xong
 - **Mẫu 200 công thức**, phân tầng theo danh mục, gồm 150 mẫu dev và 50 mẫu holdout (`eval/labels/allergen_sample.csv`, seed 42/43/44).
@@ -154,3 +154,30 @@ PYTHONUTF8=1 uv run scripts/checker.py sample           # tiếp từ cache, cò
   - Bổ sung kiến thức chung về thành phần ẩn vào prompt.
   - Chạy lại trên 200 mẫu. Holdout chỉ đo lại một lần.
 - **Giữ `chunk_semantic_legacy`** (bản trước lần gắn thẻ lại ở M2), để dùng nếu sau này đổi phương án. Lần `retag` sau sẽ **đổi tên** bản legacy hiện có thành `chunk_<strategy>_legacy_<thời điểm>` để giữ lại, không xóa (Thy, 15/10/2026).
+
+### Kết quả và quyết định đóng gate M2 (Thy, 15/10/2026)
+Số liệu lấy từ `eval/labels/report_allergen.{json,md}`, lần lặp 1, so với **nhãn bạc**, toàn bộ 200 mẫu, nhãn "Có".
+
+- **Bộ gắn thẻ: duyệt.** Từ điển chốt ở lần lặp 1.
+  - P/R từ 0,97 đến 1,00 cho 8/9 nhóm dị ứng.
+  - Đậu nành: R = 0,50 với thẻ chắc chắn, 0,79 khi tính cả thẻ "có thể".
+  - Không chay: R = 0,91 với thẻ chắc chắn, 0,99 khi tính cả thẻ "có thể".
+  - Lưu ý: nhãn bạc và quy tắc của bộ gắn thẻ cùng họ Claude, nên con số có thể bị thổi phồng.
+- **Bộ kiểm `llama3.1:8b`, lần lặp 1: giữ nguyên, nêu hạn chế trong báo cáo** (Thy). Kết quả chế độ strict:
+
+  | Nhóm | Recall | Precision |
+  |---|---|---|
+  | Sữa | 0,98 | 0,85 |
+  | Cá | **0,69** | 0,76 |
+  | Giáp xác | 0,82 | 0,82 |
+  | Lúa mì | 0,94 | 0,81 |
+  | Đậu nành | 0,79 | 0,34 |
+
+  - Dòng bằng chứng hợp lệ: 0,85.
+  - Ví dụ lỗi: model trả "no" cho những món hiển nhiên có cá (salmon). Ba cách hỏi khác đã thử trên dev đều không sửa được.
+  - CVR ở M6 cho nhóm cá phải kèm cảnh báo về recall này. Báo cáo cả hai biến thể CVR strict và lenient.
+- **Ghi chú về tính khách quan:**
+  - Lỗi chỉ được xem trên tập dev.
+  - Con số tổng của holdout đã được xem ở lần lặp 1.
+  - Không chỉnh gì thêm sau thời điểm đó.
+- **Tiêu chí G4** được diễn đạt lại thành "P/R so với nhãn bạc (Claude Sonnet 5.5, mù)".
