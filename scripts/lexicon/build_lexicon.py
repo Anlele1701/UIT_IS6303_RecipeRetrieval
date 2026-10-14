@@ -133,11 +133,12 @@ def bootstrap(conn) -> dict:
 # ---------------------------------------------------------------------------
 
 SCHEMA = {"type": "object", "properties": {"items": {"type": "array", "items": {
-    "type": "object", "properties": {"name": {"type": "string"}, "base": {"type": "string"}},
-    "required": ["name", "base"]}}}, "required": ["items"]}
+    "type": "object", "properties": {"i": {"type": "integer"}, "base": {"type": "string"}},
+    "required": ["i", "base"]}}}, "required": ["items"]}
 PROMPT = """For each recipe ingredient name below, give the plain generic English ingredient it is,
 in 1-3 lowercase words, as a cook would write it in a shopping list (drop brands, sizes and preparation).
-If it is not food (foil, skewers), answer "nonfood". Reply in JSON.
+If it is not food (foil, skewers), answer "nonfood". Reply in JSON with one item per name,
+where i is the number in front of the name.
 Names:
 {names}"""
 PROMPT_SHA = hashlib.sha256(PROMPT.encode()).hexdigest()[:12]
@@ -149,7 +150,7 @@ def load_cache() -> dict[str, str]:
     if CACHE.exists():
         for line in CACHE.read_text(encoding="utf-8").splitlines():
             row = json.loads(line)
-            if row.get("model", QU_MODEL) == QU_MODEL and row.get("prompt_sha", PROMPT_SHA) == PROMPT_SHA:
+            if row.get("model") == QU_MODEL and row.get("prompt_sha") == PROMPT_SHA:
                 out.update(row["out"])
     return out
 
@@ -161,11 +162,11 @@ def cached_llm(names: list[str], client: httpx.Client, cache: dict[str, str]) ->
         r = client.post(f"{OLLAMA_URL}/api/chat", json={
             "model": QU_MODEL, "stream": False, "format": SCHEMA,
             "options": {"temperature": 0, "seed": SEED, "num_ctx": 4096},
-            "messages": [{"role": "user", "content": PROMPT.format(names="\n".join(f"- {n}" for n in todo))}]})
+            "messages": [{"role": "user", "content": PROMPT.format(names="\n".join(f"{k}. {n}" for k, n in enumerate(todo, 1)))}]})
         r.raise_for_status()
         items = json.loads(r.json()["message"]["content"]).get("items", [])
-        out = {i["name"].strip().lower(): i["base"].strip().lower() for i in items}
-        out = {n: out.get(n, "") for n in todo}
+        by_i = {i["i"]: i["base"].strip().lower() for i in items}
+        out = {n: by_i.get(k, "") for k, n in enumerate(todo, 1)}
         CACHE.parent.mkdir(parents=True, exist_ok=True)
         with open(CACHE, "a", encoding="utf-8") as f:
             f.write(json.dumps({"model": QU_MODEL, "prompt_sha": PROMPT_SHA, "names": todo, "out": out}) + "\n")
@@ -182,7 +183,7 @@ def suggest(conn):
             unmatched[p.name] += n
     todo = [(name, n) for name, n in unmatched.most_common() if n >= SUGGEST_MIN_LINES]
     print(f"{len(unmatched)} unmatched names, {len(todo)} on >= {SUGGEST_MIN_LINES} lines", flush=True)
-    rows, cache = [], load_cache()
+    rows, cache, rules = [], load_cache(), Rules.from_csv()
     with httpx.Client(timeout=900) as client:
         for b in range(0, len(todo), BATCH):
             batch = todo[b:b + BATCH]
@@ -190,11 +191,14 @@ def suggest(conn):
             for name, n in batch:
                 base = out.get(name, "")
                 proposed = "nonfood" if base == "nonfood" else (lex.match(base) or [f"NEW:{base}" if base else ""])[0]
-                rows.append([name, n, base, proposed, "", ""])
+                t = rules.tags(proposed.removeprefix("NEW:")) if proposed and proposed != "nonfood" else None
+                tags = "|".join([*(t.allergens if t else []), *([f"group:{t.group}"] if t and t.group else [])])
+                rows.append([name, n, base, proposed, tags, "", ""])
             print(f"{b + len(batch)}/{len(todo)}", flush=True)
     with open(LEXICON / "synonym_suggestions.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["variant", "lines", "llm_base", "proposed_canonical", "accept", "corrected_canonical"])
+        w.writerow(["variant", "lines", "llm_base", "proposed_canonical", "tags_if_accepted", "accept",
+                    "corrected_canonical"])
         w.writerows(rows)
     print(f"wrote {len(rows)} suggestions; fill accept=y (and corrected_canonical to override)")
 

@@ -359,8 +359,9 @@ dijon style mustard,prepared dijon style mustard|dijon style prepared mustard,,r
 hoisin sauce,,,rule,83
 refried bean,,meat,rule,83
 white chocolate chip,,,rule,83
-wonton wrapper,,egg,rule,82
+wonton wrapper,won ton wrapper|won ton skin|wonton skin,egg,manual,82
 pepperoni,sliced pepperoni|diced pepperoni|chopped pepperoni|thinly sliced pepperoni|minced pepperoni,meat,rule,82
+pie crust,recipe pastry for a 9 inch double crust pie|recipe pastry for a 9 inch single crust pie|pastry for a 9 inch pie crust|frozen pie crust|prepared pie crust|frozen prepared pie crust,,manual,81
 pesto,prepared pesto,dairy,rule,81
 greek yogurt,,dairy,rule,81
 saltine cracker,crushed saltine cracker|finely crushed saltine cracker,,rule,81
@@ -616,7 +617,6 @@ onion flake,dried onion flake|dried minced onion flake|minced onion flake|roaste
 cheddar monterey jack cheese blend,shredded cheddar monterey jack cheese blend,dairy,rule,38
 macadamia nut,chopped macadamia nut|finely chopped macadamia nut|ground roasted macadamia nut|coarsely chopped macadamia nut|dry roasted macadamia nut,,rule,38
 chipotle chile powder,ground chipotle chile powder|dried chipotle chile powder,,rule,38
-pie crust,frozen pie crust|prepared pie crust|frozen prepared pie crust,,rule,38
 chicken tender,boneless skinless chicken tender|skinless boneless chicken tender|frozen chicken tender|boneless chicken tender,poultry,rule,38
 marsala wine,dry marsala wine,,rule,38
 lime wedge,fresh lime wedge,,rule,37
@@ -732,6 +732,7 @@ bone in chicken breast,bone in chicken breast half|skinless bone in chicken brea
 oat flour,,,rule,30
 mace,ground mace|chopped fresh mace,,rule,30
 oat bran,,,rule,30
+star anise,star anise pod|whole star anise|ground star anise,,manual,29
 unsalted peanut,unsalted dry roasted peanut|chopped unsalted dry roasted peanut|dry roasted unsalted peanut|chopped unsalted peanut|unsalted roasted peanut,,rule,29
 orange extract,,,rule,29
 baby bella mushroom,sliced baby bella mushroom|thinly sliced baby bella mushroom|diced baby bella mushroom|chopped baby bella mushroom,,rule,29
@@ -828,7 +829,6 @@ peppermint extract,,,rule,25
 real bacon bit,cooked real bacon bit,meat,rule,25
 taco sauce,prepared taco sauce,,rule,25
 bone in chicken thigh,skinless bone in chicken thigh,poultry,rule,25
-recipe pastry for a 9 inch double crust pie,,,rule,25
 stone mustard,stone ground mustard,,rule,25
 milk ricotta cheese,whole milk ricotta cheese,dairy,rule,24
 thai chile pepper,chopped thai chile pepper|fresh thai chile pepper|minced dried thai chile pepper|dried thai chile pepper,,rule,24
@@ -929,7 +929,6 @@ acorn squash,diced acorn squash,,rule,21
 italian herb seasoning,dried italian herb seasoning,,rule,21
 butter flavored extract,,,rule,21
 montreal steak seasoning,,,rule,21
-star anise,star anise pod|whole star anise,,manual,20
 ziti pasta,dry ziti pasta|uncooked ziti pasta,,rule,20
 ditalini pasta,dry ditalini pasta|uncooked ditalini pasta,,rule,20
 red seedless grape,halved red seedless grape,,rule,20
@@ -1019,7 +1018,6 @@ red enchilada sauce,prepared red enchilada sauce,,rule,18
 solid white tuna in water,solid white tuna packed in water,fish,rule,18
 polenta,prepared polenta|dry polenta,,rule,18
 round steak,boneless round steak,meat,rule,18
-recipe pastry for a 9 inch single crust pie,,,rule,18
 beef flank steak,trimmed beef flank steak,meat,rule,17
 brownie mix,,,rule,17
 cardamom pod,,,rule,17
@@ -1540,6 +1538,10 @@ italian plum tomato,diced italian plum tomato|canned italian plum tomato,,rule,9
 dill pickle spear,,,rule,9
 hot buffalo wing sauce,,,rule,9
 powdered buttermilk,,dairy,rule,9
+all beef hot dog,,meat,rule,9
+ladyfinger,,egg,rule,9
+multigrain bread,,,rule,9
+focaccia bread,,,rule,9
 duck,duck breast|duck leg|whole duck|duck meat,poultry,manual,0
 noodle,noodles,,manual,0
 chocolate,baking chocolate,,manual,0
@@ -1547,3 +1549,228 @@ shrimp paste,,shellfish,manual,0
 taro,taro root,,manual,0
 lychee,lychees|litchi,,manual,0
 jackfruit,,,manual,0
+half and half,half-and-half|fat free half and half|fat-free half-and-half|light half and half,dairy,manual,0
+yoghurt,,dairy,rules,0
+whey,,dairy,rules,0
+casein,,dairy,rules,0
+mascarpone,,dairy,rules,0
+ricotta,,dairy,rules,0
+pecorino,,dairy,rules,0
+romano,,dairy,rules,0
+asiago,,dairy,rules,0
+gruyere,,dairy,rules,0
+brie,,dairy,rules,0
+feta,,dairy,rules,0
+provolone,,dairy,rules,0
+gouda,,dairy,rules,0
+paneer,,dairy,rules,0
+queso,,dairy,rules,0
+kefir,,dairy,rules,0
+dulce de leche,,dairy,rules,0
+custard,,dairy,rules,0
+ice cream,,dairy,rules,0
+creamer,,dairy,rules,0
+caramel,,dairy,rules,0
+butterscotch,,dairy,rules,0
+toffee,,dairy,rules,0
+fudge,,dairy,rules,0
+frosting,,,rules,0
+alfredo,,dairy,rules,0
+ranch,,,rules,0
+caesar,,fish,rules,0
+irish cream,,dairy,rules,0
+cashew butter,,,rules,0
+sunflower seed butter,,,rules,0
+apple butter,,,rules,0
+cocoa butter,,,rules,0
+shea butter,,nonfood,rules,0
+butter flavored,,,rules,0
+coconut cream,,,rules,0
+coconut butter,,,rules,0
+coconut yogurt,,,rules,0
+almondmilk,,,rules,0
+cashew milk,,,rules,0
+soymilk,,,rules,0
+oat milk,,,rules,0
+rice milk,,,rules,0
+hemp milk,,,rules,0
+cream soda,,,rules,0
+ice cream cone,,,rules,0
+cream of celery soup,,dairy,rules,0
+cream of potato soup,,dairy,rules,0
+cream of shrimp soup,,shellfish,rules,0
+golden mushroom soup,,,rules,0
+cheddar cheese soup,,dairy,rules,0
+aioli,,egg,rules,0
+meringue,,egg,rules,0
+hollandaise,,egg,rules,0
+tartar sauce,,egg,rules,0
+thousand island,,egg,rules,0
+egg replacer,,,rules,0
+fish,,fish,rules,0
+anchovy,,fish,rules,0
+sardine,,fish,rules,0
+mahi mahi,,fish,rules,0
+snapper,,fish,rules,0
+swordfish,,fish,rules,0
+haddock,,fish,rules,0
+flounder,,fish,rules,0
+bass,,fish,rules,0
+perch,,fish,rules,0
+pollock,,fish,rules,0
+mackerel,,fish,rules,0
+herring,,fish,rules,0
+whitefish,,fish,rules,0
+swai,,fish,rules,0
+grouper,,fish,rules,0
+monkfish,,fish,rules,0
+walleye,,fish,rules,0
+orange roughy,,fish,rules,0
+lox,,fish,rules,0
+caviar,,fish,rules,0
+roe,,fish,rules,0
+bonito,,fish,rules,0
+dashi,,fish,rules,0
+surimi,,fish,rules,0
+worcestershire,,fish,rules,0
+imitation crab,,fish,rules,0
+seafood,,shellfish,rules,0
+crayfish,,shellfish,rules,0
+langostino,,shellfish,rules,0
+shellfish,,shellfish,rules,0
+calamari,,shellfish,rules,0
+escargot,,shellfish,rules,0
+conch,,shellfish,rules,0
+crab apple,,,rules,0
+filbert,,,rules,0
+macadamia,,,rules,0
+brazil nut,,,rules,0
+pignoli,,,rules,0
+chestnut,,,rules,0
+marzipan,,,rules,0
+praline,,dairy,rules,0
+nutella,,dairy,rules,0
+amaretto,,,rules,0
+frangelico,,,rules,0
+peanut sauce,,,rules,0
+satay,,,rules,0
+wheat,,,rules,0
+semolina,,,rules,0
+spelt,,,rules,0
+durum,,,rules,0
+seitan,,,rules,0
+breadcrumb,,,rules,0
+panko,,,rules,0
+bun,,,rules,0
+roll,,,rules,0
+ciabatta,,,rules,0
+pita,,,rules,0
+naan,,dairy,rules,0
+tortilla,,,rules,0
+pizza crust,,,rules,0
+pastry,,,rules,0
+phyllo,,,rules,0
+filo,,,rules,0
+biscuit,,,rules,0
+crescent roll,,,rules,0
+dough,,,rules,0
+saltine,,,rules,0
+matzo,,,rules,0
+cookie,,,rules,0
+cooky,,,rules,0
+cake,,,rules,0
+cake mix,,,rules,0
+bisquick,,,rules,0
+waffle,,,rules,0
+penne,,,rules,0
+linguini,,,rules,0
+fettuccini,,,rules,0
+lasagna,,,rules,0
+rotini,,,rules,0
+farfalle,,,rules,0
+ziti,,,rules,0
+rigatoni,,,rules,0
+vermicelli,,,rules,0
+fusilli,,,rules,0
+ditalini,,,rules,0
+ramen,,,rules,0
+udon,,,rules,0
+soba,,,rules,0
+tortellini,,egg,rules,0
+ravioli,,egg,rules,0
+gnocchi,,,rules,0
+dumpling,,,rules,0
+potato flour,,,rules,0
+gluten free flour,,,rules,0
+glass noodle,,,rules,0
+egg roll,,egg,rules,0
+soy,,,rules,0
+soybean,,,rules,0
+teriyaki,,,rules,0
+ponzu,,,rules,0
+hoisin,,,rules,0
+black bean sauce,,,rules,0
+miso,,,rules,0
+textured vegetable protein,,,rules,0
+sesame,,,rules,0
+furikake,,,rules,0
+halva,,,rules,0
+bison,,meat,rules,0
+chorizo,,meat,rules,0
+kielbasa,,meat,rules,0
+andouille,,meat,rules,0
+bratwurst,,meat,rules,0
+frankfurter,,meat,rules,0
+brisket,,meat,rules,0
+tenderloin,,meat,rules,0
+filet mignon,,meat,rules,0
+luncheon meat,,meat,rules,0
+spam,,meat,rules,0
+oxtail,,meat,rules,0
+short rib,,meat,rules,0
+sparerib,,meat,rules,0
+suet,,meat,rules,0
+consomme,,meat,rules,0
+meat,,meat,rules,0
+pork rind,,meat,rules,0
+goose,,poultry,rules,0
+quail,,poultry,rules,0
+cornish hen,,poultry,rules,0
+game hen,,poultry,rules,0
+gelatin,,gelatin,rules,0
+jell o,,gelatin,rules,0
+jello,,gelatin,rules,0
+gummy,,gelatin,rules,0
+fruit pectin,,,rules,0
+honeydew,,,rules,0
+foil,,nonfood,rules,0
+wax paper,,nonfood,rules,0
+plastic wrap,,nonfood,rules,0
+cheesecloth,,nonfood,rules,0
+kitchen twine,,nonfood,rules,0
+hickory chip,,nonfood,rules,0
+paper towel,,nonfood,rules,0
+meat tenderizer,,,rules,0
+coconut meat,,,rules,0
+hamburger,,meat,rules,0
+sourdough,,,rules,0
+cornbread,,,rules,0
+shortbread,,dairy,rules,0
+cake yeast,,,rules,0
+compressed yeast,,,rules,0
+rice cake,,,rules,0
+cheesecake,,dairy,rules,0
+crab cake,,shellfish,rules,0
+soy lecithin,,,rules,0
+arrowroot flour,,,rules,0
+cassava flour,,,rules,0
+quinoa flour,,,rules,0
+teff flour,,,rules,0
+vegan cheese,,,rules,0
+vegetarian refried bean,,,rules,0
+chili with bean,,meat,rules,0
+velveeta,,dairy,rules,0
+bread and butter pickle,,,rules,0
+seafood cocktail sauce,,,rules,0
+ranch style chili bean,,,rules,0
+fish fry,,,rules,0
