@@ -1,7 +1,7 @@
 canonical,synonyms
-salt,table salt|fine salt|iodized salt|kosher salt|sea salt|coarse salt|coarse sea salt|fine sea salt|coarse kosher salt|pickling salt|salt for seasoning
+salt,table salt|fine salt|iodized salt|kosher salt|sea salt|coarse salt|coarse sea salt|fine sea salt|coarse kosher salt|pickling salt|salt for seasoning|fleur de sel
 black pepper,pepper|cracked black pepper|coarse black pepper|black peppercorn|ground pepper|coarse ground black pepper
-white sugar,sugar|granulated sugar|granulated white sugar|cane sugar
+white sugar,sugar|granulated sugar|granulated white sugar|cane sugar|sucanat
 confectioners sugar,confectioner sugar|powdered sugar|icing sugar|confectioners' sugar
 brown sugar,light brown sugar|dark brown sugar|packed brown sugar
 all purpose flour,flour|unbleached all purpose flour|plain flour|unbleached flour|all purpose flour for coating|white flour
@@ -18,7 +18,7 @@ mozzarella cheese,mozzarella|part skim mozzarella cheese|fresh mozzarella
 mayonnaise,mayo|light mayonnaise|reduced fat mayonnaise|low fat mayonnaise|fat free mayonnaise
 soy sauce,low sodium soy sauce|reduced sodium soy sauce|light soy sauce|dark soy sauce|shoyu
 garlic,garlic clove|bulb garlic|clove garlic|head garlic
-ginger,ginger root|fresh ginger
+ginger,ginger root|fresh ginger|freshly grated gingerroot
 chocolate chip,semisweet chocolate chip|semi sweet chocolate chip|miniature semisweet chocolate chip|mini chocolate chip|mini semi sweet chocolate chip|miniature chocolate chip
 vegetable oil,cooking oil|oil|canola oil|corn oil|sunflower seed oil|grapeseed oil|vegetable oil for deep frying|oil for deep frying|oil for frying
 chicken broth,chicken stock|low sodium chicken broth|reduced sodium chicken broth|fat free chicken broth|low sodium chicken stock|condensed chicken broth
@@ -36,7 +36,7 @@ vanilla extract,pure vanilla extract|vanilla|spice island pure vanilla extract
 banana,very banana|overripe banana
 hard boiled egg,hard egg|hard cooked egg
 bacon,thick bacon|thick slice bacon|bacon slice|bacon strip|smoked bacon|crumbled bacon
-red pepper flake,crushed red pepper flake|crushed red pepper|red chili flake
+red pepper flake,crushed red pepper flake|crushed red pepper|red chili flake|gochugaru
 italian sausage,bulk italian sausage|sweet italian sausage|mild italian sausage|spicy italian sausage|italian sausage link
 duck,duck breast|duck leg|whole duck|duck meat
 noodle,noodles
@@ -50,3 +50,11 @@ jackfruit,
 half and half,half-and-half|fat free half and half|fat-free half-and-half|light half and half
 pie crust,recipe pastry for a 9 inch double crust pie|recipe pastry for a 9 inch single crust pie|pastry for a 9 inch pie crust
 wonton wrapper,won ton wrapper|won ton skin|wonton skin
+tamarind paste,tamarind pulp
+cocoa,creme de cacao
+onion,vidalia
+iceberg lettuce,iceberg
+old bay seasoning,old bay tm seasoning
+coconut milk,silk unsweetened coconutmilk
+pancake syrup,maple-flavored syrup
+beer,pale ale

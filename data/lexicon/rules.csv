@@ -152,7 +152,7 @@ fish sauce,fish,fish,hidden,
 imitation crab,fish,fish|crustacean_shellfish?,hidden,surimi; often crab extract; conservative
 imitation crabmeat,fish,fish|crustacean_shellfish?,hidden,
 kimchi,fish?,fish?|crustacean_shellfish?,possible,usually fish sauce and salted shrimp; conservative
-seafood,shellfish,fish|crustacean_shellfish,hidden,generic seafood mix or stock
+seafood,shellfish?,fish?|crustacean_shellfish?,possible,"fish or shrimp based, not known which"
 seafood seasoning,,,,"Old Bay style spice blend, no seafood"
 old bay seasoning,,,,
 # ---------- crustacean shellfish (FDA); molluscs are shellfish but not an FDA major allergen ----------,,,,
@@ -239,8 +239,8 @@ bagel,,wheat,hidden,
 tortilla,,wheat,hidden,flour tortilla
 pizza dough,,wheat,hidden,
 pizza crust,,wheat,hidden,
-pie crust,,wheat,hidden,
-pie shell,,wheat,hidden,
+pie crust,meat?,wheat,hidden,flour; refrigerated crusts (e.g. Pillsbury) list lard
+pie shell,meat?,wheat,hidden,flour; some contain lard
 pastry,,wheat,hidden,
 puff pastry,,wheat,hidden,
 phyllo,,wheat,hidden,
@@ -265,8 +265,8 @@ brownie mix,,wheat|soy?,hidden,
 baking mix,,wheat,hidden,
 bisquick,,wheat,hidden,
 pancake mix,,wheat,hidden,
-corn bread mix,,wheat,hidden,
-corn muffin mix,,wheat,hidden,
+corn bread mix,meat?,wheat,hidden,wheat flour; some mixes (e.g. Jiffy) list lard
+corn muffin mix,meat?,wheat,hidden,wheat flour; some mixes (e.g. Jiffy) list lard
 waffle,,wheat|egg|milk,hidden,
 pasta,,wheat,hidden,
 spaghetti,,wheat,hidden,
@@ -333,7 +333,7 @@ tamari,,soy,hidden,
 shoyu,,soy|wheat,hidden,
 teriyaki,,soy|wheat,hidden,
 ponzu,,soy|wheat,hidden,
-hoisin,,soy|wheat,hidden,
+hoisin,,soy|wheat|sesame?,hidden,fermented soybean paste with wheat flour; many brands add sesame paste
 gochujang,,soy|wheat,hidden,
 black bean sauce,,soy|wheat,hidden,
 miso,,soy,hidden,
@@ -688,3 +688,24 @@ paper cup,nonfood,,,
 drip pan,nonfood,,,
 ramekin,nonfood,,,
 almond extract,,tree_nuts?,possible,almond flavoring; often from bitter almond or apricot kernel
+"# ---------- composition review (Thy: tag by what it is made of, not by name) ----------",,,,
+lemon curd,egg,egg|milk,hidden,"eggs, butter, sugar, lemon"
+fruit curd,egg,egg|milk,hidden,eggs and butter
+white chocolate,dairy,milk|soy?,hidden,FDA standard of identity requires >= 14% milk solids; soy lecithin varies
+ranch dressing mix,dairy,milk,hidden,"dry mix: buttermilk powder and herbs, no egg"
+ranch salad dressing mix,dairy,milk,hidden,"dry mix, no egg"
+ranch style dressing mix,dairy,milk,hidden,"dry mix, no egg"
+ranch seasoning,dairy,milk,hidden,"dry mix, no egg"
+oreo,,wheat|soy|milk?,hidden,"flour, soy lecithin; may contain milk"
+bacon bit,meat?,soy?,possible,real bits are pork; imitation bits (e.g. Bac-Os) are soy
+real bacon bit,meat,,,pork
+instant pistachio pudding mix,,tree_nuts?,possible,"mostly flavoring, nut content varies"
+i cant believe its not butter,,milk?,possible,"some lines list whey/buttermilk, some are vegan"
+blue cheese salad dressing,dairy,milk|egg?,hidden,blue cheese in a mayonnaise base
+balsamic cream,,,,"reduced balsamic vinegar with sugar or honey, no dairy (Thy)"
+balsamic creme,,,,
+balsamic glaze,,,,
+crema di balsamico,,,,
+creme de cacao,,,,"liqueur: cacao, sugar, alcohol; creme means sweet, no dairy"
+creme de menthe,,,,liqueur
+creme de cassis,,,,liqueur

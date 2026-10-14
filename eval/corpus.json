@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-10-14T16:31:25",
-  "git_commit": "0df47d5",
+  "ran_at": "2026-10-14T16:50:42",
+  "git_commit": "ab6fd66",
   "seed": 42,
   "lexicon_sha256": {
     "allergens.csv": "67a09676858fedac56072ba4f3a0d550e35ffa5600d1ec7233bfb30868d75802",
-    "rules.csv": "fc79538b211207f3fc7bfb114d2356633e854e9f1bbfdac5413aca62686be58d",
-    "manual_synonyms.csv": "86b6cebca0096c0979f85122187712c75cfa36c83ec2320504994d87f53fa592",
-    "ingredients.csv": "6cc8f4205b5ca5dad7885644c37b1fa4033e3e793e4c0be2fc82849770875089",
-    "allergen_map.csv": "5a000508ac2a2bdfa5171aaa9b41e5cf28080e8a8c819c55c08c7370f6d5c984",
+    "rules.csv": "3d2e618a31180c91975e827c92bad5c946d84f60e12fa651d7df2d17f829cd17",
+    "manual_synonyms.csv": "27b9fc8704f15fd6aa12855158395d97bcb6e1fe983b2ef152a85cc92313a2f7",
+    "ingredients.csv": "1dbe025001bee6060d529bb07c6760f16ba0f1307773e2f721247bc1fad8f0a4",
+    "allergen_map.csv": "372cd2b4d1aa49fbd8d0eebf137533060b0a750adde2f8b63d72bea113983c41",
     "vi_alias.csv": "79aebf07dec4dbe9372f7b0f0267bfcb3606935ba06f8ea3fc9dea1c6b812054"
   },
   "D1": {
@@ -73,50 +73,50 @@
   },
   "D5": {
     "rule": "map the parsed name to canonical ingredients (longest synonym first)",
-    "canonicals": 1982,
+    "canonicals": 2000,
     "canonicals_by_origin": {
-      "manual": 51,
+      "manual": 59,
       "rule": 1500,
-      "rules": 431
+      "rules": 441
     },
-    "canonicals_used": 1943,
-    "lines_mapped": 308732,
-    "coverage": 0.9925,
-    "multi_ingredient_lines": 9633
+    "canonicals_used": 1958,
+    "lines_mapped": 308816,
+    "coverage": 0.9928,
+    "multi_ingredient_lines": 9637
   },
   "D6": {
     "rule": "allergen groups per canonical (FDA 9; rules.csv): definite (direct/hidden) are filtered, possible (brand-dependent) are only flagged",
     "recipes": 32719,
     "per_allergen": {
       "milk": {
-        "recipes": 19583,
-        "only_hidden": 398,
-        "possible_only": 444,
-        "share": 0.5985
+        "recipes": 19590,
+        "only_hidden": 417,
+        "possible_only": 438,
+        "share": 0.5987
       },
       "egg": {
-        "recipes": 11438,
-        "only_hidden": 2592,
-        "possible_only": 0,
-        "share": 0.3496
+        "recipes": 11322,
+        "only_hidden": 2476,
+        "possible_only": 26,
+        "share": 0.346
       },
       "fish": {
-        "recipes": 4158,
-        "only_hidden": 1564,
-        "possible_only": 13,
-        "share": 0.1271
+        "recipes": 4143,
+        "only_hidden": 1549,
+        "possible_only": 28,
+        "share": 0.1266
       },
       "crustacean_shellfish": {
-        "recipes": 2158,
-        "only_hidden": 30,
-        "possible_only": 175,
-        "share": 0.066
+        "recipes": 2146,
+        "only_hidden": 18,
+        "possible_only": 187,
+        "share": 0.0656
       },
       "tree_nuts": {
-        "recipes": 3506,
+        "recipes": 3499,
         "only_hidden": 279,
-        "possible_only": 241,
-        "share": 0.1072
+        "possible_only": 248,
+        "share": 0.1069
       },
       "peanut": {
         "recipes": 811,
@@ -131,19 +131,19 @@
         "share": 0.5336
       },
       "soy": {
-        "recipes": 2256,
-        "only_hidden": 1922,
-        "possible_only": 1734,
-        "share": 0.069
+        "recipes": 2269,
+        "only_hidden": 1935,
+        "possible_only": 1784,
+        "share": 0.0693
       },
       "sesame": {
         "recipes": 1178,
         "only_hidden": 164,
-        "possible_only": 0,
+        "possible_only": 42,
         "share": 0.036
       }
     },
-    "recipes_without_allergen": 4931
+    "recipes_without_allergen": 4929
   },
   "D6b": {
     "rule": "a line that says it is free of X (gluten-free, dairy-free, vegan...) does not carry X",
@@ -152,18 +152,18 @@
   },
   "D7": {
     "rule": "vegetarian: no animal group or fish/crustacean tag; vegan: also no dairy/egg/honey or milk/egg tag",
-    "vegetarian": 16686,
-    "vegan": 4147,
-    "vegetarian_share": 0.51,
-    "vegan_share": 0.1267,
-    "vegetarian_only_if_possible_tags_ignored": 48,
-    "vegan_only_if_possible_tags_ignored": 134
+    "vegetarian": 16726,
+    "vegan": 4143,
+    "vegetarian_share": 0.5112,
+    "vegan_share": 0.1266,
+    "vegetarian_only_if_possible_tags_ignored": 325,
+    "vegan_only_if_possible_tags_ignored": 133
   },
   "D8": {
     "rule": "a line with no canonical ingredient is unknown; does not change tags by default",
-    "unknown_lines": 2328,
-    "recipes_with_unknown": 2075,
-    "recipes_with_unknown_share": 0.0634,
+    "unknown_lines": 2244,
+    "recipes_with_unknown": 2001,
+    "recipes_with_unknown_share": 0.0612,
     "top_unknown": [
       [
         "®)",
@@ -182,10 +182,6 @@
         10
       ],
       [
-        "sweet relish",
-        9
-      ],
-      [
         "fruit preserves",
         9
       ],
@@ -199,14 +195,6 @@
       ],
       [
         "achiote powder",
-        9
-      ],
-      [
-        "fleur de sel",
-        9
-      ],
-      [
-        "greek salad dressing",
         9
       ],
       [
@@ -255,10 +243,6 @@
       ],
       [
         "ragú old world style traditional sauce",
-        8
-      ],
-      [
-        "balsamic glaze",
         8
       ],
       [
@@ -364,8 +348,24 @@
       [
         "microwave popcorn",
         6
+      ],
+      [
+        "dry pectin",
+        5
+      ],
+      [
+        "cayenne",
+        5
+      ],
+      [
+        "chili",
+        5
+      ],
+      [
+        "limoncello liqueur",
+        5
       ]
     ]
   },
-  "seconds": 7.2
+  "seconds": 8.2
 }
