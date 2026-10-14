@@ -1,0 +1,760 @@
+[
+  {
+    "scenario": "1 allergy",
+    "preset": "B0",
+    "message": "Tôi dị ứng đậu phộng, gợi ý món gà xào sốt đậu phộng kiểu Thái",
+    "intent": "search",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "recipes": [
+      {
+        "id": 7993,
+        "title": "Nong's Khao Man Gai",
+        "total_minutes": 105,
+        "allergens": [
+          "wheat",
+          "soy"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.04
+      },
+      {
+        "id": 25039,
+        "title": "Thit Bo Xao Dau",
+        "total_minutes": 30,
+        "allergens": [
+          "wheat",
+          "soy"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.0382
+      },
+      {
+        "id": 26094,
+        "title": "Pho Ga Soup",
+        "total_minutes": 30,
+        "allergens": [
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.0313
+      },
+      {
+        "id": 2806,
+        "title": "Banh Xeo (Vietnamese Crepes)",
+        "total_minutes": 25,
+        "allergens": [
+          "fish",
+          "crustacean_shellfish"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.0294
+      },
+      {
+        "id": 29203,
+        "title": "Burmese Chicken-Coconut Soup (Ohn No Kyawswe)",
+        "total_minutes": 65,
+        "allergens": [
+          "egg",
+          "fish"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.028
+      }
+    ],
+    "answer": "",
+    "citations": [],
+    "verified": true,
+    "removed": [],
+    "latency_ms": {
+      "m1": 0.2,
+      "m2": 0.0,
+      "m3": 0.0,
+      "m4": 2592.6,
+      "m5": 49066.0,
+      "total": 51668.7
+    }
+  },
+  {
+    "scenario": "1 allergy",
+    "preset": "S",
+    "message": "Tôi dị ứng đậu phộng, gợi ý món gà xào sốt đậu phộng kiểu Thái",
+    "intent": "search",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [
+        "peanut"
+      ],
+      "ingredients_exclude": [
+        "peanut"
+      ],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "recipes": [
+      {
+        "id": 18880,
+        "title": "Chicken Stir-Fry with Thai Peanut Sauce",
+        "total_minutes": 55,
+        "allergens": [
+          "wheat",
+          "soy"
+        ],
+        "allergens_may": [
+          "crustacean_shellfish"
+        ],
+        "diet_flags": [],
+        "score": 0.9889
+      },
+      {
+        "id": 13249,
+        "title": "Thai Chicken with Basil Stir Fry",
+        "total_minutes": 35,
+        "allergens": [
+          "fish",
+          "wheat",
+          "soy"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.9691
+      },
+      {
+        "id": 76,
+        "title": "Chicken Stir-Fry",
+        "total_minutes": 80,
+        "allergens": [
+          "wheat",
+          "soy",
+          "sesame"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.9653
+      },
+      {
+        "id": 15598,
+        "title": "Thai Green Curry with Chicken",
+        "total_minutes": 45,
+        "allergens": [
+          "fish"
+        ],
+        "allergens_may": [
+          "crustacean_shellfish",
+          "peanut"
+        ],
+        "diet_flags": [],
+        "score": 0.9551
+      },
+      {
+        "id": 138,
+        "title": "Spicy Thai Basil Chicken (Pad Krapow Gai)",
+        "total_minutes": 25,
+        "allergens": [
+          "fish",
+          "wheat",
+          "soy"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.9446
+      }
+    ],
+    "answer": "Món Chicken Stir-Fry with Thai Peanut Sauce [R18880] không phù hợp vì chứa đậu phộng. Món Thai Green Curry with Chicken [R15598] có thể chứa đậu phộng trong thành phần \"may contain\". Bạn nên kiểm tra nhãn thành phần kỹ trước khi sử dụng.",
+    "citations": [
+      18880,
+      15598
+    ],
+    "verified": true,
+    "removed": [],
+    "latency_ms": {
+      "m1": 28848.3,
+      "m2": 0.0,
+      "m3": 0.0,
+      "m4": 390.3,
+      "m5": 50282.7,
+      "m6_ttft": 21989.4,
+      "m6": 29275.6,
+      "m7": 0.1,
+      "m6_total": 29275.6,
+      "total": 108816.0
+    },
+    "b0_peanut_recipes": 0
+  },
+  {
+    "scenario": "2 three turns",
+    "preset": "S",
+    "message": "gợi ý món gà cho bữa tối",
+    "intent": "search",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "recipes": [
+      {
+        "id": 18603,
+        "title": "Roast Chicken Dinner with Gravy",
+        "total_minutes": 100,
+        "allergens": [
+          "milk",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.9417
+      },
+      {
+        "id": 22291,
+        "title": "PHILADELPHIA Farmhouse Chicken Dinner",
+        "total_minutes": 45,
+        "allergens": [
+          "milk",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.8998
+      },
+      {
+        "id": 24822,
+        "title": "Last Minute Chicken Dinner",
+        "total_minutes": 25,
+        "allergens": [
+          "milk",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.8922
+      },
+      {
+        "id": 7192,
+        "title": "One-Pan Chicken Dinner",
+        "total_minutes": 65,
+        "allergens": [
+          "milk"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.8699
+      },
+      {
+        "id": 25122,
+        "title": "Sheet Pan Harissa Chicken Dinner",
+        "total_minutes": 55,
+        "allergens": [],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.8676
+      }
+    ],
+    "answer": "[R25122] Sheet Pan Harissa Chicken Dinner | 55 phút | không có dị ứng tiềm tàng | có thể thay thế nguyên liệu: | Món gà một chảo đầy đủ hương vị, thích hợp cho những tối tuần. Thời gian nấu nướng nhanh chóng, chỉ cần 55 phút.",
+    "citations": [
+      25122
+    ],
+    "verified": true,
+    "removed": [],
+    "latency_ms": {
+      "m1": 23340.7,
+      "m2": 0.0,
+      "m3": 0.0,
+      "m4": 295.1,
+      "m5": 23306.8,
+      "m6_ttft": 16993.7,
+      "m6": 24605.4,
+      "m7": 0.1,
+      "m6_total": 24605.4,
+      "total": 71560.5
+    }
+  },
+  {
+    "scenario": "2 three turns",
+    "preset": "S",
+    "message": "không dùng sữa nhé",
+    "intent": "refine",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [
+        "milk"
+      ],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "recipes": [
+      {
+        "id": 1490,
+        "title": "Greek Lemon-Garlic Chicken Thighs and Potatoes",
+        "total_minutes": 195,
+        "allergens": [],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.8876
+      },
+      {
+        "id": 25122,
+        "title": "Sheet Pan Harissa Chicken Dinner",
+        "total_minutes": 55,
+        "allergens": [],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.8676
+      },
+      {
+        "id": 14238,
+        "title": "Chicken with Garlic, Basil, and Parsley",
+        "total_minutes": 50,
+        "allergens": [],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.8567
+      },
+      {
+        "id": 925,
+        "title": "Oven-\"Fried\" Chicken Thighs",
+        "total_minutes": 50,
+        "allergens": [
+          "egg",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.8445
+      },
+      {
+        "id": 14977,
+        "title": "Succulent Roast Chicken",
+        "total_minutes": 120,
+        "allergens": [],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.8223
+      }
+    ],
+    "answer": "[R1490] Greek Lemon-Garlic Chicken Thighs and Potatoes | 195 phút | không có dị ứng tiềm tàng | có thể thay thế nguyên liệu: | Món gà nướng với chanh và tỏi đơn giản, phù hợp cho bữa tối gia đình. Thời gian nấu nướng dài nhưng dễ thực hiện.",
+    "citations": [
+      1490
+    ],
+    "verified": true,
+    "removed": [],
+    "latency_ms": {
+      "m1": 25127.8,
+      "m2": 0.0,
+      "m3": 0.0,
+      "m4": 398.6,
+      "m5": 22175.3,
+      "m6_ttft": 17710.3,
+      "m6": 26310.5,
+      "m7": 0.1,
+      "m6_total": 26310.5,
+      "total": 74024.7
+    }
+  },
+  {
+    "scenario": "2 three turns",
+    "preset": "S",
+    "message": "món thứ 2 làm thế nào?",
+    "intent": "ask_detail",
+    "route": "detail",
+    "constraints": {
+      "allergens_exclude": [
+        "milk"
+      ],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "recipes": [
+      {
+        "id": 25122,
+        "title": "Sheet Pan Harissa Chicken Dinner",
+        "total_minutes": 55,
+        "allergens": [],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.0
+      }
+    ],
+    "answer": "Món thứ hai trong công thức này là Chicken Dinner với Harissa trên chảo phẳng. Dưới đây là cách làm:\n\n- Chuẩn bị: Nướng lò ở 375 độ F (190 độ C).\n- Chuẩn bị gà: Rạch 1 thìa cà phê harissa dưới da mỗi con gà, sau đó chuyển chúng vào một khay nướng đã phủ giấy bạc 10x15 inch.\n- Chuẩn bị rau củ: Rắc cà rốt, bông cải xanh và khoai tây lên khay nướng.\n- Tưới dầu ô liu và rắc muối, tiêu lên trên.\n- Nướng: Nướng không đậy nắp trong lò đã预处理的步骤如下：\n\n1. 预热烤箱至375°F（190°C）。\n2. 在每块鸡腿下塞入1茶匙哈里萨酱。\n3. 将鸡腿、胡萝卜、花椰菜和土豆块放在烤盘上。\n4. 均匀淋上橄榄油，然后撒上盐和黑胡椒。\n5. 烤40到55分钟，直到插入鸡腿最厚部分的温度计显示175°F（80°C）。\n6. 烤制过程中搅拌蔬菜一次。\n7. 将剩余的2茶匙哈里萨酱与切碎的新鲜欧芹、蒜末和橙皮屑混合。\n8. 搅拌蔬菜，然后撒上混合调料。",
+    "citations": [],
+    "verified": true,
+    "removed": [],
+    "latency_ms": {
+      "m1": 27413.5,
+      "m2": 0.0,
+      "m3": 0.0,
+      "m5": 5.7,
+      "m6_ttft": 8808.4,
+      "m6": 44542.3,
+      "m7": 0.1,
+      "m6_total": 44542.3,
+      "total": 71972.7
+    }
+  },
+  {
+    "scenario": "3 no answer",
+    "preset": "S",
+    "message": "công thức bánh chưng thuần chay không gạo nếp, không đậu xanh",
+    "intent": "search",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [],
+      "ingredients_exclude": [
+        "rice"
+      ],
+      "ingredients_include": [],
+      "diet": "vegan",
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "recipes": [
+      {
+        "id": 503,
+        "title": "Thai Sweet Sticky Rice With Mango (Khao Neeo Mamuang)",
+        "total_minutes": 90,
+        "allergens": [
+          "sesame"
+        ],
+        "allergens_may": [],
+        "diet_flags": [
+          "vegetarian",
+          "vegan"
+        ],
+        "score": 0.2072
+      },
+      {
+        "id": 1188,
+        "title": "Vegan Chocolate Cake",
+        "total_minutes": 60,
+        "allergens": [
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [
+          "vegetarian",
+          "vegan"
+        ],
+        "score": 0.1379
+      },
+      {
+        "id": 29741,
+        "title": "Easy Thai Mango Sticky Rice",
+        "total_minutes": 30,
+        "allergens": [],
+        "allergens_may": [],
+        "diet_flags": [
+          "vegetarian",
+          "vegan"
+        ],
+        "score": 0.0983
+      },
+      {
+        "id": 16576,
+        "title": "Instant Pot® Vegan Rice Pudding",
+        "total_minutes": 35,
+        "allergens": [
+          "tree_nuts"
+        ],
+        "allergens_may": [],
+        "diet_flags": [
+          "vegetarian",
+          "vegan"
+        ],
+        "score": 0.0798
+      },
+      {
+        "id": 23228,
+        "title": "Coconut Sauce",
+        "total_minutes": 25,
+        "allergens": [],
+        "allergens_may": [],
+        "diet_flags": [
+          "vegetarian",
+          "vegan"
+        ],
+        "score": 0.0794
+      }
+    ],
+    "answer": "Không tìm thấy công thức phù hợp trong CONTEXT. Bạn có thể thử công thức bánh chưng thuần chay thay thế bằng các nguyên liệu khác như đậu nành xay hoặc bột mì, nhưng cần lưu ý rằng chúng không hoàn toàn giống với bánh chưng truyền thống.",
+    "citations": [],
+    "verified": true,
+    "removed": [],
+    "latency_ms": {
+      "m1": 26007.5,
+      "m2": 0.0,
+      "m3": 0.0,
+      "m4": 682.1,
+      "m5": 25213.9,
+      "m6_ttft": 15361.5,
+      "m6": 22361.4,
+      "m7": 0.1,
+      "m6_total": 22361.4,
+      "total": 74279.2
+    }
+  },
+  {
+    "scenario": "3 no answer",
+    "preset": "S",
+    "message": "dự báo thời tiết Hà Nội ngày mai",
+    "intent": "out_of_scope",
+    "route": "chat",
+    "constraints": {
+      "allergens_exclude": [],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "recipes": [],
+    "answer": "Xin lỗi, tôi chỉ có thể giúp bạn tìm các công thức nấu ăn. Bạn có muốn tôi tìm một công thức nấu ăn nào không?",
+    "citations": [],
+    "verified": true,
+    "removed": [],
+    "latency_ms": {
+      "m1": 20856.9,
+      "m2": 0.0,
+      "m3": 0.0,
+      "m6_ttft": 4307.4,
+      "m6": 7446.6,
+      "m6_total": 7446.6,
+      "total": 28316.9
+    }
+  },
+  {
+    "scenario": "4 lift",
+    "preset": "S",
+    "message": "I'm allergic to shellfish, suggest a quick pasta dinner",
+    "intent": "search",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [
+        "crustacean_shellfish"
+      ],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "recipes": [
+      {
+        "id": 24671,
+        "title": "Instant Pot® Creamy Lemon Chicken Pasta",
+        "total_minutes": 50,
+        "allergens": [
+          "milk",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.9653
+      },
+      {
+        "id": 985,
+        "title": "Pesto Pasta with Chicken",
+        "total_minutes": 30,
+        "allergens": [
+          "milk",
+          "tree_nuts",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.8657
+      },
+      {
+        "id": 29686,
+        "title": "Instant Pot® Buffalo Chicken Pasta",
+        "total_minutes": 55,
+        "allergens": [
+          "milk",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.8475
+      },
+      {
+        "id": 4615,
+        "title": "Bacon and Parmesan Penne Pasta",
+        "total_minutes": 30,
+        "allergens": [
+          "milk",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.7865
+      },
+      {
+        "id": 29870,
+        "title": "Cheesy Bacon Pasta Bake with Broccoli Crumble",
+        "total_minutes": 55,
+        "allergens": [
+          "milk",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.7524
+      }
+    ],
+    "answer": "None of the recipes listed contain shellfish, but I can suggest [R24671] Instant Pot® Creamy Lemon Chicken Pasta or [R985] Pesto Pasta with Chicken. Both are quick and suitable for a pasta dinner, though you should check the labels for any potential milk or wheat allergens. [R24671] uses heavy cream and mozzarella cheese, while [R985] contains sun-dried tomatoes and pesto, which may have tree nuts.",
+    "citations": [
+      24671,
+      985
+    ],
+    "verified": true,
+    "removed": [],
+    "latency_ms": {
+      "m1": 27753.7,
+      "m2": 0.0,
+      "m3": 0.0,
+      "m4": 372.7,
+      "m5": 24331.2,
+      "m6_ttft": 19790.5,
+      "m6": 32023.6,
+      "m7": 0.1,
+      "m6_total": 32023.6,
+      "total": 84493.7
+    }
+  },
+  {
+    "scenario": "4 lift",
+    "preset": "S",
+    "message": "actually I can eat shellfish now, shrimp pasta please",
+    "intent": "refine",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "recipes": [
+      {
+        "id": 9760,
+        "title": "Shrimp Pasta with Tomato Basil Sauce",
+        "total_minutes": 55,
+        "allergens": [
+          "milk",
+          "crustacean_shellfish",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.9581
+      },
+      {
+        "id": 19459,
+        "title": "Creamy Shrimp Pasta",
+        "total_minutes": 25,
+        "allergens": [
+          "milk",
+          "crustacean_shellfish",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.9445
+      },
+      {
+        "id": 660,
+        "title": "Creamy Shrimp Pasta with Mushrooms",
+        "total_minutes": 45,
+        "allergens": [
+          "milk",
+          "crustacean_shellfish",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.9409
+      },
+      {
+        "id": 19364,
+        "title": "Garlic Shrimp Pasta",
+        "total_minutes": null,
+        "allergens": [
+          "milk",
+          "crustacean_shellfish",
+          "wheat"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.9129
+      },
+      {
+        "id": 9604,
+        "title": "Cajun Shrimp Pasta with Alfredo Sauce",
+        "total_minutes": 25,
+        "allergens": [
+          "milk",
+          "crustacean_shellfish",
+          "wheat",
+          "soy"
+        ],
+        "allergens_may": [],
+        "diet_flags": [],
+        "score": 0.9048
+      }
+    ],
+    "answer": "[R9760] Shrimp Pasta with Tomato Basil Sauce is a great choice, taking about 55 minutes to prepare. It features shrimp in a light tomato basil sauce, making it a flavorful and quick dinner option. [R19459] Creamy Shrimp Pasta is another option, taking about 25 minutes, though it contains heavy cream and Parmesan cheese, which you may want to check for any potential issues. [R660] Creamy Shrimp Pasta with Mushrooms is also available, though it includes mozzarella and Parmesan cheese. [R19364] Garlic Shrimp Pasta is quick and easy, taking about 25 minutes, but it uses butter and Parmesan cheese. [R9604] Cajun Shrimp Pasta with Alfredo Sauce is a bit longer at 25 minutes but is creamy and flavorful. Make sure to check the labels for any potential allergens.",
+    "citations": [
+      9760,
+      19459,
+      660,
+      19364,
+      9604
+    ],
+    "verified": true,
+    "removed": [],
+    "latency_ms": {
+      "m1": 28722.1,
+      "m2": 0.0,
+      "m3": 0.0,
+      "m4": 394.5,
+      "m5": 22312.9,
+      "m6_ttft": 19471.1,
+      "m6": 41441.5,
+      "m7": 0.1,
+      "m6_total": 41441.5,
+      "total": 92884.0
+    }
+  }
+]
