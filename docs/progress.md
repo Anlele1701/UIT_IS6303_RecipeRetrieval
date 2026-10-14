@@ -121,3 +121,28 @@ Mỗi mục ghi theo một gate. Số liệu dẫn từ các file sinh tự đ�
   - Top-20 trùng 297/298 (dense) và 296/298 (fusion).
   - Tính khoảng cách bằng SQL thường trên phân vùng mới và trên legacy cho kết quả trùng nhau, nghĩa là dữ liệu không đổi.
 - **Phát hiện:** ngay cả ở probe 1,0, tìm vector của ParadeDB **vẫn xấp xỉ**. Ví dụ q080: công thức 16048 có trong top-50 khi tính chính xác bằng SQL nhưng index bỏ sót. Nhánh "exact-dense" của A1 (ADR-0003) vì thế không hoàn toàn exact. Cần ghi vào báo cáo.
+
+---
+
+## M2 – Bộ 200 mẫu, bộ kiểm độc lập, P/R · ⏸ tạm dừng (14/10/2026)
+
+### Đã xong
+- **Mẫu 200 công thức**, phân tầng theo danh mục, gồm 150 mẫu dev và 50 mẫu holdout (`eval/labels/allergen_sample.csv`, seed 42/43/44).
+- **Công cụ gán nhãn mù** `scripts/audit_tool.py` và hướng dẫn `docs/annotation_guide.md`.
+- **Nhãn:** `eval/labels/allergen_gold.csv` là **nhãn bạc**. Claude Sonnet 5.5 gán, mù, có Thy hướng dẫn. Không có nhãn vàng (Thy quyết định). Nguồn gốc ghi ở `allergen_gold.provenance.json`.
+  - Hệ quả: tiêu chí G4 đổi thành "P/R so với nhãn bạc".
+  - Phần hạn chế phải nêu rủi ro cùng họ Claude: quy tắc của bộ gắn thẻ do Opus viết, nhãn bạc do Sonnet gán.
+- **Bộ kiểm độc lập** `scripts/checker.py` (`llama3.1:8b`), có test chứng minh độc lập. Đã chạy 20/200 công thức. Cache theo từng ràng buộc nằm ở `data/cache/checker.jsonl` (220 dòng).
+- **Lý giải thiết kế** so với Elkiran & Rasheed (2026): `docs/design_rationale_retrieval.md`, kèm kiểm chứng `eval/similarity_check.json`.
+
+### Chạy tiếp khi mở máy (từ `A3/recipe-assistant/`)
+```sh
+docker compose up -d --wait
+"$LOCALAPPDATA/Programs/Ollama/ollama.exe" serve &     # hoặc mở app Ollama
+PYTHONUTF8=1 uv run scripts/checker.py sample           # tiếp từ cache, còn khoảng 180 công thức × 30 giây ≈ 1,5 giờ
+```
+
+### Việc còn lại
+1. Chạy xong bộ kiểm.
+2. `scripts/eval_allergen.py`: P/R kèm Wilson CI cho bộ gắn thẻ (mức chắc chắn, và mức chắc chắn + có thể) và bộ kiểm (strict / lenient), so với nhãn bạc. Có ma trận bất đồng. Lỗi chỉ liệt kê trên tập dev.
+3. Gate M2.
