@@ -8,7 +8,6 @@ Synonyms and names go through the same `key()`, so plural/singular and hyphens n
 """
 
 import csv
-import re
 from dataclasses import dataclass, field
 from functools import cache
 from pathlib import Path
@@ -16,37 +15,8 @@ from pathlib import Path
 from .parse import DESCRIPTORS, SIZES
 
 LEXICON = Path(__file__).resolve().parents[2] / "data" / "lexicon"
-MAX_WORDS = 6
-KEEP_S = {"molasses", "hummus", "asparagus", "couscous", "swiss", "grits", "schnapps", "bitters", "brussels",
-          "lemongrass", "watercress", "citrus", "octopus", "anise"}
-IRREGULAR = {"leaves": "leaf", "halves": "half", "loaves": "loaf", "cookies": "cookie", "brownies": "brownie",
-             "chilies": "chili", "chillies": "chili", "veggies": "veggie", "pierogies": "pierogi",
-             "smoothies": "smoothie", "knives": "knife"}
-
-
-def singular(w: str) -> str:
-    if w in IRREGULAR:
-        return IRREGULAR[w]
-    if len(w) <= 3 or w in KEEP_S or w.endswith(("ss", "us", "is")):
-        return w
-    if w.endswith("ies"):
-        return w[:-3] + "y"
-    if w.endswith("oes"):
-        return w[:-2]
-    if w.endswith(("ches", "shes", "xes", "zes")):
-        return w[:-2]
-    if w.endswith("s"):
-        return w[:-1]
-    return w
-
-
-def words(text: str) -> list[str]:
-    text = re.sub(r"[-/]", " ", text.lower().replace("'", ""))
-    return [singular(w) for w in re.findall(r"[a-z0-9&]+", text)]
-
-
-def key(text: str) -> str:
-    return " ".join(words(text))
+# The word rules and the scan live in api/textmatch.py, shared with the online pipeline.
+from api.textmatch import MAX_WORDS, key, longest_matches, singular, words  # noqa: E402,F401
 
 
 def core(name: str) -> str:
@@ -71,18 +41,7 @@ class Lexicon:
 
     def match(self, name: str) -> list[str]:
         """Canonical ingredients in a parsed name, in order, without repeats."""
-        ws, out, i = words(name), [], 0
-        while i < len(ws):
-            for n in range(min(MAX_WORDS, len(ws) - i), 0, -1):
-                c = self.canonical.get(" ".join(ws[i:i + n]))
-                if c:
-                    if c not in out:
-                        out.append(c)
-                    i += n
-                    break
-            else:
-                i += 1
-        return out
+        return list(dict.fromkeys(longest_matches(words(name), self.canonical)))
 
 
 @cache

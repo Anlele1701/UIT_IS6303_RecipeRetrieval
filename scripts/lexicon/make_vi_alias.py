@@ -15,7 +15,6 @@ by scanning the whole message, so short words ("đường" road/sugar, "giá" pr
 """
 
 import csv
-import unicodedata
 
 from .normalize import LEXICON
 
@@ -154,9 +153,7 @@ ROWS = [(*r, "fixed") for r in ROWS] + [
     for kind, target in targets]
 
 
-def unaccent(s: str) -> str:
-    s = s.replace("đ", "d").replace("Đ", "D")
-    return "".join(c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn")
+from api.textmatch import unaccent  # noqa: E402  (shared with the online pipeline)
 
 
 def ambiguous_unaccented() -> set[str]:
