@@ -74,3 +74,33 @@ Mỗi mục ghi theo một gate. Số liệu dẫn từ các file sinh tự đ�
    - (d) Chạy thí nghiệm trên máy có GPU, nếu nhóm có.
    - Ngoài ra, nên tắt các container không liên quan khi chạy đánh giá để giải phóng RAM.
 4. **Xóa schema `spike`** trong DB A3 (vài trăm MB) hay giữ lại.
+
+---
+
+## M1 – Pipeline dữ liệu · 🛠 đang làm (điểm dừng 14/10/2026)
+
+### Đã xong (đã commit)
+- Bước 0: sửa spike `D_combined` (`f1cf6cf`).
+- D4 parser `scripts/lexicon/parse.py` + 41 test golden (`8d7d1f1`).
+- D5–D8 (`1760c76`):
+  - Từ điển `data/lexicon/ingredients.csv`: 1.539 canonical, phủ 98,5% số dòng.
+  - `rules.csv`: nhóm và dị ứng, có ngoại lệ.
+  - `allergen_map.csv`: thành phần ẩn xếp đầu.
+  - Tagger, kèm test.
+
+### Đang dở
+- LLM gợi ý đồng nghĩa (`build_lexicon suggest`): đã chạy 3 lô, dừng giữa chừng. Kết quả từng lô được cache trong `data/cache/lexicon_suggest.jsonl`, nên chạy lại sẽ bỏ qua các lô đã xong.
+
+### Chạy tiếp khi mở máy (từ `A3/recipe-assistant/`)
+```sh
+docker compose up -d --wait                                  # DB A3 (volume is603a3_a3-pgdata vẫn còn)
+"$LOCALAPPDATA/Programs/Ollama/ollama.exe" serve &          # hoặc mở app Ollama
+cd scripts && PYTHONUTF8=1 ../.venv/Scripts/python.exe -m lexicon.build_lexicon suggest   # tiếp tục từ cache
+```
+
+### Việc còn lại của M1
+1. `vi_alias.csv` (khoảng 150–250 mục).
+2. Schema mới, migration `002-tags.sql`, `ingest.py retag semantic`.
+3. `scripts/tag.py`, `eval/corpus.json` (D1–D8), `docs/corpus_report.md`.
+4. 👤 Thy duyệt `synonym_suggestions.csv`, `vi_alias.csv` và khoảng 100 dòng đầu `allergen_map.csv`.
+5. Chạy `apply-suggestions` → `bootstrap` → `tag.py run` → `retag`, rồi dừng ở gate M1.
