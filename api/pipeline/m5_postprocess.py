@@ -27,12 +27,13 @@ def cards(conn: psycopg.Connection, ranked: list[tuple[int, float]]) -> list[Rec
     ids = [rid for rid, _ in ranked]
     rows = {r[0]: r for r in conn.execute(
         """SELECT r.id, r.title, r.total_minutes, coalesce(t.allergens, '{}'), coalesce(t.allergens_may, '{}'),
-                  coalesce(t.diet_flags, '{}'), coalesce(t.diet_may, '{}'), r.description,
+                  coalesce(t.diet_flags, '{}'), coalesce(t.diet_may, '{}'), r.description, coalesce(t.ingredients_norm, '{}'),
                   (SELECT array_agg(line ORDER BY position) FROM recipe_ingredient i WHERE i.recipe_id = r.id)
            FROM recipe r LEFT JOIN recipe_tag t ON t.recipe_id = r.id WHERE r.id = ANY(%s)""", [ids]).fetchall()}
     return [RecipeCard(id=rid, title=rows[rid][1], total_minutes=rows[rid][2], allergens=rows[rid][3],
                        allergens_may=rows[rid][4], diet_flags=rows[rid][5], diet_may=rows[rid][6], score=round(score, 4),
-                       summary=(rows[rid][7] or "")[:400], ingredients=rows[rid][8] or [])
+                       summary=(rows[rid][7] or "")[:400], ingredients=rows[rid][9] or [],
+                       ingredients_norm=rows[rid][8])
             for rid, score in ranked if rid in rows]
 
 

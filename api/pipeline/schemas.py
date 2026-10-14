@@ -91,6 +91,7 @@ class RecipeCard(BaseModel):
     score: float = 0.0
     summary: str = ""
     ingredients: list[str] = Field(default_factory=list)  # raw lines
+    ingredients_norm: list[str] = Field(default_factory=list)  # canonical names: M7 checks, not shown to M6
 
 
 class Verification(BaseModel):
