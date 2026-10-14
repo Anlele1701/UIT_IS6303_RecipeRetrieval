@@ -16,12 +16,12 @@ half and half,dairy,milk,direct,
 creme fraiche,dairy,milk,direct,
 mascarpone,dairy,milk,direct,
 ricotta,dairy,milk,direct,
-parmesan,dairy,milk,direct,
-parmigiano reggiano,dairy,milk,direct,
-pecorino,dairy,milk,direct,
-romano,dairy,milk,direct,
-asiago,dairy,milk,direct,
-gruyere,dairy,milk,direct,
+parmesan,dairy|rennet?,milk,direct,"traditionally made with animal rennet; some brands use microbial rennet (Thy, gate M2)"
+parmigiano reggiano,dairy|rennet?,milk,direct,"traditionally made with animal rennet; some brands use microbial rennet (Thy, gate M2)"
+pecorino,dairy|rennet?,milk,direct,"traditionally made with animal rennet; some brands use microbial rennet (Thy, gate M2)"
+romano,dairy|rennet?,milk,direct,"traditionally made with animal rennet; some brands use microbial rennet (Thy, gate M2)"
+asiago,dairy|rennet?,milk,direct,"traditionally made with animal rennet; some brands use microbial rennet (Thy, gate M2)"
+gruyere,dairy|rennet?,milk,direct,"traditionally made with animal rennet; some brands use microbial rennet (Thy, gate M2)"
 brie,dairy,milk,direct,
 feta,dairy,milk,direct,
 mozzarella,dairy,milk,direct,
@@ -709,3 +709,14 @@ crema di balsamico,,,,
 creme de cacao,,,,"liqueur: cacao, sugar, alcohol; creme means sweet, no dairy"
 creme de menthe,,,,liqueur
 creme de cassis,,,,liqueur
+"# ---------- animal rennet (Thy, gate M2): possibly not vegetarian ----------",,,,
+grana padano,dairy|rennet?,milk,direct,"traditionally animal rennet; possible, not definite"
+manchego,dairy|rennet?,milk,direct,"traditionally animal rennet; possible, not definite"
+gorgonzola,dairy|rennet?,milk,direct,"traditionally animal rennet; possible, not definite"
+emmental,dairy|rennet?,milk,direct,"traditionally animal rennet; possible, not definite"
+comte,dairy|rennet?,milk,direct,"traditionally animal rennet; possible, not definite"
+parmesan cheese,dairy|rennet?,milk,direct,"traditionally animal rennet; possible, not definite"
+romano cheese,dairy|rennet?,milk,direct,"traditionally animal rennet; possible, not definite"
+pecorino romano cheese,dairy|rennet?,milk,direct,"traditionally animal rennet; possible, not definite"
+gruyere cheese,dairy|rennet?,milk,direct,"traditionally animal rennet; possible, not definite"
+asiago cheese,dairy|rennet?,milk,direct,"traditionally animal rennet; possible, not definite"

@@ -1,6 +1,6 @@
 # Báo cáo dữ liệu (quy tắc D1–D8)
 
-Sinh tự động bởi `scripts/tag.py` lúc 2026-10-14T20:07:39 (commit `ca31390`). Số liệu gốc ở `eval/corpus.json`. Không sửa tay file này.
+Sinh tự động bởi `scripts/tag.py` lúc 2026-10-15T00:32:27 (commit `86fc600`). Số liệu gốc ở `eval/corpus.json`. Không sửa tay file này.
 
 | Mã | Quy tắc | Số liệu |
 |---|---|---|
@@ -8,10 +8,10 @@ Sinh tự động bởi `scripts/tag.py` lúc 2026-10-14T20:07:39 (commit `ca313
 | D2 | Bỏ cột dinh dưỡng rỗng > 99% | 13 cột, tỉ lệ rỗng thấp nhất 99,4% |
 | D3 | Chuẩn hóa thời gian → phút | `total_time` null: 1.859 (rỗng ở nguồn 1.832, không đọc được 27) |
 | D4 | Tách dòng nguyên liệu | 311.060 dòng: ok 96,5%, partial 3,5%, fail 0,0% |
-| D5 | Ánh xạ sang nguyên liệu chuẩn | 2.000 canonical; 99,3% số dòng ánh xạ được; 9.637 dòng chứa nhiều nguyên liệu |
+| D5 | Ánh xạ sang nguyên liệu chuẩn | 2.005 canonical; 99,3% số dòng ánh xạ được; 9.653 dòng chứa nhiều nguyên liệu |
 | D6 | Gắn nhóm dị ứng (FDA 9) | 27.791 công thức có ≥ 1 nhóm chắc chắn |
 | D6b | Dòng ghi "X-free" (gluten-free, vegan…) không mang nhóm X | 128 dòng, 118 công thức |
-| D7 | Cờ chế độ ăn | vegetarian 16.687 (51,0%), vegan 4.140 (12,7%); trong đó chỉ đạt khi bỏ qua thẻ "có thể": vegetarian 279, vegan 77 |
+| D7 | Cờ chế độ ăn | vegetarian 16.687 (51,0%), vegan 4.140 (12,7%); trong đó chỉ đạt khi bỏ qua thẻ "có thể": vegetarian 1.307, vegan 77 |
 | D8 | Dòng `unknown` | 2.244 dòng; 2.001 công thức (6,1%) có ≥ 1 dòng unknown |
 
 ## Phân bố nhóm dị ứng (D6)

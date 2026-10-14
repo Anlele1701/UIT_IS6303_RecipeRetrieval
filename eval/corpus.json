@@ -1,13 +1,13 @@
 {
-  "ran_at": "2026-10-14T20:07:39",
-  "git_commit": "ca31390",
+  "ran_at": "2026-10-15T00:32:27",
+  "git_commit": "86fc600",
   "seed": 42,
   "lexicon_sha256": {
     "allergens.csv": "67a09676858fedac56072ba4f3a0d550e35ffa5600d1ec7233bfb30868d75802",
-    "rules.csv": "a34117b97e2d576f535bac5d8729f80a6340d4ee900df47184304c0fa93711e4",
+    "rules.csv": "7eaac6d2796357fe4bf6fdd3c7ef176a5d46556cfde8ffc020fbba964c5cb6a3",
     "manual_synonyms.csv": "27b9fc8704f15fd6aa12855158395d97bcb6e1fe983b2ef152a85cc92313a2f7",
-    "ingredients.csv": "d8c67684bfa54ce199a86013d580fa9c830d57a174f4f85d1c6a1a50beaf3021",
-    "allergen_map.csv": "55ddd50603ad263afd65671980f649b7c3e77e705b02707e197f7114d93e0bcb",
+    "ingredients.csv": "c4c6314d5ce5104f3904c26685fba0470b6bc6834e255a08f4270f0d525cb502",
+    "allergen_map.csv": "589db04f73b093ba4a2339098c4d67e06350411b5a570727ff193966c3b550c7",
     "vi_alias.csv": "2318b8683ff33bc713d195a32ce9766927886cdaadf390e7b13497bfdd684b10"
   },
   "D1": {
@@ -73,16 +73,16 @@
   },
   "D5": {
     "rule": "map the parsed name to canonical ingredients (longest synonym first)",
-    "canonicals": 2000,
+    "canonicals": 2005,
     "canonicals_by_origin": {
       "manual": 59,
       "rule": 1500,
-      "rules": 441
+      "rules": 446
     },
-    "canonicals_used": 1958,
+    "canonicals_used": 1962,
     "lines_mapped": 308816,
     "coverage": 0.9928,
-    "multi_ingredient_lines": 9637
+    "multi_ingredient_lines": 9653
   },
   "D6": {
     "rule": "allergen groups per canonical (FDA 9; rules.csv): definite (direct/hidden) are filtered, possible (brand-dependent) are only flagged",
@@ -156,7 +156,7 @@
     "vegan": 4140,
     "vegetarian_share": 0.51,
     "vegan_share": 0.1265,
-    "vegetarian_only_if_possible_tags_ignored": 279,
+    "vegetarian_only_if_possible_tags_ignored": 1307,
     "vegan_only_if_possible_tags_ignored": 77
   },
   "D8": {
@@ -367,5 +367,5 @@
       ]
     ]
   },
-  "seconds": 11.6
+  "seconds": 8.4
 }

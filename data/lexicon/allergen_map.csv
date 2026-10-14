@@ -414,7 +414,7 @@ ziti,wheat,hidden,ziti,0
 butter,milk,direct,butter,10239
 egg,egg,direct,egg,7933
 milk,milk,direct,milk,4546
-parmesan cheese,milk,direct,parmesan|cheese,2300
+parmesan cheese,milk,direct,parmesan cheese,2300
 cheddar cheese,milk,direct,cheddar|cheese,2032
 cream cheese,milk,direct,cream|cheese,1891
 sour cream,milk,direct,cream,1635
@@ -455,7 +455,7 @@ crumbled blue cheese,milk,direct,cheese,115
 firm tofu,soy,direct,tofu,114
 american cheese,milk,direct,cheese,104
 almond flour,tree_nuts,direct,almond flour,99
-romano cheese,milk,direct,romano|cheese,96
+romano cheese,milk,direct,romano cheese,96
 creamy peanut butter,peanut,direct,peanut butter,94
 smoked salmon,fish,direct,salmon,92
 mexican cheese blend,milk,direct,cheese,91
@@ -464,7 +464,7 @@ cashew,tree_nuts,direct,cashew,84
 greek yogurt,milk,direct,yogurt,81
 anchovy fillet,fish,direct,anchovy,80
 wheat germ,wheat,direct,wheat,80
-gruyere cheese,milk,direct,gruyere|cheese,75
+gruyere cheese,milk,direct,gruyere cheese,75
 processed cheese food,milk,direct,cheese,73
 wheat bread,wheat,direct,wheat|bread,69
 milk powder,milk,direct,milk,68
@@ -481,18 +481,18 @@ processed cheese,milk,direct,cheese,53
 reduced fat sour cream,milk,direct,cream,52
 blanched slivered almond,tree_nuts,direct,almond,51
 light cream,milk,direct,cream,51
-pecorino romano cheese,milk,direct,pecorino|romano|cheese,51
+pecorino romano cheese,milk,direct,pecorino romano cheese,51
 vanilla ice cream,milk,direct,ice cream,51
 edamame,soy,direct,edamame,50
 light sour cream,milk,direct,cream,50
 whipped cream,milk,direct,cream,49
 vanilla yogurt,milk,direct,yogurt,48
 neufchatel cheese,milk,direct,cheese,46
-asiago cheese,milk,direct,asiago|cheese,44
+asiago cheese,milk,direct,asiago cheese,44
 cod,fish,direct,cod,44
 colby monterey jack cheese,milk,direct,colby|cheese,44
 crab meat,crustacean_shellfish,direct,crab|meat,44
-crumbled gorgonzola cheese,milk,direct,cheese,44
+crumbled gorgonzola cheese,milk,direct,gorgonzola|cheese,44
 halibut fillet,fish,direct,halibut,43
 tilapia,fish,direct,tilapia,43
 ghee,milk,direct,ghee,42
@@ -611,7 +611,7 @@ wheat hamburger bun,wheat,direct,wheat|hamburger bun,12
 aged cheddar cheese,milk,direct,cheddar|cheese,11
 bumble bee solid white albacore tuna in water,fish,direct,tuna,11
 dark sesame oil,sesame,direct,sesame,11
-gorgonzola cheese,milk,direct,cheese,11
+gorgonzola cheese,milk,direct,gorgonzola|cheese,11
 philadelphia brick cream cheese,milk,direct,cream|cheese,11
 plain nonfat yogurt,milk,direct,yogurt,11
 powdered milk,milk,direct,milk,11
@@ -667,6 +667,7 @@ chestnut,tree_nuts,direct,chestnut,0
 chevre,milk,direct,chevre,0
 cobia,fish,direct,cobia,0
 colby,milk,direct,colby,0
+comte,milk,direct,comte,0
 crappie,fish,direct,crappie,0
 crayfish,crustacean_shellfish,direct,crayfish,0
 crema,milk,direct,crema,0
@@ -675,12 +676,15 @@ dogfish,fish,direct,dogfish,0
 dulce de leche,milk,direct,dulce de leche,0
 ebi,crustacean_shellfish,direct,ebi,0
 eel,fish,direct,eel,0
+emmental,milk,direct,emmental,0
 feta,milk,direct,feta,0
 filbert,tree_nuts,direct,filbert,0
 fish,fish,direct,fish,0
 flounder,fish,direct,flounder,0
 fromage blanc,milk,direct,fromage blanc,0
+gorgonzola,milk,direct,gorgonzola,0
 gouda,milk,direct,gouda,0
+grana padano,milk,direct,grana padano,0
 grouper,fish,direct,grouper,0
 gruyere,milk,direct,gruyere,0
 haddock,fish,direct,haddock,0
@@ -701,6 +705,7 @@ macadamia,tree_nuts,direct,macadamia,0
 mackerel,fish,direct,mackerel,0
 maguro,fish,direct,maguro,0
 mahi mahi,fish,direct,mahi mahi,0
+manchego,milk,direct,manchego,0
 marlin,fish,direct,marlin,0
 masago,fish,direct,masago,0
 mascarpone,milk,direct,mascarpone,0

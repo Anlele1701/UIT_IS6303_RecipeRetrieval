@@ -27,11 +27,11 @@ from pathlib import Path
 from .normalize import LEXICON, MAX_WORDS, words
 
 ALLERGENS = ["milk", "egg", "fish", "crustacean_shellfish", "tree_nuts", "peanut", "wheat", "soy", "sesame"]
-ANIMAL = {"meat", "poultry", "fish", "shellfish", "gelatin"}
+ANIMAL = {"meat", "poultry", "fish", "shellfish", "gelatin", "rennet"}  # rennet: animal-rennet cheeses (Thy, gate M2)
 NOT_VEGAN = ANIMAL | {"dairy", "egg", "honey"}
 ANIMAL_ALLERGENS = {"fish", "crustacean_shellfish"}
 NOT_VEGAN_ALLERGENS = ANIMAL_ALLERGENS | {"milk", "egg"}
-GROUP_PRIORITY = ["meat", "poultry", "fish", "shellfish", "gelatin", "dairy", "egg", "honey", "nonfood"]
+GROUP_PRIORITY = ["meat", "poultry", "fish", "shellfish", "gelatin", "rennet", "dairy", "egg", "honey", "nonfood"]
 
 # D6b: what a line says it is free of. Not "non-dairy" (non-dairy creamers contain casein) and not
 # "lactose-free" (still milk).
@@ -58,8 +58,7 @@ def free_of(text: str) -> frozenset[str]:
 @dataclass(frozen=True)
 class Rule:
     phrase: str
-    group: str
-    group_possible: bool
+    groups: tuple[tuple[str, bool], ...]  # (group, possible); "dairy|rennet?" gives two
     allergens: tuple[tuple[str, bool], ...]  # (code, possible)
     kind: str
     note: str
@@ -89,7 +88,8 @@ class Rules:
                 if unknown:
                     raise ValueError(f"rules.csv {row['phrase']!r}: unknown allergen {unknown}")
                 rules.by_key[" ".join(words(row["phrase"]))] = Rule(
-                    row["phrase"], row["group"].rstrip("?"), row["group"].endswith("?"), allergens,
+                    row["phrase"], tuple((g.rstrip("?"), g.endswith("?")) for g in row["group"].split("|") if g),
+                    allergens,
                     row["kind"], row["note"] or "")
         return rules
 
@@ -104,9 +104,9 @@ class Rules:
                     break
             else:
                 i += 1
-        definite = {r.group for r in fired if r.group and not r.group_possible}
+        definite = {g for r in fired for g, may in r.groups if not may}
         group = next((g for g in GROUP_PRIORITY if g in definite), "")
-        possible = frozenset(r.group for r in fired if r.group and r.group_possible) - definite
+        possible = frozenset(g for r in fired for g, may in r.groups if may) - definite
         allergens: dict[str, str] = {}
         rank = {"direct": 0, "hidden": 1, "possible": 2}
         for r in fired:

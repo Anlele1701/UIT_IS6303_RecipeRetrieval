@@ -17,7 +17,8 @@ def test_allergens_are_the_fda_nine():
 
 def test_rules_use_known_allergens_and_groups():
     Rules.from_csv()  # raises on an unknown allergen code
-    groups = {r["group"].rstrip("?") for r in rows("rules.csv") if r["phrase"] and not r["phrase"].startswith("#")}
+    groups = {g.rstrip("?") for r in rows("rules.csv") if r["phrase"] and not r["phrase"].startswith("#")
+              for g in r["group"].split("|")}
     assert groups <= set(GROUP_PRIORITY) | {""}
 
 
