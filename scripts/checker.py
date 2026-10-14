@@ -36,18 +36,22 @@ SAMPLE = ROOT / "eval" / "labels" / "allergen_sample.csv"
 SAMPLE_OUT = ROOT / "eval" / "labels" / "checker_sample.csv"
 SEED = 42
 
-ALLERGEN_TEXT = {  # what each FDA group covers, in plain words
-    "milk": "milk or any dairy product made from milk (butter, cheese, cream, yogurt, whey, casein, ghee)",
-    "egg": "eggs or anything made with eggs",
-    "fish": "fish (any finfish) or a product made from fish",
-    "crustacean_shellfish": "crustacean shellfish (shrimp, prawn, crab, lobster, crayfish) or a product made from them; "
-                            "molluscs such as clams, oysters, scallops or squid do not count",
+ALLERGEN_TEXT = {  # what each FDA group covers, with common hidden sources (general food-allergen knowledge)
+    "milk": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, "
+            "casein, ghee, milk chocolate)",
+    "egg": "eggs or anything made with eggs (mayonnaise, aioli, meringue, egg noodles)",
+    "fish": "fish (any finfish) or a product made from fish, including anchovies, anchovy paste, fish sauce, "
+            "Worcestershire sauce (made with anchovies), Caesar dressing, bonito flakes and dashi",
+    "crustacean_shellfish": "crustacean shellfish (shrimp, prawn, crab, lobster, crayfish) or a product made from them, "
+                            "such as shrimp paste; molluscs such as clams, oysters, scallops or squid do not count",
     "tree_nuts": "tree nuts (almond, walnut, pecan, cashew, pistachio, hazelnut, macadamia, Brazil nut, pine nut, "
-                 "chestnut) or a product made from them; coconut does not count",
-    "peanut": "peanuts or a product made from peanuts",
-    "wheat": "wheat or a product made with wheat flour (including most breads, pastas and regular soy sauce)",
-    "soy": "soybeans or a product made from soy",
-    "sesame": "sesame seeds or a product made from sesame",
+                 "chestnut) or a product made from them, such as pesto, marzipan, praline or nut butters other than "
+                 "peanut butter; coconut does not count",
+    "peanut": "peanuts or a product made from peanuts (peanut butter, peanut oil, satay sauce)",
+    "wheat": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, "
+             "tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+    "soy": "soybeans or a product made from soy: soy sauce, tofu, miso, edamame, tempeh, soy lecithin",
+    "sesame": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
 }
 DIET_TEXT = {
     "vegetarian": "meat, poultry, fish, seafood, gelatin, animal fat or a broth made from meat or fish",
@@ -71,7 +75,7 @@ Ingredients:
 
 Questions - does the recipe contain:
 {questions}"""
-PROMPT_SHA = hashlib.sha256(PROMPT.encode()).hexdigest()[:12]
+PROMPT_SHA = hashlib.sha256(json.dumps([PROMPT, ALLERGEN_TEXT, DIET_TEXT]).encode()).hexdigest()[:12]  # any wording change re-asks
 SCHEMA = {"type": "object", "properties": {"answers": {"type": "array", "items": {"type": "object", "properties": {
     "i": {"type": "integer"}, "contains": {"type": "string", "enum": ["yes", "no", "unsure"]},
     "evidence_line": {"type": "string"}}, "required": ["i", "contains", "evidence_line"]}}}, "required": ["answers"]}
@@ -79,7 +83,7 @@ SCHEMA = {"type": "object", "properties": {"answers": {"type": "array", "items":
 
 @dataclass(frozen=True)
 class Verdict:
-    contains: str  # yes | no | unsure
+    contains: str  # yes | no | unsure | error (no valid answer after the retries; scored like unsure)
     evidence_line: str
     evidence_ok: bool  # the evidence is "" for "no", or one of the Recipe's lines
 
@@ -112,20 +116,27 @@ def load_cache(path: Path = CACHE) -> dict[str, dict]:
     return {row["key"]: row for row in map(json.loads, path.read_text(encoding="utf-8").splitlines())}
 
 
+def squash(text: str) -> str:
+    return " ".join(text.split())
+
+
 def parse(answers: list[dict], constraints: list[str], lines: list[str]) -> dict[str, Verdict]:
-    """Model answers -> a Verdict per constraint; a missing answer is "unsure" (never a silent "no")."""
+    """Model answers -> a Verdict per constraint; a missing answer is "error" (never a silent "no")."""
     by_i = {a.get("i"): a for a in answers}
+    known = {squash(l) for l in lines}
     out = {}
     for k, c in enumerate(constraints, 1):
         a = by_i.get(k, {})
-        contains = a.get("contains") if a.get("contains") in {"yes", "no", "unsure"} else "unsure"
-        ev = (a.get("evidence_line") or "").strip()
-        ok = (ev == "") if contains == "no" else ev in {l.strip() for l in lines}
+        contains = a.get("contains") if a.get("contains") in {"yes", "no", "unsure"} else "error"
+        ev = squash(a.get("evidence_line") or "")
+        ok = (ev == "") if contains == "no" else ev in known  # the source often has double spaces
         out[c] = Verdict(contains, ev, ok)
     return out
 
 
-RETRIES: list[int] = []  # Recipes whose first reply was incomplete (reported in the run's JSON)
+BATCH = 6  # questions per call: long answer lists were where the 8B model broke the JSON
+ATTEMPTS = 3
+RETRIES: list[int] = []  # Recipes with at least one incomplete reply (reported in the run's JSON)
 
 
 def complete(answers: list[dict], n: int) -> bool:
@@ -150,11 +161,16 @@ def check(conn, client: httpx.Client, recipe_id: int, constraints: list[str],
     todo = [c for c in constraints if cache_key(recipe_id, c) not in cache]
     if todo:
         title, lines = recipe_text(conn, recipe_id)
-        answers = ask(client, title, lines, todo)
-        if not complete(answers, len(todo)):  # an empty or partial reply: ask once more, then fall back to unsure
-            RETRIES.append(recipe_id)
-            answers = ask(client, title, lines, todo)
-        fresh = parse(answers, todo, lines)
+        fresh = {}
+        for b in range(0, len(todo), BATCH):
+            part = todo[b:b + BATCH]
+            for _ in range(ATTEMPTS):  # an empty or partial reply is asked again; then "error"
+                answers = ask(client, title, lines, part)
+                if complete(answers, len(part)):
+                    break
+                if recipe_id not in RETRIES:
+                    RETRIES.append(recipe_id)
+            fresh.update(parse(answers, part, lines))
         CACHE.parent.mkdir(parents=True, exist_ok=True)
         with open(CACHE, "a", encoding="utf-8") as f:
             for c, v in fresh.items():

@@ -55,7 +55,7 @@ def tagger_pos(tag: dict, group: str, with_possible: bool) -> bool:
 
 
 def checker_pos(verdict: str, strict: bool) -> bool:
-    return verdict == "yes" or (strict and verdict == "unsure")
+    return verdict == "yes" or (strict and verdict in {"unsure", "error"})
 
 
 def confusion(pairs: list[tuple[bool, bool]]) -> dict:
@@ -153,7 +153,8 @@ def render(res: dict) -> str:
            "Bộ gắn thẻ do Claude Opus viết quy tắc, cùng họ với người gán nhãn, nên P/R của bộ gắn thẻ có thể bị "
            "thổi phồng. Bộ kiểm `llama3.1:8b` khác họ.", "",
            f"Số công thức: dev {res['recipes']['dev']}, holdout {res['recipes']['holdout']}, tổng {res['recipes']['all']}. "
-           f"Bằng chứng của bộ kiểm hợp lệ: {fmt(res['checker_evidence_ok'])}.", ""]
+           f"Bằng chứng của bộ kiểm hợp lệ: {fmt(res['checker_evidence_ok'])}. Phán quyết: "
+           + ", ".join(f"{k} {n}" for k, n in res["checker_verdicts"].items()) + " (error tính như unsure).", ""]
     for lname, title in (("label_yes", "Nhãn dương = \"Có\""), ("label_yes_or_maybe", "Nhãn dương = \"Có\" hoặc \"Có thể\"")):
         for split in ("holdout", "all"):
             t = res["pr"][lname][split]
@@ -203,7 +204,9 @@ def main():
                                      text=True).stdout.strip(),
         "provenance": json.loads((LABELS / "allergen_gold.provenance.json").read_text(encoding="utf-8")),
         "checker_meta": json.loads((LABELS / "checker_sample.json").read_text(encoding="utf-8")),
-        "checker_evidence_ok": rate(sum(r["evidence_ok"] == "True" for r in flagged), len(flagged)),
+        "checker_evidence_ok": rate(sum(r["evidence_ok"] == "True" for r in flagged if r["contains"] != "error"),
+                                    sum(1 for r in flagged if r["contains"] != "error")),
+        "checker_verdicts": {k: sum(1 for r in evidence if r["contains"] == k) for k in ("yes", "unsure", "no", "error")},
         "errors": errs,
         "recipe_text": {str(r): lines[r] for r in shown},
         "label_notes": {str(r): labels[r]["note"] for r in shown if labels[r]["note"]},

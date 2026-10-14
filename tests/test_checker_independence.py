@@ -41,9 +41,27 @@ def test_parse_maps_answers_by_number_and_checks_the_evidence():
     assert out["allergen:fish"] == checker.Verdict("no", "", True)
 
 
-def test_a_missing_or_invalid_answer_is_unsure_never_no():
+def test_a_missing_or_invalid_answer_is_an_error_never_no():
     out = checker.parse([{"i": 1, "contains": "maybe", "evidence_line": ""}], ["allergen:milk", "allergen:egg"], LINES)
-    assert out["allergen:milk"].contains == "unsure" and out["allergen:egg"].contains == "unsure"
+    assert out["allergen:milk"].contains == "error" and out["allergen:egg"].contains == "error"
+
+
+def test_evidence_matches_despite_double_spaces():
+    out = checker.parse([{"i": 1, "contains": "yes", "evidence_line": "2 eggs"}], ["allergen:egg"], ["2  eggs"])
+    assert out["allergen:egg"].evidence_ok
+
+
+def test_questions_are_asked_in_batches(recipes, monkeypatch, tmp_path):
+    monkeypatch.setattr(checker, "CACHE", tmp_path / "cache.jsonl")
+    sizes = []
+
+    def fake_ask(client, title, lines, constraints):
+        sizes.append(len(constraints))
+        return [{"i": k, "contains": "no", "evidence_line": ""} for k in range(1, len(constraints) + 1)]
+
+    monkeypatch.setattr(checker, "ask", fake_ask)
+    checker.check(recipes, None, 1, checker.M2_CONSTRAINTS, {})
+    assert sizes == [6, 5]
 
 
 def test_check_asks_only_for_uncached_constraints(recipes, monkeypatch, tmp_path):
@@ -65,7 +83,7 @@ def test_check_asks_only_for_uncached_constraints(recipes, monkeypatch, tmp_path
 
 def test_an_incomplete_reply_is_asked_once_more(recipes, monkeypatch, tmp_path):
     monkeypatch.setattr(checker, "CACHE", tmp_path / "cache.jsonl")
-    replies = [[], [{"i": 1, "contains": "yes", "evidence_line": "1 lb shrimp"}]]
+    replies = [[], [], [{"i": 1, "contains": "yes", "evidence_line": "1 lb shrimp"}]]
     monkeypatch.setattr(checker, "ask", lambda *a: replies.pop(0))
     out = checker.check(recipes, None, 1, ["allergen:crustacean_shellfish"], {})
     assert out["allergen:crustacean_shellfish"] == checker.Verdict("yes", "1 lb shrimp", True) and not replies
