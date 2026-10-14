@@ -7,6 +7,7 @@
 Canonical ingredients are the hand-written groups in manual_synonyms.csv plus the TOP_N most frequent
 "cores" (parsed name without descriptor/size words, singular), skipping cores that already map to one.
 Each canonical also gets its most frequent full names as synonyms, so the longest match reaches it.
+Every phrase in rules.csv not covered yet becomes a canonical as well (origin "rules").
 Food group and allergens come from rules.csv (lexicon.tagger). Inputs are the DB's raw lines.
 """
 
@@ -86,6 +87,12 @@ def bootstrap(conn) -> dict:
                 entries[canonical]["synonyms"].append(name)
 
     rules = Rules.from_csv()
+    # Every rule phrase is a known ingredient word, so it is a canonical too: an allergen-relevant name
+    # ("panko", "ladyfinger", "flounder") is never unknown just for being outside the top cores.
+    for rule in rules.by_key.values():
+        if key(rule.phrase) not in taken:
+            entries[key(rule.phrase)] = {"synonyms": [], "origin": "rules", "lines": 0}
+            taken[key(rule.phrase)] = key(rule.phrase)
     with open(LEXICON / "ingredients.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["canonical", "synonyms", "group", "origin", "lines"])
@@ -133,26 +140,37 @@ in 1-3 lowercase words, as a cook would write it in a shopping list (drop brands
 If it is not food (foil, skewers), answer "nonfood". Reply in JSON.
 Names:
 {names}"""
+PROMPT_SHA = hashlib.sha256(PROMPT.encode()).hexdigest()[:12]
 
 
-def cached_llm(names: list[str], client: httpx.Client) -> dict[str, str]:
-    h = hashlib.sha256(json.dumps([QU_MODEL, PROMPT, names]).encode()).hexdigest()
-    CACHE.parent.mkdir(parents=True, exist_ok=True)
+def load_cache() -> dict[str, str]:
+    """name -> base, from every cached call (keyed by model and prompt, so a change re-asks)."""
+    out: dict[str, str] = {}
     if CACHE.exists():
         for line in CACHE.read_text(encoding="utf-8").splitlines():
             row = json.loads(line)
-            if row["hash"] == h:
-                return row["out"]
-    r = client.post(f"{OLLAMA_URL}/api/chat", json={
-        "model": QU_MODEL, "stream": False, "format": SCHEMA,
-        "options": {"temperature": 0, "seed": SEED, "num_ctx": 4096},
-        "messages": [{"role": "user", "content": PROMPT.format(names="\n".join(f"- {n}" for n in names))}]})
-    r.raise_for_status()
-    items = json.loads(r.json()["message"]["content"]).get("items", [])
-    out = {i["name"].strip().lower(): i["base"].strip().lower() for i in items}
-    with open(CACHE, "a", encoding="utf-8") as f:
-        f.write(json.dumps({"hash": h, "names": names, "out": out}) + "\n")
+            if row.get("model", QU_MODEL) == QU_MODEL and row.get("prompt_sha", PROMPT_SHA) == PROMPT_SHA:
+                out.update(row["out"])
     return out
+
+
+def cached_llm(names: list[str], client: httpx.Client, cache: dict[str, str]) -> dict[str, str]:
+    """Asks only for the names not cached yet; one structured-output call per batch."""
+    todo = [n for n in names if n not in cache]
+    if todo:
+        r = client.post(f"{OLLAMA_URL}/api/chat", json={
+            "model": QU_MODEL, "stream": False, "format": SCHEMA,
+            "options": {"temperature": 0, "seed": SEED, "num_ctx": 4096},
+            "messages": [{"role": "user", "content": PROMPT.format(names="\n".join(f"- {n}" for n in todo))}]})
+        r.raise_for_status()
+        items = json.loads(r.json()["message"]["content"]).get("items", [])
+        out = {i["name"].strip().lower(): i["base"].strip().lower() for i in items}
+        out = {n: out.get(n, "") for n in todo}
+        CACHE.parent.mkdir(parents=True, exist_ok=True)
+        with open(CACHE, "a", encoding="utf-8") as f:
+            f.write(json.dumps({"model": QU_MODEL, "prompt_sha": PROMPT_SHA, "names": todo, "out": out}) + "\n")
+        cache.update(out)
+    return {n: cache.get(n, "") for n in names}
 
 
 def suggest(conn):
@@ -164,11 +182,11 @@ def suggest(conn):
             unmatched[p.name] += n
     todo = [(name, n) for name, n in unmatched.most_common() if n >= SUGGEST_MIN_LINES]
     print(f"{len(unmatched)} unmatched names, {len(todo)} on >= {SUGGEST_MIN_LINES} lines", flush=True)
-    rows = []
+    rows, cache = [], load_cache()
     with httpx.Client(timeout=900) as client:
         for b in range(0, len(todo), BATCH):
             batch = todo[b:b + BATCH]
-            out = cached_llm([name for name, _ in batch], client)
+            out = cached_llm([name for name, _ in batch], client, cache)
             for name, n in batch:
                 base = out.get(name, "")
                 proposed = "nonfood" if base == "nonfood" else (lex.match(base) or [f"NEW:{base}" if base else ""])[0]

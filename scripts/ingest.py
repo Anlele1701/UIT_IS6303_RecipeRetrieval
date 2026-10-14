@@ -297,9 +297,11 @@ RECIPE_SQL = """SELECT r.id, r.title, r.description, r.directions, c.name, r.tot
                        r.prep_minutes, r.cook_minutes, r.rating, r.rating_count, r.servings,
                        n.calories, n.protein_g, n.fat_g, n.carbohydrates_g, n.sodium_mg,
                        (SELECT string_agg(line, '; ' ORDER BY position)
-                          FROM recipe_ingredient i WHERE i.recipe_id = r.id)
+                          FROM recipe_ingredient i WHERE i.recipe_id = r.id),
+                       t.allergens, t.ingredients_norm, t.diet_flags, t.has_unknown
                 FROM recipe r JOIN category c ON c.id = r.category_id
                 LEFT JOIN recipe_nutrition n ON n.recipe_id = r.id
+                LEFT JOIN recipe_tag t ON t.recipe_id = r.id  -- NULL tags before scripts/tag.py has run
                 WHERE r.id = ANY(%s) ORDER BY r.id"""
 
 
@@ -311,7 +313,7 @@ def staging(name: str) -> str:
     return f"{partition(name)}_staging"
 
 
-def register(conn, name: str):
+def register(conn, name: str, registry: bool = True, suffix: str = ""):
     """The registry row (not loaded) and its staging table, together or not at all.
     Staging has chunk's columns and constraints but no identity (ATTACH refuses one):
     its id takes the parent's sequence instead. The keys are built here, not by the attach,
@@ -319,15 +321,16 @@ def register(conn, name: str):
     s = STRATEGIES[name]
     t = sql.Identifier(staging(name))
     with conn.transaction():
-        conn.execute("INSERT INTO chunking_strategy (name, method, parameters) VALUES (%s, %s, %s)",
-                     [name, s.method, Jsonb(s.parameters)])
+        if registry:
+            conn.execute("INSERT INTO chunking_strategy (name, method, parameters) VALUES (%s, %s, %s)",
+                         [name, s.method, Jsonb(s.parameters)])
         conn.execute(sql.SQL(
             """CREATE TABLE {t} (LIKE chunk INCLUDING DEFAULTS INCLUDING CONSTRAINTS,
                  CHECK (strategy = {name}),
                  CONSTRAINT {pkey} PRIMARY KEY (id, strategy),
                  CONSTRAINT {ukey} UNIQUE (recipe_id, strategy, kind, position))""").format(
-            t=t, name=sql.Literal(name), pkey=sql.Identifier(f"{partition(name)}_pkey"),
-            ukey=sql.Identifier(f"{partition(name)}_key")))
+            t=t, name=sql.Literal(name), pkey=sql.Identifier(f"{partition(name)}_pkey{suffix}"),
+            ukey=sql.Identifier(f"{partition(name)}_key{suffix}")))
         seq = conn.execute("SELECT pg_get_serial_sequence('chunk', 'id')").fetchone()[0]
         conn.execute(sql.SQL("ALTER TABLE {t} ALTER COLUMN id SET DEFAULT nextval({seq})").format(
             t=t, seq=sql.Literal(seq)))
@@ -342,8 +345,9 @@ def load_chunks(conn, name: str):
     insert = sql.SQL(
         """INSERT INTO {t} (recipe_id, strategy, kind, position, content, embedding,
              category, total_minutes, prep_minutes, cook_minutes, rating, rating_count,
-             servings, calories, protein_g, fat_g, carbohydrates_g, sodium_mg)
-           VALUES (%s,%s,%s,%s,%s,%s::vector,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""").format(
+             servings, calories, protein_g, fat_g, carbohydrates_g, sodium_mg,
+             allergens, ingredients_norm, diet_flags, has_unknown)
+           VALUES (%s,%s,%s,%s,%s,%s::vector,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""").format(
         t=sql.Identifier(staging(name)))
     print(f"{total} recipes to chunk as {name}", flush=True)
 
@@ -353,7 +357,7 @@ def load_chunks(conn, name: str):
 
         chunks = []
         for r, texts in zip(recipes, steps):
-            rid, title, desc, filters = r[0], r[1], r[2], r[4:16]
+            rid, title, desc, filters = r[0], r[1], r[2], (*r[4:16], *r[17:21])
             chunks.append((rid, "summary", 0, f"{title}\n{normalize_fractions(desc)}", filters))
             chunks.append((rid, "ingredients", 0,
                            f"{title}\nIngredients: {normalize_fractions(r[16] or '')}", filters))
@@ -402,6 +406,12 @@ def staging_problems(conn, name: str) -> list[str]:
                  (cat.name, r.total_minutes, r.prep_minutes, r.cook_minutes, r.rating, r.rating_count,
                   r.servings, nu.calories, nu.protein_g, nu.fat_g, nu.carbohydrates_g, nu.sodium_mg)""").format(
         t=t)).fetchone()[0]
+    # ADR-0005: the copied Recipe tags match recipe_tag (NULL when the Recipe has no tag row yet)
+    tag_drift = conn.execute(sql.SQL(
+        """SELECT count(*) FROM {t} c LEFT JOIN recipe_tag rt ON rt.recipe_id = c.recipe_id
+           WHERE (c.allergens, c.ingredients_norm, c.diet_flags, c.has_unknown)
+                 IS DISTINCT FROM (rt.allergens, rt.ingredients_norm, rt.diet_flags, rt.has_unknown)""").format(
+        t=t)).fetchone()[0]
     checks = [
         ("every Recipe has exactly 1 Summary chunk", per_recipe[0]),
         ("every Recipe has exactly 1 Ingredients chunk", per_recipe[1]),
@@ -409,6 +419,7 @@ def staging_problems(conn, name: str) -> list[str]:
         ("Step positions run 1..n with no gaps", per_recipe[3]),
         ("no null embeddings", null_embeddings),
         ("ADR-0001 consistency check returns 0", drifted),
+        ("copied tags match recipe_tag", tag_drift),
     ]
     return [check for check, failures in checks if failures]
 
@@ -483,6 +494,67 @@ def cmd_chunk(conn, name: str):
     print(f"{name} loaded")
 
 
+CHUNK_COLUMNS = """recipe_id, strategy, kind, position, content, embedding, category, total_minutes, prep_minutes,
+                   cook_minutes, rating, rating_count, servings, calories, protein_g, fat_g, carbohydrates_g,
+                   sodium_mg"""
+TAGS = "allergens, ingredients_norm, diet_flags, has_unknown"
+
+
+def cmd_retag(conn, name: str):
+    """Rebuild a loaded strategy's partition with the current recipe_tag, reusing its Chunks and embeddings.
+
+    ADR-0001: chunk is rebuilt, never updated in place. The new partition keeps every Chunk id, so BM25 ties
+    break the same way. One transaction swaps it in: the old partition is detached and kept as
+    chunk_<name>_legacy (drop it by hand), the parent index is rebuilt with the current sql/indexes.sql
+    (which rebuilds the other partitions' child indexes), staging is indexed and attached.
+    """
+    if name not in STRATEGIES:
+        sys.exit(f"unknown strategy {name!r}; known: {', '.join(sorted(STRATEGIES))}")
+    legacy = sql.Identifier(f"{partition(name)}_legacy")
+    with strategy_lock(conn, name):
+        if not is_loaded(conn, name):
+            sys.exit(f"{name} is not loaded; build it with `chunk {name}`")
+        if conn.execute("SELECT to_regclass(%s)", [f"{partition(name)}_legacy"]).fetchone()[0]:
+            sys.exit(f"{partition(name)}_legacy exists from an earlier retag; drop it first")
+        untagged = conn.execute("SELECT count(*) FROM recipe r WHERE NOT EXISTS "
+                                "(SELECT 1 FROM recipe_tag t WHERE t.recipe_id = r.id)").fetchone()[0]
+        if untagged:
+            sys.exit(f"{untagged} Recipes have no recipe_tag row; run scripts/tag.py run first")
+        conn.execute(sql.SQL("DROP TABLE IF EXISTS {t}").format(t=sql.Identifier(staging(name))))
+        register(conn, name, registry=False, suffix="_new")
+        with conn.transaction():
+            conn.execute(sql.SQL(
+                """INSERT INTO {t} (id, {cols}, {tags})
+                   SELECT c.id, {ccols}, rt.allergens, rt.ingredients_norm, rt.diet_flags, rt.has_unknown
+                   FROM {p} c JOIN recipe_tag rt ON rt.recipe_id = c.recipe_id""").format(
+                t=sql.Identifier(staging(name)), p=sql.Identifier(partition(name)), cols=sql.SQL(CHUNK_COLUMNS),
+                tags=sql.SQL(TAGS),
+                ccols=sql.SQL(", ".join(f"c.{c.strip()}" for c in CHUNK_COLUMNS.split(",")))))
+        problems = staging_problems(conn, name)
+        if problems:
+            sys.exit(f"{name} keeps its old partition; check failed: {'; '.join(problems)}")
+        p, t = sql.Identifier(partition(name)), sql.Identifier(staging(name))
+        with conn.transaction():
+            conn.execute(sql.SQL("ALTER TABLE chunk DETACH PARTITION {p}").format(p=p))
+            conn.execute(sql.SQL("ALTER TABLE {p} RENAME TO {legacy}").format(p=p, legacy=legacy))
+            for c in conn.execute("SELECT conname FROM pg_constraint WHERE conrelid = %s::regclass AND contype IN ('p', 'u')",
+                                  [f"{partition(name)}_legacy"]).fetchall():
+                conn.execute(sql.SQL("ALTER TABLE {legacy} RENAME CONSTRAINT {c} TO {n}").format(
+                    legacy=legacy, c=sql.Identifier(c[0]), n=sql.Identifier(f"{c[0][:50]}_legacy")))
+            conn.execute(index_sql("chunk", "chunk_search_idx"))  # parent: the other partitions are reindexed
+            conn.execute(index_sql(staging(name), f"{partition(name)}_search_idx"))
+            conn.execute(sql.SQL("ALTER TABLE chunk ATTACH PARTITION {t} FOR VALUES IN ({name})").format(
+                t=t, name=sql.Literal(name)))
+            conn.execute(sql.SQL("ALTER TABLE {t} RENAME TO {p}").format(t=t, p=p))
+            for kind in ("pkey", "key"):
+                conn.execute(sql.SQL("ALTER TABLE {p} RENAME CONSTRAINT {old} TO {new}").format(
+                    p=p, old=sql.Identifier(f"{partition(name)}_{kind}_new"),
+                    new=sql.Identifier(f"{partition(name)}_{kind}")))
+            conn.execute("ANALYZE chunk")
+            conn.execute("UPDATE chunking_strategy SET loaded_at = now() WHERE name = %s", [name])
+    print(f"{name} retagged; the previous partition is kept as {partition(name)}_legacy")
+
+
 def cmd_drop(conn, name: str, yes: bool):
     with strategy_lock(conn, name):
         state = is_loaded(conn, name)
@@ -504,11 +576,15 @@ def run(conn, argv: list[str]):
     drop = cmds.add_parser("drop")
     drop.add_argument("name")
     drop.add_argument("--yes", action="store_true", help="drop even if loaded")
+    cmds.add_parser("retag", help="rebuild a loaded strategy with the current recipe_tag, no re-embedding"
+                    ).add_argument("name")
     a = parser.parse_args(argv)
     if a.cmd == "load":
         cmd_load(conn)
     elif a.cmd == "chunk":
         cmd_chunk(conn, a.name)
+    elif a.cmd == "retag":
+        cmd_retag(conn, a.name)
     else:
         cmd_drop(conn, a.name, a.yes)
 

@@ -37,7 +37,7 @@ def db(test_db_url):
     """A connection to the test DB with an empty registry and no chunk partitions."""
     with psycopg.connect(test_db_url, autocommit=True) as conn:
         for (name,) in conn.execute("SELECT name FROM chunking_strategy").fetchall():
-            conn.execute(f'DROP TABLE IF EXISTS "chunk_{name}", "chunk_{name}_staging"')
+            conn.execute(f'DROP TABLE IF EXISTS "chunk_{name}", "chunk_{name}_staging", "chunk_{name}_legacy"')
         conn.execute("DELETE FROM chunking_strategy")
         yield conn
 

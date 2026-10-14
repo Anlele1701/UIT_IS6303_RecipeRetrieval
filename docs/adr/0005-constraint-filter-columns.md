@@ -47,3 +47,17 @@ Thẻ dùng trong spike là regex thô, chỉ để bộ lọc có độ chọn 
 - **Vector truy vấn phải truyền dạng literal** (`%s::vector`, như A1 đang làm). Nếu truyền qua subquery thì planner không đẩy được `ORDER BY` xuống index, và chuyển sang quét rồi sort toàn bộ.
 - Theo ADR-0001, `chunk` chỉ được build lại, không sửa tại chỗ. Khi M1 thêm cột thẻ, phải build lại phân vùng `semantic` nhưng **tái dùng embedding hiện có** (join theo `recipe_id, kind, position`). Embed lại trên máy này mất khoảng 3,9 giờ (`docs/env.md`).
 - Schema `spike` (`recipe_tag`, `chunk_tag`, `chunk_real`, `probe`, `probe768`) được giữ lại trong DB A3 theo quyết định ở gate M0.
+
+## Phụ lục (M1, 14/10/2026): giới hạn trên bảng cha đã chia phân vùng
+
+Spike M0 chạy trên bảng thường. Ở M1, khi thẻ đã nằm trên `chunk` (bảng chia phân vùng theo ADR-0002), pg_search 0.25.9 báo lỗi `could not open file "pg_tblspc/0/…"` với **mọi toán tử term theo trường** khi truy vấn **qua bảng cha** `chunk`. Các toán tử bị ảnh hưởng là `@@@ pdb.term_set(...)` và `===`. Nhiều khả năng pg_search mở nhầm index cha, vốn không có dữ liệu lưu trữ.
+
+Lỗi xảy ra cả với phân vùng build mới, không phải do `retag`. Những gì vẫn chạy đúng:
+- Cùng truy vấn đó khi viết thẳng vào phân vùng (`FROM chunk_semantic`).
+- Trên bảng cha: `&&` (dạng `heap_filter`) và điều kiện boolean.
+
+Có hai test ghi nhận hành vi này trong `tests/test_tag_db.py`. Test sẽ báo đỏ nếu một bản nâng cấp pg_search gỡ được giới hạn.
+
+**Chưa chốt (Thy quyết trước M4):**
+- (a) M4 truy vấn thẳng vào phân vùng `chunk_<strategy>` cho mọi cấu hình (B0 lẫn S), và giữ `term_set`. Index đã tách theo phân vùng (ADR-0002), nên thứ hạng không đổi. **Đề xuất.**
+- (b) Giữ truy vấn qua bảng cha và dùng `&&`. Cách này chậm hơn khoảng 4 lần với BM25 (khoảng 30 ms so với 8 ms), không đáng kể so với rerank.

@@ -67,6 +67,9 @@ CREATE TABLE recipe_ingredient (
   PRIMARY KEY (recipe_id, position)
 );
 
+-- Ingredient normalization and Recipe tags (D4-D8)
+\ir tags.sql
+
 -- ---------------------------------------------------------------------------
 -- Chunking strategies (ADR-0002). A strategy is searchable only once loaded_at
 -- is set: every Recipe has its complete set of Chunks under it.
@@ -109,6 +112,11 @@ CREATE TABLE chunk (
   fat_g            real,
   carbohydrates_g  real,
   sodium_mg        real,
+  -- copied Recipe tags (sql/tags.sql, ADR-0005); NULL on a strategy built before tagging
+  allergens        text[],
+  ingredients_norm text[],
+  diet_flags       text[],
+  has_unknown      boolean,
   PRIMARY KEY (id, strategy),                  -- a partitioned table's keys must include the partition key
   UNIQUE (recipe_id, strategy, kind, position)
 ) PARTITION BY LIST (strategy);
