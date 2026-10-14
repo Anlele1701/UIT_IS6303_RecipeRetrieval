@@ -1,0 +1,355 @@
+{
+  "ran_at": "2026-10-14T14:47:02",
+  "git_commit": "ffbb17e",
+  "seed": 42,
+  "lexicon_sha256": {
+    "allergens.csv": "67a09676858fedac56072ba4f3a0d550e35ffa5600d1ec7233bfb30868d75802",
+    "rules.csv": "03fcd037679bebcc072634a2c112237747fc32276e6c39199ca33cb5b99fcff2",
+    "manual_synonyms.csv": "86b6cebca0096c0979f85122187712c75cfa36c83ec2320504994d87f53fa592",
+    "ingredients.csv": "ef48fb2cc0df4148e850ae70728fa108d8b43430692328503443a9448ed9f805",
+    "allergen_map.csv": "548102692e7278fd996bdf9584312d03c1be7c0a8ad8ce973a32e409ce8099f6",
+    "vi_alias.csv": "79aebf07dec4dbe9372f7b0f0267bfcb3606935ba06f8ea3fc9dea1c6b812054"
+  },
+  "D1": {
+    "rule": "drop rows whose url repeats an earlier row",
+    "csv_rows": 32722,
+    "duplicate_urls_dropped": 3,
+    "recipes": 32719
+  },
+  "D2": {
+    "rule": "drop nutrition columns more than 99% empty",
+    "columns_dropped": 13,
+    "empty_share": {
+      "zinc_mg": 0.9936,
+      "phosphorus_mg": 0.9936,
+      "vitamin_b6_mg": 1.0,
+      "riboflavin_mg": 0.9937,
+      "vitamin_e_iu_IU": 0.9937,
+      "vitamin_k_mcg": 0.994,
+      "biotin_mcg": 0.9962,
+      "vitamin_b12_mcg": 1.0,
+      "mono_fat_g": 0.9936,
+      "poly_fat_g": 0.9936,
+      "trans_fatty_acid_g": 0.9938,
+      "omega_3_fatty_acid_g": 1.0,
+      "omega_6_fatty_acid_g": 1.0
+    },
+    "all_over_99pct": true
+  },
+  "D3": {
+    "rule": "parse \"1 hr 10 mins\" to minutes; null when empty or unreadable",
+    "per_column": {
+      "prep_time": {
+        "source_empty": 1985,
+        "unreadable": 1,
+        "null": 1986
+      },
+      "cook_time": {
+        "source_empty": 6663,
+        "unreadable": 0,
+        "null": 6663
+      },
+      "total_time": {
+        "source_empty": 1832,
+        "unreadable": 27,
+        "null": 1859
+      }
+    }
+  },
+  "D4": {
+    "rule": "parse a line into quantity, unit, name, note (rule-based)",
+    "lines": 311060,
+    "distinct_lines": 80556,
+    "status": {
+      "ok": 300117,
+      "partial": 10886,
+      "fail": 57
+    },
+    "status_share": {
+      "ok": 0.9648,
+      "partial": 0.035,
+      "fail": 0.0002
+    }
+  },
+  "D5": {
+    "rule": "map the parsed name to canonical ingredients (longest synonym first)",
+    "canonicals": 1984,
+    "canonicals_by_origin": {
+      "manual": 51,
+      "rule": 1500,
+      "rules": 433
+    },
+    "canonicals_used": 1945,
+    "lines_mapped": 308672,
+    "coverage": 0.9923,
+    "multi_ingredient_lines": 9593
+  },
+  "D6": {
+    "rule": "allergen groups per canonical (FDA 9; rules.csv; hidden ingredients conservative)",
+    "recipes": 32719,
+    "per_allergen": {
+      "milk": {
+        "recipes": 20059,
+        "only_hidden": 859,
+        "share": 0.6131
+      },
+      "egg": {
+        "recipes": 11439,
+        "only_hidden": 2593,
+        "share": 0.3496
+      },
+      "fish": {
+        "recipes": 4178,
+        "only_hidden": 1585,
+        "share": 0.1277
+      },
+      "crustacean_shellfish": {
+        "recipes": 2333,
+        "only_hidden": 205,
+        "share": 0.0713
+      },
+      "tree_nuts": {
+        "recipes": 3747,
+        "only_hidden": 302,
+        "share": 0.1145
+      },
+      "peanut": {
+        "recipes": 1012,
+        "only_hidden": 211,
+        "share": 0.0309
+      },
+      "wheat": {
+        "recipes": 17531,
+        "only_hidden": 16599,
+        "share": 0.5358
+      },
+      "soy": {
+        "recipes": 3990,
+        "only_hidden": 3656,
+        "share": 0.1219
+      },
+      "sesame": {
+        "recipes": 1178,
+        "only_hidden": 164,
+        "share": 0.036
+      }
+    },
+    "recipes_without_allergen": 4842
+  },
+  "D7": {
+    "rule": "vegetarian: no animal group or fish/crustacean tag; vegan: also no dairy/egg/honey or milk/egg tag",
+    "vegetarian": 16608,
+    "vegan": 3967,
+    "vegetarian_share": 0.5076,
+    "vegan_share": 0.1212
+  },
+  "D8": {
+    "rule": "a line with no canonical ingredient is unknown; does not change tags by default",
+    "unknown_lines": 2388,
+    "recipes_with_unknown": 2129,
+    "recipes_with_unknown_share": 0.0651,
+    "top_unknown": [
+      [
+        "®)",
+        19
+      ],
+      [
+        "and half",
+        13
+      ],
+      [
+        "teaspoon",
+        12
+      ],
+      [
+        "breast half",
+        10
+      ],
+      [
+        "sweet relish",
+        9
+      ],
+      [
+        "fruit preserves",
+        9
+      ],
+      [
+        "frozen french fries",
+        9
+      ],
+      [
+        "fat-free",
+        9
+      ],
+      [
+        "achiote powder",
+        9
+      ],
+      [
+        "fleur de sel",
+        9
+      ],
+      [
+        "greek salad dressing",
+        9
+      ],
+      [
+        "sweet and sour mix",
+        8
+      ],
+      [
+        "dried guajillo chiles",
+        8
+      ],
+      [
+        "frozen limeade concentrate",
+        8
+      ],
+      [
+        "mix",
+        8
+      ],
+      [
+        "1 cup",
+        8
+      ],
+      [
+        "bran flakes cereal",
+        8
+      ],
+      [
+        "tamarind juice",
+        8
+      ],
+      [
+        "tostada shells",
+        8
+      ],
+      [
+        "knorr fiesta sides",
+        8
+      ],
+      [
+        "prepared stuffing",
+        8
+      ],
+      [
+        "arrowroot powder",
+        8
+      ],
+      [
+        "ragú old world style traditional sauce",
+        8
+      ],
+      [
+        "balsamic glaze",
+        8
+      ],
+      [
+        "bbq sauce",
+        7
+      ],
+      [
+        "mochiko",
+        7
+      ],
+      [
+        "any flavor fruit jam",
+        7
+      ],
+      [
+        "liquid pectin",
+        7
+      ],
+      [
+        "asafoetida powder",
+        7
+      ],
+      [
+        "ground flaxseed",
+        7
+      ],
+      [
+        "beau monde seasoning",
+        7
+      ],
+      [
+        "pyure organic all purpose stevia blend",
+        7
+      ],
+      [
+        "protein powder",
+        7
+      ],
+      [
+        "baking spray",
+        7
+      ],
+      [
+        "red cooking wine",
+        6
+      ],
+      [
+        "mixed baby salad greens",
+        6
+      ],
+      [
+        "green tea powder",
+        6
+      ],
+      [
+        "tea bags",
+        6
+      ],
+      [
+        "broccolini",
+        6
+      ],
+      [
+        "190 proof grain alcohol",
+        6
+      ],
+      [
+        "kohlrabi bulbs",
+        6
+      ],
+      [
+        "sweetened",
+        6
+      ],
+      [
+        "annatto powder",
+        6
+      ],
+      [
+        "blackened seasoning",
+        6
+      ],
+      [
+        "powdered erythritol sweetener",
+        6
+      ],
+      [
+        "mixed greens",
+        6
+      ],
+      [
+        "blackening seasoning",
+        6
+      ],
+      [
+        "celeriac",
+        6
+      ],
+      [
+        "colored candy sprinkles",
+        6
+      ],
+      [
+        "microwave popcorn",
+        6
+      ]
+    ]
+  },
+  "seconds": 19.6
+}

@@ -6,9 +6,17 @@ Duyệt xong thì nhắn mình "đã duyệt M1". Mình sẽ nhập các sửa �
 
 ---
 
-## 1. `synonym_suggestions.csv`: gợi ý đồng nghĩa của LLM (khoảng 15–30 phút)
+## 1. `synonym_suggestions.csv`: gợi ý đồng nghĩa của LLM (khoảng 5 phút)
 
 Mỗi dòng là một tên nguyên liệu mà từ điển chưa nhận ra, có xuất hiện từ 2 dòng nguyên liệu trở lên. `qwen2.5:7b` đã đề xuất tên gốc cho nó.
+
+**Chỉ cần duyệt khoảng 17 dòng đầu.** File đã được xếp sẵn để các dòng quan trọng đứng trên:
+- **5 dòng đầu** có `tags_if_accepted`. Nếu chấp nhận, các dòng này sẽ thêm hoặc đổi thẻ dị ứng hay nhóm thực phẩm.
+- **12 dòng tiếp theo** trỏ vào một canonical đã có sẵn.
+
+Các dòng còn lại đều là `NEW:…`. LLM thường chỉ đưa ra một tên rất chung chung như `powder`, `mix`, `sauce`. Chấp nhận các dòng này chỉ xóa cờ `unknown`, chứ không thêm thẻ nào. **Khuyến nghị để trống.** Giữ `unknown` thì an toàn hơn, và nhánh ablation S+Unknown ở M6 sẽ đo đúng điều này.
+
+Toàn bộ 446 dòng chỉ chiếm 1.440 dòng nguyên liệu, khoảng 0,5% số dòng. Lý do: mình đã tự rà toàn bộ 1.668 tên `unknown` và thêm quy tắc cho các từ có thịt, cá hoặc dị ứng (bologna, milkfish, labneh, brioche, natto…).
 
 | Cột | Ý nghĩa |
 |---|---|

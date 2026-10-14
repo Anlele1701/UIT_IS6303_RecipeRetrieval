@@ -214,7 +214,6 @@ cheese flavored cracker,milk|wheat,hidden,cheese|cracker,10
 fettuccine,wheat,hidden,fettuccine,10
 german sweet chocolate,milk|soy,hidden,chocolate,10
 oreo cookie,wheat,hidden,cookie,10
-reddi wip original dairy whipped topping,milk,hidden,whipped topping,10
 roll s hamburger bun,wheat,hidden,roll|hamburger bun,10
 sandwich roll,wheat,hidden,roll,10
 shell pasta,wheat,hidden,pasta,10
@@ -241,76 +240,136 @@ white sandwich bread,wheat,hidden,bread,9
 aioli,egg,hidden,aioli,0
 alfredo,milk,hidden,alfredo,0
 amaretto,tree_nuts,hidden,amaretto,0
+batter mix,wheat,hidden,batter mix,0
+bechamel,milk|wheat,hidden,bechamel,0
+belacan,crustacean_shellfish,hidden,belacan,0
+belachan,crustacean_shellfish,hidden,belachan,0
 biscuit,wheat,hidden,biscuit,0
 bisquick,wheat,hidden,bisquick,0
 black bean sauce,wheat|soy,hidden,black bean sauce,0
+bran meal,wheat,hidden,bran meal,0
 breadcrumb,wheat,hidden,breadcrumb,0
+breading mix,wheat,hidden,breading mix,0
+breadstick,wheat,hidden,breadstick,0
+brioche,milk|egg|wheat,hidden,brioche,0
+bucatini,wheat,hidden,bucatini,0
 bun,wheat,hidden,bun,0
+burger crumble,soy,hidden,burger crumble,0
+butterfinger,milk|peanut,hidden,butterfinger,0
 butterscotch,milk,hidden,butterscotch,0
+buttery spread,milk,hidden,buttery spread,0
 caesar,milk|egg|fish,hidden,caesar,0
+cajeta,milk,hidden,cajeta,0
 cake,milk|egg|wheat,hidden,cake,0
 cake mix,wheat|soy,hidden,cake mix,0
+cannoli shell,wheat,hidden,cannoli shell,0
 caramel,milk,hidden,caramel,0
+cavatappi,wheat,hidden,cavatappi,0
 cheddar cheese soup,milk|wheat,hidden,cheddar cheese soup,0
+cheddarwurst,milk,hidden,cheddarwurst,0
 cheesecake,milk|egg|wheat,hidden,cheesecake,0
 chocolate,milk|soy,hidden,chocolate,0
 ciabatta,wheat,hidden,ciabatta,0
 cookie,wheat,hidden,cookie,0
 cooky,wheat,hidden,cooky,0
 cornbread,wheat,hidden,cornbread,0
+country gravy mix,milk|wheat,hidden,country gravy mix,0
 crab cake,egg|crustacean_shellfish|wheat,hidden,crab cake,0
 cream of celery soup,milk|wheat,hidden,cream of celery soup,0
 cream of potato soup,milk|wheat,hidden,cream of potato soup,0
 cream of shrimp soup,milk|crustacean_shellfish|wheat,hidden,cream of shrimp soup,0
 creamer,milk,hidden,creamer,0
+crepe,milk|egg|wheat,hidden,crepe,0
 crescent roll,wheat,hidden,crescent roll,0
 custard,milk|egg,hidden,custard,0
 dashi,fish,hidden,dashi,0
+denjang,soy,hidden,denjang,0
+deveined,crustacean_shellfish,hidden,deveined,0
 ditalini,wheat,hidden,ditalini,0
+donut,milk|egg|wheat,hidden,donut,0
+doubanjiang,wheat|soy,hidden,doubanjiang,0
 dough,wheat,hidden,dough,0
+doughnut,milk|egg|wheat,hidden,doughnut,0
+dukkah,tree_nuts|sesame,hidden,dukkah,0
 dumpling,wheat,hidden,dumpling,0
 durum,wheat,hidden,durum,0
 egg roll,egg|wheat,hidden,egg roll,0
+empanada wrapper,wheat,hidden,empanada wrapper,0
+eomuk,fish|wheat,hidden,eomuk,0
 farfalle,wheat,hidden,farfalle,0
+farina,wheat,hidden,farina,0
 fettuccini,wheat,hidden,fettuccini,0
 filo,wheat,hidden,filo,0
+flatbread,wheat,hidden,flatbread,0
 frangelico,tree_nuts,hidden,frangelico,0
+freekeh,wheat,hidden,freekeh,0
 frosting,milk|soy,hidden,frosting,0
 fudge,milk,hidden,fudge,0
 furikake,sesame,hidden,furikake,0
 fusilli,wheat,hidden,fusilli,0
+gingersnap,wheat,hidden,gingersnap,0
 gnocchi,wheat,hidden,gnocchi,0
 golden mushroom soup,wheat,hidden,golden mushroom soup,0
+graham crumb,wheat,hidden,graham crumb,0
+graham snack,wheat,hidden,graham snack,0
+gyoza wrapper,wheat,hidden,gyoza wrapper,0
 halva,sesame,hidden,halva,0
 hoisin,wheat|soy,hidden,hoisin,0
 hollandaise,milk|egg,hidden,hollandaise,0
+hush puppy mix,wheat,hidden,hush puppy mix,0
 ice cream cone,wheat,hidden,ice cream cone,0
 imitation crab,fish|crustacean_shellfish,hidden,imitation crab,0
+injera,wheat,hidden,injera,0
 irish cream,milk,hidden,irish cream,0
+kamaboko,fish,hidden,kamaboko,0
+kecap manis,wheat|soy,hidden,kecap manis,0
+kibbeh,milk,hidden,kibbeh,0
 lasagna,wheat,hidden,lasagna,0
+lasagne,wheat,hidden,lasagne,0
 linguini,wheat,hidden,linguini,0
+liquid amino,soy,hidden,liquid amino,0
+maggi,wheat|soy,hidden,maggi,0
+manicotti,wheat,hidden,manicotti,0
 marzipan,tree_nuts,hidden,marzipan,0
 matzo,wheat,hidden,matzo,0
+meatless ground,soy,hidden,meatless ground,0
 meringue,egg,hidden,meringue,0
+miracle whip,egg,hidden,miracle whip,0
 miso,soy,hidden,miso,0
+mostaccioli,wheat,hidden,mostaccioli,0
 naan,milk|wheat,hidden,naan,0
+nam prik pao,crustacean_shellfish,hidden,nam prik pao,0
+nilla wafer,milk|egg|wheat,hidden,nilla wafer,0
 noodle,wheat,hidden,noodle,0
+nuoc mam,fish,hidden,nuoc mam,0
 nutella,milk|tree_nuts|soy,hidden,nutella,0
+okonomiyaki sauce,wheat|soy,hidden,okonomiyaki sauce,0
+orgeat,tree_nuts,hidden,orgeat,0
+pancit canton,wheat,hidden,pancit canton,0
+panettone,milk|egg|wheat,hidden,panettone,0
 panko,wheat,hidden,panko,0
+paratha,wheat,hidden,paratha,0
+parkay,milk,hidden,parkay,0
 pastry,wheat,hidden,pastry,0
+patis,fish,hidden,patis,0
 peanut sauce,peanut,hidden,peanut sauce,0
 penne,wheat,hidden,penne,0
 phyllo,wheat,hidden,phyllo,0
 pita,wheat,hidden,pita,0
 pizza crust,wheat,hidden,pizza crust,0
 ponzu,wheat|soy,hidden,ponzu,0
+potsticker wrapper,wheat,hidden,potsticker wrapper,0
 praline,milk|tree_nuts,hidden,praline,0
 ramen,wheat,hidden,ramen,0
 ranch,milk|egg,hidden,ranch,0
 ravioli,egg|wheat,hidden,ravioli,0
+remoulade,egg,hidden,remoulade,0
 rigatoni,wheat,hidden,rigatoni,0
 roll,wheat,hidden,roll,0
 rotini,wheat,hidden,rotini,0
+russian dressing,egg,hidden,russian dressing,0
+russian salad dressing,egg,hidden,russian salad dressing,0
+sa cha sauce,fish|crustacean_shellfish,hidden,sa cha sauce,0
 saltine,wheat,hidden,saltine,0
 satay,peanut,hidden,satay,0
 seafood,fish|crustacean_shellfish,hidden,seafood,0
@@ -322,18 +381,33 @@ shrimp paste,crustacean_shellfish,hidden,shrimp paste,0
 soba,wheat,hidden,soba,0
 sourdough,wheat,hidden,sourdough,0
 soy lecithin,soy,hidden,soy lecithin,0
+spaghettini,wheat,hidden,spaghettini,0
 spelt,wheat,hidden,spelt,0
+stir fry sauce,wheat|soy,hidden,stir fry sauce,0
+sukiyaki sauce,wheat|soy,hidden,sukiyaki sauce,0
+szechwan sauce,wheat|soy,hidden,szechwan sauce,0
+tart shell,wheat,hidden,tart shell,0
 tartar sauce,egg,hidden,tartar sauce,0
 teriyaki,wheat|soy,hidden,teriyaki,0
+texa toast,wheat,hidden,texas toast,0
 textured vegetable protein,soy,hidden,textured vegetable protein,0
+texturized vegetable protein,soy,hidden,texturized vegetable protein,0
 thousand island,egg,hidden,thousand island,0
+tianmianjiang,wheat|soy,hidden,tianmianjiang,0
+toenjang,soy,hidden,toenjang,0
 toffee,milk,hidden,toffee,0
+tom yum paste,fish|crustacean_shellfish,hidden,tom yum paste,0
+tonkatsu sauce,wheat|soy,hidden,tonkatsu sauce,0
 tortellini,egg|wheat,hidden,tortellini,0
 tortilla,wheat,hidden,tortilla,0
+trail mix,tree_nuts|peanut,hidden,trail mix,0
 udon,wheat,hidden,udon,0
+veggie crumble,soy,hidden,veggie crumble,0
 vermicelli,wheat,hidden,vermicelli,0
 waffle,milk|egg|wheat,hidden,waffle,0
+white sauce,milk|wheat,hidden,white sauce,0
 worcestershire,fish,hidden,worcestershire,0
+yum yum sauce,egg,hidden,yum yum sauce,0
 ziti,wheat,hidden,ziti,0
 butter,milk,direct,butter,10239
 egg,egg,direct,egg,7925
@@ -415,7 +489,7 @@ vanilla yogurt,milk,direct,yogurt,48
 neufchatel cheese,milk,direct,cheese,46
 asiago cheese,milk,direct,asiago|cheese,44
 cod,fish,direct,cod,44
-colby monterey jack cheese,milk,direct,cheese,44
+colby monterey jack cheese,milk,direct,colby|cheese,44
 crab meat,crustacean_shellfish,direct,crab|meat,44
 crumbled gorgonzola cheese,milk,direct,cheese,44
 halibut fillet,fish,direct,halibut,43
@@ -451,7 +525,7 @@ fish stock,fish,direct,fish,31
 reduced fat cheddar cheese,milk,direct,cheddar|cheese,31
 almond meal,tree_nuts,direct,almond meal,30
 blue cheese salad dressing,milk,direct,cheese,30
-curd cottage cheese,milk,direct,cheese,30
+curd cottage cheese,milk,direct,curd|cheese,30
 natural peanut butter,peanut,direct,peanut butter,30
 whipped cream cheese,milk,direct,cream|cheese,30
 gouda cheese,milk,direct,gouda|cheese,29
@@ -460,7 +534,7 @@ salmon steak,fish,direct,salmon|steak,29
 unsalted peanut,peanut,direct,peanut,29
 catfish,fish,direct,catfish,28
 clarified butter,milk,direct,butter,28
-colby jack cheese,milk,direct,cheese,28
+colby jack cheese,milk,direct,colby|cheese,28
 nonfat milk powder,milk,direct,milk,28
 smooth peanut butter,peanut,direct,peanut butter,28
 crawfish tail,crustacean_shellfish,direct,crawfish,27
@@ -476,7 +550,7 @@ muenster cheese,milk,direct,cheese,25
 nonfat plain yogurt,milk,direct,yogurt,25
 red snapper fillet,fish,direct,snapper,25
 white wheat flour,wheat,direct,wheat|flour,25
-colby cheese,milk,direct,cheese,24
+colby cheese,milk,direct,colby|cheese,24
 havarti cheese,milk,direct,cheese,24
 milk ricotta cheese,milk,direct,milk|ricotta|cheese,24
 skin on salmon fillet,fish,direct,salmon,24
@@ -530,6 +604,7 @@ cheese,milk,direct,cheese,12
 cream cheese at,milk,direct,cream|cheese,12
 light cream cheese,milk,direct,cream|cheese,12
 low fat plain yogurt,milk,direct,yogurt,12
+mexican crema,milk,direct,crema,12
 nonfat sour cream,milk,direct,cream,12
 silken tofu,soy,direct,tofu,12
 soy flour,soy,direct,soy flour,12
@@ -547,9 +622,11 @@ wheel brie cheese,milk,direct,brie|cheese,11
 chilled unsalted butter,milk,direct,butter,10
 crab,crustacean_shellfish,direct,crab,10
 grouper fillet,fish,direct,grouper,10
+lemon curd,milk,direct,curd,10
 lemon yogurt,milk,direct,yogurt,10
 low fat cream cheese,milk,direct,cream|cheese,10
 queso fresco,milk,direct,queso fresco,10
+reddi wip original dairy whipped topping,milk,direct,reddi wip|whipped topping,10
 salted cod fish,fish,direct,cod|fish,10
 sweetened whipped cream,milk,direct,cream,10
 trout fillet,fish,direct,trout,10
@@ -569,38 +646,70 @@ tuna in olive oil,fish,direct,tuna,9
 wheat berry,wheat,direct,wheat,9
 white fish,fish,direct,fish,9
 almondmilk,tree_nuts,direct,almondmilk,0
+amberjack,fish,direct,amberjack,0
 anchovy,fish,direct,anchovy,0
+arctic char,fish,direct,arctic char,0
 asiago,milk,direct,asiago,0
+barramundi,fish,direct,barramundi,0
 bass,fish,direct,bass,0
+bean curd,soy,direct,bean curd,0
+bluefish,fish,direct,bluefish,0
+bocconcini,milk,direct,bocconcini,0
 bonito,fish,direct,bonito,0
+bottarga,fish,direct,bottarga,0
 brazil nut,tree_nuts,direct,brazil nut,0
 brie,milk,direct,brie,0
+butterfish,fish,direct,butterfish,0
+carp,fish,direct,carp,0
 casein,milk,direct,casein,0
 cashew butter,tree_nuts,direct,cashew butter,0
 cashew milk,tree_nuts,direct,cashew milk,0
 caviar,fish,direct,caviar,0
 chestnut,tree_nuts,direct,chestnut,0
+chevre,milk,direct,chevre,0
+cobia,fish,direct,cobia,0
+colby,milk,direct,colby,0
+crappie,fish,direct,crappie,0
 crayfish,crustacean_shellfish,direct,crayfish,0
+crema,milk,direct,crema,0
+curd,milk,direct,curd,0
+dogfish,fish,direct,dogfish,0
 dulce de leche,milk,direct,dulce de leche,0
+ebi,crustacean_shellfish,direct,ebi,0
+eel,fish,direct,eel,0
 feta,milk,direct,feta,0
 filbert,tree_nuts,direct,filbert,0
 fish,fish,direct,fish,0
 flounder,fish,direct,flounder,0
+fromage blanc,milk,direct,fromage blanc,0
 gouda,milk,direct,gouda,0
 grouper,fish,direct,grouper,0
 gruyere,milk,direct,gruyere,0
 haddock,fish,direct,haddock,0
+hake,fish,direct,hake,0
 half and half,milk,direct,half and half,0
+hamachi,fish,direct,hamachi,0
 herring,fish,direct,herring,0
 ice cream,milk,direct,ice cream,0
 kefir,milk,direct,kefir,0
+kingfish,fish,direct,kingfish,0
+kipper,fish,direct,kipper,0
+kraft single,milk,direct,kraft single,0
+labneh,milk,direct,labneh,0
 langostino,crustacean_shellfish,direct,langostino,0
+lingcod,fish,direct,lingcod,0
 lox,fish,direct,lox,0
 macadamia,tree_nuts,direct,macadamia,0
 mackerel,fish,direct,mackerel,0
+maguro,fish,direct,maguro,0
 mahi mahi,fish,direct,mahi mahi,0
+marlin,fish,direct,marlin,0
+masago,fish,direct,masago,0
 mascarpone,milk,direct,mascarpone,0
+milkfish,fish,direct,milkfish,0
 monkfish,fish,direct,monkfish,0
+mullet,fish,direct,mullet,0
+natto,soy,direct,natto,0
 orange roughy,fish,direct,orange roughy,0
 paneer,milk,direct,paneer,0
 pecorino,milk,direct,pecorino,0
@@ -608,12 +717,21 @@ perch,fish,direct,perch,0
 pignoli,tree_nuts,direct,pignoli,0
 pollock,fish,direct,pollock,0
 provolone,milk,direct,provolone,0
+quark,milk,direct,quark,0
 queso,milk,direct,queso,0
+red drum,fish,direct,red drum,0
+reddi wip,milk,direct,reddi wip,0
 ricotta,milk,direct,ricotta,0
+rockfish,fish,direct,rockfish,0
 roe,fish,direct,roe,0
 romano,milk,direct,romano,0
+sand dab,fish,direct,sand dab,0
 sardine,fish,direct,sardine,0
+saury,fish,direct,saury,0
 sesame,sesame,direct,sesame,0
+shark,fish,direct,shark,0
+skate wing,fish,direct,skate wing,0
+smelt,fish,direct,smelt,0
 snapper,fish,direct,snapper,0
 soy,soy,direct,soy,0
 soybean,soy,direct,soybean,0
@@ -621,9 +739,13 @@ soymilk,soy,direct,soymilk,0
 surimi,fish,direct,surimi,0
 swai,fish,direct,swai,0
 swordfish,fish,direct,swordfish,0
+tarama,fish,direct,tarama,0
+tobiko,fish,direct,tobiko,0
+unagi,fish,direct,unagi,0
 velveeta,milk,direct,velveeta,0
 walleye,fish,direct,walleye,0
 wheat,wheat,direct,wheat,0
 whey,milk,direct,whey,0
 whitefish,fish,direct,whitefish,0
+whiting,fish,direct,whiting,0
 yoghurt,milk,direct,yoghurt,0

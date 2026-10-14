@@ -1238,7 +1238,7 @@ self rising cornmeal,,,rule,13
 chuck,ground chuck|lean ground chuck,meat,rule,13
 butter lettuce,,,rule,13
 bread cube,dry bread cube|fresh bread cube,,rule,12
-mexican crema,,,rule,12
+mexican crema,,dairy,rule,12
 pickle relish,,,rule,12
 basket cherry tomato,,,rule,12
 rice vermicelli,dried rice vermicelli|cooked rice vermicelli,,rule,12
@@ -1452,7 +1452,7 @@ condensed beef broth,,meat,rule,10
 granulated onion,,,rule,10
 salad seasoning mix,,,rule,10
 millet flour,finely ground millet flour,,rule,10
-lemon curd,prepared lemon curd,,rule,10
+lemon curd,prepared lemon curd,dairy,rule,10
 reddi wip original dairy whipped topping,,dairy,rule,10
 sriracha,,,rule,10
 low fat cream cheese,,dairy,rule,10
@@ -1774,3 +1774,212 @@ bread and butter pickle,,,rules,0
 seafood cocktail sauce,,,rules,0
 ranch style chili bean,,,rules,0
 fish fry,,,rules,0
+bologna,,meat,rules,0
+pastrami,,meat,rules,0
+mortadella,,meat,rules,0
+capicola,,meat,rules,0
+guanciale,,meat,rules,0
+liverwurst,,meat,rules,0
+braunschweiger,,meat,rules,0
+pate,,meat,rules,0
+wiener,,meat,rules,0
+weiner,,meat,rules,0
+frank,,meat,rules,0
+knockwurst,,meat,rules,0
+cheddarwurst,,meat,rules,0
+chourico,,meat,rules,0
+lop chong,,meat,rules,0
+fatback,,meat,rules,0
+chitterling,,meat,rules,0
+carnita,,meat,rules,0
+neck bone,,meat,rules,0
+hog casing,,meat,rules,0
+pig foot,,meat,rules,0
+pig feet,,meat,rules,0
+pig tail,,meat,rules,0
+scrapple,,meat,rules,0
+tripe,,meat,rules,0
+calf liver,,meat,rules,0
+calve liver,,meat,rules,0
+meatloaf,,meat,rules,0
+pot roast,,meat,rules,0
+rib roast,,meat,rules,0
+prime rib,,meat,rules,0
+baby back rib,,meat,rules,0
+rib tip,,meat,rules,0
+st louis style rib,,meat,rules,0
+country style rib,,meat,rules,0
+london broil,,meat,rules,0
+tri tip,,meat,rules,0
+blade roast,,meat,rules,0
+boston butt,,meat,rules,0
+au jus,,meat,rules,0
+bone broth,,meat,rules,0
+demi glace,,meat,rules,0
+pan dripping,,meat,rules,0
+rabbit,,meat,rules,0
+squirrel,,meat,rules,0
+elk,,meat,rules,0
+moose,,meat,rules,0
+deer,,meat,rules,0
+ostrich,,meat,rules,0
+mutton,,meat,rules,0
+goat leg,,meat,rules,0
+ground buffalo,,meat,rules,0
+frog leg,,meat,rules,0
+pheasant,,poultry,rules,0
+milkfish,,fish,rules,0
+tobiko,,fish,rules,0
+masago,,fish,rules,0
+tarama,,fish,rules,0
+bottarga,,fish,rules,0
+rockfish,,fish,rules,0
+barramundi,,fish,rules,0
+butterfish,,fish,rules,0
+bluefish,,fish,rules,0
+amberjack,,fish,rules,0
+hamachi,,fish,rules,0
+maguro,,fish,rules,0
+lingcod,,fish,rules,0
+smelt,,fish,rules,0
+whiting,,fish,rules,0
+hake,,fish,rules,0
+skate wing,,fish,rules,0
+carp,,fish,rules,0
+kingfish,,fish,rules,0
+mullet,,fish,rules,0
+marlin,,fish,rules,0
+arctic char,,fish,rules,0
+dogfish,,fish,rules,0
+shark,,fish,rules,0
+crappie,,fish,rules,0
+saury,,fish,rules,0
+red drum,,fish,rules,0
+cobia,,fish,rules,0
+sand dab,,fish,rules,0
+kipper,,fish,rules,0
+unagi,,fish,rules,0
+eel,,fish,rules,0
+kamaboko,,fish,rules,0
+eomuk,,fish,rules,0
+patis,,fish,rules,0
+nuoc mam,,fish,rules,0
+belacan,,shellfish,rules,0
+belachan,,shellfish,rules,0
+ebi,,shellfish,rules,0
+deveined,,shellfish,rules,0
+sa cha sauce,,shellfish,rules,0
+nam prik pao,,shellfish,rules,0
+tom yum paste,,shellfish,rules,0
+abalone,,shellfish,rules,0
+quahog,,shellfish,rules,0
+snail,,shellfish,rules,0
+jellyfish,,shellfish,rules,0
+clamato,,shellfish,rules,0
+kecap manis,,,rules,0
+liquid amino,,,rules,0
+doubanjiang,,,rules,0
+denjang,,,rules,0
+toenjang,,,rules,0
+tianmianjiang,,,rules,0
+natto,,,rules,0
+bean curd,,,rules,0
+texturized vegetable protein,,,rules,0
+burger crumble,,,rules,0
+veggie crumble,,,rules,0
+meatless ground,,,rules,0
+sukiyaki sauce,,,rules,0
+tonkatsu sauce,,,rules,0
+okonomiyaki sauce,,,rules,0
+maggi,,,rules,0
+stir fry sauce,,,rules,0
+szechwan sauce,,,rules,0
+yum yum sauce,,egg,rules,0
+miracle whip,,egg,rules,0
+remoulade,,egg,rules,0
+russian dressing,,egg,rules,0
+russian salad dressing,,egg,rules,0
+bechamel,,dairy,rules,0
+white sauce,,dairy,rules,0
+country gravy mix,,dairy,rules,0
+labneh,,dairy,rules,0
+quark,,dairy,rules,0
+fromage blanc,,dairy,rules,0
+crema,,dairy,rules,0
+chevre,,dairy,rules,0
+bocconcini,,dairy,rules,0
+colby,,dairy,rules,0
+kraft single,,dairy,rules,0
+curd,,dairy,rules,0
+cajeta,,dairy,rules,0
+reddi wip,,dairy,rules,0
+kibbeh,,dairy,rules,0
+buttery spread,,,rules,0
+vegan buttery,,,rules,0
+parkay,,,rules,0
+brioche,,egg,rules,0
+panettone,,egg,rules,0
+crepe,,egg,rules,0
+flatbread,,,rules,0
+injera,,,rules,0
+paratha,,,rules,0
+texa toast,,,rules,0
+breadstick,,,rules,0
+gyoza wrapper,,,rules,0
+potsticker wrapper,,,rules,0
+empanada wrapper,,,rules,0
+cannoli shell,,,rules,0
+tart shell,,,rules,0
+farina,,,rules,0
+freekeh,,,rules,0
+bucatini,,,rules,0
+spaghettini,,,rules,0
+mostaccioli,,,rules,0
+cavatappi,,,rules,0
+manicotti,,,rules,0
+lasagne,,,rules,0
+doughnut,,egg,rules,0
+donut,,egg,rules,0
+batter mix,,,rules,0
+breading mix,,,rules,0
+hush puppy mix,,,rules,0
+pancit canton,,,rules,0
+graham crumb,,,rules,0
+graham snack,,,rules,0
+nilla wafer,,egg,rules,0
+gingersnap,,,rules,0
+bran meal,,,rules,0
+trail mix,,,rules,0
+orgeat,,,rules,0
+dukkah,,,rules,0
+butterfinger,,,rules,0
+gummi,,gelatin,rules,0
+lollipop stick,,nonfood,rules,0
+popsicle stick,,nonfood,rules,0
+craft stick,,nonfood,rules,0
+wooden stick,,nonfood,rules,0
+pop stick,,nonfood,rules,0
+wooden pick,,nonfood,rules,0
+chopstick,,nonfood,rules,0
+kitchen string,,nonfood,rules,0
+baking string,,nonfood,rules,0
+butcher twine,,nonfood,rules,0
+cedar plank,,nonfood,rules,0
+wood chunk,,nonfood,rules,0
+mesquite chip,,nonfood,rules,0
+charcoal,,nonfood,rules,0
+canning jar,,nonfood,rules,0
+mason jar,,nonfood,rules,0
+jar,,nonfood,rules,0
+slow cooker liner,,nonfood,rules,0
+oven bag,,nonfood,rules,0
+roasting bag,,nonfood,rules,0
+storage bag,,nonfood,rules,0
+freezer bag,,nonfood,rules,0
+cupcake liner,,nonfood,rules,0
+muffin cup,,nonfood,rules,0
+muffin liner,,nonfood,rules,0
+baking cup,,nonfood,rules,0
+paper cup,,nonfood,rules,0
+drip pan,,nonfood,rules,0
+ramekin,,nonfood,rules,0

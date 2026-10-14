@@ -195,6 +195,8 @@ def suggest(conn):
                 tags = "|".join([*(t.allergens if t else []), *([f"group:{t.group}"] if t and t.group else [])])
                 rows.append([name, n, base, proposed, tags, "", ""])
             print(f"{b + len(batch)}/{len(todo)}", flush=True)
+    # Rows that would change tags or map to a known canonical first: those are the ones worth reviewing.
+    rows.sort(key=lambda r: (not r[4], not r[3] or r[3].startswith("NEW:") or r[3] == "nonfood", -r[1]))
     with open(LEXICON / "synonym_suggestions.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["variant", "lines", "llm_base", "proposed_canonical", "tags_if_accepted", "accept",
