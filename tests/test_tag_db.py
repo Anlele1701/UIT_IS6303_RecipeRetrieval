@@ -89,3 +89,16 @@ def test_a_new_build_copies_the_tags_from_recipe_tag(recipes, fake_embed):
     build(recipes)
     tags = dict(recipes.execute("SELECT DISTINCT recipe_id, allergens FROM chunk").fetchall())
     assert tags == {1: ["crustacean_shellfish"], 2: ["wheat"], 3: []}
+
+
+def test_a_second_retag_keeps_the_older_legacy_under_a_timestamped_name(recipes, fake_embed):
+    build(recipes)
+    tag_test_db(recipes)
+    ingest.run(recipes, ["retag", "sentence"])
+    ingest.run(recipes, ["retag", "sentence"])
+    kept = [r[0] for r in recipes.execute(
+        "SELECT relname FROM pg_class WHERE relname LIKE 'chunk_sentence_legacy%' AND relkind = 'r' ORDER BY relname")]
+    assert kept[0] == "chunk_sentence_legacy" and len(kept) == 2 and kept[1].startswith("chunk_sentence_legacy_")
+    assert recipes.execute("SELECT count(*) FROM chunk WHERE strategy = 'sentence'").fetchone()[0] > 0
+    for t in kept:
+        recipes.execute(f'DROP TABLE "{t}"')

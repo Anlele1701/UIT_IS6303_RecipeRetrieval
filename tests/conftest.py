@@ -38,6 +38,8 @@ def db(test_db_url):
     with psycopg.connect(test_db_url, autocommit=True) as conn:
         for (name,) in conn.execute("SELECT name FROM chunking_strategy").fetchall():
             conn.execute(f'DROP TABLE IF EXISTS "chunk_{name}", "chunk_{name}_staging", "chunk_{name}_legacy"')
+        for (t,) in conn.execute("SELECT relname FROM pg_class WHERE relname LIKE 'chunk%%legacy%%' AND relkind = 'r'").fetchall():
+            conn.execute(f'DROP TABLE "{t}"')
         conn.execute("DELETE FROM chunking_strategy")
         yield conn
 

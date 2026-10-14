@@ -153,4 +153,4 @@ PYTHONUTF8=1 uv run scripts/checker.py sample           # tiếp từ cache, cò
   - Sửa lỗi JSON: hỏi theo lô 6 câu, thử tối đa 3 lần; trạng thái `error` được ghi riêng.
   - Bổ sung kiến thức chung về thành phần ẩn vào prompt.
   - Chạy lại trên 200 mẫu. Holdout chỉ đo lại một lần.
-- **Giữ `chunk_semantic_legacy`** (bản trước lần gắn thẻ lại ở M2), để dùng nếu sau này đổi phương án. Lưu ý: khi bản này còn tồn tại, `ingest.py retag` sẽ từ chối chạy. Lần gắn thẻ lại sau phải hỏi Thy trước: xóa hay đổi tên bản legacy.
+- **Giữ `chunk_semantic_legacy`** (bản trước lần gắn thẻ lại ở M2), để dùng nếu sau này đổi phương án. Lần `retag` sau sẽ **đổi tên** bản legacy hiện có thành `chunk_<strategy>_legacy_<thời điểm>` để giữ lại, không xóa (Thy, 15/10/2026).

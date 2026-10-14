@@ -500,12 +500,28 @@ CHUNK_COLUMNS = """recipe_id, strategy, kind, position, content, embedding, cate
 TAGS = "allergens, ingredients_norm, diet_flags, has_unknown"
 
 
+def archive_legacy(conn, name: str) -> str | None:
+    """Rename an existing chunk_<name>_legacy (and its key constraints) out of the way; its new name, or None."""
+    old = f"{partition(name)}_legacy"
+    if not conn.execute("SELECT to_regclass(%s)", [old]).fetchone()[0]:
+        return None
+    stamp = conn.execute("SELECT to_char(now(), 'YYYYMMDD_HH24MISS')").fetchone()[0]
+    new = f"{old}_{stamp}"
+    for (c,) in conn.execute("SELECT conname FROM pg_constraint WHERE conrelid = %s::regclass AND contype IN ('p', 'u')",
+                             [old]).fetchall():
+        conn.execute(sql.SQL("ALTER TABLE {t} RENAME CONSTRAINT {c} TO {n}").format(
+            t=sql.Identifier(old), c=sql.Identifier(c), n=sql.Identifier(f"{c[:40]}_{stamp}")))
+    conn.execute(sql.SQL("ALTER TABLE {t} RENAME TO {n}").format(t=sql.Identifier(old), n=sql.Identifier(new)))
+    return new
+
+
 def cmd_retag(conn, name: str):
     """Rebuild a loaded strategy's partition with the current recipe_tag, reusing its Chunks and embeddings.
 
     ADR-0001: chunk is rebuilt, never updated in place. The new partition keeps every Chunk id, so BM25 ties
     break the same way. One transaction swaps it in: the old partition is detached and kept as
-    chunk_<name>_legacy (drop it by hand), the parent index is rebuilt with the current sql/indexes.sql
+    chunk_<name>_legacy (an older legacy is renamed chunk_<name>_legacy_<timestamp>, never dropped: Thy, gate M2),
+    the parent index is rebuilt with the current sql/indexes.sql
     (which rebuilds the other partitions' child indexes), staging is indexed and attached.
     """
     if name not in STRATEGIES:
@@ -514,8 +530,6 @@ def cmd_retag(conn, name: str):
     with strategy_lock(conn, name):
         if not is_loaded(conn, name):
             sys.exit(f"{name} is not loaded; build it with `chunk {name}`")
-        if conn.execute("SELECT to_regclass(%s)", [f"{partition(name)}_legacy"]).fetchone()[0]:
-            sys.exit(f"{partition(name)}_legacy exists from an earlier retag; drop it first")
         untagged = conn.execute("SELECT count(*) FROM recipe r WHERE NOT EXISTS "
                                 "(SELECT 1 FROM recipe_tag t WHERE t.recipe_id = r.id)").fetchone()[0]
         if untagged:
@@ -535,6 +549,7 @@ def cmd_retag(conn, name: str):
             sys.exit(f"{name} keeps its old partition; check failed: {'; '.join(problems)}")
         p, t = sql.Identifier(partition(name)), sql.Identifier(staging(name))
         with conn.transaction():
+            archived = archive_legacy(conn, name)
             conn.execute(sql.SQL("ALTER TABLE chunk DETACH PARTITION {p}").format(p=p))
             conn.execute(sql.SQL("ALTER TABLE {p} RENAME TO {legacy}").format(p=p, legacy=legacy))
             for c in conn.execute("SELECT conname FROM pg_constraint WHERE conrelid = %s::regclass AND contype IN ('p', 'u')",
@@ -552,7 +567,8 @@ def cmd_retag(conn, name: str):
                     new=sql.Identifier(f"{partition(name)}_{kind}")))
             conn.execute("ANALYZE chunk")
             conn.execute("UPDATE chunking_strategy SET loaded_at = now() WHERE name = %s", [name])
-    print(f"{name} retagged; the previous partition is kept as {partition(name)}_legacy")
+    print(f"{name} retagged; the previous partition is kept as {partition(name)}_legacy"
+          + (f"; the older one as {archived}" if archived else ""))
 
 
 def cmd_drop(conn, name: str, yes: bool):
