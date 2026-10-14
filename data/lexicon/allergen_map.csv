@@ -1,0 +1,471 @@
+canonical,allergens,kind,rules,lines
+all purpose flour,wheat,hidden,flour,7347
+mayonnaise,egg,hidden,mayonnaise,2216
+soy sauce,wheat|soy,hidden,soy sauce,1835
+worcestershire sauce,fish,hidden,worcestershire,1248
+bread crumb,wheat,hidden,bread crumb,978
+chocolate chip,milk|soy,hidden,chocolate,762
+margarine,milk,hidden,margarine,663
+bread flour,wheat,hidden,bread|flour,437
+flour tortilla,wheat,hidden,flour|tortilla,332
+condensed cream of mushroom soup,milk|wheat,hidden,cream of mushroom soup,273
+fish sauce,fish,hidden,fish sauce,266
+whipped topping,milk,hidden,whipped topping,247
+panko bread crumb,wheat,hidden,panko|bread crumb,240
+elbow macaroni,wheat,hidden,macaroni,203
+spaghetti,wheat,hidden,spaghetti,179
+condensed cream of chicken soup,milk|wheat,hidden,cream of chicken soup,177
+self rising flour,wheat,hidden,flour,177
+bread,wheat,hidden,bread,166
+peanut oil,peanut,hidden,peanut oil,164
+penne pasta,wheat,hidden,penne|pasta,148
+hamburger bun,wheat,hidden,hamburger bun,144
+cake flour,wheat,hidden,cake flour,135
+white bread,wheat,hidden,bread,133
+egg noodle,egg|wheat,hidden,egg noodle,130
+yellow cake mix,wheat|soy,hidden,cake mix,126
+creamy salad dressing,egg,hidden,creamy salad dressing,125
+graham cracker crumb,wheat,hidden,graham cracker,119
+tahini,sesame,hidden,tahini,118
+ranch dressing mix,milk|egg,hidden,ranch,115
+imitation crabmeat,fish|crustacean_shellfish,hidden,imitation crabmeat,112
+french bread,wheat,hidden,bread,111
+puff pastry,wheat,hidden,puff pastry,111
+oyster sauce,wheat,hidden,oyster sauce,109
+ranch dressing,milk|egg,hidden,ranch,98
+teriyaki sauce,wheat|soy,hidden,teriyaki,98
+angel hair pasta,wheat,hidden,pasta,91
+linguine pasta,wheat,hidden,linguine|pasta,87
+hoisin sauce,wheat|soy,hidden,hoisin,83
+white chocolate chip,milk|soy,hidden,chocolate,83
+wonton wrapper,egg|wheat,hidden,wonton wrapper,82
+condensed tomato soup,wheat,hidden,condensed tomato soup,81
+pesto,milk|tree_nuts,hidden,pesto,81
+saltine cracker,wheat,hidden,saltine|cracker,81
+lasagna noodle,wheat,hidden,lasagna|noodle,78
+semisweet chocolate,milk|soy,hidden,chocolate,75
+rotini pasta,wheat,hidden,rotini|pasta,73
+buttery round cracker,wheat,hidden,cracker,66
+graham cracker crust,wheat,hidden,graham cracker,62
+instant chocolate pudding mix,milk|soy,hidden,chocolate,62
+orzo pasta,wheat,hidden,orzo|pasta,62
+refrigerated crescent roll,wheat,hidden,crescent roll,62
+refrigerated biscuit dough,wheat,hidden,biscuit|dough,61
+farfalle pasta,wheat,hidden,farfalle|pasta,60
+condensed cream of celery soup,milk|wheat,hidden,cream of celery soup,59
+french baguette,wheat,hidden,baguette,59
+unbaked pie crust,wheat,hidden,pie crust,59
+cream of mushroom soup,milk|wheat,hidden,cream of mushroom soup,57
+milk chocolate chip,milk|soy,hidden,milk|chocolate,54
+white cake mix,wheat|soy,hidden,cake mix,54
+fettuccine pasta,wheat,hidden,fettuccine|pasta,53
+italian bread,wheat,hidden,bread,53
+macaroni,wheat,hidden,macaroni,49
+seashell pasta,wheat,hidden,pasta,49
+chocolate hazelnut spread,milk|tree_nuts|soy,hidden,chocolate hazelnut spread,48
+sourdough bread,wheat,hidden,sourdough|bread,48
+marshmallow creme,egg,hidden,marshmallow creme,47
+pita bread round,wheat,hidden,pita|bread,47
+alfredo sauce,milk,hidden,alfredo,46
+baking mix,wheat,hidden,baking mix,46
+dark chocolate,milk|soy,hidden,chocolate,46
+couscous,wheat,hidden,couscous,45
+cream of chicken soup,milk|wheat,hidden,cream of chicken soup,45
+dark chocolate chip,milk|soy,hidden,chocolate,45
+graham cracker,wheat,hidden,graham cracker,44
+hoagie roll,wheat,hidden,roll,44
+basil pesto,milk|tree_nuts,hidden,pesto,43
+phyllo dough,wheat,hidden,phyllo|dough,43
+red curry paste,crustacean_shellfish,hidden,red curry paste,43
+sourdough starter,wheat,hidden,sourdough,43
+bow tie pasta,wheat,hidden,pasta,41
+chocolate sandwich cookie,wheat|soy,hidden,chocolate sandwich cookie,41
+white chocolate,milk|soy,hidden,chocolate,41
+bittersweet chocolate,milk|soy,hidden,chocolate,40
+egg roll wrapper,egg|wheat,hidden,egg roll wrapper,40
+hot dog bun,wheat,hidden,hot dog bun,39
+pie crust,wheat,hidden,pie crust,38
+english muffin,wheat,hidden,english muffin,37
+ramen noodle,wheat,hidden,ramen|noodle,36
+miso paste,soy,hidden,miso,35
+nut,tree_nuts|peanut,hidden,nut,34
+pasta shell,wheat,hidden,pasta,34
+amaretto liqueur,tree_nuts,hidden,amaretto,33
+butterscotch chip,milk,hidden,butterscotch,33
+pie shell,wheat,hidden,pie shell,33
+refrigerated crescent roll dough,wheat,hidden,crescent roll|dough,33
+irish cream liqueur,milk,hidden,irish cream,32
+vital wheat gluten,wheat,hidden,vital wheat gluten,32
+wide egg noodle,egg|wheat,hidden,egg noodle,32
+crouton,wheat,hidden,crouton,31
+ranch style salad dressing,milk|egg,hidden,ranch,31
+cheese tortellini,milk|egg|wheat,hidden,cheese|tortellini,29
+baguette,wheat,hidden,baguette,28
+fusilli pasta,wheat,hidden,fusilli|pasta,28
+rye bread,wheat,hidden,bread,28
+bread dough,wheat,hidden,bread|dough,26
+deep dish pie crust,wheat,hidden,pie crust,26
+gochujang,wheat|soy,hidden,gochujang,26
+grain bread,wheat,hidden,bread,26
+semolina flour,wheat,hidden,semolina|flour,26
+tamari,soy,hidden,tamari,26
+devil food cake mix,wheat|soy,hidden,cake mix,25
+pasta,wheat,hidden,pasta,25
+recipe pastry for a 9 inch double crust pie,wheat,hidden,pastry,25
+vanilla wafer,milk|egg|wheat,hidden,vanilla wafer,25
+dinner roll,wheat,hidden,dinner roll,24
+pesto sauce,milk|tree_nuts,hidden,pesto,24
+chocolate cake mix,milk|wheat|soy,hidden,chocolate|cake mix,23
+kaiser roll,wheat,hidden,roll,23
+pita bread,wheat,hidden,pita|bread,23
+ranch salad dressing mix,milk|egg,hidden,ranch,23
+corn bread mix,wheat,hidden,corn bread mix,22
+linguini pasta,wheat,hidden,linguini|pasta,22
+asian fish sauce,fish,hidden,fish sauce,21
+candy coated milk chocolate piece,milk|soy,hidden,milk|chocolate,21
+day old bread,wheat,hidden,bread,21
+hummus,sesame,hidden,hummus,21
+refrigerated pizza dough,wheat,hidden,pizza dough,21
+corn muffin mix,wheat,hidden,corn muffin mix,20
+ditalini pasta,wheat,hidden,ditalini|pasta,20
+pizza dough,wheat,hidden,pizza dough,20
+pretzel,wheat,hidden,pretzel,20
+ranch style dressing mix,milk|egg,hidden,ranch,20
+rigatoni pasta,wheat,hidden,rigatoni|pasta,20
+ziti pasta,wheat,hidden,ziti|pasta,20
+pre baked pizza crust,wheat,hidden,pizza crust,19
+ranch salad dressing,milk|egg,hidden,ranch,19
+refrigerated buttermilk biscuit dough,milk|wheat,hidden,buttermilk|biscuit|dough,19
+sleeve buttery round cracker,wheat,hidden,cracker,19
+biscuit baking mix,wheat,hidden,biscuit|baking mix,18
+chow mein noodle,wheat,hidden,chow mein noodle,18
+fettuccini pasta,wheat,hidden,fettuccini|pasta,18
+individually wrapped caramel,milk,hidden,caramel,18
+linguine,wheat,hidden,linguine,18
+recipe pastry for a 9 inch single crust pie,wheat,hidden,pastry,18
+refrigerated pie crust,wheat,hidden,pie crust,18
+brownie mix,wheat|soy,hidden,brownie mix,17
+bulgur,wheat,hidden,bulgur,17
+condensed cheddar cheese soup,milk|wheat,hidden,cheddar cheese soup,17
+condensed cream of potato soup,milk|wheat,hidden,cream of potato soup,17
+condensed golden mushroom soup,wheat,hidden,golden mushroom soup,17
+farro,wheat,hidden,farro,17
+hawaiian bread roll,wheat,hidden,bread|roll,17
+italian style hoagie bun,wheat,hidden,bun,17
+lemon cake mix,wheat|soy,hidden,cake mix,17
+seasoned crouton,wheat,hidden,crouton,17
+spelt flour,wheat,hidden,spelt|flour,17
+tri color rotini pasta,wheat,hidden,rotini|pasta,17
+unbaked deep dish pie crust,wheat,hidden,pie crust,17
+unbaked pie shell,wheat,hidden,pie shell,17
+all purpose baking mix,wheat,hidden,baking mix,16
+blue cheese dressing,milk|egg,hidden,blue cheese dressing,16
+chicken flavored ramen noodle,wheat,hidden,chicken|ramen|noodle,16
+cocktail rye bread,wheat,hidden,bread,16
+kimchi,fish|crustacean_shellfish,hidden,kimchi,16
+thousand island salad dressing,egg,hidden,thousand island,16
+angel food cake,egg|wheat,hidden,angel food cake,15
+bran cereal,wheat,hidden,bran cereal,15
+thousand island dressing,egg,hidden,thousand island,15
+white miso paste,soy,hidden,miso,15
+caesar salad dressing,milk|egg|fish,hidden,caesar,14
+cracker crumb,wheat,hidden,cracker,14
+eggnog,milk|egg,hidden,eggnog,14
+granola,tree_nuts,hidden,granola,14
+mixed nut,tree_nuts|peanut,hidden,mixed nut,14
+pancake mix,wheat,hidden,pancake mix,14
+refrigerated cheese tortellini,milk|egg|wheat,hidden,cheese|tortellini,14
+seafood stock,fish|crustacean_shellfish,hidden,seafood,14
+bread stuffing mix,wheat,hidden,bread|stuffing mix,13
+ciabatta roll,wheat,hidden,ciabatta|roll,13
+croissant,milk|wheat,hidden,croissant,13
+herb seasoned bread stuffing mix,wheat,hidden,bread|stuffing mix,13
+matzo meal,wheat,hidden,matzo,13
+original bisquick mix,wheat,hidden,bisquick,13
+oyster cracker,wheat,hidden,oyster cracker,13
+pearl couscous,wheat,hidden,couscous,13
+soba noodle,wheat,hidden,soba|noodle,13
+almond paste,tree_nuts,hidden,almond paste,12
+bread cube,wheat,hidden,bread,12
+buttermilk baking mix,milk|wheat,hidden,buttermilk|baking mix,12
+campbell condensed cream of chicken soup,milk|wheat,hidden,cream of chicken soup,12
+cheese ravioli,milk|egg|wheat,hidden,cheese|ravioli,12
+chocolate frosting,milk|soy,hidden,chocolate|frosting,12
+ciabatta bread,wheat,hidden,ciabatta|bread,12
+condensed cream of shrimp soup,milk|crustacean_shellfish|wheat,hidden,cream of shrimp soup,12
+everything bagel seasoning,sesame,hidden,everything bagel seasoning,12
+green curry paste,crustacean_shellfish,hidden,green curry paste,12
+milk chocolate,milk|soy,hidden,milk|chocolate,12
+orzo,wheat,hidden,orzo,12
+refrigerated pizza crust,wheat,hidden,pizza crust,12
+refrigerated pizza crust dough,wheat,hidden,pizza crust|dough,12
+stuffing mix,wheat,hidden,stuffing mix,12
+udon noodle,wheat,hidden,udon|noodle,12
+vanilla frosting,milk|soy,hidden,frosting,12
+vermicelli pasta,wheat,hidden,vermicelli|pasta,12
+caramel sauce,milk,hidden,caramel,11
+cornbread mix,wheat,hidden,cornbread,11
+cracker,wheat,hidden,cracker,11
+milk chocolate candy kisse,milk|soy,hidden,milk|chocolate,11
+puff pastry sheet,wheat,hidden,puff pastry,11
+sandwich bread,wheat,hidden,bread,11
+thick slice french bread,wheat,hidden,bread,11
+vanilla wafer crumb,milk|egg|wheat,hidden,vanilla wafer,11
+bagel,wheat,hidden,bagel,10
+cheese flavored cracker,milk|wheat,hidden,cheese|cracker,10
+fettuccine,wheat,hidden,fettuccine,10
+german sweet chocolate,milk|soy,hidden,chocolate,10
+oreo cookie,wheat,hidden,cookie,10
+reddi wip original dairy whipped topping,milk,hidden,whipped topping,10
+roll s hamburger bun,wheat,hidden,roll|hamburger bun,10
+sandwich roll,wheat,hidden,roll,10
+shell pasta,wheat,hidden,pasta,10
+sun tomato pesto,milk|tree_nuts,hidden,pesto,10
+thai red curry paste,crustacean_shellfish,hidden,red curry paste,10
+alfredo style pasta sauce,milk,hidden,alfredo|pasta sauce,9
+dashi granule,fish,hidden,dashi,9
+double crust ready to use pie crust,wheat,hidden,pie crust,9
+japanese mayonnaise,egg,hidden,mayonnaise,9
+milk chocolate candy bar,milk|soy,hidden,milk|chocolate,9
+mini pretzel,wheat,hidden,pretzel,9
+naan bread,milk|wheat,hidden,naan|bread,9
+semisweet baking chocolate,milk|soy,hidden,chocolate,9
+spice cake mix,wheat|soy,hidden,cake mix,9
+thick slice italian bread,wheat,hidden,bread,9
+toffee baking bit,milk,hidden,toffee,9
+unbaked 9 inch pie crust,wheat,hidden,pie crust,9
+unbleached bread flour,wheat,hidden,bread|flour,9
+vanilla wafer cookie,milk|egg|wheat,hidden,vanilla wafer|cookie,9
+white sandwich bread,wheat,hidden,bread,9
+butter,milk,direct,butter,10239
+egg,egg,direct,egg,7925
+milk,milk,direct,milk,4546
+parmesan cheese,milk,direct,parmesan|cheese,2300
+cheddar cheese,milk,direct,cheddar|cheese,2032
+cream cheese,milk,direct,cream|cheese,1891
+sour cream,milk,direct,cream,1635
+heavy cream,milk,direct,cream,1475
+shrimp,crustacean_shellfish,direct,shrimp,1274
+walnut,tree_nuts,direct,walnut,1011
+mozzarella cheese,milk,direct,mozzarella|cheese,909
+pecan,tree_nuts,direct,pecan,839
+sesame oil,sesame,direct,sesame,695
+buttermilk,milk,direct,buttermilk,622
+egg yolk,egg,direct,egg yolk,563
+egg white,egg,direct,egg white,551
+wheat flour,wheat,direct,wheat|flour,483
+almond,tree_nuts,direct,almond,436
+sesame seed,sesame,direct,sesame,435
+crumbled feta cheese,milk,direct,feta|cheese,383
+peanut butter,peanut,direct,peanut butter,360
+salmon fillet,fish,direct,salmon,355
+almond extract,tree_nuts,direct,almond,337
+swiss cheese,milk,direct,cheese,332
+hard boiled egg,egg,direct,egg,328
+evaporated milk,milk,direct,milk,320
+monterey jack cheese,milk,direct,cheese,310
+sweetened condensed milk,milk,direct,milk,247
+crabmeat,crustacean_shellfish,direct,crabmeat,238
+plain yogurt,milk,direct,yogurt,233
+tuna,fish,direct,tuna,232
+salmon,fish,direct,salmon,213
+ricotta cheese,milk,direct,ricotta|cheese,190
+peanut,peanut,direct,peanut,171
+pine nut,tree_nuts,direct,pine nut,161
+slivered almond,tree_nuts,direct,almond,153
+provolone cheese,milk,direct,provolone|cheese,150
+tilapia fillet,fish,direct,tilapia,146
+feta cheese,milk,direct,feta|cheese,117
+cod fillet,fish,direct,cod,116
+cottage cheese,milk,direct,cheese,115
+crumbled blue cheese,milk,direct,cheese,115
+firm tofu,soy,direct,tofu,114
+american cheese,milk,direct,cheese,104
+almond flour,tree_nuts,direct,almond flour,99
+romano cheese,milk,direct,romano|cheese,96
+creamy peanut butter,peanut,direct,peanut butter,94
+smoked salmon,fish,direct,salmon,92
+mexican cheese blend,milk,direct,cheese,91
+almond milk,tree_nuts,direct,almond milk,89
+cashew,tree_nuts,direct,cashew,84
+greek yogurt,milk,direct,yogurt,81
+anchovy fillet,fish,direct,anchovy,80
+wheat germ,wheat,direct,wheat,80
+gruyere cheese,milk,direct,gruyere|cheese,75
+processed cheese food,milk,direct,cheese,73
+wheat bread,wheat,direct,wheat|bread,69
+milk powder,milk,direct,milk,68
+pepperjack cheese,milk,direct,cheese,63
+lump crabmeat,crustacean_shellfish,direct,crabmeat,61
+lobster tail,crustacean_shellfish,direct,lobster,60
+mascarpone cheese,milk,direct,mascarpone|cheese,56
+soy milk,soy,direct,soy milk,56
+goat cheese,milk,direct,cheese,55
+plain greek yogurt,milk,direct,yogurt,54
+creme fraiche,milk,direct,creme fraiche,53
+pepper jack cheese,milk,direct,cheese,53
+processed cheese,milk,direct,cheese,53
+reduced fat sour cream,milk,direct,cream,52
+blanched slivered almond,tree_nuts,direct,almond,51
+light cream,milk,direct,cream,51
+pecorino romano cheese,milk,direct,pecorino|romano|cheese,51
+vanilla ice cream,milk,direct,ice cream,51
+edamame,soy,direct,edamame,50
+light sour cream,milk,direct,cream,50
+whipped cream,milk,direct,cream,49
+vanilla yogurt,milk,direct,yogurt,48
+neufchatel cheese,milk,direct,cheese,46
+asiago cheese,milk,direct,asiago|cheese,44
+cod,fish,direct,cod,44
+colby monterey jack cheese,milk,direct,cheese,44
+crab meat,crustacean_shellfish,direct,crab|meat,44
+crumbled gorgonzola cheese,milk,direct,cheese,44
+halibut fillet,fish,direct,halibut,43
+tilapia,fish,direct,tilapia,43
+ghee,milk,direct,ghee,42
+halibut,fish,direct,halibut,42
+blue cheese,milk,direct,cheese,41
+hazelnut,tree_nuts,direct,hazelnut,41
+italian cheese blend,milk,direct,cheese,41
+tuna steak,fish,direct,tuna|steak,41
+brie cheese,milk,direct,brie|cheese,39
+cheddar monterey jack cheese blend,milk,direct,cheddar|cheese,38
+cream,milk,direct,cream,38
+macadamia nut,tree_nuts,direct,macadamia nut,38
+tuna in water,fish,direct,tuna,38
+crumbled goat cheese,milk,direct,cheese,37
+almond butter,tree_nuts,direct,almond butter,36
+asian sesame oil,sesame,direct,sesame,36
+crunchy peanut butter,peanut,direct,peanut butter,36
+philadelphia cream cheese,milk,direct,cream|cheese,36
+salted peanut,peanut,direct,peanut,36
+pistachio nut,tree_nuts,direct,pistachio nut,35
+wheat tortilla,wheat,direct,wheat|tortilla,35
+reduced fat cream cheese,milk,direct,cream|cheese,34
+wheat pastry flour,wheat,direct,wheat|pastry|flour,33
+lobster meat,crustacean_shellfish,direct,lobster|meat,32
+mahi mahi fillet,fish,direct,mahi mahi,32
+prawn,crustacean_shellfish,direct,prawn,32
+black sesame seed,sesame,direct,sesame,31
+blanched almond flour,tree_nuts,direct,almond flour,31
+catfish fillet,fish,direct,catfish,31
+fish stock,fish,direct,fish,31
+reduced fat cheddar cheese,milk,direct,cheddar|cheese,31
+almond meal,tree_nuts,direct,almond meal,30
+blue cheese salad dressing,milk,direct,cheese,30
+curd cottage cheese,milk,direct,cheese,30
+natural peanut butter,peanut,direct,peanut butter,30
+whipped cream cheese,milk,direct,cream|cheese,30
+gouda cheese,milk,direct,gouda|cheese,29
+salad shrimp,crustacean_shellfish,direct,shrimp,29
+salmon steak,fish,direct,salmon|steak,29
+unsalted peanut,peanut,direct,peanut,29
+catfish,fish,direct,catfish,28
+clarified butter,milk,direct,butter,28
+colby jack cheese,milk,direct,cheese,28
+nonfat milk powder,milk,direct,milk,28
+smooth peanut butter,peanut,direct,peanut butter,28
+crawfish tail,crustacean_shellfish,direct,crawfish,27
+fat free sour cream,milk,direct,cream,27
+low fat sour cream,milk,direct,cream,27
+unsweetened almond milk,tree_nuts,direct,almond milk,27
+red snapper,fish,direct,snapper,26
+trout,fish,direct,trout,26
+wheat bran,wheat,direct,wheat,26
+crumbled cotija cheese,milk,direct,cheese,25
+egg substitute,egg,direct,egg substitute,25
+muenster cheese,milk,direct,cheese,25
+nonfat plain yogurt,milk,direct,yogurt,25
+red snapper fillet,fish,direct,snapper,25
+white wheat flour,wheat,direct,wheat|flour,25
+colby cheese,milk,direct,cheese,24
+havarti cheese,milk,direct,cheese,24
+milk ricotta cheese,milk,direct,milk|ricotta|cheese,24
+skin on salmon fillet,fish,direct,salmon,24
+swai fish,fish,direct,swai|fish,24
+walnut piece,tree_nuts,direct,walnut,24
+blanched almond,tree_nuts,direct,almond,23
+eagle brand sweetened condensed milk,milk,direct,milk,23
+part skim ricotta cheese,milk,direct,ricotta|cheese,23
+swordfish steak,fish,direct,swordfish|steak,23
+tofu,soy,direct,tofu,23
+anchovy paste,fish,direct,anchovy paste,22
+hot milk,milk,direct,milk,22
+lobster,crustacean_shellfish,direct,lobster,22
+processed american cheese,milk,direct,cheese,22
+sea bass,fish,direct,bass,21
+pistachio,tree_nuts,direct,pistachio,20
+water tuna,fish,direct,tuna,20
+flounder fillet,fish,direct,flounder,19
+fontina cheese,milk,direct,cheese,19
+haddock fillet,fish,direct,haddock,19
+halibut steak,fish,direct,halibut|steak,18
+low fat cottage cheese,milk,direct,cheese,18
+solid white tuna in water,fish,direct,tuna,18
+yogurt,milk,direct,yogurt,18
+caramel ice cream topping,milk,direct,caramel|ice cream,17
+crumbled queso fresco,milk,direct,queso fresco,17
+smoked gouda cheese,milk,direct,gouda|cheese,17
+anchovy filet,fish,direct,anchovy,16
+chunk light tuna in water,fish,direct,tuna,16
+peanut butter chip,peanut,direct,peanut butter,16
+walnut oil,tree_nuts,direct,walnut,16
+cotija cheese,milk,direct,cheese,15
+instant pistachio pudding mix,tree_nuts,direct,pistachio,15
+plain fat free greek yogurt,milk,direct,yogurt,15
+plain low fat yogurt,milk,direct,yogurt,15
+round brie cheese,milk,direct,brie|cheese,15
+tiger prawn,crustacean_shellfish,direct,prawn,15
+wheat bread crumb,wheat,direct,wheat|bread crumb,15
+albacore tuna in water,fish,direct,tuna,14
+crawfish,crustacean_shellfish,direct,crawfish,14
+fat free cream cheese,milk,direct,cream|cheese,14
+mexican blend cheese,milk,direct,cheese,14
+mexican style cheese blend,milk,direct,cheese,14
+white american cheese,milk,direct,cheese,14
+almond breeze vanilla almondmilk,tree_nuts,direct,almond|almondmilk,13
+low fat buttermilk,milk,direct,buttermilk,13
+soft goat cheese,milk,direct,cheese,13
+tiny shrimp,crustacean_shellfish,direct,shrimp,13
+center salmon fillet,fish,direct,salmon,12
+cheese,milk,direct,cheese,12
+cream cheese at,milk,direct,cream|cheese,12
+light cream cheese,milk,direct,cream|cheese,12
+low fat plain yogurt,milk,direct,yogurt,12
+nonfat sour cream,milk,direct,cream,12
+silken tofu,soy,direct,tofu,12
+soy flour,soy,direct,soy flour,12
+wheat hamburger bun,wheat,direct,wheat|hamburger bun,12
+aged cheddar cheese,milk,direct,cheddar|cheese,11
+bumble bee solid white albacore tuna in water,fish,direct,tuna,11
+dark sesame oil,sesame,direct,sesame,11
+gorgonzola cheese,milk,direct,cheese,11
+philadelphia brick cream cheese,milk,direct,cream|cheese,11
+plain nonfat yogurt,milk,direct,yogurt,11
+powdered milk,milk,direct,milk,11
+processed cheese sauce,milk,direct,cheese,11
+shell on shrimp,crustacean_shellfish,direct,shrimp,11
+wheel brie cheese,milk,direct,brie|cheese,11
+chilled unsalted butter,milk,direct,butter,10
+crab,crustacean_shellfish,direct,crab,10
+grouper fillet,fish,direct,grouper,10
+lemon yogurt,milk,direct,yogurt,10
+low fat cream cheese,milk,direct,cream|cheese,10
+queso fresco,milk,direct,queso fresco,10
+salted cod fish,fish,direct,cod|fish,10
+sweetened whipped cream,milk,direct,cream,10
+trout fillet,fish,direct,trout,10
+unsalted cashew,tree_nuts,direct,cashew,10
+walleye fillet,fish,direct,walleye,10
+chunky peanut butter,peanut,direct,peanut butter,9
+crumbled feta,milk,direct,feta,9
+i cant believe its not butter spread,milk,direct,butter,9
+mozzarella ball,milk,direct,mozzarella,9
+pecan piece,tree_nuts,direct,pecan,9
+pink salmon,fish,direct,salmon,9
+red salmon,fish,direct,salmon,9
+sole,fish,direct,sole,9
+tempeh,soy,direct,tempeh,9
+tuna in olive oil,fish,direct,tuna,9
+wheat berry,wheat,direct,wheat,9
+white fish,fish,direct,fish,9

@@ -36,7 +36,7 @@ DESCRIPTORS = {
     "fresh", "freshly", "frozen", "thawed", "dried", "dry", "chopped", "finely", "coarsely", "roughly",
     "minced", "diced", "sliced", "thinly", "thickly", "grated", "shredded", "crushed", "ground", "peeled",
     "seeded", "pitted", "cored", "trimmed", "halved", "quartered", "cubed", "julienned", "mashed", "melted",
-    "softened", "cold", "warm", "hot", "room", "temperature", "boiling", "cooked", "uncooked", "raw",
+    "softened", "cold", "warm", "room", "temperature", "boiling", "cooked", "uncooked", "raw",
     "toasted", "roasted", "packed", "lightly", "firmly", "loosely", "beaten", "lean", "extra", "skinless",
     "boneless", "bone-in", "skin-on", "rinsed", "drained", "canned", "prepared", "organic", "ripe",
     "sifted", "unsifted", "unpeeled", "deveined", "shelled", "cut", "torn", "stemmed", "zested", "juiced",

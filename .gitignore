@@ -1,5 +1,6 @@
 # Local dataset and logs (recipe.csv is ~61 MB)
-data/
+data/*
+!data/lexicon/
 .pytest_cache/
 .venv/
 __pycache__/
