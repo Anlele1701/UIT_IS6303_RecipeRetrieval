@@ -146,3 +146,11 @@ PYTHONUTF8=1 uv run scripts/checker.py sample           # tiếp từ cache, cò
 1. Chạy xong bộ kiểm.
 2. `scripts/eval_allergen.py`: P/R kèm Wilson CI cho bộ gắn thẻ (mức chắc chắn, và mức chắc chắn + có thể) và bộ kiểm (strict / lenient), so với nhãn bạc. Có ma trận bất đồng. Lỗi chỉ liệt kê trên tập dev.
 3. Gate M2.
+
+### Quyết định ở gate M2, vòng 1 (Thy, 15/10/2026)
+- **Phô mai dùng rennet động vật** (Parmesan, Romano, Pecorino, Gruyère, Asiago…) → **có thể không chay**: vẫn gắn cờ vegetarian, kèm cảnh báo `diet_may`. Đây là lần lặp 1 của từ điển, dựa trên tập dev. Đã gắn lại thẻ phân vùng semantic, 0 lệch.
+- **Bộ kiểm:**
+  - Sửa lỗi JSON: hỏi theo lô 6 câu, thử tối đa 3 lần; trạng thái `error` được ghi riêng.
+  - Bổ sung kiến thức chung về thành phần ẩn vào prompt.
+  - Chạy lại trên 200 mẫu. Holdout chỉ đo lại một lần.
+- **Giữ `chunk_semantic_legacy`** (bản trước lần gắn thẻ lại ở M2), để dùng nếu sau này đổi phương án. Lưu ý: khi bản này còn tồn tại, `ingest.py retag` sẽ từ chối chạy. Lần gắn thẻ lại sau phải hỏi Thy trước: xóa hay đổi tên bản legacy.
