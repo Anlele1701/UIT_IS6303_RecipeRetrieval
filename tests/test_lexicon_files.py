@@ -17,7 +17,7 @@ def test_allergens_are_the_fda_nine():
 
 def test_rules_use_known_allergens_and_groups():
     Rules.from_csv()  # raises on an unknown allergen code
-    groups = {r["group"] for r in rows("rules.csv") if r["phrase"] and not r["phrase"].startswith("#")}
+    groups = {r["group"].rstrip("?") for r in rows("rules.csv") if r["phrase"] and not r["phrase"].startswith("#")}
     assert groups <= set(GROUP_PRIORITY) | {""}
 
 
@@ -34,8 +34,8 @@ def test_allergen_map_matches_ingredients_and_codes():
     canonicals = {r["canonical"] for r in rows("ingredients.csv")}
     for r in rows("allergen_map.csv"):
         assert r["canonical"] in canonicals
-        assert set(r["allergens"].split("|")) <= set(ALLERGENS)
-        assert r["kind"] in {"direct", "hidden"}
+        assert {a.rstrip("?") for a in r["allergens"].split("|")} <= set(ALLERGENS)
+        assert r["kind"] in {"direct", "hidden", "possible"}
 
 
 def test_vi_aliases_point_at_known_targets():

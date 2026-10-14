@@ -48,6 +48,9 @@ GOLDEN = [
     ("®), or to taste", None, None, "", "fail"),
     ("1 cup half-and-half", "1", "cup", "half-and-half", "ok"),
     ("1 (.25 ounce) package active dry yeast", "1", "package", "active dry yeast", "ok"),
+    ("2  grilled skinless, boneless chicken breasts, cut into 1-inch pieces", "2", None,
+     "grilled skinless boneless chicken breasts", "ok"),
+    ("4 each skinless, boneless chicken breast halves", "4", None, "each skinless boneless chicken breast halves", "ok"),
 ]
 
 

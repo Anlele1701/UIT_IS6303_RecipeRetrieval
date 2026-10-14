@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS ingredient (
 CREATE TABLE IF NOT EXISTS ingredient_allergen (
   ingredient_id  integer NOT NULL REFERENCES ingredient(id) ON DELETE CASCADE,
   allergen_code  text NOT NULL REFERENCES allergen(code),
-  kind           text NOT NULL CHECK (kind IN ('direct', 'hidden')),  -- hidden: e.g. soy sauce -> wheat
+  kind           text NOT NULL CHECK (kind IN ('direct', 'hidden', 'possible')),
+                 -- hidden: soy sauce -> wheat; possible: brand-dependent (chocolate -> milk), flagged not filtered
   PRIMARY KEY (ingredient_id, allergen_code)
 );
 
@@ -48,9 +49,11 @@ CREATE TABLE IF NOT EXISTS recipe_ingredient_norm (
 -- Materialized per Recipe; copied onto chunk (ADR-0001, ADR-0005).
 CREATE TABLE IF NOT EXISTS recipe_tag (
   recipe_id         integer PRIMARY KEY REFERENCES recipe(id) ON DELETE CASCADE,
-  allergens         text[] NOT NULL,   -- allergen codes, D6
+  allergens         text[] NOT NULL,   -- definite allergen codes (D6): the hard filter
+  allergens_may     text[] NOT NULL DEFAULT '{}',  -- possible only (D6): a warning, not a filter
   ingredients_norm  text[] NOT NULL,   -- canonical names, D5
   diet_flags        text[] NOT NULL,   -- vegetarian, vegan, D7
+  diet_may          text[] NOT NULL DEFAULT '{}',  -- flags that hold only if possible tags are ignored
   has_unknown       boolean NOT NULL,  -- some line maps to no ingredient, D8
   unknown_lines     smallint NOT NULL
 );

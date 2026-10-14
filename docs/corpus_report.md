@@ -1,6 +1,6 @@
 # Báo cáo dữ liệu (quy tắc D1–D8)
 
-Sinh tự động bởi `scripts/tag.py` lúc 2026-10-14T14:47:02 (commit `ffbb17e`). Số liệu gốc ở `eval/corpus.json`. Không sửa tay file này.
+Sinh tự động bởi `scripts/tag.py` lúc 2026-10-14T16:31:25 (commit `0df47d5`). Số liệu gốc ở `eval/corpus.json`. Không sửa tay file này.
 
 | Mã | Quy tắc | Số liệu |
 |---|---|---|
@@ -8,24 +8,27 @@ Sinh tự động bởi `scripts/tag.py` lúc 2026-10-14T14:47:02 (commit `ffbb1
 | D2 | Bỏ cột dinh dưỡng rỗng > 99% | 13 cột, tỉ lệ rỗng thấp nhất 99,4% |
 | D3 | Chuẩn hóa thời gian → phút | `total_time` null: 1.859 (rỗng ở nguồn 1.832, không đọc được 27) |
 | D4 | Tách dòng nguyên liệu | 311.060 dòng: ok 96,5%, partial 3,5%, fail 0,0% |
-| D5 | Ánh xạ sang nguyên liệu chuẩn | 1.984 canonical; 99,2% số dòng ánh xạ được; 9.593 dòng chứa nhiều nguyên liệu |
-| D6 | Gắn nhóm dị ứng (FDA 9) | 27.877 công thức có ≥ 1 nhóm |
-| D7 | Cờ chế độ ăn | vegetarian 16.608 (50,8%), vegan 3.967 (12,1%) |
-| D8 | Dòng `unknown` | 2.388 dòng; 2.129 công thức (6,5%) có ≥ 1 dòng unknown |
+| D5 | Ánh xạ sang nguyên liệu chuẩn | 1.982 canonical; 99,2% số dòng ánh xạ được; 9.633 dòng chứa nhiều nguyên liệu |
+| D6 | Gắn nhóm dị ứng (FDA 9) | 27.788 công thức có ≥ 1 nhóm chắc chắn |
+| D6b | Dòng ghi "X-free" (gluten-free, vegan…) không mang nhóm X | 129 dòng, 119 công thức |
+| D7 | Cờ chế độ ăn | vegetarian 16.686 (51,0%), vegan 4.147 (12,7%); trong đó chỉ đạt khi bỏ qua thẻ "có thể": vegetarian 48, vegan 134 |
+| D8 | Dòng `unknown` | 2.328 dòng; 2.075 công thức (6,3%) có ≥ 1 dòng unknown |
 
 ## Phân bố nhóm dị ứng (D6)
 
-| Nhóm | Số công thức | Tỉ lệ | Chỉ do thành phần ẩn |
-|---|---:|---:|---:|
-| milk (sữa) | 20.059 | 61,3% | 859 |
-| egg (trứng) | 11.439 | 35,0% | 2.593 |
-| fish (cá) | 4.178 | 12,8% | 1.585 |
-| crustacean_shellfish (giáp xác) | 2.333 | 7,1% | 205 |
-| tree_nuts (hạt cây) | 3.747 | 11,5% | 302 |
-| peanut (đậu phộng) | 1.012 | 3,1% | 211 |
-| wheat (lúa mì) | 17.531 | 53,6% | 16.599 |
-| soy (đậu nành) | 3.990 | 12,2% | 3.656 |
-| sesame (mè) | 1.178 | 3,6% | 164 |
+Cột "chắc chắn" là thẻ dùng để lọc cứng. Cột "chỉ có thể chứa" là công thức không bị lọc mà chỉ được cảnh báo.
+
+| Nhóm | Chắc chắn | Tỉ lệ | Trong đó chỉ do thành phần ẩn | Chỉ "có thể chứa" |
+|---|---:|---:|---:|---:|
+| milk (sữa) | 19.583 | 59,9% | 398 | 444 |
+| egg (trứng) | 11.438 | 35,0% | 2.592 | 0 |
+| fish (cá) | 4.158 | 12,7% | 1.564 | 13 |
+| crustacean_shellfish (giáp xác) | 2.158 | 6,6% | 30 | 175 |
+| tree_nuts (hạt cây) | 3.506 | 10,7% | 279 | 241 |
+| peanut (đậu phộng) | 811 | 2,5% | 10 | 201 |
+| wheat (lúa mì) | 17.459 | 53,4% | 16.527 | 25 |
+| soy (đậu nành) | 2.256 | 6,9% | 1.922 | 1.734 |
+| sesame (mè) | 1.178 | 3,6% | 164 | 0 |
 
 ## 50 tên `unknown` phổ biến nhất (D8)
 

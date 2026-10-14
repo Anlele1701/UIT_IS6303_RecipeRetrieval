@@ -38,8 +38,8 @@ eggnog,dairy,milk|egg,hidden,
 ice cream,dairy,milk,direct,
 whipped topping,dairy,milk,hidden,frozen whipped topping lists sodium caseinate
 creamer,dairy,milk,hidden,non-dairy creamers still list sodium caseinate
-margarine,,milk,hidden,many margarines contain whey or buttermilk; conservative
-chocolate,,milk|soy,hidden,semisweet and dark chocolate often contain milkfat and soy lecithin; conservative
+margarine,,milk?,possible,many margarines contain whey or buttermilk; conservative
+chocolate,,milk?|soy?,possible,semisweet and dark chocolate often contain milkfat and soy lecithin; conservative
 cocoa,,,,cocoa powder: no milk
 cocoa powder,,,,
 unsweetened chocolate,,,,"pure chocolate liquor, no milk"
@@ -47,7 +47,7 @@ caramel,dairy,milk,hidden,
 butterscotch,dairy,milk,hidden,
 toffee,dairy,milk,hidden,
 fudge,dairy,milk,hidden,
-frosting,,milk|soy,hidden,canned frosting; conservative
+frosting,,milk?|soy?,possible,canned frosting; conservative
 alfredo,dairy,milk,hidden,
 pesto,dairy,tree_nuts|milk,hidden,pine nuts + parmesan
 ranch,,milk|egg,hidden,ranch dressing / mix
@@ -149,9 +149,9 @@ dashi,fish,fish,hidden,bonito stock
 surimi,fish,fish,direct,
 worcestershire,fish,fish,hidden,contains anchovies
 fish sauce,fish,fish,hidden,
-imitation crab,fish,fish|crustacean_shellfish,hidden,surimi; often crab extract; conservative
-imitation crabmeat,fish,fish|crustacean_shellfish,hidden,
-kimchi,fish,fish|crustacean_shellfish,hidden,usually fish sauce and salted shrimp; conservative
+imitation crab,fish,fish|crustacean_shellfish?,hidden,surimi; often crab extract; conservative
+imitation crabmeat,fish,fish|crustacean_shellfish?,hidden,
+kimchi,fish?,fish?|crustacean_shellfish?,possible,usually fish sauce and salted shrimp; conservative
 seafood,shellfish,fish|crustacean_shellfish,hidden,generic seafood mix or stock
 seafood seasoning,,,,"Old Bay style spice blend, no seafood"
 old bay seasoning,,,,
@@ -175,12 +175,12 @@ calamari,shellfish,,,mollusc
 octopus,shellfish,,,mollusc
 escargot,shellfish,,,mollusc
 conch,shellfish,,,mollusc
-oyster sauce,shellfish,wheat,hidden,"mollusc extract; most brands add wheat flour"
+oyster sauce,shellfish,wheat?,possible,mollusc extract; most brands add wheat flour
 oyster mushroom,,,,not seafood
 oyster cracker,,wheat,hidden,not seafood
 crab apple,,,,
-red curry paste,shellfish,crustacean_shellfish,hidden,traditional pastes contain shrimp paste; brand-dependent
-green curry paste,shellfish,crustacean_shellfish,hidden,
+red curry paste,shellfish?,crustacean_shellfish?,possible,traditional pastes contain shrimp paste; brand-dependent
+green curry paste,shellfish?,crustacean_shellfish?,possible,
 # ---------- tree nuts (FDA 2025 list; coconut excluded) ----------,,,,
 almond,,tree_nuts,direct,
 walnut,,tree_nuts,direct,
@@ -193,22 +193,22 @@ macadamia,,tree_nuts,direct,
 brazil nut,,tree_nuts,direct,
 pine nut,,tree_nuts,direct,
 pignoli,,tree_nuts,direct,
-chestnut,,tree_nuts,direct,conservative
+chestnut,,tree_nuts?,possible,conservative
 water chestnut,,,,not a nut
-nut,,tree_nuts|peanut,hidden,generic or mixed nuts often include peanuts
+nut,,tree_nuts|peanut?,hidden,generic or mixed nuts often include peanuts
 nutmeg,,,,not a nut
 butternut squash,,,,
 marzipan,,tree_nuts,hidden,almond
 almond paste,,tree_nuts,hidden,
 praline,dairy,tree_nuts|milk,hidden,
-chocolate hazelnut spread,dairy,tree_nuts|milk|soy,hidden,
-nutella,dairy,tree_nuts|milk|soy,hidden,
-amaretto,,tree_nuts,hidden,almond flavoring; conservative
+chocolate hazelnut spread,dairy,tree_nuts|milk|soy?,hidden,
+nutella,dairy,tree_nuts|milk|soy?,hidden,
+amaretto,,tree_nuts?,possible,almond flavoring; conservative
 frangelico,,tree_nuts,hidden,
-granola,,tree_nuts,hidden,often contains almonds or pecans; conservative
+granola,,tree_nuts?,possible,often contains almonds or pecans; conservative
 # ---------- peanut ----------,,,,
 peanut,,peanut,direct,
-peanut oil,,peanut,hidden,highly refined oil is exempt by FDA; conservative
+peanut oil,,peanut?,possible,highly refined oil is exempt by FDA; conservative
 peanut sauce,,peanut,hidden,
 satay,,peanut,hidden,
 # ---------- wheat ----------,,,,
@@ -234,7 +234,7 @@ ciabatta,,wheat,hidden,
 croissant,dairy,wheat|milk,hidden,
 english muffin,,wheat,hidden,
 pita,,wheat,hidden,
-naan,dairy,wheat|milk,hidden,
+naan,,wheat|milk?,hidden,
 bagel,,wheat,hidden,
 tortilla,,wheat,hidden,flour tortilla
 pizza dough,,wheat,hidden,
@@ -255,13 +255,13 @@ pretzel,,wheat,hidden,
 matzo,,wheat,hidden,
 cookie,,wheat,hidden,
 cooky,,wheat,hidden,
-chocolate sandwich cookie,,wheat|soy,hidden,
+chocolate sandwich cookie,,wheat|soy?,hidden,
 vanilla wafer,,wheat|egg|milk,hidden,
 ladyfinger,egg,wheat|egg,hidden,
 cake,,wheat|egg|milk,hidden,prepared cake
-cake mix,,wheat|soy,hidden,
+cake mix,,wheat|soy?,hidden,
 angel food cake,egg,wheat|egg,hidden,
-brownie mix,,wheat|soy,hidden,
+brownie mix,,wheat|soy?,hidden,
 baking mix,,wheat,hidden,
 bisquick,,wheat,hidden,
 pancake mix,,wheat,hidden,
@@ -441,7 +441,7 @@ crab cake,shellfish,crustacean_shellfish|wheat|egg,hidden,
 bread machine yeast,,,,
 pistachio nut,,tree_nuts,direct,
 macadamia nut,,tree_nuts,direct,
-mixed nut,,tree_nuts|peanut,hidden,
+mixed nut,,tree_nuts|peanut?,hidden,
 chocolate syrup,,,,syrup brands list no milk
 soy lecithin,,soy,hidden,
 spaghetti squash,,,,vegetable
@@ -464,16 +464,16 @@ unsweetened baking chocolate,,,,
 vegan margarine,,,,
 vegetarian worcestershire sauce,,,,
 vegan cheese,,,,
-refried bean,meat,,,"traditional canned refried beans contain lard; conservative for vegetarian"
+refried bean,meat?,,,traditional canned refried beans contain lard; conservative for vegetarian
 vegetarian refried bean,,,,
-baked bean,meat,,,"most canned baked beans contain bacon or pork; conservative"
+baked bean,meat?,,,most canned baked beans contain bacon or pork; conservative
 chili without bean,meat,,,canned chili contains beef
 chili with bean,meat,,,
 condensed tomato soup,,wheat,hidden,condensed tomato soup lists wheat flour
 creamy salad dressing,egg,egg,hidden,mayonnaise-style dressing
 velveeta,dairy,milk,direct,processed cheese
 bread and butter pickle,,,,"pickles, no bread or butter"
-seafood cocktail sauce,,,,"tomato and horseradish sauce"
+seafood cocktail sauce,,,,tomato and horseradish sauce
 cocktail sauce,,,,
 ranch style chili bean,,,,canned beans brand
 fish fry,,,,"seasoned corn meal coating, no fish"
@@ -574,7 +574,7 @@ ebi,shellfish,crustacean_shellfish,direct,shrimp
 deveined,shellfish,crustacean_shellfish,hidden,only shrimp are deveined
 sa cha sauce,shellfish,crustacean_shellfish|fish,hidden,dried shrimp and fish
 nam prik pao,shellfish,crustacean_shellfish,hidden,shrimp paste
-tom yum paste,shellfish,crustacean_shellfish|fish,hidden,brand-dependent; conservative
+tom yum paste,shellfish?,crustacean_shellfish?|fish?,possible,brand-dependent; conservative
 abalone,shellfish,,,mollusc
 quahog,shellfish,,,mollusc
 snail,shellfish,,,mollusc
@@ -582,7 +582,7 @@ jellyfish,shellfish,,,
 clamato,shellfish,,,clam juice
 kecap manis,,soy|wheat,hidden,
 liquid amino,,soy,hidden,
-doubanjiang,,soy|wheat,hidden,broad bean paste; most brands add wheat
+doubanjiang,,soy|wheat?,hidden,broad bean paste; most brands add wheat
 denjang,,soy,hidden,
 toenjang,,soy,hidden,
 tianmianjiang,,soy|wheat,hidden,
@@ -618,14 +618,14 @@ curd,dairy,milk,direct,cheese curd
 cajeta,dairy,milk,hidden,goat milk caramel
 reddi wip,dairy,milk,direct,
 kibbeh,dairy,milk,hidden,Ethiopian spiced butter
-buttery spread,,milk,hidden,many buttery spreads contain buttermilk or whey; conservative
+buttery spread,,milk?,possible,many buttery spreads contain buttermilk or whey; conservative
 vegan buttery,,,,
-parkay,,milk,hidden,
+parkay,,milk?,possible,
 brioche,egg,wheat|egg|milk,hidden,
 panettone,egg,wheat|egg|milk,hidden,
 crepe,egg,wheat|egg|milk,hidden,
 flatbread,,wheat,hidden,
-injera,,wheat,hidden,teff; most commercial injera adds wheat
+injera,,wheat?,possible,teff; most commercial injera adds wheat
 paratha,,wheat,hidden,
 texas toast,,wheat,hidden,
 breadstick,,wheat,hidden,
@@ -653,7 +653,7 @@ graham snack,,wheat,hidden,
 nilla wafer,egg,wheat|egg|milk,hidden,
 gingersnap,,wheat,hidden,
 bran meal,,wheat,hidden,
-trail mix,,tree_nuts|peanut,hidden,
+trail mix,,tree_nuts|peanut?,hidden,
 orgeat,,tree_nuts,hidden,almond syrup
 dukkah,,tree_nuts|sesame,hidden,
 butterfinger,,peanut|milk,hidden,
@@ -687,3 +687,4 @@ baking cup,nonfood,,,
 paper cup,nonfood,,,
 drip pan,nonfood,,,
 ramekin,nonfood,,,
+almond extract,,tree_nuts?,possible,almond flavoring; often from bitter almond or apricot kernel

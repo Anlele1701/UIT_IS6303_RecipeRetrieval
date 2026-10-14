@@ -40,6 +40,8 @@ DESCRIPTORS = {
     "toasted", "roasted", "packed", "lightly", "firmly", "loosely", "beaten", "lean", "extra", "skinless",
     "boneless", "bone-in", "skin-on", "rinsed", "drained", "canned", "prepared", "organic", "ripe",
     "sifted", "unsifted", "unpeeled", "deveined", "shelled", "cut", "torn", "stemmed", "zested", "juiced",
+    "grilled", "broiled", "baked", "fried", "steamed", "poached", "braised", "boiled", "sauteed", "skinned",
+    "each", "fully",
 }
 QUANTITY_RE = re.compile(
     r"^\s*(?P<q>\d+(?:[.,]\d+)?(?:\s+\d+/\d+|/\d+)?(?:\s*(?:-|to|or)\s*\d+(?:[.,]\d+)?(?:\s+\d+/\d+|/\d+)?)?)\s*")

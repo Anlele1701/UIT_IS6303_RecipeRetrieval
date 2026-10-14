@@ -103,10 +103,10 @@ def bootstrap(conn) -> dict:
     for canonical, e in entries.items():
         t = rules.tags(canonical)
         if t.allergens:
-            hidden = any(k == "hidden" for k in t.allergens.values())
-            rows.append((not hidden, -e["lines"], canonical,
-                         "|".join(a for a in ALLERGENS if a in t.allergens),
-                         "hidden" if hidden else "direct", "|".join(t.rules), e["lines"]))
+            kind = ("possible" if "possible" in t.allergens.values()
+                    else "hidden" if "hidden" in t.allergens.values() else "direct")
+            shown = "|".join(a + ("?" if t.allergens[a] == "possible" else "") for a in ALLERGENS if a in t.allergens)
+            rows.append((kind == "direct", -e["lines"], canonical, shown, kind, "|".join(t.rules), e["lines"]))
     with open(LEXICON / "allergen_map.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
         w.writerow(["canonical", "allergens", "kind", "rules", "lines"])
@@ -192,7 +192,8 @@ def suggest(conn):
                 base = out.get(name, "")
                 proposed = "nonfood" if base == "nonfood" else (lex.match(base) or [f"NEW:{base}" if base else ""])[0]
                 t = rules.tags(proposed.removeprefix("NEW:")) if proposed and proposed != "nonfood" else None
-                tags = "|".join([*(t.allergens if t else []), *([f"group:{t.group}"] if t and t.group else [])])
+                tags = "|".join([*(a + ("?" if k == "possible" else "") for a, k in (t.allergens.items() if t else [])),
+                                 *([f"group:{t.group}"] if t and t.group else [])])
                 rows.append([name, n, base, proposed, tags, "", ""])
             print(f"{b + len(batch)}/{len(todo)}", flush=True)
     # Rows that would change tags or map to a known canonical first: those are the ones worth reviewing.

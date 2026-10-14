@@ -43,25 +43,29 @@ Kiểm các điểm sau:
 
 Sửa thẳng vào file, hoặc ghi chú vào cột `note`.
 
-## 3. `allergen_map.csv`: khoảng 100 dòng đầu, thành phần ẩn (khoảng 15 phút)
+## 3. `allergen_map.csv`: hai mức thẻ (đã áp dụng theo quyết định của Thy, 14/10)
 
-File đã được xếp sẵn theo thứ tự: các dòng `kind = hidden` (nguyên liệu không ghi rõ tên nhóm dị ứng) đứng đầu, rồi theo số dòng giảm dần. Với mỗi dòng, kiểm cột `allergens` có đúng và đủ không.
+Theo quyết định của Thy: **gắn thẻ "có thể chứa" nhưng không loại hẳn công thức khi chưa chắc**, vì người nấu có thể chủ động chọn nguyên liệu.
+- **Chắc chắn** (`kind` = `direct` / `hidden`): dùng để **lọc cứng**. Ví dụ: butter → milk, soy sauce → wheat + soy, worcestershire → fish, mayonnaise → egg.
+- **Có thể chứa** (dấu `?` trong cột `allergens`, `kind` = `possible`): **không lọc**, chỉ cảnh báo ở câu trả lời và trên thẻ công thức.
 
-Mình đã chọn **hướng bảo thủ** cho các ca sau. Cần Thy xác nhận, vì các ca này cũng ảnh hưởng hướng dẫn gán nhãn ở M2:
+Những mục đang ở mức "có thể chứa":
 
-| Nguyên liệu | Gắn | Lý do / cần Thy xác nhận |
-|---|---|---|
-| chocolate chips, semisweet/dark chocolate | milk, soy | Thường chứa bơ sữa và lecithin đậu nành |
-| margarine | milk | Nhiều loại có whey hoặc buttermilk |
-| peanut oil | peanut | FDA miễn cho dầu tinh luyện cao. Mình vẫn gắn để an toàn |
-| almond extract, amaretto | tree_nuts | Hương hạnh nhân |
-| granola | tree_nuts | Thường có hạnh nhân hoặc hồ đào |
-| red/green curry paste | crustacean_shellfish | Loại truyền thống có mắm tôm, tùy hãng |
-| kimchi | fish, crustacean_shellfish | Thường có nước mắm và tôm muối |
-| oyster sauce | wheat | Đa số hãng có bột mì. Hàu là nhuyễn thể, không thuộc 9 nhóm FDA |
-| refried beans, baked beans, canned chili | (không dị ứng) nhưng **không chay** | Loại đóng hộp truyền thống có mỡ heo, thịt xông khói hoặc thịt bò |
-| marshmallow, Jell-O | **không chay** | Có gelatin |
-| nhuyễn thể (clam, mussel, oyster, scallop, squid) | không có nhóm FDA nào | FDA chỉ tính giáp xác; EU có tính nhuyễn thể |
-| dừa | không phải tree_nuts | FDA 2025 |
+| Nguyên liệu | Có thể chứa |
+|---|---|
+| chocolate, chocolate chips, frosting | milk?, soy? |
+| margarine, buttery spread, Parkay | milk? |
+| peanut oil | peanut? |
+| almond extract, amaretto, granola, chestnut | tree_nuts? |
+| nuts / mixed nuts / trail mix | tree_nuts (chắc chắn) + peanut? |
+| red/green curry paste, tom yum paste | crustacean_shellfish? (+ fish?) |
+| kimchi | fish?, crustacean_shellfish? |
+| imitation crab | fish (chắc chắn) + crustacean_shellfish? |
+| cake mix, brownie mix, Oreo-type cookies | wheat (chắc chắn) + soy? |
+| oyster sauce, doubanjiang, injera | wheat? |
+| naan | wheat (chắc chắn) + milk? |
+| refried beans, baked beans | có thể không chay (meat?) |
 
-Sửa thẳng cột `allergens` trong file này **chỉ có tác dụng đến lần build tiếp theo**, vì file được sinh từ `rules.csv`. Vì vậy Thy chỉ cần **ghi nhận xét vào một cột mới `review`** (ví dụ `bỏ soy`, `thêm egg`, `ok`). Mình sẽ chuyển các nhận xét đó thành quy tắc trong `rules.csv`.
+**Dòng ghi "X-free"** (gluten-free, dairy-free, egg-free, nut-free, vegan…): dòng đó không mang nhóm X, cũng theo quyết định của Thy. Ngoại lệ: "non-dairy" và "lactose-free" **không** được tính là không có sữa, vì creamer non-dairy vẫn có casein, còn sữa lactose-free vẫn là sữa.
+
+Nếu Thy muốn chuyển mục nào giữa hai mức, chỉ cần nói tên nguyên liệu. Ngoài ra Thy có thể lướt khoảng 100 dòng đầu `allergen_map.csv` và ghi nhận xét vào cột mới `review`.

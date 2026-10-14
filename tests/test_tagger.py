@@ -2,7 +2,7 @@
 
 import pytest
 
-from lexicon.tagger import default_rules, tag_recipe
+from lexicon.tagger import IngredientTags, Line, default_rules, free_of, tag_recipe
 
 
 @pytest.mark.parametrize("canonical,allergens", [
@@ -56,34 +56,73 @@ def test_groups(canonical, group):
     assert default_rules().tags(canonical).group == group
 
 
-GROUPS = {"tofu": "", "rice": "", "chicken": "poultry", "butter": "dairy", "honey": "honey",
-          "worcestershire sauce": "fish", "margarine": ""}
-ALLERGENS = {"tofu": {"soy": "direct"}, "butter": {"milk": "direct"},
-             "worcestershire sauce": {"fish": "hidden"}, "margarine": {"milk": "hidden"}}
+def it(group="", allergens=None, possible_groups=()):
+    return IngredientTags(group, frozenset(possible_groups), allergens or {}, ())
+
+
+TAGS = {"tofu": it(allergens={"soy": "direct"}), "rice": it(), "chicken": it("poultry"),
+        "butter": it("dairy", {"milk": "direct"}), "honey": it("honey"),
+        "worcestershire sauce": it("fish", {"fish": "hidden"}), "margarine": it(allergens={"milk": "possible"}),
+        "chocolate chip": it(allergens={"milk": "possible", "soy": "possible"}),
+        "refried bean": it(possible_groups={"meat"}), "pasta": it(allergens={"wheat": "hidden"})}
 
 
 def test_vegan_recipe():
-    t = tag_recipe([["tofu"], ["rice"]], GROUPS, ALLERGENS)
+    t = tag_recipe([["tofu"], ["rice"]], TAGS)
     assert t.diet_flags == ("vegetarian", "vegan") and t.allergens == ("soy",) and not t.has_unknown
 
 
 def test_dairy_is_vegetarian_not_vegan():
-    assert tag_recipe([["butter"], ["rice"]], GROUPS, ALLERGENS).diet_flags == ("vegetarian",)
+    assert tag_recipe([["butter"], ["rice"]], TAGS).diet_flags == ("vegetarian",)
 
 
 def test_honey_is_vegetarian_not_vegan():
-    assert tag_recipe([["honey"]], GROUPS, ALLERGENS).diet_flags == ("vegetarian",)
+    assert tag_recipe([["honey"]], TAGS).diet_flags == ("vegetarian",)
 
 
 def test_meat_rules_out_both():
-    assert tag_recipe([["chicken"], ["rice"]], GROUPS, ALLERGENS).diet_flags == ()
+    assert tag_recipe([["chicken"], ["rice"]], TAGS).diet_flags == ()
 
 
-def test_an_allergen_tag_rules_out_a_diet_too():
-    assert tag_recipe([["worcestershire sauce"]], GROUPS, ALLERGENS).diet_flags == ()
-    assert tag_recipe([["margarine"]], GROUPS, ALLERGENS).diet_flags == ("vegetarian",)
+def test_a_definite_allergen_tag_rules_out_a_diet_too():
+    assert tag_recipe([["worcestershire sauce"]], TAGS).diet_flags == ()
+
+
+def test_possible_tags_are_flagged_not_filtered():
+    t = tag_recipe([["chocolate chip"], ["rice"]], TAGS)
+    assert t.allergens == () and t.allergens_may == ("milk", "soy")
+    assert t.diet_flags == ("vegetarian", "vegan") and t.diet_may == ("vegan",)
+
+
+def test_a_definite_tag_wins_over_a_possible_one():
+    t = tag_recipe([["chocolate chip"], ["butter"]], TAGS)
+    assert t.allergens == ("milk",) and t.allergens_may == ("soy",)
+
+
+def test_a_possible_group_keeps_the_flag_but_marks_it():
+    t = tag_recipe([["refried bean"]], TAGS)
+    assert t.diet_flags == ("vegetarian", "vegan") and t.diet_may == ("vegetarian", "vegan")
 
 
 def test_unknown_lines_are_counted_but_do_not_change_tags():
-    t = tag_recipe([["tofu"], [], []], GROUPS, ALLERGENS)
+    t = tag_recipe([["tofu"], [], []], TAGS)
     assert t.has_unknown and t.unknown_lines == 2 and t.diet_flags == ("vegetarian", "vegan")
+
+
+@pytest.mark.parametrize("line,free", [
+    ("8 ounces gluten-free elbow pasta", {"wheat"}),
+    ("1 cup dairy free chocolate chips", {"milk", "group:dairy"}),
+    ("½ cup eggless mayonnaise", {"egg", "group:egg"}),
+    ("2 tablespoons vegan butter", {"milk", "egg", "fish", "crustacean_shellfish", "group:dairy", "group:egg"}),
+    ("1 cup non-dairy creamer", set()),  # non-dairy creamers still contain casein
+    ("1 cup lactose-free milk", set()),  # still milk
+])
+def test_free_of(line, free):
+    assert free <= free_of(line) and (free or not free_of(line))
+
+
+def test_a_free_of_line_drops_only_its_own_tag():
+    t = tag_recipe([Line(("pasta",), free_of("gluten-free pasta")), Line(("butter",))], TAGS)
+    assert t.allergens == ("milk",) and t.free_of_lines == 1
+    t = tag_recipe([Line(("pasta",), free_of("gluten-free pasta")), Line(("pasta",))], TAGS)
+    assert t.allergens == ("wheat",)  # another line still has wheat

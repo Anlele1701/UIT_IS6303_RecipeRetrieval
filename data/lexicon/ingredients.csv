@@ -2,13 +2,13 @@ canonical,synonyms,group,origin,lines
 salt,table salt|fine salt|iodized salt|kosher salt|sea salt|coarse salt|coarse sea salt|fine sea salt|coarse kosher salt|pickling salt|salt for seasoning|ground sea salt|freshly ground sea salt|finely ground sea salt,,manual,14230
 butter,salted butter|unsalted butter|butter at|unsalted butter at|chilled butter|sweet butter|melted butter|cold butter|softened butter|frozen butter|cubed cold butter|cold unsalted butter|melted unsalted butter|softened unsalted butter|frozen unsalted butter|unsalted butter melted|cold salted butter|softened salted butter|butter at room temperature|unsalted butter at room temperature,dairy,manual,10239
 white sugar,sugar|granulated sugar|granulated white sugar|cane sugar|raw sugar|organic raw sugar|organic granulated sugar|raw cane sugar|organic cane sugar,,manual,9115
-garlic,garlic clove|bulb garlic|clove garlic|head garlic|minced garlic|chopped garlic|crushed garlic|minced fresh garlic|finely chopped garlic|peeled garlic clove|crushed garlic clove|unpeeled garlic clove|minced garlic clove|peeled whole garlic clove|bulb roasted garlic,,manual,8145
-egg,egg egg|egg at|large egg|whole egg|eggs beaten|beaten egg|extra large egg|cold egg|fresh egg|room temperature egg|egg large egg|egg at room temperature,egg,manual,7925
+garlic,garlic clove|bulb garlic|clove garlic|head garlic|minced garlic|chopped garlic|crushed garlic|minced fresh garlic|finely chopped garlic|peeled garlic clove|crushed garlic clove|each garlic clove|unpeeled garlic clove|minced garlic clove|bulb roasted garlic,,manual,8147
+egg,egg egg|egg at|large egg|whole egg|eggs beaten|beaten egg|extra large egg|each egg|cold egg|fresh egg|egg large egg|egg at room temperature,egg,manual,7933
 all purpose flour,flour|unbleached all purpose flour|plain flour|unbleached flour|all purpose flour for coating|white flour|sifted all purpose flour|unsifted all purpose flour|packed all purpose flour|organic all purpose flour|sifted flour|unsifted flour|sifted unbleached all purpose flour,,manual,7347
 olive oil,virgin olive oil|light olive oil|drizzle olive oil|pure olive oil|extra virgin olive oil|extra light olive oil,,manual,7162
 water,cold water|warm water|hot water|ice water|lukewarm water|boiling water|cold fresh water|room temperature water|ice cold water,,manual,7162
-onion,chopped onion|minced onion|diced onion|finely chopped onion|dried minced onion,,rule,6796
-black pepper,pepper|cracked black pepper|coarse black pepper|black peppercorn|ground pepper|coarse ground black pepper|ground black pepper|freshly ground black pepper|fresh ground black pepper|coarsely ground black pepper|finely ground black pepper|freshly ground pepper|fresh ground pepper|coarsely ground pepper|diced pepper|freshly cracked black pepper|fresh cracked black pepper|coarsely cracked black pepper|crushed black peppercorn|coarsely crushed black peppercorn|coarsely ground black peppercorn,,manual,6624
+onion,chopped onion|minced onion|diced onion|finely chopped onion|dried minced onion,,rule,6799
+black pepper,pepper|cracked black pepper|coarse black pepper|black peppercorn|ground pepper|coarse ground black pepper|ground black pepper|freshly ground black pepper|fresh ground black pepper|coarsely ground black pepper|finely ground black pepper|freshly ground pepper|fresh ground pepper|coarsely ground pepper|diced pepper|freshly cracked black pepper|fresh cracked black pepper|coarsely cracked black pepper|crushed black peppercorn|each whole black peppercorn|coarsely crushed black peppercorn|coarsely ground black peppercorn,,manual,6625
 vegetable oil,cooking oil|oil|canola oil|corn oil|sunflower seed oil|grapeseed oil|vegetable oil for deep frying|oil for deep frying|oil for frying,,manual,5042
 milk,whole milk|2 milk|1 milk|lukewarm milk|scalded milk|low fat milk|skim milk|nonfat milk|fat free milk|warm milk|cold milk|warm whole milk|cold whole milk|boiling milk|cold skim milk|warm skim milk|lukewarm whole milk|warm nonfat milk|scalded whole milk,dairy,manual,4546
 vanilla extract,pure vanilla extract|vanilla|spice island pure vanilla extract,,manual,4242
@@ -16,8 +16,8 @@ brown sugar,light brown sugar|dark brown sugar|packed brown sugar|firmly packed 
 lemon juice,squeezed lemon juice|squeeze lemon juice|fresh lemon juice|cold lemon juice|freshly squeezed lemon juice|fresh squeezed lemon juice|squeeze fresh lemon juice,,manual,2748
 baking powder,,,rule,2747
 cinnamon,ground cinnamon|freshly ground cinnamon,,rule,2691
-green onion,scallion|spring onion|green onion top|chopped green onion|sliced green onion|thinly sliced green onion|minced green onion|finely chopped green onion|chopped scallion|sliced scallion|thinly sliced scallion|finely chopped scallion|minced scallion|chopped spring onion|finely chopped spring onion|sliced green onion top|chopped green onion top|finely chopped green onion top|thinly sliced green onion top,,manual,2551
-tomato,diced tomato|crushed tomato|chopped tomato|ripe tomato|peeled tomato,,rule,2416
+green onion,scallion|spring onion|green onion top|chopped green onion|sliced green onion|thinly sliced green onion|minced green onion|finely chopped green onion|chopped scallion|sliced scallion|thinly sliced scallion|finely chopped scallion|minced scallion|chopped spring onion|finely chopped spring onion|sliced green onion top|chopped green onion top|finely chopped green onion top|thinly sliced green onion top,,manual,2561
+tomato,diced tomato|crushed tomato|chopped tomato|ripe tomato|peeled tomato,,rule,2417
 baking soda,,,rule,2404
 parsley,chopped fresh parsley|dried parsley|fresh parsley|minced fresh parsley|chopped parsley|finely chopped fresh parsley,,rule,2379
 garlic powder,,,rule,2376
@@ -25,7 +25,7 @@ parmesan cheese,parmigiano reggiano cheese|parmesan|parmigiano reggiano|shaved p
 mayonnaise,mayo|light mayonnaise|reduced fat mayonnaise|low fat mayonnaise|fat free mayonnaise|extra light mayonnaise,egg,manual,2216
 chicken broth,chicken stock|low sodium chicken broth|reduced sodium chicken broth|fat free chicken broth|low sodium chicken stock|condensed chicken broth|cold chicken broth|boiling chicken broth|organic chicken broth|roasted chicken broth|cold chicken stock|boiling chicken stock|warm chicken stock,poultry,manual,2044
 cheddar cheese,sharp cheddar cheese|mild cheddar cheese|white cheddar cheese|sharp white cheddar cheese|cheddar|extra sharp cheddar cheese|shredded cheddar cheese|grated cheddar cheese|finely shredded cheddar cheese|cubed cheddar cheese|diced cheddar cheese|shredded sharp cheddar cheese|shredded extra sharp cheddar cheese|grated sharp cheddar cheese|diced sharp cheddar cheese|shredded white cheddar cheese|grated white cheddar cheese|freshly shredded white cheddar cheese|shredded mild cheddar cheese|finely shredded mild cheddar cheese|mild shredded cheddar cheese|freshly grated mild cheddar cheese|shredded sharp white cheddar cheese|grated sharp white cheddar cheese|shredded extra sharp white cheddar cheese,dairy,manual,2032
-carrot,shredded carrot|chopped carrot|grated carrot|diced carrot|sliced carrot,,rule,2024
+carrot,shredded carrot|chopped carrot|grated carrot|diced carrot|sliced carrot,,rule,2025
 cilantro,cilantro leaf|coriander leaf|fresh coriander|chinese parsley|chopped fresh cilantro|fresh cilantro|chopped cilantro|dried cilantro|minced fresh cilantro|fresh cilantro leaf|chopped cilantro leaf|chopped fresh cilantro leaf|packed cilantro leaf|minced fresh cilantro leaf,,manual,1894
 cream cheese,cold cream cheese|softened cream cheese,dairy,rule,1891
 celery,chopped celery|diced celery|finely chopped celery|sliced celery|minced celery,,rule,1880
@@ -33,45 +33,45 @@ cayenne pepper,ground cayenne pepper|diced fresh cayenne pepper|fresh cayenne pe
 soy sauce,low sodium soy sauce|reduced sodium soy sauce|light soy sauce|dark soy sauce|shoyu,,manual,1835
 ginger,ginger root|fresh ginger|ground ginger|grated fresh ginger|minced fresh ginger|freshly grated ginger|minced fresh ginger root|fresh ginger root|grated fresh ginger root|chopped fresh ginger root|grated ginger root,,manual,1652
 sour cream,,dairy,rule,1635
-chicken breast,skinless boneless chicken breast half|skinless boneless chicken breast|boneless skinless chicken breast|cooked chicken breast|boneless skinless chicken breast half,poultry,rule,1615
+chicken breast,skinless boneless chicken breast half|skinless boneless chicken breast|boneless skinless chicken breast|cooked chicken breast|boneless skinless chicken breast half,poultry,rule,1634
 oregano,dried oregano|chopped fresh oregano|fresh oregano|ground oregano|minced fresh oregano,,rule,1546
 cumin,ground cumin|roasted ground cumin|fresh ground cumin,,rule,1541
 basil,dried basil|chopped fresh basil|fresh basil|minced fresh basil|finely chopped fresh basil,,rule,1484
 heavy cream,heavy whipping cream|whipping cream|double cream|cold heavy cream|cold heavy whipping cream|cold whipping cream,dairy,manual,1475
 green bell pepper,chopped green bell pepper|diced green bell pepper|finely chopped green bell pepper|minced green bell pepper|sliced green bell pepper,,rule,1444
-red bell pepper,chopped red bell pepper|diced red bell pepper|roasted red bell pepper|finely chopped red bell pepper|minced red bell pepper,,rule,1400
+red bell pepper,chopped red bell pepper|diced red bell pepper|roasted red bell pepper|finely chopped red bell pepper|minced red bell pepper,,rule,1401
 paprika,ground paprika,,rule,1395
 honey,raw honey,honey,rule,1395
 confectioners sugar,confectioner sugar|powdered sugar|icing sugar|confectioners' sugar|sifted confectioner sugar|loosely packed confectioner sugar|unsifted confectioner sugar|sifted powdered sugar|unsifted powdered sugar,,manual,1386
 red onion,diced red onion|chopped red onion|finely chopped red onion|minced red onion|thinly sliced red onion,,rule,1359
 beef,ground beef|lean ground beef|extra lean ground beef|dried beef|lean beef,meat,rule,1304
-lemon,fresh lemon|lemon sliced|organic lemon,,rule,1292
-shrimp,uncooked medium shrimp|cooked shrimp|fresh shrimp|raw shrimp|uncooked shrimp,shellfish,rule,1274
+lemon,fresh lemon|lemon sliced|each lemon|organic lemon,,rule,1293
+shrimp,uncooked medium shrimp|cooked shrimp|fresh shrimp|raw shrimp|uncooked shrimp,shellfish,rule,1279
 worcestershire sauce,,fish,rule,1248
-bacon,thick bacon|thick slice bacon|bacon slice|bacon strip|smoked bacon|crumbled bacon|cooked bacon|sliced bacon|thinly sliced bacon|chopped cooked bacon|chopped raw bacon|thick cut bacon|thick sliced bacon|sliced thick cut bacon|cooked thick bacon|lean thick cut bacon|crumbled cooked bacon|cooked crumbled bacon|cooked bacon strip|thick slice cooked bacon|chopped smoked bacon,meat,manual,1218
+bacon,thick bacon|thick slice bacon|bacon slice|bacon strip|smoked bacon|crumbled bacon|cooked bacon|sliced bacon|thinly sliced bacon|chopped cooked bacon|chopped raw bacon|thick cut bacon|thick sliced bacon|sliced thick cut bacon|cooked thick bacon|lean thick cut bacon|crumbled cooked bacon|cooked crumbled bacon|cooked bacon strip|thick slice cooked bacon|chopped smoked bacon,meat,manual,1220
 cooking spray,nonstick cooking spray|serving cooking spray|serving nonstick cooking spray|olive oil cooking spray|avocado oil cooking spray,,manual,1144
 thyme,dried thyme|chopped fresh thyme|fresh thyme|ground thyme|minced fresh thyme,,rule,1128
 red pepper flake,crushed red pepper flake|crushed red pepper|red chili flake|dried red pepper flake|crushed dried red pepper flake,,manual,1124
 nutmeg,ground nutmeg|freshly grated nutmeg|freshly ground nutmeg|grated nutmeg,,rule,1071
 cornstarch,sifted cornstarch,,rule,1053
-mushroom,sliced fresh mushroom|fresh mushroom|sliced mushroom|chopped fresh mushroom|fresh sliced mushroom,,rule,1030
+mushroom,sliced fresh mushroom|fresh mushroom|sliced mushroom|chopped fresh mushroom|fresh sliced mushroom,,rule,1032
 yeast,active yeast|active dry yeast|instant yeast|rapid rise yeast|bread machine yeast|cake compressed yeast|dry active yeast|instant dry yeast|dry instant yeast|dry yeast|fresh yeast|cake compressed fresh yeast,,manual,1028
 chili powder,ground chili powder,,rule,1016
 walnut,chopped walnut|finely chopped walnut|walnut half|coarsely chopped walnut|chopped toasted walnut,,rule,1011
-potato,mashed potato|diced potato|cubed potato|sliced potato|thinly sliced potato,,rule,996
+potato,mashed potato|diced potato|cubed potato|sliced potato|thinly sliced potato,,rule,1002
 bread crumb,dry bread crumb|plain bread crumb|fine bread crumb|soft bread crumb|seasoned bread crumb|italian seasoned bread crumb|italian style bread crumb|italian bread crumb|fresh bread crumb|dried bread crumb|italian seasoned dry bread crumb|seasoned dry bread crumb|dry seasoned bread crumb|plain dry bread crumb|plain dried bread crumb|fine dry bread crumb|fine dried bread crumb|italian style dry bread crumb|italian style dried bread crumb|dry italian bread crumb,,manual,978
 lime juice,squeezed lime juice|key lime juice|fresh lime juice|freshly squeezed lime juice|fresh squeezed lime juice,,manual,945
-jalapeno pepper,fresh jalapeno pepper|diced jalapeno pepper|minced jalapeno pepper|chopped jalapeno pepper|sliced jalapeno pepper,,rule,914
+jalapeno pepper,fresh jalapeno pepper|diced jalapeno pepper|minced jalapeno pepper|chopped jalapeno pepper|sliced jalapeno pepper,,rule,915
 mozzarella cheese,mozzarella|part skim mozzarella cheese|fresh mozzarella|shredded mozzarella cheese|fresh mozzarella cheese|grated mozzarella cheese|sliced mozzarella cheese|finely shredded mozzarella cheese|shredded part skim mozzarella cheese|grated part skim mozzarella cheese|chopped fresh mozzarella,dairy,manual,909
 onion powder,,,rule,884
 pecan,chopped pecan|pecan half|finely chopped pecan|chopped toasted pecan|coarsely chopped pecan,,rule,839
 white wine,dry white wine|medium dry white wine,,rule,817
-bay leaf,crushed bay leaf|dried bay leaf|ground bay leaf|fresh bay leaf,,rule,814
+bay leaf,crushed bay leaf|dried bay leaf|ground bay leaf|fresh bay leaf|each bay leaf,,rule,815
 rolled oat,old fashioned oat|old fashioned rolled oat|quick cooking oat|quick oat|quick cooking rolled oat|oat|steel oat|uncooked rolled oat|uncooked quick cooking oat|ground oat|uncooked old fashioned oat|steel cut oat|uncooked quick oat,,manual,788
+lime,fresh lime|each lime|peeled lime|dried whole lime,,rule,764
 chocolate chip,semisweet chocolate chip|semi sweet chocolate chip|miniature semisweet chocolate chip|mini chocolate chip|mini semi sweet chocolate chip|miniature chocolate chip,,manual,762
-lime,fresh lime|peeled lime|dried whole lime,,rule,762
-banana,very banana|overripe banana|ripe banana|mashed banana|mashed ripe banana|frozen banana|sliced banana|very ripe banana|mashed very ripe banana|mashed overripe banana,,manual,738
-avocado,ripe avocado|diced avocado|chopped avocado|sliced avocado|mashed avocado,,rule,737
+banana,very banana|overripe banana|ripe banana|mashed banana|mashed ripe banana|frozen banana|sliced banana|very ripe banana|mashed very ripe banana|mashed overripe banana,,manual,741
+avocado,ripe avocado|diced avocado|chopped avocado|sliced avocado|mashed avocado,,rule,738
 dijon mustard,prepared dijon mustard,,rule,726
 sesame oil,toasted sesame oil,,rule,695
 ketchup,,,rule,679
@@ -81,22 +81,22 @@ rosemary,dried rosemary|chopped fresh rosemary|fresh rosemary|minced fresh rosem
 hot pepper sauce,,,rule,629
 buttermilk,cold buttermilk|warm buttermilk,dairy,rule,622
 raisin,chopped raisin,,rule,621
-zucchini,grated zucchini|shredded zucchini|chopped zucchini|sliced zucchini|diced zucchini,,rule,615
+zucchini,grated zucchini|shredded zucchini|chopped zucchini|sliced zucchini|diced zucchini,,rule,616
 cucumber,diced cucumber|chopped cucumber|sliced cucumber|thinly sliced cucumber|finely chopped cucumber,,rule,614
 tomato sauce,canned tomato sauce|prepared tomato sauce,,rule,607
 balsamic vinegar,,,rule,577
 garlic salt,,,rule,570
 lemon zest,grated lemon zest|finely grated lemon zest|freshly grated lemon zest|fresh lemon zest|minced lemon zest,,rule,566
-egg yolk,beaten egg yolk,egg,rule,563
+egg yolk,beaten egg yolk|each egg yolk,egg,rule,564
 egg white,fresh egg white|beaten egg white|extra large egg white,egg,rule,551
 tomato paste,canned tomato paste,,rule,548
 unsweetened cocoa powder,,,rule,537
-chicken,ground chicken|cubed cooked chicken|shredded cooked chicken|chopped cooked chicken|cooked chicken,poultry,rule,526
+chicken,ground chicken|cubed cooked chicken|shredded cooked chicken|chopped cooked chicken|cooked chicken,poultry,rule,532
 strawberry,fresh strawberry|sliced fresh strawberry|frozen strawberry|chopped fresh strawberry|sliced strawberry,,rule,510
 mustard,dry mustard|prepared mustard|ground mustard|ground dry mustard|dried mustard,,rule,509
 yellow onion,chopped yellow onion|diced yellow onion|minced yellow onion|finely chopped yellow onion|grated yellow onion,,rule,503
 clove,ground clove,,rule,503
-shallot,minced shallot|chopped shallot|finely chopped shallot|sliced shallot|thinly sliced shallot,,rule,497
+shallot,minced shallot|chopped shallot|finely chopped shallot|sliced shallot|thinly sliced shallot,,rule,502
 shortening,melted shortening|organic shortening|cold shortening,,rule,495
 wheat flour,whole wheat flour|sifted whole wheat flour,,rule,483
 red wine vinegar,,,rule,479
@@ -110,8 +110,8 @@ almond,sliced almond|chopped almond|ground almond|toasted sliced almond|toasted 
 sesame seed,toasted sesame seed|raw sesame seed|crushed toasted sesame seed,,rule,435
 apple,chopped apple|diced apple|chopped peeled apple|thinly sliced apple|sliced apple,,rule,425
 orange juice,fresh orange juice,,rule,424
+cabbage,shredded cabbage|chopped cabbage|finely shredded cabbage|finely chopped cabbage|sliced cabbage,,rule,416
 dill,chopped fresh dill|fresh dill|dried dill|finely chopped fresh dill|minced fresh dill,,rule,415
-cabbage,shredded cabbage|chopped cabbage|finely shredded cabbage|finely chopped cabbage|sliced cabbage,,rule,415
 curry powder,ground curry powder,,rule,405
 blueberry,fresh blueberry|frozen blueberry|dried blueberry|chopped fresh blueberry|crushed blueberry,,rule,384
 crumbled feta cheese,,dairy,rule,383
@@ -121,19 +121,20 @@ white pepper,ground white pepper|freshly ground white pepper,,rule,377
 chive,chopped fresh chive|dried chive|minced fresh chive|fresh chive|chopped chive,,rule,373
 sweet onion,chopped sweet onion|diced sweet onion|finely chopped sweet onion|minced sweet onion|finely diced sweet onion,,rule,368
 peanut butter,,,rule,360
+salmon fillet,skinless boneless salmon fillet|boneless salmon fillet|skinless salmon fillet|boneless skinless salmon fillet|fresh salmon fillet,fish,rule,357
 chickpea,garbanzo bean|chick pea|dry garbanzo bean|canned garbanzo bean|cooked garbanzo bean|drained garbanzo bean|canned chickpea|cooked chickpea|dried chickpea|roasted chickpea|drained canned chickpea,,manual,355
-salmon fillet,skinless boneless salmon fillet|boneless salmon fillet|skinless salmon fillet|boneless skinless salmon fillet|fresh salmon fillet,fish,rule,355
 apple cider vinegar,raw apple cider vinegar,,rule,342
 coriander,ground coriander|chopped fresh coriander|ground toasted coriander,,rule,341
 roma tomato,chopped roma tomato|diced roma tomato|canned roma tomato|grated peeled roma tomato|sliced roma tomato,,rule,339
 vegetable broth,vegetable stock|boiling vegetable broth|organic vegetable broth|warm vegetable broth|boiling vegetable stock,,manual,338
 almond extract,,,rule,337
+flour tortilla,each flour tortilla,,rule,336
+cherry tomato,halved cherry tomato|sliced cherry tomato|cherry tomato half|quartered cherry tomato|chopped cherry tomato,,rule,334
 swiss cheese,shredded swiss cheese|sliced swiss cheese|grated swiss cheese|thinly sliced swiss cheese|diced swiss cheese,dairy,rule,332
-flour tortilla,,,rule,332
 pineapple,crushed pineapple|fresh pineapple|chopped fresh pineapple|diced fresh pineapple|diced pineapple,,rule,331
-cherry tomato,halved cherry tomato|sliced cherry tomato|cherry tomato half|quartered cherry tomato|chopped cherry tomato,,rule,331
 rice vinegar,,,rule,330
-hard boiled egg,hard egg|hard cooked egg|sliced hard boiled egg,egg,manual,328
+hard boiled egg,hard egg|hard cooked egg|each hard cooked egg|sliced hard boiled egg,egg,manual,329
+ham,cooked ham|diced cooked ham|diced ham|cubed fully cooked ham|cubed cooked ham,meat,rule,326
 evaporated milk,canned evaporated milk|cold evaporated milk,dairy,rule,320
 white onion,chopped white onion|minced white onion|diced white onion|finely chopped white onion|sliced white onion,,rule,317
 seasoned salt,,,rule,314
@@ -149,26 +150,25 @@ corn,frozen corn|fresh corn|canned corn|freshly cooked corn|frozen roasted corn,
 allspice,ground allspice,,rule,286
 hot sauce,,,rule,281
 green bean,fresh green bean|frozen green bean|cut green bean|frozen cut green bean|chopped fresh green bean,,rule,277
-ham,cooked ham|diced cooked ham|diced ham|cubed cooked ham|chopped ham,meat,rule,277
-white rice,uncooked white rice|cooked white rice|cold cooked white rice|rinsed uncooked white rice,,rule,274
+white rice,uncooked white rice|cooked white rice|cold cooked white rice|steamed white rice|rinsed uncooked white rice,,rule,276
 condensed cream of mushroom soup,,dairy,rule,273
 sweet potato,mashed sweet potato|cooked mashed sweet potato|mashed cooked sweet potato|shredded sweet potato|mashed canned sweet potato,,rule,272
-red pepper,roasted red pepper|ground red pepper|diced roasted red pepper|chopped roasted red pepper,,rule,269
+red pepper,roasted red pepper|ground red pepper|diced roasted red pepper|chopped roasted red pepper,,rule,270
 maple syrup,,,rule,269
 cornmeal,finely ground cornmeal|coarsely ground cornmeal,,rule,267
 fish sauce,,fish,rule,266
 turkey,ground turkey|lean ground turkey|chopped cooked turkey|diced cooked turkey|cooked turkey,poultry,rule,263
 caper,drained caper|chopped caper|minced caper|chopped rinsed caper|finely chopped caper,,rule,263
+chicken thigh,skinless boneless chicken thigh|boneless skinless chicken thigh|boneless chicken thigh|skinless chicken thigh|grilled skinless boneless chicken thigh,poultry,rule,260
 cider vinegar,,,rule,257
-chicken thigh,skinless boneless chicken thigh|boneless skinless chicken thigh|boneless chicken thigh|skinless chicken thigh|cooked skinless boneless chicken thigh,poultry,rule,256
 whipped topping,frozen whipped topping|thawed whipped topping|thawed frozen whipped topping,dairy,rule,247
 pea,frozen pea|fresh pea|drained canned pea|shelled fresh pea|dried whole pea,,rule,247
 sweetened condensed milk,canned sweetened condensed milk,dairy,rule,247
 lettuce,shredded lettuce|chopped lettuce|finely chopped lettuce|torn lettuce|fresh lettuce,,rule,244
 mint,chopped fresh mint|fresh mint|dried mint|finely chopped fresh mint|crushed dried mint|minced fresh mint,,rule,244
+red potato,unpeeled red potato|cubed red potato|diced red potato|chopped red potato|red boiling potato,,rule,240
 cauliflower,chopped cauliflower|frozen cauliflower|shredded cauliflower|fresh cauliflower|finely chopped cauliflower,,rule,240
 panko bread crumb,,,rule,240
-red potato,unpeeled red potato|cubed red potato|diced red potato|chopped red potato|red boiling potato,,rule,239
 crabmeat,cooked crabmeat|fresh crabmeat|canned crabmeat|minced crabmeat|diced cooked crabmeat,shellfish,rule,238
 orange zest,grated orange zest|finely grated orange zest|freshly grated orange zest|fresh orange zest|grated fresh orange zest,,rule,238
 white wine vinegar,,,rule,238
@@ -180,20 +180,20 @@ mango,diced mango|ripe mango|diced fresh mango|chopped mango|fresh mango,,rule,2
 green chile pepper,chopped green chile pepper|diced green chile pepper|canned green chile pepper|finely chopped green chile pepper|fresh green chile pepper,,rule,224
 flaked coconut,finely flaked coconut|toasted flaked coconut,,rule,223
 taco seasoning mix,dry taco seasoning mix,,rule,222
+yellow bell pepper,chopped yellow bell pepper|diced yellow bell pepper|sliced yellow bell pepper|finely chopped yellow bell pepper|thinly sliced yellow bell pepper,,rule,222
 molasses,,,rule,222
-yellow bell pepper,chopped yellow bell pepper|diced yellow bell pepper|sliced yellow bell pepper|finely chopped yellow bell pepper|thinly sliced yellow bell pepper,,rule,221
 coconut oil,melted coconut oil,,rule,219
+salmon,cooked salmon|canned salmon|skinless boneless salmon|fresh salmon|skinless salmon,fish,rule,216
 cajun seasoning,,,rule,214
-salmon,cooked salmon|canned salmon|skinless boneless salmon|fresh salmon|skinless salmon,fish,rule,213
 kidney bean,dry kidney bean|canned kidney bean|dried kidney bean,,rule,212
 quinoa,uncooked quinoa|cooked quinoa|dry quinoa|cold cooked quinoa|ground quinoa,,rule,211
 asparagus,fresh asparagus|chopped fresh asparagus|chopped asparagus|diced asparagus|trimmed asparagus,,rule,208
-orange,organic orange,,rule,203
+orange,organic orange|each orange,,rule,204
 elbow macaroni,uncooked elbow macaroni|cooked elbow macaroni|dry elbow macaroni|dried elbow macaroni|dry small elbow macaroni,,rule,203
 pumpkin puree,canned pumpkin puree,,rule,203
-broccoli floret,fresh broccoli floret|frozen broccoli floret|chopped broccoli floret|finely chopped broccoli floret|coarsely chopped broccoli floret,,rule,201
+broccoli floret,fresh broccoli floret|frozen broccoli floret|chopped broccoli floret|finely chopped broccoli floret|coarsely chopped broccoli floret,,rule,202
 smoked paprika,ground smoked paprika,,rule,197
-corn tortilla,warm corn tortilla,,rule,194
+corn tortilla,each corn tortilla|warm corn tortilla,,rule,197
 russet potato,diced russet potato|cubed russet potato|unpeeled russet potato,,rule,192
 sage,dried sage|chopped fresh sage|ground sage|fresh sage|ground dried sage,,rule,192
 seafood seasoning,,,rule,191
@@ -202,14 +202,14 @@ vinegar,,,rule,191
 ricotta cheese,fresh ricotta cheese,dairy,rule,190
 chicken bouillon,,poultry,rule,189
 barbeque sauce,,,rule,188
+leek,chopped leek|sliced leek|thinly sliced leek|diced leek|coarsely chopped leek,,rule,180
 spaghetti,uncooked spaghetti|dry spaghetti|cooked spaghetti|dried spaghetti|cold cooked spaghetti,,rule,179
-leek,chopped leek|sliced leek|thinly sliced leek|diced leek|coarsely chopped leek,,rule,179
 self rising flour,sifted self rising flour,,rule,177
 condensed cream of chicken soup,,poultry,rule,177
 romaine lettuce,chopped romaine lettuce|torn romaine lettuce|shredded romaine lettuce|romaine lettuce rinsed|thinly sliced romaine lettuce,,rule,174
-peanut,chopped peanut|dry roasted peanut|roasted peanut|chopped roasted peanut|raw peanut,,rule,171
+peanut,chopped peanut|dry roasted peanut|roasted peanut|chopped roasted peanut|raw peanut,,rule,172
+pork,ground pork|lean ground pork|boneless pork|shredded cooked pork|lean boneless pork|cubed cooked pork,meat,rule,171
 eggplant,cubed eggplant|peeled cubed eggplant|diced eggplant|finely diced eggplant,,rule,170
-pork,ground pork|lean ground pork|boneless pork|shredded cooked pork|lean boneless pork|cubed cooked pork,meat,rule,170
 applesauce,,,rule,168
 bread,sliced bread|dry bread|lightly toasted bread|cubed bread,,rule,166
 mustard powder,dry mustard powder|ground mustard powder|dried mustard powder,,rule,165
@@ -230,32 +230,32 @@ slivered almond,toasted slivered almond|chopped slivered almond|slivered toasted
 coconut,shredded coconut|grated fresh coconut|grated coconut|toasted coconut|fresh shredded coconut,,rule,153
 liquid smoke flavoring,,,rule,151
 provolone cheese,sliced provolone cheese|shredded provolone cheese|thinly sliced provolone cheese|grated provolone cheese|freshly shredded provolone cheese,dairy,rule,150
+tilapia fillet,fresh tilapia fillet|frozen tilapia fillet|each tilapia fillet|skinless tilapia fillet,fish,rule,149
 water chestnut,sliced water chestnut|chopped water chestnut|finely chopped water chestnut|canned water chestnut|diced water chestnut,,rule,148
 penne pasta,dry penne pasta|uncooked penne pasta|dried penne pasta|cooked penne pasta,,rule,148
 cocoa powder,sifted cocoa powder|raw cocoa powder,,rule,148
-tilapia fillet,fresh tilapia fillet|frozen tilapia fillet|skinless tilapia fillet,fish,rule,146
+hamburger bun,each hamburger bun,,rule,147
 celery salt,,,rule,146
 artichoke heart,quartered artichoke heart|canned artichoke heart|frozen artichoke heart|chopped artichoke heart|frozen cooked artichoke heart,,rule,145
-hamburger bun,,,rule,144
+kalamata olive,pitted kalamata olive|chopped kalamata olive|sliced kalamata olive|chopped pitted kalamata olive|sliced pitted kalamata olive,,rule,142
 tomato with green chile pepper,diced tomato with green chile pepper,,rule,141
 cardamom,ground cardamom|freshly ground cardamom,,rule,141
-kalamata olive,pitted kalamata olive|chopped kalamata olive|sliced kalamata olive|chopped pitted kalamata olive|sliced pitted kalamata olive,,rule,140
 marjoram,dried marjoram|chopped fresh marjoram|ground marjoram|fresh marjoram|ground dried marjoram,,rule,140
 onion soup mix,dry onion soup mix,,rule,140
 corn kernel,frozen corn kernel|fresh corn kernel|cooked corn kernel|drained canned corn kernel,,rule,138
 poppy seed,finely ground poppy seed,,rule,138
+red chile pepper,fresh red chile pepper|dried red chile pepper|ground red chile pepper|chopped fresh red chile pepper|chopped red chile pepper,,rule,136
 ice,crushed ice|dry ice,,rule,136
-red chile pepper,fresh red chile pepper|dried red chile pepper|ground red chile pepper|chopped fresh red chile pepper|chopped red chile pepper,,rule,135
 cake flour,sifted cake flour|unsifted cake flour,,rule,135
 ice cube,,,rule,134
 beer,warm beer|cold beer|room temperature beer,,rule,134
+chicken wing,frozen chicken wing|each chicken wing|cooked chicken wing|skinless chicken wing,poultry,rule,134
 peach,fresh peach|sliced peach|ripe peach|sliced fresh peach|diced canned peach,,rule,134
-chicken wing,frozen chicken wing|cooked chicken wing|skinless chicken wing,poultry,rule,133
 white bread,sliced white bread|toasted white bread|dry white bread|cubed white bread|thinly sliced white bread,,rule,133
 green pea,frozen green pea|fresh green pea|fresh shelled green pea|canned green pea,,rule,133
 sriracha sauce,,,rule,133
+pork chop,boneless pork chop|each boneless pork chop|lean pork chop,meat,rule,132
 garam masala,,,rule,132
-pork chop,boneless pork chop|lean pork chop,meat,rule,130
 egg noodle,uncooked egg noodle|cooked egg noodle|dry egg noodle|frozen egg noodle|dried egg noodle,egg,rule,130
 long grain white rice,uncooked long grain white rice|cooked long grain white rice,,rule,128
 stewed tomato,chopped stewed tomato,,rule,128
@@ -268,7 +268,7 @@ grape tomato,halved grape tomato|quartered grape tomato|sliced grape tomato|chop
 pinto bean,dried pinto bean|dry pinto bean|cooked pinto bean|canned pinto bean,,rule,122
 lemon extract,,,rule,122
 raspberry,fresh raspberry|frozen raspberry|frozen organic raspberry|mashed raspberry,,rule,121
-rice,cooked rice|cold cooked rice|uncooked rice|warm cooked rice|prepared rice,,rule,120
+rice,cooked rice|cold cooked rice|uncooked rice|warm cooked rice|frozen fried rice,,rule,121
 italian style salad dressing,,,rule,119
 graham cracker crumb,finely ground graham cracker crumb|finely crushed graham cracker crumb,,rule,119
 cinnamon stick,,,rule,119
@@ -283,12 +283,12 @@ cod fillet,boneless cod fillet|frozen cod fillet|skinless cod fillet|fresh cod f
 ranch dressing mix,dry ranch dressing mix,,rule,115
 cottage cheese,dry cottage cheese|drained cottage cheese,dairy,rule,115
 crumbled blue cheese,coarsely crumbled blue cheese,dairy,rule,115
+green olive,pitted green olive|sliced green olive|chopped green olive|chopped pitted green olive|coarsely chopped pitted green olive,,rule,114
 firm tofu,extra firm tofu|diced firm tofu|medium firm tofu|cubed firm tofu|frozen extra firm tofu,,rule,114
 baby carrot,chopped baby carrot|peeled baby carrot|halved baby carrot|sliced baby carrot|fresh baby carrot,,rule,113
 pineapple juice,fresh pineapple juice|canned pineapple juice,,rule,113
 date,chopped date|pitted date|chopped pitted date|dried pitted date|pitted chopped date,,rule,113
 imitation crabmeat,shredded imitation crabmeat|chopped imitation crabmeat,fish,rule,112
-green olive,pitted green olive|sliced green olive|chopped green olive|chopped pitted green olive|coarsely chopped pitted green olive,,rule,112
 french bread,cubed french bread|sliced french bread|dry french bread|toasted french bread,,rule,111
 sweet pickle relish,,,rule,111
 rice wine vinegar,,,rule,111
@@ -309,11 +309,11 @@ yukon gold potato,cubed yukon gold potato|diced yukon gold potato|peeled diced y
 unsweetened applesauce,,,rule,105
 mixed vegetable,frozen mixed vegetable|mixed frozen vegetable|mixed fresh vegetable,,rule,104
 american cheese,shredded american cheese|thinly sliced american cheese|sliced american cheese,dairy,rule,104
+pork tenderloin,lean pork tenderloin|boneless pork tenderloin|fully trimmed pork tenderloin,meat,rule,103
 baby spinach,fresh baby spinach|chopped baby spinach|packed fresh baby spinach|thinly sliced baby spinach|torn baby spinach,,rule,103
-pork tenderloin,lean pork tenderloin|boneless pork tenderloin,meat,rule,102
+brown rice,uncooked brown rice|cooked brown rice|steamed brown rice,,rule,103
 bell pepper,chopped bell pepper|diced bell pepper|sliced bell pepper|frozen bell pepper|minced bell pepper,,rule,102
 butternut squash,cubed butternut squash|mashed cooked butternut squash|butternut squash peeled|diced peeled butternut squash|frozen cubed butternut squash,,rule,102
-brown rice,uncooked brown rice|cooked brown rice,,rule,102
 beet,sliced beet|fresh small beet|diced peeled beet|cooked beet|shredded peeled beet,,rule,102
 english cucumber,diced english cucumber|cubed english cucumber|chopped english cucumber|sliced english cucumber|thinly sliced english cucumber,,rule,99
 almond flour,finely ground almond flour,,rule,99
@@ -328,16 +328,17 @@ iceberg lettuce,shredded iceberg lettuce|chopped iceberg lettuce|torn iceberg le
 romano cheese,grated romano cheese|freshly grated romano cheese|shredded romano cheese|finely shredded romano cheese|finely grated fresh romano cheese,dairy,rule,96
 fennel seed,ground fennel seed|crushed fennel seed,,rule,95
 toothpick,,nonfood,rule,95
+tortilla chip,crushed tortilla chip|baked tortilla chip|crushed baked tortilla chip|coarsely crushed tortilla chip|finely crushed tortilla chip,,rule,94
 creamy peanut butter,,,rule,94
 marinara sauce,prepared marinara sauce,,rule,93
 smoked salmon,sliced smoked salmon|diced smoked salmon|chopped smoked salmon|thinly sliced smoked salmon|cold smoked salmon,fish,rule,92
 chia seed,ground chia seed,,rule,92
 mexican cheese blend,shredded mexican cheese blend,dairy,rule,91
-tortilla chip,crushed tortilla chip|coarsely crushed tortilla chip|finely crushed tortilla chip,,rule,91
 lentil,dry lentil|dried lentil|cooked lentil,,rule,91
 brussels sprout,frozen brussels sprout|fresh brussels sprout|sliced brussels sprout|halved brussels sprout|trimmed brussels sprout,,rule,91
 angel hair pasta,uncooked angel hair pasta|cooked angel hair pasta,,rule,91
 mirin,,,rule,90
+pie crust,recipe pastry for a 9 inch double crust pie|recipe pastry for a 9 inch single crust pie|pastry for a 9 inch pie crust|baked pie crust|frozen pie crust|prepared pie crust|frozen prepared pie crust,,manual,89
 miniature marshmallow,,gelatin,rule,89
 yellow squash,sliced yellow squash|chopped yellow squash|grated yellow squash|thinly sliced yellow squash|diced yellow squash,,rule,89
 almond milk,,,rule,89
@@ -353,15 +354,14 @@ spinach leaf,fresh spinach leaf|packed fresh spinach leaf|chopped fresh spinach 
 rib celery,,,rule,86
 orange bell pepper,diced orange bell pepper|chopped orange bell pepper|sliced orange bell pepper|thinly sliced orange bell pepper|finely chopped orange bell pepper,,rule,85
 maraschino cherry,chopped maraschino cherry|finely chopped maraschino cherry,,rule,85
+wonton wrapper,won ton wrapper|won ton skin|wonton skin|each wonton wrapper,egg,manual,84
 cashew,raw cashew|chopped cashew|cashew half|roasted cashew|coarsely chopped cashew,,rule,84
 pumpkin,canned pumpkin|fresh pumpkin|cubed fresh pumpkin|peeled cubed pumpkin|mashed cooked pumpkin,,rule,84
 dijon style mustard,prepared dijon style mustard|dijon style prepared mustard,,rule,84
 hoisin sauce,,,rule,83
-refried bean,,meat,rule,83
+refried bean,,,rule,83
 white chocolate chip,,,rule,83
-wonton wrapper,won ton wrapper|won ton skin|wonton skin,egg,manual,82
 pepperoni,sliced pepperoni|diced pepperoni|chopped pepperoni|thinly sliced pepperoni|minced pepperoni,meat,rule,82
-pie crust,recipe pastry for a 9 inch double crust pie|recipe pastry for a 9 inch single crust pie|pastry for a 9 inch pie crust|frozen pie crust|prepared pie crust|frozen prepared pie crust,,manual,81
 pesto,prepared pesto,dairy,rule,81
 greek yogurt,,dairy,rule,81
 saltine cracker,crushed saltine cracker|finely crushed saltine cracker,,rule,81
@@ -370,10 +370,10 @@ anchovy fillet,canned anchovy fillet,fish,rule,80
 pork sausage,ground pork sausage|fresh ground pork sausage,meat,rule,80
 wheat germ,toasted wheat germ,,rule,80
 mussel,fresh mussel,shellfish,rule,80
+radish,sliced radish|thinly sliced radish|finely chopped radish|minced radish|roughly chopped radish,,rule,79
 beef chuck roast,boneless beef chuck roast|cubed beef chuck roast,meat,rule,79
 chipotle pepper in adobo sauce,canned chipotle pepper in adobo sauce|minced chipotle pepper in adobo sauce|chopped chipotle pepper in adobo sauce,,rule,78
 parsley flake,dried parsley flake,,rule,78
-radish,sliced radish|thinly sliced radish|finely chopped radish|minced radish|roughly chopped radish,,rule,78
 lasagna noodle,uncooked lasagna noodle|dry lasagna noodle,,rule,78
 mandarin orange,drained mandarin orange,,rule,77
 yellow cornmeal,,,rule,76
@@ -381,6 +381,7 @@ pimento pepper,chopped pimento pepper|diced pimento pepper|sliced pimento pepper
 mixed salad green,torn mixed salad green|mixed torn salad green,,rule,75
 semisweet chocolate,grated semisweet chocolate|chopped semisweet chocolate,,rule,75
 gruyere cheese,shredded gruyere cheese|grated gruyere cheese|coarsely shredded gruyere cheese|finely grated gruyere cheese|sliced gruyere cheese,dairy,rule,75
+chicken breast meat,skinless boneless chicken breast meat|diced cooked chicken breast meat|chopped cooked chicken breast meat|shredded cooked chicken breast meat|cubed skinless boneless chicken breast meat|cooked cubed chicken breast meat,meat,rule,75
 red cabbage,shredded red cabbage|finely shredded red cabbage|chopped red cabbage|thinly sliced red cabbage|coarsely chopped red cabbage,,rule,74
 button mushroom,fresh button mushroom|sliced button mushroom|sliced fresh button mushroom|chopped button mushroom|diced button mushroom,,rule,74
 marinated artichoke heart,quartered marinated artichoke heart|sliced marinated artichoke heart|chopped marinated artichoke heart|marinated quartered artichoke heart,,rule,74
@@ -391,7 +392,6 @@ great northern bean,dried great northern bean|dry great northern bean|cooked gre
 pizza sauce,canned pizza sauce|prepared pizza sauce,,rule,73
 processed cheese food,cubed processed cheese food|shredded processed cheese food,dairy,rule,73
 watermelon,cubed seeded watermelon|cubed watermelon|chopped watermelon|diced seeded watermelon|mashed watermelon,,rule,72
-chicken breast meat,skinless boneless chicken breast meat|diced cooked chicken breast meat|chopped cooked chicken breast meat|shredded cooked chicken breast meat|cubed skinless boneless chicken breast meat|cooked cubed chicken breast meat,meat,rule,72
 chile garlic sauce,,,rule,71
 vegetable shortening,room temperature vegetable shortening|cold vegetable shortening,,rule,71
 sweetened cranberry,sweetened dried cranberry|dried sweetened cranberry|chopped sweetened dried cranberry,,rule,71
@@ -417,6 +417,7 @@ corn syrup,,,rule,66
 hash brown potato,frozen hash brown potato|frozen shredded hash brown potato|shredded hash brown potato|frozen cubed hash brown potato|frozen diced hash brown potato,,rule,65
 rum,,,rule,64
 barbecue sauce,prepared barbecue sauce,,rule,64
+poblano pepper,diced poblano pepper|fresh poblano pepper|each poblano pepper|minced poblano pepper|finely diced poblano pepper,,rule,63
 seasoned rice vinegar,,,rule,63
 habanero pepper,minced habanero pepper|ground habanero pepper,,rule,63
 pepperjack cheese,shredded pepperjack cheese,dairy,rule,63
@@ -430,11 +431,11 @@ lemon pepper seasoning,,,rule,62
 instant chocolate pudding mix,,,rule,62
 refrigerated crescent roll,,,rule,62
 graham cracker crust,prepared graham cracker crust,,rule,62
-poblano pepper,diced poblano pepper|fresh poblano pepper|minced poblano pepper|finely diced poblano pepper|chopped poblano pepper,,rule,61
 unsweetened chocolate,,,rule,61
 lump crabmeat,fresh lump crabmeat|cooked lump crabmeat,shellfish,rule,61
 refrigerated biscuit dough,,,rule,61
 andouille sausage,sliced andouille sausage|cooked andouille sausage|chopped andouille sausage,meat,rule,61
+skewer,each skewer,nonfood,rule,61
 tomato juice,room temperature tomato juice|warm tomato juice,,rule,61
 bacon bit,,meat,rule,60
 lobster tail,cooked lobster tail|frozen lobster tail|raw lobster tail|uncooked lobster tail|fresh lobster tail,shellfish,rule,60
@@ -454,7 +455,6 @@ lard,cold lard,meat,rule,59
 aluminum foil,,nonfood,rule,59
 cherry,dried cherry|chopped dried cherry|pitted cherry|fresh cherry|frozen cherry,,rule,58
 pure maple syrup,,,rule,58
-skewer,,nonfood,rule,58
 bay scallop,fresh bay scallop,shellfish,rule,58
 tomato with juice,diced tomato with juice|peeled tomato with juice|chopped tomato with juice|canned whole tomato with juice|crushed tomato with juice,,rule,58
 portobello mushroom,chopped portobello mushroom|sliced portobello mushroom|fresh portobello mushroom,,rule,57
@@ -503,11 +503,11 @@ edamame,frozen shelled edamame|shelled edamame|shelled cooked edamame|frozen eda
 flank steak,,meat,rule,50
 pumpkin seed,raw pumpkin seed|raw whole pumpkin seed|toasted pumpkin seed|fresh pumpkin seed|shelled roasted pumpkin seed,,rule,50
 light sour cream,,dairy,rule,50
+pimento stuffed green olive,chopped pimento stuffed green olive|sliced pimento stuffed green olive|each pimento stuffed green olive|finely chopped pimento stuffed green olive,,rule,49
 macaroni,uncooked macaroni|cooked macaroni|dry macaroni,,rule,49
 rye flour,,,rule,49
 seashell pasta,uncooked seashell pasta,,rule,49
 whipped cream,,dairy,rule,49
-pimento stuffed green olive,chopped pimento stuffed green olive|sliced pimento stuffed green olive|finely chopped pimento stuffed green olive,,rule,48
 currant,dried currant,,rule,48
 sourdough bread,,,rule,48
 rotisserie chicken,shredded rotisserie chicken|diced cooked rotisserie chicken|cooked rotisserie chicken|chopped rotisserie chicken|shredded cooked rotisserie chicken,poultry,rule,48
@@ -520,6 +520,7 @@ marshmallow creme,,,rule,47
 basmati rice,uncooked basmati rice|cooked basmati rice|cold cooked basmati rice,,rule,47
 baking mix,,,rule,46
 dark chocolate,chopped dark chocolate,,rule,46
+deli ham,thinly sliced deli ham|sliced deli ham|sliced fully cooked deli ham|thinly sliced cooked deli ham|cooked deli ham,meat,rule,46
 avocado oil,,,rule,46
 neufchatel cheese,,dairy,rule,46
 dark rum,,,rule,46
@@ -528,11 +529,10 @@ greek seasoning,,,rule,46
 coconut extract,,,rule,46
 snow pea,fresh snow pea|sliced snow pea|thinly sliced snow pea|trimmed snow pea|chopped snow pea,,rule,46
 instant coffee granule,,,rule,46
-deli ham,thinly sliced deli ham|sliced deli ham|thinly sliced cooked deli ham|cooked deli ham|thinly sliced deli cooked ham,meat,rule,45
+kielbasa sausage,fully cooked kielbasa sausage|cooked kielbasa sausage,meat,rule,45
 lemon grass,minced lemon grass|chopped lemon grass|chopped fresh lemon grass|finely chopped lemon grass|thinly sliced lemon grass,,rule,45
 couscous,uncooked couscous|dry couscous|cooked couscous,,rule,45
 dark chocolate chip,,,rule,45
-fully ham,cubed fully cooked ham|diced fully cooked ham|fully cooked ham|chopped fully cooked ham|fully cooked whole ham|ground fully cooked ham,meat,rule,45
 cream of chicken soup,,poultry,rule,45
 rice flour,,,rule,44
 sake,,,rule,44
@@ -552,11 +552,10 @@ honey mustard,prepared honey mustard,honey,rule,44
 phyllo dough,frozen phyllo dough|shredded phyllo dough,,rule,43
 buffalo wing sauce,,,rule,43
 olive,sliced ripe olive|sliced olive|chopped olive|sliced pitted ripe olive|pitted ripe olive,,rule,43
-kielbasa sausage,cooked kielbasa sausage,meat,rule,43
 parsnip,sliced parsnip|minced parsnip|peeled sliced parsnip|chopped parsnip,,rule,43
 basil pesto,prepared basil pesto|prepared fresh basil pesto|fresh basil pesto,dairy,rule,43
-french fried onion,crushed french fried onion|chopped french fried onion|canned french fried onion,,rule,43
-red curry paste,,shellfish,rule,43
+french onion,french fried onion|crushed french fried onion|chopped french fried onion|canned french fried onion,,rule,43
+red curry paste,,,rule,43
 halibut fillet,skinless boneless halibut fillet|skinless halibut fillet,fish,rule,43
 jicama,diced jicama|finely chopped jicama|peeled chopped jicama|shredded jicama|grated jicama,,rule,43
 tilapia,fresh tilapia,fish,rule,43
@@ -564,8 +563,10 @@ cocktail sauce,,,rule,43
 sourdough starter,,,rule,43
 enchilada sauce,,,rule,43
 halibut,skinless boneless halibut|fresh halibut|diced halibut|finely diced halibut,fish,rule,42
+smoked sausage,fully cooked smoked sausage|cubed smoked sausage,meat,rule,42
 saffron,ground saffron|crushed saffron,,rule,42
 new potato,diced new potato|chopped new potato|cubed new potato,,rule,42
+hazelnut,chopped hazelnut|chopped toasted hazelnut|toasted hazelnut|finely chopped toasted hazelnut|chopped raw hazelnut,,rule,42
 superfine sugar,,,rule,42
 mexican oregano,dried mexican oregano|dried crushed mexican oregano,,rule,42
 pork shoulder,boneless pork shoulder|coarsely ground pork shoulder,meat,rule,42
@@ -574,10 +575,8 @@ monosodium glutamate,,,rule,42
 beef bouillon cube,crushed beef bouillon cube,meat,rule,42
 coffee flavored liqueur,,,rule,42
 ghee,,dairy,rule,42
-smoked sausage,cubed smoked sausage,meat,rule,41
 rice noodle,dried rice noodle|fresh rice noodle|dry rice noodle,,rule,41
 tuna steak,fresh tuna steak|frozen tuna steak,meat,rule,41
-hazelnut,chopped hazelnut|chopped toasted hazelnut|toasted hazelnut|finely chopped toasted hazelnut|chopped raw hazelnut,,rule,41
 white chocolate,coarsely chopped white chocolate|shredded white chocolate|finely chopped white chocolate,,rule,41
 flax seed meal,,,rule,41
 italian cheese blend,shredded italian cheese blend|grated italian cheese blend,dairy,rule,41
@@ -607,6 +606,7 @@ pepperoni sausage,sliced pepperoni sausage|thinly sliced pepperoni sausage,meat,
 strong brewed coffee,strong freshly brewed coffee,,rule,39
 vegetable bouillon,,,rule,38
 nutritional yeast,,,rule,38
+green pepper,chopped green pepper|finely chopped green pepper|coarsely chopped green pepper|diced green pepper|each green pepper,,rule,38
 tuna in water,tuna packed in water,fish,rule,38
 steak seasoning,,,rule,38
 spaghetti squash,cooked shredded spaghetti squash|cooked spaghetti squash,,rule,38
@@ -623,7 +623,6 @@ lime wedge,fresh lime wedge,,rule,37
 bulk pork sausage,uncooked bulk pork sausage,meat,rule,37
 dill pickle relish,,,rule,37
 wooden skewer,,nonfood,rule,37
-green pepper,chopped green pepper|finely chopped green pepper|coarsely chopped green pepper|diced green pepper,,rule,37
 crumbled goat cheese,,dairy,rule,37
 sriracha hot sauce,,,rule,37
 guacamole,prepared guacamole,,rule,37
@@ -632,6 +631,7 @@ whiskey,,,rule,37
 english muffin,,,rule,37
 italian style salad dressing mix,dry italian style salad dressing mix,,rule,37
 salted peanut,chopped salted peanut|chopped roasted salted peanut|crushed salted peanut|roasted salted peanut|coarsely chopped salted peanut,,rule,36
+pie shell,baked pie shell,,rule,36
 crunchy peanut butter,extra crunchy peanut butter,,rule,36
 asian sesame oil,toasted asian sesame oil,,rule,36
 cornflake cereal,crushed cornflake cereal,,rule,36
@@ -671,10 +671,10 @@ wheat pastry flour,whole wheat pastry flour,,rule,33
 lemon peel,grated lemon peel|grated fresh lemon peel|freshly grated lemon peel|dried lemon peel|finely shredded lemon peel,,rule,33
 butterscotch chip,,dairy,rule,33
 chile pepper,dried chile pepper|ground chile pepper|ground dried chile pepper|fresh chile pepper|crushed dried chile pepper,,rule,33
-pie shell,,,rule,33
 red kidney bean,dry red kidney bean|dried red kidney bean|canned red kidney bean,,rule,33
 strawberry jam,,,rule,33
 adobo seasoning,,,rule,33
+salad shrimp,cooked salad shrimp|frozen fully cooked salad shrimp|cooked small salad shrimp|frozen cooked salad shrimp|frozen salad shrimp,shellfish,rule,33
 amaretto liqueur,,,rule,33
 shucked oyster,fresh shucked oyster|shucked small oyster|freshly shucked oyster,shellfish,rule,33
 wasabi paste,,,rule,33
@@ -684,6 +684,7 @@ garlic paste,,,rule,33
 dark red kidney bean,,,rule,32
 chunky salsa,,,rule,32
 turnip,diced turnip|cubed turnip,,rule,32
+bamboo skewer,each bamboo skewer,nonfood,rule,32
 potato starch,,,rule,32
 chile paste,,,rule,32
 prawn,uncooked prawn|fresh prawn|cooked prawn|unpeeled prawn|frozen cooked prawn,shellfish,rule,32
@@ -703,9 +704,9 @@ vital wheat gluten,,,rule,32
 catfish fillet,cubed catfish fillet,fish,rule,31
 orange juice concentrate,frozen orange juice concentrate,,rule,31
 black sesame seed,toasted black sesame seed,,rule,31
-bamboo skewer,,nonfood,rule,31
 ancho chile powder,ground ancho chile powder,,rule,31
 instant rice,uncooked instant rice,,rule,31
+pork loin chop,boneless pork loin chop|each pork loin chop,meat,rule,31
 crouton,crushed crouton|prepared crouton,,rule,31
 turbinado sugar,raw turbinado sugar|turbinado raw sugar,,rule,31
 fish stock,fresh fish stock,fish,rule,31
@@ -720,7 +721,6 @@ oil sun tomato,oil packed sun dried tomato|chopped oil packed sun dried tomato|d
 sage leaf,fresh sage leaf|finely chopped fresh sage leaf|chopped fresh sage leaf|dried sage leaf|minced fresh sage leaf,,rule,30
 cantaloupe,cubed cantaloupe|sliced cantaloupe|diced cantaloupe|finely diced fresh cantaloupe|finely diced cantaloupe,,rule,30
 beef short rib,boneless beef short rib|lean beef short rib,meat,rule,30
-pork loin chop,boneless pork loin chop,meat,rule,30
 whipped cream cheese,,dairy,rule,30
 natural peanut butter,,,rule,30
 almond meal,finely ground almond meal,,rule,30
@@ -745,7 +745,6 @@ turkey breast,ground turkey breast|boneless turkey breast|extra lean ground turk
 gouda cheese,shredded gouda cheese|grated gouda cheese|cubed gouda cheese,dairy,rule,29
 thai basil,chopped fresh thai basil|fresh thai basil|finely chopped thai basil|chopped thai basil|thinly sliced thai basil,,rule,29
 seedless grape,halved seedless grape|sliced seedless grape,,rule,29
-salad shrimp,cooked salad shrimp|cooked small salad shrimp|frozen cooked salad shrimp|frozen salad shrimp,shellfish,rule,29
 picante sauce,,,rule,29
 instant espresso powder,,,rule,29
 marshmallow,chopped marshmallow,gelatin,rule,29
@@ -763,6 +762,7 @@ white hominy,drained canned white hominy,,rule,28
 catfish,frozen catfish|fresh catfish,fish,rule,28
 baguette,,,rule,28
 colby jack cheese,shredded colby jack cheese|grated colby jack cheese,dairy,rule,28
+potato chip,crushed potato chip|baked potato chip|coarsely crushed potato chip,,rule,28
 collard green,fresh collard green|frozen chopped collard green|chopped collard green,,rule,28
 smooth peanut butter,,,rule,28
 cooking sherry,dry cooking sherry,,rule,28
@@ -774,7 +774,6 @@ unsweetened almond milk,cold unsweetened almond milk,,rule,27
 banana pepper,chopped banana pepper|diced banana pepper|chopped canned banana pepper|thinly sliced banana pepper|fresh banana pepper,,rule,27
 jalapeno,diced jalapeno|chopped jalapeno|grated fresh jalapeno|roasted jalapeno|fresh jalapeno,,rule,27
 pineapple tidbit,drained pineapple tidbit|drained canned pineapple tidbit,,rule,27
-potato chip,crushed potato chip|coarsely crushed potato chip,,rule,27
 savory,dried savory|ground savory|chopped fresh savory|minced fresh savory,,rule,27
 crawfish tail,peeled crawfish tail|frozen peeled crawfish tail|frozen cooked crawfish tail,shellfish,rule,27
 low fat sour cream,,dairy,rule,27
@@ -796,6 +795,7 @@ brown mustard,prepared brown mustard|dry brown mustard,,rule,26
 sausage,ground sausage|cooked sausage,meat,rule,26
 curry leaf,fresh curry leaf,,rule,26
 tapioca starch,,,rule,26
+red snapper fillet,skinned red snapper fillet,fish,rule,26
 gochujang,,,rule,26
 tamari,,,rule,26
 masa harina,,,rule,26
@@ -808,6 +808,7 @@ nonfat plain yogurt,,dairy,rule,25
 yellow food coloring,,,rule,25
 vegan mayonnaise,,,rule,25
 bulb fennel,,,rule,25
+bean,baked bean|canned bean,,rule,25
 creamed corn,,,rule,25
 spanish onion,chopped spanish onion|diced spanish onion,,rule,25
 bamboo shoot,sliced bamboo shoot|canned bamboo shoot|diced bamboo shoot|shredded bamboo shoot|thinly sliced bamboo shoot,,rule,25
@@ -819,8 +820,8 @@ crumbled cotija cheese,,dairy,rule,25
 devil food cake mix,,,rule,25
 dill pickle juice,,,rule,25
 vanilla wafer,crushed vanilla wafer,,rule,25
+kaiser roll,each kaiser roll,,rule,25
 tart apple,peeled diced tart apple|shredded tart apple,,rule,25
-red snapper fillet,,fish,rule,25
 white wheat flour,white whole wheat flour,,rule,25
 venison,ground venison|lean venison|lean ground venison,meat,rule,25
 split pea,dried split pea|dry split pea,,rule,25
@@ -838,8 +839,10 @@ sweetened coconut,sweetened shredded coconut|shredded sweetened coconut|packed s
 swiss chard,chopped swiss chard|thinly sliced swiss chard|shredded swiss chard,,rule,24
 pesto sauce,prepared pesto sauce,dairy,rule,24
 beef round steak,boneless beef round steak|lean boneless beef round steak,meat,rule,24
+tofu,cubed tofu|diced tofu|fried tofu,,rule,24
 swai fish,,fish,rule,24
 watercress,chopped watercress|fresh watercress,,rule,24
+meatball,frozen cooked meatball|frozen meatball|frozen fully cooked meatball,meat,rule,24
 dinner roll,frozen dinner roll,,rule,24
 mixed berry,frozen mixed berry|mixed frozen berry|mixed fresh berry|fresh mixed berry,,rule,24
 baby potato,,,rule,24
@@ -850,6 +853,7 @@ chili garlic sauce,,,rule,24
 instant potato flake,instant mashed potato flake|dry instant mashed potato flake,,rule,24
 popped popcorn,freshly popped popcorn,,rule,24
 havarti cheese,shredded havarti cheese|sliced havarti cheese|thinly sliced havarti cheese|cubed havarti cheese|grated havarti cheese,dairy,rule,24
+luncheon meat,fully cooked luncheon meat,meat,rule,24
 liquid smoke,,,rule,24
 colby cheese,shredded colby cheese,dairy,rule,24
 tomato vegetable juice cocktail,,,rule,24
@@ -861,15 +865,13 @@ swordfish steak,,meat,rule,23
 pita bread,,,rule,23
 blanched almond,chopped blanched almond|blanched whole almond|minced blanched almond|finely chopped blanched almond|sliced blanched almond,,rule,23
 prune,pitted prune|chopped pitted prune|coarsely chopped prune,,rule,23
-tofu,cubed tofu|diced tofu,,rule,23
 pickling spice,,,rule,23
 eagle brand sweetened condensed milk,,dairy,rule,23
 browning sauce,,,rule,23
-meatball,frozen cooked meatball|frozen meatball,meat,rule,23
 orange liqueur,,,rule,23
-kaiser roll,,,rule,23
+allspice berry,ground allspice berry|each allspice berry,,rule,23
 cranberry sauce,,,rule,23
-fully luncheon meat,fully cooked luncheon meat,meat,rule,23
+bone in skin on chicken thigh,each bone in skin on chicken thigh,poultry,rule,23
 hot chile paste,,,rule,23
 simple syrup,warm simple syrup,,rule,23
 part skim ricotta cheese,,dairy,rule,23
@@ -883,18 +885,15 @@ green lentil,uncooked green lentil|cooked green lentil|dry green lentil,,rule,22
 corn bread mix,dry corn bread mix,,rule,22
 brown gravy mix,dry brown gravy mix,,rule,22
 coconut sugar,,,rule,22
-baked bean,,meat,rule,22
 raspberry jam,,,rule,22
 center pork chop,center cut pork chop|boneless center cut pork chop|center cut boneless pork chop,meat,rule,22
 orange peel,grated orange peel|dried orange peel|finely shredded orange peel|freshly grated orange peel,,rule,22
 beef sirloin steak,boneless beef sirloin steak,meat,rule,22
 grenadine syrup,,,rule,22
 corn tortilla chip,,,rule,22
-allspice berry,ground allspice berry,,rule,22
 brown lentil,dry brown lentil|dried brown lentil,,rule,22
 vermouth,dry vermouth,,rule,22
 processed american cheese,diced processed american cheese|shredded processed american cheese,dairy,rule,22
-bone in skin on chicken thigh,,poultry,rule,22
 light coconut milk,,,rule,22
 buckwheat flour,,,rule,22
 vine ripened tomato,chopped vine ripened tomato,,rule,22
@@ -953,10 +952,12 @@ sirloin steak,boneless sirloin steak|lean sirloin steak,meat,rule,19
 white potato,peeled cubed white potato,,rule,19
 refrigerated buttermilk biscuit dough,,dairy,rule,19
 short grain white rice,uncooked short grain white rice|cooked short grain white rice,,rule,19
+hot italian sausage,ground hot italian sausage|fully cooked hot italian sausage,meat,rule,19
 ranch salad dressing,prepared ranch salad dressing,,rule,19
 green enchilada sauce,,,rule,19
 anise extract,,,rule,19
 crispy rice cereal square,,,rule,19
+flat iron steak,thinly cut flat iron steak|fully trimmed flat iron steak,meat,rule,19
 italian dressing,,,rule,19
 fontina cheese,shredded fontina cheese|grated fontina cheese|cubed fontina cheese,dairy,rule,19
 flounder fillet,,fish,rule,19
@@ -973,7 +974,7 @@ haddock fillet,fresh haddock fillet,fish,rule,19
 beef consomme,,meat,rule,19
 lemongrass,chopped lemongrass|thinly sliced lemongrass|minced lemongrass|finely chopped lemongrass,,rule,19
 kiwis,,,rule,19
-pre baked pizza crust,,,rule,19
+pre pizza crust,pre baked pizza crust,,rule,19
 individually wrapped caramel,,dairy,rule,18
 yogurt,,dairy,rule,18
 file powder,,,rule,18
@@ -981,7 +982,6 @@ halibut steak,,meat,rule,18
 fava bean,fresh fava bean|dry fava bean|shelled fava bean|dried fava bean|canned fava bean,,rule,18
 peppercorn,ground peppercorn,,rule,18
 baby arugula,packed baby arugula|fresh baby arugula,,rule,18
-hot italian sausage,ground hot italian sausage,meat,rule,18
 fettuccini pasta,dry fettuccini pasta,,rule,18
 heirloom tomato,,,rule,18
 jellied cranberry sauce,canned jellied cranberry sauce,,rule,18
@@ -990,7 +990,6 @@ beef top sirloin,boneless beef top sirloin,meat,rule,18
 old bay seasoning,,,rule,18
 multicolored candy sprinkle,,,rule,18
 corn chip,crushed corn chip|coarsely crushed corn chip|ground corn chip,,rule,18
-flat iron steak,thinly cut flat iron steak,meat,rule,18
 alfalfa sprout,,,rule,18
 hillshire farm smoked sausage,,meat,rule,18
 linguine,uncooked linguine|uncooked dried linguine|dried linguine,,rule,18
@@ -1068,6 +1067,7 @@ peanut butter chip,,,rule,16
 granular sucralose sweetener,,,rule,16
 goya virgin olive oil,goya extra virgin olive oil,,rule,16
 low calorie natural sweetener,,,rule,16
+hot rice,hot cooked rice|hot steamed rice,,rule,16
 thousand island salad dressing,,egg,rule,16
 grape,halved grape|chopped grape,,rule,16
 grill seasoning,,,rule,16
@@ -1077,7 +1077,7 @@ walnut oil,roasted walnut oil,,rule,16
 sirloin,ground sirloin|lean ground sirloin,meat,rule,16
 seedless raspberry jam,,,rule,16
 rose water,,,rule,16
-kimchi,chopped kimchi|coarsely chopped kimchi,fish,rule,16
+kimchi,chopped kimchi|coarsely chopped kimchi,,rule,16
 italian style stewed tomato,,,rule,16
 cranberry juice,,,rule,16
 stevia powder,,,rule,16
@@ -1114,11 +1114,10 @@ angel food cake,prepared angel food cake,egg,rule,15
 pancetta bacon,thinly sliced pancetta bacon,meat,rule,15
 unsweetened coconut flake,toasted unsweetened coconut flake,,rule,15
 plain low fat yogurt,,dairy,rule,15
-baked bean with pork,,meat,rule,15
+bean with pork,baked bean with pork,meat,rule,15
 thick pork chop,thick cut pork chop|thick cut boneless pork chop,meat,rule,15
 blood orange,,,rule,15
 kiwi,ripe kiwi|kiwi peeled|peeled sliced kiwi,,rule,15
-hot rice,hot cooked rice,,rule,15
 mandarin orange segment,drained canned mandarin orange segment,,rule,15
 instant pistachio pudding mix,,,rule,15
 sugar based curing mixture,,,rule,15
@@ -1298,7 +1297,7 @@ center salmon fillet,center cut salmon fillet|skinless center cut salmon fillet|
 country style pork rib,boneless country style pork rib,meat,rule,12
 maple flavored extract,,,rule,12
 sambal oelek,,,rule,12
-green curry paste,,shellfish,rule,12
+green curry paste,,,rule,12
 swanson chicken broth,,poultry,rule,12
 mixed baby green,,,rule,12
 refrigerated pizza crust,,,rule,12
@@ -1327,6 +1326,7 @@ bulk hot italian sausage,,meat,rule,11
 golden syrup,,,rule,11
 lacinato kale,chopped lacinato kale,,rule,11
 spiced rum,,,rule,11
+oreo cookie,each oreo cookie,,rule,11
 shell on shrimp,shell on medium shrimp|shell on deveined jumbo shrimp|frozen shell on shrimp|frozen large shell on shrimp|raw shell on shrimp|deveined shell on shrimp,shellfish,rule,11
 summer squash,seeded grated summer squash|shredded summer squash|diced summer squash,,rule,11
 powdered milk,,dairy,rule,11
@@ -1341,6 +1341,7 @@ hot paprika,,,rule,11
 irish whiskey,,,rule,11
 ancho chile,dried ancho chile,,rule,11
 italian salad dressing mix,dry italian salad dressing mix,,rule,11
+ham steak,fully cooked ham steak|chopped boneless ham steak,meat,rule,11
 aged cheddar cheese,shredded aged cheddar cheese|grated aged cheddar cheese,dairy,rule,11
 chicken tenderloin,,meat,rule,11
 corned beef brisket,shredded cooked corned beef brisket|boneless corned beef brisket,meat,rule,11
@@ -1395,7 +1396,6 @@ dark cocoa powder,,,rule,10
 octopus,cooked octopus,shellfish,rule,10
 baby clam,,shellfish,rule,10
 deli turkey,thinly sliced cooked deli turkey|deli sliced turkey|thinly sliced deli turkey,poultry,rule,10
-oreo cookie,,,rule,10
 instant coffee powder,,,rule,10
 hickory flavored liquid smoke,,,rule,10
 red tomato,ripe red tomato|fresh red tomato,,rule,10
@@ -1414,10 +1414,9 @@ crispy bacon,crispy cooked bacon|extra crispy cooked bacon|cooked crispy bacon,m
 thai basil leaf,fresh thai basil leaf|minced fresh thai basil leaf,,rule,10
 celery root,cubed celery root|shredded celery root|minced celery root|diced celery root,,rule,10
 sun tomato pesto,sun dried tomato pesto,dairy,rule,10
-thai red curry paste,,shellfish,rule,10
+thai red curry paste,,,rule,10
 sorghum flour,,,rule,10
 tater tot,frozen tater tot,,rule,10
-ham steak,chopped boneless ham steak,meat,rule,10
 fruit cocktail,,,rule,10
 hominy,canned hominy,,rule,10
 brewer yeast,fresh brewer yeast,,rule,10
@@ -1428,7 +1427,6 @@ lemon lime soda,,,rule,10
 unsalted cashew,unsalted raw cashew|unsalted roasted cashew|ground unsalted cashew,,rule,10
 hot chicken broth,,poultry,rule,10
 thin slice ham,thin slice cooked ham,meat,rule,10
-each green onion,,,rule,10
 cheese flavored cracker,crushed cheese flavored cracker,dairy,rule,10
 sumac,ground sumac,,rule,10
 black forest ham,cubed black forest ham,meat,rule,10
@@ -1462,7 +1460,9 @@ sweetened whipped cream,,dairy,rule,10
 oatmeal,,,rule,10
 chardonnay wine,,,rule,10
 red chili pepper,fresh red chili pepper|ground red chili pepper|dried red chili pepper,,rule,10
+shrimp paste,sauteed shrimp paste,shellfish,manual,9
 rice paper,rice paper wrapper,,manual,9
+kielbasa,fully cooked kielbasa|fresh kielbasa,meat,rule,9
 toffee baking bit,,dairy,rule,9
 crumbled feta,,dairy,rule,9
 thick slice italian bread,,,rule,9
@@ -1512,6 +1512,7 @@ food coloring,,,rule,9
 tuna in olive oil,tuna packed in olive oil,fish,rule,9
 tomato with liquid,peeled tomato with liquid,,rule,9
 cornish game hen,,poultry,rule,9
+jarred red pepper,jarred roasted red pepper|each jarred roasted red pepper,,rule,9
 red quinoa,cooked red quinoa,,rule,9
 pink salmon,skinless boneless pink salmon,fish,rule,9
 pecan piece,toasted pecan piece,,rule,9
@@ -1529,7 +1530,7 @@ mini pretzel,,,rule,9
 cornflake crumb,crushed cornflake crumb,,rule,9
 baby kale,packed baby kale,,rule,9
 unbaked 9 inch pie crust,,,rule,9
-naan bread,warm naan bread,dairy,rule,9
+naan bread,warm naan bread,,rule,9
 dashi granule,,fish,rule,9
 quick rise yeast,,,rule,9
 thin rice noodle,dried thin rice noodle,,rule,9
@@ -1545,7 +1546,6 @@ focaccia bread,,,rule,9
 duck,duck breast|duck leg|whole duck|duck meat,poultry,manual,0
 noodle,noodles,,manual,0
 chocolate,baking chocolate,,manual,0
-shrimp paste,,shellfish,manual,0
 taro,taro root,,manual,0
 lychee,lychees|litchi,,manual,0
 jackfruit,,,manual,0
@@ -1665,7 +1665,7 @@ bun,,,rules,0
 roll,,,rules,0
 ciabatta,,,rules,0
 pita,,,rules,0
-naan,,dairy,rules,0
+naan,,,rules,0
 tortilla,,,rules,0
 pizza crust,,,rules,0
 pastry,,,rules,0
@@ -1717,14 +1717,12 @@ furikake,,,rules,0
 halva,,,rules,0
 bison,,meat,rules,0
 chorizo,,meat,rules,0
-kielbasa,,meat,rules,0
 andouille,,meat,rules,0
 bratwurst,,meat,rules,0
 frankfurter,,meat,rules,0
 brisket,,meat,rules,0
 tenderloin,,meat,rules,0
 filet mignon,,meat,rules,0
-luncheon meat,,meat,rules,0
 spam,,meat,rules,0
 oxtail,,meat,rules,0
 short rib,,meat,rules,0
@@ -1870,7 +1868,7 @@ ebi,,shellfish,rules,0
 deveined,,shellfish,rules,0
 sa cha sauce,,shellfish,rules,0
 nam prik pao,,shellfish,rules,0
-tom yum paste,,shellfish,rules,0
+tom yum paste,,,rules,0
 abalone,,shellfish,rules,0
 quahog,,shellfish,rules,0
 snail,,shellfish,rules,0

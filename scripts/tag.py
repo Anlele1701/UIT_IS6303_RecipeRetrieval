@@ -31,7 +31,7 @@ import ingest  # noqa: E402
 from api import config  # noqa: E402
 from lexicon.normalize import LEXICON, Lexicon  # noqa: E402
 from lexicon.parse import parse_line  # noqa: E402
-from lexicon.tagger import ALLERGENS, Rules, tag_recipe  # noqa: E402
+from lexicon.tagger import ALLERGENS, Line, Rules, free_of, tag_recipe  # noqa: E402
 
 OUT_JSON = ROOT / "eval" / "corpus.json"
 OUT_MD = ROOT / "docs" / "corpus_report.md"
@@ -94,8 +94,6 @@ def tag_all(conn) -> tuple[dict, dict]:
     lex, rules = Lexicon.from_csv(), Rules.from_csv()
     ingredients = read_csv("ingredients.csv")
     tags = {r["canonical"]: rules.tags(r["canonical"]) for r in ingredients}
-    groups = {c: t.group for c, t in tags.items()}
-    allergens = {c: t.allergens for c, t in tags.items()}
     ids = {r["canonical"]: i for i, r in enumerate(ingredients, 1)}
 
     lines = conn.execute("SELECT recipe_id, position, line FROM recipe_ingredient ORDER BY recipe_id, position").fetchall()
@@ -105,33 +103,39 @@ def tag_all(conn) -> tuple[dict, dict]:
     for rid, pos, line in lines:
         if line not in parsed:
             p = parse_line(line)
-            parsed[line] = (p, lex.match(p.name) if p.name else [])
-        p, found = parsed[line]
+            parsed[line] = (p, lex.match(p.name) if p.name else [], free_of(line))
+        p, found, free = parsed[line]
         status[p.status] += 1
         if not found:
             unknown_names[p.name or line] += 1
-        per_recipe[rid].append(found)
+        per_recipe[rid].append(Line(tuple(found), free))
         norm_rows.append((rid, pos, p.name, p.quantity, p.unit, p.status, [ids[c] for c in found]))
 
     recipe_ids = [r[0] for r in conn.execute("SELECT id FROM recipe ORDER BY id")]
     tag_rows, counts = [], collections.Counter()
-    by_allergen = {a: {"recipes": 0, "only_hidden": 0} for a in ALLERGENS}
+    by_allergen = {a: {"recipes": 0, "only_hidden": 0, "possible_only": 0} for a in ALLERGENS}
     for rid in recipe_ids:
-        t = tag_recipe(per_recipe.get(rid, []), groups, allergens)
-        tag_rows.append((rid, list(t.allergens), list(t.ingredients_norm), list(t.diet_flags), t.has_unknown,
-                         t.unknown_lines))
+        t = tag_recipe(per_recipe.get(rid, []), tags)
+        tag_rows.append((rid, list(t.allergens), list(t.allergens_may), list(t.ingredients_norm), list(t.diet_flags),
+                         list(t.diet_may), t.has_unknown, t.unknown_lines))
         counts["vegetarian"] += "vegetarian" in t.diet_flags
         counts["vegan"] += "vegan" in t.diet_flags
+        counts["vegetarian_may"] += "vegetarian" in t.diet_may
+        counts["vegan_may"] += "vegan" in t.diet_may
         counts["has_unknown"] += t.has_unknown
         counts["no_allergen"] += not t.allergens
+        counts["free_of_recipes"] += t.free_of_lines > 0
+        counts["free_of_lines"] += t.free_of_lines
         for a in t.allergens:
             by_allergen[a]["recipes"] += 1
-            kinds = {allergens[c][a] for c in t.ingredients_norm if a in allergens.get(c, {})}
-            by_allergen[a]["only_hidden"] += kinds == {"hidden"}
+            kinds = {tags[c].allergens[a] for c in t.ingredients_norm if a in tags[c].allergens}
+            by_allergen[a]["only_hidden"] += "direct" not in kinds
+        for a in t.allergens_may:
+            by_allergen[a]["possible_only"] += 1
 
     total_lines = len(lines)
     mapped = total_lines - sum(unknown_names.values())
-    hit = collections.Counter(c for found in (parsed[l][1] for _, _, l in lines) for c in found)
+    hit = collections.Counter(c for _, _, l in lines for c in parsed[l][1])
     origin = collections.Counter(r["origin"] for r in ingredients)
     n = len(recipe_ids)
     report = {
@@ -142,12 +146,17 @@ def tag_all(conn) -> tuple[dict, dict]:
                "canonicals": len(ingredients), "canonicals_by_origin": dict(origin),
                "canonicals_used": len(hit), "lines_mapped": mapped, "coverage": round(mapped / total_lines, 4),
                "multi_ingredient_lines": sum(1 for _, _, l in lines if len(parsed[l][1]) > 1)},
-        "D6": {"rule": "allergen groups per canonical (FDA 9; rules.csv; hidden ingredients conservative)",
+        "D6": {"rule": "allergen groups per canonical (FDA 9; rules.csv): definite (direct/hidden) are filtered, "
+                       "possible (brand-dependent) are only flagged",
                "recipes": n, "per_allergen": {a: {**v, "share": round(v["recipes"] / n, 4)} for a, v in by_allergen.items()},
                "recipes_without_allergen": counts["no_allergen"]},
+        "D6b": {"rule": "a line that says it is free of X (gluten-free, dairy-free, vegan...) does not carry X",
+                "lines": counts["free_of_lines"], "recipes": counts["free_of_recipes"]},
         "D7": {"rule": "vegetarian: no animal group or fish/crustacean tag; vegan: also no dairy/egg/honey or milk/egg tag",
                "vegetarian": counts["vegetarian"], "vegan": counts["vegan"],
-               "vegetarian_share": round(counts["vegetarian"] / n, 4), "vegan_share": round(counts["vegan"] / n, 4)},
+               "vegetarian_share": round(counts["vegetarian"] / n, 4), "vegan_share": round(counts["vegan"] / n, 4),
+               "vegetarian_only_if_possible_tags_ignored": counts["vegetarian_may"],
+               "vegan_only_if_possible_tags_ignored": counts["vegan_may"]},
         "D8": {"rule": "a line with no canonical ingredient is unknown; does not change tags by default",
                "unknown_lines": sum(unknown_names.values()), "recipes_with_unknown": counts["has_unknown"],
                "recipes_with_unknown_share": round(counts["has_unknown"] / n, 4),
@@ -181,7 +190,8 @@ def write_tables(conn, t: dict):
         with cur.copy("COPY recipe_ingredient_norm FROM STDIN") as cp:
             for row in t["norm_rows"]:
                 cp.write_row(row)
-        with cur.copy("COPY recipe_tag FROM STDIN") as cp:
+        with cur.copy("COPY recipe_tag (recipe_id, allergens, allergens_may, ingredients_norm, diet_flags, diet_may, "
+                      "has_unknown, unknown_lines) FROM STDIN") as cp:  # explicit: migrated column order differs
             for row in t["tag_rows"]:
                 cp.write_row(row)
 
@@ -208,16 +218,23 @@ def render(c: dict) -> str:
         f"partial {pct(d4['status_share'].get('partial', 0))}, fail {pct(d4['status_share'].get('fail', 0))} |",
         f"| D5 | Ánh xạ sang nguyên liệu chuẩn | {num(d5['canonicals'])} canonical; {pct(d5['coverage'])} số dòng "
         f"ánh xạ được; {num(d5['multi_ingredient_lines'])} dòng chứa nhiều nguyên liệu |",
-        f"| D6 | Gắn nhóm dị ứng (FDA 9) | {num(d6['recipes'] - d6['recipes_without_allergen'])} công thức có ≥ 1 nhóm |",
+        f"| D6 | Gắn nhóm dị ứng (FDA 9) | {num(d6['recipes'] - d6['recipes_without_allergen'])} công thức có ≥ 1 nhóm "
+        "chắc chắn |",
+        f"| D6b | Dòng ghi \"X-free\" (gluten-free, vegan…) không mang nhóm X | {num(c['D6b']['lines'])} dòng, "
+        f"{num(c['D6b']['recipes'])} công thức |",
         f"| D7 | Cờ chế độ ăn | vegetarian {num(d7['vegetarian'])} ({pct(d7['vegetarian_share'])}), "
-        f"vegan {num(d7['vegan'])} ({pct(d7['vegan_share'])}) |",
+        f"vegan {num(d7['vegan'])} ({pct(d7['vegan_share'])}); trong đó chỉ đạt khi bỏ qua thẻ \"có thể\": "
+        f"vegetarian {num(d7['vegetarian_only_if_possible_tags_ignored'])}, "
+        f"vegan {num(d7['vegan_only_if_possible_tags_ignored'])} |",
         f"| D8 | Dòng `unknown` | {num(d8['unknown_lines'])} dòng; {num(d8['recipes_with_unknown'])} công thức "
         f"({pct(d8['recipes_with_unknown_share'])}) có ≥ 1 dòng unknown |",
         "", "## Phân bố nhóm dị ứng (D6)", "",
-        "| Nhóm | Số công thức | Tỉ lệ | Chỉ do thành phần ẩn |", "|---|---:|---:|---:|",
+        "Cột \"chắc chắn\" là thẻ dùng để lọc cứng. Cột \"chỉ có thể chứa\" là công thức không bị lọc mà chỉ được cảnh báo.", "",
+        "| Nhóm | Chắc chắn | Tỉ lệ | Trong đó chỉ do thành phần ẩn | Chỉ \"có thể chứa\" |", "|---|---:|---:|---:|---:|",
     ]
     for a, v in d6["per_allergen"].items():
-        lines.append(f"| {a} ({vi[a]}) | {num(v['recipes'])} | {pct(v['share'])} | {num(v['only_hidden'])} |")
+        lines.append(f"| {a} ({vi[a]}) | {num(v['recipes'])} | {pct(v['share'])} | {num(v['only_hidden'])} | "
+                     f"{num(v['possible_only'])} |")
     lines += ["", f"## {TOP_UNKNOWN} tên `unknown` phổ biến nhất (D8)", "", "| Tên sau khi parse | Số dòng |", "|---|---:|"]
     lines += [f"| {name} | {n} |" for name, n in d8["top_unknown"]]
     return "\n".join(lines) + "\n"
