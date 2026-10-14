@@ -1,5 +1,5 @@
 ---
-status: proposed (chờ Thy duyệt ở gate M0)
+status: accepted (gate M0, 14/10/2026)
 ---
 
 # Lọc ràng buộc bằng cột mảng `pdb.literal` và `pdb.term_set` ngay trong index ParadeDB
@@ -42,4 +42,4 @@ Thẻ dùng trong spike là regex thô, chỉ để bộ lọc có độ chọn 
 - `sql/indexes.sql` (M1) thêm `(allergens::pdb.literal)`, `(ingredients_norm::pdb.literal)` và `diet_flags`. Giá trị trong mảng phải là mã canonical **đã chuẩn hóa chữ thường**, vì `pdb.literal` khớp chính xác từng ký tự.
 - **Vector truy vấn phải truyền dạng literal** (`%s::vector`, như A1 đang làm). Nếu truyền qua subquery thì planner không đẩy được `ORDER BY` xuống index, và chuyển sang quét rồi sort toàn bộ.
 - Theo ADR-0001, `chunk` chỉ được build lại, không sửa tại chỗ. Khi M1 thêm cột thẻ, phải build lại phân vùng `semantic` nhưng **tái dùng embedding hiện có** (join theo `recipe_id, kind, position`). Embed lại trên máy này mất khoảng 3,9 giờ (`docs/env.md`).
-- Schema `spike` (`recipe_tag`, `chunk_tag`, `chunk_real`, `probe`, `probe768`) vẫn còn trong DB A3. Chỉ xóa khi Thy đồng ý.
+- Schema `spike` (`recipe_tag`, `chunk_tag`, `chunk_real`, `probe`, `probe768`) được giữ lại trong DB A3 theo quyết định ở gate M0.

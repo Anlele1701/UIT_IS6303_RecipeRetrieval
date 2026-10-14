@@ -4,7 +4,16 @@ Mỗi mục ghi theo một gate. Số liệu dẫn từ các file sinh tự đ�
 
 ---
 
-## M0 – Dựng nền và tái lập A1 (11–12/10/2026) · 🚦 chờ Thy duyệt
+## M0 – Dựng nền và tái lập A1 (11–12/10/2026) · 🚦 đã duyệt 14/10/2026
+
+### Quyết định ở gate M0 (Thy, 14/10/2026)
+1. **Tái lập:** chấp nhận. Run `eval/runs/20261012-002242` là mốc B0 trên máy A3. Báo cáo ghi rằng fusion lệch R@10 −0,013 do index IVF được build lại khi restore, còn bản exact trùng A1 tuyệt đối.
+2. **ADR-0005:** chọn cách A (cột `text[]` kiểu `pdb.literal` + `pdb.term_set`). Trạng thái ADR chuyển sang *accepted*.
+3. **Độ trễ:** chọn phương án (d), **chạy các thí nghiệm nặng (đánh giá M6, rerank mxbai) trên máy có GPU**. Hệ quả:
+   - Repo phải tái lập được trên máy khác: cùng image digest, cùng `recipe.dump`, cùng `uv.lock`, và có `docs/env.md` sinh riêng cho máy đó.
+   - Độ trễ báo cáo ở M6 là độ trễ của máy GPU. `settings.json` của mỗi run ghi rõ máy chạy.
+   - Còn mở: demo (M4/M7) chạy trên máy nào. Nếu demo trên máy này (CPU) thì mỗi lượt chat sẽ chậm, cần chốt trước M4.
+4. **Dọn dẹp:** đã xóa `/tmp/recipe.dump` trong container. **Giữ lại** schema `spike`.
 
 ### Việc đã làm
 - Tạo repo `recipe-assistant/` từ A1 `tony/` (commit A1 nguồn: `61199ce`). Thư mục A1 không bị sửa (`git status` của A1: 0 thay đổi).
