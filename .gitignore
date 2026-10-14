@@ -1,6 +1,8 @@
 # Local dataset and logs (recipe.csv is ~61 MB)
 data/*
 !data/lexicon/
+# LLM replies (M1 golden, M2 checker): reproduce the numbers without hours of reruns
+!data/cache/
 .pytest_cache/
 .venv/
 __pycache__/
