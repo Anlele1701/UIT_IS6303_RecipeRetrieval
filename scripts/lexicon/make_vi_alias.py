@@ -4,9 +4,14 @@ each alias (users often type without diacritics: "dau phong"). Run from scripts/
     uv run python -m lexicon.make_vi_alias
 
 target_type "allergen" names one of the 9 FDA codes (for "dị ứng X" / "không X");
-"ingredient" names a canonical in ingredients.csv. One alias may have several rows.
-Ambiguous words follow the cooking sense: "bơ" = butter, "quả bơ"/"trái bơ" = avocado;
-"chanh" = lime (the common Vietnamese lime), "chanh vàng" = lemon.
+"ingredient" names a canonical in ingredients.csv. One alias may have several rows; `resolve` says
+how M1 uses them (Thy, chat 14/10):
+  fixed    one meaning
+  all      every row applies ("chanh" -> lime and lemon; "hải sản" -> fish, crustaceans and molluscs)
+  context  M1 picks one row from the dish being discussed ("bơ" butter/avocado, "kem", "mì")
+  ask      the assistant asks the user which one ("hành" onion / green onion / shallot)
+Aliases are looked up only on the ingredient/allergen phrases M1 extracts as constraints, never
+by scanning the whole message, so short words ("đường" road/sugar, "giá" price/bean sprouts) are safe.
 """
 
 import csv
@@ -22,8 +27,7 @@ ROWS = [
     ("sữa", "allergen", "milk", ""), ("sữa bò", "allergen", "milk", ""), ("đồ sữa", "allergen", "milk", ""),
     ("chế phẩm từ sữa", "allergen", "milk", ""), ("lactose", "allergen", "milk", "không dung nạp lactose → tránh sữa"),
     ("trứng", "allergen", "egg", ""), ("trứng gà", "allergen", "egg", ""),
-    ("cá", "allergen", "fish", ""), ("hải sản", "allergen", "fish", "hải sản = cá + giáp xác (bảo thủ)"),
-    ("hải sản", "allergen", "crustacean_shellfish", ""),
+    ("cá", "allergen", "fish", ""),
     ("tôm", "allergen", "crustacean_shellfish", ""), ("cua", "allergen", "crustacean_shellfish", ""),
     ("ghẹ", "allergen", "crustacean_shellfish", ""), ("tôm hùm", "allergen", "crustacean_shellfish", ""),
     ("tép", "allergen", "crustacean_shellfish", ""), ("giáp xác", "allergen", "crustacean_shellfish", ""),
@@ -59,7 +63,7 @@ ROWS = [
     ("gelatine", "ingredient", "unflavored gelatin", ""),
     # --- dairy, egg ---
     ("trứng", "ingredient", "egg", ""), ("lòng đỏ trứng", "ingredient", "egg yolk", ""), ("lòng trắng trứng", "ingredient", "egg white", ""),
-    ("sữa tươi", "ingredient", "milk", ""), ("sữa", "ingredient", "milk", ""), ("bơ", "ingredient", "butter", "nghĩa nấu ăn"),
+    ("sữa tươi", "ingredient", "milk", ""), ("sữa", "ingredient", "milk", ""), 
     ("bơ lạt", "ingredient", "butter", ""), ("bơ nhạt", "ingredient", "butter", ""), ("bơ thực vật", "ingredient", "margarine", ""),
     ("phô mai", "ingredient", "cheese", ""), ("phó mát", "ingredient", "cheese", ""), ("pho mát", "ingredient", "cheese", ""),
     ("phô mai kem", "ingredient", "cream cheese", ""), ("cream cheese", "ingredient", "cream cheese", ""),
@@ -67,14 +71,14 @@ ROWS = [
     ("kem chua", "ingredient", "sour cream", ""), ("sữa chua", "ingredient", "yogurt", ""),
     ("sữa đặc", "ingredient", "sweetened condensed milk", ""), ("sữa đặc có đường", "ingredient", "sweetened condensed milk", ""),
     ("sữa bột", "ingredient", "milk powder", ""), ("mayonnaise", "ingredient", "mayonnaise", ""), ("sốt mayonnaise", "ingredient", "mayonnaise", ""),
-    ("kem", "ingredient", "vanilla ice cream", "kem ăn; 'kem tươi' là heavy cream"),
+
     # --- produce ---
     ("quả bơ", "ingredient", "avocado", ""), ("trái bơ", "ingredient", "avocado", ""),
-    ("tỏi", "ingredient", "garlic", ""), ("hành tây", "ingredient", "onion", ""), ("hành", "ingredient", "onion", ""),
+    ("tỏi", "ingredient", "garlic", ""), ("hành tây", "ingredient", "onion", ""), 
     ("hành lá", "ingredient", "green onion", ""), ("hành tím", "ingredient", "shallot", ""), ("hẹ tây", "ingredient", "shallot", ""),
     ("ngò", "ingredient", "cilantro", ""), ("ngò rí", "ingredient", "cilantro", ""), ("rau mùi", "ingredient", "cilantro", "miền Bắc"),
     ("gừng", "ingredient", "ginger", ""), ("sả", "ingredient", "lemongrass", ""), ("ớt", "ingredient", "chile pepper", ""),
-    ("ớt chuông", "ingredient", "bell pepper", ""), ("chanh", "ingredient", "lime", "chanh ta = lime"),
+    ("ớt chuông", "ingredient", "bell pepper", ""), 
     ("chanh vàng", "ingredient", "lemon", ""), ("nước cốt chanh", "ingredient", "lime juice", ""),
     ("cà chua", "ingredient", "tomato", ""), ("cà rốt", "ingredient", "carrot", ""), ("khoai tây", "ingredient", "potato", ""),
     ("khoai lang", "ingredient", "sweet potato", ""), ("khoai môn", "ingredient", "taro", ""), ("nấm", "ingredient", "mushroom", ""),
@@ -111,7 +115,7 @@ ROWS = [
     ("bột mì", "ingredient", "all purpose flour", ""), ("bột bắp", "ingredient", "cornstarch", ""), ("bột ngô", "ingredient", "cornstarch", ""),
     ("bột nở", "ingredient", "baking powder", ""), ("muối nở", "ingredient", "baking soda", ""), ("baking soda", "ingredient", "baking soda", ""),
     ("men nở", "ingredient", "yeast", ""), ("gạo", "ingredient", "rice", ""), ("cơm", "ingredient", "rice", ""),
-    ("bánh mì", "ingredient", "bread", ""), ("vụn bánh mì", "ingredient", "bread crumb", ""), ("mì", "ingredient", "noodle", ""),
+    ("bánh mì", "ingredient", "bread", ""), ("vụn bánh mì", "ingredient", "bread crumb", ""), 
     ("mì ống", "ingredient", "pasta", ""), ("nui", "ingredient", "pasta", ""), ("mì ý", "ingredient", "spaghetti", ""),
     ("bún", "ingredient", "rice noodle", ""), ("phở", "ingredient", "rice noodle", "bánh phở"), ("bánh tráng", "ingredient", "rice paper", ""),
     ("yến mạch", "ingredient", "rolled oat", ""), ("đậu gà", "ingredient", "chickpea", ""), ("đậu đen", "ingredient", "black bean", ""),
@@ -133,6 +137,22 @@ ROWS = [
     ("nước", "ingredient", "water", ""),
 ]
 
+# Words with several meanings: alias -> (resolve, [(target_type, target)], note)
+AMBIGUOUS = {
+    "bơ": ("context", [("ingredient", "butter"), ("ingredient", "avocado")], "theo ngữ cảnh món"),
+    "kem": ("context", [("ingredient", "vanilla ice cream"), ("ingredient", "heavy cream")], "theo ngữ cảnh món"),
+    "mì": ("context", [("ingredient", "noodle"), ("ingredient", "pasta")], "theo ngữ cảnh món"),
+    "chanh": ("all", [("ingredient", "lime"), ("ingredient", "lemon")], "cả chanh ta và chanh vàng"),
+    "hành": ("ask", [("ingredient", "onion"), ("ingredient", "green onion"), ("ingredient", "shallot")],
+             "hỏi lại người dùng"),
+    "hải sản": ("all", [("allergen", "fish"), ("allergen", "crustacean_shellfish"), ("ingredient", "clam"),
+                        ("ingredient", "mussel"), ("ingredient", "oyster"), ("ingredient", "scallop"),
+                        ("ingredient", "squid"), ("ingredient", "octopus")], "cá + giáp xác + nhuyễn thể"),
+}
+ROWS = [(*r, "fixed") for r in ROWS] + [
+    (alias, kind, target, note, resolve) for alias, (resolve, targets, note) in AMBIGUOUS.items()
+    for kind, target in targets]
+
 
 def unaccent(s: str) -> str:
     s = s.replace("đ", "d").replace("Đ", "D")
@@ -142,7 +162,7 @@ def unaccent(s: str) -> str:
 def ambiguous_unaccented() -> set[str]:
     """Unaccented forms shared by different accented aliases ("bò" beef / "bơ" butter -> "bo")."""
     targets: dict[str, dict[str, set]] = {}  # unaccented -> accented alias -> its targets
-    for alias, kind, target, _ in ROWS:
+    for alias, kind, target, _, _ in ROWS:
         targets.setdefault(unaccent(alias), {}).setdefault(alias, set()).add((kind, target))
     return {u for u, by_alias in targets.items()
             if len(by_alias) > 1 and len({frozenset(t) for t in by_alias.values()}) > 1}
@@ -151,17 +171,17 @@ def ambiguous_unaccented() -> set[str]:
 def main():
     skip = ambiguous_unaccented()
     out, seen = [], set()
-    for alias, kind, target, note in ROWS:
+    for alias, kind, target, note, resolve in ROWS:
         copies = [(alias, note)]
         if unaccent(alias) != alias and unaccent(alias) not in skip:
             copies.append((unaccent(alias), "không dấu" + (f"; {note}" if note else "")))
         for a, n in copies:
             if (a, kind, target) not in seen:
                 seen.add((a, kind, target))
-                out.append((a, kind, target, n))
+                out.append((a, kind, target, resolve, n))
     with open(LEXICON / "vi_alias.csv", "w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
-        w.writerow(["alias", "target_type", "target", "note"])
+        w.writerow(["alias", "target_type", "target", "resolve", "note"])
         w.writerows(out)
     print(f"{len(ROWS)} aliases, {len(out)} rows; unaccented copies skipped as ambiguous: {sorted(skip)}")
 

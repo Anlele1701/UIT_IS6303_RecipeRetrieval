@@ -1,14 +1,14 @@
 {
-  "ran_at": "2026-10-14T16:50:42",
-  "git_commit": "ab6fd66",
+  "ran_at": "2026-10-14T20:07:39",
+  "git_commit": "ca31390",
   "seed": 42,
   "lexicon_sha256": {
     "allergens.csv": "67a09676858fedac56072ba4f3a0d550e35ffa5600d1ec7233bfb30868d75802",
-    "rules.csv": "3d2e618a31180c91975e827c92bad5c946d84f60e12fa651d7df2d17f829cd17",
+    "rules.csv": "a34117b97e2d576f535bac5d8729f80a6340d4ee900df47184304c0fa93711e4",
     "manual_synonyms.csv": "27b9fc8704f15fd6aa12855158395d97bcb6e1fe983b2ef152a85cc92313a2f7",
-    "ingredients.csv": "1dbe025001bee6060d529bb07c6760f16ba0f1307773e2f721247bc1fad8f0a4",
-    "allergen_map.csv": "372cd2b4d1aa49fbd8d0eebf137533060b0a750adde2f8b63d72bea113983c41",
-    "vi_alias.csv": "79aebf07dec4dbe9372f7b0f0267bfcb3606935ba06f8ea3fc9dea1c6b812054"
+    "ingredients.csv": "d8c67684bfa54ce199a86013d580fa9c830d57a174f4f85d1c6a1a50beaf3021",
+    "allergen_map.csv": "55ddd50603ad263afd65671980f649b7c3e77e705b02707e197f7114d93e0bcb",
+    "vi_alias.csv": "2318b8683ff33bc713d195a32ce9766927886cdaadf390e7b13497bfdd684b10"
   },
   "D1": {
     "rule": "drop rows whose url repeats an earlier row",
@@ -91,7 +91,7 @@
       "milk": {
         "recipes": 19590,
         "only_hidden": 417,
-        "possible_only": 438,
+        "possible_only": 233,
         "share": 0.5987
       },
       "egg": {
@@ -103,26 +103,26 @@
       "fish": {
         "recipes": 4143,
         "only_hidden": 1549,
-        "possible_only": 28,
+        "possible_only": 15,
         "share": 0.1266
       },
       "crustacean_shellfish": {
         "recipes": 2146,
         "only_hidden": 18,
-        "possible_only": 187,
+        "possible_only": 173,
         "share": 0.0656
       },
       "tree_nuts": {
-        "recipes": 3499,
+        "recipes": 3506,
         "only_hidden": 279,
-        "possible_only": 248,
-        "share": 0.1069
+        "possible_only": 223,
+        "share": 0.1072
       },
       "peanut": {
-        "recipes": 811,
-        "only_hidden": 10,
-        "possible_only": 201,
-        "share": 0.0248
+        "recipes": 876,
+        "only_hidden": 75,
+        "possible_only": 136,
+        "share": 0.0268
       },
       "wheat": {
         "recipes": 17459,
@@ -133,7 +133,7 @@
       "soy": {
         "recipes": 2269,
         "only_hidden": 1935,
-        "possible_only": 1784,
+        "possible_only": 1724,
         "share": 0.0693
       },
       "sesame": {
@@ -143,21 +143,21 @@
         "share": 0.036
       }
     },
-    "recipes_without_allergen": 4929
+    "recipes_without_allergen": 4928
   },
   "D6b": {
     "rule": "a line that says it is free of X (gluten-free, dairy-free, vegan...) does not carry X",
-    "lines": 129,
-    "recipes": 119
+    "lines": 128,
+    "recipes": 118
   },
   "D7": {
     "rule": "vegetarian: no animal group or fish/crustacean tag; vegan: also no dairy/egg/honey or milk/egg tag",
-    "vegetarian": 16726,
-    "vegan": 4143,
-    "vegetarian_share": 0.5112,
-    "vegan_share": 0.1266,
-    "vegetarian_only_if_possible_tags_ignored": 325,
-    "vegan_only_if_possible_tags_ignored": 133
+    "vegetarian": 16687,
+    "vegan": 4140,
+    "vegetarian_share": 0.51,
+    "vegan_share": 0.1265,
+    "vegetarian_only_if_possible_tags_ignored": 279,
+    "vegan_only_if_possible_tags_ignored": 77
   },
   "D8": {
     "rule": "a line with no canonical ingredient is unknown; does not change tags by default",
@@ -367,5 +367,5 @@
       ]
     ]
   },
-  "seconds": 8.2
+  "seconds": 11.6
 }

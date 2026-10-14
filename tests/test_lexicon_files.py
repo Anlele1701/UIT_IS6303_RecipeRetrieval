@@ -48,3 +48,18 @@ def test_vi_aliases_point_at_known_targets():
             assert r["target"] in ALLERGENS, r
         else:
             assert r["target_type"] == "ingredient" and r["target"] in canonicals, r
+
+
+def test_ambiguous_vi_aliases_have_a_resolve_mode_and_several_targets():
+    by_alias = {}
+    for r in rows("vi_alias.csv"):
+        assert r["resolve"] in {"fixed", "all", "context", "ask"}
+        by_alias.setdefault(r["alias"], set()).add(r["resolve"])
+    for alias, modes in by_alias.items():
+        assert len(modes) == 1, f"{alias!r} mixes resolve modes {modes}"
+    counts = {}
+    for r in rows("vi_alias.csv"):
+        counts[r["alias"]] = counts.get(r["alias"], 0) + 1
+    for alias, (mode,) in ((a, tuple(m)) for a, m in by_alias.items()):
+        if mode in {"context", "ask"}:
+            assert counts[alias] >= 2, f"{alias!r} is {mode} but has one target"

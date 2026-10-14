@@ -183,10 +183,10 @@ def write_tables(conn, t: dict):
             for c, tg in t["tags"].items():
                 for a, kind in tg.allergens.items():
                     cp.write_row((t["ids"][c], a, kind))
-        with cur.copy("COPY ingredient_alias_vi (alias, ingredient_id, allergen_code) FROM STDIN") as cp:
+        with cur.copy("COPY ingredient_alias_vi (alias, ingredient_id, allergen_code, resolve) FROM STDIN") as cp:
             for a in aliases:
                 ing = t["ids"][a["target"]] if a["target_type"] == "ingredient" else None
-                cp.write_row((a["alias"], ing, a["target"] if a["target_type"] == "allergen" else None))
+                cp.write_row((a["alias"], ing, a["target"] if a["target_type"] == "allergen" else None, a["resolve"]))
         with cur.copy("COPY recipe_ingredient_norm FROM STDIN") as cp:
             for row in t["norm_rows"]:
                 cp.write_row(row)

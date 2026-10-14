@@ -29,6 +29,8 @@ CREATE TABLE IF NOT EXISTS ingredient_alias_vi (
   alias          text NOT NULL,
   ingredient_id  integer REFERENCES ingredient(id) ON DELETE CASCADE,
   allergen_code  text REFERENCES allergen(code),
+  resolve        text NOT NULL DEFAULT 'fixed' CHECK (resolve IN ('fixed', 'all', 'context', 'ask')),
+                 -- several rows per alias: all apply / M1 picks by dish / ask the user
   CHECK ((ingredient_id IS NULL) <> (allergen_code IS NULL))
 );
 CREATE INDEX IF NOT EXISTS ingredient_alias_vi_alias_idx ON ingredient_alias_vi (alias);

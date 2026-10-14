@@ -1,6 +1,6 @@
 # Báo cáo dữ liệu (quy tắc D1–D8)
 
-Sinh tự động bởi `scripts/tag.py` lúc 2026-10-14T16:50:42 (commit `ab6fd66`). Số liệu gốc ở `eval/corpus.json`. Không sửa tay file này.
+Sinh tự động bởi `scripts/tag.py` lúc 2026-10-14T20:07:39 (commit `ca31390`). Số liệu gốc ở `eval/corpus.json`. Không sửa tay file này.
 
 | Mã | Quy tắc | Số liệu |
 |---|---|---|
@@ -9,9 +9,9 @@ Sinh tự động bởi `scripts/tag.py` lúc 2026-10-14T16:50:42 (commit `ab6fd
 | D3 | Chuẩn hóa thời gian → phút | `total_time` null: 1.859 (rỗng ở nguồn 1.832, không đọc được 27) |
 | D4 | Tách dòng nguyên liệu | 311.060 dòng: ok 96,5%, partial 3,5%, fail 0,0% |
 | D5 | Ánh xạ sang nguyên liệu chuẩn | 2.000 canonical; 99,3% số dòng ánh xạ được; 9.637 dòng chứa nhiều nguyên liệu |
-| D6 | Gắn nhóm dị ứng (FDA 9) | 27.790 công thức có ≥ 1 nhóm chắc chắn |
-| D6b | Dòng ghi "X-free" (gluten-free, vegan…) không mang nhóm X | 129 dòng, 119 công thức |
-| D7 | Cờ chế độ ăn | vegetarian 16.726 (51,1%), vegan 4.143 (12,7%); trong đó chỉ đạt khi bỏ qua thẻ "có thể": vegetarian 325, vegan 133 |
+| D6 | Gắn nhóm dị ứng (FDA 9) | 27.791 công thức có ≥ 1 nhóm chắc chắn |
+| D6b | Dòng ghi "X-free" (gluten-free, vegan…) không mang nhóm X | 128 dòng, 118 công thức |
+| D7 | Cờ chế độ ăn | vegetarian 16.687 (51,0%), vegan 4.140 (12,7%); trong đó chỉ đạt khi bỏ qua thẻ "có thể": vegetarian 279, vegan 77 |
 | D8 | Dòng `unknown` | 2.244 dòng; 2.001 công thức (6,1%) có ≥ 1 dòng unknown |
 
 ## Phân bố nhóm dị ứng (D6)
@@ -20,14 +20,14 @@ Cột "chắc chắn" là thẻ dùng để lọc cứng. Cột "chỉ có thể
 
 | Nhóm | Chắc chắn | Tỉ lệ | Trong đó chỉ do thành phần ẩn | Chỉ "có thể chứa" |
 |---|---:|---:|---:|---:|
-| milk (sữa) | 19.590 | 59,9% | 417 | 438 |
+| milk (sữa) | 19.590 | 59,9% | 417 | 233 |
 | egg (trứng) | 11.322 | 34,6% | 2.476 | 26 |
-| fish (cá) | 4.143 | 12,7% | 1.549 | 28 |
-| crustacean_shellfish (giáp xác) | 2.146 | 6,6% | 18 | 187 |
-| tree_nuts (hạt cây) | 3.499 | 10,7% | 279 | 248 |
-| peanut (đậu phộng) | 811 | 2,5% | 10 | 201 |
+| fish (cá) | 4.143 | 12,7% | 1.549 | 15 |
+| crustacean_shellfish (giáp xác) | 2.146 | 6,6% | 18 | 173 |
+| tree_nuts (hạt cây) | 3.506 | 10,7% | 279 | 223 |
+| peanut (đậu phộng) | 876 | 2,7% | 75 | 136 |
 | wheat (lúa mì) | 17.459 | 53,4% | 16.527 | 25 |
-| soy (đậu nành) | 2.269 | 6,9% | 1.935 | 1.784 |
+| soy (đậu nành) | 2.269 | 6,9% | 1.935 | 1.724 |
 | sesame (mè) | 1.178 | 3,6% | 164 | 42 |
 
 ## 50 tên `unknown` phổ biến nhất (D8)
