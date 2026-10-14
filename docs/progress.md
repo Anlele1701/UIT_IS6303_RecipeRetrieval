@@ -77,30 +77,39 @@ Mỗi mục ghi theo một gate. Số liệu dẫn từ các file sinh tự đ�
 
 ---
 
-## M1 – Pipeline dữ liệu · 🛠 đang làm (điểm dừng 14/10/2026)
+## M1 – Pipeline dữ liệu · ⏸ chờ Thy duyệt từ điển (14/10/2026)
 
-### Đã xong (đã commit)
-- Bước 0: sửa spike `D_combined` (`f1cf6cf`).
-- D4 parser `scripts/lexicon/parse.py` + 41 test golden (`8d7d1f1`).
-- D5–D8 (`1760c76`):
-  - Từ điển `data/lexicon/ingredients.csv`: 1.539 canonical, phủ 98,5% số dòng.
-  - `rules.csv`: nhóm và dị ứng, có ngoại lệ.
-  - `allergen_map.csv`: thành phần ẩn xếp đầu.
-  - Tagger, kèm test.
+### Đã xong (commit mới nhất `81680f4`)
+- **D4 parser:** 96,5% dòng `ok`, 3,5% `partial`, ≈ 0% `fail`.
+- **D5 từ điển:**
+  - 1.984 canonical: 51 nhóm viết tay, top 1.500 tên lõi, cộng mọi cụm từ trong `rules.csv`.
+  - **99,2%** số dòng ánh xạ được.
+- **D6–D7:** `rules.csv` gồm nhóm thực phẩm và dị ứng, khớp cụm dài nhất trước, có ngoại lệ. Cờ chế độ ăn xét cả nhóm thực phẩm lẫn thẻ dị ứng.
+- **D8:** 2.388 dòng `unknown`; 6,5% công thức có ít nhất một dòng `unknown`. Mình đã tự rà toàn bộ phần đuôi `unknown` để bắt các từ có thịt, cá hoặc dị ứng.
+- **Từ điển tiếng Việt `vi_alias.csv`:** 276 alias, kèm bản không dấu.
+- **Schema:**
+  - Thêm các bảng thẻ (`sql/tags.sql`), migration 002 (đã áp lên DB), và cột thẻ trên `chunk`.
+  - `ingest.py retag` (chưa chạy trên DB thật, chờ từ điển được duyệt).
+- **`scripts/tag.py`** ghi `eval/corpus.json` và `docs/corpus_report.md`. Số liệu hiện tại là **trước khi Thy duyệt**.
+- `pytest`: 258 pass, 1 skip.
+- **Phát hiện mới:** pg_search 0.25.9 không chạy được toán tử term theo trường qua bảng cha đã chia phân vùng (phụ lục ADR-0005).
 
-### Đang dở
-- LLM gợi ý đồng nghĩa (`build_lexicon suggest`): đã chạy 3 lô, dừng giữa chừng. Kết quả từng lô được cache trong `data/cache/lexicon_suggest.jsonl`, nên chạy lại sẽ bỏ qua các lô đã xong.
+### 👤 Thy đang làm
+Duyệt theo `docs/review_m1.md`:
+- Khoảng 17 dòng đầu `synonym_suggestions.csv`.
+- `vi_alias.csv`.
+- Khoảng 100 dòng đầu `allergen_map.csv`, ghi nhận xét vào cột `review`.
 
-### Chạy tiếp khi mở máy (từ `A3/recipe-assistant/`)
-```sh
-docker compose up -d --wait                                  # DB A3 (volume is603a3_a3-pgdata vẫn còn)
-"$LOCALAPPDATA/Programs/Ollama/ollama.exe" serve &          # hoặc mở app Ollama
-cd scripts && PYTHONUTF8=1 ../.venv/Scripts/python.exe -m lexicon.build_lexicon suggest   # tiếp tục từ cache
-```
+### Sau khi Thy duyệt (mình làm)
+1. `apply-suggestions`, chuyển nhận xét ở cột `review` thành quy tắc, `bootstrap`, `make_vi_alias`.
+2. `tag.py run`.
+3. `ingest.py retag semantic`. Phân vùng cũ được giữ lại dưới tên `chunk_semantic_legacy`.
+4. Kiểm trước và sau: chạy dense và fusion ở probe 1,0. Kết quả phải trùng run `20261012-031749`.
+5. Commit số liệu và dừng ở 🚦 gate M1.
 
-### Việc còn lại của M1
-1. `vi_alias.csv` (khoảng 150–250 mục).
-2. Schema mới, migration `002-tags.sql`, `ingest.py retag semantic`.
-3. `scripts/tag.py`, `eval/corpus.json` (D1–D8), `docs/corpus_report.md`.
-4. 👤 Thy duyệt `synonym_suggestions.csv`, `vi_alias.csv` và khoảng 100 dòng đầu `allergen_map.csv`.
-5. Chạy `apply-suggestions` → `bootstrap` → `tag.py run` → `retag`, rồi dừng ở gate M1.
+### Quyết định để ngỏ (không chặn M1)
+1. **M4 truy vấn thế nào** (ADR-0005, phụ lục):
+   - (a) Truy vấn thẳng vào phân vùng và dùng `term_set` (đề xuất).
+   - (b) Truy vấn qua bảng cha và dùng `&&`.
+2. **Sản phẩm ghi "gluten-free", "dairy-free"…** Hiện vẫn gắn nhóm dị ứng gốc (bảo thủ). Ví dụ "gluten-free pasta" vẫn bị gắn lúa mì.
+3. **Mốc B0:** `retag` build lại index, nên B0 phải chạy lại trên index mới ở M6. Run `20261012-002242` chỉ còn là bằng chứng tái lập của M0.
