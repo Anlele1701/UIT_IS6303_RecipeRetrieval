@@ -77,7 +77,18 @@ Mỗi mục ghi theo một gate. Số liệu dẫn từ các file sinh tự đ�
 
 ---
 
-## M1 – Pipeline dữ liệu · ⏸ chờ Thy duyệt từ điển (14/10/2026)
+## M1 – Pipeline dữ liệu · ⏸ tạm dừng theo yêu cầu của Thy (14/10/2026)
+
+**Điểm dừng:**
+- Thy đã chốt mức thẻ cho từng nhóm (bảng ở `docs/review_m1.md`, mục 3) và 14 gợi ý đồng nghĩa (nhận 12).
+- Nguyên tắc: gắn thẻ theo thành phần thật, không theo tên.
+- **Còn chờ:** Thy duyệt `vi_alias.csv`. Mình sẽ hỏi từng từ đa nghĩa trong chat, ví dụ bơ, chanh, kem, hải sản, hành, mì. File này không ảnh hưởng thẻ.
+- **Bước kế tiếp khi tiếp tục:**
+  1. `tag.py run`.
+  2. `ingest.py retag semantic`.
+  3. Kiểm trước và sau (probe 1,0).
+  4. Gate M1.
+
 
 ### Đã xong (commit mới nhất `81680f4`)
 - **D4 parser:** 96,5% dòng `ok`, 3,5% `partial`, ≈ 0% `fail`.

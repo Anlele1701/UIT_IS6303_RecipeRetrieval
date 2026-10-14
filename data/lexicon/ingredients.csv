@@ -437,7 +437,7 @@ refrigerated biscuit dough,,,rule,61
 andouille sausage,sliced andouille sausage|cooked andouille sausage|chopped andouille sausage,meat,rule,61
 skewer,each skewer,nonfood,rule,61
 tomato juice,room temperature tomato juice|warm tomato juice,,rule,61
-bacon bit,,,rule,60
+bacon bit,,meat,rule,60
 lobster tail,cooked lobster tail|frozen lobster tail|raw lobster tail|uncooked lobster tail|fresh lobster tail,shellfish,rule,60
 cauliflower floret,frozen cauliflower floret|fresh cauliflower floret|chopped cauliflower floret,,rule,60
 coconut flour,sifted coconut flour,,rule,60

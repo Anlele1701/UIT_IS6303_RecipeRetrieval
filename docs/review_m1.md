@@ -49,22 +49,30 @@ Theo quyết định của Thy: **gắn thẻ "có thể chứa" nhưng không l
 - **Chắc chắn** (`kind` = `direct` / `hidden`): dùng để **lọc cứng**. Ví dụ: butter → milk, soy sauce → wheat + soy, worcestershire → fish, mayonnaise → egg.
 - **Có thể chứa** (dấu `?` trong cột `allergens`, `kind` = `possible`): **không lọc**, chỉ cảnh báo ở câu trả lời và trên thẻ công thức.
 
-Những mục đang ở mức "có thể chứa":
+Quyết định của Thy (chat 14/10), xét theo thành phần thật của nguyên liệu:
 
-| Nguyên liệu | Có thể chứa |
+| Nguyên liệu | Mức |
 |---|---|
-| chocolate, chocolate chips, frosting | milk?, soy? |
-| margarine, buttery spread, Parkay | milk? |
+| chocolate, chocolate chips, frosting | milk?, soy? (có thể chứa) |
+| white chocolate, milk chocolate | milk chắc chắn (theo chuẩn FDA) |
+| margarine, buttery spread, Parkay, I Can't Believe It's Not Butter | **không gắn** |
 | peanut oil | peanut? |
-| almond extract, amaretto, granola, chestnut | tree_nuts? |
-| nuts / mixed nuts / trail mix | tree_nuts (chắc chắn) + peanut? |
+| almond extract, amaretto | tree_nuts? |
+| granola | **không gắn** |
+| chestnut | tree_nuts **chắc chắn** |
+| nuts / mixed nuts / trail mix | tree_nuts + peanut **chắc chắn** |
 | red/green curry paste, tom yum paste | crustacean_shellfish? (+ fish?) |
-| kimchi | fish?, crustacean_shellfish? |
-| imitation crab | fish (chắc chắn) + crustacean_shellfish? |
-| cake mix, brownie mix, Oreo-type cookies | wheat (chắc chắn) + soy? |
+| kimchi | **không gắn** |
+| imitation crab | fish chắc chắn + crustacean_shellfish? |
+| cake mix, brownie mix | wheat chắc chắn + soy? |
+| Oreo | wheat + soy chắc chắn, milk? |
 | oyster sauce, doubanjiang, injera | wheat? |
-| naan | wheat (chắc chắn) + milk? |
-| refried beans, baked beans | có thể không chay (meat?) |
+| naan | wheat chắc chắn + milk? |
+| refried/baked beans, Jiffy mix, vỏ bánh pie làm sẵn | có thể không chay (meat?) |
+| bacon bits (không ghi rõ loại) | thịt **chắc chắn** |
+| seafood stock | fish?, crustacean_shellfish? (vẫn không chay) |
+| instant pistachio pudding mix | **không gắn** |
+| hoisin | soy + wheat chắc chắn, sesame? |
 
 **Dòng ghi "X-free"** (gluten-free, dairy-free, egg-free, nut-free, vegan…): dòng đó không mang nhóm X, cũng theo quyết định của Thy. Ngoại lệ: "non-dairy" và "lactose-free" **không** được tính là không có sữa, vì creamer non-dairy vẫn có casein, còn sữa lactose-free vẫn là sữa.
 

@@ -38,7 +38,7 @@ eggnog,dairy,milk|egg,hidden,
 ice cream,dairy,milk,direct,
 whipped topping,dairy,milk,hidden,frozen whipped topping lists sodium caseinate
 creamer,dairy,milk,hidden,non-dairy creamers still list sodium caseinate
-margarine,,milk?,possible,many margarines contain whey or buttermilk; conservative
+margarine,,,,Thy: no tag (vegetable oil based; whey varies)
 chocolate,,milk?|soy?,possible,semisweet and dark chocolate often contain milkfat and soy lecithin; conservative
 cocoa,,,,cocoa powder: no milk
 cocoa powder,,,,
@@ -151,7 +151,7 @@ worcestershire,fish,fish,hidden,contains anchovies
 fish sauce,fish,fish,hidden,
 imitation crab,fish,fish|crustacean_shellfish?,hidden,surimi; often crab extract; conservative
 imitation crabmeat,fish,fish|crustacean_shellfish?,hidden,
-kimchi,fish?,fish?|crustacean_shellfish?,possible,usually fish sauce and salted shrimp; conservative
+kimchi,,,,Thy: no tag
 seafood,shellfish?,fish?|crustacean_shellfish?,possible,"fish or shrimp based, not known which"
 seafood seasoning,,,,"Old Bay style spice blend, no seafood"
 old bay seasoning,,,,
@@ -193,9 +193,9 @@ macadamia,,tree_nuts,direct,
 brazil nut,,tree_nuts,direct,
 pine nut,,tree_nuts,direct,
 pignoli,,tree_nuts,direct,
-chestnut,,tree_nuts?,possible,conservative
+chestnut,,tree_nuts,direct,Thy: definite
 water chestnut,,,,not a nut
-nut,,tree_nuts|peanut?,hidden,generic or mixed nuts often include peanuts
+nut,,tree_nuts|peanut,hidden,Thy: generic nuts often include peanuts; definite
 nutmeg,,,,not a nut
 butternut squash,,,,
 marzipan,,tree_nuts,hidden,almond
@@ -205,7 +205,7 @@ chocolate hazelnut spread,dairy,tree_nuts|milk|soy?,hidden,
 nutella,dairy,tree_nuts|milk|soy?,hidden,
 amaretto,,tree_nuts?,possible,almond flavoring; conservative
 frangelico,,tree_nuts,hidden,
-granola,,tree_nuts?,possible,often contains almonds or pecans; conservative
+granola,,,,Thy: no tag (nuts vary by brand)
 # ---------- peanut ----------,,,,
 peanut,,peanut,direct,
 peanut oil,,peanut?,possible,highly refined oil is exempt by FDA; conservative
@@ -441,7 +441,7 @@ crab cake,shellfish,crustacean_shellfish|wheat|egg,hidden,
 bread machine yeast,,,,
 pistachio nut,,tree_nuts,direct,
 macadamia nut,,tree_nuts,direct,
-mixed nut,,tree_nuts|peanut?,hidden,
+mixed nut,,tree_nuts|peanut,hidden,Thy: definite
 chocolate syrup,,,,syrup brands list no milk
 soy lecithin,,soy,hidden,
 spaghetti squash,,,,vegetable
@@ -618,9 +618,9 @@ curd,dairy,milk,direct,cheese curd
 cajeta,dairy,milk,hidden,goat milk caramel
 reddi wip,dairy,milk,direct,
 kibbeh,dairy,milk,hidden,Ethiopian spiced butter
-buttery spread,,milk?,possible,many buttery spreads contain buttermilk or whey; conservative
+buttery spread,,,,Thy: no tag
 vegan buttery,,,,
-parkay,,milk?,possible,
+parkay,,,,Thy: no tag
 brioche,egg,wheat|egg|milk,hidden,
 panettone,egg,wheat|egg|milk,hidden,
 crepe,egg,wheat|egg|milk,hidden,
@@ -653,7 +653,7 @@ graham snack,,wheat,hidden,
 nilla wafer,egg,wheat|egg|milk,hidden,
 gingersnap,,wheat,hidden,
 bran meal,,wheat,hidden,
-trail mix,,tree_nuts|peanut?,hidden,
+trail mix,,tree_nuts|peanut,hidden,Thy: definite
 orgeat,,tree_nuts,hidden,almond syrup
 dukkah,,tree_nuts|sesame,hidden,
 butterfinger,,peanut|milk,hidden,
@@ -697,10 +697,10 @@ ranch salad dressing mix,dairy,milk,hidden,"dry mix, no egg"
 ranch style dressing mix,dairy,milk,hidden,"dry mix, no egg"
 ranch seasoning,dairy,milk,hidden,"dry mix, no egg"
 oreo,,wheat|soy|milk?,hidden,"flour, soy lecithin; may contain milk"
-bacon bit,meat?,soy?,possible,real bits are pork; imitation bits (e.g. Bac-Os) are soy
+bacon bit,meat,,,Thy: unspecified bacon bits count as real bacon
 real bacon bit,meat,,,pork
-instant pistachio pudding mix,,tree_nuts?,possible,"mostly flavoring, nut content varies"
-i cant believe its not butter,,milk?,possible,"some lines list whey/buttermilk, some are vegan"
+instant pistachio pudding mix,,,,Thy: no tag (flavoring)
+i cant believe its not butter,,,,Thy: no tag
 blue cheese salad dressing,dairy,milk|egg?,hidden,blue cheese in a mayonnaise base
 balsamic cream,,,,"reduced balsamic vinegar with sugar or honey, no dairy (Thy)"
 balsamic creme,,,,
