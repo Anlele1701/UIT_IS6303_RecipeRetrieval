@@ -77,50 +77,47 @@ Mỗi mục ghi theo một gate. Số liệu dẫn từ các file sinh tự đ�
 
 ---
 
-## M1 – Pipeline dữ liệu · ⏸ tạm dừng theo yêu cầu của Thy (14/10/2026)
+## M1 – Pipeline dữ liệu · 🚦 chờ Thy duyệt gate M1 (14/10/2026)
 
-**Điểm dừng:**
-- Thy đã chốt mức thẻ cho từng nhóm (bảng ở `docs/review_m1.md`, mục 3) và 14 gợi ý đồng nghĩa (nhận 12).
-- Nguyên tắc: gắn thẻ theo thành phần thật, không theo tên.
-- **Còn chờ:** Thy duyệt `vi_alias.csv`. Mình sẽ hỏi từng từ đa nghĩa trong chat, ví dụ bơ, chanh, kem, hải sản, hành, mì. File này không ảnh hưởng thẻ.
-- **Bước kế tiếp khi tiếp tục:**
-  1. `tag.py run`.
-  2. `ingest.py retag semantic`.
-  3. Kiểm trước và sau (probe 1,0).
-  4. Gate M1.
+### Số liệu chính (`eval/corpus.json`, `docs/corpus_report.md`)
+| Quy tắc | Kết quả |
+|---|---|
+| D1 | 32.722 dòng CSV → bỏ 3 URL trùng → 32.719 công thức |
+| D2 | Bỏ 13 cột dinh dưỡng; cột ít rỗng nhất vẫn rỗng 99,4% |
+| D3 | `total_time` null ở 1.859 công thức (1.832 rỗng ở nguồn, 27 không đọc được) |
+| D4 | 311.060 dòng: ok 96,5%, partial 3,5%, fail ≈ 0% |
+| D5 | 2.000 canonical; **99,3%** số dòng ánh xạ được; 9.637 dòng chứa nhiều nguyên liệu |
+| D6 | 27.791 công thức có ít nhất một nhóm dị ứng **chắc chắn**. Thẻ "có thể chứa" chỉ dùng để cảnh báo, ví dụ: 1.724 công thức chỉ có thể chứa đậu nành, 233 chỉ có thể chứa sữa |
+| D6b | 128 dòng ghi "X-free" ở 118 công thức được gỡ nhóm X |
+| D7 | vegetarian 51,0%, vegan 12,7% (279 / 77 công thức chỉ đạt khi bỏ qua thẻ "có thể") |
+| D8 | 2.244 dòng `unknown`; 6,1% công thức có ít nhất một dòng `unknown` |
 
+### Quyết định của Thy trong M1
+- Gắn thẻ **theo thành phần thật**, không theo tên. Nhận 12/14 gợi ý đồng nghĩa của LLM.
+- **Thẻ hai mức:** "chắc chắn" dùng để lọc cứng; "có thể chứa" chỉ cảnh báo, vì người nấu có thể chọn nguyên liệu khác. Mức của từng nhóm nằm ở `docs/review_m1.md`, mục 3.
+- **"X-free":** gỡ nhóm X khỏi dòng ghi "X-free". Ngoại lệ: non-dairy và lactose-free.
+- **Từ tiếng Việt đa nghĩa:**
+  - chanh → cả lime và lemon.
+  - bơ, kem, mì → M1 chọn theo ngữ cảnh món.
+  - hành → hỏi lại người dùng.
+  - hải sản → cá, giáp xác và nhuyễn thể.
+  - Từ ngắn chỉ tra trong cụm ràng buộc.
+- Giữ cả 3 phân vùng. `fixed` và `sentence` có cột thẻ để NULL.
 
-### Đã xong (commit mới nhất `81680f4`)
-- **D4 parser:** 96,5% dòng `ok`, 3,5% `partial`, ≈ 0% `fail`.
-- **D5 từ điển:**
-  - 1.984 canonical: 51 nhóm viết tay, top 1.500 tên lõi, cộng mọi cụm từ trong `rules.csv`.
-  - **99,2%** số dòng ánh xạ được.
-- **D6–D7:** `rules.csv` gồm nhóm thực phẩm và dị ứng, khớp cụm dài nhất trước, có ngoại lệ. Cờ chế độ ăn xét cả nhóm thực phẩm lẫn thẻ dị ứng.
-- **D8:** 2.388 dòng `unknown`; 6,5% công thức có ít nhất một dòng `unknown`. Mình đã tự rà toàn bộ phần đuôi `unknown` để bắt các từ có thịt, cá hoặc dị ứng.
-- **Từ điển tiếng Việt `vi_alias.csv`:** 276 alias, kèm bản không dấu.
-- **Schema:**
-  - Thêm các bảng thẻ (`sql/tags.sql`), migration 002 (đã áp lên DB), và cột thẻ trên `chunk`.
-  - `ingest.py retag` (chưa chạy trên DB thật, chờ từ điển được duyệt).
-- **`scripts/tag.py`** ghi `eval/corpus.json` và `docs/corpus_report.md`. Số liệu hiện tại là **trước khi Thy duyệt**.
-- `pytest`: 258 pass, 1 skip.
-- **Phát hiện mới:** pg_search 0.25.9 không chạy được toán tử term theo trường qua bảng cha đã chia phân vùng (phụ lục ADR-0005).
+### Đưa thẻ xuống `chunk` (`ingest.py retag semantic`, 2 phút 12 giây)
+- 166.438/166.438 chunk giữ nguyên id, nội dung và embedding. Thẻ khớp `recipe_tag` (0 lệch).
+- Phân vùng cũ được giữ lại dưới tên `chunk_semantic_legacy`, chưa xóa.
+- **Kiểm lọc:** `NOT (allergens @@@ pdb.term_set(['peanut','milk']))` trên `chunk_semantic` ra 12.667 công thức, đúng bằng số tính từ `recipe_tag`, 0 vi phạm.
+- **Kiểm trước và sau** (`eval/m1_retag_check.json`, probe 1,0):
+  - Metric dense và fusion **trùng tuyệt đối** run M0.
+  - Rank trùng 298/298.
+  - Top-20 trùng 297/298 (dense) và 296/298 (fusion).
+  - Tính khoảng cách bằng SQL thường trên phân vùng mới và trên legacy cho kết quả trùng nhau, nghĩa là dữ liệu không đổi.
+- **Phát hiện:** ngay cả ở probe 1,0, tìm vector của ParadeDB **vẫn xấp xỉ**. Ví dụ q080: công thức 16048 có trong top-50 khi tính chính xác bằng SQL nhưng index bỏ sót. Nhánh "exact-dense" của A1 (ADR-0003) vì thế không hoàn toàn exact. Cần ghi vào báo cáo.
 
-### 👤 Thy đang làm
-Duyệt theo `docs/review_m1.md`:
-- Khoảng 17 dòng đầu `synonym_suggestions.csv`.
-- `vi_alias.csv`.
-- Khoảng 100 dòng đầu `allergen_map.csv`, ghi nhận xét vào cột `review`.
-
-### Sau khi Thy duyệt (mình làm)
-1. `apply-suggestions`, chuyển nhận xét ở cột `review` thành quy tắc, `bootstrap`, `make_vi_alias`.
-2. `tag.py run`.
-3. `ingest.py retag semantic`. Phân vùng cũ được giữ lại dưới tên `chunk_semantic_legacy`.
-4. Kiểm trước và sau: chạy dense và fusion ở probe 1,0. Kết quả phải trùng run `20261012-031749`.
-5. Commit số liệu và dừng ở 🚦 gate M1.
-
-### Quyết định để ngỏ (không chặn M1)
-1. **M4 truy vấn thế nào** (ADR-0005, phụ lục):
-   - (a) Truy vấn thẳng vào phân vùng và dùng `term_set` (đề xuất).
-   - (b) Truy vấn qua bảng cha và dùng `&&`.
-2. **Sản phẩm ghi "gluten-free", "dairy-free"…** Hiện vẫn gắn nhóm dị ứng gốc (bảo thủ). Ví dụ "gluten-free pasta" vẫn bị gắn lúa mì.
-3. **Mốc B0:** `retag` build lại index, nên B0 phải chạy lại trên index mới ở M6. Run `20261012-002242` chỉ còn là bằng chứng tái lập của M0.
+### Cần Thy quyết ở gate M1
+1. Duyệt phân bố thẻ và tỉ lệ `unknown` (bảng trên).
+2. Xóa `chunk_semantic_legacy` (khoảng 1 GB, kèm index) hay giữ đến hết M6.
+3. Hai điểm để ngỏ từ trước, chốt trước M4:
+   - (a) M4 truy vấn thẳng vào phân vùng và dùng `term_set` (đề xuất), hay truy vấn qua bảng cha và dùng `&&`.
+   - Baseline B0 phải chạy lại trên index mới ở M6.
