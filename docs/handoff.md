@@ -36,16 +36,26 @@ Tài liệu này dành cho người làm tiếp A3 trên một máy khác. Nó c
 - Node 20 trở lên, chỉ cần từ M4 cho UI.
 
 ### Cơ sở dữ liệu
-DB của A3 đã chứa thẻ dị ứng, cờ chế độ ăn và các bảng chat (migration 001–005). **Không có trong git.** Có hai cách dựng lại:
+DB của A3 đã chứa thẻ dị ứng, cờ chế độ ăn và các bảng chat (migration 001–005). Bản dump nằm trong `db/recipe_a3/`, lưu bằng Git LFS. Có hai cách dựng lại:
 
-**Cách 1 (khuyên dùng):** restore file dump của A3, `recipe_a3.dump` (khoảng 1,3 GB, chuyển riêng ngoài GitHub).
+**Cách 1 (khuyên dùng):** restore `db/recipe_a3/`, bản dump của A3.
+- Định dạng thư mục của `pg_dump` (`-Fd`), mỗi bảng một file, tổng khoảng 1,3 GB, lưu bằng Git LFS.
+- Cài `git lfs` **trước khi clone**. Nếu đã clone rồi thì chạy `git lfs pull`.
+- Checksum: `cd db/recipe_a3 && sha256sum -c ../recipe_a3.sha256`.
+- Dump không có bảng `chunk_semantic_legacy` và schema `spike`, vì làm tiếp không cần. Hai thứ này vẫn còn trên máy gốc.
+
+Volume mới đã có sẵn schema (do `sql/docker-init.sql` tạo). Restore đè lên schema đó sẽ báo lỗi trùng khóa, nên phải tạo lại DB trống trước:
 ```
 docker compose up -d --wait
-docker cp recipe_a3.dump a3-paradedb:/tmp/recipe_a3.dump
-docker exec a3-paradedb pg_restore -U recipe -d recipe --clean --if-exists --no-owner /tmp/recipe_a3.dump
-docker exec a3-paradedb rm /tmp/recipe_a3.dump
+docker cp db/recipe_a3 a3-paradedb:/tmp/recipe_a3
+docker exec a3-paradedb dropdb -U recipe recipe        # chỉ làm trên volume mới, chưa có dữ liệu
+docker exec a3-paradedb createdb -U recipe recipe
+docker exec a3-paradedb pg_restore -U recipe -d recipe --no-owner -j 4 /tmp/recipe_a3
+docker exec a3-paradedb rm -rf /tmp/recipe_a3
 ```
-Nếu restore báo lỗi "schema đã tồn tại" cho `paradedb`, `tiger` hay `topology` thì bỏ qua, các lỗi này vô hại (đã gặp ở M0).
+- Lệnh restore mất khoảng 2 phút. Nó báo 3 lỗi "schema đã tồn tại" cho `paradedb`, `tiger` và `topology`; các lỗi này vô hại.
+- Ngày 15/10 đã thử restore vào một DB trống. Số công thức và số chunk của 3 chiến lược khớp DB gốc, md5 của thẻ cũng trùng.
+- Trong Git Bash, thêm `MSYS_NO_PATHCONV=1` trước `docker`.
 
 **Cách 2:** dựng từ `recipe.dump` của A1, rồi chạy lại các bước của A3.
 1. Restore `recipe.dump` theo lệnh ở cách 1.
