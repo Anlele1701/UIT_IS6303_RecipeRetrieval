@@ -16,3 +16,6 @@ eval/runs/
 .env
 .env.*
 !.env.example
+
+# Synthea C-CDA sample records (download: Synthea sample data, C-CDA); one fixture lives in tests/patient/fixtures
+data/synthea_sample_data_ccda_latest/
