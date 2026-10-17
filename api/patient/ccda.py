@@ -5,12 +5,15 @@ effectiveTime, never the clock, so a record reads the same on every run. Identit
 race, ethnicity) are never read (P7): the only header fields used are the patient id, sex and birth time.
 """
 
+import collections
 import re
-from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
 
 from lxml import etree
+
+from .models import Allergy, Encounter, Medication, Observation, Organizer, PatientRecord, Problem, Source
+from .rules import P7Rules
 
 NS = {"c": "urn:hl7-org:v3"}
 
@@ -28,6 +31,7 @@ FUNCTIONAL_STATUS = "47420-5"
 PLAN_OF_CARE = "18776-5"
 DROPPED_SECTIONS = {SOCIAL_HISTORY, FUNCTIONAL_STATUS}  # P7: counted, never read
 
+DEATH_CERTIFICATE = "69409-1"  # a Results organizer Synthea writes for a deceased patient
 FOOD_ALLERGY = "414285001"  # observation/value: "Allergy to food"; the only kind that yields a food constraint
 SUBSTANCE_ALLERGY = "419199007"  # "Allergy to substance" (environment, latex, drugs...)
 
@@ -144,55 +148,6 @@ def med_active(sa, today: date) -> bool:
 
 # ---- entries --------------------------------------------------------------------------------------------------
 
-@dataclass(frozen=True)
-class Allergy:
-    entry_id: str  # act/id/@root
-    kind_code: str | None  # observation/value/@code: FOOD_ALLERGY, SUBSTANCE_ALLERGY, ...
-    kind_display: str | None
-    substance_code: str | None  # SNOMED
-    substance_display: str | None
-    reactions: tuple[str, ...]
-    severity: str | None
-    active: bool
-
-
-@dataclass(frozen=True)
-class Problem:
-    entry_id: str
-    code: str | None  # SNOMED
-    display: str | None
-    suffix: str
-    active: bool
-
-
-@dataclass(frozen=True)
-class Medication:
-    entry_id: str
-    code: str | None  # RxNorm
-    code_system: str | None
-    display: str | None
-    active: bool
-
-
-@dataclass(frozen=True)
-class Observation:
-    entry_id: str | None
-    loinc: str | None
-    display: str | None
-    value: str | None
-    unit: str | None
-    when: date | None
-
-
-@dataclass(frozen=True)
-class Organizer:
-    entry_id: str | None
-    loinc: str | None
-    display: str | None
-    when: date | None
-    observations: tuple[Observation, ...] = field(default_factory=tuple)
-
-
 def allergies(section) -> list[Allergy]:
     out = []
     for act in _x(section, "c:entry/c:act"):
@@ -263,3 +218,90 @@ def organizers(section) -> list[Organizer]:
                              display=_first(org, "c:code/@displayName"), when=when,
                              observations=tuple(_observation(o) for o in _x(org, "c:component/c:observation"))))
     return out
+
+
+def encounters(section) -> list[Encounter]:
+    return [Encounter(entry_id=_first(e, "c:id/@root"), code=_first(e, "c:code/@code"),
+                      display=_first(e, "c:code/@displayName"),
+                      when=ts(_first(e, "c:effectiveTime/c:low/@value") or _first(e, "c:effectiveTime/@value")))
+            for e in _x(section, "c:entry/c:encounter")]
+
+
+# ---- the filtered record (P2-P7) ------------------------------------------------------------------------------
+
+def _all(secs: dict, code: str) -> list:
+    return secs.get(code, [])
+
+
+def read_record(path: str | Path, source: Source, p7: P7Rules) -> tuple[PatientRecord, dict]:
+    """One file -> the record after P2-P7, and what each rule did to it (summed by patient_ingest.py stats).
+
+    Sensitive items (P7) are counted by category; their content never enters the record.
+    """
+    doc = parse(path)
+    today = record_date(doc)
+    secs = sections(doc)
+    c: dict = {"P2": collections.Counter(), "P3": collections.Counter(), "P4": collections.Counter(),
+               "P5": collections.Counter(), "P6": collections.Counter(), "P7": collections.Counter()}
+
+    allergy_list = [a for s in _all(secs, ALLERGIES) for a in allergies(s)]
+    kept_allergies = tuple(a for a in allergy_list if a.active)
+    c["P2"]["allergies_in_force"] += len(kept_allergies)
+    c["P2"]["allergies_dropped_not_in_force"] += len(allergy_list) - len(kept_allergies)
+    c["P3"]["food_allergies"] += sum(a.kind_code == FOOD_ALLERGY for a in kept_allergies)
+
+    kept_problems = []
+    for p in (p for s in _all(secs, PROBLEMS) for p in problems(s)):
+        if not p.active:
+            c["P2"]["problems_dropped_not_in_force"] += 1
+        elif p.suffix != "disorder":
+            c["P4"][f"dropped_suffix_{p.suffix or 'none'}"] += 1
+        elif (cat := p7.excluded("problem", p.code)):
+            c["P7"][f"problem_{cat}"] += 1
+        else:
+            kept_problems.append(p)
+    c["P4"]["disorders_kept"] += len(kept_problems)
+
+    kept_meds = []
+    for m in (m for s in _all(secs, MEDICATIONS) for m in medications(s, today)):
+        if not m.active:
+            c["P5"]["dropped_not_in_use"] += 1
+        elif (cat := p7.excluded("medication", m.code)):
+            c["P7"][f"medication_{cat}"] += 1
+        else:
+            kept_meds.append(m)
+    c["P5"]["in_use"] += len(kept_meds)
+
+    latest = latest_by_loinc([o for s in _all(secs, VITALS) for o in vitals(s)])
+    kept_vitals = tuple(latest[k] for k in sorted(latest))
+    c["P6"]["vitals_latest"] += len(kept_vitals)
+
+    kept_results, deceased = [], False
+    for org in (o for s in _all(secs, RESULTS) for o in organizers(s)):
+        deceased = deceased or org.loinc == DEATH_CERTIFICATE
+        cls = p7.organizer_class(org.loinc)
+        if cls == "include":
+            kept_results.append(org)
+        elif cls == "exclude":
+            c["P7"][f"organizer_{p7.exclude_loinc[org.loinc]}"] += 1
+        else:
+            c["P7"]["organizer_not_relevant"] += 1
+    c["P6"]["result_organizers"] += len(kept_results)
+
+    kept_enc = []
+    for e in (e for s in _all(secs, ENCOUNTERS) for e in encounters(s)):
+        if (cat := p7.excluded("encounter", e.code)):
+            c["P7"][f"encounter_{cat}"] += 1
+        else:
+            kept_enc.append(e)
+    c["P6"]["encounters"] += len(kept_enc)
+
+    for code in DROPPED_SECTIONS:
+        c["P7"][f"section_{code}_entries"] += sum(len(_x(s, "c:entry")) for s in _all(secs, code))
+    c["P7"]["identity_fields_not_read"] += 1  # name, address, race, ethnicity: never read, one per record
+
+    record = PatientRecord(
+        patient_id=patient_id(doc), source=source, sex=sex(doc), age_years=age_years(doc, today), record_date=today,
+        deceased=deceased, allergies=kept_allergies, problems=tuple(kept_problems), medications=tuple(kept_meds),
+        vitals=kept_vitals, results=tuple(kept_results), encounters=tuple(kept_enc))
+    return record, {k: dict(v) for k, v in c.items()}
