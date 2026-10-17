@@ -54,9 +54,13 @@ def snapshot(bot) -> list[dict]:
 
 def run() -> list[dict]:
     from api.rerank import Reranker
+    real = orch.m6.generate
     orch.m6.generate = lambda client, messages, usage=None, **kw: iter([FIXED_ANSWER])  # see the module docstring
-    with psycopg.connect(config.DATABASE_URL) as conn, httpx.Client(timeout=900) as client:
-        return snapshot(orch.Assistant(conn, client, Reranker().score))
+    try:
+        with psycopg.connect(config.DATABASE_URL) as conn, httpx.Client(timeout=900) as client:
+            return snapshot(orch.Assistant(conn, client, Reranker().score))
+    finally:
+        orch.m6.generate = real
 
 
 def main():
