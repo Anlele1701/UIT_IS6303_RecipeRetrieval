@@ -33,6 +33,9 @@ from psycopg.types.json import Jsonb
 from tokenizers import Tokenizer
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT))
+from api.patient.nutrition import DERIVED_COLUMNS, derived_sql  # noqa: E402  (stdlib only: fine in this script's env)
+
 CSV_PATH = ROOT / "data" / "recipe.csv"
 CSV_URL = "https://huggingface.co/datasets/Shengtao/recipe/resolve/main/recipe.csv"
 DATABASE_URL = os.environ.get("DATABASE_URL", "postgresql://recipe:recipe@localhost:5435/recipe")
@@ -298,7 +301,8 @@ RECIPE_SQL = """SELECT r.id, r.title, r.description, r.directions, c.name, r.tot
                        n.calories, n.protein_g, n.fat_g, n.carbohydrates_g, n.sodium_mg,
                        (SELECT string_agg(line, '; ' ORDER BY position)
                           FROM recipe_ingredient i WHERE i.recipe_id = r.id),
-                       t.allergens, t.ingredients_norm, t.diet_flags, t.has_unknown
+                       t.allergens, t.ingredients_norm, t.diet_flags, t.has_unknown,
+                       """ + ", ".join(derived_sql("n")) + """
                 FROM recipe r JOIN category c ON c.id = r.category_id
                 LEFT JOIN recipe_nutrition n ON n.recipe_id = r.id
                 LEFT JOIN recipe_tag t ON t.recipe_id = r.id  -- NULL tags before scripts/tag.py has run
@@ -346,8 +350,9 @@ def load_chunks(conn, name: str):
         """INSERT INTO {t} (recipe_id, strategy, kind, position, content, embedding,
              category, total_minutes, prep_minutes, cook_minutes, rating, rating_count,
              servings, calories, protein_g, fat_g, carbohydrates_g, sodium_mg,
-             allergens, ingredients_norm, diet_flags, has_unknown)
-           VALUES (%s,%s,%s,%s,%s,%s::vector,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""").format(
+             allergens, ingredients_norm, diet_flags, has_unknown, {derived})
+           VALUES (%s,%s,%s,%s,%s,%s::vector,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)""").format(
+        derived=sql.SQL(", ".join(DERIVED_COLUMNS)),
         t=sql.Identifier(staging(name)))
     print(f"{total} recipes to chunk as {name}", flush=True)
 
@@ -357,7 +362,7 @@ def load_chunks(conn, name: str):
 
         chunks = []
         for r, texts in zip(recipes, steps):
-            rid, title, desc, filters = r[0], r[1], r[2], (*r[4:16], *r[17:21])
+            rid, title, desc, filters = r[0], r[1], r[2], (*r[4:16], *r[17:21], *r[21:25])
             chunks.append((rid, "summary", 0, f"{title}\n{normalize_fractions(desc)}", filters))
             chunks.append((rid, "ingredients", 0,
                            f"{title}\nIngredients: {normalize_fractions(r[16] or '')}", filters))
@@ -412,6 +417,12 @@ def staging_problems(conn, name: str) -> list[str]:
            WHERE (c.allergens, c.ingredients_norm, c.diet_flags, c.has_unknown)
                  IS DISTINCT FROM (rt.allergens, rt.ingredients_norm, rt.diet_flags, rt.has_unknown)""").format(
         t=t)).fetchone()[0]
+    # migration 006: the derived nutrition columns match recipe_nutrition (api/patient/nutrition.py)
+    derived_drift = conn.execute(sql.SQL(
+        """SELECT count(*) FROM {t} c LEFT JOIN recipe_nutrition nu ON nu.recipe_id = c.recipe_id
+           WHERE ({cols}) IS DISTINCT FROM ({exprs})""").format(
+        t=t, cols=sql.SQL(", ".join(f"c.{x}" for x in DERIVED_COLUMNS)),
+        exprs=sql.SQL(", ".join(derived_sql("nu"))))).fetchone()[0]
     checks = [
         ("every Recipe has exactly 1 Summary chunk", per_recipe[0]),
         ("every Recipe has exactly 1 Ingredients chunk", per_recipe[1]),
@@ -420,6 +431,7 @@ def staging_problems(conn, name: str) -> list[str]:
         ("no null embeddings", null_embeddings),
         ("ADR-0001 consistency check returns 0", drifted),
         ("copied tags match recipe_tag", tag_drift),
+        ("derived nutrition columns match recipe_nutrition", derived_drift),
     ]
     return [check for check, failures in checks if failures]
 
@@ -516,7 +528,8 @@ def archive_legacy(conn, name: str) -> str | None:
 
 
 def cmd_retag(conn, name: str):
-    """Rebuild a loaded strategy's partition with the current recipe_tag, reusing its Chunks and embeddings.
+    """Rebuild a loaded strategy's partition with the current recipe_tag and the derived nutrition columns
+    (migration 006), reusing its Chunks and embeddings.
 
     ADR-0001: chunk is rebuilt, never updated in place. The new partition keeps every Chunk id, so BM25 ties
     break the same way. One transaction swaps it in: the old partition is detached and kept as
@@ -538,11 +551,13 @@ def cmd_retag(conn, name: str):
         register(conn, name, registry=False, suffix="_new")
         with conn.transaction():
             conn.execute(sql.SQL(
-                """INSERT INTO {t} (id, {cols}, {tags})
-                   SELECT c.id, {ccols}, rt.allergens, rt.ingredients_norm, rt.diet_flags, rt.has_unknown
-                   FROM {p} c JOIN recipe_tag rt ON rt.recipe_id = c.recipe_id""").format(
+                """INSERT INTO {t} (id, {cols}, {tags}, {derived})
+                   SELECT c.id, {ccols}, rt.allergens, rt.ingredients_norm, rt.diet_flags, rt.has_unknown, {exprs}
+                   FROM {p} c JOIN recipe_tag rt ON rt.recipe_id = c.recipe_id
+                   LEFT JOIN recipe_nutrition nu ON nu.recipe_id = c.recipe_id""").format(
                 t=sql.Identifier(staging(name)), p=sql.Identifier(partition(name)), cols=sql.SQL(CHUNK_COLUMNS),
-                tags=sql.SQL(TAGS),
+                tags=sql.SQL(TAGS), derived=sql.SQL(", ".join(DERIVED_COLUMNS)),
+                exprs=sql.SQL(", ".join(derived_sql("nu"))),
                 ccols=sql.SQL(", ".join(f"c.{c.strip()}" for c in CHUNK_COLUMNS.split(",")))))
         problems = staging_problems(conn, name)
         if problems:

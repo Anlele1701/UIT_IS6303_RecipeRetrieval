@@ -17,6 +17,7 @@ USING paradedb (
   total_minutes, prep_minutes, cook_minutes,
   rating, rating_count, servings,
   calories, protein_g, fat_g, carbohydrates_g, sodium_mg,
+  sat_fat_pct_kcal, sugar_pct_kcal, fiber_per_1000kcal, potassium_mg,  -- migration 006
   (allergens::pdb.literal), (ingredients_norm::pdb.literal), (diet_flags::pdb.literal), has_unknown,  -- ADR-0005
   embedding vector_cosine_ops
 )

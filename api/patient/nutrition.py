@@ -21,6 +21,15 @@ SQL = {
 }
 
 
+# Columns copied onto chunk by scripts/ingest.py (migration 006), so M4 can filter on them inside the index
+DERIVED_COLUMNS = ["sat_fat_pct_kcal", "sugar_pct_kcal", "fiber_per_1000kcal", "potassium_mg"]
+
+
+def derived_sql(alias: str) -> list[str]:
+    """SQL for DERIVED_COLUMNS over recipe_nutrition AS <alias>, in that order; cast to the column type (real)."""
+    return [f"({SQL[c].replace('n.', f'{alias}.')})::real" for c in DERIVED_COLUMNS]
+
+
 def per_serving_limit(rule: NutrientRule, weight_kg: float | None = None,
                       fraction: float = config.PER_MEAL_FRACTION) -> float | None:
     """The limit one serving is held to; None when it cannot be set (warn-only rule, or no weight for g/kg)."""

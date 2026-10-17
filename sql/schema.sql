@@ -118,6 +118,11 @@ CREATE TABLE chunk (
   fat_g            real,
   carbohydrates_g  real,
   sodium_mg        real,
+  -- derived from recipe_nutrition (migration 006, api/patient/nutrition.py); null when calories are 0 or null
+  sat_fat_pct_kcal    real,
+  sugar_pct_kcal      real,               -- total sugars: the data has no free-sugar column
+  fiber_per_1000kcal  real,
+  potassium_mg        real,
   -- copied Recipe tags (sql/tags.sql, ADR-0005); NULL on a strategy built before tagging
   allergens        text[],
   ingredients_norm text[],

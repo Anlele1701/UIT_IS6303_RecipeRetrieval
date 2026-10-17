@@ -102,3 +102,36 @@ def test_a_second_retag_keeps_the_older_legacy_under_a_timestamped_name(recipes,
     assert recipes.execute("SELECT count(*) FROM chunk WHERE strategy = 'sentence'").fetchone()[0] > 0
     for t in kept:
         recipes.execute(f'DROP TABLE "{t}"')
+
+
+def _set_nutrition(conn):
+    conn.execute("""UPDATE recipe_nutrition SET calories = 400, saturated_fat_g = 4, sugars_g = 20,
+                    dietary_fiber_g = 6, potassium_mg = 300 WHERE recipe_id = 1""")
+    conn.execute("UPDATE recipe_nutrition SET calories = 0 WHERE recipe_id = 2")  # ratios unknown, not 0
+
+
+def _derived(conn):
+    return {r[0]: r[1:] for r in conn.execute(
+        """SELECT DISTINCT recipe_id, sat_fat_pct_kcal, sugar_pct_kcal, fiber_per_1000kcal, potassium_mg
+           FROM chunk ORDER BY recipe_id""")}
+
+
+def test_retag_fills_the_derived_nutrition_columns(recipes, fake_embed):
+    _set_nutrition(recipes)
+    build(recipes)
+    tag_test_db(recipes)
+    # a partition built before migration 006: the columns exist but are empty
+    recipes.execute("UPDATE chunk SET sat_fat_pct_kcal = NULL, sugar_pct_kcal = NULL, fiber_per_1000kcal = NULL, "
+                    "potassium_mg = NULL")
+    ingest.run(recipes, ["retag", "sentence"])
+    d = _derived(recipes)
+    assert d[1] == (9.0, 20.0, 15.0, 300.0)  # 4*9/400*100, 20*4/400*100, 6/400*1000
+    assert d[2] == (None, None, None, None)  # calories 0: unknown
+    recipes.execute("DROP TABLE chunk_sentence_legacy")
+
+
+def test_a_new_build_computes_the_derived_columns(recipes, fake_embed):
+    tag_test_db(recipes)
+    _set_nutrition(recipes)
+    build(recipes)
+    assert _derived(recipes)[1] == (9.0, 20.0, 15.0, 300.0)
