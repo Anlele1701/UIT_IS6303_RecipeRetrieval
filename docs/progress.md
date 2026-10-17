@@ -511,3 +511,11 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
   - Phải tải `data/recipe.csv` (64 MB, từ nguồn HuggingFace ghi trong `ingest.py`; thư mục `data/` không vào git), vì script đếm lại D1–D3.
   - md5 của `recipe_tag` (allergens, allergens_may, diet_flags của 32.719 công thức) **trùng trước và sau**. D1–D8 trong `eval/corpus.json` **không đổi**. Vì vậy **không cần retag**.
   - Chỉ `lexicon_sha256` thay đổi, ở 5 file. Bốn file trong số đó không đổi kể từ `e58f96e`, nghĩa là `corpus.json` cũ được sinh trước lần sửa từ điển cuối và ghi sha của bản cũ. Giờ sha đã khớp với các file đang commit.
+
+### Sau MV3 – mục 3: route patient_info (17/10/2026)
+- **Prompt (`m6_generate.PATIENT_INFO`)** chỉ cho nêu giá trị, đơn vị, ngày đo, và khoảng tham chiếu nếu hồ sơ có (dữ liệu Synthea hiện không có). Không diễn giải, không nói xu hướng, không gợi ý chẩn đoán. Câu hỏi "có bình thường không" → trả lời rằng việc diễn giải cần bác sĩ, rồi chỉ nêu giá trị.
+- **M7, kiểm tra (d)** (tất định, chỉ cho route `patient_info`):
+  - mọi con số trong câu trả lời phải khớp một giá trị trong `facts` của nút đã đọc (hoặc trong khối `PATIENT_PROFILE`), ở đúng độ chính xác câu trả lời viết ra ("67.7" khớp 67.68);
+  - số trong dấu trích dẫn và số thứ tự danh sách không tính;
+  - không khớp → sinh lại tối đa 1 lần, kèm danh sách số sai.
+- Test với câu pe02 (mô hình giả): câu trả lời bịa "eGFR 95" bị sinh lại; prompt có quy định không diễn giải. `pytest` nhanh: 456 pass.

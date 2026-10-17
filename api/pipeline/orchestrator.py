@@ -186,13 +186,16 @@ class Assistant:
         messages: list[dict] | None = None
 
         constrained = sorted({*c.nutrient_limits, *c.nutrient_soft})  # empty without a patient
+        allowed_numbers = None  # route patient_info: the numbers M7 lets the answer state
         if path == "clarify":
             answer = u.clarify or ""
             yield Event("token", answer)
         elif path == "patient_info" and pt:
             views = [prompt_view(n, self.rules) for n in pt["nodes"] if n.node_id in pt["selection"].node_ids]
+            block = self._block(pt, state)
+            allowed_numbers = m7.numbers_in(views) | m7.numbers_in(block)
             if flags.generate:
-                messages = m6.patient_info_messages(message, u.lang, views, self._block(pt, state), history)
+                messages = m6.patient_info_messages(message, u.lang, views, block, history)
         elif path == "detail":
             rid = detail_recipe(u, state)
             with tr.stage("m5", {"recipe_id": rid}):
@@ -244,7 +247,8 @@ class Assistant:
                 answer = "".join(parts)
                 p.update(usage=dict(usage), chars=len(answer))
             if path in {"retrieve", "detail"} or (pt and path == "patient_info"):
-                answer, v = self._verify(answer, messages, cards, c, flags, tr, usage, self._check(pt, c))
+                answer, v = self._verify(answer, messages, cards, c, flags, tr, usage,
+                                         self._check(pt, c, allowed_numbers))
         elif path == "chat":
             answer = ("Mình chỉ giúp tìm công thức nấu ăn." if u.lang == "vi"
                       else "I can only help with recipes and cooking.")
@@ -331,7 +335,7 @@ class Assistant:
             block = block.replace("</patient_profile>", line + "</patient_profile>")
         return block
 
-    def _check(self, pt: dict | None, c) -> m7.PatientCheck | None:
+    def _check(self, pt: dict | None, c, numbers: set[float] | None = None) -> m7.PatientCheck | None:
         if not pt:
             return None
         terms: dict[str, list[str]] = {}
@@ -341,7 +345,7 @@ class Assistant:
         for i in c.ingredients_exclude:
             vi = [alias for alias, al in self.lex.aliases.items() if i in al.ingredients]
             terms[f"ingredient:{i}"] = list(dict.fromkeys([i, *vi]))
-        return m7.PatientCheck(node_ids={n.node_id for n in pt["nodes"]}, avoid_terms=terms)
+        return m7.PatientCheck(node_ids={n.node_id for n in pt["nodes"]}, avoid_terms=terms, numbers=numbers)
 
 
 def _brief(r: RecipeCard) -> dict:

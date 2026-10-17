@@ -10,7 +10,9 @@ Patient sessions (MV3, spec 5.6) add three checks, all leading to the same singl
     a break: unknown_strict decides that in M4);
 (b) the text must not suggest an ingredient the patient must avoid: an excluded ingredient or allergen word that
     is not negated or flagged as a warning nearby (English and the Vietnamese aliases of the lexicon);
-(c) every [H:<node_id>] must name a node of the patient's tree; others are removed.
+(c) every [H:<node_id>] must name a node of the patient's tree; others are removed;
+(d) route patient_info only: every number in the answer must match a value in the facts of the nodes read
+    (at the precision written), so the answer cannot invent or derive a measurement.
 Without a patient context, verify() is exactly the M3 check.
 """
 
@@ -29,10 +31,47 @@ SAFE_BEFORE = re.compile(r"(không|khong|chẳng|tránh|tranh|kiêng|kieng|thay|
 SAFE_AFTER = re.compile(r"^[^.;!?\n]{0,12}(-free|free\b)", re.I)
 
 
+NUMBER = re.compile(r"(?<![\w.])\d+(?:[.,]\d+)?(?![\w])")
+LIST_MARK = re.compile(r"^\s*\d+[.)]\s", re.M)
+
+
 @dataclass
 class PatientCheck:
     node_ids: set[str]  # every node of the patient's tree: [H:..] must name one
     avoid_terms: dict[str, list[str]] = field(default_factory=dict)  # constraint -> words that name it
+    numbers: set[float] | None = None  # route patient_info: every number the answer may state (facts read)
+
+
+def numbers_in(value) -> set[float]:
+    """Every number written in a JSON-like value (strings included: "2026-08-16" gives 2026, 8, 16)."""
+    out: set[float] = set()
+    if isinstance(value, dict):
+        for v in value.values():
+            out |= numbers_in(v)
+    elif isinstance(value, list | tuple):
+        for v in value:
+            out |= numbers_in(v)
+    elif isinstance(value, bool) or value is None:
+        pass
+    elif isinstance(value, int | float):
+        out.add(float(value))
+    else:
+        out |= {float(m.replace(",", ".")) for m in re.findall(r"\d+(?:\.\d+)?", str(value))}
+    return out
+
+
+def unknown_numbers(answer: str, allowed: set[float]) -> list[str]:
+    """Numbers in the answer that match no allowed value, at the precision the answer writes them
+    ("67.7" matches 67.68). Citation marks and list numbering are not numbers of the record."""
+    text = LIST_MARK.sub(" ", re.sub(r"\[(?:R\d+|H:[^\]]+)\]", " ", answer))
+    bad = []
+    for token in NUMBER.findall(text):
+        x = float(token.replace(",", "."))
+        decimals = len(re.split(r"[.,]", token)[1]) if re.search(r"[.,]", token) else 0
+        tol = 0.5 * 10 ** -decimals + 1e-9
+        if not any(abs(a - x) <= tol for a in allowed):
+            bad.append(token)
+    return list(dict.fromkeys(bad))
 
 
 def violations(card: RecipeCard, c: Constraints) -> list[str]:
@@ -75,6 +114,8 @@ def verify(answer: str, cards: list[RecipeCard], c: Constraints, patient: Patien
         return Verification(verified=not removed, citations=kept, removed=removed)
     bad_h = [h for h in dict.fromkeys(CITE_H.findall(answer)) if h not in patient.node_ids]
     flags = [f"text:{k}" for k in suggested_avoided(answer, patient.avoid_terms)] + [f"node:{h}" for h in bad_h]
+    if patient.numbers is not None:  # route patient_info: every number must come from a fact read (Thy, after MV3)
+        flags += [f"number:{n}" for n in unknown_numbers(answer, patient.numbers)]
     return Verification(verified=not removed and not flags, citations=kept, removed=removed, flags=flags,
                         bad_nodes=bad_h)
 
@@ -99,4 +140,8 @@ def retry_note(v: Verification, cards: list[RecipeCard], c: Constraints) -> str:
             note += f" Do not suggest anything the patient must avoid ({', '.join(words)})."
         if nodes:
             note += f" These record sections do not exist: {', '.join(nodes)}; cite only node ids from PATIENT_PROFILE."
+        numbers = [f.split(":", 1)[1] for f in v.flags if f.startswith("number:")]
+        if numbers:
+            note += (f" These numbers are not in RECORD: {', '.join(numbers)}. Copy values exactly as RECORD gives them "
+                     "and do not interpret them.")
     return note

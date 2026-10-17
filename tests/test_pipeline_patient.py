@@ -178,3 +178,34 @@ def test_m7_nutrient_break_and_negated_mentions():
     bad = m7.verify("Thêm tôm vào cho ngon.", [], Constraints(), check)
     assert ok.verified and not ok.flags
     assert not bad.verified and bad.flags == ["text:allergen:crustacean_shellfish"]
+
+
+# ---- route patient_info: values only, every number from the facts read (Thy, after MV3) ------------------------
+
+PE02 = "Were the patient's last blood tests normal for kidney function?"
+
+
+def test_m7_numbers_must_come_from_the_record():
+    allowed = m7.numbers_in([{"value": "67.68", "unit": "mg/dL", "date": "2026-08-16"}])
+    assert m7.unknown_numbers("Glucose 67.68 mg/dL on 2026-08-16 [H:results.2026] [R12].", allowed) == []
+    assert m7.unknown_numbers("Glucose about 67.7 mg/dL.", allowed) == []  # the precision the answer writes
+    assert m7.unknown_numbers("1. Glucose 67.68\n2. eGFR 95 mL/min", allowed) == ["95"]  # list marks are not values
+    assert m7.unknown_numbers("Glucose 70 mg/dL", allowed) == ["70"]
+
+
+def test_pe02_a_made_up_value_is_regenerated_and_the_prompt_forbids_interpreting(bot, monkeypatch):
+    from api.patient import navigate
+    monkeypatch.setattr(navigate, "chat_json", lambda client, schema, messages, **kw: {"node_ids": ["results.2021"]})
+    facts = bot.conn.execute("SELECT facts FROM patient_node WHERE patient_id = %s AND node_id = 'results.2021'",
+                             [PID]).fetchone()[0]
+    obs = facts[0]["observations"][0]
+    honest = (f"Interpreting results needs a doctor. The record has {obs['display']} {obs['value']} {obs['unit']} "
+              f"on {obs['date']} [H:results.2021].")
+    prompts = []
+    fake_models(monkeypatch, [Understanding(lang="en", intent="patient_info", needs_record_context=True)],
+                ["Kidney function looks normal: eGFR 95 mL/min [H:results.2021].", honest], prompts)
+    done = dict(events(bot, bot.new_session("S", PID), PE02))["done"]
+    assert done["regenerated"] and done["verified"] and done["answer"] == honest
+    system = prompts[0][0]["content"]
+    assert "interpreting results needs a doctor" in system and "no trend" in system
+    assert "These numbers are not in RECORD: 95" in prompts[1][-1]["content"]
