@@ -1,0 +1,8 @@
+snomed_code,display,allergens,extra_ingredients_exclude,seen_in_data,version,note
+735029006,Shellfish (substance),crustacean_shellfish,clam;baby clam;littleneck clam;clam in shell;clam juice;clamato;oyster;shucked oyster;oyster sauce;mussel;scallop;bay scallop;sea scallop;squid;calamari;octopus;abalone;escargot;snail;conch,true,v1,Synthea does not split crustaceans from molluscs: widen to molluscs (safe side). Every mollusc canonical in ingredient (group shellfish); conch carries no allergen tag so it must be listed. Not in ingredient: cuttlefish; cockle; whelk. Left out: oyster cracker; oyster mushroom
+102263004,Eggs (edible) (substance),egg,,true,v1,Checked 17/10: quail eggs map to egg; no duck egg in the recipe lines
+442571000124108,Tree nut (substance),tree_nuts,,true,v1,
+3718001,Cow's milk (substance),milk,,true,v1,Checked 17/10: goat and sheep milk; feta; goat cheese; pecorino; manchego; roquefort are all tagged milk
+412071004,Wheat (substance),wheat,,true,v1,Checked 17/10: spelt; farro; durum; semolina; bulgur are tagged wheat (no kamut in the recipes). Barley and rye stay out
+256355007,Glycine max (substance),soy,,true,v1,Glycine max = soybean
+762952008,Peanut (substance),peanut,,true,v1,
