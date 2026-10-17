@@ -1,2 +1,8 @@
 recipe_id,constraint,evidence_line,violation,reviewer,date,note
 2920,allergen:wheat,3 tablespoons Worcestershire sauce,no,Thy,2026-10-17,"decision after MV3, item 2: gluten (if any) from malt vinegar made from barley; barley is not FDA wheat"
+8897,allergen:wheat,2 (6 ounce) fillets salmon (1-inch thick),no,Thy,2026-10-17,"after MV3 round 2, item 3: all six queued verdicts are checker errors (salmon is not wheat)"
+7750,allergen:crustacean_shellfish,"¾ pound mahi mahi fillets, diced, or more to taste",no,Thy,2026-10-17,"after MV3 round 2, item 3: mahi mahi is a fish, not a crustacean"
+11169,allergen:crustacean_shellfish,1 ½ cups plain non-fat yogurt,no,Thy,2026-10-17,"after MV3 round 2, item 3: yogurt is not a crustacean"
+31477,allergen:crustacean_shellfish,1 teaspoon Worcestershire sauce,no,Thy,2026-10-17,"after MV3 round 2, item 3: Worcestershire holds anchovy (fish), no crustacean"
+31477,allergen:wheat,1 teaspoon Worcestershire sauce,no,Thy,2026-10-17,"after MV3 round 2, item 3: as R2920, barley malt vinegar is not FDA wheat"
+10006,allergen:crustacean_shellfish,16 ounces chile sauce,no,Thy,2026-10-17,"after MV3 round 2, item 3: a sauce for shrimp; no shrimp among its ingredients"

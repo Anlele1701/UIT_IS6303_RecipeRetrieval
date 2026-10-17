@@ -565,3 +565,13 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
 2. **Kiểm tra (b) của M7 bắt nhầm tên món** ("…for Shellfish"): có loại tên món `[R…]` ra khỏi phép so không.
 3. Duyệt 6 phiếu trong `checker_queue.csv`. Nhãn R2920 áp theo từng công thức; có muốn một nhãn theo chuỗi bằng chứng (ví dụ "Worcestershire sauce" với `allergen:wheat`) áp cho mọi công thức không.
 4. Nhãn golden pv10 (`intent: "chat"`).
+
+### Sau MV3 – vòng 2 (Thy, 17/10/2026)
+1. **Route `patient_info`:** làm cả hai phương án, kèm chỉnh sửa của Thy:
+   - M7 kiểm tra từ diễn giải (normal/elevated/high/low/bình thường/cao/thấp/tăng/giảm…) **chỉ trong câu có con số**, sau khi **che tên bệnh lấy từ hồ sơ** (và các tên tiếng Việt tương ứng: tăng huyết áp, tiểu đường…).
+   - Nếu sinh lại vẫn sai: thay bằng `values_answer` do code sinh ("Việc diễn giải kết quả cần bác sĩ. Hồ sơ ghi:" kèm giá trị, đơn vị, ngày, `[H:…]`, nút mới nhất trước).
+   - **Mỗi lần dùng câu trả lời do code sinh, trace ghi một dòng `fallback`** (kèm cờ của câu trả lời của mô hình); sự kiện `done` có `fallback`. Tỉ lệ này sẽ đưa vào báo cáo.
+2. **Tên món:** che nguyên văn tiêu đề các công thức được trích dẫn và các chuỗi `[R…]` (cả `R123` không có ngoặc) trước khi kiểm tra văn bản. Không bỏ cả câu.
+3. **6 phiếu trong hàng duyệt:** Thy duyệt cả 6 = không vi phạm (R8897 lúa mì; R7750, R11169, R31477, R10006 giáp xác; R31477 lúa mì). Đã ghi vào `eval/labels/checker_adjudication.csv` (tổng 7 nhãn).
+4. **pv10:** `intent = out_of_scope`.
+- Test: thêm 4 test (diễn giải, che tên món, `values_answer`, thay câu trả lời kèm dòng trace). `pytest` nhanh: 466 pass.
