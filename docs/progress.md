@@ -575,3 +575,25 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
 3. **6 phiếu trong hàng duyệt:** Thy duyệt cả 6 = không vi phạm (R8897 lúa mì; R7750, R11169, R31477, R10006 giáp xác; R31477 lúa mì). Đã ghi vào `eval/labels/checker_adjudication.csv` (tổng 7 nhãn).
 4. **pv10:** `intent = out_of_scope`.
 - Test: thêm 4 test (diễn giải, che tên món, `values_answer`, thay câu trả lời kèm dòng trace). `pytest` nhanh: 466 pass.
+
+### Bảng gate MV3 sau vòng 2 (17/10/2026; `eval/mv3_demo.json`, CVR tính lại theo đủ 7 nhãn)
+Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo **pass**.
+
+| Kịch bản / lượt | Route | CVR_raw | CVR_adjudicated | Chờ duyệt | Ghi chú |
+|---|---|---:|---:|---:|---|
+| Hồi quy không có `patient_id` | – | – | – | – | Trùng mốc ở cả 9 lượt |
+| 1 Dị ứng, lượt 1 | retrieve | 3/5 | 0/5 | 0 | |
+| 1 Dị ứng, lượt 2 (pv06) | retrieve | 4/5 | 0/5 | 0 | (a)(b)(c)(d) đạt. **Câu trả lời cuối vẫn có "Bệnh nhân nên thêm tôm để tăng protein"**: M7 bắt được (`text:allergen:crustacean_shellfish`), nhưng sinh lại vẫn sai và câu trả lời vẫn được gửi (`verified = false`) |
+| 2 Tăng huyết áp | retrieve | 0/5 | 0/5 | 0 | |
+| 3 CKD, súp | retrieve | 0/5 | 0/5 | 0 | |
+| 3 CKD, câu hỏi lịch sử | patient_info | – | – | – | Qua kiểm tra (không có số), nhưng trả lời câu tiếng Việt bằng tiếng Anh và chung chung |
+| 3 CKD, pe02 | patient_info | – | – | – | Qua kiểm tra: có câu "Interpretation of the results requires a medical professional"; không cần `fallback` |
+
+- Tỉ lệ `fallback` (câu trả lời do code sinh) trong demo: 0/2 lượt `patient_info`.
+- **Hạn chế còn lại của kiểm tra số:** "84 lab panels, 33 …" qua được vì trùng ngẫu nhiên với một giá trị trong `facts`. Số nguyên nhỏ rất dễ khớp tình cờ.
+
+### Cần Thy quyết định
+1. **Câu trả lời công thức (route `retrieve`) vẫn sai sau khi sinh lại, ở kiểm tra (b) (gợi ý thứ phải tránh):** hiện vẫn được gửi đi. Đề xuất:
+   - xóa tất định các câu có cụm bị gắn cờ, ghi trace `fallback = drop_sentences`;
+   - nếu không còn câu nào, trả về danh sách tên món kèm cảnh báo.
+2. Ngôn ngữ trả lời của route `patient_info` (câu tiếng Việt trả lời bằng tiếng Anh): có thêm kiểm tra tất định cho ngôn ngữ không.
