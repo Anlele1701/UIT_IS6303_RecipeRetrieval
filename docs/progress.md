@@ -315,3 +315,43 @@ Bàn giao sang máy khác: xem `docs/handoff.md`.
 - Đã tải zip ở commit `9959d9178e` và so sha256: **108/108 file trùng** với `data/synthea_sample_data_ccda_latest/`.
 - Vậy bộ mẫu sinh từ **Synthea commit `d9d07a6eef91ee5144293b42ab64224d84d124f8`**. Đây là tag `master-branch-latest` tại 18/08/2026, mới hơn bản `v4.0.0` (05/03/2026).
 - Khi sinh thêm bệnh nhân: checkout đúng commit này và build từ mã nguồn (không dùng jar `v4.0.0`). Cần Java 17 trở lên.
+
+---
+
+## MV1 – Parse C-CDA và dựng cây hồ sơ (17/10/2026) · 🚦 chờ duyệt
+
+Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, sinh bởi `scripts/patient_ingest.py stats`.
+
+### Quyết định đầu MV1 (Thy, 17/10/2026)
+- V1c dùng tóm tắt **template** khi nạp. Tóm tắt LLM đã code và có test, sẽ chạy sau bằng `patient_ingest.py tree --summarize llm`, trên máy GPU hoặc sau khi sinh xong bệnh nhân. Lý do: khoảng 2.000 nút, chạy CPU mất 4–5 giờ.
+
+### Việc đã làm
+- `api/patient/models.py`: các kiểu entry, `PatientRecord` (sau P2–P7, không có danh tính), `PatientNode`, `Evidence`.
+- `api/patient/rules.py`: nạp các danh sách P7. Báo lỗi khi `include_loinc.csv` và `exclude_loinc.csv` trùng mã.
+- `api/patient/ccda.py`: `read_record` áp P2–P7, kèm số đếm theo từng quy tắc.
+- `api/patient/tree.py`: dựng cây tất định (root, 4 nút cố định, nút ngữ cảnh `results.<year>` và `encounters.<year>`).
+- `api/patient/summarize.py`: tóm tắt template; tóm tắt LLM có cache, lỗi hai lần thì quay về template.
+- `sql/patient.sql`, migration 007:
+  - bảng `patient` (có `source`, `deceased`), `patient_node`, `patient_profile_cache`;
+  - thêm `chat_session.patient_id`, `session_constraint.source` / `evidence`, scope `patient`;
+  - **đã áp lên DB `recipe`** (chỉ thêm bảng và cột).
+- `scripts/patient_ingest.py load | tree | stats`: đọc nhiều thư mục kèm `source`; trùng `patient_id` thì báo lỗi; file lỗi được liệt kê bằng hash.
+- `data/sources.json`: nguồn tải, Synthea commit `d9d07a6`, sha256. `scripts/check_env.py` thêm mục "Nguồn dữ liệu" đọc từ file này (chưa chạy lại `check_env.py`).
+- **Luật mới (bản nháp `draft-mv1`, cần Thy duyệt):** `data/rules/exclude_codes.csv` loại theo P7 các mã sau:
+  - bệnh: "Dependent drug abuse", "Overdose";
+  - lần khám: "Drug rehabilitation and detoxification", "Death Certification";
+  - thuốc: buprenorphine/naloxone.
+
+  Các mục này không phải organizer nên `exclude_loinc.csv` không chặn được.
+- Test: 4 file mới trong `tests/patient/` (42 test, có test DB). `pytest` nhanh: 383 pass.
+
+### Số liệu chính
+- P1: 108 file, 108 parse được, 0 lỗi; 100 còn sống, 8 đã mất.
+- Cây trong DB: 108 nút root, 432 nút cố định, 1.983 nút ngữ cảnh (tóm tắt template).
+  - MV0 ước tính 1.984. Lệch 1 nút vì một bệnh nhân có lần khám duy nhất năm 2026 là "Death Certification", bị loại theo P7.
+- P7 (số organizer bị loại): tâm thần 1.324, sử dụng chất 627, bạo lực 289, tử vong 8, not_relevant 327. Ngoài ra loại 8 lần khám tử vong, 8 lần khám cai nghiện, 3 bệnh và 1 thuốc thuộc nhóm sử dụng chất.
+- Quét tên bệnh nhân mẫu và các mã P7 trong `patient_node`, `eval/patient_corpus.json` và báo cáo: 0 kết quả.
+
+### Cần Thy quyết định
+1. Duyệt `exclude_codes.csv`. Có nên loại thêm "Admission to hospice" (8 bệnh nhân) không.
+2. Có chạy lại `check_env.py` trên máy này không. Lệnh này sẽ ghi đè `docs/env.md` bằng thông tin máy CPU; bản đang commit là của máy gốc.

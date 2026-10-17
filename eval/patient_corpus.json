@@ -1,0 +1,159 @@
+{
+  "ran_at": "2026-10-17T16:53:18",
+  "git_commit": "876939e",
+  "seed": 42,
+  "rules_sha256": {
+    "allergy_substance.csv": "6641534048bace717325052498b00bca3ef61cd2ed11b67ca238207b29ec7033",
+    "include_loinc.csv": "caf69622c4828d39071cac96e14716a660c7111b9d2ae3db67d3644f863f35cc",
+    "exclude_loinc.csv": "5432a0bd98dd06f5d1323c7a91b5ab918ea5be6d41b381e1d9f04d4bc70c6611",
+    "exclude_codes.csv": "206c2628f4e0b8a250a7a7ad73cb54c45f5be7ce45b81070addf4219ef748f85"
+  },
+  "sources": {
+    "sample": {
+      "dir": "data/synthea_sample_data_ccda_latest",
+      "description": "100 Sample Synthetic Patient Records, C-CDA (latest)",
+      "download_page": "https://synthea.mitre.org/downloads",
+      "file_url": "https://github.com/synthetichealth/synthea-sample-data/raw/9959d9178e/downloads/latest/synthea_sample_data_ccda_latest.zip",
+      "downloaded": "2026-10-17",
+      "sample_data_repo_commit": "9959d9178e",
+      "synthea_commit": "d9d07a6eef91ee5144293b42ab64224d84d124f8",
+      "synthea_commit_note": "from the sample-data commit message; synthea tag master-branch-latest on 2026-08-18, newer than v4.0.0",
+      "zip_sha256": "cac8f607b8acd56d38b69a3a8fd4877b3606e37ce486a670c8c232f2e0c4719d",
+      "files": 108,
+      "files_sha256_of_sorted_list": "0ef5872be883c3807e20fd8d782a9ad6763c9aff3d61dd796d5d59fc06aec1f9",
+      "verified": "2026-10-17: all 108 files match the zip at sample-data commit 9959d9178e (sha256)"
+    },
+    "generated": null
+  },
+  "per_source": {
+    "sample": {
+      "dir": "data/synthea_sample_data_ccda_latest",
+      "P1": {
+        "files": 108,
+        "parsed": 108,
+        "parse_errors": [],
+        "deceased": 8,
+        "alive": 100,
+        "software_name": {
+          "https://github.com/synthetichealth/synthea": 108
+        }
+      },
+      "P2": {
+        "allergies_dropped_not_in_force": 0,
+        "allergies_in_force": 105,
+        "problems_dropped_not_in_force": 2628
+      },
+      "P3": {
+        "food_allergies": 19
+      },
+      "P4": {
+        "disorders_kept": 263,
+        "dropped_suffix_finding": 513,
+        "dropped_suffix_none": 5,
+        "dropped_suffix_person": 2,
+        "dropped_suffix_situation": 103
+      },
+      "P5": {
+        "dropped_not_in_use": 3582,
+        "in_use": 267
+      },
+      "P6": {
+        "encounters": 5555,
+        "result_organizers": 2788,
+        "vitals_latest": 836
+      },
+      "P7": {
+        "encounter_death": 8,
+        "encounter_substance_use": 8,
+        "identity_fields_not_read": 108,
+        "medication_substance_use": 1,
+        "organizer_death": 8,
+        "organizer_mental_health": 1324,
+        "organizer_not_relevant": 327,
+        "organizer_substance_use": 627,
+        "organizer_violence": 289,
+        "problem_substance_use": 3,
+        "section_29762-2_entries": 108,
+        "section_47420-5_entries": 2431
+      }
+    }
+  },
+  "total": {
+    "P1": {
+      "files": 108,
+      "parsed": 108,
+      "deceased": 8,
+      "alive": 100
+    },
+    "P2": {
+      "allergies_dropped_not_in_force": 0,
+      "allergies_in_force": 105,
+      "problems_dropped_not_in_force": 2628
+    },
+    "P3": {
+      "food_allergies": 19
+    },
+    "P4": {
+      "disorders_kept": 263,
+      "dropped_suffix_finding": 513,
+      "dropped_suffix_none": 5,
+      "dropped_suffix_person": 2,
+      "dropped_suffix_situation": 103
+    },
+    "P5": {
+      "dropped_not_in_use": 3582,
+      "in_use": 267
+    },
+    "P6": {
+      "encounters": 5555,
+      "result_organizers": 2788,
+      "vitals_latest": 836
+    },
+    "P7": {
+      "encounter_death": 8,
+      "encounter_substance_use": 8,
+      "identity_fields_not_read": 108,
+      "medication_substance_use": 1,
+      "organizer_death": 8,
+      "organizer_mental_health": 1324,
+      "organizer_not_relevant": 327,
+      "organizer_substance_use": 627,
+      "organizer_violence": 289,
+      "problem_substance_use": 3,
+      "section_29762-2_entries": 108,
+      "section_47420-5_entries": 2431
+    }
+  },
+  "db": {
+    "patients": [
+      {
+        "source": "sample",
+        "deceased": false,
+        "n": 100
+      },
+      {
+        "source": "sample",
+        "deceased": true,
+        "n": 8
+      }
+    ],
+    "nodes": [
+      {
+        "kind": "context",
+        "summary_source": "template",
+        "n": 1983
+      },
+      {
+        "kind": "fixed",
+        "summary_source": null,
+        "n": 432
+      },
+      {
+        "kind": "root",
+        "summary_source": null,
+        "n": 108
+      }
+    ]
+  },
+  "P8": "sampling is MV4 (scripts/patient_sample.py); deceased patients are left out"
+}
