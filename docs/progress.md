@@ -438,3 +438,14 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
 - Bưởi chùm bị loại ở 17 bệnh nhân (statin).
 - Ngưỡng dinh dưỡng: natri 100 (mặc định), chất béo bão hòa 18, chất xơ 5, protein theo cân nặng 3.
 - Cảnh báo: đường 100, kali 3, phospho 3, vitamin K 1. `unmapped`: hyperglycemia 2.
+
+### Luật mềm cho luật dinh dưỡng quá chặt (Thy, 17/10/2026)
+- **Yêu cầu:** ghi vào `eval/patient_profiles.json` tỉ lệ qua của từng luật và của tổ hợp luật cho từng bệnh nhân. Luật nào để lại dưới khoảng 50% kho thì chuyển sang luật mềm. Ghi số liệu và lựa chọn vào ADR-0007 rồi chuyển ADR sang *accepted*.
+- **Đã đo** (`rule_pass_rates`, `patient_pass_spread`, `per_patient`; `patient_id` là uuid của Synthea):
+  - Dưới 50%: chất béo bão hòa ≤ 6% (17,2%), chất xơ ≥ 14 g/1000 kcal (23,2%).
+  - Natri (68,9–73,7%) và protein (63,5–72,8%) vẫn cứng.
+- **Đã đổi:** `condition_nutrient.csv` → `v2`, hai luật trên thành `soft`. Profile có thêm `nutrient_soft` và cảnh báo; M5 sẽ xếp hạng theo luật mềm ở MV3. `ruleset_version` mới: `d0d5ba48e03d`.
+- **Dị ứng và nguyên liệu bị loại vẫn cứng**, dù sữa (40,1%) và lúa mì (46,6%) dưới 50%: đây là luật an toàn. Đây là cách mình hiểu yêu cầu (quy tắc 50% chỉ áp cho luật dinh dưỡng); cần Thy xác nhận.
+- **Tổ hợp theo bệnh nhân:** dưới 50% kho giảm từ 25 xuống **6** bệnh nhân, cả 6 đều do dị ứng. Thấp nhất tăng từ 5,5% lên 18,4%.
+- Test chặn: mọi luật `filter` phải ≥ 50% (đọc `eval/patient_corpus.json`). `pytest` nhanh: 421 pass.
+- **ADR-0007 → accepted**, kèm bảng số liệu và lựa chọn. ADR-0006 vẫn *proposed*.
