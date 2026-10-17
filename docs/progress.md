@@ -503,3 +503,11 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
 - Không import code của bộ gắn thẻ: `tests/test_checker_independence.py` mở rộng để kiểm cả `adjudicate.py`.
 - `eval/labels/checker_adjudication.csv`: file mới, có 1 nhãn do Thy quyết định (R2920 Worcestershire = không vi phạm).
 - Quy trình ghi ở mục 5 của `docs/annotation_guide.md`. Test: `tests/test_adjudicate.py` (7 test).
+
+### Sau MV3 – mục 2: Worcestershire (17/10/2026)
+- `data/lexicon/rules.csv`: không gắn `wheat`, kể cả mức "có thể chứa". Cột `note` của `worcestershire` ghi: "gluten (nếu có) từ giấm mạch nha làm từ lúa mạch; lúa mạch không thuộc nhóm wheat của FDA". Dòng này vốn chỉ gắn `fish` (cá cơm).
+- Phiếu R2920 / `allergen:wheat` = không vi phạm, ghi trong `eval/labels/checker_adjudication.csv`.
+- Đã chạy lại `scripts/tag.py run`:
+  - Phải tải `data/recipe.csv` (64 MB, từ nguồn HuggingFace ghi trong `ingest.py`; thư mục `data/` không vào git), vì script đếm lại D1–D3.
+  - md5 của `recipe_tag` (allergens, allergens_may, diet_flags của 32.719 công thức) **trùng trước và sau**. D1–D8 trong `eval/corpus.json` **không đổi**. Vì vậy **không cần retag**.
+  - Chỉ `lexicon_sha256` thay đổi, ở 5 file. Bốn file trong số đó không đổi kể từ `e58f96e`, nghĩa là `corpus.json` cũ được sinh trước lần sửa từ điển cuối và ghi sha của bản cũ. Giờ sha đã khớp với các file đang commit.

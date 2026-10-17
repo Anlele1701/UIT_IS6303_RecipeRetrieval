@@ -147,7 +147,7 @@ roe,fish,fish,direct,
 bonito,fish,fish,direct,
 dashi,fish,fish,hidden,bonito stock
 surimi,fish,fish,direct,
-worcestershire,fish,fish,hidden,contains anchovies
+worcestershire,fish,fish,hidden,contains anchovies; không gắn wheat: gluten (nếu có) từ giấm mạch nha làm từ lúa mạch; lúa mạch không thuộc nhóm wheat của FDA
 fish sauce,fish,fish,hidden,
 imitation crab,fish,fish|crustacean_shellfish?,hidden,surimi; often crab extract; conservative
 imitation crabmeat,fish,fish|crustacean_shellfish?,hidden,

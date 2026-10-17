@@ -1,6 +1,6 @@
 # Báo cáo dữ liệu (quy tắc D1–D8)
 
-Sinh tự động bởi `scripts/tag.py` lúc 2026-10-15T00:32:27 (commit `86fc600`). Số liệu gốc ở `eval/corpus.json`. Không sửa tay file này.
+Sinh tự động bởi `scripts/tag.py` lúc 2026-10-17T21:33:04 (commit `f2f8100`). Số liệu gốc ở `eval/corpus.json`. Không sửa tay file này.
 
 | Mã | Quy tắc | Số liệu |
 |---|---|---|
