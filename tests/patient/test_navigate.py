@@ -73,3 +73,15 @@ def test_the_prompt_is_only_the_table_of_contents(nodes, rs, monkeypatch):
 def test_mv4_modes_are_refused_until_built(nodes, rs):
     with pytest.raises(NotImplementedError, match="MV4"):
         navigate.select_nodes(nodes, "x", True, "vector", rs, None)
+
+
+def test_the_patient_golden_draft_is_well_formed_and_still_a_draft():
+    import json
+    root = Path(__file__).resolve().parents[2]
+    rows = [json.loads(line) for line in
+            (root / "tests" / "golden" / "m1_patient_cases_draft.jsonl").read_text(encoding="utf-8").splitlines()]
+    keys = {"id", "status", "message", "intent", "needs_record_context", "allergens", "excl", "remove", "diet", "minutes"}
+    assert len({r["id"] for r in rows}) == len(rows) == 14
+    for r in rows:
+        assert keys <= set(r) and isinstance(r["remove"], list), r["id"]
+        assert r["status"].startswith("draft"), r["id"]  # only Thy turns a case into approved

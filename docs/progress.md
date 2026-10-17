@@ -518,4 +518,12 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
   - mọi con số trong câu trả lời phải khớp một giá trị trong `facts` của nút đã đọc (hoặc trong khối `PATIENT_PROFILE`), ở đúng độ chính xác câu trả lời viết ra ("67.7" khớp 67.68);
   - số trong dấu trích dẫn và số thứ tự danh sách không tính;
   - không khớp → sinh lại tối đa 1 lần, kèm danh sách số sai.
-- Test với câu pe02 (mô hình giả): câu trả lời bịa "eGFR 95" bị sinh lại; prompt có quy định không diễn giải. `pytest` nhanh: 456 pass.
+- Test với câu pe02 (mô hình giả): câu trả lời bịa "eGFR 95" bị sinh lại; prompt có quy định không diễn giải. `pytest` nhanh: 455 pass.
+
+### Sau MV3 – mục 4: golden M1 cho bệnh nhân (17/10/2026)
+- `tests/golden/m1_patient_cases_draft.jsonl`:
+  - thêm trường `remove` (danh sách); 8 câu cũ có `remove: []`;
+  - thêm nguyên văn 6 câu pv06–pv10, pe04;
+  - pv05 có ghi chú "nút ngữ cảnh chỉ thêm cảnh báo, không đổi bộ lọc".
+- 14 câu, tất cả vẫn ở trạng thái `draft`. Có test kiểm định dạng và kiểm rằng không câu nào tự chuyển sang approved.
+- **Cần Thy xem:** pv10 ghi `intent: "chat"`, nhưng `chat` là tên route. Intent của M1 chỉ có `chitchat` / `out_of_scope`; câu hỏi về thuốc sẽ là `out_of_scope` → route `chat`. Mình giữ nguyên văn, chờ Thy chốt.
