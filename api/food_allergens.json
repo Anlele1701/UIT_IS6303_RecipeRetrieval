@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "note": "Hand-written, best-effort keyword lists. An allergen is matched as a whole word (plural allowed) in a Recipe's title or ingredient lines, after the 'except' phrases are removed. It cannot see an allergen the ingredient line does not name, so it is a screen, not a guarantee. Terms are English, like the recipes.",
+  "allergens": [
+    {
+      "name": "Egg",
+      "snomed_codes": ["102263004"],
+      "terms": ["egg", "eggnog", "mayonnaise", "mayo", "meringue", "aioli", "hollandaise", "custard", "albumen"],
+      "except": []
+    },
+    {
+      "name": "Cow's milk",
+      "snomed_codes": ["3718001"],
+      "terms": ["milk", "buttermilk", "cream", "creamed", "butter", "ghee", "cheese", "cheddar", "mozzarella",
+                "parmesan", "ricotta", "mascarpone", "feta", "yogurt", "yoghurt", "kefir", "whey", "casein",
+                "half-and-half", "custard"],
+      "except": ["coconut milk", "almond milk", "soy milk", "soymilk", "oat milk", "rice milk", "cashew milk",
+                 "hemp milk", "coconut cream", "cream of tartar", "cocoa butter", "peanut butter",
+                 "almond butter", "nut butter", "apple butter", "sunflower seed butter", "shea butter"]
+    },
+    {
+      "name": "Shellfish",
+      "snomed_codes": ["735029006"],
+      "terms": ["shellfish", "shrimp", "prawn", "crab", "lobster", "crawfish", "crayfish", "langoustine", "krill",
+                "scallop", "clam", "mussel", "oyster", "abalone", "squid", "calamari", "octopus", "cuttlefish",
+                "escargot", "snail"],
+      "except": ["crab apple", "crabapple", "oyster mushroom"]
+    },
+    {
+      "name": "Fish",
+      "snomed_codes": ["735971005"],
+      "terms": ["fish", "salmon", "tuna", "cod", "tilapia", "halibut", "trout", "haddock", "pollock", "anchovy",
+                "anchovies", "sardine", "mackerel", "snapper", "catfish", "bass", "sole", "flounder", "mahi",
+                "mahi-mahi", "swordfish", "herring", "perch", "worcestershire"],
+      "except": []
+    },
+    {
+      "name": "Wheat",
+      "snomed_codes": ["412071004"],
+      "terms": ["wheat", "flour", "bread", "breadcrumb", "bread crumb", "crouton", "pasta", "noodle", "spaghetti",
+                "macaroni", "fettuccine", "linguine", "penne", "lasagna", "couscous", "semolina", "bulgur",
+                "farro", "seitan", "cracker", "tortilla", "pita", "bagel", "dough", "pastry", "pie crust",
+                "bisquick", "baking mix", "pancake mix", "cake mix", "biscuit"],
+      "except": ["rice flour", "almond flour", "coconut flour", "corn flour", "cornflour", "oat flour",
+                 "chickpea flour", "tapioca flour", "potato flour", "corn tortilla", "rice noodle",
+                 "rice pasta", "gluten-free flour"]
+    },
+    {
+      "name": "Tree nut",
+      "snomed_codes": ["442571000124108"],
+      "terms": ["tree nut", "nut", "almond", "walnut", "pecan", "cashew", "pistachio", "hazelnut", "filbert",
+                "macadamia", "brazil nut", "pine nut", "chestnut", "marzipan", "praline", "nutella", "gianduja"],
+      "except": ["water chestnut"]
+    },
+    {
+      "name": "Soy",
+      "snomed_codes": ["256355007"],
+      "terms": ["soy", "soya", "soybean", "tofu", "tempeh", "edamame", "miso", "tamari", "shoyu"],
+      "except": []
+    },
+    {
+      "name": "Peanut",
+      "snomed_codes": ["762952008"],
+      "terms": ["peanut", "groundnut", "arachis"],
+      "except": []
+    }
+  ]
+}

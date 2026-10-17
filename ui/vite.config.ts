@@ -8,7 +8,7 @@ const api = process.env.API_URL ?? 'http://localhost:8000'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
-    proxy: Object.fromEntries(['/search', '/strategies', '/categories', '/health', '/docs', '/openapi.json'].map(p => [p, api])),
+    proxy: Object.fromEntries(['/search', '/strategies', '/categories', '/health', '/patients', '/recommend', '/docs', '/openapi.json'].map(p => [p, api])),
   },
   // `npm run build` writes the app where FastAPI serves it (api/main.py).
   build: { outDir: '../api/static', emptyOutDir: true },

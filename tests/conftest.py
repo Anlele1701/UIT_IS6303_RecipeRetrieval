@@ -4,17 +4,22 @@ Tests that use it are skipped when the container isn't running.
 """
 
 import subprocess
+from pathlib import Path
 
 import numpy as np
 import psycopg
 import pytest
 
 import ingest
+import load_synthea
 from api import config
 
 CONTAINER = "recipe-paradedb"
 TEST_DB = "recipe_test"
 TEST_URL = config.DATABASE_URL.rsplit("/", 1)[0] + f"/{TEST_DB}"
+EHR_TEST_DB = "ehr_test"
+EHR_TEST_URL = config.DATABASE_URL.rsplit("/", 1)[0] + f"/{EHR_TEST_DB}"
+SYNTHEA_MINI = Path(__file__).parent / "fixtures" / "synthea_mini"
 
 
 @pytest.fixture(scope="session")
@@ -78,3 +83,26 @@ def fake_embed(monkeypatch):
         v = np.random.default_rng(len(texts)).random((len(texts), 768), dtype=np.float32)
         return v / np.linalg.norm(v, axis=1, keepdims=True)
     monkeypatch.setattr(ingest, "embed", embed)
+
+
+@pytest.fixture(scope="session")
+def ehr_db_url():
+    """A throwaway `ehr_test` database. Needs only the DB, not docker; skipped when it isn't reachable."""
+    try:
+        admin = psycopg.connect(config.DATABASE_URL, autocommit=True, connect_timeout=3)
+    except psycopg.OperationalError:
+        pytest.skip("recipe-paradedb is not running")
+    with admin:
+        admin.execute(f"DROP DATABASE IF EXISTS {EHR_TEST_DB} WITH (FORCE)")
+        admin.execute(f"CREATE DATABASE {EHR_TEST_DB}")
+    return EHR_TEST_URL
+
+
+@pytest.fixture
+def ehr(ehr_db_url):
+    """A connection to ehr_test with the schema and the tests/fixtures/synthea_mini cohort loaded."""
+    with psycopg.connect(ehr_db_url, autocommit=True) as conn:
+        load_synthea.ensure_schema(conn)
+        load_synthea.reset(conn)
+        load_synthea.load(conn, SYNTHEA_MINI, "mini", "-s 0 (hand-written)")
+        yield conn

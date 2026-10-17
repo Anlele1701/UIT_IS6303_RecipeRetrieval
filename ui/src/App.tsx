@@ -111,20 +111,28 @@ export default function App() {
             <h1 className="text-xl font-semibold tracking-tight text-ink">Recipe Search</h1>
             <p className="text-sm text-muted">Compare how three retrieval methods rank the same query.</p>
           </div>
-          <button
-            ref={settingsButton}
-            type="button"
-            onClick={() => setDrawerOpen(true)}
-            aria-haspopup="dialog"
-            aria-expanded={drawerOpen}
-            className="inline-flex shrink-0 items-center gap-2 rounded-md border border-line bg-surface px-3 py-2 text-sm font-medium text-ink hover:border-muted"
-          >
-            <SlidersIcon width={16} height={16} />
-            Settings
-            {chips.length > 0 && (
-              <span className="rounded-full bg-ink px-1.5 text-xs font-semibold tabular-nums text-surface">{chips.length}</span>
-            )}
-          </button>
+          <div className="flex shrink-0 items-center gap-2">
+            <a
+              href="/diet"
+              className="inline-flex items-center rounded-md border border-line bg-surface px-3 py-2 text-sm font-medium text-ink hover:border-muted"
+            >
+              Diet Recommender
+            </a>
+            <button
+              ref={settingsButton}
+              type="button"
+              onClick={() => setDrawerOpen(true)}
+              aria-haspopup="dialog"
+              aria-expanded={drawerOpen}
+              className="inline-flex shrink-0 items-center gap-2 rounded-md border border-line bg-surface px-3 py-2 text-sm font-medium text-ink hover:border-muted"
+            >
+              <SlidersIcon width={16} height={16} />
+              Settings
+              {chips.length > 0 && (
+                <span className="rounded-full bg-ink px-1.5 text-xs font-semibold tabular-nums text-surface">{chips.length}</span>
+              )}
+            </button>
+          </div>
         </header>
 
         {serviceProblem && (
