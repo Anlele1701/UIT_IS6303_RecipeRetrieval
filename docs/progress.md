@@ -452,7 +452,7 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
 
 ---
 
-## MV3 – Nối hồ sơ vào pipeline M1–M7 (17/10/2026) · ⏸ chưa đạt gate (1 điều kiện)
+## MV3 – Nối hồ sơ vào pipeline M1–M7 (17/10/2026) · 🚦 đã duyệt 17/10/2026 (sau vòng 3)
 
 ### Việc đã làm
 - **Mốc hồi quy chụp trước khi sửa code:** `eval/mv3_regression_baseline.json` (commit `687da10`), do `scripts/regression_snapshot.py` sinh. Chạy hai lần cho kết quả giống hệt nhau.
@@ -628,3 +628,13 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 - Từ diễn giải được kiểm bằng danh sách từ khóa, chỉ trong câu có số. Câu không có số mà diễn giải thì không bị bắt.
 - Kiểm tra ngôn ngữ dựa trên dấu tiếng Việt và từ phổ biến. Câu trả lời tiếng Anh có chép nguyên một cảnh báo tiếng Việt sẽ bị coi là tiếng Việt.
 - `qwen2.5:7b` trên CPU gần như luôn cần câu trả lời do code sinh ở route `patient_info`.
+
+---
+
+## MV4 – Đánh giá nhánh hồ sơ bệnh nhân (bắt đầu 17/10/2026)
+
+### Quyết định đầu MV4 (Thy, 17/10/2026)
+- Viết code và chạy thử (khoảng 10 câu) trên CPU máy này. **Lần chạy đầy đủ do Thy chạy trên máy GPU** (`docs/run_mv4_gpu.md`).
+- **Không có câu do người viết.** Câu hỏi sinh từ mẫu câu rồi diễn đạt lại bằng `llama3.1:8b`; ghi là hạn chế.
+- Bốn mốc con có điểm dừng: MV4a (sinh thêm bệnh nhân), MV4b (P8 và bộ câu, đóng băng sau khi Thy duyệt), MV4c (baseline, narrative, `eval_patient.py`, chạy thử), MV4d (chạy đầy đủ trên GPU).
+- **Cấu hình Synthea:** commit `d9d07a6` sinh bộ mẫu bằng `generate_samples.sh` (`./run_synthea -p 100 --exporter.ccda.export=true …`, cấu hình mặc định, không seed; CI dùng Java 17). Bộ sinh thêm giữ cấu hình đó và chỉ thêm seed 42, độ tuổi 40–90, `generate.only_alive_patients=true`.
