@@ -64,3 +64,37 @@ def load_p7(folder: Path = RULES_DIR) -> P7Rules:
             raise RuleError(f"exclude_codes.csv: unknown applies_to {r['applies_to']!r}")
         codes[(r["applies_to"], r["code"])] = r["category"]
     return P7Rules(inc, exc, codes)
+
+
+# ---- condition -> nutrient limits (spec 4.2) ------------------------------------------------------------------
+
+NUTRIENTS = {"sodium_mg", "sugar_pct_kcal", "sat_fat_pct_kcal", "fiber_per_1000kcal", "protein_g_per_kg",
+             "potassium_mg", "phosphorus_mg"}
+
+
+@dataclass(frozen=True)
+class NutrientRule:
+    conditions: tuple[str, ...]  # SNOMED codes; ("*",) = every patient
+    label: str
+    nutrient: str
+    op: str | None  # max | min | None (warn only)
+    daily_value: float | None
+    unit: str
+    mode: str  # filter | warn
+    source: str
+
+
+def load_condition_nutrient(folder: Path = RULES_DIR) -> list[NutrientRule]:
+    out = []
+    for r in read("condition_nutrient.csv", ["condition_codes", "label", "nutrient", "op", "daily_value", "unit",
+                                             "mode", "source"], folder):
+        if r["nutrient"] not in NUTRIENTS:
+            raise RuleError(f"condition_nutrient.csv: unknown nutrient {r['nutrient']!r}")
+        if r["op"] not in {"max", "min", ""} or r["mode"] not in {"filter", "warn"}:
+            raise RuleError(f"condition_nutrient.csv: bad op/mode in {r}")
+        if r["mode"] == "filter" and (not r["op"] or not r["daily_value"]):
+            raise RuleError(f"condition_nutrient.csv: a filter rule needs op and value: {r}")
+        out.append(NutrientRule(tuple(c.strip() for c in r["condition_codes"].split(";")), r["label"], r["nutrient"],
+                                r["op"] or None, float(r["daily_value"]) if r["daily_value"] else None, r["unit"],
+                                r["mode"], r["source"]))
+    return out

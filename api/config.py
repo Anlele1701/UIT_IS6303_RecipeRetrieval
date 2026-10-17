@@ -28,3 +28,5 @@ HISTORY_TURNS = 3  # user+assistant turns M1 sees
 # Patient records (api/patient, docs/plan/A3_vectorless_ho_so.md): Synthea C-CDA files, one per patient.
 PATIENT_DATA_DIR = os.environ.get("PATIENT_DATA_DIR", "data/synthea_sample_data_ccda_latest")  # source "sample"
 PATIENT_GENERATED_DIR = os.environ.get("PATIENT_GENERATED_DIR", "data/synthea_generated_ccda")  # source "generated"
+# A daily nutrient limit becomes a per-serving one as daily * PER_MEAL_FRACTION (spec 4.4, ADR-0007)
+PER_MEAL_FRACTION = float(os.environ.get("PER_MEAL_FRACTION", 1 / 3))

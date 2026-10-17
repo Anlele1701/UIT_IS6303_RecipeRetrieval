@@ -1,0 +1,33 @@
+"""Per-serving nutrient values and limits (spec 4.4, ADR-0007).
+
+recipe_nutrition is per serving. A daily limit in mg or g becomes daily * PER_MEAL_FRACTION; a share of energy
+(% kcal, g per 1000 kcal) is computed on the Recipe's own calories and is not scaled; a per-kg limit is
+value * weight_kg * PER_MEAL_FRACTION. No calories (null or 0) -> the ratio is unknown (null), never 0.
+"""
+
+from .. import config
+from .rules import NutrientRule
+
+RATIO = {"sat_fat_pct_kcal", "sugar_pct_kcal", "fiber_per_1000kcal"}  # not scaled by the meal fraction
+
+# SQL over recipe_nutrition AS n; null when an input is missing. sugars_g is TOTAL sugars (no free-sugar column).
+SQL = {
+    "sodium_mg": "n.sodium_mg",
+    "sugar_pct_kcal": "n.sugars_g * 4 / nullif(n.calories, 0) * 100",
+    "sat_fat_pct_kcal": "n.saturated_fat_g * 9 / nullif(n.calories, 0) * 100",
+    "fiber_per_1000kcal": "n.dietary_fiber_g / nullif(n.calories, 0) * 1000",
+    "protein_g_per_kg": "n.protein_g",  # compared with a limit already multiplied by the weight
+    "potassium_mg": "n.potassium_mg",
+}
+
+
+def per_serving_limit(rule: NutrientRule, weight_kg: float | None = None,
+                      fraction: float = config.PER_MEAL_FRACTION) -> float | None:
+    """The limit one serving is held to; None when it cannot be set (warn-only rule, or no weight for g/kg)."""
+    if rule.daily_value is None:
+        return None
+    if rule.nutrient in RATIO:
+        return rule.daily_value
+    if rule.nutrient == "protein_g_per_kg":
+        return None if weight_kg is None else rule.daily_value * weight_kg * fraction
+    return rule.daily_value * fraction

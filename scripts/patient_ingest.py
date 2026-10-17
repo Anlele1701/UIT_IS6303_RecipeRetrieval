@@ -29,7 +29,7 @@ import psycopg  # noqa: E402
 from psycopg.types.json import Jsonb  # noqa: E402
 
 from api import config  # noqa: E402
-from api.patient import ccda, rules  # noqa: E402
+from api.patient import ccda, nutrition, rules  # noqa: E402
 from api.patient.summarize import summarize  # noqa: E402
 from api.patient.tree import build_tree  # noqa: E402
 
@@ -37,7 +37,7 @@ OUT_JSON = ROOT / "eval" / "patient_corpus.json"
 OUT_MD = ROOT / "docs" / "patient_corpus_report.md"
 SOURCES = ROOT / "data" / "sources.json"
 SEED = 42  # nothing here samples; recorded for the run settings convention
-RULE_FILES = ["allergy_substance.csv", *rules.P7_FILES]
+RULE_FILES = ["allergy_substance.csv", "condition_nutrient.csv", *rules.P7_FILES]
 
 
 class DuplicatePatient(RuntimeError):
@@ -164,6 +164,82 @@ def cmd_tree(conn, mode: str, source: str | None) -> None:
     print(f"rebuilt trees of {len(rows)} patients ({mode} summaries; llm: {n_llm})")
 
 
+# ---- nutrient rule pass rates ----------------------------------------------------------------------------------
+
+REFERENCE_WEIGHTS_KG = [60, 70, 80]  # a per-kg limit needs a weight; the profile uses the record's own (MV2)
+COMBINED_WEIGHT_KG = 70
+
+
+def _count(conn, cond: str) -> dict:
+    """pass / fail / unknown over every Recipe for a SQL condition (three-valued: null = an input is missing)."""
+    passed, failed, unknown, total = conn.execute(
+        f"""SELECT count(*) FILTER (WHERE ({cond}) IS TRUE), count(*) FILTER (WHERE ({cond}) IS FALSE),
+                   count(*) FILTER (WHERE ({cond}) IS NULL), count(*)
+            FROM recipe r LEFT JOIN recipe_nutrition n ON n.recipe_id = r.id""").fetchone()
+    known = passed + failed
+    return {"pass": passed, "fail": failed, "unknown": unknown, "recipes": total,
+            "pass_rate_known": round(passed / known, 4) if known else None,
+            "pass_rate_unknown_dropped": round(passed / total, 4) if total else None,
+            "pass_rate_unknown_kept": round((passed + unknown) / total, 4) if total else None}
+
+
+def _cond(rule, limit: float) -> str:
+    return f"({nutrition.SQL[rule.nutrient]}) {'<=' if rule.op == 'max' else '>='} {limit}"
+
+
+def nutrient_pass(conn) -> dict:
+    """Share of all Recipes each rule of condition_nutrient.csv lets through, alone and per condition.
+
+    unknown = an input is null (or calories 0 for a ratio). With unknown_strict on such a Recipe is dropped
+    (pass_rate_unknown_dropped), off it is kept with a warning (pass_rate_unknown_kept), spec 4.5.
+    """
+    rules_ = rules.load_condition_nutrient()
+    per_rule = []
+    for r in rules_:
+        row = {"label": r.label, "conditions": list(r.conditions), "nutrient": r.nutrient, "op": r.op,
+               "daily_value": r.daily_value, "unit": r.unit, "mode": r.mode, "source": r.source}
+        if r.op is None:
+            per_rule.append({**row, "measured": "warn only, no limit"})
+        elif r.nutrient not in nutrition.SQL:
+            per_rule.append({**row, "measured": "no column in recipe_nutrition"})
+        elif r.nutrient == "protein_g_per_kg":
+            for w in REFERENCE_WEIGHTS_KG:
+                lim = nutrition.per_serving_limit(r, w)
+                per_rule.append({**row, "weight_kg": w, "per_serving_limit": round(lim, 2), **_count(conn, _cond(r, lim))})
+        else:
+            lim = nutrition.per_serving_limit(r)
+            per_rule.append({**row, "per_serving_limit": round(lim, 2), **_count(conn, _cond(r, lim))})
+
+    def strictest(group) -> dict[str, tuple]:
+        best: dict[str, tuple] = {}
+        for r in group:
+            if r.mode != "filter" or r.nutrient not in nutrition.SQL:
+                continue
+            lim = nutrition.per_serving_limit(r, COMBINED_WEIGHT_KG)
+            old = best.get(r.nutrient)
+            if old is None or (lim < old[1] if r.op == "max" else lim > old[1]):
+                best[r.nutrient] = (r, lim)
+        return best
+
+    default = [r for r in rules_ if r.conditions == ("*",)]
+    by_condition = []
+    for label in ["default", *dict.fromkeys(r.label for r in rules_ if r.conditions != ("*",))]:
+        group = default + [r for r in rules_ if r.label == label and r.conditions != ("*",)]
+        best = strictest(group)
+        cond = " AND ".join(_cond(r, lim) for r, lim in best.values()) or "true"
+        by_condition.append({"label": label, "conditions": sorted({c for r in group for c in r.conditions}),
+                             "filters": [{"nutrient": n, "op": r.op, "per_serving_limit": round(lim, 2), "from": r.label}
+                                         for n, (r, lim) in best.items()],
+                             "warn_only": sorted({r.nutrient for r in group if r.mode == "warn"}),
+                             **_count(conn, cond)})
+    return {"per_meal_fraction": round(config.PER_MEAL_FRACTION, 4), "reference_weights_kg": REFERENCE_WEIGHTS_KG,
+            "combined_weight_kg": COMBINED_WEIGHT_KG, "rules_file": "data/rules/condition_nutrient.csv",
+            "rules_sha256": rules.sha256("condition_nutrient.csv"),
+            "note": "per serving (recipe_nutrition); sugar_pct_kcal uses total sugars; filter rules combined with "
+                    "the strictest limit per nutrient; warn rules are not part of the combined pass rate",
+            "per_rule": per_rule, "by_condition": by_condition}
+
+
 # ---- stats -----------------------------------------------------------------------------------------------------
 
 def _sum(into: dict, counts: dict):
@@ -204,7 +280,7 @@ def cmd_stats(conn, dirs) -> dict:
     }
     out = {"ran_at": datetime.now().isoformat(timespec="seconds"), "git_commit": git_commit(), "seed": SEED,
            "rules_sha256": {f: rules.sha256(f) for f in RULE_FILES}, "sources": sources_info(),
-           "per_source": per_source, "total": total, "db": db,
+           "per_source": per_source, "total": total, "db": db, "nutrient_rule_pass": nutrient_pass(conn),
            "P8": "sampling is MV4 (scripts/patient_sample.py); deceased patients are left out"}
     OUT_JSON.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     OUT_MD.write_text(render(out), encoding="utf-8")
@@ -254,14 +330,47 @@ def render(c: dict) -> str:
     src = c["sources"].get("sample") or {}
     L += ["", "## Cây hồ sơ trong DB", "",
           "| Loại nút | Số nút |", "|---|---:|"] + [f"| {k} | {_n(v)} |" for k, v in sorted(nodes.items())]
-    L += ["", "Tóm tắt nút ngữ cảnh: " + ", ".join(f"{k} {_n(v)}" for k, v in sorted(summ.items())) + ".",
-          "", "## Nguồn dữ liệu", "",
+    L += ["", "Tóm tắt nút ngữ cảnh: " + ", ".join(f"{k} {_n(v)}" for k, v in sorted(summ.items())) + "."]
+    L += render_nutrient(c["nutrient_rule_pass"]) if c.get("nutrient_rule_pass") else []
+    L += ["", "## Nguồn dữ liệu", "",
           f"- Bộ mẫu: {src.get('description', '?')}, tải từ {src.get('download_page', '?')} ngày {src.get('downloaded', '?')}.",
           f"- Synthea commit `{src.get('synthea_commit', '?')}` ({src.get('synthea_commit_note', '')}).",
           f"- Kiểm chứng: {src.get('verified', '?')}.",
           f"- Bệnh nhân sinh thêm: {'chưa có' if not c['sources'].get('generated') else 'xem data/sources.json'}.",
           "", "File luật (sha256): " + ", ".join(f"`{k}` `{v[:12]}`" for k, v in c["rules_sha256"].items()) + ".", ""]
     return "\n".join(L)
+
+
+def _pct(x) -> str:
+    return "–" if x is None else f"{x * 100:.1f}%".replace(".", ",")
+
+
+def render_nutrient(p: dict) -> list[str]:
+    L = ["", "## Tỉ lệ công thức qua từng luật dinh dưỡng (bản nháp `condition_nutrient.csv`)", "",
+         f"Trên toàn bộ công thức, giá trị theo khẩu phần. Ngưỡng ngày × {str(p['per_meal_fraction']).replace('.', ',')} "
+         "cho một bữa; ngưỡng % năng lượng tính trên calo của chính công thức. \"Không rõ\" là công thức thiếu số liệu "
+         "(hoặc calo bằng 0). Cột \"qua\" tính trên công thức có số liệu; hai cột sau tính trên toàn bộ, khi bỏ hoặc giữ "
+         "công thức không rõ (`unknown_strict` bật / tắt).", "",
+         "| Bệnh | Chất | Ngưỡng ngày | Ngưỡng / khẩu phần | Chế độ | Qua | Trượt | Không rõ | Tỉ lệ qua | Bỏ không rõ | Giữ không rõ |",
+         "|---|---|---|---:|---|---:|---:|---:|---:|---:|---:|"]
+    for r in p["per_rule"]:
+        if "measured" in r:
+            L.append(f"| {r['label']} | {r['nutrient']} | – | – | {r['mode']} | – | – | – | {r['measured']} | | |")
+            continue
+        daily = f"{r['op']} {r['daily_value']:g} {r['unit']}" + (f" (nặng {r['weight_kg']} kg)" if "weight_kg" in r else "")
+        L.append(f"| {r['label']} | {r['nutrient']} | {daily} | {str(r['per_serving_limit']).replace('.', ',')} | "
+                 f"{r['mode']} | {_n(r['pass'])} | {_n(r['fail'])} | {_n(r['unknown'])} | {_pct(r['pass_rate_known'])} | "
+                 f"{_pct(r['pass_rate_unknown_dropped'])} | {_pct(r['pass_rate_unknown_kept'])} |")
+    L += ["", f"Gộp theo bệnh: mọi luật `filter` của bệnh cộng luật mặc định, mỗi chất lấy ngưỡng chặt nhất; "
+          f"luật protein theo kg tính với {p['combined_weight_kg']} kg. Luật `warn` không tính vào tỉ lệ gộp.", "",
+          "| Bệnh | Bộ lọc áp dụng | Qua | Không rõ | Tỉ lệ qua | Bỏ không rõ | Giữ không rõ |",
+          "|---|---|---:|---:|---:|---:|---:|"]
+    for b in p["by_condition"]:
+        filters = "; ".join(f"{f['nutrient']} {f['op']} {str(f['per_serving_limit']).replace('.', ',')} ({f['from']})"
+                            for f in b["filters"])
+        L.append(f"| {b['label']} | {filters} | {_n(b['pass'])} | {_n(b['unknown'])} | {_pct(b['pass_rate_known'])} | "
+                 f"{_pct(b['pass_rate_unknown_dropped'])} | {_pct(b['pass_rate_unknown_kept'])} |")
+    return L
 
 
 def main(argv: list[str] | None = None):
