@@ -12,7 +12,8 @@ Patient sessions (MV3, spec 5.6) add three checks, all leading to the same singl
     is not negated or flagged as a warning nearby (English and the Vietnamese aliases of the lexicon);
 (c) every [H:<node_id>] must name a node of the patient's tree; others are removed;
 (d) route patient_info only: every number in the answer must match a value in the facts of the nodes read
-    (at the precision written), so the answer cannot invent or derive a measurement.
+    (at the precision written), so the answer cannot invent or derive a measurement; and the answer must not copy
+    the data blocks (RECORD, PATIENT_PROFILE) back.
 Without a patient context, verify() is exactly the M3 check.
 """
 
@@ -33,6 +34,7 @@ SAFE_AFTER = re.compile(r"^[^.;!?\n]{0,12}(-free|free\b)", re.I)
 
 NUMBER = re.compile(r"(?<![\w.])\d+(?:[.,]\d+)?(?![\w])")
 LIST_MARK = re.compile(r"^\s*\d+[.)]\s", re.M)
+ECHO = re.compile(r"</?patient_profile>|PATIENT_PROFILE:|</?record>|RECORD:", re.I)
 
 
 @dataclass
@@ -116,6 +118,8 @@ def verify(answer: str, cards: list[RecipeCard], c: Constraints, patient: Patien
     flags = [f"text:{k}" for k in suggested_avoided(answer, patient.avoid_terms)] + [f"node:{h}" for h in bad_h]
     if patient.numbers is not None:  # route patient_info: every number must come from a fact read (Thy, after MV3)
         flags += [f"number:{n}" for n in unknown_numbers(answer, patient.numbers)]
+        if ECHO.search(answer):  # the data blocks copied back instead of an answer
+            flags.append("echo:prompt_block")
     return Verification(verified=not removed and not flags, citations=kept, removed=removed, flags=flags,
                         bad_nodes=bad_h)
 
@@ -141,7 +145,9 @@ def retry_note(v: Verification, cards: list[RecipeCard], c: Constraints) -> str:
         if nodes:
             note += f" These record sections do not exist: {', '.join(nodes)}; cite only node ids from PATIENT_PROFILE."
         numbers = [f.split(":", 1)[1] for f in v.flags if f.startswith("number:")]
-        if numbers:
-            note += (f" These numbers are not in RECORD: {', '.join(numbers)}. Copy values exactly as RECORD gives them "
-                     "and do not interpret them.")
+        if numbers or "echo:prompt_block" in v.flags:  # route patient_info: keep the answer, drop what is not in RECORD
+            note = ("Rewrite your previous answer as 2 to 4 short sentences in the same language. "
+                    + (f"Delete these numbers, which are not in RECORD: {', '.join(numbers)}. " if numbers else "")
+                    + "Add no reference range and no number of your own. Do not copy RECORD or PATIENT_PROFILE, "
+                    "and do not list the profile's limits or warnings.")
     return note

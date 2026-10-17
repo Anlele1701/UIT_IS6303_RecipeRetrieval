@@ -214,3 +214,11 @@ def test_pe02_a_made_up_value_is_regenerated_and_the_prompt_forbids_interpreting
     system = prompts[0][0]["content"]
     assert "interpreting results needs a doctor" in system and "no trend" in system
     assert "These numbers are not in RECORD: 95" in prompts[1][-1]["content"]
+
+
+def test_m7_flags_a_copied_profile_block_and_numbers_only_from_the_record_facts():
+    check = m7.PatientCheck(node_ids={"results.2026"}, numbers=m7.numbers_in([{"value": "140.1", "unit": "mmol/L"}]))
+    echo = m7.verify("PATIENT_PROFILE:\n<patient_profile>\n- limit: sodium\n</patient_profile>", [], Constraints(), check)
+    assert "echo:prompt_block" in echo.flags and not echo.verified
+    made_up_range = m7.verify("Sodium 140.1 mmol/L (normal 135-145) [H:results.2026].", [], Constraints(), check)
+    assert set(made_up_range.flags) == {"number:135", "number:145"}

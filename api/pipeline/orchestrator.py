@@ -202,7 +202,7 @@ class Assistant:
         elif path == "patient_info" and pt:
             views = [prompt_view(n, self.rules) for n in pt["nodes"] if n.node_id in pt["selection"].node_ids]
             block = self._block(pt, state)
-            allowed_numbers = m7.numbers_in(views) | m7.numbers_in(block)
+            allowed_numbers = m7.numbers_in([v["facts"] for v in views])  # facts of the nodes read only (Thy)
             if flags.generate:
                 messages = m6.patient_info_messages(message, u.lang, views, block, history)
         elif path == "detail":

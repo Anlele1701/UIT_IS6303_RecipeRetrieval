@@ -226,6 +226,23 @@ PATIENT_REMOVAL_CUES = re.compile(r"không sao|khong sao|cứ cho|cu cho|không 
                                   r"it's fine|it is fine|no problem|don't worry|go ahead", re.I)
 
 
+def lift_named(u: Understanding, message: str, lex: RuntimeLexicon, current: Constraints) -> Understanding:
+    """Patient sessions: a removal cue plus an allergen in force that the message names is a request to lift it,
+    even when the model returns no remove_* (pv06, MV3 demo). M2 refuses it for a record allergy and says so."""
+    if not (REMOVAL_CUES.search(message) or PATIENT_REMOVAL_CUES.search(message)):
+        return u
+    named_now = [a for a in current.allergens_exclude
+                 if a not in u.remove.allergens and grounded_allergen(a, message, lex)]
+    if not named_now:
+        return u
+    u.remove.allergens = valid_allergens([*u.remove.allergens, *named_now])
+    u.constraints.allergens_exclude = [a for a in u.constraints.allergens_exclude if a not in named_now]
+    u.notes.append(f"lift request by rule: allergens {named_now} are named next to a removal cue")
+    if u.intent == "search":
+        u.intent = "refine"
+    return u
+
+
 def keep_qualities(query: str, message: str, notes: list[str]) -> str:
     missing = [phrase for rx, phrase in QUALITY_CUES if rx.search(message) and not rx.search(query)
                and phrase not in query]
@@ -350,6 +367,8 @@ def understand(client: httpx.Client, lex: RuntimeLexicon, message: str, history:
             raw = chat_json(client, schema, messages, use_cache=attempt == 0)
             if isinstance(raw, dict) and "intent" in raw:
                 u = postprocess(raw, message, lex, patient)
+                if patient:
+                    u = lift_named(u, message, lex, current)
                 u.clarify = ask_back(message, lex, u)
                 return u
         except (LLMError, httpx.HTTPError):

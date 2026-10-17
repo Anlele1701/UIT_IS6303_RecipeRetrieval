@@ -533,3 +533,35 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
 - **Phát hiện:** bước bỏ phủ định tất định (`strip_negation`) **giữ** "low-salt". Chính **LLM ở M1** bỏ cụm này khỏi `query_en` (trả về `"pasta"`), ở cả hai nhánh, vì prompt M1 dặn `query_en` không có "restriction".
 - **Sửa (chỉ nhánh bệnh nhân):** `keep_qualities` thêm lại các cụm phẩm chất mong muốn mà LLM bỏ (low-sodium, low-fat, low-sugar, high-fiber và các biến thể tiếng Việt), có ghi vào `notes`. Nhánh không có bệnh nhân giữ nguyên (hồi quy), nên vẫn có giới hạn trên.
 - Test: `strip_negation` giữ low-salt/low-sodium; với pe03 ở nhánh bệnh nhân, `query_en` còn "low-sodium" dù mô hình bỏ; nhánh không có bệnh nhân không đổi.
+
+### Sau MV3 – mục 6: lượt 2 kịch bản dị ứng và bảng gate MV3 (17/10/2026)
+- **Lượt 2 (pv06):** lần chạy đầu, M1 không trả `remove_allergens`, mà câu cũng không có tín hiệu gỡ quen thuộc. Đã thêm, **chỉ cho nhánh bệnh nhân**:
+  - tín hiệu gỡ "không sao", "cứ cho"…;
+  - quy tắc tất định `lift_named`: tín hiệu gỡ cộng một nhóm dị ứng đang bị loại mà tin nhắn nhắc tới ("tôm" → giáp xác) thì là yêu cầu gỡ.
+- Sự kiện `constraints` có thêm `record_locked`, kèm thông báo "Ràng buộc này đến từ hồ sơ bệnh nhân, không gỡ được qua tin nhắn; cần xác nhận trên giao diện". Trace M2 có `refused_removals`.
+- **Route `patient_info`:** lần sinh lại từng chép nguyên khối `<patient_profile>` mà vẫn qua kiểm tra, vì mình đã cho phép cả số trong khối hồ sơ, sai quyết định. Đã sửa:
+  - tập số hợp lệ chỉ gồm `facts` của nút đã đọc;
+  - M7 bắt việc chép lại khối dữ liệu (`echo:prompt_block`);
+  - viết lại lời nhắc khi sinh lại.
+- Test hồi quy khi không có bệnh nhân: **pass** (sau mọi thay đổi trên, trừ lần sửa cuối chỉ chạm nhánh bệnh nhân).
+
+| Kịch bản / lượt | Route | CVR_raw | CVR_adjudicated | Chờ duyệt | Đã xác nhận | Ghi chú |
+|---|---|---:|---:|---:|---:|---|
+| 1 Dị ứng, lượt 1 | retrieve | 3/5 | 1/5 | 1 | 0 | R13999 bị loại tự động, R2920 = no (Thy), R8897 chờ duyệt |
+| 1 Dị ứng, lượt 2 (pv06) | retrieve | 3/5 | 1/5 | 1 | 0 | (a)(b)(c)(d) đạt. Kiểm tra (b) của M7 vẫn gắn cờ vì tên món chứa "Shellfish" (dipping sauce for shellfish) |
+| 2 Tăng huyết áp | retrieve | 0/5 | 0/5 | 0 | 0 | Luật mềm chất béo bão hòa có tác dụng |
+| 3 CKD, súp | retrieve | 0/5 | 0/5 | 0 | 0 | Natri và protein |
+| 3 CKD, câu hỏi lịch sử | patient_info | – | – | – | – | V2: 1 lần gọi. **Câu trả lời chép khối hồ sơ** (lần chạy trước khi sửa lời nhắc) |
+| 3 CKD, pe02 | patient_info | – | – | – | – | **Chưa đạt** |
+
+- Hàng duyệt `eval/labels/checker_queue.csv`: 6 phiếu. Tất cả có vẻ là bộ kiểm sai: salmon → lúa mì; mahi mahi, yogurt, Worcestershire → giáp xác; Worcestershire → lúa mì ở R31477.
+- **Route `patient_info` với `qwen2.5:7b` chưa đạt yêu cầu.** Thử lại với lời nhắc mới thì câu trả lời qua kiểm tra số, nhưng vẫn **diễn giải** ("normal glucose… elevated protein in the urine"), trả lời câu tiếng Việt bằng tiếng Anh, và kiểm tra số còn để lọt số nguyên nhỏ trùng ngẫu nhiên.
+
+### Cần Thy quyết định (trước khi đóng gate MV3)
+1. **Route `patient_info`:**
+   - (a) M7 thêm kiểm tra từ diễn giải (normal/abnormal/elevated/high/low/bình thường/cao/thấp/tăng/giảm…);
+   - (b) nếu sau một lần sinh lại vẫn sai, thay bằng câu trả lời tất định do code sinh: "Việc diễn giải cần bác sĩ" kèm danh sách giá trị, đơn vị, ngày, `[H:…]` của nút đã đọc;
+   - hoặc cả hai. Mình đề xuất cả hai.
+2. **Kiểm tra (b) của M7 bắt nhầm tên món** ("…for Shellfish"): có loại tên món `[R…]` ra khỏi phép so không.
+3. Duyệt 6 phiếu trong `checker_queue.csv`. Nhãn R2920 áp theo từng công thức; có muốn một nhãn theo chuỗi bằng chứng (ví dụ "Worcestershire sauce" với `allergen:wheat`) áp cho mọi công thức không.
+4. Nhãn golden pv10 (`intent: "chat"`).

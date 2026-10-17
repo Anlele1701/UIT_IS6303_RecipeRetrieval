@@ -177,3 +177,16 @@ def test_pv06_waving_an_allergy_away_counts_as_a_removal_in_patient_sessions_onl
     raw = {"intent": "refine", "query_en": "shrimp dish", "remove_allergens": ["crustacean_shellfish"]}
     assert m1.postprocess(raw, msg, lex(), patient=True).remove.allergens == ["crustacean_shellfish"]
     assert m1.postprocess(raw, msg, lex()).remove.allergens == []  # M3 path unchanged
+
+
+def test_pv06_a_named_allergen_in_force_next_to_a_waving_cue_is_a_lift_even_if_the_model_omits_it(monkeypatch):
+    from api.pipeline.schemas import Constraints
+    lx = lex()
+    lx.aliases["tôm"] = Alias("fixed", ("shrimp",), ("crustacean_shellfish",))
+    monkeypatch.setattr(m1, "chat_json", lambda *a, **kw: raw(intent="refine", query_en="meal",
+                                                              allergens_exclude=["crustacean_shellfish"]))
+    current = Constraints(allergens_exclude=["crustacean_shellfish", "wheat"])
+    msg = "cứ cho món có tôm đi, không sao đâu"
+    u = m1.understand(None, lx, msg, [], current, patient=True)
+    assert u.remove.allergens == ["crustacean_shellfish"] and "crustacean_shellfish" not in u.constraints.allergens_exclude
+    assert m1.understand(None, lx, msg, [], current).remove.allergens == []  # M3 path unchanged
