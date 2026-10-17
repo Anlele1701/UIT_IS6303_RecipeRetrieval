@@ -1,0 +1,90 @@
+{
+  "ran_at": "2026-10-17",
+  "seed": 42,
+  "target": 15,
+  "strata_rule": "    uv run scripts/patient_select.py --from ../synthea/output/ccda --command \"<the run_synthea line>\" --n 1000",
+  "structure": {
+    "sample": {
+      "files": 108,
+      "section_share": {
+        "10160-0": 1.0,
+        "11369-6": 1.0,
+        "11450-4": 1.0,
+        "18776-5": 0.935,
+        "29762-2": 1.0,
+        "30954-2": 1.0,
+        "46240-8": 1.0,
+        "47420-5": 0.87,
+        "47519-4": 1.0,
+        "48765-2": 1.0,
+        "8716-3": 1.0
+      },
+      "code_systems": {
+        "allergy_substance": {
+          "2.16.840.1.113883.6.96": 95,
+          "2.16.840.1.113883.6.88": 10
+        },
+        "problem": {
+          "2.16.840.1.113883.6.96": 3517
+        },
+        "medication": {
+          "2.16.840.1.113883.6.88": 3850
+        }
+      }
+    },
+    "generated_chosen": {
+      "files": 12,
+      "section_share": {
+        "10160-0": 1.0,
+        "11369-6": 1.0,
+        "11450-4": 1.0,
+        "18776-5": 1.0,
+        "29762-2": 1.0,
+        "30954-2": 1.0,
+        "46240-8": 1.0,
+        "47420-5": 1.0,
+        "47519-4": 1.0,
+        "48765-2": 1.0,
+        "8716-3": 1.0
+      },
+      "code_systems": {
+        "allergy_substance": {
+          "2.16.840.1.113883.6.96": 8,
+          "2.16.840.1.113883.6.88": 1
+        },
+        "problem": {
+          "2.16.840.1.113883.6.96": 1666
+        },
+        "medication": {
+          "2.16.840.1.113883.6.88": 5320
+        }
+      }
+    },
+    "differences": []
+  },
+  "sample_alive": {
+    "hypertension": 18,
+    "food_allergy": 11,
+    "diabetes": 5,
+    "multi": 5,
+    "ckd": 4
+  },
+  "generated_files": 983,
+  "generated_alive": 983,
+  "generated_by_stratum": {
+    "diabetes": 243,
+    "multi": 222,
+    "hypertension": 390,
+    "ckd": 175,
+    "food_allergy": 100
+  },
+  "chosen": 12,
+  "after": {
+    "hypertension": 28,
+    "food_allergy": 12,
+    "diabetes": 16,
+    "multi": 16,
+    "ckd": 15
+  },
+  "still_short": {}
+}

@@ -1,6 +1,6 @@
 {
-  "ran_at": "2026-10-17T17:31:50",
-  "git_commit": "70c17ee",
+  "ran_at": "2026-10-17T23:12:55",
+  "git_commit": "a75c5e5",
   "seed": 42,
   "rules_sha256": {
     "allergy_substance.csv": "6641534048bace717325052498b00bca3ef61cd2ed11b67ca238207b29ec7033",
@@ -27,7 +27,19 @@
       "files_sha256_of_sorted_list": "0ef5872be883c3807e20fd8d782a9ad6763c9aff3d61dd796d5d59fc06aec1f9",
       "verified": "2026-10-17: all 108 files match the zip at sample-data commit 9959d9178e (sha256)"
     },
-    "generated": null
+    "generated": {
+      "dir": "data/synthea_generated_ccda",
+      "description": "12 Synthea patients chosen from a run of 1000",
+      "synthea_commit": "d9d07a6eef91ee5144293b42ab64224d84d124f8",
+      "command": "./run_synthea -s 42 -cs 42 -p 1000 -a 40-90 --exporter.ccda.export=true --exporter.fhir.export=false --generate.only_alive_patients=true",
+      "seed": 42,
+      "population": 1000,
+      "selection": "scripts/patient_select.py, seed 42, eval/patient_selection.json",
+      "files": 12,
+      "files_sha256_of_sorted_list": "caad75b0114d8965de9477551dc03b9d9b202657b7199d29e6f0e55fd2595171",
+      "generated": "2026-10-17",
+      "synthea_commit_note": "same commit and default settings as the sample (generate_samples.sh), plus the seed, the age range and only_alive_patients"
+    }
   },
   "per_source": {
     "sample": {
@@ -81,57 +93,108 @@
         "section_29762-2_entries": 108,
         "section_47420-5_entries": 2431
       }
+    },
+    "generated": {
+      "dir": "data/synthea_generated_ccda",
+      "P1": {
+        "files": 12,
+        "parsed": 12,
+        "parse_errors": [],
+        "deceased": 0,
+        "alive": 12,
+        "software_name": {
+          "https://github.com/synthetichealth/synthea": 12
+        }
+      },
+      "P2": {
+        "allergies_dropped_not_in_force": 0,
+        "allergies_in_force": 9,
+        "problems_dropped_not_in_force": 1391
+      },
+      "P3": {
+        "food_allergies": 2
+      },
+      "P4": {
+        "disorders_kept": 148,
+        "dropped_suffix_finding": 97,
+        "dropped_suffix_none": 3,
+        "dropped_suffix_situation": 27
+      },
+      "P5": {
+        "dropped_not_in_use": 5195,
+        "in_use": 125
+      },
+      "P6": {
+        "encounters": 2466,
+        "result_organizers": 2863,
+        "vitals_latest": 89
+      },
+      "P7": {
+        "encounter_end_of_life": 7,
+        "identity_fields_not_read": 12,
+        "organizer_mental_health": 825,
+        "organizer_not_relevant": 412,
+        "organizer_substance_use": 456,
+        "organizer_violence": 194,
+        "section_29762-2_entries": 12,
+        "section_47420-5_entries": 1863
+      }
     }
   },
   "total": {
     "P1": {
-      "files": 108,
-      "parsed": 108,
+      "files": 120,
+      "parsed": 120,
       "deceased": 8,
-      "alive": 100
+      "alive": 112
     },
     "P2": {
       "allergies_dropped_not_in_force": 0,
-      "allergies_in_force": 105,
-      "problems_dropped_not_in_force": 2628
+      "allergies_in_force": 114,
+      "problems_dropped_not_in_force": 4019
     },
     "P3": {
-      "food_allergies": 19
+      "food_allergies": 21
     },
     "P4": {
-      "disorders_kept": 263,
-      "dropped_suffix_finding": 507,
-      "dropped_suffix_none": 5,
+      "disorders_kept": 411,
+      "dropped_suffix_finding": 604,
+      "dropped_suffix_none": 8,
       "dropped_suffix_person": 2,
-      "dropped_suffix_situation": 103
+      "dropped_suffix_situation": 130
     },
     "P5": {
-      "dropped_not_in_use": 3582,
-      "in_use": 267
+      "dropped_not_in_use": 8777,
+      "in_use": 392
     },
     "P6": {
-      "encounters": 5547,
-      "result_organizers": 2788,
-      "vitals_latest": 836
+      "encounters": 8013,
+      "result_organizers": 5651,
+      "vitals_latest": 925
     },
     "P7": {
       "encounter_death": 8,
-      "encounter_end_of_life": 8,
+      "encounter_end_of_life": 15,
       "encounter_substance_use": 8,
-      "identity_fields_not_read": 108,
+      "identity_fields_not_read": 120,
       "medication_substance_use": 1,
       "organizer_death": 8,
-      "organizer_mental_health": 1324,
-      "organizer_not_relevant": 327,
-      "organizer_substance_use": 627,
-      "organizer_violence": 289,
+      "organizer_mental_health": 2149,
+      "organizer_not_relevant": 739,
+      "organizer_substance_use": 1083,
+      "organizer_violence": 483,
       "problem_substance_use": 9,
-      "section_29762-2_entries": 108,
-      "section_47420-5_entries": 2431
+      "section_29762-2_entries": 120,
+      "section_47420-5_entries": 4294
     }
   },
   "db": {
     "patients": [
+      {
+        "source": "generated",
+        "deceased": false,
+        "n": 12
+      },
       {
         "source": "sample",
         "deceased": false,
@@ -147,17 +210,17 @@
       {
         "kind": "context",
         "summary_source": "template",
-        "n": 1983
+        "n": 2359
       },
       {
         "kind": "fixed",
         "summary_source": null,
-        "n": 432
+        "n": 480
       },
       {
         "kind": "root",
         "summary_source": null,
-        "n": 108
+        "n": 120
       }
     ]
   },

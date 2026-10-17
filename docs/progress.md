@@ -638,3 +638,22 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 - **Không có câu do người viết.** Câu hỏi sinh từ mẫu câu rồi diễn đạt lại bằng `llama3.1:8b`; ghi là hạn chế.
 - Bốn mốc con có điểm dừng: MV4a (sinh thêm bệnh nhân), MV4b (P8 và bộ câu, đóng băng sau khi Thy duyệt), MV4c (baseline, narrative, `eval_patient.py`, chạy thử), MV4d (chạy đầy đủ trên GPU).
 - **Cấu hình Synthea:** commit `d9d07a6` sinh bộ mẫu bằng `generate_samples.sh` (`./run_synthea -p 100 --exporter.ccda.export=true …`, cấu hình mặc định, không seed; CI dùng Java 17). Bộ sinh thêm giữ cấu hình đó và chỉ thêm seed 42, độ tuổi 40–90, `generate.only_alive_patients=true`.
+
+### MV4a – Sinh thêm bệnh nhân Synthea (17/10/2026) · 🚦 chờ duyệt
+- Cài JDK 17 (OpenJDK 17.0.20.1, Microsoft). Synthea ở commit `d9d07a6` (lấy đúng snapshot commit đó vào `../synthea`, ngoài repo). Build Gradle thành công.
+- Lệnh (ghi trong `data/sources.json`):
+  ```
+  ./run_synthea -s 42 -cs 42 -p 1000 -a 40-90 --exporter.ccda.export=true --exporter.fhir.export=false --generate.only_alive_patients=true
+  ```
+  Synthea báo `total=1000, alive=1000, dead=0`, nhưng **chỉ có 983 file C-CDA** (không trùng mã bệnh nhân). 17 bản ghi không được bộ xuất C-CDA ghi ra; chưa rõ lý do.
+- `scripts/patient_select.py`: tầng theo đúng mã của `condition_nutrient.csv`, cộng đa bệnh và dị ứng thực phẩm; chọn có seed 42, chỉ lấy người làm đầy tầng còn thiếu (`eval/patient_selection.json`).
+  - Người còn sống trong bộ mẫu: tăng huyết áp 18, dị ứng thực phẩm 11, tiểu đường 5, đa bệnh 5, CKD 4.
+  - Trong 983 người sinh thêm: tiểu đường 243, đa bệnh 222, tăng huyết áp 390, CKD 175, dị ứng thực phẩm 100. Đây là nhóm 40–90 tuổi, đa bệnh nhiều.
+  - **Chỉ cần 12 người sinh thêm** là đủ (phần lớn vừa tiểu đường vừa CKD). Sau khi bổ sung: tiểu đường 16, đa bệnh 16, CKD 15, tăng huyết áp 28, dị ứng thực phẩm 12.
+- **So cấu trúc** 12 file đã chọn với 108 file mẫu: không có sai khác (cùng các section; SNOMED cho dị ứng và bệnh, RxNorm cho thuốc). Khác về nội dung: 12 người sinh thêm có 5.320 entry thuốc, trong khi 108 người mẫu có 3.850.
+- `patient_ingest.py load`: 120 bệnh nhân (108 mẫu, 12 sinh thêm), 0 lỗi parse. Cây: 2.959 nút (376 nút ngữ cảnh ở nguồn sinh thêm). `profiles`: 112 người còn sống, 7 người dưới 50% kho (đều do dị ứng), thấp nhất 18,4%.
+- Test: 2 test mới (`tests/patient/test_patient_select.py`). `pytest` nhanh: 474 pass.
+
+**Cần Thy xem:**
+- 12 người sinh thêm (nhóm đa bệnh lớn tuổi) so với 100 người mẫu. Bảng độ nhạy chỉ trên `sample` vẫn giữ như đã quyết.
+- Có cần tìm hiểu 17 bản ghi không được xuất C-CDA không.
