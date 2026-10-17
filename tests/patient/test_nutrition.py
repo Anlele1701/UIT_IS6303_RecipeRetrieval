@@ -36,7 +36,8 @@ def test_ratios_are_null_without_calories():
 
 def test_loader_reads_the_draft_and_refuses_unknown_nutrients(tmp_path):
     loaded = rules.load_condition_nutrient()
-    assert {r.nutrient for r in loaded} <= rules.NUTRIENTS
+    assert {r.nutrient for r in loaded if r.mode != "unmapped"} <= rules.NUTRIENTS
+    assert any(r.mode == "unmapped" and "80394007" in r.conditions for r in loaded)  # hyperglycemia: no rule yet
     assert any(r.conditions == ("*",) and r.nutrient == "sodium_mg" for r in loaded)
     (tmp_path / "condition_nutrient.csv").write_text(
         "condition_codes,label,nutrient,op,daily_value,unit,mode,source\n*,x,vitamin_z,max,1,mg,filter,s\n",
