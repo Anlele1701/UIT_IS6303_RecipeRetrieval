@@ -2,13 +2,15 @@
 
     uv run scripts/patient_ingest.py load [--dir PATH:SOURCE ...]    # parse, build trees (template summaries), store
     uv run scripts/patient_ingest.py tree [--summarize llm] [--source sample|generated]   # rebuild the trees
+    uv run scripts/patient_ingest.py profiles                        # PatientProfile of every living patient (V3)
     uv run scripts/patient_ingest.py stats                           # eval/patient_corpus.json, docs/patient_corpus_report.md
 
 Default folders: PATIENT_DATA_DIR as source "sample", plus PATIENT_GENERATED_DIR as "generated" if it exists.
 Each patient is written in its own transaction and replaced on a rerun (upsert by patient_id). A patient id
 that turns up in two folders is an error: nothing is overwritten. A file that fails to parse is listed by a
 short hash of its bytes (file names carry Synthea's fake names) and the run goes on.
-`tree --summarize llm` asks qwen2.5:7b for each context node (cached; hours on a CPU), see api/patient/summarize.py.
+`profiles` builds each living patient's PatientProfile (cached in patient_profile_cache, counts only in
+eval/patient_profiles.json). `tree --summarize llm` asks qwen2.5:7b for each context node (cached; hours on a CPU), see api/patient/summarize.py.
 """
 
 import argparse
@@ -29,7 +31,7 @@ import psycopg  # noqa: E402
 from psycopg.types.json import Jsonb  # noqa: E402
 
 from api import config  # noqa: E402
-from api.patient import ccda, nutrition, rules  # noqa: E402
+from api.patient import ccda, nutrition, profile_store, rules  # noqa: E402
 from api.patient.summarize import summarize  # noqa: E402
 from api.patient.tree import build_tree  # noqa: E402
 
@@ -37,7 +39,8 @@ OUT_JSON = ROOT / "eval" / "patient_corpus.json"
 OUT_MD = ROOT / "docs" / "patient_corpus_report.md"
 SOURCES = ROOT / "data" / "sources.json"
 SEED = 42  # nothing here samples; recorded for the run settings convention
-RULE_FILES = ["allergy_substance.csv", "condition_nutrient.csv", *rules.P7_FILES]
+RULE_FILES = rules.RULE_SET_FILES
+OUT_PROFILES = ROOT / "eval" / "patient_profiles.json"
 
 
 class DuplicatePatient(RuntimeError):
@@ -128,12 +131,12 @@ def write_nodes(conn: psycopg.Connection, patient_id: str, nodes):
 
 
 def cmd_load(conn, dirs) -> dict:
-    p7 = rules.load_p7()
-    records, errors = read_all(dirs, p7)
+    rs = rules.load_rules()
+    records, errors = read_all(dirs, rs.p7)
     versions = {s: (info or {}).get("synthea_commit") for s, info in sources_info().items()}
     nodes_total = 0
     for record, _, folder, path in records:
-        nodes = summarize(build_tree(record), "template")
+        nodes = summarize(build_tree(record), rs, "template")
         write_patient(conn, record, nodes, folder, path, versions.get(record.source))
         nodes_total += len(nodes)
     print(f"loaded {len(records)} patients ({nodes_total} nodes), {len(errors)} files failed to parse")
@@ -143,7 +146,7 @@ def cmd_load(conn, dirs) -> dict:
 
 
 def cmd_tree(conn, mode: str, source: str | None) -> None:
-    p7 = rules.load_p7()
+    rs = rules.load_rules()
     sql = "SELECT patient_id, source, source_dir, source_file FROM patient"
     rows = conn.execute(sql + (" WHERE source = %s" if source else "") + " ORDER BY patient_id",
                         [source] if source else []).fetchall()
@@ -151,8 +154,8 @@ def cmd_tree(conn, mode: str, source: str | None) -> None:
     started, n_llm = time.time(), 0
     try:
         for i, (pid, src, folder, name) in enumerate(rows, 1):
-            record, _ = ccda.read_record(ROOT / folder / name, src, p7)
-            nodes = summarize(build_tree(record), mode, client)
+            record, _ = ccda.read_record(ROOT / folder / name, src, rs.p7)
+            nodes = summarize(build_tree(record), rs, mode, client)
             n_llm += sum(n.summary_source == "llm" for n in nodes)
             with conn.transaction():
                 write_nodes(conn, pid, nodes)
@@ -162,6 +165,36 @@ def cmd_tree(conn, mode: str, source: str | None) -> None:
         if client:
             client.close()
     print(f"rebuilt trees of {len(rows)} patients ({mode} summaries; llm: {n_llm})")
+
+
+# ---- profiles (V3) ---------------------------------------------------------------------------------------------
+
+def cmd_profiles(conn, mode: str = "vectorless") -> dict:
+    """Build (or reuse) every living patient's PatientProfile; write counts only to eval/patient_profiles.json."""
+    rs = rules.load_rules()
+    rules.validate_against_db(rs, conn)
+    pids = [r[0] for r in conn.execute("SELECT patient_id FROM patient WHERE NOT deceased ORDER BY patient_id")]
+    allergen, ingredient, limit, warning, unmapped = (collections.Counter() for _ in range(5))
+    n_any = 0
+    for pid in pids:
+        p = profile_store.load_or_build(conn, pid, rs, mode)
+        allergen.update(p.allergens_exclude)
+        ingredient.update(p.ingredients_exclude)
+        limit.update(f"{k} {op} {v:g}" for k, (op, v) in p.nutrient_limits.items())
+        warning.update(p.warnings)
+        unmapped.update(p.unmapped)
+        n_any += bool(p.allergens_exclude or p.ingredients_exclude or set(p.nutrient_limits) != {"sodium_mg"})
+    out = {"ran_at": datetime.now().isoformat(timespec="seconds"), "git_commit": git_commit(), "seed": SEED,
+           "mode": mode, "ruleset_version": rs.version, "rules_log": list(rs.log),
+           "patients_alive": len(pids), "patients_with_more_than_the_default": n_any,
+           "patients_by_allergen": dict(allergen.most_common()),
+           "patients_by_excluded_ingredient": dict(ingredient.most_common()),
+           "patients_by_nutrient_limit": dict(limit.most_common()),
+           "patients_by_warning": dict(warning.most_common()), "unmapped": dict(unmapped.most_common()),
+           "note": "counts of living patients; no patient id is written here"}
+    OUT_PROFILES.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"profiles of {len(pids)} living patients (ruleset {rs.version}) -> {rel(OUT_PROFILES)}")
+    return out
 
 
 # ---- nutrient rule pass rates ----------------------------------------------------------------------------------
@@ -381,6 +414,8 @@ def main(argv: list[str] | None = None):
     tree = sub.add_parser("tree")
     tree.add_argument("--summarize", choices=["template", "llm"], default="template")
     tree.add_argument("--source", choices=["sample", "generated"])
+    prof = sub.add_parser("profiles")
+    prof.add_argument("--mode", default="vectorless", choices=["direct", "vectorless"])
     stats = sub.add_parser("stats")
     stats.add_argument("--dir", action="append", type=parse_dir_arg)
     args = ap.parse_args(argv)
@@ -389,6 +424,8 @@ def main(argv: list[str] | None = None):
             cmd_load(conn, args.dir or default_dirs())
         elif args.cmd == "tree":
             cmd_tree(conn, args.summarize, args.source)
+        elif args.cmd == "profiles":
+            cmd_profiles(conn, args.mode)
         else:
             cmd_stats(conn, args.dir or default_dirs())
 
