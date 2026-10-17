@@ -1,5 +1,5 @@
 ---
-status: proposed (MV2, 17/10/2026; chờ duyệt ở gate MV2)
+status: accepted (Thy, 17/10/2026, duyệt về nội dung ở gate MV2)
 ---
 
 # Đọc hồ sơ bệnh nhân theo kiểu vectorless: cây mục lục tất định, chỉ đưa cho LLM nội dung đã qua danh sách cho phép
