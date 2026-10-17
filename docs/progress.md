@@ -597,3 +597,34 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
    - xóa tất định các câu có cụm bị gắn cờ, ghi trace `fallback = drop_sentences`;
    - nếu không còn câu nào, trả về danh sách tên món kèm cảnh báo.
 2. Ngôn ngữ trả lời của route `patient_info` (câu tiếng Việt trả lời bằng tiếng Anh): có thêm kiểm tra tất định cho ngôn ngữ không.
+
+### Sau MV3 – vòng 3 (Thy, 17/10/2026)
+1. **`drop_sentences` kèm ba điều kiện:**
+   - Câu trả lời công thức vẫn sai sau khi sinh lại → xóa các câu gợi ý thứ phải tránh, rồi chạy lại M7 trên phần còn lại. Còn vi phạm, hoặc không còn trích dẫn `[R…]` hợp lệ → `recipes_answer` (danh sách món do code sinh kèm cảnh báo). Trace ghi `fallback` với `kind = drop_sentences` hoặc `recipes_answer`.
+   - Kiểm tra lời văn bắt cả từ chỉ nhóm: alias chế độ `all` có sẵn ("hải sản"), cộng `GROUP_WORDS` riêng của M7 ("seafood", "shellfish", "đồ biển"). "đồ biển" **chưa có trong `vi_alias.csv`**; mình không thêm vào từ điển của bộ gắn thẻ.
+   - M6 (`PATIENT_RULES`): khi yêu cầu của người dùng mâu thuẫn với hồ sơ, giải thích ngắn vì sao không đáp ứng được, và không gợi ý thứ đó dưới bất kỳ hình thức nào.
+2. **Ngôn ngữ ở route `patient_info`:** kiểm tra tất định (`lang:vi` / `lang:en`), sai thì sinh lại rồi `values_answer`.
+3. **Số kèm đơn vị:** số đi kèm một đơn vị có trong hồ sơ phải khớp giá trị có cùng đơn vị. Số không có đơn vị phải là phần ngày tháng, năm của nút, số nằm trong tên xét nghiệm, hoặc số đếm tính từ cây (số bảng, số lần khám, số chỉ số, số theo từng tên). Đơn vị chứa chữ số ("10\*3/uL") được thay bằng nhãn trước khi quét.
+- `values_answer` đưa kết quả mới nhất lên trước, cả trong từng nút. Sửa sau lần chạy demo cuối, nên trong `eval/mv3_demo.json` thứ tự vẫn là cũ trước.
+- `pytest` nhanh: 472 pass. Test chậm: hồi quy **pass**, demo **pass**.
+
+### Bảng gate MV3 (lần chạy cuối, `eval/mv3_demo.json`)
+| Kịch bản / lượt | Route | CVR_raw | CVR_adjudicated | Chờ duyệt | Câu trả lời do code sinh | Ghi chú |
+|---|---|---:|---:|---:|---|---|
+| Hồi quy không có `patient_id` | – | – | – | – | – | Trùng mốc ở cả 9 lượt |
+| 1 Dị ứng, lượt 1 | retrieve | 3/5 | 0/5 | 0 | không | |
+| 1 Dị ứng, lượt 2 (pv06) | retrieve | 3/5 | 0/5 | 0 | không | (a)(b)(c)(d) đạt; không còn gợi ý tôm; câu trả lời chưa giải thích vì sao không gợi ý món tôm |
+| 2 Tăng huyết áp | retrieve | 0/5 | 0/5 | 0 | không | |
+| 3 CKD, súp | retrieve | 0/5 | 0/5 | 0 | không | |
+| 3 CKD, câu hỏi lịch sử | patient_info | – | – | – | **có** (`values_answer`) | Lần đầu diễn giải ("bình thường", "giảm"…), lần sinh lại sai ngôn ngữ |
+| 3 CKD, pe02 | patient_info | – | – | – | **có** (`values_answer`) | Lần đầu bịa 10 con số và khoảng tham chiếu, có "normal"; lần sinh lại sai ngôn ngữ |
+
+- **Tỉ lệ câu trả lời do code sinh trong demo:** route `patient_info` 2/2; route `retrieve` 0/4.
+
+### Hạn chế (ghi vào mục 4.6 của báo cáo)
+- Kiểm tra số còn lọt hai trường hợp:
+  - (1) số không có đơn vị trùng tình cờ một số đếm, phần ngày tháng hoặc số trong tên xét nghiệm;
+  - (2) số đúng đơn vị nhưng thuộc chỉ số khác (ghép theo đơn vị, chưa ghép theo tên chỉ số).
+- Từ diễn giải được kiểm bằng danh sách từ khóa, chỉ trong câu có số. Câu không có số mà diễn giải thì không bị bắt.
+- Kiểm tra ngôn ngữ dựa trên dấu tiếng Việt và từ phổ biến. Câu trả lời tiếng Anh có chép nguyên một cảnh báo tiếng Việt sẽ bị coi là tiếng Việt.
+- `qwen2.5:7b` trên CPU gần như luôn cần câu trả lời do code sinh ở route `patient_info`.

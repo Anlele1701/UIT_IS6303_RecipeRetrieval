@@ -322,3 +322,10 @@ def test_numbers_match_with_their_unit_and_bare_numbers_must_be_counts():
     assert m7.unknown_numbers("2 Basic metabolic 2000 panels in 2026.", idx) == []  # a count, a name, a year
     assert m7.unknown_numbers("84 lab panels", idx) == ["84"]  # 84 is a glucose value, not a count
     assert m7.unknown_numbers("Glucose 84 mmol/L", idx) == ["84"]  # mmol/L is no recorded unit: 84 stands bare
+
+
+def test_values_answer_puts_the_newest_facts_first_within_a_node():
+    views = [{"node_id": "results.2026", "facts": [
+        {"display": "BMP", "date": "2026-01-04", "observations": [{"display": "Sodium", "value": "141", "unit": "mmol/L"}]},
+        {"display": "BMP", "date": "2026-08-16", "observations": [{"display": "Sodium", "value": "139", "unit": "mmol/L"}]}]}]
+    assert m7.values_answer(views, "en").splitlines()[1] == "- Sodium: 139 mmol/L (2026-08-16) [H:results.2026]"

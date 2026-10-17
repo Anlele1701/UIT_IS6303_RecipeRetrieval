@@ -263,7 +263,8 @@ def values_answer(views: list[dict], lang: str) -> str:
     fixed = [v for v in views if v not in context]
     for v in context + fixed:
         ref = f"[H:{v['node_id']}]"
-        for f in v.get("facts", []):
+        facts = sorted(v.get("facts", []), key=lambda f: f.get("date") or f.get("month") or "", reverse=True)
+        for f in facts:  # newest first within a node too ("the last tests")
             if "observations" in f:
                 for o in f["observations"] or []:
                     unit = f" {o['unit']}" if o.get("unit") else ""

@@ -90,26 +90,29 @@
         }
       }
     ],
-    "answer": "R13999 Easy Skillet Chicken & Riced Cauliflower [H:patient:887e4b4e-a3e1-b573-4a16-38386d3e0b88]: Đây là một món dễ làm, chỉ mất 30 phút. Món này không chứa bột mì và natri mỗi phần chỉ 227 mg, phù hợp với yêu cầu của bệnh nhân. \n\nR2920 Pressure Cooker Bone-In Pork Chops, Baked Potatoes, and Carrots [H:patient:887e4b4e-a3e1-b573-4a16-38386d3e0b88]: Món này không chứa các loại hải sản bị tránh và natri mỗi phần là 404 mg, có thể phù hợp nếu giảm lượng natri. Tuy nhiên, bệnh nhân nên kiểm tra nhãn thành phần.",
-    "citations": [],
+    "answer": "Trong danh sách các món ăn, có một số lựa chọn phù hợp với bệnh nhân của bạn:\n\n1. [R13999] Easy Skillet Chicken & Riced Cauliflower - Đây là một món ăn một nồi, không cần nhiều công đoạn và chứa ít muối (<227 mg/serving). Món này cũng không chứa các thành phần bị tránh.\n\n2. [R6910] Quick and Easy Chicken Lazone - Món này cũng rất nhanh để làm (<20 phút) và chứa ít muối (<214 mg/serving). Tuy nhiên, hãy kiểm tra nhãn thành phần để đảm bảo không có thành phần bị tránh.\n\nNhớ kiểm tra nhãn thành phần cho cả hai món để đảm bảo an toàn cho bệnh nhân.",
+    "citations": [
+      13999,
+      6910
+    ],
     "verified": true,
     "removed": [],
     "regenerated": false,
     "flags": [],
     "latency_ms": {
-      "v1": 1.9,
-      "v3": 4.5,
-      "m1": 0.4,
+      "v1": 1.3,
+      "v3": 3.1,
+      "m1": 0.3,
       "v2": 0.0,
       "m2": 0.2,
       "m3": 0.0,
-      "m4": 2196.3,
-      "m5": 32011.9,
-      "m6_ttft": 6478.5,
-      "m6": 10476.8,
-      "m7": 2.9,
-      "m6_total": 10476.8,
-      "total": 44719.9
+      "m4": 2178.4,
+      "m5": 32060.1,
+      "m6_ttft": 6865.5,
+      "m6": 10019.5,
+      "m7": 2.4,
+      "m6_total": 10019.5,
+      "total": 44287.6
     },
     "fallback": false,
     "violations": {
@@ -129,21 +132,6 @@
       "ingredient": [],
       "nutrient": [],
       "summary": {
-        "recipes": 5,
-        "violating_raw": 3,
-        "violating_adjudicated": 0,
-        "cvr_raw": 0.6,
-        "cvr_adjudicated": 0.0,
-        "pending": 0,
-        "by_status": {
-          "dropped_flagged": 1,
-          "dropped_not_verbatim": 0,
-          "confirmed": 0,
-          "rejected": 2,
-          "pending": 0
-        }
-      },
-      "summary_with_current_labels": {
         "recipes": 5,
         "violating_raw": 3,
         "violating_adjudicated": 0,
@@ -201,128 +189,109 @@
     ],
     "recipes": [
       {
-        "id": 31477,
-        "title": "Creamy Mustard Dipping Sauce for Shellfish",
+        "id": 12251,
+        "title": "Glazed Fish with Roasted Asparagus and Cherry Tomatoes",
         "allergens": [
-          "milk",
-          "egg",
-          "fish"
+          "fish",
+          "sesame"
         ],
         "nutrients": {
-          "sodium_mg": 206.6
+          "sodium_mg": 513.8
         }
       },
       {
-        "id": 11169,
-        "title": "Dipping Sauce for Seafood",
+        "id": 10006,
+        "title": "Cocktail Sauce for Shrimp",
+        "allergens": [],
+        "nutrients": {
+          "sodium_mg": 35.5
+        }
+      },
+      {
+        "id": 13999,
+        "title": "Easy Skillet Chicken & Riced Cauliflower",
         "allergens": [
           "milk"
         ],
         "nutrients": {
-          "sodium_mg": 201.3
+          "sodium_mg": 227.1
         }
       },
       {
-        "id": 8983,
-        "title": "Spanish Cod",
+        "id": 6910,
+        "title": "Quick and Easy Chicken Lazone",
+        "allergens": [
+          "milk"
+        ],
+        "nutrients": {
+          "sodium_mg": 213.8
+        }
+      },
+      {
+        "id": 13571,
+        "title": "Sausage Frittata",
         "allergens": [
           "milk",
-          "fish"
+          "egg"
         ],
         "nutrients": {
-          "sodium_mg": 597.0
-        }
-      },
-      {
-        "id": 7750,
-        "title": "Mahi Mahi Ceviche",
-        "allergens": [
-          "fish"
-        ],
-        "nutrients": {
-          "sodium_mg": 247.0
-        }
-      },
-      {
-        "id": 21273,
-        "title": "Spicy Tequila-Lime Tomato Soup",
-        "allergens": [],
-        "nutrients": {
-          "sodium_mg": 559.8
+          "sodium_mg": 312.1
         }
       }
     ],
-    "answer": "R31477 Creamy Mustard Dipping Sauce for Shellfish [H:allergies]: Món này không chứa tôm và chỉ mất 35 phút để làm. Tuy nhiên, bệnh nhân nên kiểm tra nhãn thành phần vì nó có thể chứa các thành phần không mong muốn. Natri mỗi phần là 207 mg, phù hợp với yêu cầu của bệnh nhân.\n\nR21273 Spicy Tequila-Lime Tomato Soup [H:patient:887e4b4e-a3e1-b573-4a16-38386d3e0b88]: Món này không chứa tôm và natri mỗi phần là 560 mg, có thể phù hợp nếu giảm lượng natri. Bệnh nhân nên thêm tôm để tăng protein, nhưng cần kiểm tra nhãn thành phần.",
-    "citations": [],
-    "verified": false,
+    "answer": "Trong danh sách các món ăn, có một số lựa chọn phù hợp với bệnh nhân của bạn:\n\n1. [R13999] Easy Skillet Chicken & Riced Cauliflower - Đây là một món ăn một nồi, không cần nhiều công đoạn và chứa ít muối (<227 mg/serving). Món này cũng không chứa các thành phần bị tránh.\n\n2. [R6910] Quick and Easy Chicken Lazone - Món này cũng rất nhanh để làm (<20 phút) và chứa ít muối (<214 mg/serving). Tuy nhiên, hãy kiểm tra nhãn thành phần để đảm bảo không có thành phần bị tránh.\n\nNhớ kiểm tra nhãn thành phần cho cả hai món để đảm bảo an toàn cho bệnh nhân.",
+    "citations": [
+      13999,
+      6910
+    ],
+    "verified": true,
     "removed": [],
     "regenerated": true,
-    "flags": [
-      "text:allergen:crustacean_shellfish"
-    ],
+    "flags": [],
     "latency_ms": {
-      "v1": 0.9,
-      "v3": 0.7,
-      "m1": 1.8,
+      "v1": 1.5,
+      "v3": 0.9,
+      "m1": 13543.4,
       "v2": 0.0,
       "m2": 0.2,
       "m3": 0.0,
-      "m4": 130.7,
-      "m5": 28335.9,
-      "m6_ttft": 3002.3,
-      "m6": 6558.7,
-      "m7": 3620.2,
-      "m6_total": 6558.7,
-      "total": 38657.8
+      "m4": 164.0,
+      "m5": 32757.0,
+      "m6_ttft": 11537.0,
+      "m6": 13676.4,
+      "m7": 3203.9,
+      "m6_total": 13676.4,
+      "total": 63357.7
     },
     "fallback": false,
     "violations": {
       "checker_raw": [
-        "R7750 allergen:crustacean_shellfish",
-        "R11169 allergen:crustacean_shellfish",
-        "R21273 allergen:wheat",
-        "R31477 allergen:crustacean_shellfish",
-        "R31477 allergen:wheat"
+        "R10006 allergen:crustacean_shellfish",
+        "R12251 allergen:wheat",
+        "R13999 allergen:wheat"
       ],
       "adjudicated": [],
       "pending": [],
       "confirmed": [],
       "dropped": [
-        "R7750 allergen:crustacean_shellfish rejected (¾ pound mahi mahi fillets, diced, or more to taste)",
-        "R11169 allergen:crustacean_shellfish rejected (1 ½ cups plain non-fat yogurt)",
-        "R21273 allergen:wheat dropped_flagged (- 1 (28 ounce) can fire-roasted diced tomatoes)",
-        "R31477 allergen:crustacean_shellfish rejected (1 teaspoon Worcestershire sauce)",
-        "R31477 allergen:wheat rejected (1 teaspoon Worcestershire sauce)"
+        "R10006 allergen:crustacean_shellfish rejected (16 ounces chile sauce)",
+        "R12251 allergen:wheat dropped_flagged (- 1 ½ cups VH® Pad Thai Sauce)",
+        "R13999 allergen:wheat dropped_flagged (- 2 tablespoons grated Parmesan cheese)"
       ],
       "ingredient": [],
       "nutrient": [],
       "summary": {
         "recipes": 5,
-        "violating_raw": 4,
+        "violating_raw": 3,
         "violating_adjudicated": 0,
-        "cvr_raw": 0.8,
+        "cvr_raw": 0.6,
         "cvr_adjudicated": 0.0,
         "pending": 0,
         "by_status": {
-          "dropped_flagged": 1,
+          "dropped_flagged": 2,
           "dropped_not_verbatim": 0,
           "confirmed": 0,
-          "rejected": 4,
-          "pending": 0
-        }
-      },
-      "summary_with_current_labels": {
-        "recipes": 5,
-        "violating_raw": 4,
-        "violating_adjudicated": 0,
-        "cvr_raw": 0.8,
-        "cvr_adjudicated": 0.0,
-        "pending": 0,
-        "by_status": {
-          "dropped_flagged": 1,
-          "dropped_not_verbatim": 0,
-          "confirmed": 0,
-          "rejected": 4,
+          "rejected": 1,
           "pending": 0
         }
       }
@@ -431,29 +400,29 @@
         }
       }
     ],
-    "answer": "[R12272] Chipotle-Orange Shrimp | 40 min | This recipe is suitable as it avoids grapefruit and has a low sodium content (452 mg per serving) and a low saturated fat percentage (2% of kcal per serving). However, it contains shellfish, which the patient should check for safety.\n\n[R3087] Singapore Noodle Curry Shrimp | 25 min | This dish also avoids grapefruit and has a moderate sodium content (491 mg per serving) and a low saturated fat percentage (5% of kcal per serving). It contains shellfish, so the patient should verify the safety.\n\nNeither recipe fully meets all the patient's preferences, but both are close. The patient should check the ingredient labels for safety and consider the sodium content.",
+    "answer": "Based on the patient's constraints, here are some suitable dinner options:\n\n- **Chipotle-Orange Shrimp [R12272]**: This dish is free from grapefruit and has a sodium content of 452 mg per serving, which is within the limit. The saturated fat content is 2% of kcal per serving, meeting the preference. It's a smoky and sweet, easy weeknight dinner.\n\n- **40-Minute Dinner Rolls [R27080]**: These rolls are free from grapefruit and have a sodium content of 8 mg per serving, well within the limit. The saturated fat content is 1% of kcal per serving, meeting the preference. They are easy and simple dinner rolls.\n\nBoth recipes avoid grapefruit and meet the sodium and saturated fat limits, making them suitable options for the patient.",
     "citations": [
       12272,
-      3087
+      27080
     ],
     "verified": true,
     "removed": [],
     "regenerated": false,
     "flags": [],
     "latency_ms": {
-      "v1": 1.9,
-      "v3": 0.7,
-      "m1": 0.4,
+      "v1": 3.8,
+      "v3": 1.4,
+      "m1": 0.3,
       "v2": 0.0,
       "m2": 0.1,
       "m3": 0.0,
-      "m4": 109.3,
-      "m5": 29374.3,
-      "m6_ttft": 2899.7,
-      "m6": 6072.1,
-      "m7": 0.3,
-      "m6_total": 6072.1,
-      "total": 35567.4
+      "m4": 171.6,
+      "m5": 29402.0,
+      "m6_ttft": 2787.6,
+      "m6": 6165.5,
+      "m7": 0.7,
+      "m6_total": 6165.5,
+      "total": 35754.9
     },
     "fallback": false,
     "violations": {
@@ -465,21 +434,6 @@
       "ingredient": [],
       "nutrient": [],
       "summary": {
-        "recipes": 5,
-        "violating_raw": 0,
-        "violating_adjudicated": 0,
-        "cvr_raw": 0.0,
-        "cvr_adjudicated": 0.0,
-        "pending": 0,
-        "by_status": {
-          "dropped_flagged": 0,
-          "dropped_not_verbatim": 0,
-          "confirmed": 0,
-          "rejected": 0,
-          "pending": 0
-        }
-      },
-      "summary_with_current_labels": {
         "recipes": 5,
         "violating_raw": 0,
         "violating_adjudicated": 0,
@@ -612,28 +566,29 @@
         }
       }
     ],
-    "answer": "Món súp phù hợp cho bệnh nhân này là [R29175] Vegetarian 15-Bean Soup. Món súp này không chứa grapefruit [H:meds.active], protein chỉ 9g/serving [H:problems.active] và sodium 401mg/serving [H:problems.active], phù hợp với giới hạn của bệnh nhân. Món súp này cũng chứa nhiều chất xơ, với 62g/1000kcal/serving [H:problems.active], đáp ứng tốt nhu cầu của bệnh nhân.",
+    "answer": "Dựa trên các hạn chế và ưu tiên của bệnh nhân, tôi có thể đề xuất một số món súp từ danh sách công thức:\n\n1. [R29175] Vegetarian 15-Bean Soup: Món súp này hoàn toàn phù hợp với bệnh nhân, không chứa protein quá nhiều (9g/portion) và có lượng xơ cao (62g/1000kcal). Tuy nhiên, bệnh nhân cần kiểm tra nhãn thành phần để đảm bảo không có grapefruit.\n\n2. [R29547] Slow Cooker Vegetable Soup: Món súp này cũng phù hợp, với lượng protein thấp (9g/portion) và xơ cao (24g/1000kcal). Tuy nhiên, bệnh nhân cần kiểm tra nhãn thành phần để đảm bảo không có grapefruit.\n\nCả hai món súp này đều không chứa protein quá mức và có lượng xơ cao, phù hợp với yêu cầu của bệnh nhân. Tuy nhiên, bệnh nhân nên kiểm tra nhãn thành phần để đảm bảo không có grapefruit.",
     "citations": [
-      29175
+      29175,
+      29547
     ],
     "verified": true,
     "removed": [],
     "regenerated": false,
     "flags": [],
     "latency_ms": {
-      "v1": 6.0,
+      "v1": 7.3,
       "v3": 1.0,
       "m1": 0.3,
       "v2": 0.0,
       "m2": 0.1,
       "m3": 0.0,
-      "m4": 116.7,
-      "m5": 33448.7,
-      "m6_ttft": 2991.5,
-      "m6": 5401.0,
-      "m7": 0.3,
-      "m6_total": 5401.0,
-      "total": 38983.9
+      "m4": 190.0,
+      "m5": 33081.6,
+      "m6_ttft": 3059.3,
+      "m6": 7613.7,
+      "m7": 0.8,
+      "m6_total": 7613.7,
+      "total": 40905.4
     },
     "fallback": false,
     "violations": {
@@ -645,21 +600,6 @@
       "ingredient": [],
       "nutrient": [],
       "summary": {
-        "recipes": 5,
-        "violating_raw": 0,
-        "violating_adjudicated": 0,
-        "cvr_raw": 0.0,
-        "cvr_adjudicated": 0.0,
-        "pending": 0,
-        "by_status": {
-          "dropped_flagged": 0,
-          "dropped_not_verbatim": 0,
-          "confirmed": 0,
-          "rejected": 0,
-          "pending": 0
-        }
-      },
-      "summary_with_current_labels": {
         "recipes": 5,
         "violating_raw": 0,
         "violating_adjudicated": 0,
@@ -730,26 +670,29 @@
     "route": "patient_info",
     "notices": [],
     "recipes": [],
-    "answer": "The patient has active problems related to protein and sodium intake, which need to be monitored. The patient also has allergies and active medical issues that should be considered by the healthcare provider. Recent encounters include multiple emergency visits and one urgent care visit in 2026.",
+    "answer": "Việc diễn giải kết quả cần bác sĩ. Hồ sơ ghi:\n- Glucose [Mass/volume] in Blood: 96.52 mg/dL (2026-01-04) [H:results.2026]\n- Urea nitrogen [Mass/volume] in Blood: 12.75 mg/dL (2026-01-04) [H:results.2026]\n- Creatinine [Mass/volume] in Blood: 5.52 mg/dL (2026-01-04) [H:results.2026]\n- Calcium [Mass/volume] in Blood: 9.77 mg/dL (2026-01-04) [H:results.2026]\n- Sodium [Moles/volume] in Blood: 142.31 mmol/L (2026-01-04) [H:results.2026]\n- Potassium [Moles/volume] in Blood: 4.38 mmol/L (2026-01-04) [H:results.2026]\n- Chloride [Moles/volume] in Blood: 107.43 mmol/L (2026-01-04) [H:results.2026]\n- Carbon dioxide, total [Moles/volume] in Blood: 21.17 mmol/L (2026-01-04) [H:results.2026]\n- Glucose [Mass/volume] in Serum or Plasma: 96.52 mg/dL (2026-01-04) [H:results.2026]\n- Urea nitrogen [Mass/volume] in Serum or Plasma: 12.75 mg/dL (2026-01-04) [H:results.2026]\n- Creatinine [Mass/volume] in Serum or Plasma: 1.9162612396319274 mg/dL (2026-01-04) [H:results.2026]\n- Calcium [Mass/volume] in Serum or Plasma: 9.77 mg/dL (2026-01-04) [H:results.2026]",
     "citations": [],
     "verified": true,
     "removed": [],
     "regenerated": true,
-    "flags": [],
+    "flags": [
+      "lang:vi"
+    ],
     "latency_ms": {
-      "v1": 5.7,
+      "v1": 6.1,
       "v3": 1.0,
-      "m1": 0.7,
-      "v2": 0.2,
+      "m1": 10821.0,
+      "v2": 0.4,
       "m2": 0.1,
       "m3": 0.0,
-      "m6_ttft": 2006.1,
-      "m6": 9788.0,
-      "m7": 3282.8,
-      "m6_total": 9788.0,
-      "total": 13101.4
+      "m6_ttft": 10891.5,
+      "m6": 21381.3,
+      "m7": 3076.2,
+      "fallback": 2.1,
+      "m6_total": 21381.3,
+      "total": 35307.2
     },
-    "fallback": false,
+    "fallback": true,
     "violations": {
       "checker_raw": [],
       "adjudicated": [],
@@ -759,21 +702,6 @@
       "ingredient": [],
       "nutrient": [],
       "summary": {
-        "recipes": 0,
-        "violating_raw": 0,
-        "violating_adjudicated": 0,
-        "cvr_raw": null,
-        "cvr_adjudicated": null,
-        "pending": 0,
-        "by_status": {
-          "dropped_flagged": 0,
-          "dropped_not_verbatim": 0,
-          "confirmed": 0,
-          "rejected": 0,
-          "pending": 0
-        }
-      },
-      "summary_with_current_labels": {
         "recipes": 0,
         "violating_raw": 0,
         "violating_adjudicated": 0,
@@ -844,26 +772,29 @@
     "route": "patient_info",
     "notices": [],
     "recipes": [],
-    "answer": "The patient has a history of 84 lab panels, including 33 Basic metabolic 2000 panels and 33 Urinalysis macro (dipstick) panels, conducted in 2025 and 2026. Interpretation of the results requires a medical professional.",
+    "answer": "Interpreting these results needs a doctor. The record shows:\n- Glucose [Mass/volume] in Blood: 96.52 mg/dL (2026-01-04) [H:results.2026]\n- Urea nitrogen [Mass/volume] in Blood: 12.75 mg/dL (2026-01-04) [H:results.2026]\n- Creatinine [Mass/volume] in Blood: 5.52 mg/dL (2026-01-04) [H:results.2026]\n- Calcium [Mass/volume] in Blood: 9.77 mg/dL (2026-01-04) [H:results.2026]\n- Sodium [Moles/volume] in Blood: 142.31 mmol/L (2026-01-04) [H:results.2026]\n- Potassium [Moles/volume] in Blood: 4.38 mmol/L (2026-01-04) [H:results.2026]\n- Chloride [Moles/volume] in Blood: 107.43 mmol/L (2026-01-04) [H:results.2026]\n- Carbon dioxide, total [Moles/volume] in Blood: 21.17 mmol/L (2026-01-04) [H:results.2026]\n- Glucose [Mass/volume] in Serum or Plasma: 96.52 mg/dL (2026-01-04) [H:results.2026]\n- Urea nitrogen [Mass/volume] in Serum or Plasma: 12.75 mg/dL (2026-01-04) [H:results.2026]\n- Creatinine [Mass/volume] in Serum or Plasma: 1.9162612396319274 mg/dL (2026-01-04) [H:results.2026]\n- Calcium [Mass/volume] in Serum or Plasma: 9.77 mg/dL (2026-01-04) [H:results.2026]",
     "citations": [],
     "verified": true,
     "removed": [],
     "regenerated": true,
-    "flags": [],
+    "flags": [
+      "lang:en"
+    ],
     "latency_ms": {
-      "v1": 8.6,
-      "v3": 1.6,
-      "m1": 11468.9,
+      "v1": 5.9,
+      "v3": 1.2,
+      "m1": 11486.8,
       "v2": 0.4,
       "m2": 0.1,
       "m3": 0.0,
-      "m6_ttft": 11239.9,
-      "m6": 21531.1,
-      "m7": 3798.0,
-      "m6_total": 21531.1,
-      "total": 36840.6
+      "m6_ttft": 11175.4,
+      "m6": 21466.8,
+      "m7": 3465.4,
+      "fallback": 1.1,
+      "m6_total": 21466.8,
+      "total": 36450.6
     },
-    "fallback": false,
+    "fallback": true,
     "violations": {
       "checker_raw": [],
       "adjudicated": [],
@@ -873,21 +804,6 @@
       "ingredient": [],
       "nutrient": [],
       "summary": {
-        "recipes": 0,
-        "violating_raw": 0,
-        "violating_adjudicated": 0,
-        "cvr_raw": null,
-        "cvr_adjudicated": null,
-        "pending": 0,
-        "by_status": {
-          "dropped_flagged": 0,
-          "dropped_not_verbatim": 0,
-          "confirmed": 0,
-          "rejected": 0,
-          "pending": 0
-        }
-      },
-      "summary_with_current_labels": {
         "recipes": 0,
         "violating_raw": 0,
         "violating_adjudicated": 0,
