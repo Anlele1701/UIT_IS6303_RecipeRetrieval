@@ -12,8 +12,10 @@ Patient sessions (MV3, spec 5.6) add three checks, all leading to the same singl
     is not negated or flagged as a warning nearby (English and the Vietnamese aliases of the lexicon);
 (c) every [H:<node_id>] must name a node of the patient's tree; others are removed;
 (d) route patient_info only: every number in the answer must match a value in the facts of the nodes read
-    (at the precision written), so the answer cannot invent or derive a measurement; and the answer must not copy
-    the data blocks (RECORD, PATIENT_PROFILE) back.
+    (at the precision written), so the answer cannot invent or derive a measurement; a sentence holding a number
+    must not interpret it ("normal", "elevated", "cao"...; the record's condition names are masked first); and the
+    answer must not copy the data blocks (RECORD, PATIENT_PROFILE) back. When the one regeneration still fails,
+    the orchestrator answers with the values listed by code (values_answer) and traces it.
 Without a patient context, verify() is exactly the M3 check.
 """
 
@@ -35,6 +37,15 @@ SAFE_AFTER = re.compile(r"^[^.;!?\n]{0,12}(-free|free\b)", re.I)
 NUMBER = re.compile(r"(?<![\w.])\d+(?:[.,]\d+)?(?![\w])")
 LIST_MARK = re.compile(r"^\s*\d+[.)]\s", re.M)
 ECHO = re.compile(r"</?patient_profile>|PATIENT_PROFILE:|</?record>|RECORD:", re.I)
+# route patient_info (Thy, after MV3): words that interpret a value. Checked only in sentences holding a number,
+# after the record's condition names are masked ("tăng huyết áp" names a condition, it does not interpret).
+INTERPRET = re.compile(r"(?<!\w)(normal|abnormal|elevated|high|low|increased|decreased|raised|reduced|borderline|"
+                       r"within range|out of range|in range|healthy|concerning|worrying|good|bad|"
+                       r"bình thường|bất thường|cao|thấp|tăng|giảm|vượt|ổn định|ổn|tốt|xấu|đáng lo)(?!\w)", re.I)
+# Vietnamese names of the conditions a rule names: masked like the record's own (English) names
+CONDITION_NAMES_VI = ["tăng huyết áp", "cao huyết áp", "huyết áp cao", "tiểu đường", "đái tháo đường",
+                      "bệnh thận mạn", "suy thận", "đường huyết cao", "tăng đường huyết"]
+SENTENCE = re.compile(r"(?:[^.!?\n]|\.(?=\d))+[.!?]?")  # "67.68" stays in one sentence
 
 
 @dataclass
@@ -42,6 +53,7 @@ class PatientCheck:
     node_ids: set[str]  # every node of the patient's tree: [H:..] must name one
     avoid_terms: dict[str, list[str]] = field(default_factory=dict)  # constraint -> words that name it
     numbers: set[float] | None = None  # route patient_info: every number the answer may state (facts read)
+    condition_names: list[str] = field(default_factory=list)  # route patient_info: masked before INTERPRET
 
 
 def numbers_in(value) -> set[float]:
@@ -74,6 +86,23 @@ def unknown_numbers(answer: str, allowed: set[float]) -> list[str]:
         if not any(abs(a - x) <= tol for a in allowed):
             bad.append(token)
     return list(dict.fromkeys(bad))
+
+
+def mask(text: str, phrases) -> str:
+    """Blank out each phrase (case-insensitive, verbatim), longest first, so words inside it are not checked."""
+    for ph in sorted({p for p in phrases if p}, key=len, reverse=True):
+        text = re.sub(re.escape(ph), " ", text, flags=re.I)
+    return text
+
+
+def interpretations(answer: str, condition_names: list[str]) -> list[str]:
+    """Interpreting words in the sentences that hold a number, the record's condition names masked first."""
+    text = mask(re.sub(r"\[(?:R\d+|H:[^\]]+)\]", " ", answer), [*condition_names, *CONDITION_NAMES_VI])
+    found = []
+    for sentence in SENTENCE.findall(text):
+        if NUMBER.search(LIST_MARK.sub(" ", sentence)):
+            found += [m.lower() for m in INTERPRET.findall(sentence)]
+    return list(dict.fromkeys(found))
 
 
 def violations(card: RecipeCard, c: Constraints) -> list[str]:
@@ -115,13 +144,50 @@ def verify(answer: str, cards: list[RecipeCard], c: Constraints, patient: Patien
     if patient is None:
         return Verification(verified=not removed, citations=kept, removed=removed)
     bad_h = [h for h in dict.fromkeys(CITE_H.findall(answer)) if h not in patient.node_ids]
-    flags = [f"text:{k}" for k in suggested_avoided(answer, patient.avoid_terms)] + [f"node:{h}" for h in bad_h]
+    # (b) on the text only: the cited Recipes' titles and the [R..] marks are masked verbatim (Thy, after MV3); a
+    # Recipe itself is checked by its tags and the checker, so "Shrimp Scampi" breaking a constraint is caught there
+    titles = [by_id[i].title for i in ids if i in by_id]
+    text = re.sub(r"\[R\d+\]|(?<!\w)R\d+(?!\w)", " ", mask(answer, titles))
+    flags = [f"text:{k}" for k in suggested_avoided(text, patient.avoid_terms)] + [f"node:{h}" for h in bad_h]
     if patient.numbers is not None:  # route patient_info: every number must come from a fact read (Thy, after MV3)
         flags += [f"number:{n}" for n in unknown_numbers(answer, patient.numbers)]
+        flags += [f"interpret:{w}" for w in interpretations(answer, patient.condition_names)]
         if ECHO.search(answer):  # the data blocks copied back instead of an answer
             flags.append("echo:prompt_block")
     return Verification(verified=not removed and not flags, citations=kept, removed=removed, flags=flags,
                         bad_nodes=bad_h)
+
+
+FALLBACK_HEAD = {"vi": "Việc diễn giải kết quả cần bác sĩ. Hồ sơ ghi:",
+                 "en": "Interpreting these results needs a doctor. The record shows:"}
+MAX_FALLBACK_LINES = 12
+
+
+def values_answer(views: list[dict], lang: str) -> str:
+    """route patient_info, after a failed regeneration: the values of the nodes read, listed by code (no model).
+    Context nodes first (the question asked for history), newest first; every line cites its node."""
+    lines = []
+    context = sorted([v for v in views if v["node_id"].startswith(("results.", "encounters."))],
+                     key=lambda v: v["node_id"].split(".")[-1], reverse=True)
+    fixed = [v for v in views if v not in context]
+    for v in context + fixed:
+        ref = f"[H:{v['node_id']}]"
+        for f in v.get("facts", []):
+            if "observations" in f:
+                for o in f["observations"] or []:
+                    unit = f" {o['unit']}" if o.get("unit") else ""
+                    lines.append(f"- {o.get('display')}: {o.get('value')}{unit} ({o.get('date') or f.get('date')}) {ref}")
+            elif "class" in f:
+                lines.append(f"- {f['class'].replace('_', ' ')} ({f.get('month')}) {ref}")
+            elif "value" in f:
+                unit = f" {f['unit']}" if f.get("unit") else ""
+                lines.append(f"- {f.get('display')}: {f['value']}{unit} ({f.get('date')}) {ref}")
+            elif f.get("substance") or f.get("display"):
+                lines.append(f"- {f.get('substance') or f.get('display')} {ref}")
+    if not lines:
+        return ("Hồ sơ không có thông tin cho câu hỏi này." if lang == "vi"
+                else "The record holds no information for this question.")
+    return "\n".join([FALLBACK_HEAD.get(lang, FALLBACK_HEAD["en"]), *lines[:MAX_FALLBACK_LINES]])
 
 
 def strip(answer: str, removed: list[int], bad_nodes: list[str] = ()) -> str:
@@ -145,9 +211,12 @@ def retry_note(v: Verification, cards: list[RecipeCard], c: Constraints) -> str:
         if nodes:
             note += f" These record sections do not exist: {', '.join(nodes)}; cite only node ids from PATIENT_PROFILE."
         numbers = [f.split(":", 1)[1] for f in v.flags if f.startswith("number:")]
-        if numbers or "echo:prompt_block" in v.flags:  # route patient_info: keep the answer, drop what is not in RECORD
-            note = ("Rewrite your previous answer as 2 to 4 short sentences in the same language. "
+        words = [f.split(":", 1)[1] for f in v.flags if f.startswith("interpret:")]
+        if numbers or words or "echo:prompt_block" in v.flags:  # route patient_info: values only
+            note = ("Rewrite your previous answer as 2 to 4 short sentences in the same language as the question. "
                     + (f"Delete these numbers, which are not in RECORD: {', '.join(numbers)}. " if numbers else "")
+                    + (f"Do not judge the values (no words like: {', '.join(words)}); say that interpreting them needs "
+                       "a doctor. " if words else "")
                     + "Add no reference range and no number of your own. Do not copy RECORD or PATIENT_PROFILE, "
                     "and do not list the profile's limits or warnings.")
     return note

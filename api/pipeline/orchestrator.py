@@ -258,6 +258,12 @@ class Assistant:
             if path in {"retrieve", "detail"} or (pt and path == "patient_info"):
                 answer, v = self._verify(answer, messages, cards, c, flags, tr, usage,
                                          self._check(pt, c, allowed_numbers))
+            if pt and path == "patient_info" and flags.verify and not v.verified:
+                # still wrong after the one regeneration: list the values by code; traced, counted in the report
+                with tr.stage("fallback", {"kind": "values_answer", "model_flags": list(v.flags)}) as p:
+                    answer = m7.values_answer(views, u.lang)
+                    p["lines"] = answer.count("\n")
+                v = v.model_copy(update={"verified": True, "fallback": True})
         elif path == "chat":
             answer = ("Mình chỉ giúp tìm công thức nấu ăn." if u.lang == "vi"
                       else "I can only help with recipes and cooking.")
@@ -278,6 +284,7 @@ class Assistant:
                 "latency_ms": tr.ms}
         if pt:
             done["flags"] = v.flags
+            done["fallback"] = v.fallback  # route patient_info answered by values_answer (code), not the model
         yield Event("done", done)
 
     def _verify(self, answer, messages, cards, c, flags: Flags, tr: Trace, usage: dict, check=None):
@@ -345,6 +352,8 @@ class Assistant:
         return block
 
     def _check(self, pt: dict | None, c, numbers: set[float] | None = None) -> m7.PatientCheck | None:
+        """M7's patient context. Route patient_info also gets the allowed numbers and the record's condition
+        names, masked before the interpretation check (Thy, after MV3)."""
         if not pt:
             return None
         terms: dict[str, list[str]] = {}
@@ -354,7 +363,15 @@ class Assistant:
         for i in c.ingredients_exclude:
             vi = [alias for alias, al in self.lex.aliases.items() if i in al.ingredients]
             terms[f"ingredient:{i}"] = list(dict.fromkeys([i, *vi]))
-        return m7.PatientCheck(node_ids={n.node_id for n in pt["nodes"]}, avoid_terms=terms, numbers=numbers)
+        names = []
+        if numbers is not None:
+            for n in pt["nodes"]:
+                if n.node_id == "problems.active":
+                    for f in n.facts:
+                        display = f.get("display") or ""
+                        names += [display, display.replace("(disorder)", "").strip()]
+        return m7.PatientCheck(node_ids={n.node_id for n in pt["nodes"]}, avoid_terms=terms, numbers=numbers,
+                               condition_names=names)
 
 
 def _brief(r: RecipeCard) -> dict:

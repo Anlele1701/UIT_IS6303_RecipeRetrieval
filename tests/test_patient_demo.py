@@ -95,7 +95,8 @@ def turn(bot, sid, msg, scenario, patient):
                 "notices": ev["constraints"]["notices"],
                 "recipes": [{k: r.get(k) for k in ("id", "title", "allergens", "nutrients")} for r in ev.get("recipes", [])],
                 **{k: ev["done"][k] for k in ("answer", "citations", "verified", "removed", "regenerated", "flags",
-                                             "latency_ms")}, "violations": bad})
+                                             "latency_ms")}, "fallback": ev["done"].get("fallback", False),
+                "violations": bad})
     return ev, bad
 
 
@@ -138,7 +139,8 @@ def test_ckd_limits_and_a_history_question_reads_context_nodes(bot):
     # pe02 (Thy, after MV3): values only, every number from the facts read
     ev, _ = turn(bot, sid, "Were the patient's last blood tests normal for kidney function?", "3 ckd pe02", CKD)
     assert ev["constraints"]["route"] == "patient_info"
-    assert not [f for f in ev["done"]["flags"] if f.startswith("number:")], ev["done"]["answer"]
+    model_ok = not [f for f in ev["done"]["flags"] if f.split(":")[0] in {"number", "interpret", "echo"}]
+    assert model_ok or ev["done"]["fallback"], ev["done"]["answer"]  # values only: from the model or listed by code
     text = json.dumps(LOG, ensure_ascii=False)
     for name in ["Barton704", "Upton904"]:
         assert name not in text

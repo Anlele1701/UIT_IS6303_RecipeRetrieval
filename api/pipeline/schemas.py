@@ -124,3 +124,4 @@ class Verification(BaseModel):
     regenerated: bool = False
     flags: list[str] = Field(default_factory=list)  # patient checks (MV3): text:<constraint>, node:<id>
     bad_nodes: list[str] = Field(default_factory=list)  # [H:..] ids not in the patient's tree
+    fallback: bool = False  # route patient_info: the answer was listed by code after a failed regeneration

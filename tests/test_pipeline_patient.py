@@ -213,7 +213,8 @@ def test_pe02_a_made_up_value_is_regenerated_and_the_prompt_forbids_interpreting
     assert done["regenerated"] and done["verified"] and done["answer"] == honest
     system = prompts[0][0]["content"]
     assert "interpreting results needs a doctor" in system and "no trend" in system
-    assert "These numbers are not in RECORD: 95" in prompts[1][-1]["content"]
+    assert "Delete these numbers, which are not in RECORD: 95" in prompts[1][-1]["content"]
+    assert "interpreting them needs a doctor" in prompts[1][-1]["content"]  # "looks normal" was flagged too
 
 
 def test_m7_flags_a_copied_profile_block_and_numbers_only_from_the_record_facts():
@@ -221,4 +222,54 @@ def test_m7_flags_a_copied_profile_block_and_numbers_only_from_the_record_facts(
     echo = m7.verify("PATIENT_PROFILE:\n<patient_profile>\n- limit: sodium\n</patient_profile>", [], Constraints(), check)
     assert "echo:prompt_block" in echo.flags and not echo.verified
     made_up_range = m7.verify("Sodium 140.1 mmol/L (normal 135-145) [H:results.2026].", [], Constraints(), check)
-    assert set(made_up_range.flags) == {"number:135", "number:145"}
+    assert set(made_up_range.flags) == {"number:135", "number:145", "interpret:normal"}
+
+
+# ---- after MV3, round 2 (Thy): interpretation words, title masking, values_answer fallback ----------------------
+
+def test_m7_interpretation_only_in_sentences_with_a_number_and_condition_names_masked():
+    names = ["Essential hypertension (disorder)", "Essential hypertension"]
+    assert m7.interpretations("Bệnh nhân bị tăng huyết áp. Natri 140.1 mmol/L ngày 2026-08-16.", names) == []
+    assert m7.interpretations("Essential hypertension; sodium 140.1 mmol/L on 2026-08-16.", names) == []
+    assert m7.interpretations("Sodium 140.1 mmol/L is normal.", names) == ["normal"]
+    assert m7.interpretations("Glucose 67.68 mg/dL, hơi thấp.", names) == ["thấp"]
+    assert m7.interpretations("Không có gì bất thường, cần bác sĩ diễn giải.", names) == []  # no number in it
+
+
+def test_m7_masks_cited_titles_but_not_the_rest_of_the_text():
+    card = RecipeCard(id=31477, title="Creamy Mustard Dipping Sauce for Shellfish")
+    check = m7.PatientCheck(node_ids=set(), avoid_terms={"allergen:crustacean_shellfish": ["shellfish", "shrimp", "tôm"]})
+    ok = m7.verify("[R31477] Creamy Mustard Dipping Sauce for Shellfish is ready in 35 minutes.", [card],
+                   Constraints(), check)
+    bad = m7.verify("[R31477] Creamy Mustard Dipping Sauce for Shellfish: serve it with shrimp.", [card],
+                    Constraints(), check)
+    assert ok.verified and bad.flags == ["text:allergen:crustacean_shellfish"]
+
+
+def test_values_answer_lists_the_record_values_with_their_nodes():
+    views = [{"node_id": "results.2025", "facts": [{"display": "BMP", "date": "2025-02-01", "observations": [
+                 {"display": "Sodium", "value": "140.1", "unit": "mmol/L", "date": "2025-02-01"}]}]},
+             {"node_id": "results.2026", "facts": [{"display": "BMP", "date": "2026-08-16", "observations": [
+                 {"display": "Sodium", "value": "139", "unit": "mmol/L", "date": "2026-08-16"}]}]}]
+    text = m7.values_answer(views, "vi")
+    assert text.splitlines()[0] == "Việc diễn giải kết quả cần bác sĩ. Hồ sơ ghi:"
+    assert text.splitlines()[1] == "- Sodium: 139 mmol/L (2026-08-16) [H:results.2026]"  # newest first
+    allowed = m7.numbers_in([v["facts"] for v in views])
+    assert m7.unknown_numbers(text, allowed) == [] and m7.interpretations(text, []) == []
+
+
+def test_a_patient_info_answer_still_interpreting_after_regeneration_is_replaced_and_traced(bot, monkeypatch):
+    from api.patient import navigate
+    monkeypatch.setattr(navigate, "chat_json", lambda client, schema, messages, **kw: {"node_ids": ["results.2021"]})
+    facts = bot.conn.execute("SELECT facts FROM patient_node WHERE patient_id = %s AND node_id = 'results.2021'",
+                             [PID]).fetchone()[0]
+    obs = facts[0]["observations"][0]
+    judging = f"{obs['display']} {obs['value']} {obs['unit']} is normal [H:results.2021]."
+    fake_models(monkeypatch, [Understanding(lang="en", intent="patient_info", needs_record_context=True)],
+                [judging, judging])
+    done = dict(events(bot, bot.new_session("S", PID), PE02))["done"]
+    assert done["fallback"] and done["verified"] and done["regenerated"]
+    assert done["answer"].startswith("Interpreting these results needs a doctor.") and "[H:results.2021]" in done["answer"]
+    row = bot.conn.execute("SELECT payload FROM retrieval_trace WHERE stage = 'fallback' AND message_id = %s",
+                           [done["message_id"]]).fetchone()[0]
+    assert row["kind"] == "values_answer" and "interpret:normal" in row["model_flags"]
