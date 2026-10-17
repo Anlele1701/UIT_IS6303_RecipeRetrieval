@@ -6,6 +6,9 @@ then RRF as in A1 (api/retrieval.rrf). The flags choose how constraints apply, w
   filter, no norm S-Norm: ILIKE on the raw ingredient lines (no canonical ingredients, no tags)
   no filter       S-Filter: the constraints are written into the query text instead ([S12])
 Possible ("có thể chứa") tags never filter (Thy, M1). ingredients_include is only a soft signal in the text.
+Patient nutrient limits (MV3, ADR-0007) filter on the derived chunk columns, inside the index (`col <= x`,
+pushed down as a range query); a Recipe with no value is kept unless unknown_strict (`OR col IS NULL`, pushed down
+as must_not exists). Soft limits never filter: M5 ranks by them.
 """
 
 from collections.abc import Callable
@@ -27,6 +30,8 @@ NAIVE_ALLERGEN = {
     "tree_nuts": ["almond", "walnut", "pecan", "cashew", "pistachio", "hazelnut"], "peanut": ["peanut"],
     "wheat": ["flour", "wheat", "bread", "pasta"], "soy": ["soy", "tofu"], "sesame": ["sesame", "tahini"],
 }
+NUTRIENT_COLUMNS = {"sodium_mg", "sat_fat_pct_kcal", "sugar_pct_kcal", "fiber_per_1000kcal", "protein_g",
+                    "potassium_mg"}  # chunk columns a patient limit may name (migration 006)
 NAIVE_DIET = {
     "vegetarian": ["beef", "pork", "chicken", "turkey", "bacon", "ham", "sausage", "fish", "shrimp", "lamb", "gelatin"],
     "vegan": ["beef", "pork", "chicken", "turkey", "bacon", "ham", "sausage", "fish", "shrimp", "lamb", "gelatin",
@@ -66,12 +71,23 @@ def conditions(c: Constraints, norm: bool, unknown_strict: bool) -> tuple[sql.Co
     if c.category:
         parts.append(sql.SQL("category = %s"))
         params.append(c.category)
+    for col, (op, value) in sorted(c.nutrient_limits.items()):
+        if col not in NUTRIENT_COLUMNS:
+            raise ValueError(f"no chunk column for nutrient limit {col!r}")
+        cmp = sql.SQL("{c} <= %s" if op == "max" else "{c} >= %s").format(c=sql.Identifier(col))
+        parts.append(cmp if unknown_strict else sql.SQL("({cmp} OR {c} IS NULL)").format(cmp=cmp, c=sql.Identifier(col)))
+        params.append(value)
     return (sql.SQL(" AND ").join(parts) if parts else sql.SQL("true")), params
+
+
+NUTRIENT_WORDS = {"sodium_mg": "low sodium", "protein_g": "low protein", "sat_fat_pct_kcal": "low saturated fat",
+                  "fiber_per_1000kcal": "high fiber", "sugar_pct_kcal": "low sugar", "potassium_mg": "low potassium"}
 
 
 def constraints_as_text(c: Constraints) -> str:
     """S-Filter: what the user asked for, appended to the query (the embedding has to cope with the negation)."""
     bits = [f"without {a.replace('_', ' ')}" for a in c.allergens_exclude]
+    bits += [NUTRIENT_WORDS.get(col, col) for col in sorted(c.nutrient_limits)]
     bits += [f"without {i}" for i in c.ingredients_exclude]
     bits += [c.diet] if c.diet else []
     bits += [f"ready in {c.max_total_minutes} minutes"] if c.max_total_minutes else []

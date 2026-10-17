@@ -21,6 +21,19 @@ SQL = {
 }
 
 
+# chunk column a patient limit names -> the same value over recipe_nutrition AS n (M5 ranking, pass-rate counts)
+COLUMN_SQL = {"sodium_mg": SQL["sodium_mg"], "sat_fat_pct_kcal": SQL["sat_fat_pct_kcal"],
+              "fiber_per_1000kcal": SQL["fiber_per_1000kcal"], "sugar_pct_kcal": SQL["sugar_pct_kcal"],
+              "protein_g": "n.protein_g", "potassium_mg": SQL["potassium_mg"]}
+
+
+def meets(value: float | None, op: str, limit: float) -> bool | None:
+    """Whether a per-serving value keeps a limit; None when the value is unknown."""
+    if value is None:
+        return None
+    return value <= limit if op == "max" else value >= limit
+
+
 # Columns copied onto chunk by scripts/ingest.py (migration 006), so M4 can filter on them inside the index
 DERIVED_COLUMNS = ["sat_fat_pct_kcal", "sugar_pct_kcal", "fiber_per_1000kcal", "potassium_mg"]
 

@@ -170,10 +170,7 @@ def cmd_tree(conn, mode: str, source: str | None) -> None:
 # ---- profiles (V3) ---------------------------------------------------------------------------------------------
 
 SOFT_BELOW = 0.5  # a nutrient rule leaving under this share of Recipes is soft: ranking + warning (Thy, ADR-0007)
-# chunk column -> the same value over recipe_nutrition AS n
-COLUMN_SQL = {"sodium_mg": nutrition.SQL["sodium_mg"], "sat_fat_pct_kcal": nutrition.SQL["sat_fat_pct_kcal"],
-              "fiber_per_1000kcal": nutrition.SQL["fiber_per_1000kcal"], "sugar_pct_kcal": nutrition.SQL["sugar_pct_kcal"],
-              "protein_g": "n.protein_g", "potassium_mg": nutrition.SQL["potassium_mg"]}
+COLUMN_SQL = nutrition.COLUMN_SQL
 RECIPES_SQL = "FROM recipe r LEFT JOIN recipe_tag t ON t.recipe_id = r.id LEFT JOIN recipe_nutrition n ON n.recipe_id = r.id"
 
 
