@@ -73,6 +73,9 @@ CREATE TABLE recipe_ingredient (
 -- Chat sessions, traces and feedback (M3)
 \ir chat.sql
 
+-- Patient records read vectorless, and their link to chat sessions (MV1)
+\ir patient.sql
+
 -- ---------------------------------------------------------------------------
 -- Chunking strategies (ADR-0002). A strategy is searchable only once loaded_at
 -- is set: every Recipe has its complete set of Chunks under it.
