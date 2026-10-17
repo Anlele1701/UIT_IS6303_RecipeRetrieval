@@ -238,6 +238,12 @@ def benchmarks(o: dict) -> dict:
 # Report
 # ---------------------------------------------------------------------------
 
+def data_sources() -> dict:
+    """data/sources.json: where the patient records come from (downloaded by hand, so recorded there)."""
+    path = ROOT / "data" / "sources.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
 def yes(v) -> str:
     return "có" if v else "không"
 
@@ -322,6 +328,21 @@ def render(env: dict) -> str:
         r = b["rerank"]
         lines += [f"- **Reranker `{r['model']}`** trên `{r['device']}`: {r['pairs']} cặp mất p50 {r['p50_ms']} ms "
                   f"(nạp model {r['load_s']} s).", ""]
+    src = env.get("data_sources") or {}
+    lines += ["## Nguồn dữ liệu hồ sơ bệnh nhân", "", "Đọc từ `data/sources.json`.", ""]
+    if not src:
+        lines += ["Chưa có `data/sources.json`.", ""]
+    for name, s in src.items():
+        if not s:
+            lines.append(f"- **{name}:** chưa có.")
+            continue
+        lines += [f"- **{name}** (`{s.get('dir')}`): {s.get('description', '')}, tải từ {s.get('download_page', '?')} "
+                  f"ngày {s.get('downloaded', '?')}; {s.get('files', '?')} file.",
+                  f"  - Synthea commit `{s.get('synthea_commit', '?')}`. {s.get('synthea_commit_note', '')}",
+                  f"  - Kiểm chứng: {s.get('verified', '?')}."]
+        if s.get("command"):
+            lines.append(f"  - Lệnh sinh: `{s['command']}`")
+    lines.append("")
     return "\n".join(lines)
 
 
@@ -330,7 +351,8 @@ def main():
     p.add_argument("--bench", action="store_true", help="also run the embedding, LLM and reranker benchmarks")
     a = p.parse_args()
     env = {"checked_at": datetime.now().isoformat(timespec="seconds"), "seed": SEED,
-           "hardware": hardware(), "docker": docker(), "ollama": ollama(), "tools": tools()}
+           "hardware": hardware(), "docker": docker(), "ollama": ollama(), "tools": tools(),
+           "data_sources": data_sources()}
     if a.bench:
         env["bench"] = benchmarks(env["ollama"])
     elif OUT_JSON.exists():  # keep the last benchmark when only re-checking the setup

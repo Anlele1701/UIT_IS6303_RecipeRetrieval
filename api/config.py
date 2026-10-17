@@ -26,4 +26,5 @@ CONTEXT_RECIPES = int(os.environ.get("CONTEXT_RECIPES", 5))  # k Recipes in the 
 HISTORY_TURNS = 3  # user+assistant turns M1 sees
 
 # Patient records (api/patient, docs/plan/A3_vectorless_ho_so.md): Synthea C-CDA files, one per patient.
-PATIENT_DATA_DIR = os.environ.get("PATIENT_DATA_DIR", "data/synthea_sample_data_ccda_latest")
+PATIENT_DATA_DIR = os.environ.get("PATIENT_DATA_DIR", "data/synthea_sample_data_ccda_latest")  # source "sample"
+PATIENT_GENERATED_DIR = os.environ.get("PATIENT_GENERATED_DIR", "data/synthea_generated_ccda")  # source "generated"

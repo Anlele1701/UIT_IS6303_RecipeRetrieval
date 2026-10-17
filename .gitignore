@@ -5,6 +5,8 @@ data/*
 !data/cache/
 # Patient rule tables (docs/plan/A3_vectorless_ho_so.md section 4)
 !data/rules/
+# Where the patient records come from (read by scripts/check_env.py and patient_ingest.py)
+!data/sources.json
 .pytest_cache/
 .venv/
 __pycache__/
