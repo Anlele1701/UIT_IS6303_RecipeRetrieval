@@ -449,3 +449,48 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
 - **Tổ hợp theo bệnh nhân:** dưới 50% kho giảm từ 25 xuống **6** bệnh nhân, cả 6 đều do dị ứng. Thấp nhất tăng từ 5,5% lên 18,4%.
 - Test chặn: mọi luật `filter` phải ≥ 50% (đọc `eval/patient_corpus.json`). `pytest` nhanh: 421 pass.
 - **ADR-0007 → accepted**, kèm bảng số liệu và lựa chọn. ADR-0006 vẫn *proposed*.
+
+---
+
+## MV3 – Nối hồ sơ vào pipeline M1–M7 (17/10/2026) · ⏸ chưa đạt gate (1 điều kiện)
+
+### Việc đã làm
+- **Mốc hồi quy chụp trước khi sửa code:** `eval/mv3_regression_baseline.json` (commit `687da10`), do `scripts/regression_snapshot.py` sinh. Chạy hai lần cho kết quả giống hệt nhau.
+- **Cờ `profile`, `profile_mode` và preset mới:** `S-Profile`, `P-Direct`, `P-Vectorless`, `P-Vectorless-Fixed`, `P-Vector`. Hai preset cuối báo "làm ở MV4".
+- **Phiên có bệnh nhân:**
+  - mỗi lượt chạy V1 → V3 → M1 (schema bệnh nhân) → V2 rồi mới đến M2;
+  - sự kiện `patient_profile` phát trước `constraints`;
+  - trace có thêm `v1`, `v2`, `v3`;
+  - bệnh nhân đã mất hoặc không tồn tại bị từ chối mở phiên (`PatientUnavailable`).
+- **Nhánh không có bệnh nhân giữ nguyên lời gọi của M3.** Đã kiểm: cache key của M1 trùng với code cũ.
+- **M2:** lớp `patient` (scope và source `patient`, có bằng chứng). Tin nhắn chat không gỡ được; khi người dùng thử gỡ, câu trả lời báo cần xác nhận trên giao diện.
+- **M4:** ngưỡng dinh dưỡng lọc trong index; `OR col IS NULL` cũng được đẩy vào Tantivy (đã kiểm bằng EXPLAIN).
+- **M5:** xếp hạng ổn định theo luật mềm.
+- **M6:** khối `PATIENT_PROFILE`, trích dẫn `[H:node_id]`, prompt riêng cho route `patient_info`.
+- **M7:** ba kiểm tra mới (vi phạm ngưỡng, gợi ý thứ phải tránh, `[H:…]` không có thật).
+- **Migration 008** (loại ràng buộc `nutrient`, `nutrient_soft`) đã áp. `chat_cli.py --patient`, lệnh `/profile`.
+- **Test:** 24 test nhanh mới, `pytest` nhanh 445 pass. Test chậm: hồi quy khi không có bệnh nhân, demo có hồ sơ.
+- `tests/golden/m1_patient_cases_draft.jsonl`: 8 câu nháp cho nhánh bệnh nhân, **chờ Thy duyệt nhãn**, chưa gắn vào test nào.
+
+### Kết quả theo điều kiện gate
+- ✅ **Hồi quy khi không có `patient_id`:** trùng mốc ở cả 9 lượt (intent, route, ràng buộc, notice, danh sách công thức theo thứ tự).
+- ✅ **Golden M1 cũ:** 30/30. Demo M3 cũ: 4/4 pass.
+- ⚠️ **Demo có hồ sơ** (`eval/mv3_demo.json`):
+  - Tăng huyết áp: 0 vi phạm. Luật mềm có tác dụng: 4/5 công thức có chất béo bão hòa ≤ 6%, công thức 18% bị đẩy xuống cuối.
+  - CKD giai đoạn 3: 0 vi phạm, áp natri và protein. Câu hỏi về lịch sử chạy V2 với 1 lần gọi (1,1 giây), chọn `results.2025`, `results.2026`, `encounters.2026`.
+  - **Dị ứng (Barton704): bộ kiểm báo 3 công thức chứa lúa mì**, trong khi bộ gắn thẻ không gắn:
+    - R8897: bằng chứng là "salmon fillets" → bộ kiểm sai;
+    - R13999: bằng chứng là "grated Parmesan", `evidence_ok = false` → bộ kiểm sai;
+    - R2920: bằng chứng là "Worcestershire sauce" → còn tranh cãi (giấm mạch nha là gluten từ lúa mạch, không phải lúa mì theo FDA).
+
+    Cách chấm ở M2 tính mọi phiếu "yes" là có chứa, nên theo đúng tiêu chí này gate **chưa đạt**. Lượt thứ hai của kịch bản (thử gỡ dị ứng bằng lời) chưa chạy, vì test dừng ở lượt đầu.
+- Độ trễ trên CPU: V1, V3 dưới 0,1 giây (đọc từ cache); M1 6–11 giây; cả lượt 33–68 giây.
+
+### Cần Thy quyết định
+1. Cách xử lý phiếu "yes" sai của bộ kiểm. Ví dụ:
+   - (a) giữ tiêu chí chặt, ghi vào báo cáo như hạn chế của bộ kiểm;
+   - (b) phiếu "yes" có `evidence_ok = false`, hoặc bằng chứng không liên quan, phải qua người duyệt trước khi tính là vi phạm;
+   - (c) cách khác.
+2. Worcestershire: có cần gắn `wheat` ở mức "có thể chứa" không (một số hãng dùng giấm mạch nha).
+3. Câu trả lời của route `patient_info` có diễn giải chỉ số xét nghiệm ("có thể cho thấy xu hướng…"). Có cần siết prompt để chỉ nêu số và ngày, không diễn giải không.
+4. Duyệt nhãn của 8 câu golden nháp.
