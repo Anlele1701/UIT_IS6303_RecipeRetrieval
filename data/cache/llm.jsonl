@@ -71,3 +71,246 @@
 {"key": "c1c426d903544c52f11c7c9495ad4589f0a11a15bf1adbad5f50397ae9bd60dc", "model": "qwen2.5:7b", "out": {"intent": "refine", "query_en": "quick dinner", "allergens_exclude": ["crustacean_shellfish", "wheat"], "ingredients_exclude": ["abalone", "baby clam", "bay scallop", "calamari", "clam", "clam in shell", "clam juice", "clamato", "conch", "escargot", "littleneck clam", "mussel", "octopus", "oyster", "oyster sauce", "scallop", "sea scallop", "shucked oyster", "snail", "squid"], "ingredients_include": ["shrimp"], "diet": "none", "max_total_minutes": 0, "lasting": [], "remove_allergens": [], "remove_ingredients": [], "remove_diet": false, "remove_time": false, "ref_recipe": 0, "needs_record_context": false}}
 {"key": "d8581318acc5557b526cc736f533ce02779c64640aa8284d06d732429e0209c9", "model": "qwen2.5:7b", "out": {"intent": "patient_info", "query_en": "", "allergens_exclude": [], "ingredients_exclude": [], "ingredients_include": [], "diet": "none", "max_total_minutes": 0, "lasting": [], "remove_allergens": [], "remove_ingredients": [], "remove_diet": false, "remove_time": false, "ref_recipe": 0, "needs_record_context": true}}
 {"key": "e48f902ea6a5ce3a12b880b27a178622a8f01c43234ceabd228548495eec282f", "model": "qwen2.5:7b", "out": {"intent": "patient_info", "query_en": "", "allergens_exclude": [], "ingredients_exclude": [], "ingredients_include": [], "diet": "none", "max_total_minutes": 0, "lasting": [], "remove_allergens": [], "remove_ingredients": [], "remove_diet": false, "remove_time": false, "ref_recipe": 0, "needs_record_context": true}}
+{"key": "6656d59e8ce3591091bfd3287755940d8b9f202534bd353d9772e9832243dcef", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì chay cho bệnh nhân này"}}
+{"key": "9c7db0c3c466efc8bf87df6c4aac9eab2772c85fdb6ec69b84d9e6c0d2e57a9b", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý một bữa tối nhanh và chay cho bệnh nhân này"}}
+{"key": "daee28326a776de615ebf439386c30444f5d72d1def20bb072cf37496f9b7e33", "model": "llama3.1:8b", "out": {"paraphrase": "Bệnh nhân cần lưu ý gì khi ăn uống sau xét nghiệm gần nhất?"}}
+{"key": "b2cb13a7cfa1180f1b18c8578b5941db8bfcb9084f9e2fc6732aa245aff7d284", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món tráng miệng cho bệnh nhân này có thể là bánh flan chay với 3 quả trứng gà và 1/2 chén đường"}}
+{"key": "6f3bb1bc0ed1485e2ca41fa1857fa5d48749e26141e3c297036769d940e25743", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món chay gà cho bệnh nhân này"}}
+{"key": "0fabf49d1a609efb26706e504614002906070e82f2e4487bf9748536a0cdf865", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian pasta recipe for the patient."}}
+{"key": "9c8cd3d37f250c2280234b7d4ad62d237ede420c8cfe1984f55835e5e923bd31", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian salad recipe without mushrooms for this patient."}}
+{"key": "4eb352bbeebd717580a61aa02194e6c894564a0fe73944c93ef244b692bf3dc6", "model": "llama3.1:8b", "out": {"paraphrase": "Bác sĩ muốn biết bệnh nhân khám gần đây là khám gì?"}}
+{"key": "f72001df5cf61c9739b68a59e55c6ac7195e475d4998b51f503550960c4f88ea", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa sáng cho bệnh nhân này là gì?"}}
+{"key": "e40d0542a90660ae89d1aa7d00baca18ce90b7f557e4366bb1710c2d17139d62", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món salad chay cho bệnh nhân này có thể là salad rau củ với 200g bắp cải, 150g cà rốt, 100g dưa chuột, 50g hành tây, 20g hạt điều, 10g dầu ô liu, 5g muối, 2g tiêu, 1 quả chanh"}}
+{"key": "31837493dae1af6a650501062101fbd8f89e8fb21aa19ff3e07535b2e1750883", "model": "llama3.1:8b", "out": {"paraphrase": "What was the patient's most recent visit for?"}}
+{"key": "94cac0ca1f7d8e388fc42b530bb5614076a8ca0ccffef76f7c3fe8cb5c7a178e", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian salad recipe for this patient."}}
+{"key": "80d38eba51f37a6244fec323215c4cdfd33b5f80bc709db5aff2ed207d44a904", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bữa sáng không có ngò cho bệnh nhân này"}}
+{"key": "f6121ade445dac187311e57df111ce155d9e4b87d32c830e4df9d2aeadb93ac2", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món salad chay cho bệnh nhân này"}}
+{"key": "3f68db93d18442d8ea63a57418f49bc7684cc1252010a5e3600689ddf6e00d84", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì không có hành tây cho bệnh nhân này"}}
+{"key": "08196dbf471a7bfe2d4833919a6714e4a32f51c37fd07c584c971e604c8d8286", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian soup recipe for this patient."}}
+{"key": "7e009c9924699b0c102386d81be8b0b91bdcad3df5e9f6398299866a364e9eaf", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món súp chay cho bệnh nhân này"}}
+{"key": "14368bb445a99b738490f521bfc45fcbf49e98c668ce241e1461e35c080a7442", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì nấu nhanh dưới 30 phút cho bệnh nhân này"}}
+{"key": "be2de84f646585a612371ff1901d87d2cca692142e49aea57164352e67086a82", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món salad không có hành tây cho bệnh nhân này"}}
+{"key": "7c9d0c04cd3397ddc64a942740e1d0413f2bf9136f5c759272bee54f4d92be5e", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian breakfast recipe for this patient that includes 2 scrambled eggs, 1/2 cup cooked oatmeal, 1/2 banana, and 1 tablespoon almond butter."}}
+{"key": "8397eb7aecfd2a4fd5d542449bef624aed8d5882a18eb37a445878f2dd9de369", "model": "llama3.1:8b", "out": {"paraphrase": "What's a quick vegetarian dinner option for this patient?"}}
+{"key": "4258aaaf4cb337ccfb49f2f64e63968730abda0251cfe41923623de2226ca13f", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian soup recipe for this patient."}}
+{"key": "9528837a257dd60fe3e845e0cf6bc9aeac8b63d4a5f4703dbb8085f3681c862f", "model": "llama3.1:8b", "out": {"paraphrase": "I need a quick dinner recipe for this vegetarian patient."}}
+{"key": "4da6d8e94ba6d7baeab871f131ff14ed5f08da77436865fa0ba7ccf263c2947a", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian dessert recipe for this patient."}}
+{"key": "011bd1912dc06c39474e7cf041aa9c2b588df8d95d8b0d59880886961ded3ec1", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian breakfast recipe without onions for this patient"}}
+{"key": "cd0675f742f15880dbac1b0e5c2ecab5b253fa5a6b1e0bb7c595e348ee6c6f7f", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian chicken recipe for this patient."}}
+{"key": "792eecbe1d9cbc97f36e61f2cdde8c1ecdafc801e378868bb1f91aa2c200537d", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món súp không có hành tây cho bệnh nhân này"}}
+{"key": "d9baa68ea5676d742f343ef5613e6144a125fca33b9b5f225d8acfcac29a3471", "model": "llama3.1:8b", "out": {"paraphrase": "What's a quick soup recipe under 30 minutes for this vegetarian patient?"}}
+{"key": "065ee0d1b21ed4acce8a562deb1be505b31e6a00df6d75d6a5eaf29894dcca1c", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món súp chay cho bệnh nhân này"}}
+{"key": "b1e1a62582f4e49fda2f542157c6689107eec5972867e5ab2cb90c3190e1661d", "model": "llama3.1:8b", "out": {"paraphrase": "What lab test results from the patient's most recent tests indicate for meal planning?"}}
+{"key": "5bb7c510038d43c83a29b2eaccb00ae38972b994827f01fe297b29abe3c8feb4", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý một bữa tối nhanh cho bệnh nhân này"}}
+{"key": "b807ad867906696c84ccc30a3df7ec4928beb092a6b82004eb026c7055759b71", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món chay không có tỏi cho bệnh nhân này"}}
+{"key": "bd76f23b0ac9f6d2f40bdcc5a9fb22cf1ee9a951501cf6f4b38b71cb3a1d09d0", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì không có cà chua cho bệnh nhân này"}}
+{"key": "7799d9bb2a35e8c2993ef8a7459cce59067b5e7e3f34468c10fa7fe658b351d7", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món chay cho bệnh nhân này"}}
+{"key": "f10cfba372f20bd94b6dd0cc1823a3979be67b51a452c089a988c30acab6c31d", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian pasta recipe without cilantro for this patient."}}
+{"key": "49ccc8c85a3b80a5246b037b76e160b1a7ceebe95eac29c8c1e7c2e0e714d69c", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa sáng chay cho bệnh nhân này"}}
+{"key": "39829aebd8b93b2fa171c99f905d5489c28e2c5230c710d24f21e399f503be50", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa tối nhanh không có tỏi cho bệnh nhân này"}}
+{"key": "bf9a6920a5a8d9bb7dea8472eeb1a9af8cfecac62ceac70adb3f3b6949c08185", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian pasta recipe without onions for this patient"}}
+{"key": "3b1c694317ac5cc7000e6840651130a89ad1fa20566202ee20cb40bb3dbe89a9", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món tráng miệng chay cho bệnh nhân này"}}
+{"key": "8a334829af2c0c16e1e0c33453379c43d814b848de4935086788312a426df891", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món chay không có hành tây cho bệnh nhân này"}}
+{"key": "d51fe2f13dc0a83524ad6c94ed53af8608fa006c22890b2be8ec6d192b6c6d85", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì không có nấm cho bệnh nhân này"}}
+{"key": "9d70d24f46c5f773c4b0b64ea140e8b178de49e081c3170f6b75ba123b8a34f9", "model": "llama3.1:8b", "out": {"paraphrase": "I need a quick chicken recipe ready in under 30 minutes for this vegetarian patient."}}
+{"key": "846168007e9460e925e0796a92865ef0ab2f80f2ee73b0bceff81be92c5f2841", "model": "llama3.1:8b", "out": {"paraphrase": "Can you suggest a vegetarian soup recipe without cilantro for this patient?"}}
+{"key": "6a8ff5da6eef19adb3763eaba3d7747e01d36e628dd3c07e26ba97a9171f31bc", "model": "llama3.1:8b", "out": {"paraphrase": "I need a quick vegetarian dinner ready in under 30 minutes for this patient."}}
+{"key": "1098f8827881436c71899941eac52ac55389253094e7dbfaaa3c4fcad4796c39", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian salad recipe for this patient."}}
+{"key": "334a1c4251a79f2612dd33e6dcc0afd20da594556ba1a46f36000e17b674eef3", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì chay cho bệnh nhân này"}}
+{"key": "cff2eb8eb0a40497265910dd859900ab19cd609feb30cb6171c68be104bde65f", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian salad recipe without tomatoes for this patient."}}
+{"key": "c01f798a9ea0eab8665fba68cd6513bed67c62bc827750f1b332939fced809f9", "model": "llama3.1:8b", "out": {"paraphrase": "What's a quick vegetarian dinner option without cilantro for this patient?"}}
+{"key": "d75396ed4688dea4e8f9fabdd9c8f42ae71cba38e3f6d516ed79f44419be07a1", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian breakfast recipe without tomatoes for this patient"}}
+{"key": "df64cff99f91f3c22999ab61dbbc7e176c8d4566b1809ce9c777fa82335de205", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian chicken recipe without tomatoes for this patient."}}
+{"key": "b8ec5f79e485f51408e01ed3d3e25fb52ac36eff882cd6f3e13adba10baede40", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa sáng nấu trong 30 phút cho bệnh nhân này"}}
+{"key": "ca5b800ac2cfde3f0c4fe7f664beb6cd0bd8743d8a3d546ed562446737b5b17e", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món gà nấu nhanh dưới 30 phút cho bệnh nhân này"}}
+{"key": "2e8b13f762abc30987da0df194931ea632efb3437304ee21e6e697a99969c5d2", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian recipe for the patient."}}
+{"key": "e0f9ea8a02f1518804e7229b17693f40adb1b3a0fdf641237412c44c623abe72", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa sáng không có cà chua cho bệnh nhân này"}}
+{"key": "b5058db5e4505d4830f8e65d4560d848a153e24cb5af793f052938753bcfc131", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì không có ngò cho bệnh nhân này"}}
+{"key": "0a66161f40c8bad2355287461ee06a5e46e4e5f4b953b8f14038b8b04a4a6227", "model": "llama3.1:8b", "out": {"paraphrase": "What's a quick vegetarian dinner option without garlic for this patient?"}}
+{"key": "36c3776c9300f11ba465aa8de7ea0646073bf15f772bacc0fd7320993838d8be", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món tráng miệng không có ngò cho bệnh nhân này"}}
+{"key": "f027ccaae9b463f211011a2a022885d56b7f64428eac317021508798b4107eb3", "model": "llama3.1:8b", "out": {"paraphrase": "What's a vegetarian dessert recipe without onions that I can serve to this patient?"}}
+{"key": "0f67b2e0457f12e3ca6c63f886fea08d2ed1ebdf5a0063064367987d71beb5d3", "model": "llama3.1:8b", "out": {"paraphrase": "What vegetarian breakfast options do you recommend for this patient?"}}
+{"key": "683b20a49a3563e9a5af1bb2bf0a5c5b90cc8a5b47a2199b922361cbcb598a11", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món chay không có nấm cho bệnh nhân này"}}
+{"key": "bc0677567162c9193de7fc9f662bb941fda1c1798e0d5ece3306b93e6aaf2041", "model": "llama3.1:8b", "out": {"paraphrase": "What's a quick vegetarian salad recipe ready in under 30 minutes for this patient?"}}
+{"key": "ead24e01b5093434b2c1eb9ad34ed0712f16dda88c379a29c798893e832a79ec", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món súp nấu trong 30 phút cho bệnh nhân này"}}
+{"key": "4b387c98e59047e65d197fbb793ae4a8537154f345e495e928f219af8886a567", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian soup recipe without tomatoes for this patient."}}
+{"key": "f9cbb1b1996d9d8ab577d59a8938ff953e1c46113956f96546ee195b509c931e", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian pasta recipe without mushrooms for this patient."}}
+{"key": "f6e19e153fb363cd64d967b5c62d314ade95a68f6d2a0a064735e520777c4586", "model": "llama3.1:8b", "out": {"paraphrase": "I need a chicken recipe without garlic for this vegetarian patient."}}
+{"key": "59036528dcf183807b2c72a02b65322996ea3265cb8da3dd6ec2b6d041ae7a38", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian salad recipe without garlic for this patient."}}
+{"key": "496ec14b5fbad39ff362280809a714ea6ed4bd64421ded69f0e0cb4d6cb1dbcf", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa tối nhanh không có ngò cho bệnh nhân này"}}
+{"key": "ac2de344199e4f69c72a96f0d12f3e3727cfeb14651b92516d22bd2bac1b09e6", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian pasta recipe for this patient."}}
+{"key": "02585b9dfc7ce330ebb4188f3f29b34061fa5bcd1573d9fc2d1b1efaffc2c405", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian soup recipe without garlic for this patient."}}
+{"key": "94981138a6764dbdc1c3d6866f7597783e5af7453d048bf5b37de86a9e35bd2c", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món salad nấu trong 30 phút cho bệnh nhân này"}}
+{"key": "bf9c4e2ab22e4bff66b69cc8ebb927b5a14ab37af8ac7312122f6c33cfdf6c42", "model": "llama3.1:8b", "out": {"paraphrase": "Bạn có thể gợi ý món mì cho bệnh nhân này không?"}}
+{"key": "2c5f35ba34b565f7a6d5c794c1af5978de617a908c6e64d69b7a7898a4cbd962", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa tối nhanh chay cho bệnh nhân này"}}
+{"key": "d656ca6e12ae3d73814dc3943473d2a55e3a85909ad43d35517617f768440a05", "model": "llama3.1:8b", "out": {"paraphrase": "Bệnh nhân cần lưu ý khi ăn uống sau xét nghiệm gần nhất"}}
+{"key": "298fe0c8e2bed537d5a31c28a096e00c2d9586b57b43aef4b56536230f82a324", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món tráng miệng cho bệnh nhân này là bánh flan chay"}}
+{"key": "70477977a85e9000cd85abea28c647a0b79095a1b33be9f72e6a1dc1b058032e", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món gà chay cho bệnh nhân này"}}
+{"key": "4a5bba414b8343955469e04a14dfc73965814213daacd3003b734952b0cb81be", "model": "llama3.1:8b", "out": {"paraphrase": "Bệnh nhân cần lưu ý gì khi ăn uống sau xét nghiệm gần nhất?"}}
+{"key": "dabc61d41e284bfbcb322599f5f0e4bf2fe03247704abd050b3f40e851a3dce4", "model": "llama3.1:8b", "out": {"paraphrase": "Hey, what about a vegetarian pasta dish for the patient?"}}
+{"key": "b25a83f2569e16294ba1b6f6b06b91f8c4a78c21746fddc21a7039a22de88aff", "model": "llama3.1:8b", "out": {"paraphrase": "Could you recommend a mushroom-free salad for the patient?"}}
+{"key": "65a91e91bac1b92de36adb336617ecacd3ec55662aa806a580fbe471b9902d6b", "model": "llama3.1:8b", "out": {"paraphrase": "Lần khám gần đây nhất của bệnh nhân là khám gì?"}}
+{"key": "d8eb8c97982499e2f630a2e74fcfcdcf5b5abb0a9e1a35e19422ae09fc9ff1ca", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bữa sáng cho bệnh nhân"}}
+{"key": "442700512a654b54686409559c532d2d92d1578fa5623bef82f020eac8d62e17", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món salad chay cho bệnh nhân"}}
+{"key": "19bab1f3784e2d47b92a412c25fbd8f9c3760c11ef052b3fc322ab2c97ea53ab", "model": "llama3.1:8b", "out": {"paraphrase": "What was the patient's most recent visit for?"}}
+{"key": "01c6d8abfa2b46b02e8194f782ed4c0dc00fa11118c60c1887111e5c0d6a84fa", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a mixed greens salad with sliced avocado, cherry tomatoes, and a citrus vinaigrette for the patient."}}
+{"key": "99e26fc4a291289e4ecdf089b43cf026b355d36864860ca775efc087bb56360b", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bữa sáng không có ngò cho bệnh nhân này"}}
+{"key": "9a987d368a27c645b60fbb450f13403504fc4881f5a8c3fda92623f040cff5f1", "model": "llama3.1:8b", "out": {"paraphrase": "Bác sĩ có thể gợi ý món salad cho bệnh nhân này không?"}}
+{"key": "d8664ece91d59ccf90fe9288b830085f7affec885f844b0ae60fa00638e61432", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì không có hành tây cho bệnh nhân này"}}
+{"key": "23110d7b7ffb978e064c4633d7bd65c24ef4002b7f80125de0e7aff2aff0c6c2", "model": "llama3.1:8b", "out": {"paraphrase": "Bệnh nhân cần lưu ý khi ăn uống sau xét nghiệm gần nhất"}}
+{"key": "94e40fe54c34ca39e93295e4d77347e7af8e5d67f2b9cb8e17fe89afbc65f9f5", "model": "llama3.1:8b", "out": {"paraphrase": "I recommend a mixed greens salad with roasted vegetables and avocado for this patient."}}
+{"key": "5fb138568d8175e52820a2074396efeecee841e8b9c0c579ca5c6f297d4501bc", "model": "llama3.1:8b", "out": {"paraphrase": "I recommend a vegetable soup for the patient"}}
+{"key": "a1fbfff4c3bb661f45046be9d95aab503475557c1fbc87fca1a7d74f800aba20", "model": "llama3.1:8b", "out": {"paraphrase": "Bệnh nhân đã được khám gần đây là khám bệnh gì?"}}
+{"key": "36dd7a6cc1fe5b2d328827752288d85a0939066ce87042e08a6c97d9d621b5b6", "model": "llama3.1:8b", "out": {"paraphrase": "Bố mẹ có thể nấu súp gì cho bệnh nhân này không?"}}
+{"key": "9219c3a277e0cc82b3d70c9a1437e8ed2093a4e3cce4566f263b0fa935e717a2", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì nấu nhanh dưới 30 phút cho bệnh nhân"}}
+{"key": "831aa1e725c0438c9de018d5eba311d638ccd24ea81b15595b50908aa614486c", "model": "llama3.1:8b", "out": {"paraphrase": "What was the reason for the patient's last visit?"}}
+{"key": "2924ab0a8a364cbfe3e06686963f291f8ce0adadbe5814987ca0a880e7fad624", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì cho bệnh nhân này"}}
+{"key": "2d627a6387cdc82096ae4fba3995ce423e9d22f38945b60cc1edc9df592362f0", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món salad không có hành tây cho bệnh nhân này"}}
+{"key": "a022efbc8b7a959749d654458b2b271c1eec12cf096b3dd99111ae0fe8f8a7e5", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend oatmeal with banana and almond milk for the patient's breakfast"}}
+{"key": "30744ca8238047011e399cf4ed8f9e55a4793311bae93bd3657feec7a89b95c3", "model": "llama3.1:8b", "out": {"paraphrase": "Vegetarian quick dinner suggestion for patient"}}
+{"key": "59ccd5925e0fd693e2d421c4d58f94083f121df7d07144232c312310e5b9545b", "model": "llama3.1:8b", "out": {"paraphrase": "Patient's most recent visit was for"}}
+{"key": "34ac7163d64cb8afbbb0af2a998271cee78c78e51489a6465f926511e6b62504", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a vegetable-based soup for the patient"}}
+{"key": "9431f0b71b317a6b3ac92f59d73df22b2ef49dda8ad58dd1d66c2d06dcd0e998", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a vegetarian salad without mushrooms for the patient."}}
+{"key": "a32049b44498542788605e7d5fcf1c497d3fba854878be14e6f6a8a4b942908f", "model": "llama3.1:8b", "out": {"paraphrase": "Bác sĩ khám bệnh nhân gần đây là khám gì?"}}
+{"key": "fadfed3e7f6c9abbdc6ef55abb916025692858741556db317e0edec45544f661", "model": "llama3.1:8b", "out": {"paraphrase": "Quick dinner suggestion for patient"}}
+{"key": "ded12feb0f39e743e6dbfa8567a621304daca45b10bb8f125f9a53106ffb2c23", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món salad chay cho bệnh nhân này"}}
+{"key": "0bb411e720f3aee6ef8fb344358ccbe0c2239b81e8e68c5b15d9c43d2f6ee76d", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a dessert for the patient"}}
+{"key": "f890ccaf6bb497f5d08408d623793c6625b71e7300b7db0981b3526f69c4532f", "model": "llama3.1:8b", "out": {"paraphrase": "Patient breakfast without onions"}}
+{"key": "be314a33676ba2ebc1997215c243c4ce29a2074a39b999d83467e551558f9e20", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món súp cho bệnh nhân này"}}
+{"key": "25046a592b8da87d993f73c873ea8b73cadc2ed5c3ff61ae3c5e3fa16ffe4ff6", "model": "llama3.1:8b", "out": {"paraphrase": "Suggest a vegetarian chicken dish for the patient"}}
+{"key": "2da1a8f4680a49b66cecc0ca42e379cb4e5721c920ffc3b43fdd76abf785fb28", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món súp không có hành tây cho bệnh nhân này"}}
+{"key": "381e5f6db15d241b0e8e3b0fff6cbde7fb5075e6d1349e39001ea45af73dd0d4", "model": "llama3.1:8b", "out": {"paraphrase": "What about a nice vegetable soup for the patient?"}}
+{"key": "efdd3b829c5caabbb90c1969bef2ce465d8c76a54f250e77c144d0f22f66904f", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bữa tối nhanh chay cho bệnh nhân này"}}
+{"key": "2e9c0ef334490ec6ec36ff750afc5ac3bed35d542a563041d6199c28f3694c91", "model": "llama3.1:8b", "out": {"paraphrase": "Bác sĩ khám bệnh nhân lần nào gần đây?"}}
+{"key": "bce1b5f22612a89f7e64d6bb1db2e1af81964ba66ef9e433b046b8ba5416623c", "model": "llama3.1:8b", "out": {"paraphrase": "Bạn có thể gợi ý món tráng miệng gì cho bệnh nhân này?"}}
+{"key": "ec9545066681292681424dd99643c137834d71c9ec7f7678651eb02001c9d3fc", "model": "llama3.1:8b", "out": {"paraphrase": "What about a quick vegetable soup for this patient?"}}
+{"key": "6a3bdc1a0595970f2d9ed309e72b236fa5c3864619a4307bad0961b8e7eae319", "model": "llama3.1:8b", "out": {"paraphrase": "What was the purpose of the patient's last visit?"}}
+{"key": "ba55e8452e3a152408f0090e03e560e759c80b2fd22d6d844e501ce394bd3042", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món tráng miệng cho bệnh nhân này"}}
+{"key": "9dd93e34ce649607c058c811fd45f9bac257055051ef8b47a43262c3adf7da1d", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a vegetarian 'chicken' dish for the patient."}}
+{"key": "1d42406359d7297fe43825eb7c832c6c17d72e686e8988efe5e98ece12c55e10", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món súp chay cho bệnh nhân này"}}
+{"key": "e01b8e6286c62ac8b7233ada2f8e88e681bdedcd8561ba00790b1f67ff8cfc87", "model": "llama3.1:8b", "out": {"paraphrase": "Bệnh nhân cần lưu ý gì khi ăn uống sau xét nghiệm gần nhất?"}}
+{"key": "973ef0f89238c3631b10353a4c034e7996f6b7d915bc3f0485a705e1dedb2056", "model": "llama3.1:8b", "out": {"paraphrase": "I recommend a vegetable soup for this patient"}}
+{"key": "580a03a58872df5494f6cefe78b8dde03dfcd4e10f17bb488ce7a737828252ca", "model": "llama3.1:8b", "out": {"paraphrase": "I recommend a vegetable soup for the patient"}}
+{"key": "26b4a27d52509c8599d0cd8b91daa8a4824ae199e57a9d94d4dec2381aba5d1b", "model": "llama3.1:8b", "out": {"paraphrase": "What did the patient's most recent lab tests show that matters for meals?"}}
+{"key": "73ec7fedf3ef5a1d7a52ca78ca16093eea35c8fc1d26d230c0264bd96c4d8cb4", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món ăn nhanh cho bệnh nhân"}}
+{"key": "33b3ae9555d03e40b022b6063b29c61b2dabc23bd151d1cad5dcce7fd3b5a293", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món gà không có tỏi cho bệnh nhân này"}}
+{"key": "0bd33779c8a16240d4de30d4a60946ccf5fb04192bb7476d070d4e4094661d9d", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món súp chay cho bệnh nhân"}}
+{"key": "88a2aa02e24b4e13b4d112597d31932c561b10e6a8b5f1a9bcbba69f5c23ed11", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món gà chay cho bệnh nhân này"}}
+{"key": "3167cf1c68529b7b110170fe0a2464bf18be730854818423c328f7fed1395e35", "model": "llama3.1:8b", "out": {"paraphrase": "Review patient's recent lab results for relevant meal implications"}}
+{"key": "366fbd1ac265134a9ef022904e4e409ff4a4d01b969bd5855e91ce82029da3e8", "model": "llama3.1:8b", "out": {"paraphrase": "Có bữa tối nhanh cho bệnh nhân được không?"}}
+{"key": "6c4ed7f0fc72f24fb8cab46e8fce64db6448bb219643deea9c8cad12888f24e6", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món mì không có cà chua cho bệnh nhân này"}}
+{"key": "a9064515de5055758a5a1aaff0c10b5baa0e21a50e7ae5053a1ffd0f14d5dfef", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món súp cho bệnh nhân này là súp lơ xanh"}}
+{"key": "aa2a787f4f190834927ba6fb3e31b3268db206722d5346ac278082a761b2674f", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a vegetarian chicken dish for the patient"}}
+{"key": "edfef2f771542dc9373529bcfca76ad95dd6c4f4d70ba192d8aaf5d9a99344cc", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món gà cho bệnh nhân này"}}
+{"key": "f5e2e450cec0d34c1055a906ea01deeee05b34a74892ef3cc46ac305827d485e", "model": "llama3.1:8b", "out": {"paraphrase": "Can you suggest a pasta dish without cilantro for the patient?"}}
+{"key": "49b9cbf0c19e56e1a22a739b39e21c3ab675e2e4c75f617e3aaf8c2f599d3a88", "model": "llama3.1:8b", "out": {"paraphrase": "Bác sĩ có lưu ý gì về chế độ ăn uống cho bệnh nhân sau xét nghiệm gần đây không?"}}
+{"key": "e5107901ab3d1464c9dec5f8615dc8bfeefa8e8570ef337279880c38f4976464", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bữa sáng chay cho bệnh nhân này"}}
+{"key": "33e3db7707c313da19c86f3b5db642f15757b3ef03fce36dc0babe68a6785a6b", "model": "llama3.1:8b", "out": {"paraphrase": "Bệnh nhân cần lưu ý khi ăn uống sau xét nghiệm gần nhất"}}
+{"key": "595b3b7b439ce16206357a7b2a7cdef77beae48b9a8626fa3366f7cf2d5fe569", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món tráng miệng cho bệnh nhân này"}}
+{"key": "86bad767fa6a467e1e73b4550925a2f74fc4e456ff5a676995379bc18572d385", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bữa tối nhanh không có tỏi cho bệnh nhân này"}}
+{"key": "27bb125851a7ab3f3f768e4030ba873f82f110915e97ff5ad974ec0cdb7ed0ce", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món gà cho bệnh nhân này"}}
+{"key": "b72e8521a56f88da62a5ec8769e0bd863e4b6f8430681909ca1f09ca4567e307", "model": "llama3.1:8b", "out": {"paraphrase": "Can I suggest a pasta dish without onions for the patient?"}}
+{"key": "b7cd92f3f5c90a44016a89fdb5b35618423377b718be19c6279d6224c1ff7a39", "model": "llama3.1:8b", "out": {"paraphrase": "Bệnh nhân được khám gần đây là khám gì?"}}
+{"key": "c1300ab887060ea62f1f0a8deb8cb958f9b6ab1e2ab5939fab8575514b9e58d4", "model": "llama3.1:8b", "out": {"paraphrase": "What about a vegetable soup for the patient?"}}
+{"key": "8d9ce7051029d0b911dc5b98c12cec4e045cfa8b99ef01ccb5d641ace5b100d2", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món mì không có cà chua cho bệnh nhân này"}}
+{"key": "6f2ed32fa163949cb009facef640dcba44d155f69a3217b541e953f739096e8e", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a simple vegetarian stir-fry for the patient's dinner"}}
+{"key": "e55f5161b123853c39cab01dcc93162d270934bb55915684a26f76447f46005e", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món tráng miệng chay cho bệnh nhân này"}}
+{"key": "1eeb7f0bcca5704746760daced5a3effbd61bdd53a53624103e78bf77ae7d40f", "model": "llama3.1:8b", "out": {"paraphrase": "Bệnh nhân đã được khám gần đây là khám gì?"}}
+{"key": "315f9be418506615e9ae061d79c8b9bb240a69587eca467e4d67f14b9a7a485c", "model": "llama3.1:8b", "out": {"paraphrase": "I recommend a vegetable-based soup for the patient."}}
+{"key": "92107e7bad15afb6fab9ba4a301796b04816eb86c5fec953ad6c2e7c42c188ed", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món gà không có hành tây cho bệnh nhân này"}}
+{"key": "97768fa558f8b9f5b153667aa3fe7e19169a4403a3fd6914eb3a1f1b4ba6acec", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì không có nấm cho bệnh nhân này"}}
+{"key": "b67f4f11e4c5b61d8fda26b7859e778e2d4d73fa700e843d65ab537de64110cb", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a dessert for the patient"}}
+{"key": "e2f4bdec8ca21dbf184630e5579196417515a22dd8709ada6953071b1281548d", "model": "llama3.1:8b", "out": {"paraphrase": "I recommend a quick chicken stir-fry for this patient"}}
+{"key": "caf8efb3345db6fa1182b75f9731f34202c9404612dada75faac753bf0234dc9", "model": "llama3.1:8b", "out": {"paraphrase": "Patient needs a vegetarian salad"}}
+{"key": "c9d391a40ea98880743ca9140652d2b8ada9c892acc7f34a9f6878763f141d5e", "model": "llama3.1:8b", "out": {"paraphrase": "Can I suggest a vegetarian soup without cilantro for the patient?"}}
+{"key": "6bb1c158b9ab15563041ea2e2272fc2664dbbfaefce11989aae49f3c4444eaab", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a cilantro-free soup for the patient"}}
+{"key": "2017dac8f5cd6fed682dc7a5083a44d9ea6eb9965d5ab979eeefb4f5b1af48bd", "model": "llama3.1:8b", "out": {"paraphrase": "I'd recommend a simple pasta dish with marinara sauce and vegetables for this patient"}}
+{"key": "02f5432d0468639a42815bd83ab4eef6c8486d4f2b3674e3387f144cd66aa13f", "model": "llama3.1:8b", "out": {"paraphrase": "Patient's lab tests indicate relevant dietary considerations"}}
+{"key": "c3d1526ba6f9bac55444d8618434c00e494a77fa297e71f9564f3be4c0abab2e", "model": "llama3.1:8b", "out": {"paraphrase": "Vegetarian salad suggestion for patient"}}
+{"key": "70e4cde1d9027140333cb6493a6aae4bc0134e7a7d2b493a44d6a9e45eae855a", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì chay cho bệnh nhân này"}}
+{"key": "a7ae900a40bf4a36d876362a7aa25969bb909a440043b2e28a6e05f5fec205f1", "model": "llama3.1:8b", "out": {"paraphrase": "Patient needs a healthy breakfast option"}}
+{"key": "22c84a4074e35056a0e1a1799889628e3a3369c1f81246d1a6dcfe027d59de2b", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend vegetable-based soup for patient"}}
+{"key": "8b36575af780aee14fa445a02a3c66a3eb3ab51b094ebf8fa1f43ef6217da551", "model": "llama3.1:8b", "out": {"paraphrase": "What was the reason for the patient's last visit?"}}
+{"key": "94be6b42280f425ce9ecf6232c7eefcf98836c1de5d38e58c699ea2fdb358ffb", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa sáng cho bệnh nhân này là gì?"}}
+{"key": "f8970345ab4e3519c54f4e636e01ff34b3bd528777323259ecc25f29c0a82322", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món mì không có nấm cho bệnh nhân này"}}
+{"key": "6f98280801ec80ae080542c6e17be7fd4b186ed84380072d2c0690a631f3a5aa", "model": "llama3.1:8b", "out": {"paraphrase": "A simple vegetarian stir-fry with 1 cup of cooked brown rice, 1 cup of mixed vegetables, and 1 tablespoon of olive oil would be a quick and nutritious dinner option for this patient."}}
+{"key": "ef08998fad1759c8c29aa12fc627bdf617c04848cc39b90b509ce01ce7b3167c", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a vegetarian salad without tomatoes for the patient."}}
+{"key": "94fd0c5edc5a2661ed138ecf6991de139845c18d57e327cf4d12f8e9a14e1199", "model": "llama3.1:8b", "out": {"paraphrase": "Bữa sáng cho bệnh nhân này có thể là gì?"}}
+{"key": "021ede28cdf323efb409e543a098a4ad0a12936deb2d5670367825c57abe0a74", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a vegetarian stir-fry with bell peppers, onions, and mushrooms for a quick dinner."}}
+{"key": "35e5def53a5af42627af5b03cf78fc0888a7f632084ca64a668b709eae89858a", "model": "llama3.1:8b", "out": {"paraphrase": "I'd recommend a fruit salad for the patient"}}
+{"key": "033ae72242efc677319f0332f19be578766cdb31d3525b50955464950d74b62b", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend oatmeal with banana and almond milk for breakfast"}}
+{"key": "a0aa66959b58f12635b96a6a54b50d8a66d131de9e61a4cfefca165c5874caf3", "model": "llama3.1:8b", "out": {"paraphrase": "Would you like to consider a vegetarian soup option for the patient?"}}
+{"key": "a1e21ce5fcb9835940791856a89ebe93f36c3d20551b6657b9699c77ef1b077f", "model": "llama3.1:8b", "out": {"paraphrase": "Patient's recent lab tests show relevant meal considerations"}}
+{"key": "82c2bd2b1356ac80a2d02eda4ddbbdff6ea53d4067687a2764187d9bc254efb9", "model": "llama3.1:8b", "out": {"paraphrase": "Hey, what about a veggie salad for the patient?"}}
+{"key": "0b6cc1c5b05338d1d456d999ee53cddd9e7ac81dfb90f2fcaacacbd97c9f6cb3", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì chay cho bệnh nhân này"}}
+{"key": "9030ab2de7b71364dd7b74bec834e9fb7e91109d9b784ab0d8bbd5b9025a204a", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món salad cho bệnh nhân này"}}
+{"key": "3cced47ec68ac519ffc2c8d0bb4c1da5d763ab4c0fa885024c70943dad5afd27", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a vegetarian pasta dish for the patient"}}
+{"key": "45d862d86ae128b9a56ec42e4fcb6700f2a1cd54e0647dad6b03aa092ac69b14", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món tráng miệng chay cho bệnh nhân này"}}
+{"key": "269ec200c5adfc3aac0fdda11f2f07c041198837f7d664202ddabc7d18d30411", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món gà chay cho bệnh nhân này"}}
+{"key": "2d27fe47e9079ddc81bdc4319bbc82c15a64b4bbcf83f9c8fe2975240e09f641", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a chicken dish without tomatoes for the patient."}}
+{"key": "f94172033298968b07b4aa09710f9d8564c356108c50897a46918111ef084da2", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a vegetarian soup option for the patient that does not include cilantro."}}
+{"key": "87c3795dcf25c74a5cd903db31fcdff8cd4c84635cf53e483dce38df0110788e", "model": "llama3.1:8b", "out": {"paraphrase": "Bác sĩ có thể gợi ý món súp gì cho bệnh nhân này?"}}
+{"key": "42165d65b157e33684017ad8d8b0f5b60e519be7ced76531493f90e66b009003", "model": "llama3.1:8b", "out": {"paraphrase": "Bà có thể nấu bữa sáng cho bệnh nhân trong 30 phút không?"}}
+{"key": "92dc26b3589d184d681f00effe6b8518a3b3513ad2c2d8d96bdb89f0a188ce5c", "model": "llama3.1:8b", "out": {"paraphrase": "What pasta dish would be suitable for this patient?"}}
+{"key": "661cf5b670afef74786f52ab54ce1f9918e344d934b75cd16848be50f39c6841", "model": "llama3.1:8b", "out": {"paraphrase": "Vegetarian soup for patient"}}
+{"key": "5ded696150c50f1193829a4d1b56c338c702f2552fa9da8d991287716ae9720c", "model": "llama3.1:8b", "out": {"paraphrase": "What did the patient's most recent lab tests show about their diet?"}}
+{"key": "a362715efb7eb7f1925731ac046098b3d98ec835ae375dcffba6756e5c658d6c", "model": "llama3.1:8b", "out": {"paraphrase": "Hey, what about a simple green salad with some cherry tomatoes and avocado for the patient?"}}
+{"key": "3c1e515d136684d639756ec7dd0496058040e4aa861a5ee48a28777eeb1c0145", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món gà nấu nhanh cho bệnh nhân này"}}
+{"key": "00f3d4c612573ab186b2ce04a383866ffb4614861b849c8784cce7aea173cecc", "model": "llama3.1:8b", "out": {"paraphrase": "Bố mẹ có thể gợi ý cho bệnh nhân món salad này"}}
+{"key": "d247a2fbc1c734770e40522587e86cdc9a336bdaa0ee2e756574f018d1a70ee0", "model": "llama3.1:8b", "out": {"paraphrase": "Chicken dish without tomatoes for patient"}}
+{"key": "af5251e721e8f8969133a68b0718492f97aa14b8b73cbba485403ea8beb92558", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a chicken dish for the patient"}}
+{"key": "889357eec32449c7e53551b746e66b7ab7d5dbf767ad6a7d1e2c6124f749a31d", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa sáng không có cà chua cho bệnh nhân này"}}
+{"key": "157e2550cd5fa7bb5bfd0d815859ecdc5587978b9fa094e2d49a30287d7fda0b", "model": "llama3.1:8b", "out": {"paraphrase": "Patient's most recent visit details"}}
+{"key": "3120ac2fbc2cbf1d569b9ff39cf10ef140a60545f26ca94078f9c94a2d8cd782", "model": "llama3.1:8b", "out": {"paraphrase": "What about a quick chicken dish ready in under 30 minutes for the patient?"}}
+{"key": "aed7a77cdf64cd0f0938806afff601590c988c0280d417e0c955c03a159c3647", "model": "llama3.1:8b", "out": {"paraphrase": "Bác sĩ có thể gợi ý món mì không có ngò cho bệnh nhân này không?"}}
+{"key": "536c8b2c4d2c235df99f9ff3ec79dce726f372b2cfdc2e51e934de3f2a031a33", "model": "llama3.1:8b", "out": {"paraphrase": "Quick garlic-free dinner for patient"}}
+{"key": "fb8f1d61088392e16926c1251b232ba2f6a51b4d191bd3d2ecee7940bbda6bbb", "model": "llama3.1:8b", "out": {"paraphrase": "Có món mì nấu nhanh dưới 30 phút cho bệnh nhân này không?"}}
+{"key": "faeef2fda365fe0498cf785ca12f5d84b2f287e454929fcb99db48daabb1d353", "model": "llama3.1:8b", "out": {"paraphrase": "Bên em có thể gợi ý cho bệnh nhân một bữa sáng nhẹ nhàng nào đó"}}
+{"key": "e26039f4f30a9fb2aee7728900677ce917285f139995c614ba1b303b9dbf0b67", "model": "llama3.1:8b", "out": {"paraphrase": "Bạn có thể gợi ý món tráng miệng không có ngò cho bệnh nhân này không?"}}
+{"key": "a44a7d9a37e1a6e1e48f23d43ce09c4529cd4ed6294a737743bccdd6e02dfac0", "model": "llama3.1:8b", "out": {"paraphrase": "Would you like to consider a vegetarian salad for the patient?"}}
+{"key": "a93757152c94320ce714345dead7f906d475c9be2286ddb1c3c2b55126fbab32", "model": "llama3.1:8b", "out": {"paraphrase": "Can I suggest a pasta dish without cilantro for the patient?"}}
+{"key": "e64f19f4bf675d35bf3f4e51e48fa8338e582aa414e8a4dabeb6f80a771b1a6c", "model": "llama3.1:8b", "out": {"paraphrase": "I recommend a quick chicken stir-fry for this patient."}}
+{"key": "4bdcded526f7f498330920f9337df4646e8f2410ee9b230a3635116d1fac6457", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a vegetarian pasta dish for the patient"}}
+{"key": "d02588f03815624571ef38d77a17fe1609d10372a5c66527337ff051e8f2f8e1", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a sweet dessert without onions for the patient."}}
+{"key": "b0f31b0b79a7368a90250d896dad779e57f687b2d75f96b0a93e52083f8fd345", "model": "llama3.1:8b", "out": {"paraphrase": "Quick dinner under 30 minutes for patient"}}
+{"key": "5539be4f6533f18a11cccdcd9f3f7694a648c450e2cddd5d69db6587d673a865", "model": "llama3.1:8b", "out": {"paraphrase": "I recommend scrambled eggs with spinach and whole wheat toast for the patient's breakfast."}}
+{"key": "19a396ae64763bf9b9032ce5590d24faa37711407e3ee49b088ecd99654a77dd", "model": "llama3.1:8b", "out": {"paraphrase": "Can we make something without garlic for the patient?"}}
+{"key": "38c95a20f6b1dfebde110c7391e7d95d8ab58c69a992b052e6416b4ef8ecf8cc", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món mì cho bệnh nhân này"}}
+{"key": "f9723bfe892be661ca2a207ced80dc39db7cf09921b9179b2741c48385d7e092", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món gà không có nấm cho bệnh nhân này"}}
+{"key": "4c5a3204006b4402bb8041d40d97eaf7e33559d644fdd587a5d6bb191ffb56da", "model": "llama3.1:8b", "out": {"paraphrase": "I'd recommend a vegetarian pasta dish for the patient"}}
+{"key": "d83c85207db525991a55cd5b5a6a07696b4d4b7494e8a0e14653f0dec063e67d", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a quick soup for the patient"}}
+{"key": "4a85f35839ae58742b4a1a5c551151a0bee24fa99ab812f5899cdbaf5a7cef50", "model": "llama3.1:8b", "out": {"paraphrase": "What salad can be prepared in under 30 minutes for this patient?"}}
+{"key": "adcda04b2a4a3d892495fa6b69ac942a3affc8f6e7e22a2c02a5c1d16f73c156", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món salad không có hành tây cho bệnh nhân này"}}
+{"key": "3f2318bb6a10e60c95cd1dc42b373377176cbd04befe697c1c88d1c20b2651f1", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món súp nấu nhanh dưới 30 phút cho bệnh nhân"}}
+{"key": "d36f5262865089053fbf8f4e0855259ffad4b6f0b50f20e9df2fe341624ab86e", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món mì cho bệnh nhân này"}}
+{"key": "d27107baaa2bb423c5595aaa3eafa6db681da3de0ec9383c88232951a7bc49bd", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a vegetable-based soup without tomatoes for the patient."}}
+{"key": "b13ddc473db591a6405695082f314884494c3906d679bb5b09cd304bda61938b", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món súp chay cho bệnh nhân này"}}
+{"key": "3d7664ebb1cc543eaeb14eb0a1574c9b512a5fec207b1b0c1ae52b5c64d40390", "model": "llama3.1:8b", "out": {"paraphrase": "What are the results of the patient's most recent lab tests that affect meal planning?"}}
+{"key": "2e18c128c700c88f6b6fecb99c68cdb4fdcd0b3555fc2314037b339288473ee1", "model": "llama3.1:8b", "out": {"paraphrase": "Can I suggest a vegetarian pasta dish without mushrooms for the patient?"}}
+{"key": "47cdfc4bde0b38e4b0271669e9a81b424fad5fcaf1ffb9e3d1ff339552b13e2f", "model": "llama3.1:8b", "out": {"paraphrase": "Chicken dish without garlic for patient"}}
+{"key": "41c14a9ea2d20b0021be77f4d1b38dda5514121e30d03fcb2ee512610e59cfe5", "model": "llama3.1:8b", "out": {"paraphrase": "Patient needs a garlic-free salad"}}
+{"key": "7a1e5fbc67aa3f489e122e75a2cd1c027044cb08661f4cdf276dab6a451006c9", "model": "llama3.1:8b", "out": {"paraphrase": "Có thể gợi ý cho bệnh nhân một bữa tối nhanh chay"}}
+{"key": "962a2665560de1152bf12675aee662599ff2c6988d92fd6f5cc6c366acf7c74c", "model": "llama3.1:8b", "out": {"paraphrase": "I recommend a chicken dish for this patient"}}
+{"key": "c21295b6594a34bf47b37cafb7a2208ed965b91974136799c1ca636811b4c710", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bữa tối nhanh không có ngò cho bệnh nhân này"}}
+{"key": "37a094cecc1a8fcfb439eecead59907aff2a99eef47b8839802867ea938592a1", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món salad cho bệnh nhân này"}}
+{"key": "1f3e4a4c8bb557e2f6916860a5bc231c1701d9a6c1f3dc58925bd78897181d4e", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món tráng miệng cho bệnh nhân này"}}
+{"key": "837cc320d7c830aeb6aaf3fa674a695fd5cda34e330442aa6356be0a03b906d4", "model": "llama3.1:8b", "out": {"paraphrase": "A quick salad option for this patient is a mix of baby spinach, cherry tomatoes, cucumber, and avocado, ready in under 30 minutes."}}
+{"key": "46f8a55d50ab1eda0ed2654b43d060f1208cb751bebe040592d66b1c1064b98e", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa tối nhanh cho bệnh nhân"}}
+{"key": "9f8ea2bf79c9f242f57103822cd1badd4ada2a4dda985c299cf164e29880f50c", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món salad chay cho bệnh nhân này"}}
+{"key": "efec05ef74db2ad4ef24657e1ea64a22c7a5cd3bb1d5ada60853225e0870597e", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa sáng cho bệnh nhân"}}
+{"key": "ce5711daff266f3bcb1284bd062439ec973113ee429662e286913920eebaa55f", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a vegetable-based soup without tomatoes for the patient."}}
+{"key": "f0e51de541c9389bee13008386e901f36b3c7089efb08c36654ba419ba5a4025", "model": "llama3.1:8b", "out": {"paraphrase": "What vegetarian pasta dish would be suitable for this patient?"}}
+{"key": "60059c37707e0d68bd15d1ed9e140efff80fcd4d70f951225709400836ccf371", "model": "llama3.1:8b", "out": {"paraphrase": "suggest a chicken dish for the patient"}}
+{"key": "b400e576838d06a3538d6bc182a58be40745983b1b46fbc20014e5ab6a0c3a11", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa tối nhanh chay cho bệnh nhân này"}}
+{"key": "1c1082724fbe9c5c6f51e65b0bacfed5653aac26a3c1c179cb57cac0586da951", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý món gà không có hành tây cho bệnh nhân này"}}
+{"key": "2f3ea2fa20cc17624bf27eb81c1c8384e124fac37ad0fe8a8c53d9eef46996f7", "model": "llama3.1:8b", "out": {"paraphrase": "Recommend a dessert option for the patient"}}
+{"key": "110b20d82a9fe8c37d639e4fe1131ab515cdd0706aa9fa871e7ea6f32bc43f3e", "model": "llama3.1:8b", "out": {"paraphrase": "Hãy gợi ý món mì nấu nhanh dưới 30 phút cho bệnh nhân này"}}
+{"key": "7f12c9914f8b8b292eadbf9e1db29041d30673abe3336f8b28c585dec21c67b7", "model": "llama3.1:8b", "out": {"paraphrase": "Can I suggest a garlic-free soup for the patient?"}}
+{"key": "5ad703145cfa293af31be7a2e9a48e9f666dd227b25b942d2b2d3f9541b90d3f", "model": "llama3.1:8b", "out": {"paraphrase": "What's a quick dinner that can be ready in under 30 minutes for the patient?"}}
+{"key": "cfb8357eb63198b338e1c1c3cfde730bbad2a33a25778e105c459c3c5e6e08d6", "model": "llama3.1:8b", "out": {"paraphrase": "Bác sĩ có thể gợi ý món salad nấu nhanh dưới 30 phút cho bệnh nhân này được không?"}}
+{"key": "3bab2392a75e4db83bf0ddea5fd2dfdae61edc9cbbf3237ae824c678c4016283", "model": "llama3.1:8b", "out": {"paraphrase": "What about a quick vegetarian dinner for the patient?"}}
+{"key": "7a15195291b00ee27cf1224ed4c57729e2d70a3968ceaed0a93f6573e4706823", "model": "llama3.1:8b", "out": {"paraphrase": "Gợi ý bữa sáng không có ngò cho bệnh nhân này"}}
+{"key": "35286aba8395b727e6b3ad9fc6c6384fe9f16443d2ac2b011c3a59b884b97475", "model": "llama3.1:8b", "out": {"paraphrase": "What about a quick salad for the patient?"}}
+{"key": "50c1ec92292ef3860cd3e9450ea200da98df27b3063efd9c6858c9cd86e1a73a", "model": "llama3.1:8b", "out": {"paraphrase": "I recommend a vegetarian pasta dish for the patient"}}
+{"key": "fe130d51c6daa72da3a4d2413b4066701d7e7df541279f495a25fd0cb2d0867c", "model": "llama3.1:8b", "out": {"paraphrase": "Có món mì nào không có nấm cho bệnh nhân này được không?"}}
+{"key": "bf67605eef399f063c5a02f0f4c58ef345e6bd9cdf7a358568cb5e918840c897", "model": "llama3.1:8b", "out": {"paraphrase": "Hey, what about a veggie pasta for the patient?"}}

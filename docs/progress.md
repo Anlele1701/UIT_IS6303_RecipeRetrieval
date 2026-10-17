@@ -657,3 +657,23 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 **Cần Thy xem:**
 - 12 người sinh thêm (nhóm đa bệnh lớn tuổi) so với 100 người mẫu. Bảng độ nhạy chỉ trên `sample` vẫn giữ như đã quyết.
 - Có cần tìm hiểu 17 bản ghi không được xuất C-CDA không.
+
+### MV4b – Mẫu P8 và bộ câu hỏi (17/10/2026) · 🚦 chờ duyệt (chưa đóng băng)
+- `scripts/patient_sample.py` → `eval/patient/sample.json`: **100 bệnh nhân** còn sống (88 mẫu, 12 sinh thêm). Lấy toàn bộ 42 người có ràng buộc, cộng 58/70 người không ràng buộc (seed 42).
+  - Tầng chính: đa bệnh 16, tăng huyết áp 15, dị ứng thực phẩm 10, tiểu đường 1, không ràng buộc 58.
+  - Theo tầng (một người có thể ở nhiều tầng): tiểu đường 16, CKD 15, đa bệnh 16, tăng huyết áp 28, dị ứng thực phẩm 12.
+- `scripts/make_patient_queries.py` → `eval/patient/queries.jsonl`: **300 câu**, mỗi bệnh nhân 1 câu cho mỗi loại (không nêu ràng buộc / thêm ràng buộc: chay 34, dưới 30 phút 21, không có một nguyên liệu 45 / cần ngữ cảnh). 151 câu tiếng Việt, 149 câu tiếng Anh.
+  - **Không có câu do người viết.** Câu sinh từ mẫu, diễn đạt lại bằng `llama3.1:8b` theo một "giọng" chọn theo seed.
+  - Bộ lọc diễn đạt: bỏ bản diễn đạt làm mất con số, nguyên liệu, từ "chay", nhắc tới bệnh nhân hoặc đổi ngôn ngữ; và bỏ bản **thêm** từ chỉ chế độ ăn, nhóm dị ứng, thời gian, con số, danh sách hoặc **một nguyên liệu bất kỳ trong từ điển** mà câu mẫu không có.
+  - **Lần chạy đầu không dùng được:** mô hình thêm "vegetarian" vào câu không có ràng buộc, bịa cả công thức có hạt điều, và chỉ có 66 câu khác nhau. Đã sửa như trên.
+  - Kết quả: **208/300** bản diễn đạt được giữ, 92 câu dùng nguyên câu mẫu; 132 câu khác nhau. Còn vài câu trôi nghĩa nhẹ mà bộ lọc không bắt được (ví dụ pq297 "lần khám gần nhất là khám gì?" thành "khám bệnh nhân lần nào gần đây?"; pq220 thêm "healthy").
+- **V7:** câu chặt nhất vẫn còn 3.584 công thức thỏa; 0 câu không trả lời được.
+- `eval/patient/gold.jsonl`: đáp án lấy tự động từ entry có mã (chất dị ứng thực phẩm, bệnh, thuốc đang dùng; nút ngữ cảnh mới nhất cho câu loại 3).
+- `eval/patient/manual_check.csv`: 20 bệnh nhân (có đủ mọi tầng chính) để **Thy kiểm tay** đáp án với file gốc. Chưa điền.
+- `scripts/freeze_patient_set.py` và test kiểm sha256 đã sẵn sàng, **chưa chạy**.
+- Test: 7 test mới. `pytest` nhanh pass.
+
+**Cần Thy:**
+1. Duyệt bộ câu: đọc `eval/patient/queries.jsonl`, đặc biệt các câu `paraphrase_ok = true` trôi nghĩa. Có thể chỉ định qid nào cần dùng lại câu mẫu.
+2. Điền `eval/patient/manual_check.csv` (các cột `*_ok`, `note`).
+3. Xong 1 và 2 thì chạy (hoặc bảo mình chạy) `scripts/freeze_patient_set.py --approved-by Thy`.
