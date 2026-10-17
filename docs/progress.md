@@ -494,3 +494,12 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
 2. Worcestershire: có cần gắn `wheat` ở mức "có thể chứa" không (một số hãng dùng giấm mạch nha).
 3. Câu trả lời của route `patient_info` có diễn giải chỉ số xét nghiệm ("có thể cho thấy xu hướng…"). Có cần siết prompt để chỉ nêu số và ngày, không diễn giải không.
 4. Duyệt nhãn của 8 câu golden nháp.
+
+### Sau MV3 – mục 1: phân xử phiếu "yes" của bộ kiểm (17/10/2026)
+- `scripts/adjudicate.py`:
+  - bước tự động loại phiếu bị bộ kiểm tự đánh dấu, và phiếu có bằng chứng không xuất hiện nguyên văn trong dòng thô;
+  - phiếu còn lại vào hàng duyệt mù `eval/labels/checker_queue.csv`, và tính là vi phạm cho tới khi có nhãn;
+  - báo hai số `cvr_raw` và `cvr_adjudicated`.
+- Không import code của bộ gắn thẻ: `tests/test_checker_independence.py` mở rộng để kiểm cả `adjudicate.py`.
+- `eval/labels/checker_adjudication.csv`: file mới, có 1 nhãn do Thy quyết định (R2920 Worcestershire = không vi phạm).
+- Quy trình ghi ở mục 5 của `docs/annotation_guide.md`. Test: `tests/test_adjudicate.py` (7 test).

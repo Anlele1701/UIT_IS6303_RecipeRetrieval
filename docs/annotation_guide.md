@@ -50,3 +50,25 @@ Chọn **Có thể** khi phụ thuộc hãng. Ví dụ: refried beans đóng h�
 - Khoảng 1 phút mỗi công thức. Nên chia 4 buổi, mỗi buổi 50 công thức.
 - Ô **ghi chú** dùng để ghi chỗ phân vân. Mình sẽ đọc lại các ghi chú này khi tổng hợp.
 - Nếu muốn sửa một công thức đã lưu, bấm **← Trước**.
+
+## 5. Phân xử phiếu "yes" của bộ kiểm độc lập (từ MV3, áp cho mọi preset)
+
+Bộ kiểm `llama3.1:8b` (`scripts/checker.py`) đôi khi trả lời "có chứa" với bằng chứng sai. Ví dụ ở demo MV3: "salmon fillets" được dùng làm bằng chứng cho lúa mì. Vì vậy mỗi phiếu "yes" được chấm theo hai cách:
+
+| Số | Cách tính | Vai trò |
+|---|---|---|
+| **CVR_raw** | Mọi phiếu "yes" đều là vi phạm | Cận trên, tiêu chí chặt |
+| **CVR_adjudicated** | Sau bước tự động và bước người duyệt dưới đây | Số chính để so các preset |
+
+Cả hai số được báo cáo **cho mọi preset, kể cả B0 và B1**, theo đúng một quy trình.
+
+**Bước tự động** (`scripts/adjudicate.py`; không import từ điển hay code của bộ gắn thẻ, có test kiểm tra):
+- Phiếu mà chính bộ kiểm đánh dấu bằng chứng không hợp lệ (`evidence_ok = false`) → **loại**.
+- Chuỗi bằng chứng không xuất hiện nguyên văn trong dòng nguyên liệu thô (không phân biệt hoa thường, nhiều dấu cách tính như một) → **loại**.
+- Còn lại → đưa vào **hàng duyệt** `eval/labels/checker_queue.csv`. Trong lúc chờ duyệt, phiếu vẫn **tính là vi phạm**.
+
+**Bước người duyệt:**
+- Hàng duyệt chỉ có: mã công thức, tên, nhóm ràng buộc, dòng bằng chứng và toàn bộ dòng nguyên liệu. **Không có preset, run hay thẻ nào sinh ra công thức đó.**
+- Người duyệt trả lời một câu: dòng bằng chứng có thật sự làm công thức chứa nhóm đó không. Xét theo thành phần thật như mục 1. Ví dụ: "salmon" → không chứa lúa mì; "1 cup flour" → có.
+- Nhãn ghi vào `eval/labels/checker_adjudication.csv` (`recipe_id, constraint, evidence_line, violation = yes|no, reviewer, date, note`), để chạy lại ra cùng kết quả.
+- Đã có: R2920 / `allergen:wheat` (Worcestershire) = **no**. Thy quyết định ngày 17/10/2026: gluten (nếu có) đến từ giấm mạch nha làm từ lúa mạch, mà lúa mạch không thuộc nhóm wheat của FDA.

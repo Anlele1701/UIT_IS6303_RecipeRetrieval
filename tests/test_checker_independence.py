@@ -87,3 +87,18 @@ def test_an_incomplete_reply_is_asked_once_more(recipes, monkeypatch, tmp_path):
     monkeypatch.setattr(checker, "ask", lambda *a: replies.pop(0))
     out = checker.check(recipes, None, 1, ["allergen:crustacean_shellfish"], {})
     assert out["allergen:crustacean_shellfish"] == checker.Verdict("yes", "1 lb shrimp", True) and not replies
+
+
+# ---- the adjudication step shares nothing with the tagger either (Thy, after MV3) ----------------------------
+
+ADJ_SOURCE = (ROOT / "scripts" / "adjudicate.py").read_text(encoding="utf-8")
+
+
+def test_adjudication_imports_no_tagger_module_and_names_no_tag_table():
+    tree = ast.parse(ADJ_SOURCE)
+    imported = {(n.module or "").split(".")[0] for n in ast.walk(tree) if isinstance(n, ast.ImportFrom)}
+    imported |= {a.name.split(".")[0] for n in ast.walk(tree) if isinstance(n, ast.Import) for a in n.names}
+    assert not imported & (FORBIDDEN_MODULES - {"api"}), imported  # api.config only, for DATABASE_URL
+    assert "pipeline" not in ADJ_SOURCE and "patient" not in ADJ_SOURCE.split('"""', 2)[2]
+    for word in FORBIDDEN_TEXT:
+        assert word not in ADJ_SOURCE, word
