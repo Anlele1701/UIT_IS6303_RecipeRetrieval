@@ -23,6 +23,7 @@ import re
 from dataclasses import dataclass, field
 
 from ..patient.nutrition import meets
+from ..textmatch import looks_vietnamese
 from .schemas import Constraints, RecipeCard, Verification
 
 CITE = re.compile(r"\[R(\d+)\]")
@@ -46,14 +47,81 @@ INTERPRET = re.compile(r"(?<!\w)(normal|abnormal|elevated|high|low|increased|dec
 CONDITION_NAMES_VI = ["tăng huyết áp", "cao huyết áp", "huyết áp cao", "tiểu đường", "đái tháo đường",
                       "bệnh thận mạn", "suy thận", "đường huyết cao", "tăng đường huyết"]
 SENTENCE = re.compile(r"(?:[^.!?\n]|\.(?=\d))+[.!?]?")  # "67.68" stays in one sentence
+# Group words the text check also catches (Thy, after MV3): the Vietnamese aliases in "all" mode come from the
+# lexicon ("hải sản"); these are the ones it lacks. Used by M7 only, never by the tagger.
+GROUP_WORDS = {"crustacean_shellfish": ["shellfish", "seafood", "đồ biển", "do bien"],
+               "fish": ["seafood", "đồ biển", "do bien"]}
+
+
+@dataclass
+class NumberIndex:
+    """What numbers a patient_info answer may state (Thy, after MV3): a number written with a unit must match a
+    fact value with that unit; a number without a unit must be a date part or a count taken from the nodes read."""
+    by_unit: dict[str, set[float]] = field(default_factory=dict)  # lowercased unit -> values
+    unitless: set[float] = field(default_factory=set)  # date parts, counts, values recorded without a unit
+
+    @property
+    def units(self) -> list[str]:
+        return sorted(self.by_unit, key=len, reverse=True)
+
+
+def _dates(value: str) -> set[float]:
+    return {float(x) for d in re.findall(r"\d{4}-\d{2}(?:-\d{2})?", value) for x in d.split("-")}
+
+
+def number_index(views: list[dict]) -> NumberIndex:
+    idx = NumberIndex()
+    counts: dict[str, int] = {}
+
+    def value(v, unit):
+        try:
+            x = float(str(v).replace(",", "."))
+        except (TypeError, ValueError):
+            return
+        if unit:
+            idx.by_unit.setdefault(str(unit).lower(), set()).add(x)
+        else:
+            idx.unitless.add(x)
+
+    def walk(f):
+        if isinstance(f, dict):
+            if "value" in f:
+                value(f.get("value"), f.get("unit"))
+            for k, v in f.items():
+                if isinstance(v, str) and k in {"date", "month", "record_date"}:
+                    idx.unitless |= _dates(v)
+                elif isinstance(v, list | dict):
+                    walk(v)
+        elif isinstance(f, list):
+            for x in f:
+                walk(x)
+
+    total = obs = 0
+    for v in views:
+        facts = v.get("facts") or []
+        walk(facts)
+        idx.unitless |= {float(y) for y in re.findall(r"\.(\d{4})$", v.get("node_id", ""))}  # the node's year
+        idx.unitless.add(float(len(facts)))
+        if v.get("node_id", "").startswith(("results.", "encounters.")):
+            total += len(facts)
+        for f in facts:
+            name = f.get("display") or f.get("class")
+            if name:
+                counts[name] = counts.get(name, 0) + 1
+            obs += len(f.get("observations") or [])
+            for o in [f, *(f.get("observations") or [])]:  # numbers inside names: "Basic metabolic 2000 panel"
+                idx.unitless |= {float(x) for x in re.findall(r"\d+(?:\.\d+)?", o.get("display") or "")}
+    idx.unitless |= {float(total), float(obs), float(len(views))} | {float(n) for n in counts.values()}
+    return idx
 
 
 @dataclass
 class PatientCheck:
     node_ids: set[str]  # every node of the patient's tree: [H:..] must name one
     avoid_terms: dict[str, list[str]] = field(default_factory=dict)  # constraint -> words that name it
-    numbers: set[float] | None = None  # route patient_info: every number the answer may state (facts read)
+    numbers: NumberIndex | None = None  # route patient_info: every number the answer may state (facts read)
     condition_names: list[str] = field(default_factory=list)  # route patient_info: masked before INTERPRET
+    lang: str | None = None  # route patient_info: the answer must be in the question's language
 
 
 def numbers_in(value) -> set[float]:
@@ -74,18 +142,40 @@ def numbers_in(value) -> set[float]:
     return out
 
 
-def unknown_numbers(answer: str, allowed: set[float]) -> list[str]:
+def unknown_numbers(answer: str, allowed) -> list[str]:
     """Numbers in the answer that match no allowed value, at the precision the answer writes them
-    ("67.7" matches 67.68). Citation marks and list numbering are not numbers of the record."""
+    ("67.7" matches 67.68). Citation marks and list numbering are not numbers of the record.
+
+    `allowed` is a NumberIndex (a number followed by a recorded unit must match a value with that unit; any other
+    number must be a date part or a count from the nodes read), or a plain set of values (no unit check)."""
     text = LIST_MARK.sub(" ", re.sub(r"\[(?:R\d+|H:[^\]]+)\]", " ", answer))
+    tags = {}
+    if isinstance(allowed, NumberIndex):  # units may hold digits ("10*3/uL"): swap each for a digit-free tag first
+        for i, u in enumerate(allowed.units):
+            tag = f"§{chr(65 + i % 26) * (1 + i // 26)}§"
+            tags[tag] = u
+            text = re.sub(re.escape(u), " " + tag, text, flags=re.I)
     bad = []
-    for token in NUMBER.findall(text):
+    for m in NUMBER.finditer(text):
+        token = m.group(0)
         x = float(token.replace(",", "."))
         decimals = len(re.split(r"[.,]", token)[1]) if re.search(r"[.,]", token) else 0
         tol = 0.5 * 10 ** -decimals + 1e-9
-        if not any(abs(a - x) <= tol for a in allowed):
+        if isinstance(allowed, NumberIndex):
+            after = text[m.end():].lstrip()
+            unit = next((u for t, u in tags.items() if after.startswith(t)), None)
+            pool = allowed.by_unit[unit] if unit else allowed.unitless
+        else:
+            pool = allowed
+        if not any(abs(a - x) <= tol for a in pool):
             bad.append(token)
     return list(dict.fromkeys(bad))
+
+
+def wrong_language(answer: str, lang: str) -> bool:
+    """A Vietnamese question answered in English, or the reverse (codes and citations ignored)."""
+    text = re.sub(r"\[(?:R\d+|H:[^\]]+)\]", " ", answer)
+    return looks_vietnamese(text) != (lang == "vi")
 
 
 def mask(text: str, phrases) -> str:
@@ -146,14 +236,15 @@ def verify(answer: str, cards: list[RecipeCard], c: Constraints, patient: Patien
     bad_h = [h for h in dict.fromkeys(CITE_H.findall(answer)) if h not in patient.node_ids]
     # (b) on the text only: the cited Recipes' titles and the [R..] marks are masked verbatim (Thy, after MV3); a
     # Recipe itself is checked by its tags and the checker, so "Shrimp Scampi" breaking a constraint is caught there
-    titles = [by_id[i].title for i in ids if i in by_id]
-    text = re.sub(r"\[R\d+\]|(?<!\w)R\d+(?!\w)", " ", mask(answer, titles))
-    flags = [f"text:{k}" for k in suggested_avoided(text, patient.avoid_terms)] + [f"node:{h}" for h in bad_h]
+    flags = [f"text:{k}" for k in suggested_avoided(text_of(answer, cards), patient.avoid_terms)]
+    flags += [f"node:{h}" for h in bad_h]
     if patient.numbers is not None:  # route patient_info: every number must come from a fact read (Thy, after MV3)
         flags += [f"number:{n}" for n in unknown_numbers(answer, patient.numbers)]
         flags += [f"interpret:{w}" for w in interpretations(answer, patient.condition_names)]
         if ECHO.search(answer):  # the data blocks copied back instead of an answer
             flags.append("echo:prompt_block")
+        if patient.lang and wrong_language(answer, patient.lang):
+            flags.append(f"lang:{patient.lang}")
     return Verification(verified=not removed and not flags, citations=kept, removed=removed, flags=flags,
                         bad_nodes=bad_h)
 
@@ -190,6 +281,44 @@ def values_answer(views: list[dict], lang: str) -> str:
     return "\n".join([FALLBACK_HEAD.get(lang, FALLBACK_HEAD["en"]), *lines[:MAX_FALLBACK_LINES]])
 
 
+def text_of(answer: str, cards: list[RecipeCard]) -> str:
+    """The answer with the cited Recipes' titles and the [R..] / R<id> marks masked (the text check runs on this)."""
+    by_id = {r.id: r for r in cards}
+    titles = [by_id[i].title for i in cited(answer) if i in by_id] + [r.title for r in cards
+                                                                       if re.search(rf"(?<!\w)R{r.id}(?!\w)", answer)]
+    return re.sub(r"\[R\d+\]|(?<!\w)R\d+(?!\w)", " ", mask(answer, titles))
+
+
+def drop_sentences(answer: str, cards: list[RecipeCard], terms: dict[str, list[str]]) -> str:
+    """Remove every sentence whose text (titles masked) suggests something the patient must avoid."""
+    kept = []
+    for part in re.split(r"(?<=[.!?])\s+|\n+", answer):
+        if part.strip() and not suggested_avoided(text_of(part, cards), terms):
+            kept.append(part.strip())
+    return " ".join(kept)
+
+
+AVOID_HEAD = {"vi": "Theo hồ sơ, bệnh nhân cần tránh: {what}. Không thể gợi ý món có các thành phần này.",
+              "en": "The patient's record says to avoid: {what}. Dishes with these cannot be suggested."}
+LIST_HEAD = {"vi": "Các món phù hợp với ràng buộc của hồ sơ (vui lòng kiểm tra nhãn thành phần):",
+             "en": "Dishes that keep the record's constraints (please check ingredient labels):"}
+NONE_FOUND = {"vi": "Không tìm thấy món nào phù hợp với các ràng buộc này.",
+              "en": "No dish fits these constraints."}
+
+
+def recipes_answer(cards: list[RecipeCard], c: Constraints, lang: str, names: dict[str, str]) -> str:
+    """route retrieve, when the answer still fails after regeneration and sentence dropping: the Recipes that keep
+    the constraints, listed by code, with what must be avoided (no model)."""
+    what = ", ".join([names.get(a, a.replace("_", " ")) for a in c.allergens_exclude]
+                     + (["một số nguyên liệu khác" if lang == "vi" else "some other ingredients"]
+                        if c.ingredients_exclude else []))
+    ok = [r for r in cards if not violations(r, c)]
+    lines = [AVOID_HEAD.get(lang, AVOID_HEAD["en"]).format(what=what)] if what else []
+    if not ok:
+        return "\n".join([*lines, NONE_FOUND.get(lang, NONE_FOUND["en"])])
+    return "\n".join([*lines, LIST_HEAD.get(lang, LIST_HEAD["en"]), *(f"- [R{r.id}] {r.title}" for r in ok)])
+
+
 def strip(answer: str, removed: list[int], bad_nodes: list[str] = ()) -> str:
     """Drop the bad citation marks; the text around them stays (the regenerated answer replaces it if needed)."""
     bad = set(removed)
@@ -212,8 +341,11 @@ def retry_note(v: Verification, cards: list[RecipeCard], c: Constraints) -> str:
             note += f" These record sections do not exist: {', '.join(nodes)}; cite only node ids from PATIENT_PROFILE."
         numbers = [f.split(":", 1)[1] for f in v.flags if f.startswith("number:")]
         words = [f.split(":", 1)[1] for f in v.flags if f.startswith("interpret:")]
-        if numbers or words or "echo:prompt_block" in v.flags:  # route patient_info: values only
-            note = ("Rewrite your previous answer as 2 to 4 short sentences in the same language as the question. "
+        lang = [f.split(":", 1)[1] for f in v.flags if f.startswith("lang:")]
+        if numbers or words or lang or "echo:prompt_block" in v.flags:  # route patient_info: values only
+            note = ("Rewrite your previous answer as 2 to 4 short sentences in "
+                    + ({"vi": "Vietnamese", "en": "English"}[lang[0]] if lang else "the same language as the question")
+                    + ". "
                     + (f"Delete these numbers, which are not in RECORD: {', '.join(numbers)}. " if numbers else "")
                     + (f"Do not judge the values (no words like: {', '.join(words)}); say that interpreting them needs "
                        "a doctor. " if words else "")

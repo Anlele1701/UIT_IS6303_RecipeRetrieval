@@ -153,6 +153,7 @@ class Assistant:
         history = self.history(sid) if flags.conv else []
         pid = self.patient_of(sid)
         pt = self._patient_start(pid, flags, tr) if pid is not None and flags.profile else None
+        self._pt = pt
 
         with tr.stage("m1") as p:
             if flags.qu and pt:
@@ -163,6 +164,7 @@ class Assistant:
                 u = Understanding(lang=detect_lang(message), query_en=message, notes=["qu off: raw message"])
             p.update(u.model_dump())
         if pt:
+            pt["lang"] = u.lang
             yield Event("patient_profile", self._patient_select(pt, u, message, flags, tr))
         with tr.stage("m2") as p:
             state = merge(prev, u, conv=flags.conv, profile=pt["profile"]) if pt else merge(prev, u, conv=flags.conv)
@@ -202,7 +204,7 @@ class Assistant:
         elif path == "patient_info" and pt:
             views = [prompt_view(n, self.rules) for n in pt["nodes"] if n.node_id in pt["selection"].node_ids]
             block = self._block(pt, state)
-            allowed_numbers = m7.numbers_in([v["facts"] for v in views])  # facts of the nodes read only (Thy)
+            allowed_numbers = m7.number_index(views)  # facts of the nodes read only, units checked (Thy)
             if flags.generate:
                 messages = m6.patient_info_messages(message, u.lang, views, block, history)
         elif path == "detail":
@@ -258,6 +260,8 @@ class Assistant:
             if path in {"retrieve", "detail"} or (pt and path == "patient_info"):
                 answer, v = self._verify(answer, messages, cards, c, flags, tr, usage,
                                          self._check(pt, c, allowed_numbers))
+            if pt and path in {"retrieve", "detail"} and flags.verify and v.flags:
+                answer, v = self._repair(answer, v, cards, c, u.lang, tr)
             if pt and path == "patient_info" and flags.verify and not v.verified:
                 # still wrong after the one regeneration: list the values by code; traced, counted in the report
                 with tr.stage("fallback", {"kind": "values_answer", "model_flags": list(v.flags)}) as p:
@@ -357,9 +361,9 @@ class Assistant:
         if not pt:
             return None
         terms: dict[str, list[str]] = {}
-        for a in c.allergens_exclude:
+        for a in c.allergens_exclude:  # group words too: "hải sản" (lexicon, mode all), "seafood", "đồ biển" (M7)
             vi = [alias for alias, al in self.lex.aliases.items() if a in al.allergens]
-            terms[f"allergen:{a}"] = list(dict.fromkeys([*ALLERGEN_WORDS.get(a, []), *vi]))
+            terms[f"allergen:{a}"] = list(dict.fromkeys([*ALLERGEN_WORDS.get(a, []), *vi, *m7.GROUP_WORDS.get(a, [])]))
         for i in c.ingredients_exclude:
             vi = [alias for alias, al in self.lex.aliases.items() if i in al.ingredients]
             terms[f"ingredient:{i}"] = list(dict.fromkeys([i, *vi]))
@@ -371,7 +375,29 @@ class Assistant:
                         display = f.get("display") or ""
                         names += [display, display.replace("(disorder)", "").strip()]
         return m7.PatientCheck(node_ids={n.node_id for n in pt["nodes"]}, avoid_terms=terms, numbers=numbers,
-                               condition_names=names)
+                               condition_names=names, lang=pt.get("lang") if numbers is not None else None)
+
+    def _repair(self, answer: str, v, cards, c, lang: str, tr: Trace):
+        """A recipe answer still failing the record checks after the one regeneration (Thy, after MV3): drop the
+        sentences that suggest something to avoid and check the rest again; if a break remains or no valid
+        citation is left, list the fitting Recipes by code. Both are traced as `fallback` (counted in the report)."""
+        check = self._check(self._pt, c)
+        with tr.stage("fallback", {"model_flags": list(v.flags)}) as p:
+            kept = m7.drop_sentences(answer, cards, check.avoid_terms)
+            again = m7.verify(kept, cards, c, check)
+            if kept and again.verified and again.citations:
+                p.update(kind="drop_sentences", dropped_chars=len(answer) - len(kept))
+                return kept, again.model_copy(update={"regenerated": True, "fallback": True, "removed": v.removed})
+            names = self._allergen_names()
+            p.update(kind="recipes_answer", after_drop=list(again.flags), citations_left=len(again.citations))
+            listed = m7.recipes_answer(cards, c, lang, names)
+            ok = [r.id for r in cards if not m7.violations(r, c)]
+            return listed, v.model_copy(update={"verified": True, "fallback": True, "citations": ok})
+
+    def _allergen_names(self) -> dict[str, str]:
+        if not hasattr(self, "_names"):
+            self._names = dict(self.conn.execute("SELECT code, name_vi FROM allergen").fetchall())
+        return self._names
 
 
 def _brief(r: RecipeCard) -> dict:

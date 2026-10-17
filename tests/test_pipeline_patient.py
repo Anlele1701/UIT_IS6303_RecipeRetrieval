@@ -92,6 +92,7 @@ def test_lifting_a_record_allergy_in_words_keeps_it(bot, monkeypatch):
     assert evs["constraints"]["record_locked"][0]["constraint"] == "allergen:crustacean_shellfish"
     assert "cần xác nhận trên giao diện" in evs["constraints"]["record_locked"][0]["message"]
     assert "stays until confirmed in the interface" in prompts[0][0]["content"]
+    assert "that food in any form" in prompts[0][0]["content"]  # M6: no "add shrimp" (Thy, after MV3)
     m2 = bot.conn.execute("SELECT payload FROM retrieval_trace WHERE stage = 'm2' AND message_id = %s",
                           [evs["done"]["message_id"]]).fetchone()[0]
     assert m2["refused_removals"] == ["allergen:crustacean_shellfish"]
@@ -273,3 +274,51 @@ def test_a_patient_info_answer_still_interpreting_after_regeneration_is_replaced
     row = bot.conn.execute("SELECT payload FROM retrieval_trace WHERE stage = 'fallback' AND message_id = %s",
                            [done["message_id"]]).fetchone()[0]
     assert row["kind"] == "values_answer" and "interpret:normal" in row["model_flags"]
+
+
+# ---- after MV3, round 3 (Thy): drop_sentences, group words, language, numbers with units --------------------
+
+def test_a_recipe_answer_still_suggesting_shellfish_loses_that_sentence_and_is_rechecked(bot, monkeypatch):
+    bad = "Thử [R3] nhé. Có thể thêm shrimp cho đậm vị."
+    fake_models(monkeypatch, [Understanding(lang="vi", query_en="tea")], [bad, bad])
+    done = dict(events(bot, bot.new_session("S", PID), "trà"))["done"]
+    assert done["fallback"] and done["answer"] == "Thử [R3] nhé." and done["verified"] and done["citations"] == [3]
+    row = bot.conn.execute("SELECT payload FROM retrieval_trace WHERE stage = 'fallback' AND message_id = %s",
+                           [done["message_id"]]).fetchone()[0]
+    assert row["kind"] == "drop_sentences"
+
+
+def test_with_no_valid_citation_left_the_recipes_are_listed_by_code(bot, monkeypatch):
+    bad = "R3 Tea là món hợp. Nên thêm đồ biển để tăng protein."  # a bare R3 is no citation; a group word
+    fake_models(monkeypatch, [Understanding(lang="vi", query_en="tea")], [bad, bad])
+    done = dict(events(bot, bot.new_session("S", PID), "trà"))["done"]
+    assert done["fallback"] and done["answer"].startswith("Theo hồ sơ, bệnh nhân cần tránh:")
+    assert "- [R3] Tea" in done["answer"] and "đồ biển" not in done["answer"]
+    row = bot.conn.execute("SELECT payload FROM retrieval_trace WHERE stage = 'fallback' AND message_id = %s",
+                           [done["message_id"]]).fetchone()[0]
+    assert row["kind"] == "recipes_answer" and row["citations_left"] == 0
+
+
+def test_group_words_are_caught_but_negated_ones_are_not():
+    check = m7.PatientCheck(node_ids=set(), avoid_terms={"allergen:crustacean_shellfish": m7.GROUP_WORDS["crustacean_shellfish"]})
+    assert m7.verify("Add some seafood on top.", [], Constraints(), check).flags == ["text:allergen:crustacean_shellfish"]
+    assert m7.verify("Món này không có hải sản hay đồ biển.", [], Constraints(), check).verified
+
+
+def test_patient_info_must_answer_in_the_question_language():
+    check = m7.PatientCheck(node_ids=set(), numbers=m7.NumberIndex(), lang="vi")
+    assert "lang:vi" in m7.verify("The record holds no answer.", [], Constraints(), check).flags
+    assert "lang:vi" not in m7.verify("Hồ sơ không có thông tin này.", [], Constraints(), check).flags
+
+
+def test_numbers_match_with_their_unit_and_bare_numbers_must_be_counts():
+    views = [{"node_id": "results.2026", "facts": [
+        {"display": "Basic metabolic 2000 panel", "date": "2026-08-16", "observations": [
+            {"display": "Glucose", "value": "84", "unit": "mg/dL", "date": "2026-08-16"},
+            {"display": "Leukocytes", "value": "6.86", "unit": "10*3/uL", "date": "2026-08-16"}]},
+        {"display": "Basic metabolic 2000 panel", "date": "2026-02-01", "observations": []}]}]
+    idx = m7.number_index(views)
+    assert m7.unknown_numbers("Glucose 84 mg/dL, leukocytes 6.86 10*3/uL on 2026-08-16.", idx) == []
+    assert m7.unknown_numbers("2 Basic metabolic 2000 panels in 2026.", idx) == []  # a count, a name, a year
+    assert m7.unknown_numbers("84 lab panels", idx) == ["84"]  # 84 is a glucose value, not a count
+    assert m7.unknown_numbers("Glucose 84 mmol/L", idx) == ["84"]  # mmol/L is no recorded unit: 84 stands bare
