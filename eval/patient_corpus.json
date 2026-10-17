@@ -1,12 +1,12 @@
 {
-  "ran_at": "2026-10-17T16:53:18",
-  "git_commit": "876939e",
+  "ran_at": "2026-10-17T16:59:18",
+  "git_commit": "8feb80c",
   "seed": 42,
   "rules_sha256": {
     "allergy_substance.csv": "6641534048bace717325052498b00bca3ef61cd2ed11b67ca238207b29ec7033",
     "include_loinc.csv": "caf69622c4828d39071cac96e14716a660c7111b9d2ae3db67d3644f863f35cc",
     "exclude_loinc.csv": "5432a0bd98dd06f5d1323c7a91b5ab918ea5be6d41b381e1d9f04d4bc70c6611",
-    "exclude_codes.csv": "206c2628f4e0b8a250a7a7ad73cb54c45f5be7ce45b81070addf4219ef748f85"
+    "exclude_codes.csv": "8e3d88a3d26d8932981bf314d7589e0bc08b3dd3dac5eb40d24150b2295ee784"
   },
   "sources": {
     "sample": {
@@ -48,7 +48,7 @@
       },
       "P4": {
         "disorders_kept": 263,
-        "dropped_suffix_finding": 513,
+        "dropped_suffix_finding": 507,
         "dropped_suffix_none": 5,
         "dropped_suffix_person": 2,
         "dropped_suffix_situation": 103
@@ -58,12 +58,13 @@
         "in_use": 267
       },
       "P6": {
-        "encounters": 5555,
+        "encounters": 5547,
         "result_organizers": 2788,
         "vitals_latest": 836
       },
       "P7": {
         "encounter_death": 8,
+        "encounter_end_of_life": 8,
         "encounter_substance_use": 8,
         "identity_fields_not_read": 108,
         "medication_substance_use": 1,
@@ -72,7 +73,7 @@
         "organizer_not_relevant": 327,
         "organizer_substance_use": 627,
         "organizer_violence": 289,
-        "problem_substance_use": 3,
+        "problem_substance_use": 9,
         "section_29762-2_entries": 108,
         "section_47420-5_entries": 2431
       }
@@ -95,7 +96,7 @@
     },
     "P4": {
       "disorders_kept": 263,
-      "dropped_suffix_finding": 513,
+      "dropped_suffix_finding": 507,
       "dropped_suffix_none": 5,
       "dropped_suffix_person": 2,
       "dropped_suffix_situation": 103
@@ -105,12 +106,13 @@
       "in_use": 267
     },
     "P6": {
-      "encounters": 5555,
+      "encounters": 5547,
       "result_organizers": 2788,
       "vitals_latest": 836
     },
     "P7": {
       "encounter_death": 8,
+      "encounter_end_of_life": 8,
       "encounter_substance_use": 8,
       "identity_fields_not_read": 108,
       "medication_substance_use": 1,
@@ -119,7 +121,7 @@
       "organizer_not_relevant": 327,
       "organizer_substance_use": 627,
       "organizer_violence": 289,
-      "problem_substance_use": 3,
+      "problem_substance_use": 9,
       "section_29762-2_entries": 108,
       "section_47420-5_entries": 2431
     }

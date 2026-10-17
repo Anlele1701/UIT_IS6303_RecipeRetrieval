@@ -318,7 +318,7 @@ Bàn giao sang máy khác: xem `docs/handoff.md`.
 
 ---
 
-## MV1 – Parse C-CDA và dựng cây hồ sơ (17/10/2026) · 🚦 chờ duyệt
+## MV1 – Parse C-CDA và dựng cây hồ sơ (17/10/2026) · 🚦 đã duyệt 17/10/2026
 
 Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, sinh bởi `scripts/patient_ingest.py stats`.
 
@@ -355,3 +355,19 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
 ### Cần Thy quyết định
 1. Duyệt `exclude_codes.csv`. Có nên loại thêm "Admission to hospice" (8 bệnh nhân) không.
 2. Có chạy lại `check_env.py` trên máy này không. Lệnh này sẽ ghi đè `docs/env.md` bằng thông tin máy CPU; bản đang commit là của máy gốc.
+
+### Quyết định ở gate MV1 (Thy, 17/10/2026)
+1. **`check_env.py`:** không chạy lại, không ghi đè `docs/env.md` của máy gốc.
+2. **`exclude_codes.csv` → `v1`:** duyệt cả 5 mục. Thêm:
+   - **Admission to hospice**, nhóm `end_of_life`. Kiểm tra: chỉ **4/8** bệnh nhân hospice trùng với nhóm đã mất; 4 người còn sống vẫn ở tập đánh giá. Việc loại chỉ bỏ lần khám đó khỏi cây.
+   - **"Unhealthy alcohol drinking behavior (finding)"** (17 bệnh nhân). Mục này vốn đã bị P4 loại; giờ được kiểm trước P4 nên đếm vào P7.
+   - Rà toàn bộ XML: các mục rượu và hospice khác ("Assessment using AUDIT-C", "Hospice care") chỉ nằm trong section Surgeries, vốn không được đọc vào cây.
+3. **Rượu:** loại hẳn, **không** suy ra ràng buộc "tránh rượu" (bằng chứng hiện trên giao diện sẽ để lộ chẩn đoán). Ghi vào mục hạn chế của báo cáo (4.6).
+4. **Nguyên tắc danh sách cho phép cho prompt:** chỉ nội dung đã qua danh sách cho phép mới được đưa cho LLM.
+   - Với vấn đề sức khỏe: chỉ những bệnh có dòng trong `condition_nutrient.csv`. Các bệnh khác vẫn ở trong cây nhưng không đưa cho LLM.
+   - `exclude_codes.csv` giữ lại để thống kê P7 và làm test.
+   - Làm ở MV2 (khi có `condition_nutrient.csv`) và MV3 (V2, M6).
+
+### Sau gate
+- `pytest tests/patient`: 42 pass. Đã nạp lại và sinh lại `eval/patient_corpus.json`.
+- P7 sau khi cập nhật: `encounter_end_of_life` 8, `problem_substance_use` 9 (tăng từ 3, vì mục rượu giờ đếm ở P7). `(finding)` ở P4 giảm từ 513 xuống 507.
