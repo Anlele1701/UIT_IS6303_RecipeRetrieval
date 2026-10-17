@@ -40,6 +40,8 @@ from .m5_postprocess import nutrient_values, recipe_detail, top_recipes
 from .schemas import RecipeCard, SessionState, StateItem, Understanding, Verification
 
 HISTORY_CHARS = 600  # an old assistant answer is cut to this for M1 and M6
+LOCKED_VI = "Ràng buộc này đến từ hồ sơ bệnh nhân, không gỡ được qua tin nhắn; cần xác nhận trên giao diện."
+LOCKED_EN = "This constraint comes from the patient's record and cannot be lifted by a chat message; confirm it in the interface."
 
 
 class PatientUnavailable(ValueError):
@@ -165,6 +167,9 @@ class Assistant:
         with tr.stage("m2") as p:
             state = merge(prev, u, conv=flags.conv, profile=pt["profile"]) if pt else merge(prev, u, conv=flags.conv)
             p.update(items=[it.model_dump() for it in state.items], notices=state.notices)
+            if pt:  # the trace says plainly when M2 refused to lift a record constraint
+                p["refused_removals"] = [n.removeprefix("from_record:") for n in state.notices
+                                         if n.startswith("from_record:")]
         with tr.stage("m3") as p:
             path = route(u, state)
             p["route"] = path
@@ -174,9 +179,13 @@ class Assistant:
         self.conn.execute("UPDATE chat_session SET lang = coalesce(lang, %s) WHERE id = %s", [u.lang, sid])
         self._save_state(sid, state, user_id)
         self.conn.commit()
-        yield Event("constraints", {"session_id": str(sid), "message_id": user_id, "intent": u.intent,
-                                    "constraints": c.model_dump(), "notices": state.notices, "route": path,
-                                    "clarify": u.clarify})
+        event = {"session_id": str(sid), "message_id": user_id, "intent": u.intent, "constraints": c.model_dump(),
+                 "notices": state.notices, "route": path, "clarify": u.clarify}
+        if pt:  # patient sessions: the record constraints a message tried to lift, said in words for the UI
+            event["record_locked"] = [{"constraint": n.removeprefix("from_record:"),
+                                       "message": LOCKED_VI if u.lang == "vi" else LOCKED_EN}
+                                      for n in state.notices if n.startswith("from_record:")]
+        yield Event("constraints", event)
 
         cards: list[RecipeCard] = []
         shown: list[int] = []

@@ -220,6 +220,12 @@ QUALITY_CUES = [(re.compile(p, re.I), phrase) for p, phrase in [
     (r"high[- ]?fiber|nhiều chất xơ|nhieu chat xo", "high-fiber")]]
 
 
+# Waving a constraint away without the usual words (pv06 "cứ cho món có tôm đi, không sao đâu"). Patient sessions
+# only, where M2 refuses to lift a record constraint and says so; the M3 path keeps REMOVAL_CUES alone.
+PATIENT_REMOVAL_CUES = re.compile(r"không sao|khong sao|cứ cho|cu cho|không vấn đề|khong van de|không có gì đâu|"
+                                  r"it's fine|it is fine|no problem|don't worry|go ahead", re.I)
+
+
 def keep_qualities(query: str, message: str, notes: list[str]) -> str:
     missing = [phrase for rx, phrase in QUALITY_CUES if rx.search(message) and not rx.search(query)
                and phrase not in query]
@@ -250,7 +256,7 @@ def postprocess(raw: dict, message: str, lex: RuntimeLexicon, patient: bool = Fa
     if patient:  # patient sessions only: the M3 path stays exactly as it was (no-patient regression)
         query = keep_qualities(query, message, notes)
     rem_ing, rem_codes = map_ingredients(raw.get("remove_ingredients", []), lex, notes)
-    removing = bool(REMOVAL_CUES.search(message))
+    removing = bool(REMOVAL_CUES.search(message) or (patient and PATIENT_REMOVAL_CUES.search(message)))
     if not removing and (raw.get("remove_allergens") or rem_ing or raw.get("remove_diet") or raw.get("remove_time")):
         notes.append("ignored remove_* without a removal cue in the message")
         raw = {**raw, "remove_allergens": [], "remove_diet": False, "remove_time": False}

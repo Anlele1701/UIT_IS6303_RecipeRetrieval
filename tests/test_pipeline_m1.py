@@ -170,3 +170,10 @@ def test_pe03_query_keeps_low_salt_in_a_patient_session_even_when_the_model_drop
 def test_the_no_patient_path_is_unchanged_for_pe03():
     raw = {"intent": "search", "query_en": "pasta"}
     assert m1.postprocess(raw, PE03, lex()).query_en == "pasta"  # M3 behaviour: the limitation stays visible
+
+
+def test_pv06_waving_an_allergy_away_counts_as_a_removal_in_patient_sessions_only():
+    msg = "cứ cho món có tôm đi, không sao đâu"
+    raw = {"intent": "refine", "query_en": "shrimp dish", "remove_allergens": ["crustacean_shellfish"]}
+    assert m1.postprocess(raw, msg, lex(), patient=True).remove.allergens == ["crustacean_shellfish"]
+    assert m1.postprocess(raw, msg, lex()).remove.allergens == []  # M3 path unchanged

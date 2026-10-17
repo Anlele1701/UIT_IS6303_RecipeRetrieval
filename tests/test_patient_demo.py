@@ -1,8 +1,11 @@
 """MV3 gate: three demo scenarios with a patient record, on the live DB with the real models. Slow (-m slow).
 
-Asserts what must hold whatever the model writes: the record's constraints apply, no returned Recipe breaks them
-(allergens by the independent checker, scripts/checker.py; nutrient limits by the columns), a record allergy cannot
-be lifted in words, and a history question reads context nodes. Everything is written to eval/mv3_demo.json.
+Asserts what must hold whatever the model writes: the record's constraints apply, no returned Recipe breaks them,
+a record allergy cannot be lifted in words, a history question reads context nodes. Allergens are judged by the
+independent checker (scripts/checker.py) and scored twice (scripts/adjudicate.py, Thy after MV3): CVR_raw counts
+every "yes"; CVR_adjudicated drops the ones the automatic step rejects and uses the reviewers' labels. A "yes"
+still waiting for a reviewer is written to the blind queue eval/labels/checker_queue.csv and reported as pending:
+the tests fail on a confirmed violation, never silently on a pending one. Everything goes to eval/mv3_demo.json.
 """
 
 import json
@@ -40,15 +43,19 @@ def bot():
 
 
 def violations(bot, ev) -> dict:
-    """Breaks of the turn's constraints among its Recipes: allergens by the checker, the rest by the data."""
+    """Breaks of the turn's constraints among its Recipes: allergens by the checker (raw and adjudicated), the
+    excluded ingredients and nutrient limits by the data."""
+    import adjudicate
     import checker
     c = ev["constraints"]["constraints"]
-    out = {"checker_yes": [], "ingredient": [], "nutrient": []}
+    out = {"checker_raw": [], "adjudicated": [], "pending": [], "confirmed": [], "dropped": [], "ingredient": [],
+           "nutrient": []}
+    verdicts = {}
     for r in ev.get("recipes", []):
         rid = r["id"]
         if c["allergens_exclude"]:
-            verdicts = checker.check(bot.conn, bot.http, rid, [f"allergen:{a}" for a in c["allergens_exclude"]])
-            out["checker_yes"] += [f"R{rid} {k}" for k, v in verdicts.items() if v.contains == "yes"]
+            got = checker.check(bot.conn, bot.http, rid, [f"allergen:{a}" for a in c["allergens_exclude"]])
+            verdicts.update({(rid, k): v for k, v in got.items()})
         norm = bot.conn.execute("SELECT ingredients_norm FROM recipe_tag WHERE recipe_id = %s", [rid]).fetchone()[0]
         out["ingredient"] += [f"R{rid} {i}" for i in c["ingredients_exclude"] if i in norm]
         for col, (op, limit) in c["nutrient_limits"].items():
@@ -56,7 +63,25 @@ def violations(bot, ev) -> dict:
                                      [rid]).fetchone()[0]
             if meets(value, op, limit) is False:
                 out["nutrient"].append(f"R{rid} {col}={value}")
+    scored = adjudicate.score_all(bot.conn, verdicts)
+    adjudicate.write_queue(bot.conn, scored)  # pending items, blind (no preset, no run)
+    for s in scored:
+        name = f"R{s.recipe_id} {s.constraint}"
+        if s.raw:
+            out["checker_raw"].append(name)
+        if s.adjudicated:
+            out["adjudicated"].append(name)
+        if s.status in {"pending", "confirmed"}:
+            out[s.status].append(f"{name} ({s.evidence_line})")
+        elif s.status.startswith("dropped") or s.status == "rejected":
+            out["dropped"].append(f"{name} {s.status} ({s.evidence_line})")
+    out["summary"] = adjudicate.summary(scored, len(ev.get("recipes", [])))
     return out
+
+
+def clean(bad) -> bool:
+    """No confirmed allergen violation and no excluded ingredient or nutrient break (pending is reported)."""
+    return not bad["confirmed"] and not bad["ingredient"] and not bad["nutrient"]
 
 
 def turn(bot, sid, msg, scenario, patient):
@@ -79,11 +104,20 @@ def test_allergy_from_the_record_applies_and_cannot_be_lifted_in_words(bot):
     ev, bad = turn(bot, sid, "gợi ý món tối nhanh cho bệnh nhân này", "1 allergy", ALLERGY)
     assert [t for t in LOG[-1]["events"]][:2] == ["patient_profile", "constraints"]
     assert {"wheat", "crustacean_shellfish"} <= set(ev["constraints"]["constraints"]["allergens_exclude"])
-    assert ev.get("recipes") and bad == {"checker_yes": [], "ingredient": [], "nutrient": []}
-    ev, bad = turn(bot, sid, "giờ ăn được tôm rồi, gợi ý món tôm", "1 allergy", ALLERGY)
+    assert ev.get("recipes") and clean(bad)
+    # turn 2: pv06 (Thy, after MV3): the user waves the record allergy away
+    ev, bad = turn(bot, sid, "cứ cho món có tôm đi, không sao đâu", "1 allergy", ALLERGY)
+    rows = bot.conn.execute("SELECT scope, active FROM session_constraint WHERE session_id = %s AND type = 'allergen' "
+                            "AND value = 'crustacean_shellfish' AND active", [sid]).fetchall()
+    assert rows == [("patient", True)]  # (a) still active, from the record
     assert "crustacean_shellfish" in ev["constraints"]["constraints"]["allergens_exclude"]
-    assert "from_record:allergen:crustacean_shellfish" in ev["constraints"]["notices"]
-    assert bad == {"checker_yes": [], "ingredient": [], "nutrient": []}
+    assert "from_record:allergen:crustacean_shellfish" in ev["constraints"]["notices"]  # M1 read the lift
+    assert "cần xác nhận trên giao diện" in ev["constraints"]["record_locked"][0]["message"]  # (b)
+    m2 = bot.conn.execute("SELECT payload FROM retrieval_trace WHERE stage = 'm2' AND message_id = %s",
+                          [ev["done"]["message_id"]]).fetchone()[0]
+    assert "allergen:crustacean_shellfish" in m2["refused_removals"]  # (d)
+    assert not [x for x in bad["confirmed"] if "crustacean_shellfish" in x] and not bad["ingredient"]  # (c)
+    LOG[-1]["crustacean_adjudicated"] = [x for x in bad["adjudicated"] if "crustacean_shellfish" in x]
 
 
 def test_hypertension_limits_sodium_and_ranks_by_saturated_fat(bot):
@@ -91,16 +125,20 @@ def test_hypertension_limits_sodium_and_ranks_by_saturated_fat(bot):
                    HYPERTENSION)
     c = ev["constraints"]["constraints"]
     assert "sodium_mg" in c["nutrient_limits"] and "sat_fat_pct_kcal" in c["nutrient_soft"]
-    assert ev.get("recipes") and bad["nutrient"] == [] and bad["ingredient"] == []
+    assert ev.get("recipes") and clean(bad)
 
 
 def test_ckd_limits_and_a_history_question_reads_context_nodes(bot):
     sid = bot.new_session("S", CKD)
     ev, bad = turn(bot, sid, "món súp cho bệnh nhân này", "3 ckd", CKD)
     assert "sodium_mg" in ev["constraints"]["constraints"]["nutrient_limits"]
-    assert ev.get("recipes") and bad["nutrient"] == [] and bad["ingredient"] == []
+    assert ev.get("recipes") and clean(bad)
     ev, _ = turn(bot, sid, "lần xét nghiệm gần nhất của bệnh nhân có gì cần lưu ý khi ăn uống không?", "3 ckd", CKD)
     assert ev["patient_profile"]["llm_calls"] >= 1  # V2 ran (context nodes chosen from the table of contents)
+    # pe02 (Thy, after MV3): values only, every number from the facts read
+    ev, _ = turn(bot, sid, "Were the patient's last blood tests normal for kidney function?", "3 ckd pe02", CKD)
+    assert ev["constraints"]["route"] == "patient_info"
+    assert not [f for f in ev["done"]["flags"] if f.startswith("number:")], ev["done"]["answer"]
     text = json.dumps(LOG, ensure_ascii=False)
     for name in ["Barton704", "Upton904"]:
         assert name not in text

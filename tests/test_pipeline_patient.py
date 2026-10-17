@@ -89,7 +89,12 @@ def test_lifting_a_record_allergy_in_words_keeps_it(bot, monkeypatch):
     evs = dict(events(bot, bot.new_session("S", PID), "tôi ăn được tôm rồi"))
     assert "crustacean_shellfish" in evs["constraints"]["constraints"]["allergens_exclude"]
     assert "from_record:allergen:crustacean_shellfish" in evs["constraints"]["notices"]
+    assert evs["constraints"]["record_locked"][0]["constraint"] == "allergen:crustacean_shellfish"
+    assert "cần xác nhận trên giao diện" in evs["constraints"]["record_locked"][0]["message"]
     assert "stays until confirmed in the interface" in prompts[0][0]["content"]
+    m2 = bot.conn.execute("SELECT payload FROM retrieval_trace WHERE stage = 'm2' AND message_id = %s",
+                          [evs["done"]["message_id"]]).fetchone()[0]
+    assert m2["refused_removals"] == ["allergen:crustacean_shellfish"]
 
 
 def test_m7_flags_a_suggested_allergen_and_a_made_up_record_node(bot, monkeypatch):
