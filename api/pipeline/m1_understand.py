@@ -211,6 +211,24 @@ def map_ingredients(names: list[str], lex: RuntimeLexicon, notes: list[str]) -> 
     return list(dict.fromkeys(ings)), codes
 
 
+# Wanted qualities the model tends to drop from query_en as "restrictions" (pe03): patient sessions put them back.
+# The dialogue has no nutrient constraint yet: the phrase only steers the search text (a limitation, progress MV3).
+QUALITY_CUES = [(re.compile(p, re.I), phrase) for p, phrase in [
+    (r"low[- ]?salt|low[- ]?sodium|ít muối|it muoi|giảm muối|giam muoi|nhạt muối", "low-sodium"),
+    (r"low[- ]?fat|ít béo|it beo|ít dầu mỡ", "low-fat"),
+    (r"low[- ]?sugar|ít đường|it duong|không đường", "low-sugar"),
+    (r"high[- ]?fiber|nhiều chất xơ|nhieu chat xo", "high-fiber")]]
+
+
+def keep_qualities(query: str, message: str, notes: list[str]) -> str:
+    missing = [phrase for rx, phrase in QUALITY_CUES if rx.search(message) and not rx.search(query)
+               and phrase not in query]
+    if missing:
+        notes.append(f"kept wanted qualities the model dropped from query_en: {missing}")
+        return " ".join([*missing, query]).strip()
+    return query
+
+
 def postprocess(raw: dict, message: str, lex: RuntimeLexicon, patient: bool = False) -> Understanding:
     """The model's JSON -> a validated Understanding. Pure, so it is unit-tested without a model."""
     notes: list[str] = []
@@ -229,6 +247,8 @@ def postprocess(raw: dict, message: str, lex: RuntimeLexicon, patient: bool = Fa
     diet = raw.get("diet") if raw.get("diet") in DIETS else None
     minutes = raw.get("max_total_minutes") or None
     query = strip_negation(raw.get("query_en", "")) or (message if detect_lang(message) == "en" else "")
+    if patient:  # patient sessions only: the M3 path stays exactly as it was (no-patient regression)
+        query = keep_qualities(query, message, notes)
     rem_ing, rem_codes = map_ingredients(raw.get("remove_ingredients", []), lex, notes)
     removing = bool(REMOVAL_CUES.search(message))
     if not removing and (raw.get("remove_allergens") or rem_ing or raw.get("remove_diet") or raw.get("remove_time")):

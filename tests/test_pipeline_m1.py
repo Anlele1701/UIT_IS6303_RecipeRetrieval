@@ -146,3 +146,27 @@ def test_thuan_chay_means_vegan_and_a_plain_nut_covers_peanuts():
     assert u.constraints.allergens_exclude == ["tree_nuts", "peanut"]
     u = m1.postprocess(raw(allergens_exclude=["tree_nuts"]), "no tree nuts please", lex())
     assert u.constraints.allergens_exclude == ["tree_nuts"]
+
+
+# ---- pe03 (Thy, after MV3): a wanted quality must survive into query_en --------------------------------------
+
+PE03 = "a low-salt pasta for this patient, no mushrooms"
+
+
+def test_negation_stripping_keeps_low_salt():
+    assert m1.strip_negation("low-salt pasta, no mushrooms") == "low-salt pasta"
+    assert m1.strip_negation("low-sodium pasta without mushrooms") == "low-sodium pasta"
+
+
+def test_pe03_query_keeps_low_salt_in_a_patient_session_even_when_the_model_drops_it():
+    raw = {"intent": "search", "query_en": "pasta", "ingredients_exclude": ["mushrooms"]}
+    u = m1.postprocess(raw, PE03, lex(), patient=True)
+    assert "low-salt" in u.query_en or "low-sodium" in u.query_en
+    assert "mushroom" not in u.query_en
+    kept = m1.postprocess({"intent": "search", "query_en": "low-salt pasta"}, PE03, lex(), patient=True)
+    assert kept.query_en == "low-salt pasta"  # not doubled
+
+
+def test_the_no_patient_path_is_unchanged_for_pe03():
+    raw = {"intent": "search", "query_en": "pasta"}
+    assert m1.postprocess(raw, PE03, lex()).query_en == "pasta"  # M3 behaviour: the limitation stays visible

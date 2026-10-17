@@ -527,3 +527,9 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
   - pv05 có ghi chú "nút ngữ cảnh chỉ thêm cảnh báo, không đổi bộ lọc".
 - 14 câu, tất cả vẫn ở trạng thái `draft`. Có test kiểm định dạng và kiểm rằng không câu nào tự chuyển sang approved.
 - **Cần Thy xem:** pv10 ghi `intent: "chat"`, nhưng `chat` là tên route. Intent của M1 chỉ có `chitchat` / `out_of_scope`; câu hỏi về thuốc sẽ là `out_of_scope` → route `chat`. Mình giữ nguyên văn, chờ Thy chốt.
+
+### Sau MV3 – mục 5: câu pe03 (17/10/2026)
+- **Giới hạn:** hội thoại chưa hỗ trợ ràng buộc dinh dưỡng. "low-salt" trong câu hỏi không thành bộ lọc natri. Ngưỡng natri chỉ đến từ hồ sơ; ngoài phiên có bệnh nhân thì không có.
+- **Phát hiện:** bước bỏ phủ định tất định (`strip_negation`) **giữ** "low-salt". Chính **LLM ở M1** bỏ cụm này khỏi `query_en` (trả về `"pasta"`), ở cả hai nhánh, vì prompt M1 dặn `query_en` không có "restriction".
+- **Sửa (chỉ nhánh bệnh nhân):** `keep_qualities` thêm lại các cụm phẩm chất mong muốn mà LLM bỏ (low-sodium, low-fat, low-sugar, high-fiber và các biến thể tiếng Việt), có ghi vào `notes`. Nhánh không có bệnh nhân giữ nguyên (hồi quy), nên vẫn có giới hạn trên.
+- Test: `strip_negation` giữ low-salt/low-sodium; với pe03 ở nhánh bệnh nhân, `query_en` còn "low-sodium" dù mô hình bỏ; nhánh không có bệnh nhân không đổi.
