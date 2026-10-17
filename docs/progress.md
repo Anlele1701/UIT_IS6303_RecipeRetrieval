@@ -371,3 +371,19 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
 ### Sau gate
 - `pytest tests/patient`: 42 pass. Đã nạp lại và sinh lại `eval/patient_corpus.json`.
 - P7 sau khi cập nhật: `encounter_end_of_life` 8, `problem_substance_use` 9 (tăng từ 3, vì mục rượu giờ đếm ở P7). `(finding)` ở P4 giảm từ 513 xuống 507.
+
+### Đo tỉ lệ công thức qua luật dinh dưỡng (17/10/2026, theo yêu cầu của Thy)
+- Tạo `data/rules/condition_nutrient.csv` bản nháp (`draft-mv2`) từ bảng 4.2 của đặc tả, để ngưỡng không bị hardcode trong code. **Vẫn chờ Thy duyệt ở MV2.**
+- Phép quy đổi theo mục 4.4 nằm ở `api/patient/nutrition.py`: ngưỡng ngày × `PER_MEAL_FRACTION` (1/3, trong `api/config.py`); ngưỡng % năng lượng không chia.
+- `patient_ingest.py stats` ghi `nutrient_rule_pass` vào `eval/patient_corpus.json`, kèm bảng trong `docs/patient_corpus_report.md`.
+- Kết quả (trên 32.719 công thức, tỉ lệ qua trong số công thức có số liệu):
+  - natri ≤ 667 mg/khẩu phần (mặc định, CKD): 68,9%;
+  - natri ≤ 767 mg (tăng huyết áp, tiểu đường): 73,7%;
+  - chất béo bão hòa ≤ 6% năng lượng: **17,2%**;
+  - chất xơ ≥ 14 g/1000 kcal: **23,2%**;
+  - protein ≤ 0,8 g/kg (nặng 70 kg): 68,0%;
+  - đường tổng ≤ 10% năng lượng (warn): 56,5%.
+- Gộp theo bệnh (ngưỡng chặt nhất cho mỗi chất): tăng huyết áp **12,6%**, tiểu đường **16,6%**, CKD 56,9%.
+- Nhận xét:
+  - Ngưỡng natri 2.300 mg của tăng huyết áp và tiểu đường **không bao giờ có tác dụng**, vì ngưỡng mặc định 2.000 mg chặt hơn.
+  - Chất béo bão hòa và chất xơ là hai luật thu hẹp kho công thức mạnh nhất.
