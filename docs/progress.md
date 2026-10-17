@@ -218,3 +218,100 @@ Bàn giao sang máy khác: xem `docs/handoff.md`.
 ### Việc còn lại trước gate M3
 - Thử khoảng 20 câu bằng `chat_cli`, ghi lỗi.
 - Quyết định cách xử lý lỗi parser ở mục 1.
+
+---
+
+## MV0 – Inventory hồ sơ bệnh nhân C-CDA (17/10/2026) · 🚦 đã duyệt 17/10/2026
+
+Đặc tả: `docs/plan/A3_vectorless_ho_so.md`. Chạy song song với gate M3 (đã được duyệt trong kế hoạch MV0). Số liệu ở `eval/patient_inventory/summary.json` và `docs/patient_inventory.md`, sinh bởi `scripts/patient_inventory.py`.
+
+### Việc đã làm
+- `api/patient/ccda.py`: đọc C-CDA bằng `lxml`, nhận diện section theo LOINC, các quy tắc "đang hiệu lực" ở mục 2.2. Ngày hiện tại lấy từ `effectiveTime` của hồ sơ. Không đọc tên, địa chỉ, chủng tộc.
+- `scripts/patient_inventory.py`: quét toàn bộ thư mục, ghi các bảng mã kèm số đếm. Kết quả không chứa tên, tên file hay mã bệnh nhân.
+- `data/rules/allergy_substance.csv` (bản nháp `draft-mv0`): 7/7 chất dị ứng thực phẩm có trong dữ liệu. Mọi tên trong `extra_ingredients_exclude` đều có trong bảng `ingredient`.
+- Thêm `lxml` vào dependency, `PATIENT_DATA_DIR` vào `api/config.py`. Thư mục dữ liệu đưa vào `.gitignore`, chỉ commit một file mẫu làm fixture.
+- Test: `tests/patient/test_ccda_inventory.py`, 13 test. `pytest` nhanh: 354 pass.
+
+### Phát hiện chính
+- 108 file, parse được hết, 108 mã bệnh nhân khác nhau. `softwareName` không có số phiên bản.
+- **8 bệnh nhân đã mất** (có organizer giấy chứng tử `69409-1`). Ngày hồ sơ của họ là ngày cũ (từ 1961), nên quy tắc "đang hiệu lực" tính theo ngày đó.
+- Ứng viên tầng P8 (lần quét đầu, còn tính bệnh nhân đã mất): dị ứng thực phẩm 11, tiểu đường 8, tăng huyết áp 20, CKD 6, đa bệnh 7, không ràng buộc 74.
+- **Không có** huyết áp tâm thu/tâm trương (`8480-6`, `8462-4`) và HbA1c (`4548-4`) trong dữ liệu. eGFR, natri, kali chỉ có ở 10–17 bệnh nhân.
+- Mọi mã khởi đầu của đặc tả ở bảng 4.1–4.3 đều có trong dữ liệu. Ngoài ra còn có CKD giai đoạn 1–2, các biến chứng tiểu đường type 2, tăng lipid máu và thiếu máu.
+
+### Cần Thy quyết định trước MV1
+1. Ngưỡng số bệnh nhân cho từng tầng P8, vì CKD chỉ có 6 và tiểu đường 8.
+2. Có giữ 8 bệnh nhân đã mất trong tập đánh giá không. Organizer giấy chứng tử có nên đưa vào danh sách loại trừ P7 không.
+3. Duyệt bản nháp `allergy_substance.csv`, nhất là việc mở rộng Shellfish sang 19 tên nhuyễn thể.
+4. Duyệt danh sách đề xuất cho `exclude_loinc.csv` (7 bảng hỏi sàng lọc, mục 7 của `docs/patient_inventory.md`).
+5. Câu hỏi 4 ở mục 11 của đặc tả: có cần thêm ghi chú tự do Asclepius không, hay chế độ `narrative` là đủ.
+
+### Quyết định sau MV0 (Thy, 17/10/2026)
+1. **Phân tầng P8:**
+   - Không đặt mức tối thiểu cứng. Lấy toàn bộ bệnh nhân tầng CKD và tiểu đường, không lấy mẫu ở hai tầng này.
+   - Kết quả theo tầng chỉ báo cáo mô tả (n và khoảng tin cậy), không kiểm định riêng.
+   - Bootstrap lấy mẫu theo bệnh nhân, không theo câu hỏi.
+   - Tùy chọn: sinh thêm bệnh nhân bằng Synthea (lọc theo module, seed cố định) cho đủ 15–20 người mỗi tầng, kèm cột `source = sample | generated`.
+2. **Bệnh nhân đã mất:**
+   - Vẫn nạp, gắn `deceased = true` và đếm ở P1, nhưng loại khỏi tập đánh giá P8.
+   - API và chat CLI từ chối mở phiên cho bệnh nhân đã mất (làm ở MV3).
+   - Giấy chứng tử (`69409-1`) thuộc P7.
+3. **`allergy_substance.csv`:** duyệt cả 7 dòng, `version = v1` sau khi kiểm tra bộ gắn thẻ. Fish và sesame chưa có trong dữ liệu nên để `unmapped`.
+4. **Organizer:**
+   - Dùng danh sách cho phép `include_loinc.csv` (9 mã).
+   - `exclude_loinc.csv` gồm 8 mã nhạy cảm, dùng để thống kê P7 và làm test.
+   - Organizer còn lại là `not_relevant`. Chưa có luật suy tim nên chưa cho phép `55405-5`.
+5. **Asclepius:** không bắt buộc, chế độ `narrative` là đủ cho RQ5. Báo cáo phải ghi `<text>` của C-CDA là bảng bán cấu trúc. Chỉ thêm khoảng 30 ghi chú Asclepius nếu xong MV4 sớm; nếu không thì ghi vào mục 4.6 (hạn chế).
+
+### Đã làm theo quyết định (17/10/2026)
+- **Kiểm tra bộ gắn thẻ** (truy vấn DB, chỉ đọc):
+  - Đã gắn `milk`: sữa dê, sữa cừu, feta, goat cheese, pecorino, manchego, roquefort.
+  - Đã gắn `wheat`: spelt, farro, durum, semolina, bulgur.
+  - Đã gắn `egg`: trứng cút.
+  - Không có trong kho công thức: kamut, trứng vịt, cuttlefish, cockle, whelk.
+  - **`conch` không mang thẻ dị ứng nào**, nên đã thêm vào `extra_ingredients_exclude` của Shellfish (tổng 20 tên).
+- Tạo `data/rules/include_loinc.csv` (9 mã) và `data/rules/exclude_loinc.csv` (8 mã).
+- Sửa inventory:
+  - gộp nhóm theo mã, không theo tên (24321-2 trước bị đếm hai lần);
+  - phân loại organizer theo hai danh sách trên;
+  - loại bệnh nhân đã mất khỏi tầng P8;
+  - đếm số bệnh nhân theo LOINC trên mọi organizer (eGFR: 21, lần trước ghi 17 là sai).
+- HbA1c: không có mã nào (`4548-4`, `17856-6`, `4549-2`, `41995-2`) trong 108 file. eGFR (`33914-3`) có ở 21 bệnh nhân, trong organizer `24321-2` và `24323-8`. Glucose máu (`2339-0`) có ở 43 bệnh nhân.
+- Test: 16 test trong `tests/patient/`.
+- **Ứng viên P8 khi đã loại người đã mất:** dị ứng thực phẩm 11, tiểu đường 5, tăng huyết áp 18, CKD 4, đa bệnh 5 (`eval/patient_inventory/summary.json`).
+
+### Để làm ở mốc sau
+- MV1: cờ `deceased` trong bảng `patient`; cây hồ sơ chỉ lấy organizer trong `include_loinc.csv`; thống kê P7 theo `exclude_loinc.csv`.
+- MV3: API và chat CLI từ chối bệnh nhân đã mất; test "không mã nào trong `exclude_loinc.csv` xuất hiện trong prompt".
+- MV4: chốt có sinh thêm bệnh nhân bằng Synthea hay không.
+
+### Sửa quyết định P8 (Thy, 17/10/2026, thay cho mục 1 ở trên)
+- Sau khi loại người đã mất, các tầng còn lại là tiểu đường 5, CKD 4, tăng huyết áp 18, đa bệnh 5. Số này không đủ để báo cáo theo tầng.
+- **Bắt buộc sinh thêm bệnh nhân Synthea**, mục tiêu ≥ 15 người còn sống mỗi tầng (tăng huyết áp đã đủ).
+- Cách sinh:
+  - Sinh một quần thể lớn với cấu hình mặc định, rồi chọn bệnh nhân theo mã bệnh.
+  - **Không** dùng bộ lọc module `-m`, vì hồ sơ sẽ thiếu dị ứng và các bệnh khác, khác hẳn bộ mẫu.
+  - Giới hạn tuổi (ví dụ `-a 40-90`).
+  - Chỉ giữ người còn sống (dùng tùy chọn trong `synthea.properties` của phiên bản đang dùng).
+  - Xuất C-CDA bằng cùng phiên bản Synthea với bộ mẫu, seed cố định, ghi lệnh chạy vào `docs/env.md`.
+- Lưu ở `data/synthea_generated_ccda/`, gắn cột `source = sample | generated`.
+- Báo cáo:
+  - Kết quả chính tính trên toàn bộ bệnh nhân.
+  - Thêm một bảng chỉ trên `sample` để kiểm tra độ nhạy.
+  - Bootstrap theo bệnh nhân.
+- Thời điểm:
+  - Chốt số lượng ở MV4.
+  - **MV1:** ingest phải đọc được nhiều thư mục và có cột `source`.
+  - Phải sinh xong trước khi đóng băng bộ câu hỏi.
+
+**Vướng mắc (17/10):**
+- File mẫu không ghi phiên bản Synthea. `softwareName` và `assigningAuthorityName` chỉ là URL GitHub, và không có comment hay thuộc tính nào chứa phiên bản.
+- Ngày hồ sơ của người còn sống là 18–25/08/2026, nên bộ mẫu có lẽ được sinh khoảng cuối tháng 8/2026.
+- Máy này chưa có Java, mà Synthea cần Java 17 trở lên.
+
+**Đã xác định phiên bản Synthea của bộ mẫu (17/10):**
+- Nguồn tải: https://synthea.mitre.org/downloads, mục "100 Sample Synthetic Patient Records, C-CDA" (latest). File là `downloads/latest/synthea_sample_data_ccda_latest.zip` trong repo `synthetichealth/synthea-sample-data`.
+- Commit mới nhất của file đó: `9959d9178e` (18/08/2026), message "Update from https://github.com/synthetichealth/synthea/commit/d9d07a6eef91ee5144293b42ab64224d84d124f8".
+- Đã tải zip ở commit `9959d9178e` và so sha256: **108/108 file trùng** với `data/synthea_sample_data_ccda_latest/`.
+- Vậy bộ mẫu sinh từ **Synthea commit `d9d07a6eef91ee5144293b42ab64224d84d124f8`**. Đây là tag `master-branch-latest` tại 18/08/2026, mới hơn bản `v4.0.0` (05/03/2026).
+- Khi sinh thêm bệnh nhân: checkout đúng commit này và build từ mã nguồn (không dùng jar `v4.0.0`). Cần Java 17 trở lên.

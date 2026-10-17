@@ -1,0 +1,20 @@
+kind_code,kind_display,substance_code,substance_display,patients,patients_active,entries,reactions,severity
+419199007,Allergy to substance,609328004,Allergic disposition (finding),21,21,21,,
+419199007,Allergy to substance,84489001,Mold (organism),13,13,13,Nasal discharge present (situation) (5);Cutaneous hypersensitivity (disorder) (4);Sneezing (finding) (1);Wheezing (finding) (1),Mild (8)
+419199007,Allergy to substance,264287008,Animal dander (substance),10,10,10,Rhinoconjunctivitis (disorder) (9);Eruption of skin (disorder) (8);Cough (finding) (5);Dyspnea (finding) (3);Wheal (finding) (3),Mild (7);Moderate (3)
+419199007,Allergy to substance,782576004,Tree pollen (substance),10,10,10,,
+419199007,Allergy to substance,256277009,Grass pollen (substance),9,9,9,,
+419199007,Allergy to substance,260147004,House dust mite (organism),8,8,8,,
+414285001,Allergy to food,735029006,Shellfish (substance),6,6,6,Eruption of skin (disorder) (6);Allergic angioedema (disorder) (5);Itching (finding) (4);Cough (finding) (3);Dyspnea (finding) (3);Diarrhea (finding) (2),Mild (5);Moderate (1)
+414285001,Allergy to food,102263004,Eggs (edible) (substance),4,4,4,Finding of vomiting (finding) (1);Wheal (finding) (1),Moderate (2)
+416098002,Allergy to drug,1191,Aspirin,4,4,4,,
+416098002,Allergy to drug,7984,Penicillin V,4,4,4,Eruption of skin (disorder) (2);Wheal (finding) (1),Mild (3)
+414285001,Allergy to food,442571000124108,Tree nut (substance),3,3,3,Wheal (finding) (3);Eruption of skin (disorder) (3);Allergic angioedema (disorder) (3);Itching (finding) (3);Dyspnea (finding) (2);Anaphylaxis (disorder) (2),Moderate (2);Mild (1)
+419199007,Allergy to substance,288328004,Bee venom (substance),3,3,3,Eruption of skin (disorder) (1),Moderate (1)
+414285001,Allergy to food,3718001,Cow's milk (substance),2,2,2,Wheal (finding) (1);Diarrhea (finding) (1);Allergic angioedema (disorder) (1),Mild (1)
+414285001,Allergy to food,412071004,Wheat (substance),2,2,2,Eruption of skin (disorder) (2);Dyspnea (finding) (1),Moderate (2)
+419199007,Allergy to substance,111088007,Latex (substance),2,2,2,Allergic angioedema (disorder) (1);Wheal (finding) (1);Rhinoconjunctivitis (disorder) (1),Moderate (1);Mild (1)
+414285001,Allergy to food,256355007,Glycine max (substance),1,1,1,,
+414285001,Allergy to food,762952008,Peanut (substance),1,1,1,Wheal (finding) (1);Dyspnea (finding) (1);Eruption of skin (disorder) (1);Allergic angioedema (disorder) (1);Cough (finding) (1),Moderate (1)
+416098002,Allergy to drug,10831,Sulfamethoxazole / Trimethoprim,1,1,1,Wheal (finding) (1);Eruption of skin (disorder) (1),Moderate (1)
+59037007,Intolerance to drug,29046,Lisinopril,1,1,1,Dyspnea (finding) (1);Cough (finding) (1),Moderate (1)
