@@ -2,8 +2,8 @@ condition_codes,label,nutrient,op,daily_value,unit,mode,source,version,note
 *,default,sodium_mg,max,2000,mg,filter,WHO 2012,v1,
 *,default,sugar_pct_kcal,max,10,%,warn,WHO 2015,v1,WHO limits free sugars; the data has total sugars only (sugars_g); warn only
 59621000,Essential hypertension,sodium_mg,max,2300,mg,filter,DASH/NHLBI,v1,overridden by the default 2000 mg; kept so the evidence cites DASH
-59621000,Essential hypertension,sat_fat_pct_kcal,max,6,%,filter,DASH/NHLBI,v1,
-44054006;90781000119102;157141000119108;368581000119106,Diabetes mellitus type 2,fiber_per_1000kcal,min,14,g,filter,ADA SoC 2026 §5,v1,T2D and its complications coded "due to type 2 diabetes mellitus"
+59621000,Essential hypertension,sat_fat_pct_kcal,max,6,%,soft,DASH/NHLBI,v2,soft (ADR-0007): as a filter it leaves 17.2% of Recipes (< 50%); ranking + warning
+44054006;90781000119102;157141000119108;368581000119106,Diabetes mellitus type 2,fiber_per_1000kcal,min,14,g,soft,ADA SoC 2026 §5,v2,"soft (ADR-0007): as a filter it leaves 23.2% of Recipes (< 50%); ranking + warning. Codes: T2D and complications ""due to type 2 diabetes mellitus"""
 44054006;90781000119102;157141000119108;368581000119106,Diabetes mellitus type 2,sodium_mg,max,2300,mg,filter,ADA,v1,overridden by the default 2000 mg; kept so the evidence cites ADA
 431855005;431856006;433144002;431857002;127013003,Chronic kidney disease,sodium_mg,max,2000,mg,filter,KDIGO 2024,v1,CKD stages 1-4 and disorder of kidney due to diabetes
 433144002;431857002,CKD stage 3/4,protein_g_per_kg,max,0.8,g/kg,filter,KDIGO 2024,v1,stages 3-4 only; warn when no weight within 2 years of the record date

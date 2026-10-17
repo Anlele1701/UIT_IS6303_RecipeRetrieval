@@ -44,3 +44,17 @@ def test_loader_reads_the_draft_and_refuses_unknown_nutrients(tmp_path):
         encoding="utf-8")
     with pytest.raises(rules.RuleError, match="unknown nutrient"):
         rules.load_condition_nutrient(tmp_path)
+
+
+def test_every_hard_nutrient_rule_leaves_at_least_half_of_the_recipes():
+    """ADR-0007: a rule leaving under 50% of Recipes is soft. Reads the measured pass rates."""
+    import json
+    from pathlib import Path
+    path = Path(__file__).resolve().parents[2] / "eval" / "patient_corpus.json"
+    if not path.exists():
+        pytest.skip("patient_corpus.json not built")
+    measured = json.loads(path.read_text(encoding="utf-8"))["nutrient_rule_pass"]["per_rule"]
+    for r in measured:
+        if r["mode"] == "filter" and r.get("pass_rate_known") is not None:
+            assert r["pass_rate_known"] >= 0.5, r
+    assert any(r["mode"] == "soft" and r["pass_rate_known"] < 0.5 for r in measured)

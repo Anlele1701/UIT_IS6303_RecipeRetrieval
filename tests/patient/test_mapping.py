@@ -76,13 +76,15 @@ def test_strictest_limit_wins_and_the_overridden_rule_stays_in_evidence(rs):
     assert p.nutrient_limits["sodium_mg"] == ("max", pytest.approx(2000 / 3))  # default 2000 mg beats DASH 2300 mg
     sources = [e.text for e in p.evidence["nutrient:sodium_mg"]]
     assert any("WHO" in s for s in sources) and any("DASH" in s for s in sources)
-    assert p.nutrient_limits["sat_fat_pct_kcal"] == ("max", 6.0)
+    assert "sat_fat_pct_kcal" not in p.nutrient_limits  # soft since v2 (ADR-0007): ranking + warning
+    assert p.nutrient_soft["sat_fat_pct_kcal"] == ("max", 6.0)
+    assert any("chất béo bão hòa" in w for w in p.warnings) and "soft:sat_fat_pct_kcal" in p.evidence
 
 
 def test_t2d_complication_triggers_the_fiber_rule(rs):
     p = build_profile(tree(problems=[problem("90781000119102", "Microalbuminuria due to type 2 diabetes mellitus (disorder)")]),
                       rs, TODAY)
-    assert p.nutrient_limits["fiber_per_1000kcal"] == ("min", 14.0)
+    assert p.nutrient_soft["fiber_per_1000kcal"] == ("min", 14.0) and "fiber_per_1000kcal" not in p.nutrient_limits
 
 
 def test_ckd_protein_uses_a_recent_weight(rs):
@@ -138,3 +140,11 @@ def test_round_trip_through_json(rs):
     p = build_profile(build_tree(record), rs, record.record_date)
     from api.patient.models import PatientProfile
     assert PatientProfile.from_dict(p.to_dict()) == p
+
+
+def test_soft_and_hard_limits_on_one_nutrient_are_kept_apart(rs):
+    hard = rules.NutrientRule(("1",), "A", "sodium_mg", "max", 2300, "mg", "filter", "s1")
+    pref = rules.NutrientRule(("1",), "A", "sodium_mg", "max", 1500, "mg", "soft", "s2")
+    p = build_profile(tree(problems=[problem("1", "A")]), replace(rs, nutrient=[hard, pref]), TODAY)
+    assert p.nutrient_limits["sodium_mg"] == ("max", pytest.approx(2300 / 3))
+    assert p.nutrient_soft["sodium_mg"] == ("max", pytest.approx(500))

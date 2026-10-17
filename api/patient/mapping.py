@@ -3,7 +3,9 @@
 - Food allergies (kind 414285001) -> allergen groups and extra ingredients (allergy_substance.csv); a food
   substance with no rule is `unmapped`, never silently dropped.
 - Conditions in problems.active, plus the rules for every patient ("*") -> per-serving nutrient limits
-  (condition_nutrient.csv, api/patient/nutrition.py). Per nutrient the strictest limit wins; the evidence
+  (condition_nutrient.csv, api/patient/nutrition.py). `filter` rules are hard limits; `soft` rules (those that
+  would leave under half of the Recipes, ADR-0007) become preferences for ranking plus a warning. Per nutrient
+  and per kind the strictest limit wins; the evidence
   keeps every rule that named it (an overridden one too). Opposite rules on one nutrient -> no filter, a warning.
   A per-kg limit needs a weight measured within WEIGHT_MAX_AGE_DAYS of the record date, else it is a warning.
 - Medications in meds.active -> excluded ingredients or warnings (drug_food.csv, substring of the RxNorm name).
@@ -26,6 +28,10 @@ WARN_TEXT = {  # Vietnamese warnings for rules in warn mode (shown to the user, 
     "sugar_pct_kcal": "Nên ưu tiên món ít đường (đường dưới 10% năng lượng, WHO).",
     "potassium_mg": "Lưu ý lượng kali trong món (bệnh thận mạn).",
     "phosphorus_mg": "Lưu ý lượng phospho trong món (bệnh thận mạn); dữ liệu công thức không có số liệu phospho.",
+}
+SOFT_TEXT = {  # shown once per soft rule; M5 ranks Recipes that meet it first (MV3)
+    "sat_fat_pct_kcal": "Ưu tiên món ít chất béo bão hòa (dưới 6% năng lượng, DASH).",
+    "fiber_per_1000kcal": "Ưu tiên món nhiều chất xơ (từ 14 g mỗi 1.000 kcal, ADA).",
 }
 NUTRIENT_VI = {"sodium_mg": "natri", "sat_fat_pct_kcal": "chất béo bão hòa", "fiber_per_1000kcal": "chất xơ",
                "protein_g_per_kg": "đạm", "sugar_pct_kcal": "đường", "potassium_mg": "kali", "phosphorus_mg": "phospho"}
@@ -58,6 +64,7 @@ def build_profile(nodes: list[PatientNode], rs: RuleSet, record_date: date, mode
     pid = patient_id or root.removeprefix("patient:")
     allergens, ingredients = set(), set()
     limits: dict[str, tuple[str, float]] = {}
+    soft: dict[str, tuple[str, float]] = {}
     warnings: list[str] = []
     unmapped: list[str] = []
     evidence: dict[str, list[Evidence]] = defaultdict(list)
@@ -104,33 +111,16 @@ def build_profile(nodes: list[PatientNode], rs: RuleSet, record_date: date, mode
     for r, ev in triggered:
         by_nutrient[r.nutrient].append((r, ev))
     for nutrient, group in by_nutrient.items():
-        filters = [(r, ev) for r, ev in group if r.mode == "filter"]
         for r, ev in group:
             if r.mode == "warn" and WARN_TEXT.get(nutrient) not in warnings:
                 warnings.append(WARN_TEXT.get(nutrient, f"Lưu ý {NUTRIENT_VI.get(nutrient, nutrient)}."))
                 evidence[f"warning:{nutrient}"].append(ev)
-        if not filters:
-            continue
-        if len({r.op for r, _ in filters}) > 1:  # spec 4.4.4: opposite rules -> no filter, a warning
-            warnings.append(f"Các khuyến nghị về {NUTRIENT_VI.get(nutrient, nutrient)} trái chiều nhau; "
-                            "không lọc theo chất này.")
-            evidence[f"warning:{nutrient}"].extend(ev for _, ev in filters)
-            continue
-        if nutrient == "protein_g_per_kg" and weight is None:
-            why = "cân nặng đo đã quá 2 năm" if weight_fact else "hồ sơ không có cân nặng"
-            warnings.append(f"Chưa áp ngưỡng đạm theo cân nặng ({why}); nên chọn món ít đạm.")
-            evidence["warning:protein_g_per_kg"].extend(ev for _, ev in filters)
-            continue
-        op = filters[0][0].op
-        values = [nutrition.per_serving_limit(r, weight) for r, _ in filters]
-        limit = min(values) if op == "max" else max(values)
-        column = NUTRIENT_COLUMN[nutrient]
-        limits[column] = (op, limit)  # exact: a rounded limit lets borderline Recipes through (round for display only)
-        evidence[f"nutrient:{column}"].extend(ev for _, ev in filters)
-        if nutrient == "protein_g_per_kg" and weight_fact:
-            evidence[f"nutrient:{column}"].append(
-                Evidence("vitals.latest", weight_fact.get("entry_id") or "",
-                         f"Cân nặng {weight_fact.get('value')} {weight_fact.get('unit') or ''} ({weight_fact.get('date')})"))
+        for kind, target, key in (("filter", limits, "nutrient"), ("soft", soft, "soft")):
+            rows = [(r, ev) for r, ev in group if r.mode == kind]
+            if rows:
+                _limit(nutrient, rows, target, key, weight, weight_fact, warnings, evidence)
+                if kind == "soft" and SOFT_TEXT.get(nutrient) and SOFT_TEXT[nutrient] not in warnings:
+                    warnings.append(SOFT_TEXT[nutrient])
 
     # ---- medications ----------------------------------------------------------------------------------------
     for f in _facts(nodes, "meds.active"):
@@ -148,4 +138,27 @@ def build_profile(nodes: list[PatientNode], rs: RuleSet, record_date: date, mode
                 evidence[f"warning:drug:{d.match}"].append(ev)
 
     return PatientProfile(pid, frozenset(allergens), frozenset(ingredients), limits, warnings, unmapped,
-                          dict(evidence), rs.version, mode)
+                          dict(evidence), rs.version, mode, soft)
+
+
+def _limit(nutrient, rows, target, key, weight, weight_fact, warnings, evidence):
+    """The strictest limit of `rows` (one nutrient, one kind) into `target`, with its evidence."""
+    if len({r.op for r, _ in rows}) > 1:  # spec 4.4.4: opposite rules -> no limit, a warning
+        warnings.append(f"Các khuyến nghị về {NUTRIENT_VI.get(nutrient, nutrient)} trái chiều nhau; "
+                        "không lọc theo chất này.")
+        evidence[f"warning:{nutrient}"].extend(ev for _, ev in rows)
+        return
+    if nutrient == "protein_g_per_kg" and weight is None:
+        why = "cân nặng đo đã quá 2 năm" if weight_fact else "hồ sơ không có cân nặng"
+        warnings.append(f"Chưa áp ngưỡng đạm theo cân nặng ({why}); nên chọn món ít đạm.")
+        evidence["warning:protein_g_per_kg"].extend(ev for _, ev in rows)
+        return
+    op = rows[0][0].op
+    values = [nutrition.per_serving_limit(r, weight) for r, _ in rows]
+    column = NUTRIENT_COLUMN[nutrient]
+    target[column] = (op, min(values) if op == "max" else max(values))  # exact: never rounded (ADR-0007)
+    evidence[f"{key}:{column}"].extend(ev for _, ev in rows)
+    if nutrient == "protein_g_per_kg" and weight_fact:
+        evidence[f"{key}:{column}"].append(
+            Evidence("vitals.latest", weight_fact.get("entry_id") or "",
+                     f"Cân nặng {weight_fact.get('value')} {weight_fact.get('unit') or ''} ({weight_fact.get('date')})"))

@@ -80,7 +80,7 @@ class NutrientRule:
     op: str | None  # max | min | None (warn only)
     daily_value: float | None
     unit: str
-    mode: str  # filter | warn | unmapped
+    mode: str  # filter (hard, in the index) | soft (ranking + warning, ADR-0007) | warn | unmapped
     source: str
 
 
@@ -94,10 +94,10 @@ def load_condition_nutrient(folder: Path = RULES_DIR) -> list[NutrientRule]:
             continue
         if r["nutrient"] not in NUTRIENTS:
             raise RuleError(f"condition_nutrient.csv: unknown nutrient {r['nutrient']!r}")
-        if r["op"] not in {"max", "min", ""} or r["mode"] not in {"filter", "warn"}:
+        if r["op"] not in {"max", "min", ""} or r["mode"] not in {"filter", "soft", "warn"}:
             raise RuleError(f"condition_nutrient.csv: bad op/mode in {r}")
-        if r["mode"] == "filter" and (not r["op"] or not r["daily_value"]):
-            raise RuleError(f"condition_nutrient.csv: a filter rule needs op and value: {r}")
+        if r["mode"] in {"filter", "soft"} and (not r["op"] or not r["daily_value"]):
+            raise RuleError(f"condition_nutrient.csv: a {r['mode']} rule needs op and value: {r}")
         out.append(NutrientRule(tuple(c.strip() for c in r["condition_codes"].split(";")), r["label"], r["nutrient"],
                                 r["op"] or None, float(r["daily_value"]) if r["daily_value"] else None, r["unit"],
                                 r["mode"], r["source"]))
@@ -171,7 +171,7 @@ def load_rules(folder: Path = RULES_DIR) -> RuleSet:
     log = []
     nutrient = []
     for n in load_condition_nutrient(folder):
-        if n.mode == "filter" and NUTRIENT_COLUMN.get(n.nutrient) is None:  # spec 4.4.5
+        if n.mode in {"filter", "soft"} and NUTRIENT_COLUMN.get(n.nutrient) is None:  # spec 4.4.5
             log.append(f"{n.label} {n.nutrient}: no column in recipe_nutrition, filter -> warn")
             n = NutrientRule(n.conditions, n.label, n.nutrient, n.op, n.daily_value, n.unit, "warn", n.source)
         nutrient.append(n)
@@ -196,6 +196,6 @@ def validate_against_db(rs: RuleSet, conn) -> None:
         raise RuleError(f"ingredients not in the ingredient table: {missing}")
     cols = {r[0] for r in conn.execute(
         "SELECT column_name FROM information_schema.columns WHERE table_name = 'chunk' AND table_schema = 'public'")}
-    absent = sorted({NUTRIENT_COLUMN[n.nutrient] for n in rs.nutrient if n.mode == "filter"} - cols)
+    absent = sorted({NUTRIENT_COLUMN[n.nutrient] for n in rs.nutrient if n.mode in {"filter", "soft"}} - cols)
     if absent:
         raise RuleError(f"filter columns missing on chunk (migration 006?): {absent}")

@@ -122,11 +122,13 @@ class PatientProfile:
     evidence: dict[str, list[Evidence]]  # "allergen:wheat", "ingredient:grapefruit", "nutrient:sodium_mg", "warning:..."
     ruleset_version: str
     mode: str  # direct | vectorless | vectorless_nofixed | vector
+    nutrient_soft: dict[str, tuple[str, float]] = field(default_factory=dict)  # preferred, not filtered (ADR-0007)
 
     def to_dict(self) -> dict:
         return {"patient_id": self.patient_id, "allergens_exclude": sorted(self.allergens_exclude),
                 "ingredients_exclude": sorted(self.ingredients_exclude),
                 "nutrient_limits": {k: list(v) for k, v in sorted(self.nutrient_limits.items())},
+                "nutrient_soft": {k: list(v) for k, v in sorted(self.nutrient_soft.items())},
                 "warnings": list(self.warnings), "unmapped": list(self.unmapped),
                 "evidence": {k: [asdict(e) for e in v] for k, v in sorted(self.evidence.items())},
                 "ruleset_version": self.ruleset_version, "mode": self.mode}
@@ -136,4 +138,5 @@ class PatientProfile:
         return cls(d["patient_id"], frozenset(d["allergens_exclude"]), frozenset(d["ingredients_exclude"]),
                    {k: (v[0], float(v[1])) for k, v in d["nutrient_limits"].items()}, list(d["warnings"]),
                    list(d["unmapped"]), {k: [Evidence(**e) for e in v] for k, v in d["evidence"].items()},
-                   d["ruleset_version"], d["mode"])
+                   d["ruleset_version"], d["mode"],
+                   {k: (v[0], float(v[1])) for k, v in d.get("nutrient_soft", {}).items()})
