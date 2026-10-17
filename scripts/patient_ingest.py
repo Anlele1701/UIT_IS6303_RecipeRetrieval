@@ -169,12 +169,88 @@ def cmd_tree(conn, mode: str, source: str | None) -> None:
 
 # ---- profiles (V3) ---------------------------------------------------------------------------------------------
 
+SOFT_BELOW = 0.5  # a nutrient rule leaving under this share of Recipes is soft: ranking + warning (Thy, ADR-0007)
+# chunk column -> the same value over recipe_nutrition AS n
+COLUMN_SQL = {"sodium_mg": nutrition.SQL["sodium_mg"], "sat_fat_pct_kcal": nutrition.SQL["sat_fat_pct_kcal"],
+              "fiber_per_1000kcal": nutrition.SQL["fiber_per_1000kcal"], "sugar_pct_kcal": nutrition.SQL["sugar_pct_kcal"],
+              "protein_g": "n.protein_g", "potassium_mg": nutrition.SQL["potassium_mg"]}
+RECIPES_SQL = "FROM recipe r LEFT JOIN recipe_tag t ON t.recipe_id = r.id LEFT JOIN recipe_nutrition n ON n.recipe_id = r.id"
+
+
+def _rate(conn, conds: list[str], params: list) -> dict:
+    """pass / fail / unknown over every Recipe for conditions joined with AND (null = an input is missing)."""
+    cond = " AND ".join(conds) or "true"
+    passed, failed, unknown, total = conn.execute(
+        f"""SELECT count(*) FILTER (WHERE ({cond}) IS TRUE), count(*) FILTER (WHERE ({cond}) IS FALSE),
+                   count(*) FILTER (WHERE ({cond}) IS NULL), count(*) {RECIPES_SQL}""", [*params, *params, *params]
+    ).fetchone()  # the conditions appear once per FILTER clause
+    known = passed + failed
+    return {"pass": passed, "fail": failed, "unknown": unknown,
+            "pass_rate_known": round(passed / known, 4) if known else None,
+            "pass_rate_unknown_dropped": round(passed / total, 4), "pass_rate_unknown_kept": round((passed + unknown) / total, 4)}
+
+
+def _hard_conds(p) -> tuple[list[str], list]:
+    conds, params = [], []
+    if p.allergens_exclude:
+        conds.append("NOT (coalesce(t.allergens, '{}') && %s::text[])")
+        params.append(sorted(p.allergens_exclude))
+    if p.ingredients_exclude:
+        conds.append("NOT (coalesce(t.ingredients_norm, '{}') && %s::text[])")
+        params.append(sorted(p.ingredients_exclude))
+    return conds, params
+
+
+def _limit_conds(limits: dict) -> list[str]:
+    return [f"({COLUMN_SQL[c]}) {'<=' if op == 'max' else '>='} {v!r}" for c, (op, v) in sorted(limits.items())]
+
+
+def rule_pass_rates(conn, rs) -> dict:
+    """Share of all Recipes each patient-derived rule lets through on its own."""
+    nutrient = nutrient_pass(conn)["per_rule"]
+    for r in nutrient:
+        rate = r.get("pass_rate_known")
+        r["below_soft_threshold"] = rate is not None and rate < SOFT_BELOW
+    allergen = {a: _rate(conn, ["NOT (coalesce(t.allergens, '{}') && %s::text[])"], [[a]])
+                for a in rules.ALLERGENS}
+    groups = {f"allergy {a.display}: extra ingredients": a.extra_ingredients for a in rs.allergy.values() if a.extra_ingredients}
+    groups |= {f"drug {d.match}: {d.action}": d.targets for d in rs.drug if d.action == "exclude"}
+    ingredient = {k: _rate(conn, ["NOT (coalesce(t.ingredients_norm, '{}') && %s::text[])"], [sorted(v)])
+                  for k, v in groups.items()}
+    return {"nutrient": nutrient, "allergen_group": allergen, "excluded_ingredients": ingredient,
+            "soft_threshold": SOFT_BELOW,
+            "note": "allergen and ingredient exclusions stay hard whatever their pass rate: they are safety rules"}
+
+
+def patient_pass(conn, p) -> dict:
+    """Share of all Recipes one patient's combined rules let through: hard ones, then hard plus soft."""
+    conds, params = _hard_conds(p)
+    hard = _rate(conn, conds + _limit_conds(p.nutrient_limits), params)
+    with_soft = _rate(conn, conds + _limit_conds({**p.nutrient_limits, **p.nutrient_soft}), params)
+    return {"patient_id": p.patient_id, "allergens_exclude": sorted(p.allergens_exclude),
+            "ingredients_excluded": len(p.ingredients_exclude),
+            "nutrient_limits": {k: [op, round(v, 2)] for k, (op, v) in sorted(p.nutrient_limits.items())},
+            "nutrient_soft": {k: [op, round(v, 2)] for k, (op, v) in sorted(p.nutrient_soft.items())},
+            "hard": hard, "hard_and_soft": with_soft}
+
+
+def _spread(values: list[float]) -> dict:
+    v = sorted(values)
+    if not v:
+        return {}
+    q = lambda f: v[min(len(v) - 1, int(f * len(v)))]  # noqa: E731
+    return {"min": v[0], "p10": q(0.1), "median": q(0.5), "max": v[-1],
+            "below_50pct": sum(x < 0.5 for x in v), "below_25pct": sum(x < 0.25 for x in v)}
+
+
 def cmd_profiles(conn, mode: str = "vectorless") -> dict:
-    """Build (or reuse) every living patient's PatientProfile; write counts only to eval/patient_profiles.json."""
+    """Build (or reuse) every living patient's PatientProfile; write to eval/patient_profiles.json the counts, each
+    rule's pass rate over all Recipes, and each patient's combined pass rate (hard rules, then hard plus soft)."""
     rs = rules.load_rules()
     rules.validate_against_db(rs, conn)
     pids = [r[0] for r in conn.execute("SELECT patient_id FROM patient WHERE NOT deceased ORDER BY patient_id")]
-    allergen, ingredient, limit, warning, unmapped = (collections.Counter() for _ in range(5))
+    allergen, ingredient, limit, soft, warning, unmapped = (collections.Counter() for _ in range(6))
+    per_patient = []
     n_any = 0
     for pid in pids:
         p = profile_store.load_or_build(conn, pid, rs, mode)
@@ -184,14 +260,23 @@ def cmd_profiles(conn, mode: str = "vectorless") -> dict:
         warning.update(p.warnings)
         unmapped.update(p.unmapped)
         n_any += bool(p.allergens_exclude or p.ingredients_exclude or set(p.nutrient_limits) != {"sodium_mg"})
+        soft.update(f"{k} {op} {v:g}" for k, (op, v) in p.nutrient_soft.items())
+        per_patient.append(patient_pass(conn, p))
     out = {"ran_at": datetime.now().isoformat(timespec="seconds"), "git_commit": git_commit(), "seed": SEED,
            "mode": mode, "ruleset_version": rs.version, "rules_log": list(rs.log),
            "patients_alive": len(pids), "patients_with_more_than_the_default": n_any,
            "patients_by_allergen": dict(allergen.most_common()),
            "patients_by_excluded_ingredient": dict(ingredient.most_common()),
            "patients_by_nutrient_limit": dict(limit.most_common()),
+           "patients_by_soft_preference": dict(soft.most_common()),
            "patients_by_warning": dict(warning.most_common()), "unmapped": dict(unmapped.most_common()),
-           "note": "counts of living patients; no patient id is written here"}
+           "rule_pass_rates": rule_pass_rates(conn, rs),
+           "patient_pass_spread": {
+               "hard": _spread([x["hard"]["pass_rate_known"] for x in per_patient]),
+               "hard_and_soft": _spread([x["hard_and_soft"]["pass_rate_known"] for x in per_patient])},
+           "per_patient": per_patient,
+           "note": "pass rates are shares of all Recipes (known = among Recipes with the needed numbers); "
+                   "patient_id is the Synthea uuid, no name or other identity"}
     OUT_PROFILES.write_text(json.dumps(out, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"profiles of {len(pids)} living patients (ruleset {rs.version}) -> {rel(OUT_PROFILES)}")
     return out
@@ -243,10 +328,10 @@ def nutrient_pass(conn) -> dict:
             lim = nutrition.per_serving_limit(r)
             per_rule.append({**row, "per_serving_limit": round(lim, 2), **_count(conn, _cond(r, lim))})
 
-    def strictest(group) -> dict[str, tuple]:
+    def strictest(group, modes=("filter",)) -> dict[str, tuple]:
         best: dict[str, tuple] = {}
         for r in group:
-            if r.mode != "filter" or r.nutrient not in nutrition.SQL:
+            if r.mode not in modes or r.nutrient not in nutrition.SQL:
                 continue
             lim = nutrition.per_serving_limit(r, COMBINED_WEIGHT_KG)
             old = best.get(r.nutrient)
@@ -260,16 +345,20 @@ def nutrient_pass(conn) -> dict:
         group = default + [r for r in rules_ if r.label == label and r.conditions != ("*",)]
         best = strictest(group)
         cond = " AND ".join(_cond(r, lim) for r, lim in best.values()) or "true"
+        both = strictest(group, ("filter", "soft"))
+        cond_soft = " AND ".join(_cond(r, lim) for r, lim in both.values()) or "true"
         by_condition.append({"label": label, "conditions": sorted({c for r in group for c in r.conditions}),
                              "filters": [{"nutrient": n, "op": r.op, "per_serving_limit": round(lim, 2), "from": r.label}
                                          for n, (r, lim) in best.items()],
+                             "soft": sorted({r.nutrient for r in group if r.mode == "soft"}),
                              "warn_only": sorted({r.nutrient for r in group if r.mode == "warn"}),
-                             **_count(conn, cond)})
+                             **_count(conn, cond), "with_soft": _count(conn, cond_soft)})
     return {"per_meal_fraction": round(config.PER_MEAL_FRACTION, 4), "reference_weights_kg": REFERENCE_WEIGHTS_KG,
             "combined_weight_kg": COMBINED_WEIGHT_KG, "rules_file": "data/rules/condition_nutrient.csv",
             "rules_sha256": rules.sha256("condition_nutrient.csv"),
             "note": "per serving (recipe_nutrition); sugar_pct_kcal uses total sugars; filter rules combined with "
-                    "the strictest limit per nutrient; warn rules are not part of the combined pass rate",
+                    "the strictest limit per nutrient (with_soft: soft rules added as if they filtered); warn rules "
+                    "are not part of the combined pass rate",
             "per_rule": per_rule, "by_condition": by_condition}
 
 
@@ -394,15 +483,17 @@ def render_nutrient(p: dict) -> list[str]:
         L.append(f"| {r['label']} | {r['nutrient']} | {daily} | {str(r['per_serving_limit']).replace('.', ',')} | "
                  f"{r['mode']} | {_n(r['pass'])} | {_n(r['fail'])} | {_n(r['unknown'])} | {_pct(r['pass_rate_known'])} | "
                  f"{_pct(r['pass_rate_unknown_dropped'])} | {_pct(r['pass_rate_unknown_kept'])} |")
-    L += ["", f"Gộp theo bệnh: mọi luật `filter` của bệnh cộng luật mặc định, mỗi chất lấy ngưỡng chặt nhất; "
+    L += ["", f"Gộp theo bệnh: mọi luật `filter` (cứng) của bệnh cộng luật mặc định, mỗi chất lấy ngưỡng chặt nhất; "
+          "luật `soft` không lọc, chỉ xếp hạng và cảnh báo (cột cuối: tỉ lệ nếu luật mềm cũng lọc); "
           f"luật protein theo kg tính với {p['combined_weight_kg']} kg. Luật `warn` không tính vào tỉ lệ gộp.", "",
-          "| Bệnh | Bộ lọc áp dụng | Qua | Không rõ | Tỉ lệ qua | Bỏ không rõ | Giữ không rõ |",
-          "|---|---|---:|---:|---:|---:|---:|"]
+          "| Bệnh | Bộ lọc cứng | Luật mềm | Qua | Không rõ | Tỉ lệ qua | Bỏ không rõ | Giữ không rõ | Nếu luật mềm cũng lọc |",
+          "|---|---|---|---:|---:|---:|---:|---:|---:|"]
     for b in p["by_condition"]:
         filters = "; ".join(f"{f['nutrient']} {f['op']} {str(f['per_serving_limit']).replace('.', ',')} ({f['from']})"
                             for f in b["filters"])
-        L.append(f"| {b['label']} | {filters} | {_n(b['pass'])} | {_n(b['unknown'])} | {_pct(b['pass_rate_known'])} | "
-                 f"{_pct(b['pass_rate_unknown_dropped'])} | {_pct(b['pass_rate_unknown_kept'])} |")
+        L.append(f"| {b['label']} | {filters} | {', '.join(b.get('soft', [])) or '–'} | {_n(b['pass'])} | "
+                 f"{_n(b['unknown'])} | {_pct(b['pass_rate_known'])} | {_pct(b['pass_rate_unknown_dropped'])} | "
+                 f"{_pct(b['pass_rate_unknown_kept'])} | {_pct(b['with_soft']['pass_rate_known'])} |")
     return L
 
 

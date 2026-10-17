@@ -1,12 +1,12 @@
 {
-  "ran_at": "2026-10-17T17:22:21",
-  "git_commit": "d01f43b",
+  "ran_at": "2026-10-17T17:31:44",
+  "git_commit": "70c17ee",
   "seed": 42,
   "mode": "vectorless",
-  "ruleset_version": "6fc4e3a7791e",
+  "ruleset_version": "d0d5ba48e03d",
   "rules_log": [],
   "patients_alive": 100,
-  "patients_with_more_than_the_default": 37,
+  "patients_with_more_than_the_default": 29,
   "patients_by_allergen": {
     "crustacean_shellfish": 6,
     "egg": 4,
@@ -18,37 +18,41 @@
   },
   "patients_by_excluded_ingredient": {
     "grapefruit": 17,
-    "squid": 6,
-    "abalone": 6,
-    "clam": 6,
-    "baby clam": 6,
-    "conch": 6,
-    "calamari": 6,
-    "littleneck clam": 6,
-    "octopus": 6,
-    "snail": 6,
-    "escargot": 6,
-    "oyster": 6,
-    "clam juice": 6,
-    "mussel": 6,
-    "shucked oyster": 6,
-    "clamato": 6,
     "scallop": 6,
-    "clam in shell": 6,
+    "conch": 6,
+    "abalone": 6,
+    "bay scallop": 6,
+    "littleneck clam": 6,
+    "oyster": 6,
+    "calamari": 6,
+    "escargot": 6,
+    "clam": 6,
     "oyster sauce": 6,
+    "squid": 6,
+    "baby clam": 6,
     "sea scallop": 6,
-    "bay scallop": 6
+    "clamato": 6,
+    "octopus": 6,
+    "clam juice": 6,
+    "shucked oyster": 6,
+    "snail": 6,
+    "clam in shell": 6,
+    "mussel": 6
   },
   "patients_by_nutrient_limit": {
     "sodium_mg max 666.667": 100,
-    "sat_fat_pct_kcal max 6": 18,
-    "fiber_per_1000kcal min 14": 5,
     "protein_g max 28.7733": 1,
     "protein_g max 20.6667": 1,
     "protein_g max 20.8": 1
   },
+  "patients_by_soft_preference": {
+    "sat_fat_pct_kcal max 6": 18,
+    "fiber_per_1000kcal min 14": 5
+  },
   "patients_by_warning": {
     "Nên ưu tiên món ít đường (đường dưới 10% năng lượng, WHO).": 100,
+    "Ưu tiên món ít chất béo bão hòa (dưới 6% năng lượng, DASH).": 18,
+    "Ưu tiên món nhiều chất xơ (từ 14 g mỗi 1.000 kcal, ADA).": 5,
     "Lưu ý lượng kali trong món (bệnh thận mạn).": 3,
     "Lưu ý lượng phospho trong món (bệnh thận mạn); dữ liệu công thức không có số liệu phospho.": 3,
     "Giữ lượng vitamin K ổn định (rau cải xoăn, rau bina, bông cải xanh…)": 1
@@ -56,5 +60,3356 @@
   "unmapped": {
     "condition:80394007 Hyperglycemia": 2
   },
-  "note": "counts of living patients; no patient id is written here"
+  "rule_pass_rates": {
+    "nutrient": [
+      {
+        "label": "default",
+        "conditions": [
+          "*"
+        ],
+        "nutrient": "sodium_mg",
+        "op": "max",
+        "daily_value": 2000.0,
+        "unit": "mg",
+        "mode": "filter",
+        "source": "WHO 2012",
+        "per_serving_limit": 666.67,
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69,
+        "below_soft_threshold": false
+      },
+      {
+        "label": "default",
+        "conditions": [
+          "*"
+        ],
+        "nutrient": "sugar_pct_kcal",
+        "op": "max",
+        "daily_value": 10.0,
+        "unit": "%",
+        "mode": "warn",
+        "source": "WHO 2015",
+        "per_serving_limit": 10.0,
+        "pass": 18142,
+        "fail": 13976,
+        "unknown": 601,
+        "recipes": 32719,
+        "pass_rate_known": 0.5649,
+        "pass_rate_unknown_dropped": 0.5545,
+        "pass_rate_unknown_kept": 0.5728,
+        "below_soft_threshold": false
+      },
+      {
+        "label": "Essential hypertension",
+        "conditions": [
+          "59621000"
+        ],
+        "nutrient": "sodium_mg",
+        "op": "max",
+        "daily_value": 2300.0,
+        "unit": "mg",
+        "mode": "filter",
+        "source": "DASH/NHLBI",
+        "per_serving_limit": 766.67,
+        "pass": 24027,
+        "fail": 8579,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.7369,
+        "pass_rate_unknown_dropped": 0.7343,
+        "pass_rate_unknown_kept": 0.7378,
+        "below_soft_threshold": false
+      },
+      {
+        "label": "Essential hypertension",
+        "conditions": [
+          "59621000"
+        ],
+        "nutrient": "sat_fat_pct_kcal",
+        "op": "max",
+        "daily_value": 6.0,
+        "unit": "%",
+        "mode": "soft",
+        "source": "DASH/NHLBI",
+        "per_serving_limit": 6.0,
+        "pass": 5435,
+        "fail": 26207,
+        "unknown": 1077,
+        "recipes": 32719,
+        "pass_rate_known": 0.1718,
+        "pass_rate_unknown_dropped": 0.1661,
+        "pass_rate_unknown_kept": 0.199,
+        "below_soft_threshold": true
+      },
+      {
+        "label": "Diabetes mellitus type 2",
+        "conditions": [
+          "44054006",
+          "90781000119102",
+          "157141000119108",
+          "368581000119106"
+        ],
+        "nutrient": "fiber_per_1000kcal",
+        "op": "min",
+        "daily_value": 14.0,
+        "unit": "g",
+        "mode": "soft",
+        "source": "ADA SoC 2026 §5",
+        "per_serving_limit": 14.0,
+        "pass": 7297,
+        "fail": 24210,
+        "unknown": 1212,
+        "recipes": 32719,
+        "pass_rate_known": 0.2316,
+        "pass_rate_unknown_dropped": 0.223,
+        "pass_rate_unknown_kept": 0.2601,
+        "below_soft_threshold": true
+      },
+      {
+        "label": "Diabetes mellitus type 2",
+        "conditions": [
+          "44054006",
+          "90781000119102",
+          "157141000119108",
+          "368581000119106"
+        ],
+        "nutrient": "sodium_mg",
+        "op": "max",
+        "daily_value": 2300.0,
+        "unit": "mg",
+        "mode": "filter",
+        "source": "ADA",
+        "per_serving_limit": 766.67,
+        "pass": 24027,
+        "fail": 8579,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.7369,
+        "pass_rate_unknown_dropped": 0.7343,
+        "pass_rate_unknown_kept": 0.7378,
+        "below_soft_threshold": false
+      },
+      {
+        "label": "Chronic kidney disease",
+        "conditions": [
+          "431855005",
+          "431856006",
+          "433144002",
+          "431857002",
+          "127013003"
+        ],
+        "nutrient": "sodium_mg",
+        "op": "max",
+        "daily_value": 2000.0,
+        "unit": "mg",
+        "mode": "filter",
+        "source": "KDIGO 2024",
+        "per_serving_limit": 666.67,
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69,
+        "below_soft_threshold": false
+      },
+      {
+        "label": "CKD stage 3/4",
+        "conditions": [
+          "433144002",
+          "431857002"
+        ],
+        "nutrient": "protein_g_per_kg",
+        "op": "max",
+        "daily_value": 0.8,
+        "unit": "g/kg",
+        "mode": "filter",
+        "source": "KDIGO 2024",
+        "weight_kg": 60,
+        "per_serving_limit": 16.0,
+        "pass": 20634,
+        "fail": 11844,
+        "unknown": 241,
+        "recipes": 32719,
+        "pass_rate_known": 0.6353,
+        "pass_rate_unknown_dropped": 0.6306,
+        "pass_rate_unknown_kept": 0.638,
+        "below_soft_threshold": false
+      },
+      {
+        "label": "CKD stage 3/4",
+        "conditions": [
+          "433144002",
+          "431857002"
+        ],
+        "nutrient": "protein_g_per_kg",
+        "op": "max",
+        "daily_value": 0.8,
+        "unit": "g/kg",
+        "mode": "filter",
+        "source": "KDIGO 2024",
+        "weight_kg": 70,
+        "per_serving_limit": 18.67,
+        "pass": 22080,
+        "fail": 10398,
+        "unknown": 241,
+        "recipes": 32719,
+        "pass_rate_known": 0.6798,
+        "pass_rate_unknown_dropped": 0.6748,
+        "pass_rate_unknown_kept": 0.6822,
+        "below_soft_threshold": false
+      },
+      {
+        "label": "CKD stage 3/4",
+        "conditions": [
+          "433144002",
+          "431857002"
+        ],
+        "nutrient": "protein_g_per_kg",
+        "op": "max",
+        "daily_value": 0.8,
+        "unit": "g/kg",
+        "mode": "filter",
+        "source": "KDIGO 2024",
+        "weight_kg": 80,
+        "per_serving_limit": 21.33,
+        "pass": 23629,
+        "fail": 8849,
+        "unknown": 241,
+        "recipes": 32719,
+        "pass_rate_known": 0.7275,
+        "pass_rate_unknown_dropped": 0.7222,
+        "pass_rate_unknown_kept": 0.7295,
+        "below_soft_threshold": false
+      },
+      {
+        "label": "CKD stage 3/4",
+        "conditions": [
+          "433144002",
+          "431857002"
+        ],
+        "nutrient": "potassium_mg",
+        "op": null,
+        "daily_value": null,
+        "unit": "",
+        "mode": "warn",
+        "source": "KDIGO 2024",
+        "measured": "warn only, no limit",
+        "below_soft_threshold": false
+      },
+      {
+        "label": "CKD stage 3/4",
+        "conditions": [
+          "433144002",
+          "431857002"
+        ],
+        "nutrient": "phosphorus_mg",
+        "op": null,
+        "daily_value": null,
+        "unit": "",
+        "mode": "warn",
+        "source": "KDIGO 2024",
+        "measured": "warn only, no limit",
+        "below_soft_threshold": false
+      },
+      {
+        "label": "Hyperglycemia / diabetes due to cystic fibrosis",
+        "conditions": [
+          "80394007",
+          "427089005"
+        ],
+        "nutrient": "",
+        "op": null,
+        "daily_value": null,
+        "unit": "",
+        "mode": "unmapped",
+        "source": "",
+        "measured": "warn only, no limit",
+        "below_soft_threshold": false
+      }
+    ],
+    "allergen_group": {
+      "milk": {
+        "pass": 13129,
+        "fail": 19590,
+        "unknown": 0,
+        "pass_rate_known": 0.4013,
+        "pass_rate_unknown_dropped": 0.4013,
+        "pass_rate_unknown_kept": 0.4013
+      },
+      "egg": {
+        "pass": 21397,
+        "fail": 11322,
+        "unknown": 0,
+        "pass_rate_known": 0.654,
+        "pass_rate_unknown_dropped": 0.654,
+        "pass_rate_unknown_kept": 0.654
+      },
+      "fish": {
+        "pass": 28576,
+        "fail": 4143,
+        "unknown": 0,
+        "pass_rate_known": 0.8734,
+        "pass_rate_unknown_dropped": 0.8734,
+        "pass_rate_unknown_kept": 0.8734
+      },
+      "crustacean_shellfish": {
+        "pass": 30573,
+        "fail": 2146,
+        "unknown": 0,
+        "pass_rate_known": 0.9344,
+        "pass_rate_unknown_dropped": 0.9344,
+        "pass_rate_unknown_kept": 0.9344
+      },
+      "tree_nuts": {
+        "pass": 29213,
+        "fail": 3506,
+        "unknown": 0,
+        "pass_rate_known": 0.8928,
+        "pass_rate_unknown_dropped": 0.8928,
+        "pass_rate_unknown_kept": 0.8928
+      },
+      "peanut": {
+        "pass": 31843,
+        "fail": 876,
+        "unknown": 0,
+        "pass_rate_known": 0.9732,
+        "pass_rate_unknown_dropped": 0.9732,
+        "pass_rate_unknown_kept": 0.9732
+      },
+      "wheat": {
+        "pass": 15260,
+        "fail": 17459,
+        "unknown": 0,
+        "pass_rate_known": 0.4664,
+        "pass_rate_unknown_dropped": 0.4664,
+        "pass_rate_unknown_kept": 0.4664
+      },
+      "soy": {
+        "pass": 30450,
+        "fail": 2269,
+        "unknown": 0,
+        "pass_rate_known": 0.9307,
+        "pass_rate_unknown_dropped": 0.9307,
+        "pass_rate_unknown_kept": 0.9307
+      },
+      "sesame": {
+        "pass": 31541,
+        "fail": 1178,
+        "unknown": 0,
+        "pass_rate_known": 0.964,
+        "pass_rate_unknown_dropped": 0.964,
+        "pass_rate_unknown_kept": 0.964
+      }
+    },
+    "excluded_ingredients": {
+      "allergy Shellfish (substance): extra ingredients": {
+        "pass": 31960,
+        "fail": 759,
+        "unknown": 0,
+        "pass_rate_known": 0.9768,
+        "pass_rate_unknown_dropped": 0.9768,
+        "pass_rate_unknown_kept": 0.9768
+      },
+      "drug simvastatin: exclude": {
+        "pass": 32682,
+        "fail": 37,
+        "unknown": 0,
+        "pass_rate_known": 0.9989,
+        "pass_rate_unknown_dropped": 0.9989,
+        "pass_rate_unknown_kept": 0.9989
+      },
+      "drug atorvastatin: exclude": {
+        "pass": 32682,
+        "fail": 37,
+        "unknown": 0,
+        "pass_rate_known": 0.9989,
+        "pass_rate_unknown_dropped": 0.9989,
+        "pass_rate_unknown_kept": 0.9989
+      }
+    },
+    "soft_threshold": 0.5,
+    "note": "allergen and ingredient exclusions stay hard whatever their pass rate: they are safety rules"
+  },
+  "patient_pass_spread": {
+    "hard": {
+      "min": 0.1839,
+      "p10": 0.6469,
+      "median": 0.689,
+      "max": 0.689,
+      "below_50pct": 6,
+      "below_25pct": 2
+    },
+    "hard_and_soft": {
+      "min": 0.0552,
+      "p10": 0.1256,
+      "median": 0.689,
+      "max": 0.689,
+      "below_50pct": 25,
+      "below_25pct": 22
+    }
+  },
+  "per_patient": [
+    {
+      "patient_id": "00bcbfc6-c7b9-bd0e-3d95-071f9fba6321",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 3985,
+        "fail": 27734,
+        "unknown": 1000,
+        "pass_rate_known": 0.1256,
+        "pass_rate_unknown_dropped": 0.1218,
+        "pass_rate_unknown_kept": 0.1524
+      }
+    },
+    {
+      "patient_id": "029c95e2-d252-d8d3-3626-7f347182d6d7",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "06476266-59b1-ded7-4138-3c7543fd4981",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "09c573e2-a45d-aa5e-6a17-3c682155e6e3",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "0f3d04a2-f42e-1429-acef-0becd0a0fcea",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      }
+    },
+    {
+      "patient_id": "1426480f-ccc7-2393-40bd-f92ccf2b74b2",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 3982,
+        "fail": 27744,
+        "unknown": 993,
+        "pass_rate_known": 0.1255,
+        "pass_rate_unknown_dropped": 0.1217,
+        "pass_rate_unknown_kept": 0.1521
+      }
+    },
+    {
+      "patient_id": "197ec76f-0730-2587-9ff9-a0f60104a782",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "1d63466e-0cfd-eb12-77aa-d153393355e5",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      }
+    },
+    {
+      "patient_id": "1dabc422-e007-d5ee-791f-9e08a8fd9b6a",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "1e32a1a3-3638-cb8c-7253-ff98a97dc0fe",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "239b0c86-371a-3080-fcd9-8379b296bc9a",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "23da8e71-dfb9-9773-1bc1-7b5e31d085b5",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      }
+    },
+    {
+      "patient_id": "2e9a9dab-f5b6-8960-d3ce-7834bb5e7344",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "2fb99851-6f31-04a6-be96-6fef4663e208",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 3985,
+        "fail": 27734,
+        "unknown": 1000,
+        "pass_rate_known": 0.1256,
+        "pass_rate_unknown_dropped": 0.1218,
+        "pass_rate_unknown_kept": 0.1524
+      }
+    },
+    {
+      "patient_id": "3099d813-4f5c-fc43-31d8-7bba5dc84bed",
+      "allergens_exclude": [
+        "crustacean_shellfish"
+      ],
+      "ingredients_excluded": 20,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 21101,
+        "fail": 11519,
+        "unknown": 99,
+        "pass_rate_known": 0.6469,
+        "pass_rate_unknown_dropped": 0.6449,
+        "pass_rate_unknown_kept": 0.6479
+      },
+      "hard_and_soft": {
+        "pass": 21101,
+        "fail": 11519,
+        "unknown": 99,
+        "pass_rate_known": 0.6469,
+        "pass_rate_unknown_dropped": 0.6449,
+        "pass_rate_unknown_kept": 0.6479
+      }
+    },
+    {
+      "patient_id": "30ed72f3-240e-4973-a0b8-25369e1a9c1e",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "31f368d9-3fdc-a15f-ccdc-fafa74a860e9",
+      "allergens_exclude": [
+        "crustacean_shellfish"
+      ],
+      "ingredients_excluded": 20,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 21101,
+        "fail": 11519,
+        "unknown": 99,
+        "pass_rate_known": 0.6469,
+        "pass_rate_unknown_dropped": 0.6449,
+        "pass_rate_unknown_kept": 0.6479
+      },
+      "hard_and_soft": {
+        "pass": 21101,
+        "fail": 11519,
+        "unknown": 99,
+        "pass_rate_known": 0.6469,
+        "pass_rate_unknown_dropped": 0.6449,
+        "pass_rate_unknown_kept": 0.6479
+      }
+    },
+    {
+      "patient_id": "3314e296-2326-2826-271d-a7be5b896db9",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "3368f8e7-5e00-7794-1e39-f65cb954d43d",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 3985,
+        "fail": 27734,
+        "unknown": 1000,
+        "pass_rate_known": 0.1256,
+        "pass_rate_unknown_dropped": 0.1218,
+        "pass_rate_unknown_kept": 0.1524
+      }
+    },
+    {
+      "patient_id": "355a4d50-2628-aa65-c336-deacf4d606fb",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "fiber_per_1000kcal": [
+          "min",
+          14.0
+        ]
+      },
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 5235,
+        "fail": 26395,
+        "unknown": 1089,
+        "pass_rate_known": 0.1655,
+        "pass_rate_unknown_dropped": 0.16,
+        "pass_rate_unknown_kept": 0.1933
+      }
+    },
+    {
+      "patient_id": "355cd402-8f45-353f-013f-ecb627e85106",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "35f80d0e-eaad-ef68-b762-3a1c12a872c1",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 3985,
+        "fail": 27734,
+        "unknown": 1000,
+        "pass_rate_known": 0.1256,
+        "pass_rate_unknown_dropped": 0.1218,
+        "pass_rate_unknown_kept": 0.1524
+      }
+    },
+    {
+      "patient_id": "3732fde5-efc6-d57a-517b-0500f2177181",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 3982,
+        "fail": 27744,
+        "unknown": 993,
+        "pass_rate_known": 0.1255,
+        "pass_rate_unknown_dropped": 0.1217,
+        "pass_rate_unknown_kept": 0.1521
+      }
+    },
+    {
+      "patient_id": "37549f60-b5a3-69cd-dea6-5a71c4bc23cf",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "3935e8a9-9b9f-fd00-fe22-bcb810d0330b",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      }
+    },
+    {
+      "patient_id": "3a9c6df2-621a-6239-0760-e58544d252f6",
+      "allergens_exclude": [
+        "egg",
+        "milk",
+        "soy"
+      ],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 6010,
+        "fail": 26673,
+        "unknown": 36,
+        "pass_rate_known": 0.1839,
+        "pass_rate_unknown_dropped": 0.1837,
+        "pass_rate_unknown_kept": 0.1848
+      },
+      "hard_and_soft": {
+        "pass": 6010,
+        "fail": 26673,
+        "unknown": 36,
+        "pass_rate_known": 0.1839,
+        "pass_rate_unknown_dropped": 0.1837,
+        "pass_rate_unknown_kept": 0.1848
+      }
+    },
+    {
+      "patient_id": "3c0e60c4-176e-2c4c-3b85-b46be390cf5e",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 3982,
+        "fail": 27744,
+        "unknown": 993,
+        "pass_rate_known": 0.1255,
+        "pass_rate_unknown_dropped": 0.1217,
+        "pass_rate_unknown_kept": 0.1521
+      }
+    },
+    {
+      "patient_id": "3eec36b2-71cc-13c4-489a-495c45318bc3",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "3fa46c70-b194-f14c-3d51-e06cfa4bb9e2",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "45f3a7b6-d706-f174-d043-16814aa127ed",
+      "allergens_exclude": [
+        "crustacean_shellfish"
+      ],
+      "ingredients_excluded": 20,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 21101,
+        "fail": 11519,
+        "unknown": 99,
+        "pass_rate_known": 0.6469,
+        "pass_rate_unknown_dropped": 0.6449,
+        "pass_rate_unknown_kept": 0.6479
+      },
+      "hard_and_soft": {
+        "pass": 21101,
+        "fail": 11519,
+        "unknown": 99,
+        "pass_rate_known": 0.6469,
+        "pass_rate_unknown_dropped": 0.6449,
+        "pass_rate_unknown_kept": 0.6479
+      }
+    },
+    {
+      "patient_id": "46fcc34a-97a1-f038-9bb1-4ae87116ae61",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "4af53267-820e-7687-87a4-f6716ef64a2e",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "4be6b5fb-2a19-943a-9249-7068445be4cc",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "4e71643c-f046-a74f-c2e2-4049efe17cd4",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "5693c080-f485-91e7-54b9-ad9a8c12af62",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "protein_g": [
+          "max",
+          28.77
+        ],
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "fiber_per_1000kcal": [
+          "min",
+          14.0
+        ],
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 20812,
+        "fail": 11668,
+        "unknown": 239,
+        "pass_rate_known": 0.6408,
+        "pass_rate_unknown_dropped": 0.6361,
+        "pass_rate_unknown_kept": 0.6434
+      },
+      "hard_and_soft": {
+        "pass": 1858,
+        "fail": 30183,
+        "unknown": 678,
+        "pass_rate_known": 0.058,
+        "pass_rate_unknown_dropped": 0.0568,
+        "pass_rate_unknown_kept": 0.0775
+      }
+    },
+    {
+      "patient_id": "5780b82b-0419-ffe6-fde4-a2fcce9695f5",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "57efda89-b582-bb08-8a2d-e06b2c184bfc",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "protein_g": [
+          "max",
+          20.67
+        ],
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "fiber_per_1000kcal": [
+          "min",
+          14.0
+        ]
+      },
+      "hard": {
+        "pass": 19011,
+        "fail": 13467,
+        "unknown": 241,
+        "pass_rate_known": 0.5854,
+        "pass_rate_unknown_dropped": 0.581,
+        "pass_rate_unknown_kept": 0.5884
+      },
+      "hard_and_soft": {
+        "pass": 4877,
+        "fail": 26836,
+        "unknown": 1006,
+        "pass_rate_known": 0.1538,
+        "pass_rate_unknown_dropped": 0.1491,
+        "pass_rate_unknown_kept": 0.1798
+      }
+    },
+    {
+      "patient_id": "5dae1e9e-46fb-5537-54f4-8837a56dd3d5",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "6095681c-dfc1-8f20-411c-42cef37189fa",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "65cbad6a-eb9d-420e-9bab-b4f9c6aab7db",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 3982,
+        "fail": 27744,
+        "unknown": 993,
+        "pass_rate_known": 0.1255,
+        "pass_rate_unknown_dropped": 0.1217,
+        "pass_rate_unknown_kept": 0.1521
+      }
+    },
+    {
+      "patient_id": "6a703775-432b-ba7d-d53a-c4d7bb0f5b58",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "6c4283c9-228b-2774-7d25-fbb5a14bdc1b",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "6d04a400-ad21-5951-b092-c14b6358d4c5",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "7132442e-b0b9-a886-e28d-f83700e5a3bd",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 3985,
+        "fail": 27734,
+        "unknown": 1000,
+        "pass_rate_known": 0.1256,
+        "pass_rate_unknown_dropped": 0.1218,
+        "pass_rate_unknown_kept": 0.1524
+      }
+    },
+    {
+      "patient_id": "716c6d0a-2a5d-0aaa-9ced-312ed6a943da",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 3982,
+        "fail": 27744,
+        "unknown": 993,
+        "pass_rate_known": 0.1255,
+        "pass_rate_unknown_dropped": 0.1217,
+        "pass_rate_unknown_kept": 0.1521
+      }
+    },
+    {
+      "patient_id": "72b1ca95-c4f0-269d-28bf-ba36b25a9aa6",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "765bd034-e8d7-f102-eb1c-4b7792fc5684",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "7af6b271-f16d-21e1-882a-7bff71005a7b",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "fiber_per_1000kcal": [
+          "min",
+          14.0
+        ],
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 1914,
+        "fail": 30121,
+        "unknown": 684,
+        "pass_rate_known": 0.0597,
+        "pass_rate_unknown_dropped": 0.0585,
+        "pass_rate_unknown_kept": 0.0794
+      }
+    },
+    {
+      "patient_id": "82623afe-e51c-e02e-1dd7-15a4394d0e92",
+      "allergens_exclude": [
+        "egg",
+        "peanut",
+        "tree_nuts"
+      ],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 11978,
+        "fail": 20673,
+        "unknown": 68,
+        "pass_rate_known": 0.3668,
+        "pass_rate_unknown_dropped": 0.3661,
+        "pass_rate_unknown_kept": 0.3682
+      },
+      "hard_and_soft": {
+        "pass": 2717,
+        "fail": 29108,
+        "unknown": 894,
+        "pass_rate_known": 0.0854,
+        "pass_rate_unknown_dropped": 0.083,
+        "pass_rate_unknown_kept": 0.1104
+      }
+    },
+    {
+      "patient_id": "83093df7-a1e4-b827-72e6-c6d604fd7748",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "8704c44c-8b97-e35a-3bac-7d5b24de06b3",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "87f7ad7b-85f9-d26d-5a41-9933f4039331",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 3985,
+        "fail": 27734,
+        "unknown": 1000,
+        "pass_rate_known": 0.1256,
+        "pass_rate_unknown_dropped": 0.1218,
+        "pass_rate_unknown_kept": 0.1524
+      }
+    },
+    {
+      "patient_id": "887e4b4e-a3e1-b573-4a16-38386d3e0b88",
+      "allergens_exclude": [
+        "crustacean_shellfish",
+        "wheat"
+      ],
+      "ingredients_excluded": 20,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 10427,
+        "fail": 22245,
+        "unknown": 47,
+        "pass_rate_known": 0.3191,
+        "pass_rate_unknown_dropped": 0.3187,
+        "pass_rate_unknown_kept": 0.3201
+      },
+      "hard_and_soft": {
+        "pass": 10427,
+        "fail": 22245,
+        "unknown": 47,
+        "pass_rate_known": 0.3191,
+        "pass_rate_unknown_dropped": 0.3187,
+        "pass_rate_unknown_kept": 0.3201
+      }
+    },
+    {
+      "patient_id": "8b9df7af-24b3-66ee-afeb-2734ebcbd33c",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "8c5b83b2-737e-46cf-953b-414e07ed78e7",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "8ece28c6-f931-b0e0-5c0e-72b8d8d3c86a",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 3982,
+        "fail": 27744,
+        "unknown": 993,
+        "pass_rate_known": 0.1255,
+        "pass_rate_unknown_dropped": 0.1217,
+        "pass_rate_unknown_kept": 0.1521
+      }
+    },
+    {
+      "patient_id": "9389eec9-a5c3-a9e1-b675-93cd1f199532",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "96de62ae-1b00-58d8-77f9-cd25414e16be",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "97e39468-6488-ca8f-fac2-235a80b4dcf7",
+      "allergens_exclude": [
+        "crustacean_shellfish"
+      ],
+      "ingredients_excluded": 20,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 21101,
+        "fail": 11519,
+        "unknown": 99,
+        "pass_rate_known": 0.6469,
+        "pass_rate_unknown_dropped": 0.6449,
+        "pass_rate_unknown_kept": 0.6479
+      },
+      "hard_and_soft": {
+        "pass": 21101,
+        "fail": 11519,
+        "unknown": 99,
+        "pass_rate_known": 0.6469,
+        "pass_rate_unknown_dropped": 0.6449,
+        "pass_rate_unknown_kept": 0.6479
+      }
+    },
+    {
+      "patient_id": "9a3814bb-f5b0-05f3-928e-fe6640d5aa2a",
+      "allergens_exclude": [
+        "tree_nuts"
+      ],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 19357,
+        "fail": 13273,
+        "unknown": 89,
+        "pass_rate_known": 0.5932,
+        "pass_rate_unknown_dropped": 0.5916,
+        "pass_rate_unknown_kept": 0.5943
+      },
+      "hard_and_soft": {
+        "pass": 19357,
+        "fail": 13273,
+        "unknown": 89,
+        "pass_rate_known": 0.5932,
+        "pass_rate_unknown_dropped": 0.5916,
+        "pass_rate_unknown_kept": 0.5943
+      }
+    },
+    {
+      "patient_id": "9c26986a-d81d-62f0-ee7a-ab8bb6377434",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "9c5b16dc-8a47-896c-4d74-f96f8c98891b",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 3985,
+        "fail": 27734,
+        "unknown": 1000,
+        "pass_rate_known": 0.1256,
+        "pass_rate_unknown_dropped": 0.1218,
+        "pass_rate_unknown_kept": 0.1524
+      }
+    },
+    {
+      "patient_id": "a406f356-c8b4-54ad-e79c-54a5e15ffc19",
+      "allergens_exclude": [
+        "egg"
+      ],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 13798,
+        "fail": 18837,
+        "unknown": 84,
+        "pass_rate_known": 0.4228,
+        "pass_rate_unknown_dropped": 0.4217,
+        "pass_rate_unknown_kept": 0.4243
+      },
+      "hard_and_soft": {
+        "pass": 13798,
+        "fail": 18837,
+        "unknown": 84,
+        "pass_rate_known": 0.4228,
+        "pass_rate_unknown_dropped": 0.4217,
+        "pass_rate_unknown_kept": 0.4243
+      }
+    },
+    {
+      "patient_id": "a45aa142-d1e9-d944-f2c7-05015c90762d",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      }
+    },
+    {
+      "patient_id": "a5816bea-ad10-431f-1281-47baa2cf249b",
+      "allergens_exclude": [
+        "crustacean_shellfish",
+        "egg",
+        "tree_nuts",
+        "wheat"
+      ],
+      "ingredients_excluded": 20,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 7355,
+        "fail": 25328,
+        "unknown": 36,
+        "pass_rate_known": 0.225,
+        "pass_rate_unknown_dropped": 0.2248,
+        "pass_rate_unknown_kept": 0.2259
+      },
+      "hard_and_soft": {
+        "pass": 7355,
+        "fail": 25328,
+        "unknown": 36,
+        "pass_rate_known": 0.225,
+        "pass_rate_unknown_dropped": 0.2248,
+        "pass_rate_unknown_kept": 0.2259
+      }
+    },
+    {
+      "patient_id": "a6d0791e-4c15-58e6-c30a-ec25e285ace9",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "ad48e669-959c-b6f8-8ddb-dda7a6d37473",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "adec1419-cf81-6640-abe6-cac7c0c1b9d4",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "afb99eee-0bd5-8853-8a32-fad74da7b103",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "b50c66af-4d1c-7987-03d7-e5b65fdf880f",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "ba47a33b-ffb6-25b9-e8bf-e7eabeaee1be",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "babc4b97-d859-0fe4-2874-fb6fe493ae6b",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "bca1691f-8839-1d66-ed01-471134d55738",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "protein_g": [
+          "max",
+          20.8
+        ],
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "fiber_per_1000kcal": [
+          "min",
+          14.0
+        ],
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 19036,
+        "fail": 13444,
+        "unknown": 239,
+        "pass_rate_known": 0.5861,
+        "pass_rate_unknown_dropped": 0.5818,
+        "pass_rate_unknown_kept": 0.5891
+      },
+      "hard_and_soft": {
+        "pass": 1770,
+        "fail": 30278,
+        "unknown": 671,
+        "pass_rate_known": 0.0552,
+        "pass_rate_unknown_dropped": 0.0541,
+        "pass_rate_unknown_kept": 0.0746
+      }
+    },
+    {
+      "patient_id": "bd4e49cb-391b-d08a-c7ab-b585e7bd5758",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "c1453af6-5763-f853-7da2-a16adee55469",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "c38b96b6-90ae-fabe-6f3c-cfd91d0fb21d",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "c823813e-2588-4814-6eb4-824974791862",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "ca443842-f546-d34c-a69b-b044cfe007d9",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "cbd1dd48-89c3-3fdb-434e-3f0802738abf",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "cc3eac4a-34a7-9a15-1522-8087135631b7",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "ccaa0537-4e7f-99d8-8b79-c7c94c749579",
+      "allergens_exclude": [
+        "milk"
+      ],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 8900,
+        "fail": 23771,
+        "unknown": 48,
+        "pass_rate_known": 0.2724,
+        "pass_rate_unknown_dropped": 0.272,
+        "pass_rate_unknown_kept": 0.2735
+      },
+      "hard_and_soft": {
+        "pass": 8900,
+        "fail": 23771,
+        "unknown": 48,
+        "pass_rate_known": 0.2724,
+        "pass_rate_unknown_dropped": 0.272,
+        "pass_rate_unknown_kept": 0.2735
+      }
+    },
+    {
+      "patient_id": "d21f2794-014b-c66b-3688-888382ab7434",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "d21fc5fa-6dc5-8058-1d11-5fd631086b72",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "d309f605-948b-962f-ca72-878ce8b8d154",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {
+        "sat_fat_pct_kcal": [
+          "max",
+          6.0
+        ]
+      },
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 3985,
+        "fail": 27734,
+        "unknown": 1000,
+        "pass_rate_known": 0.1256,
+        "pass_rate_unknown_dropped": 0.1218,
+        "pass_rate_unknown_kept": 0.1524
+      }
+    },
+    {
+      "patient_id": "d537941e-1fb7-9868-939a-a26252da8be1",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "dc77ef0d-1846-94fd-cce5-a7a555009d17",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "e142981b-3577-4115-584d-d9676df7fcff",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "e170fdcd-8830-89c4-94b2-aaf7f35ca9c5",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "e34a6a5e-1d77-508d-8be3-8816e9df8046",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "e503e9b3-d149-653b-92df-ca4a8cb68e16",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "e7c068bb-6d29-27d3-0b8b-ec0406cc91b7",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "edb5a2e3-a981-d33c-5eac-1ca8adde82d3",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "ee4b7339-ca58-b6af-c199-04b6d5761c73",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "f30304ab-8e45-1cbd-9833-cadf568373b4",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "f5749532-3295-ad01-d9b5-932c997e7a01",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "f6359fe4-4340-2820-8b76-593a45f5186c",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "f6745f8a-8107-443e-8946-3e6329d20408",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      }
+    },
+    {
+      "patient_id": "f67eaca3-2366-7ee2-6887-a5bd449b54a6",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    },
+    {
+      "patient_id": "f870c432-0887-125e-f778-cf5110d3de1d",
+      "allergens_exclude": [],
+      "ingredients_excluded": 1,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      },
+      "hard_and_soft": {
+        "pass": 22434,
+        "fail": 10174,
+        "unknown": 111,
+        "pass_rate_known": 0.688,
+        "pass_rate_unknown_dropped": 0.6857,
+        "pass_rate_unknown_kept": 0.689
+      }
+    },
+    {
+      "patient_id": "fd0d7b3a-307d-07b8-9d7e-2424e1feb9e4",
+      "allergens_exclude": [],
+      "ingredients_excluded": 0,
+      "nutrient_limits": {
+        "sodium_mg": [
+          "max",
+          666.67
+        ]
+      },
+      "nutrient_soft": {},
+      "hard": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      "hard_and_soft": {
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      }
+    }
+  ],
+  "note": "pass rates are shares of all Recipes (known = among Recipes with the needed numbers); patient_id is the Synthea uuid, no name or other identity"
 }

@@ -1,6 +1,6 @@
 # Báo cáo dữ liệu hồ sơ bệnh nhân (quy tắc P1–P7)
 
-Sinh tự động bởi `scripts/patient_ingest.py stats` lúc 2026-10-17T17:22:27 (commit `d01f43b`). Số liệu gốc ở `eval/patient_corpus.json`. Không sửa tay file này.
+Sinh tự động bởi `scripts/patient_ingest.py stats` lúc 2026-10-17T17:31:50 (commit `70c17ee`). Số liệu gốc ở `eval/patient_corpus.json`. Không sửa tay file này.
 
 | Mã | Quy tắc | Số liệu (tổng các nguồn) |
 |---|---|---|
@@ -37,8 +37,8 @@ Trên toàn bộ công thức, giá trị theo khẩu phần. Ngưỡng ngày ×
 | default | sodium_mg | max 2000 mg | 666,67 | filter | 22.464 | 10.142 | 113 | 68,9% | 68,7% | 69,0% |
 | default | sugar_pct_kcal | max 10 % | 10,0 | warn | 18.142 | 13.976 | 601 | 56,5% | 55,5% | 57,3% |
 | Essential hypertension | sodium_mg | max 2300 mg | 766,67 | filter | 24.027 | 8.579 | 113 | 73,7% | 73,4% | 73,8% |
-| Essential hypertension | sat_fat_pct_kcal | max 6 % | 6,0 | filter | 5.435 | 26.207 | 1.077 | 17,2% | 16,6% | 19,9% |
-| Diabetes mellitus type 2 | fiber_per_1000kcal | min 14 g | 14,0 | filter | 7.297 | 24.210 | 1.212 | 23,2% | 22,3% | 26,0% |
+| Essential hypertension | sat_fat_pct_kcal | max 6 % | 6,0 | soft | 5.435 | 26.207 | 1.077 | 17,2% | 16,6% | 19,9% |
+| Diabetes mellitus type 2 | fiber_per_1000kcal | min 14 g | 14,0 | soft | 7.297 | 24.210 | 1.212 | 23,2% | 22,3% | 26,0% |
 | Diabetes mellitus type 2 | sodium_mg | max 2300 mg | 766,67 | filter | 24.027 | 8.579 | 113 | 73,7% | 73,4% | 73,8% |
 | Chronic kidney disease | sodium_mg | max 2000 mg | 666,67 | filter | 22.464 | 10.142 | 113 | 68,9% | 68,7% | 69,0% |
 | CKD stage 3/4 | protein_g_per_kg | max 0.8 g/kg (nặng 60 kg) | 16,0 | filter | 20.634 | 11.844 | 241 | 63,5% | 63,1% | 63,8% |
@@ -48,16 +48,16 @@ Trên toàn bộ công thức, giá trị theo khẩu phần. Ngưỡng ngày ×
 | CKD stage 3/4 | phosphorus_mg | – | – | warn | – | – | – | warn only, no limit | | |
 | Hyperglycemia / diabetes due to cystic fibrosis |  | – | – | unmapped | – | – | – | warn only, no limit | | |
 
-Gộp theo bệnh: mọi luật `filter` của bệnh cộng luật mặc định, mỗi chất lấy ngưỡng chặt nhất; luật protein theo kg tính với 70 kg. Luật `warn` không tính vào tỉ lệ gộp.
+Gộp theo bệnh: mọi luật `filter` (cứng) của bệnh cộng luật mặc định, mỗi chất lấy ngưỡng chặt nhất; luật `soft` không lọc, chỉ xếp hạng và cảnh báo (cột cuối: tỉ lệ nếu luật mềm cũng lọc); luật protein theo kg tính với 70 kg. Luật `warn` không tính vào tỉ lệ gộp.
 
-| Bệnh | Bộ lọc áp dụng | Qua | Không rõ | Tỉ lệ qua | Bỏ không rõ | Giữ không rõ |
-|---|---|---:|---:|---:|---:|---:|
-| default | sodium_mg max 666,67 (default) | 22.464 | 113 | 68,9% | 68,7% | 69,0% |
-| Essential hypertension | sodium_mg max 666,67 (default); sat_fat_pct_kcal max 6,0 (Essential hypertension) | 3.985 | 1.000 | 12,6% | 12,2% | 15,2% |
-| Diabetes mellitus type 2 | sodium_mg max 666,67 (default); fiber_per_1000kcal min 14,0 (Diabetes mellitus type 2) | 5.254 | 1.091 | 16,6% | 16,1% | 19,4% |
-| Chronic kidney disease | sodium_mg max 666,67 (default) | 22.464 | 113 | 68,9% | 68,7% | 69,0% |
-| CKD stage 3/4 | sodium_mg max 666,67 (default); protein_g_per_kg max 18,67 (CKD stage 3/4) | 18.468 | 241 | 56,9% | 56,4% | 57,2% |
-| Hyperglycemia / diabetes due to cystic fibrosis | sodium_mg max 666,67 (default) | 22.464 | 113 | 68,9% | 68,7% | 69,0% |
+| Bệnh | Bộ lọc cứng | Luật mềm | Qua | Không rõ | Tỉ lệ qua | Bỏ không rõ | Giữ không rõ | Nếu luật mềm cũng lọc |
+|---|---|---|---:|---:|---:|---:|---:|---:|
+| default | sodium_mg max 666,67 (default) | – | 22.464 | 113 | 68,9% | 68,7% | 69,0% | 68,9% |
+| Essential hypertension | sodium_mg max 666,67 (default) | sat_fat_pct_kcal | 22.464 | 113 | 68,9% | 68,7% | 69,0% | 12,6% |
+| Diabetes mellitus type 2 | sodium_mg max 666,67 (default) | fiber_per_1000kcal | 22.464 | 113 | 68,9% | 68,7% | 69,0% | 16,6% |
+| Chronic kidney disease | sodium_mg max 666,67 (default) | – | 22.464 | 113 | 68,9% | 68,7% | 69,0% | 68,9% |
+| CKD stage 3/4 | sodium_mg max 666,67 (default); protein_g_per_kg max 18,67 (CKD stage 3/4) | – | 18.468 | 241 | 56,9% | 56,4% | 57,2% | 56,9% |
+| Hyperglycemia / diabetes due to cystic fibrosis | sodium_mg max 666,67 (default) | – | 22.464 | 113 | 68,9% | 68,7% | 69,0% | 68,9% |
 
 ## Nguồn dữ liệu
 
@@ -66,4 +66,4 @@ Gộp theo bệnh: mọi luật `filter` của bệnh cộng luật mặc địn
 - Kiểm chứng: 2026-10-17: all 108 files match the zip at sample-data commit 9959d9178e (sha256).
 - Bệnh nhân sinh thêm: chưa có.
 
-File luật (sha256): `allergy_substance.csv` `6641534048ba`, `condition_nutrient.csv` `41466004b6ee`, `drug_food.csv` `8dc43558d595`, `encounter_class.csv` `aa8e3d52df55`, `prompt_vitals.csv` `4474f0fea43b`, `include_loinc.csv` `caf69622c482`, `exclude_loinc.csv` `5432a0bd98dd`, `exclude_codes.csv` `8e3d88a3d26d`.
+File luật (sha256): `allergy_substance.csv` `6641534048ba`, `condition_nutrient.csv` `6a980e43671b`, `drug_food.csv` `8dc43558d595`, `encounter_class.csv` `aa8e3d52df55`, `prompt_vitals.csv` `4474f0fea43b`, `include_loinc.csv` `caf69622c482`, `exclude_loinc.csv` `5432a0bd98dd`, `exclude_codes.csv` `8e3d88a3d26d`.

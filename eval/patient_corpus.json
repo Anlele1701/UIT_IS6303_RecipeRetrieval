@@ -1,10 +1,10 @@
 {
-  "ran_at": "2026-10-17T17:22:27",
-  "git_commit": "d01f43b",
+  "ran_at": "2026-10-17T17:31:50",
+  "git_commit": "70c17ee",
   "seed": 42,
   "rules_sha256": {
     "allergy_substance.csv": "6641534048bace717325052498b00bca3ef61cd2ed11b67ca238207b29ec7033",
-    "condition_nutrient.csv": "41466004b6eed10f03864de3c6d63ab565a6a6c626ad76aef7f6559ceaab12a2",
+    "condition_nutrient.csv": "6a980e43671b2dda83b74387bffb5e61dd750ae7ea125ca368e3eda5b9cac41e",
     "drug_food.csv": "8dc43558d5953b1e6cfbae72d870883c3dae610dbdc294a17673e4322421d261",
     "encounter_class.csv": "aa8e3d52df553a0e4fe8ae944817dfad66107f715c9326416bbf6d3d35daf686",
     "prompt_vitals.csv": "4474f0fea43b49eb79fee7303041b369b1ccdbbc2aaebaec26fa2a0da82c9e8d",
@@ -170,8 +170,8 @@
     ],
     "combined_weight_kg": 70,
     "rules_file": "data/rules/condition_nutrient.csv",
-    "rules_sha256": "41466004b6eed10f03864de3c6d63ab565a6a6c626ad76aef7f6559ceaab12a2",
-    "note": "per serving (recipe_nutrition); sugar_pct_kcal uses total sugars; filter rules combined with the strictest limit per nutrient; warn rules are not part of the combined pass rate",
+    "rules_sha256": "6a980e43671b2dda83b74387bffb5e61dd750ae7ea125ca368e3eda5b9cac41e",
+    "note": "per serving (recipe_nutrition); sugar_pct_kcal uses total sugars; filter rules combined with the strictest limit per nutrient (with_soft: soft rules added as if they filtered); warn rules are not part of the combined pass rate",
     "per_rule": [
       {
         "label": "default",
@@ -242,7 +242,7 @@
         "op": "max",
         "daily_value": 6.0,
         "unit": "%",
-        "mode": "filter",
+        "mode": "soft",
         "source": "DASH/NHLBI",
         "per_serving_limit": 6.0,
         "pass": 5435,
@@ -265,7 +265,7 @@
         "op": "min",
         "daily_value": 14.0,
         "unit": "g",
-        "mode": "filter",
+        "mode": "soft",
         "source": "ADA SoC 2026 §5",
         "per_serving_limit": 14.0,
         "pass": 7297,
@@ -446,6 +446,7 @@
             "from": "default"
           }
         ],
+        "soft": [],
         "warn_only": [
           "sugar_pct_kcal"
         ],
@@ -455,7 +456,16 @@
         "recipes": 32719,
         "pass_rate_known": 0.689,
         "pass_rate_unknown_dropped": 0.6866,
-        "pass_rate_unknown_kept": 0.69
+        "pass_rate_unknown_kept": 0.69,
+        "with_soft": {
+          "pass": 22464,
+          "fail": 10142,
+          "unknown": 113,
+          "recipes": 32719,
+          "pass_rate_known": 0.689,
+          "pass_rate_unknown_dropped": 0.6866,
+          "pass_rate_unknown_kept": 0.69
+        }
       },
       {
         "label": "Essential hypertension",
@@ -469,24 +479,30 @@
             "op": "max",
             "per_serving_limit": 666.67,
             "from": "default"
-          },
-          {
-            "nutrient": "sat_fat_pct_kcal",
-            "op": "max",
-            "per_serving_limit": 6.0,
-            "from": "Essential hypertension"
           }
+        ],
+        "soft": [
+          "sat_fat_pct_kcal"
         ],
         "warn_only": [
           "sugar_pct_kcal"
         ],
-        "pass": 3985,
-        "fail": 27734,
-        "unknown": 1000,
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
         "recipes": 32719,
-        "pass_rate_known": 0.1256,
-        "pass_rate_unknown_dropped": 0.1218,
-        "pass_rate_unknown_kept": 0.1524
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69,
+        "with_soft": {
+          "pass": 3985,
+          "fail": 27734,
+          "unknown": 1000,
+          "recipes": 32719,
+          "pass_rate_known": 0.1256,
+          "pass_rate_unknown_dropped": 0.1218,
+          "pass_rate_unknown_kept": 0.1524
+        }
       },
       {
         "label": "Diabetes mellitus type 2",
@@ -503,24 +519,30 @@
             "op": "max",
             "per_serving_limit": 666.67,
             "from": "default"
-          },
-          {
-            "nutrient": "fiber_per_1000kcal",
-            "op": "min",
-            "per_serving_limit": 14.0,
-            "from": "Diabetes mellitus type 2"
           }
+        ],
+        "soft": [
+          "fiber_per_1000kcal"
         ],
         "warn_only": [
           "sugar_pct_kcal"
         ],
-        "pass": 5254,
-        "fail": 26374,
-        "unknown": 1091,
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
         "recipes": 32719,
-        "pass_rate_known": 0.1661,
-        "pass_rate_unknown_dropped": 0.1606,
-        "pass_rate_unknown_kept": 0.1939
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69,
+        "with_soft": {
+          "pass": 5254,
+          "fail": 26374,
+          "unknown": 1091,
+          "recipes": 32719,
+          "pass_rate_known": 0.1661,
+          "pass_rate_unknown_dropped": 0.1606,
+          "pass_rate_unknown_kept": 0.1939
+        }
       },
       {
         "label": "Chronic kidney disease",
@@ -540,6 +562,7 @@
             "from": "default"
           }
         ],
+        "soft": [],
         "warn_only": [
           "sugar_pct_kcal"
         ],
@@ -549,7 +572,16 @@
         "recipes": 32719,
         "pass_rate_known": 0.689,
         "pass_rate_unknown_dropped": 0.6866,
-        "pass_rate_unknown_kept": 0.69
+        "pass_rate_unknown_kept": 0.69,
+        "with_soft": {
+          "pass": 22464,
+          "fail": 10142,
+          "unknown": 113,
+          "recipes": 32719,
+          "pass_rate_known": 0.689,
+          "pass_rate_unknown_dropped": 0.6866,
+          "pass_rate_unknown_kept": 0.69
+        }
       },
       {
         "label": "CKD stage 3/4",
@@ -572,6 +604,7 @@
             "from": "CKD stage 3/4"
           }
         ],
+        "soft": [],
         "warn_only": [
           "phosphorus_mg",
           "potassium_mg",
@@ -583,7 +616,16 @@
         "recipes": 32719,
         "pass_rate_known": 0.5686,
         "pass_rate_unknown_dropped": 0.5644,
-        "pass_rate_unknown_kept": 0.5718
+        "pass_rate_unknown_kept": 0.5718,
+        "with_soft": {
+          "pass": 18468,
+          "fail": 14010,
+          "unknown": 241,
+          "recipes": 32719,
+          "pass_rate_known": 0.5686,
+          "pass_rate_unknown_dropped": 0.5644,
+          "pass_rate_unknown_kept": 0.5718
+        }
       },
       {
         "label": "Hyperglycemia / diabetes due to cystic fibrosis",
@@ -600,6 +642,7 @@
             "from": "default"
           }
         ],
+        "soft": [],
         "warn_only": [
           "sugar_pct_kcal"
         ],
@@ -609,7 +652,16 @@
         "recipes": 32719,
         "pass_rate_known": 0.689,
         "pass_rate_unknown_dropped": 0.6866,
-        "pass_rate_unknown_kept": 0.69
+        "pass_rate_unknown_kept": 0.69,
+        "with_soft": {
+          "pass": 22464,
+          "fail": 10142,
+          "unknown": 113,
+          "recipes": 32719,
+          "pass_rate_known": 0.689,
+          "pass_rate_unknown_dropped": 0.6866,
+          "pass_rate_unknown_kept": 0.69
+        }
       }
     ]
   },
