@@ -79,6 +79,8 @@ def test_exclude_codes_drop_problems_meds_and_encounters(p7):
     assert p7.excluded("problem", "6525002") == "substance_use"
     assert p7.excluded("encounter", "308646001") == "death"
     assert p7.excluded("medication", "351266") == "substance_use"
+    assert p7.excluded("problem", "10939881000119105") == "substance_use"  # alcohol: no "avoid alcohol" rule
+    assert p7.excluded("encounter", "305336008") == "end_of_life"  # hospice
     assert p7.excluded("problem", "59621000") is None  # hypertension stays
 
 

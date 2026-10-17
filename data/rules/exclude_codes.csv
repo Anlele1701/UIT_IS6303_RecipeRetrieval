@@ -1,6 +1,8 @@
 code_system,code,display,applies_to,category,seen_in_data,version
-snomed,6525002,Dependent drug abuse (disorder),problem,substance_use,true,draft-mv1
-snomed,1149222004,Overdose (disorder),problem,substance_use,true,draft-mv1
-snomed,56876005,Drug rehabilitation and detoxification (regime/therapy),encounter,substance_use,true,draft-mv1
-snomed,308646001,Death Certification,encounter,death,true,draft-mv1
-rxnorm,351266,buprenorphine 2 MG / naloxone 0.5 MG Sublingual Tablet,medication,substance_use,true,draft-mv1
+snomed,6525002,Dependent drug abuse (disorder),problem,substance_use,true,v1
+snomed,1149222004,Overdose (disorder),problem,substance_use,true,v1
+snomed,10939881000119105,Unhealthy alcohol drinking behavior (finding),problem,substance_use,true,v1
+snomed,56876005,Drug rehabilitation and detoxification (regime/therapy),encounter,substance_use,true,v1
+snomed,308646001,Death Certification,encounter,death,true,v1
+snomed,305336008,Admission to hospice (procedure),encounter,end_of_life,true,v1
+rxnorm,351266,buprenorphine 2 MG / naloxone 0.5 MG Sublingual Tablet,medication,substance_use,true,v1

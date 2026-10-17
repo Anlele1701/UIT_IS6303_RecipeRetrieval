@@ -254,10 +254,10 @@ def read_record(path: str | Path, source: Source, p7: P7Rules) -> tuple[PatientR
     for p in (p for s in _all(secs, PROBLEMS) for p in problems(s)):
         if not p.active:
             c["P2"]["problems_dropped_not_in_force"] += 1
+        elif (cat := p7.excluded("problem", p.code)):  # before P4: a sensitive finding counts as P7, not P4
+            c["P7"][f"problem_{cat}"] += 1
         elif p.suffix != "disorder":
             c["P4"][f"dropped_suffix_{p.suffix or 'none'}"] += 1
-        elif (cat := p7.excluded("problem", p.code)):
-            c["P7"][f"problem_{cat}"] += 1
         else:
             kept_problems.append(p)
     c["P4"]["disorders_kept"] += len(kept_problems)
