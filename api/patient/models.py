@@ -108,3 +108,32 @@ class PatientNode:
     facts: list[dict]  # structured facts, already filtered by P2-P7
     entry_ids: list[str]
     summary_source: str | None = None  # template | llm
+
+
+@dataclass(frozen=True)
+class PatientProfile:
+    """V3 output: the constraints a patient's record implies, each with its evidence (spec 5.2)."""
+    patient_id: str
+    allergens_exclude: frozenset[str]
+    ingredients_exclude: frozenset[str]  # canonical names
+    nutrient_limits: dict[str, tuple[str, float]]  # chunk column -> (op, per-serving limit), e.g. sodium_mg: (max, 666.67)
+    warnings: list[str]  # Vietnamese, shown to the user
+    unmapped: list[str]  # substances / conditions with no rule, for a reviewer
+    evidence: dict[str, list[Evidence]]  # "allergen:wheat", "ingredient:grapefruit", "nutrient:sodium_mg", "warning:..."
+    ruleset_version: str
+    mode: str  # direct | vectorless | vectorless_nofixed | vector
+
+    def to_dict(self) -> dict:
+        return {"patient_id": self.patient_id, "allergens_exclude": sorted(self.allergens_exclude),
+                "ingredients_exclude": sorted(self.ingredients_exclude),
+                "nutrient_limits": {k: list(v) for k, v in sorted(self.nutrient_limits.items())},
+                "warnings": list(self.warnings), "unmapped": list(self.unmapped),
+                "evidence": {k: [asdict(e) for e in v] for k, v in sorted(self.evidence.items())},
+                "ruleset_version": self.ruleset_version, "mode": self.mode}
+
+    @classmethod
+    def from_dict(cls, d: dict) -> "PatientProfile":
+        return cls(d["patient_id"], frozenset(d["allergens_exclude"]), frozenset(d["ingredients_exclude"]),
+                   {k: (v[0], float(v[1])) for k, v in d["nutrient_limits"].items()}, list(d["warnings"]),
+                   list(d["unmapped"]), {k: [Evidence(**e) for e in v] for k, v in d["evidence"].items()},
+                   d["ruleset_version"], d["mode"])
