@@ -4,6 +4,11 @@ The flags decide what runs; every preset goes through this one function (CLAUDE.
 lives in the DB (session_constraint, chat_message), so a turn can be replayed from the tables alone.
 Events: constraints, recipes, token, done. When M7 rewrites the answer, `done.answer` holds the final text
 and replaces the streamed one.
+
+A session about a patient (chat_session.patient_id, MV3) with the `profile` flag on adds, before M2: V1 (the tree
+from patient_node), V3 (the cached PatientProfile), M1 with the patient schema, V2 (context nodes, at most one
+model call), and a `patient_profile` event before `constraints`. A session without a patient runs exactly the M3
+calls. A deceased or unknown patient gets no session (PatientUnavailable).
 """
 
 import time
@@ -19,19 +24,26 @@ from psycopg.types.json import Jsonb
 
 from .. import config
 from ..embed import embed_query
+from ..patient import navigate, profile_store
+from ..patient import rules as patient_rules
+from ..patient.prompt_view import prompt_view
 from . import m4_retrieve as m4
 from . import m6_generate as m6
 from . import m7_verify as m7
-from .flags import Flags
+from .flags import MV4_MODES, Flags
 from .lexicon import RuntimeLexicon
-from .m1_understand import detect_lang, understand
+from .m1_understand import ALLERGEN_WORDS, detect_lang, understand
 from .m2_state import merge
 from .m3_router import detail_recipe, route
 from .m5_postprocess import cards as load_cards
-from .m5_postprocess import recipe_detail, top_recipes
+from .m5_postprocess import nutrient_values, recipe_detail, top_recipes
 from .schemas import RecipeCard, SessionState, StateItem, Understanding, Verification
 
 HISTORY_CHARS = 600  # an old assistant answer is cut to this for M1 and M6
+
+
+class PatientUnavailable(ValueError):
+    """No session for a deceased or unknown patient (Thy, after MV0)."""
 
 
 @dataclass
@@ -74,13 +86,30 @@ class Assistant:
         self.conn, self.client, self.scorer = conn, client, scorer
         self.lex = lex or RuntimeLexicon.load(conn)
         self.strategy, self.k = strategy, k
+        self._rules = None  # the patient rule set, loaded on the first patient turn
+
+    @property
+    def rules(self):
+        if self._rules is None:
+            self._rules = patient_rules.load_rules()
+        return self._rules
 
     # ---- session storage -------------------------------------------------------------------------------------
-    def new_session(self, preset: str = "S") -> uuid.UUID:
+    def new_session(self, preset: str = "S", patient_id: str | None = None) -> uuid.UUID:
+        if patient_id is not None:
+            row = self.conn.execute("SELECT deceased FROM patient WHERE patient_id = %s", [patient_id]).fetchone()
+            if row is None:
+                raise PatientUnavailable(f"unknown patient {patient_id}")
+            if row[0]:
+                raise PatientUnavailable(f"patient {patient_id} is deceased: no session")
         sid = uuid.uuid4()
-        self.conn.execute("INSERT INTO chat_session (id, preset) VALUES (%s, %s)", [sid, preset])
+        self.conn.execute("INSERT INTO chat_session (id, preset, patient_id) VALUES (%s, %s, %s)", [sid, preset, patient_id])
         self.conn.commit()
         return sid
+
+    def patient_of(self, sid: uuid.UUID) -> str | None:
+        row = self.conn.execute("SELECT patient_id FROM chat_session WHERE id = %s", [sid]).fetchone()
+        return row[0] if row else None
 
     def state(self, sid: uuid.UUID) -> SessionState:
         items = [StateItem(type=t, value=v, scope=s) for t, v, s in self.conn.execute(
@@ -108,9 +137,11 @@ class Assistant:
         gone = [i for key, i in old.items() if key not in now]
         if gone:
             self.conn.execute("UPDATE session_constraint SET active = false WHERE id = ANY(%s)", [gone])
-        for t, v, s in [(it.type, it.value, it.scope) for it in state.items if (it.type, it.value, it.scope) not in old]:
-            self.conn.execute("INSERT INTO session_constraint (session_id, type, value, scope, source_message_id) "
-                              "VALUES (%s, %s, %s, %s, %s)", [sid, t, v, s, source_id])
+        for it in [it for it in state.items if (it.type, it.value, it.scope) not in old]:
+            self.conn.execute("INSERT INTO session_constraint (session_id, type, value, scope, source_message_id, source, "
+                              "evidence) VALUES (%s, %s, %s, %s, %s, %s, %s)",
+                              [sid, it.type, it.value, it.scope, source_id, it.source,
+                               Jsonb(it.evidence) if it.evidence else None])
 
     # ---- one turn --------------------------------------------------------------------------------------------
     def run_turn(self, sid: uuid.UUID, message: str, flags: Flags) -> Iterator[Event]:
@@ -118,15 +149,21 @@ class Assistant:
         tr = Trace()
         prev = self.state(sid) if flags.conv else SessionState()
         history = self.history(sid) if flags.conv else []
+        pid = self.patient_of(sid)
+        pt = self._patient_start(pid, flags, tr) if pid is not None and flags.profile else None
 
         with tr.stage("m1") as p:
-            if flags.qu:
+            if flags.qu and pt:
+                u = understand(self.client, self.lex, message, history, prev.constraints(), patient=True)
+            elif flags.qu:
                 u = understand(self.client, self.lex, message, history, prev.constraints())
             else:
                 u = Understanding(lang=detect_lang(message), query_en=message, notes=["qu off: raw message"])
             p.update(u.model_dump())
+        if pt:
+            yield Event("patient_profile", self._patient_select(pt, u, message, flags, tr))
         with tr.stage("m2") as p:
-            state = merge(prev, u, conv=flags.conv)
+            state = merge(prev, u, conv=flags.conv, profile=pt["profile"]) if pt else merge(prev, u, conv=flags.conv)
             p.update(items=[it.model_dump() for it in state.items], notices=state.notices)
         with tr.stage("m3") as p:
             path = route(u, state)
@@ -148,13 +185,18 @@ class Assistant:
         v = Verification(verified=True)
         messages: list[dict] | None = None
 
+        constrained = sorted({*c.nutrient_limits, *c.nutrient_soft})  # empty without a patient
         if path == "clarify":
             answer = u.clarify or ""
             yield Event("token", answer)
+        elif path == "patient_info" and pt:
+            views = [prompt_view(n, self.rules) for n in pt["nodes"] if n.node_id in pt["selection"].node_ids]
+            if flags.generate:
+                messages = m6.patient_info_messages(message, u.lang, views, self._block(pt, state), history)
         elif path == "detail":
             rid = detail_recipe(u, state)
             with tr.stage("m5", {"recipe_id": rid}):
-                card, directions = recipe_detail(self.conn, rid)
+                card, directions = recipe_detail(self.conn, rid, constrained)
             cards = [card] if card else []
             yield Event("recipes", [_brief(r) for r in cards])
             if card and flags.generate:
@@ -174,12 +216,20 @@ class Assistant:
                                    unknown_strict=flags.unknown_strict, strategy=self.strategy, watch=timed)
                 p.update(chunks=len(chunks), recipes=len({x.recipe_id for x in chunks}), timings=sub)
             with tr.stage("m5", {"rerank": flags.rerank}) as p:
-                ranked = top_recipes(text, chunks, self.scorer, k=self.k, use_rerank=flags.rerank)
-                cards = load_cards(self.conn, ranked)
+                if c.nutrient_soft:  # patient soft limits: rank, never filter (ADR-0007)
+                    values = nutrient_values(self.conn, list({x.recipe_id for x in chunks}), c.nutrient_soft)
+                    ranked = top_recipes(text, chunks, self.scorer, k=self.k, use_rerank=flags.rerank,
+                                         soft=c.nutrient_soft, values=values)
+                    p["soft"] = sorted(c.nutrient_soft)
+                else:
+                    ranked = top_recipes(text, chunks, self.scorer, k=self.k, use_rerank=flags.rerank)
+                cards = load_cards(self.conn, ranked, constrained) if constrained else load_cards(self.conn, ranked)
                 p["recipes"] = [[r.id, r.score] for r in cards]
             shown = [r.id for r in cards]
             yield Event("recipes", [_brief(r) for r in cards])
-            if flags.generate:
+            if flags.generate and pt:
+                messages = m6.answer_messages(message, u.lang, c, cards, history, patient=self._block(pt, state))
+            elif flags.generate:
                 messages = m6.answer_messages(message, u.lang, c, cards, history)
 
         if messages is not None:
@@ -193,8 +243,8 @@ class Assistant:
                     yield Event("token", piece)
                 answer = "".join(parts)
                 p.update(usage=dict(usage), chars=len(answer))
-            if path in {"retrieve", "detail"}:
-                answer, v = self._verify(answer, messages, cards, c, flags, tr, usage)
+            if path in {"retrieve", "detail"} or (pt and path == "patient_info"):
+                answer, v = self._verify(answer, messages, cards, c, flags, tr, usage, self._check(pt, c))
         elif path == "chat":
             answer = ("Mình chỉ giúp tìm công thức nấu ăn." if u.lang == "vi"
                       else "I can only help with recipes and cooking.")
@@ -208,16 +258,19 @@ class Assistant:
             self.conn.execute("INSERT INTO retrieval_trace (message_id, stage, payload, latency_ms) "
                               "VALUES (%s, %s, %s, %s)", [reply_id, stage, Jsonb(payload), ms])
         self.conn.commit()
-        yield Event("done", {"message_id": reply_id, "citations": v.citations, "verified": v.verified,
-                             "removed": v.removed, "regenerated": v.regenerated, "answer": answer,
-                             "usage": {"prompt_tokens": usage.get("prompt_tokens", 0),
-                                       "completion_tokens": usage.get("completion_tokens", 0)},
-                             "latency_ms": tr.ms})
+        done = {"message_id": reply_id, "citations": v.citations, "verified": v.verified,
+                "removed": v.removed, "regenerated": v.regenerated, "answer": answer,
+                "usage": {"prompt_tokens": usage.get("prompt_tokens", 0),
+                          "completion_tokens": usage.get("completion_tokens", 0)},
+                "latency_ms": tr.ms}
+        if pt:
+            done["flags"] = v.flags
+        yield Event("done", done)
 
-    def _verify(self, answer, messages, cards, c, flags: Flags, tr: Trace, usage: dict):
+    def _verify(self, answer, messages, cards, c, flags: Flags, tr: Trace, usage: dict, check=None):
         """M7: always measured (the trace and S-Verify need the numbers); acted on only when flags.verify."""
         with tr.stage("m7", {"applied": flags.verify}) as p:
-            v = m7.verify(answer, cards, c)
+            v = m7.verify(answer, cards, c, check) if check else m7.verify(answer, cards, c)
             p["first"] = v.model_dump()
             if flags.verify and not v.verified:
                 retry = [*messages, {"role": "assistant", "content": answer},
@@ -226,14 +279,74 @@ class Assistant:
                 answer = "".join(m6.generate(self.client, retry, more))
                 for key in ("prompt_tokens", "completion_tokens"):
                     usage[key] = usage.get(key, 0) + more.get(key, 0)
-                second = m7.verify(answer, cards, c)
-                answer = m7.strip(answer, second.removed)
+                second = m7.verify(answer, cards, c, check) if check else m7.verify(answer, cards, c)
+                answer = m7.strip(answer, second.removed, second.bad_nodes)
                 v = second.model_copy(update={"regenerated": True, "removed": v.removed + second.removed,
                                               "verified": not second.removed and second.verified})
             p["final"] = v.model_dump()
         return answer, v
 
 
+    # ---- patient record (MV3) --------------------------------------------------------------------------------
+    def _patient_start(self, pid: str, flags: Flags, tr: Trace) -> dict:
+        """V1 (the tree) and V3 (the cached profile), before M1."""
+        if flags.profile_mode in MV4_MODES:
+            raise NotImplementedError(f"profile_mode {flags.profile_mode!r} needs api/patient/baselines.py (MV4)")
+        with tr.stage("v1") as p:
+            nodes = profile_store.load_nodes(self.conn, pid)
+            p.update(nodes=len(nodes), context_nodes=sum(n.kind == "context" for n in nodes))
+        with tr.stage("v3") as p:
+            profile = profile_store.load_or_build(self.conn, pid, self.rules, flags.profile_mode)
+            p.update(ruleset_version=profile.ruleset_version, mode=profile.mode, llm_calls=0,
+                     allergens=sorted(profile.allergens_exclude), ingredients=len(profile.ingredients_exclude),
+                     nutrient_limits=sorted(profile.nutrient_limits), nutrient_soft=sorted(profile.nutrient_soft),
+                     warnings=len(profile.warnings), unmapped=len(profile.unmapped))
+        return {"patient_id": pid, "nodes": nodes, "profile": profile}
+
+    def _patient_select(self, pt: dict, u: Understanding, message: str, flags: Flags, tr: Trace) -> dict:
+        """V2, then the patient_profile event (sent before constraints)."""
+        needs = u.needs_record_context or u.intent == "patient_info"
+        with tr.stage("v2") as p:
+            sel = navigate.select_nodes(pt["nodes"], message, needs, flags.profile_mode, self.rules, self.client)
+            p.update(needs_context=needs, node_ids=sel.node_ids, chosen=sel.chosen, dropped=sel.dropped,
+                     llm_calls=sel.llm_calls, fallback=sel.fallback)
+        pt["selection"] = sel
+        prof = pt["profile"]
+        return {"patient_id": pt["patient_id"], "allergens_exclude": sorted(prof.allergens_exclude),
+                "ingredients_exclude": sorted(prof.ingredients_exclude),
+                "nutrient_limits": {k: list(v) for k, v in sorted(prof.nutrient_limits.items())},
+                "nutrient_soft": {k: list(v) for k, v in sorted(prof.nutrient_soft.items())},
+                "warnings": prof.warnings, "unmapped": prof.unmapped, "ruleset_version": prof.ruleset_version,
+                "evidence": {k: [{"node_id": e.node_id, "text": e.text} for e in v]
+                             for k, v in sorted(prof.evidence.items())},
+                "nodes_read": sel.node_ids, "llm_calls": sel.llm_calls,
+                "latency_ms": {k: v for k, v in tr.ms.items() if k in {"v1", "v2", "v3"}}}
+
+    def _block(self, pt: dict, state: SessionState) -> str:
+        block = m6.patient_block(pt["profile"], pt["selection"].node_ids)
+        kept = [n.split(":", 2)[2] for n in state.notices if n.startswith("from_record:")]
+        if kept:  # the user tried to lift a record constraint in words (spec 5.6, M2)
+            line = (f"- the user asked to lift {', '.join(kept)}: it comes from the record and stays until "
+                    "confirmed in the interface; say so\n")
+            block = block.replace("</patient_profile>", line + "</patient_profile>")
+        return block
+
+    def _check(self, pt: dict | None, c) -> m7.PatientCheck | None:
+        if not pt:
+            return None
+        terms: dict[str, list[str]] = {}
+        for a in c.allergens_exclude:
+            vi = [alias for alias, al in self.lex.aliases.items() if a in al.allergens]
+            terms[f"allergen:{a}"] = list(dict.fromkeys([*ALLERGEN_WORDS.get(a, []), *vi]))
+        for i in c.ingredients_exclude:
+            vi = [alias for alias, al in self.lex.aliases.items() if i in al.ingredients]
+            terms[f"ingredient:{i}"] = list(dict.fromkeys([i, *vi]))
+        return m7.PatientCheck(node_ids={n.node_id for n in pt["nodes"]}, avoid_terms=terms)
+
+
 def _brief(r: RecipeCard) -> dict:
-    return {"id": r.id, "title": r.title, "total_minutes": r.total_minutes, "allergens": r.allergens,
-            "allergens_may": r.allergens_may, "diet_flags": r.diet_flags, "score": r.score}
+    out = {"id": r.id, "title": r.title, "total_minutes": r.total_minutes, "allergens": r.allergens,
+           "allergens_may": r.allergens_may, "diet_flags": r.diet_flags, "score": r.score}
+    if r.nutrients:  # patient sessions only (MV3)
+        out["nutrients"] = r.nutrients
+    return out

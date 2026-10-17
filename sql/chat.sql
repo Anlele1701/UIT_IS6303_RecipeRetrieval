@@ -24,7 +24,8 @@ CREATE TABLE IF NOT EXISTS session_constraint (
   id                 bigint PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   session_id         uuid NOT NULL REFERENCES chat_session(id) ON DELETE CASCADE,
   type               text NOT NULL CHECK (type IN ('allergen', 'ingredient_exclude', 'ingredient_include', 'diet',
-                                                   'max_total_minutes', 'max_calories', 'category')),
+                                                   'max_total_minutes', 'max_calories', 'category',
+                                                   'nutrient', 'nutrient_soft')),  -- nutrient*: patient record, MV3
   value              text NOT NULL,
   scope              text NOT NULL CHECK (scope IN ('session', 'turn')),
   source_message_id  bigint REFERENCES chat_message(id) ON DELETE SET NULL,
