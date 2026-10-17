@@ -387,3 +387,54 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
 - Nhận xét:
   - Ngưỡng natri 2.300 mg của tăng huyết áp và tiểu đường **không bao giờ có tác dụng**, vì ngưỡng mặc định 2.000 mg chặt hơn.
   - Chất béo bão hòa và chất xơ là hai luật thu hẹp kho công thức mạnh nhất.
+
+---
+
+## MV2 – Luật và hồ sơ ràng buộc (17/10/2026) · 🚦 chờ duyệt
+
+### Quyết định đầu MV2 (Thy, 17/10/2026)
+- Lần khám: LLM chỉ thấy loại chung (`encounter_class.csv`).
+- Cột dẫn xuất: đồng ý 4 cột `sat_fat_pct_kcal`, `sugar_pct_kcal`, `fiber_per_1000kcal`, `potassium_mg`.
+- Mã bệnh, mở rộng có chọn lọc:
+  - Tiểu đường type 2: cả các biến chứng "due to type 2 diabetes".
+  - Natri CKD: giai đoạn 1–4 và "disorder of kidney due to diabetes".
+  - Protein: chỉ giai đoạn 3–4.
+  - Hyperglycemia, tiểu đường do xơ nang: `unmapped`.
+- Natri 2.300 mg: giữ, ghi là bị lấn át.
+
+### Việc đã làm
+- **Bảng luật `v1`:**
+  - `condition_nutrient.csv` (thêm mã đồng nghĩa và cột `note`);
+  - `drug_food.csv`: 3 dòng theo bảng 4.3 (warfarin cảnh báo, kèm 10 rau giàu vitamin K đã kiểm có trong bảng `ingredient`; simvastatin và atorvastatin loại bưởi chùm);
+  - `encounter_class.csv`: 41 mã → 9 loại;
+  - `prompt_vitals.csv`: cân nặng, chiều cao, BMI.
+- **Sai khác so với kế hoạch đã duyệt:**
+  - **Bỏ loại `prenatal`** trong `encounter_class.csv`. Nhãn này tự tiết lộ việc mang thai, mà mang thai không có luật, nên các lần khám thai được gộp vào `wellness` / `emergency`.
+  - **Thêm `mode = unmapped`** trong `condition_nutrient.csv`, để liệt kê hyperglycemia mà không hardcode. Dòng này không lọc, không cảnh báo, không mở danh sách cho phép của prompt.
+- `api/patient/rules.py`:
+  - nạp toàn bộ bộ luật, `ruleset_version` là hash của 9 file luật;
+  - `validate_against_db` báo lỗi khi tên nguyên liệu không có trong bảng `ingredient`, hoặc cột lọc không có trên `chunk`;
+  - chất không có cột (phospho) tự chuyển thành `warn`.
+- `api/patient/mapping.py`: `build_profile`, hàm thuần. `api/patient/profile_store.py`: cache trong `patient_profile_cache`.
+- `api/patient/prompt_view.py`: danh sách cho phép cho prompt. `summarize` (V1c) dùng view này; tóm tắt template của lần khám chỉ nêu loại chung.
+- **Migration 006** (4 cột trên `chunk`, đưa vào `sql/indexes.sql`):
+  - `ingest.py` tính các cột này ở cả lần build mới lẫn `retag`, dùng chung biểu thức của `api/patient/nutrition.py`;
+  - `staging_problems` có thêm phép kiểm lệch.
+- **Đã chạy trên DB `recipe`:**
+  - Áp migration 006, `ingest.py retag semantic` (115 giây). Phân vùng cũ giữ ở `chunk_semantic_legacy`, không xóa gì.
+  - 4 cột khớp `recipe_nutrition`: **0 lệch** trên 166.438 chunk.
+  - **Kiểm trước và sau** (`eval/mv2_retag_check.json`, probe 1,0; run `20261017-171008` → `20261017-172133`):
+    - metric dense và fusion **trùng tuyệt đối**; rank trùng 298/298;
+    - top-20: dense trùng 298/298, fusion trùng 293/298. Năm truy vấn khác nhau đều là công thức kề nhau đổi chỗ trong cùng một tập (riêng q104 khác ở vị trí 20).
+    - Nguyên nhân có thể là điểm BM25 hòa nhau, đổi thứ tự sau khi dựng lại index. Không kiểm chứng được vì bản legacy không còn index BM25. Lần retag ở M1 cũng có hiện tượng tương tự (2/298).
+- **Sửa lỗi:** `mapping` ban đầu làm tròn ngưỡng (666,67), để lọt 2 công thức có natri nằm giữa 666,667 và 666,67. Giờ lưu giá trị chính xác.
+- ADR-0006 (cây vectorless, danh sách cho phép) và ADR-0007 (quy đổi ngưỡng), trạng thái *proposed*.
+- Test: 3 file mới (`test_mapping`, `test_rules`, `test_prompt_view`), thêm test 4 cột cho build mới và retag. `pytest` nhanh: 419 pass.
+
+### Số liệu chính (`eval/patient_profiles.json`, 100 bệnh nhân còn sống, ruleset `6fc4e3a7791e`)
+- **Bệnh nhân mẫu** (gate): `wheat`, `crustacean_shellfish`, 20 tên nhuyễn thể, natri ≤ 666,67 mg; bằng chứng trỏ đúng act id.
+- 37/100 bệnh nhân có ràng buộc ngoài mức mặc định.
+- Dị ứng: shellfish 6, trứng 4, hạt cây 3, sữa 2, lúa mì 2, đậu nành 1, đậu phộng 1.
+- Bưởi chùm bị loại ở 17 bệnh nhân (statin).
+- Ngưỡng dinh dưỡng: natri 100 (mặc định), chất béo bão hòa 18, chất xơ 5, protein theo cân nặng 3.
+- Cảnh báo: đường 100, kali 3, phospho 3, vitamin K 1. `unmapped`: hyperglycemia 2.

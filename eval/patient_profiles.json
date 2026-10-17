@@ -1,0 +1,60 @@
+{
+  "ran_at": "2026-10-17T17:22:21",
+  "git_commit": "d01f43b",
+  "seed": 42,
+  "mode": "vectorless",
+  "ruleset_version": "6fc4e3a7791e",
+  "rules_log": [],
+  "patients_alive": 100,
+  "patients_with_more_than_the_default": 37,
+  "patients_by_allergen": {
+    "crustacean_shellfish": 6,
+    "egg": 4,
+    "tree_nuts": 3,
+    "milk": 2,
+    "wheat": 2,
+    "soy": 1,
+    "peanut": 1
+  },
+  "patients_by_excluded_ingredient": {
+    "grapefruit": 17,
+    "squid": 6,
+    "abalone": 6,
+    "clam": 6,
+    "baby clam": 6,
+    "conch": 6,
+    "calamari": 6,
+    "littleneck clam": 6,
+    "octopus": 6,
+    "snail": 6,
+    "escargot": 6,
+    "oyster": 6,
+    "clam juice": 6,
+    "mussel": 6,
+    "shucked oyster": 6,
+    "clamato": 6,
+    "scallop": 6,
+    "clam in shell": 6,
+    "oyster sauce": 6,
+    "sea scallop": 6,
+    "bay scallop": 6
+  },
+  "patients_by_nutrient_limit": {
+    "sodium_mg max 666.667": 100,
+    "sat_fat_pct_kcal max 6": 18,
+    "fiber_per_1000kcal min 14": 5,
+    "protein_g max 28.7733": 1,
+    "protein_g max 20.6667": 1,
+    "protein_g max 20.8": 1
+  },
+  "patients_by_warning": {
+    "Nên ưu tiên món ít đường (đường dưới 10% năng lượng, WHO).": 100,
+    "Lưu ý lượng kali trong món (bệnh thận mạn).": 3,
+    "Lưu ý lượng phospho trong món (bệnh thận mạn); dữ liệu công thức không có số liệu phospho.": 3,
+    "Giữ lượng vitamin K ổn định (rau cải xoăn, rau bina, bông cải xanh…)": 1
+  },
+  "unmapped": {
+    "condition:80394007 Hyperglycemia": 2
+  },
+  "note": "counts of living patients; no patient id is written here"
+}
