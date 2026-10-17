@@ -5,7 +5,7 @@ from typing import Literal
 
 from .schemas import SessionState, Understanding
 
-Route = Literal["retrieve", "detail", "clarify", "chat"]
+Route = Literal["retrieve", "detail", "clarify", "chat", "patient_info"]
 
 
 def route(u: Understanding, state: SessionState) -> Route:
@@ -13,6 +13,8 @@ def route(u: Understanding, state: SessionState) -> Route:
         return "clarify"
     if u.intent in {"chitchat", "out_of_scope"}:
         return "chat"
+    if u.intent == "patient_info":  # only a patient session's M1 can return it: answer from the record (MV3)
+        return "patient_info"
     if u.intent == "ask_detail":
         return "detail" if detail_recipe(u, state) else "retrieve"
     return "retrieve"

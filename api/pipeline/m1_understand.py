@@ -77,11 +77,35 @@ Message: "vegan curry, ready within an hour"
  "remove_time":false,"ref_recipe":0}"""
 
 
+# Patient sessions only (MV3): the same schema plus needs_record_context and the patient_info intent. A session
+# without a patient keeps SCHEMA and SYSTEM byte for byte, so its cached replies (data/cache/llm.jsonl) still hold.
+INTENTS_PATIENT = [*INTENTS, "patient_info"]
+SCHEMA_PATIENT = {**SCHEMA, "required": [*SCHEMA["required"], "needs_record_context"],
+                  "properties": {**SCHEMA["properties"], "intent": {"type": "string", "enum": INTENTS_PATIENT},
+                                 "needs_record_context": {"type": "boolean"}}}
+SYSTEM_PATIENT = SYSTEM.replace("Answer with JSON only.", """The chat is about one patient whose medical record the assistant can read.
+- intent "patient_info": a question about the patient's record itself, not a recipe request
+  ("bệnh nhân này dị ứng gì?", "what medications is the patient on?").
+- needs_record_context: true when answering needs the patient's history (past visits, lab results by year:
+  "lần khám gần nhất có gì liên quan ăn uống không", "were the last blood tests normal?"); else false.
+  Allergies, current problems, current medications and latest vital signs are always available: they need no context.
+Answer with JSON only.""") + """
+Message: "gợi ý món tối nhanh cho bệnh nhân này"
+{"intent":"search","query_en":"quick dinner","allergens_exclude":[],"ingredients_exclude":[],"ingredients_include":[],
+ "diet":"none","max_total_minutes":0,"lasting":[],"remove_allergens":[],"remove_ingredients":[],"remove_diet":false,
+ "remove_time":false,"ref_recipe":0,"needs_record_context":false}
+Message: "lần xét nghiệm gần nhất của bệnh nhân có gì cần lưu ý khi ăn uống không?"
+{"intent":"patient_info","query_en":"","allergens_exclude":[],"ingredients_exclude":[],"ingredients_include":[],
+ "diet":"none","max_total_minutes":0,"lasting":[],"remove_allergens":[],"remove_ingredients":[],"remove_diet":false,
+ "remove_time":false,"ref_recipe":0,"needs_record_context":true}"""
+
+
 def detect_lang(message: str) -> str:
     return "vi" if looks_vietnamese(message) else "en"
 
 
-def build_messages(message: str, history: list[dict], current: Constraints, hints: list[tuple]) -> list[dict]:
+def build_messages(message: str, history: list[dict], current: Constraints, hints: list[tuple],
+                   system: str = SYSTEM) -> list[dict]:
     ctx = []
     if history:
         ctx.append("Conversation so far:\n" + "\n".join(f"{h['role']}: {h['content'][:400]}" for h in history))
@@ -91,7 +115,7 @@ def build_messages(message: str, history: list[dict], current: Constraints, hint
         if alias.resolve == "context":
             ctx.append(f'The word "{word}" can mean {" or ".join(alias.ingredients)}: pick the one the dish implies.')
     user = ("\n\n".join(ctx) + "\n\n" if ctx else "") + f"Message: {message}"
-    return [{"role": "system", "content": SYSTEM}, {"role": "user", "content": user}]
+    return [{"role": "system", "content": system}, {"role": "user", "content": user}]
 
 
 NEGATION = re.compile(r"\b(?:without|no|not|free of|minus|except|excluding|avoid(?:ing)?)\b[^,.;]*", re.I)
@@ -187,7 +211,7 @@ def map_ingredients(names: list[str], lex: RuntimeLexicon, notes: list[str]) -> 
     return list(dict.fromkeys(ings)), codes
 
 
-def postprocess(raw: dict, message: str, lex: RuntimeLexicon) -> Understanding:
+def postprocess(raw: dict, message: str, lex: RuntimeLexicon, patient: bool = False) -> Understanding:
     """The model's JSON -> a validated Understanding. Pure, so it is unit-tested without a model."""
     notes: list[str] = []
     excl, excl_codes = map_ingredients(raw.get("ingredients_exclude", []), lex, notes)
@@ -233,7 +257,8 @@ def postprocess(raw: dict, message: str, lex: RuntimeLexicon) -> Understanding:
         notes.append("added peanut: a plain 'nut' covers peanuts too (safe side)")
         allergens = valid_allergens(allergens + ["peanut"])
     u = Understanding(
-        intent=raw.get("intent") if raw.get("intent") in INTENTS else "search",
+        intent=raw.get("intent") if raw.get("intent") in (INTENTS_PATIENT if patient else INTENTS) else "search",
+        needs_record_context=bool(raw.get("needs_record_context")) if patient else False,
         lang=detect_lang(message), query_en=query,
         constraints=Constraints(allergens_exclude=allergens, ingredients_exclude=excl, ingredients_include=incl,
                                 diet=diet, max_total_minutes=minutes if minutes and minutes > 0 else None),
@@ -289,13 +314,16 @@ def fallback(message: str, lex: RuntimeLexicon) -> Understanding:
 
 
 def understand(client: httpx.Client, lex: RuntimeLexicon, message: str, history: list[dict],
-               current: Constraints) -> Understanding:
-    messages = build_messages(message, history, current, lex.hints(message))
+               current: Constraints, patient: bool = False) -> Understanding:
+    """patient=True (a session about a patient record) uses SCHEMA_PATIENT and SYSTEM_PATIENT; otherwise the
+    call is exactly the M3 one, cache key included."""
+    schema, system = (SCHEMA_PATIENT, SYSTEM_PATIENT) if patient else (SCHEMA, SYSTEM)
+    messages = build_messages(message, history, current, lex.hints(message), system)
     for attempt in range(2):
         try:
-            raw = chat_json(client, SCHEMA, messages, use_cache=attempt == 0)
+            raw = chat_json(client, schema, messages, use_cache=attempt == 0)
             if isinstance(raw, dict) and "intent" in raw:
-                u = postprocess(raw, message, lex)
+                u = postprocess(raw, message, lex, patient)
                 u.clarify = ask_back(message, lex, u)
                 return u
         except (LLMError, httpx.HTTPError):
