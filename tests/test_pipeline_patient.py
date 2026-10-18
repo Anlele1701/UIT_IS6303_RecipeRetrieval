@@ -49,7 +49,7 @@ def fake_models(monkeypatch, understood, answers, prompts=None):
         assert patient, "a patient session must use the patient schema"
         return understood.pop(0)
 
-    def generate(client, messages, usage=None):
+    def generate(client, messages, usage=None, **kw):
         if prompts is not None:
             prompts.append(messages)
         return iter([answers.pop(0)])
@@ -140,7 +140,7 @@ def test_s_profile_ignores_the_record(bot, monkeypatch):
     def understand(client, lex, message, history, current):  # the M3 call: no patient argument at all
         return Understanding(query_en="tea toast shrimp")
     monkeypatch.setattr(orch, "understand", understand)
-    monkeypatch.setattr(orch.m6, "generate", lambda client, messages, usage=None: iter(["ok"]))
+    monkeypatch.setattr(orch.m6, "generate", lambda client, messages, usage=None, **kw: iter(["ok"]))
     evs = events(bot, bot.new_session("S-Profile", PID), "món", "S-Profile")
     assert "patient_profile" not in [t for t, _ in evs]
     assert dict(evs)["constraints"]["constraints"]["allergens_exclude"] == []

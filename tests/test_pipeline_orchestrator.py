@@ -26,7 +26,7 @@ def bot(recipes, fake_embed, monkeypatch):
 
 def fake_models(monkeypatch, understood: list[Understanding], answers: list[str]):
     monkeypatch.setattr(orch, "understand", lambda client, lex, message, history, current: understood.pop(0))
-    monkeypatch.setattr(orch.m6, "generate", lambda client, messages, usage=None: iter([answers.pop(0)]))
+    monkeypatch.setattr(orch.m6, "generate", lambda client, messages, usage=None, **kw: iter([answers.pop(0)]))
 
 
 def turn(bot, sid, msg, name="S"):

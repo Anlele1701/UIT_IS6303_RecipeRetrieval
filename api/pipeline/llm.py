@@ -25,6 +25,30 @@ class LLMError(RuntimeError):
     pass
 
 
+class PromptTooLong(RuntimeError):
+    """Ollama keeps at most half of num_ctx for the prompt and drops its START (the system prompt, the rules)
+    without an error (found in MV4c: a 178k-token prompt cut to 4,098). Not an LLMError: retrying cannot help and
+    callers must not swallow it."""
+
+
+GEN_CTX = 8192
+CHARS_PER_TOKEN_MAX = 4  # an English-ish upper bound: chars/4 never overestimates the tokens of this data
+TRUNCATION_SLACK = 64  # Ollama may reuse a few cached prompt tokens and leave them out of prompt_eval_count
+
+
+def check_fits(messages: list[dict], num_ctx: int) -> None:
+    """Before a call: refuse a prompt that is surely over half of num_ctx (chars/4 underestimates the tokens)."""
+    chars = sum(len(m.get("content", "")) for m in messages)
+    if chars / CHARS_PER_TOKEN_MAX > num_ctx // 2:
+        raise PromptTooLong(f"prompt of {chars} characters cannot fit half of num_ctx={num_ctx}")
+
+
+def check_not_cut(prompt_tokens: int | None, num_ctx: int) -> None:
+    """After a call: Ollama read num_ctx/2 tokens, so it cut the prompt."""
+    if prompt_tokens and prompt_tokens >= num_ctx // 2 - TRUNCATION_SLACK:
+        raise PromptTooLong(f"Ollama read {prompt_tokens} prompt tokens with num_ctx={num_ctx}: the prompt was cut")
+
+
 def _load() -> dict[str, dict]:
     global _cache
     if _cache is None:
@@ -51,10 +75,12 @@ def chat_json(client: httpx.Client, schema: dict, messages: list[dict], model: s
     k = cache_key(model, schema, messages, temperature, num_ctx)
     if use_cache and k in _load():
         return _load()[k]
+    check_fits(messages, num_ctx)
     r = client.post(f"{config.OLLAMA_URL}/api/chat", json={
         "model": model, "stream": False, "format": schema, "messages": messages,
         "options": {"temperature": temperature, "seed": config.SEED, "num_ctx": num_ctx}}, timeout=600)
     r.raise_for_status()
+    check_not_cut(r.json().get("prompt_eval_count"), num_ctx)
     try:
         out = json.loads(r.json()["message"]["content"])
     except (json.JSONDecodeError, KeyError) as e:
@@ -69,11 +95,14 @@ def chat_json(client: httpx.Client, schema: dict, messages: list[dict], model: s
 
 
 def chat_stream(client: httpx.Client, messages: list[dict], model: str = config.GEN_MODEL,
-                temperature: float = config.GEN_TEMPERATURE, usage: dict | None = None) -> Iterator[str]:
-    """Answer tokens as they come. `usage` (if given) receives prompt/completion token counts at the end."""
+                temperature: float = config.GEN_TEMPERATURE, usage: dict | None = None,
+                num_ctx: int = GEN_CTX) -> Iterator[str]:
+    """Answer tokens as they come. `usage` (if given) receives prompt/completion token counts at the end.
+    A cut prompt raises PromptTooLong at the end of the stream (Ollama tells the count only then)."""
+    check_fits(messages, num_ctx)
     with client.stream("POST", f"{config.OLLAMA_URL}/api/chat", json={
             "model": model, "stream": True, "messages": messages,
-            "options": {"temperature": temperature, "seed": config.SEED, "num_ctx": 8192}}, timeout=900) as r:
+            "options": {"temperature": temperature, "seed": config.SEED, "num_ctx": num_ctx}}, timeout=900) as r:
         r.raise_for_status()
         for line in r.iter_lines():
             if not line:
@@ -82,6 +111,8 @@ def chat_stream(client: httpx.Client, messages: list[dict], model: str = config.
             piece = chunk.get("message", {}).get("content", "")
             if piece:
                 yield piece
-            if chunk.get("done") and usage is not None:
-                usage["prompt_tokens"] = chunk.get("prompt_eval_count", 0)
-                usage["completion_tokens"] = chunk.get("eval_count", 0)
+            if chunk.get("done"):
+                if usage is not None:
+                    usage["prompt_tokens"] = chunk.get("prompt_eval_count", 0)
+                    usage["completion_tokens"] = chunk.get("eval_count", 0)
+                check_not_cut(chunk.get("prompt_eval_count"), num_ctx)

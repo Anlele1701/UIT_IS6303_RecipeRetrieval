@@ -31,7 +31,9 @@ from .rules import RuleSet
 ROOT = Path(__file__).resolve().parents[2]
 CHUNK_LINES = 8
 TOP_K = 6
-EXTRACT_CTX = 16384  # the four fixed narrative sections run to ~12k characters; 4096 would cut the prompt
+EXTRACT_CTX = 16384  # Ollama keeps half of it for the prompt: ~8k tokens
+PIECE_CHARS = 12000  # one extraction call reads at most this much text (~5.7k tokens at 2.1 characters/token,
+#                      measured on the densest record); a longer text is read in pieces (MV4c: up to 180k chars)
 SCHEMA = {"type": "object", "required": ["food_allergies", "conditions", "medications"],
           "properties": {k: {"type": "array", "items": {"type": "string"}}
                          for k in ("food_allergies", "conditions", "medications")}}
@@ -47,8 +49,10 @@ FIXED_ID = {"allergies": "narrative.allergies", "problems.active": "narrative.pr
 
 def _key(text: str) -> str:
     """Lowercased, spaces squashed, a trailing semantic tag dropped: "Essential hypertension (disorder)" and
-    "essential hypertension" are one key."""
+    "essential hypertension" are one key. A copied narrative row ("2005-01-26 -> no end date: Clopidogrel ...")
+    loses its dates: the model was asked for the description and copied the line."""
     t = re.sub(r"\s+", " ", (text or "").lower()).strip()
+    t = re.sub(r"^(\d{4}-\d{2}-\d{2}|\?) -> (\d{4}-\d{2}-\d{2}|no end date): ", "", t)
     return re.sub(r"\s*\((disorder|finding|situation|substance|food|product|organism|qualifier value)\)$", "", t)
 
 
@@ -76,11 +80,28 @@ def terminology() -> dict[str, dict[str, str]]:
     return term
 
 
-def extract(client: httpx.Client, text: str, today: str) -> tuple[dict[str, list[str]], int]:
-    """The model's lists and the number of calls made (a failed call counts; two failures give empty lists).
-    No text (nothing was read) -> no call: a model asked about nothing makes items up."""
-    if not text.strip():
-        return {k: [] for k in SCHEMA["required"]}, 0
+def pieces(text: str, limit: int = PIECE_CHARS) -> list[str]:
+    """Cut a text into pieces of at most `limit` characters at line breaks; a piece that starts inside a section
+    repeats the section's "## Title" line, so the model still knows what the rows are. A single longer line is
+    cut (no record line comes near it)."""
+    out, cur, head = [], [], None
+    size = 0
+    for line in text.splitlines():
+        if line.startswith("## "):
+            head = line
+        line = line[:limit - 200]
+        if cur and size + len(line) + 1 > limit:
+            out.append("\n".join(cur))
+            cur = [head] if head and not line.startswith("## ") else []
+            size = sum(len(x) + 1 for x in cur)
+        cur.append(line)
+        size += len(line) + 1
+    if cur:
+        out.append("\n".join(cur))
+    return [x for x in out if x.strip()]
+
+
+def _extract_one(client: httpx.Client, text: str, today: str) -> tuple[dict[str, list[str]], int]:
     messages = [{"role": "system", "content": SYSTEM.format(today=today)}, {"role": "user", "content": text}]
     for attempt in range(1, 3):
         try:
@@ -89,6 +110,21 @@ def extract(client: httpx.Client, text: str, today: str) -> tuple[dict[str, list
         except (LLMError, httpx.HTTPError):
             continue
     return {k: [] for k in SCHEMA["required"]}, 2
+
+
+def extract(client: httpx.Client, text: str, today: str) -> tuple[dict[str, list[str]], int]:
+    """The model's lists and the number of calls made (a failed call counts; two failures leave that piece
+    empty). A long text is read piece by piece (pieces()) and the lists are merged, first wording kept.
+    No text (nothing was read) -> no call: a model asked about nothing makes items up."""
+    merged: dict[str, dict[str, str]] = {k: {} for k in SCHEMA["required"]}
+    calls = 0
+    for piece in pieces(text):
+        items, n = _extract_one(client, piece, today)
+        calls += n
+        for k, xs in items.items():
+            for x in xs:
+                merged[k].setdefault(_key(x), x)
+    return {k: list(v.values()) for k, v in merged.items()}, calls
 
 
 def entities(items: dict[str, list[str]]) -> dict[str, list[str]]:

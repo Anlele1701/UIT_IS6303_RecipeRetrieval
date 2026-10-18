@@ -11,7 +11,7 @@ from collections.abc import Iterator
 import httpx
 
 from .. import config
-from .llm import chat_stream
+from .llm import GEN_CTX, chat_stream
 from .schemas import Constraints, RecipeCard
 
 LANG = {"vi": "Vietnamese", "en": "English"}
@@ -52,6 +52,7 @@ PATIENT_INFO = """You are a cooking assistant reading one patient's record to he
 - If the question asks whether a result is normal or what it means, say that interpreting results needs a doctor,
   then give the values only.
 - Cite each fact as [H:<node_id>]. Say plainly when the record does not hold the answer.
+- A section with "older_entries_not_shown" lists only its newest entries: say the answer covers those only.
 - Never name the patient. Give no medical or treatment advice."""
 
 NUTRIENT_LABEL = {"sodium_mg": "sodium mg", "protein_g": "protein g", "sat_fat_pct_kcal": "saturated fat % kcal",
@@ -113,6 +114,43 @@ def answer_messages(message: str, lang: str, c: Constraints, cards: list[RecipeC
     return [{"role": "system", "content": system}, *(history or []), {"role": "user", "content": message}]
 
 
+PATIENT_INFO_CTX = 16384  # Ollama keeps half for the prompt: ~8k tokens
+RECORD_BUDGET_CHARS = 11000  # the record part of that, with room for the rules, the profile and one retry
+
+
+def _when(fact: dict) -> str:
+    """A fact's date for newest-first; undated facts (allergies, conditions, medications) sort first."""
+    return fact.get("date") or fact.get("month") or fact.get("start") or "9999"
+
+
+def fit_views(views: list[dict], budget: int = RECORD_BUDGET_CHARS) -> tuple[list[dict], dict[str, int]]:
+    """The nodes read, cut by code to fit the prompt: undated facts first, then the newest, until the next one
+    would pass the budget (strictly newest-first, so what is shown is "the N newest"). Each cut node says how
+    many older entries it leaves out. Returns the views and {node_id: entries left out} (traced)."""
+    def size(x):
+        return len(json.dumps(x, ensure_ascii=False))
+    if sum(size(v) for v in views) <= budget:
+        return views, {}
+    used = sum(size({**v, "facts": [], "older_entries_not_shown": 0}) for v in views)
+    order = sorted(((i, j, f) for i, v in enumerate(views) for j, f in enumerate(v.get("facts") or [])),
+                   key=lambda t: _when(t[2]), reverse=True)
+    keep = set()
+    for i, j, f in order:
+        used += size(f) + 2
+        if used > budget:
+            break
+        keep.add((i, j))
+    out, omitted = [], {}
+    for i, v in enumerate(views):
+        facts = v.get("facts") or []
+        kept = [f for j, f in enumerate(facts) if (i, j) in keep]
+        if len(kept) < len(facts):
+            omitted[v["node_id"]] = len(facts) - len(kept)
+            v = {**v, "facts": kept, "older_entries_not_shown": len(facts) - len(kept)}
+        out.append(v)
+    return out, omitted
+
+
 def patient_info_messages(message: str, lang: str, views: list[dict], patient: str,
                           history: list[dict] | None = None) -> list[dict]:
     """Route patient_info: answer from the nodes read (their prompt views) and the profile block."""
@@ -132,5 +170,6 @@ def chat_messages(message: str, lang: str) -> list[dict]:
 
 
 def generate(client: httpx.Client, messages: list[dict], usage: dict | None = None,
-             temperature: float = config.GEN_TEMPERATURE) -> Iterator[str]:
-    return chat_stream(client, messages, model=config.GEN_MODEL, temperature=temperature, usage=usage)
+             temperature: float = config.GEN_TEMPERATURE, num_ctx: int = GEN_CTX) -> Iterator[str]:
+    return chat_stream(client, messages, model=config.GEN_MODEL, temperature=temperature, usage=usage,
+                       num_ctx=num_ctx)

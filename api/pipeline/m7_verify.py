@@ -273,9 +273,10 @@ def values_answer(views: list[dict], lang: str) -> str:
                 lines.append(f"- {f['class'].replace('_', ' ')} ({f.get('month')}) {ref}")
             elif "value" in f:
                 unit = f" {f['unit']}" if f.get("unit") else ""
-                lines.append(f"- {f.get('display')}: {f['value']}{unit} ({f.get('date')}) {ref}")
-            elif f.get("substance") or f.get("display"):
-                lines.append(f"- {f.get('substance') or f.get('display')} {ref}")
+                lines.append(f"- {f.get('display') or f.get('description')}: {f['value']}{unit} ({f.get('date')}) {ref}")
+            elif f.get("substance") or f.get("display") or f.get("description"):  # narrative rows: description
+                when = f" ({f['date']})" if f.get("description") and f.get("date") else ""
+                lines.append(f"- {f.get('substance') or f.get('display') or f.get('description')}{when} {ref}")
     if not lines:
         return ("Hồ sơ không có thông tin cho câu hỏi này." if lang == "vi"
                 else "The record holds no information for this question.")

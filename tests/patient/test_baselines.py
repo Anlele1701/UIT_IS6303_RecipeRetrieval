@@ -68,3 +68,9 @@ def test_weight_from_either_text_form():
                                       "Vital Signs: 2025-08-19 -> no end date: Body Weight (83.6 kg)")["value"] == "83.6"
     assert baselines.weight_from_text("Vital sign: Body Weight 70 kg (2025-01-01)")["date"] == "2025-01-01"
     assert baselines.weight_from_text("Allergy: Peanut") is None
+
+
+def test_a_copied_narrative_row_maps_like_its_description():
+    ent = baselines.entities({"food_allergies": [], "conditions": ["1993-03-05 -> no end date: Essential hypertension (disorder)"],
+                              "medications": ["2016-07-15 -> 2017-07-21: lisinopril 10 MG Oral Tablet"]})
+    assert ent["conditions"] == ["59621000"] and ent["medications"] == ["314076"]

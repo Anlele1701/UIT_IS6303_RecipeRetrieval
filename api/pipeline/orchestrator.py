@@ -204,11 +204,14 @@ class Assistant:
 
         constrained = sorted({*c.nutrient_limits, *c.nutrient_soft})  # empty without a patient
         allowed_numbers = None  # route patient_info: the numbers M7 lets the answer state
+        gen_ctx, omitted = m6.GEN_CTX, {}
         if path == "clarify":
             answer = u.clarify or ""
             yield Event("token", answer)
         elif path == "patient_info" and pt:
             views = [prompt_view(n, self.rules) for n in pt["nodes"] if n.node_id in pt["selection"].node_ids]
+            views, omitted = m6.fit_views(views)  # newest first, by code: never let Ollama cut the prompt's start
+            gen_ctx = m6.PATIENT_INFO_CTX
             block = self._block(pt, state)
             allowed_numbers = m7.number_index(views)  # facts of the nodes read only, units checked (Thy)
             if flags.generate:
@@ -253,10 +256,10 @@ class Assistant:
                 messages = m6.answer_messages(message, u.lang, c, cards, history)
 
         if messages is not None:
-            with tr.stage("m6", {"messages": len(messages)}) as p:
+            with tr.stage("m6", {"messages": len(messages), "num_ctx": gen_ctx, "record_omitted": omitted}) as p:
                 t = time.perf_counter()
                 parts = []
-                for piece in m6.generate(self.client, messages, usage):
+                for piece in m6.generate(self.client, messages, usage, num_ctx=gen_ctx):
                     if not parts:
                         tr.ms["m6_ttft"] = round((time.perf_counter() - t) * 1000, 1)
                     parts.append(piece)
@@ -265,7 +268,7 @@ class Assistant:
                 p.update(usage=dict(usage), chars=len(answer))
             if path in {"retrieve", "detail"} or (pt and path == "patient_info"):
                 answer, v = self._verify(answer, messages, cards, c, flags, tr, usage,
-                                         self._check(pt, c, allowed_numbers))
+                                         self._check(pt, c, allowed_numbers), gen_ctx)
             if pt and path in {"retrieve", "detail"} and flags.verify and v.flags:
                 answer, v = self._repair(answer, v, cards, c, u.lang, tr)
             if pt and path == "patient_info" and flags.verify and not v.verified:
@@ -297,7 +300,8 @@ class Assistant:
             done["fallback"] = v.fallback  # route patient_info answered by values_answer (code), not the model
         yield Event("done", done)
 
-    def _verify(self, answer, messages, cards, c, flags: Flags, tr: Trace, usage: dict, check=None):
+    def _verify(self, answer, messages, cards, c, flags: Flags, tr: Trace, usage: dict, check=None,
+                num_ctx: int = m6.GEN_CTX):
         """M7: always measured (the trace and S-Verify need the numbers); acted on only when flags.verify."""
         with tr.stage("m7", {"applied": flags.verify}) as p:
             v = m7.verify(answer, cards, c, check) if check else m7.verify(answer, cards, c)
@@ -306,7 +310,7 @@ class Assistant:
                 retry = [*messages, {"role": "assistant", "content": answer},
                          {"role": "user", "content": m7.retry_note(v, cards, c)}]
                 more: dict = {}
-                answer = "".join(m6.generate(self.client, retry, more))
+                answer = "".join(m6.generate(self.client, retry, more, num_ctx=num_ctx))
                 for key in ("prompt_tokens", "completion_tokens"):
                     usage[key] = usage.get(key, 0) + more.get(key, 0)
                 second = m7.verify(answer, cards, c, check) if check else m7.verify(answer, cards, c)
