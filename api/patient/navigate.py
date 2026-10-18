@@ -29,6 +29,8 @@ SYSTEM = ("You pick which sections of a patient's record answer a question about
           "list when none helps. Use only node_id values from the table. Answer with JSON only.")
 NOFIXED_NOTE = (" Only the sections you pick are read: the patient's food allergies, conditions and medications "
                 "are known only if you pick the sections that hold them.")  # P-Vectorless-Fixed: a fair baseline
+DATE_NOTE = (" The record is dated {today}: 'recent', 'latest' or 'last' means closest to that date, whatever "
+             "year you think it is now.")  # without it qwen never picked the 2026 nodes (MV4c smoke run: 0/5)
 
 
 @dataclass
@@ -45,14 +47,16 @@ def toc(nodes: list[PatientNode], rs: RuleSet) -> list[dict]:
 
 
 def prompt(question: str, candidates: list[PatientNode], rs: RuleSet, cap: int = MAX_NODES,
-           nofixed: bool = False) -> list[dict]:
+           nofixed: bool = False, today: str | None = None) -> list[dict]:
     body = {"question": question, "table_of_contents": toc(candidates, rs)}
-    return [{"role": "system", "content": SYSTEM.format(cap=cap) + (NOFIXED_NOTE if nofixed else "")},
+    system = SYSTEM.format(cap=cap) + (NOFIXED_NOTE if nofixed else "") + (DATE_NOTE.format(today=today) if today else "")
+    return [{"role": "system", "content": system},
             {"role": "user", "content": json.dumps(body, ensure_ascii=False)}]
 
 
 def select_nodes(nodes: list[PatientNode], question: str, needs_context: bool, mode: str, rs: RuleSet,
-                 client: httpx.Client | None, attempts: int = 2) -> Selection:
+                 client: httpx.Client | None, attempts: int = 2, today: str | None = None) -> Selection:
+    """`today` is the record date (never the clock): what 'recent' is measured from."""
     fixed = [n.node_id for n in nodes if n.kind == "fixed"]
     if mode == "vector":
         raise ValueError("profile_mode 'vector' retrieves chunks (api/patient/baselines.py), it does not walk the tree")
@@ -63,7 +67,7 @@ def select_nodes(nodes: list[PatientNode], question: str, needs_context: bool, m
         if mode == "direct" or not needs_context or not candidates:
             return Selection(fixed)
     known = {n.node_id for n in candidates}
-    messages = prompt(question, candidates, rs, cap, mode == "vectorless_nofixed")
+    messages = prompt(question, candidates, rs, cap, mode == "vectorless_nofixed", today)
     calls = 0
     for _ in range(attempts):
         calls += 1  # a cached reply still counts: the turn would have called the model

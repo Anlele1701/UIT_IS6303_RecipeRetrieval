@@ -394,7 +394,8 @@ class Assistant:
             if mode == "vector":
                 sel, text = self._vector_select(pt, message)
             else:
-                sel = navigate.select_nodes(pt["nodes"], message, needs, mode, self.rules, self.client)
+                sel = navigate.select_nodes(pt["nodes"], message, needs, mode, self.rules, self.client,
+                                            today=pt["today"])
             p.update(needs_context=needs, node_ids=sel.node_ids, chosen=sel.chosen, dropped=sel.dropped,
                      llm_calls=sel.llm_calls, fallback=sel.fallback)
         pt["selection"] = sel

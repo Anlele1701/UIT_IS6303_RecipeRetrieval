@@ -98,3 +98,9 @@ def test_only_the_nofixed_prompt_says_unpicked_sections_are_not_read():
     rs = rules.load_rules()
     assert navigate.NOFIXED_NOTE in navigate.prompt("q", [], rs, 6, nofixed=True)[0]["content"]
     assert navigate.NOFIXED_NOTE not in navigate.prompt("q", [], rs)[0]["content"]  # P-Vectorless cache keys kept
+
+
+def test_the_prompt_carries_the_record_date_not_the_clock():
+    rs = rules.load_rules()
+    assert "dated 2026-10-23" in navigate.prompt("q", [], rs, today="2026-10-23")[0]["content"]
+    assert "dated" not in navigate.prompt("q", [], rs)[0]["content"]
