@@ -11,6 +11,8 @@ Only the evaluation uses this module (scripts/eval_patient.py); production reads
 
 import json
 import re
+import sys
+import time
 from dataclasses import replace
 from datetime import date
 from functools import cache
@@ -169,9 +171,18 @@ def chunks(lines: list[str], size: int = CHUNK_LINES) -> list[str]:
     return ["\n".join(lines[i:i + size]) for i in range(0, len(lines), size)]
 
 
-def _embed(client: httpx.Client, texts: list[str]) -> np.ndarray:
-    r = client.post(f"{config.OLLAMA_URL}/api/embed", json={"model": config.EMBED_MODEL, "input": texts}, timeout=600)
-    r.raise_for_status()
+def _embed(client: httpx.Client, texts: list[str], attempts: int = 3) -> np.ndarray:
+    """A 400 from Ollama while it swaps models went away on the next call (MV4c smoke run): retry, then raise
+    with Ollama's message."""
+    for attempt in range(1, attempts + 1):
+        r = client.post(f"{config.OLLAMA_URL}/api/embed", json={"model": config.EMBED_MODEL, "input": texts},
+                        timeout=600)
+        if r.status_code == 200 or attempt == attempts:
+            break
+        print(f"embed: HTTP {r.status_code} {r.text[:200]!r}, retry {attempt}", file=sys.stderr)
+        time.sleep(5 * attempt)
+    if r.status_code != 200:
+        raise httpx.HTTPStatusError(f"embed failed: HTTP {r.status_code} {r.text[:300]}", request=r.request, response=r)
     v = np.asarray(r.json()["embeddings"], dtype=np.float32)
     return v / np.linalg.norm(v, axis=1, keepdims=True)
 
