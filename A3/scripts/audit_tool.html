@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gán nhãn dị ứng (M2)</title>
+<style>
+  :root { --bg:#fafaf8; --fg:#1d1d1b; --muted:#6b6b66; --line:#ddd9d0; --card:#fff;
+          --yes:#b3261e; --maybe:#b26a00; --no:#2e6b3a; --focus:#2457c5; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:16px/1.5 system-ui, "Segoe UI", sans-serif; background:var(--bg); color:var(--fg); }
+  main { max-width:1100px; margin:0 auto; padding:16px; display:grid; gap:16px; grid-template-columns: 1fr 1fr; }
+  header { grid-column:1/-1; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px; }
+  h1 { font-size:22px; margin:0 0 4px; } .muted { color:var(--muted); font-size:14px; }
+  ul.ing { padding-left:20px; margin:8px 0; } ul.ing li { margin:3px 0; }
+  details { margin-top:12px; } details p { white-space:pre-wrap; font-size:14px; color:var(--muted); }
+  table { width:100%; border-collapse:collapse; } td { padding:5px 4px; border-bottom:1px solid var(--line); }
+  td.name { width:46%; } .seg { display:flex; gap:4px; }
+  .seg button { flex:1; padding:6px 0; border:1px solid var(--line); background:#fff; border-radius:5px; cursor:pointer; font-size:14px; }
+  .seg button[aria-pressed=true][data-v=yes] { background:var(--yes); color:#fff; border-color:var(--yes); }
+  .seg button[aria-pressed=true][data-v=maybe] { background:var(--maybe); color:#fff; border-color:var(--maybe); }
+  .seg button[aria-pressed=true][data-v=no] { background:var(--no); color:#fff; border-color:var(--no); }
+  .unset .seg button { border-color:var(--maybe); }
+  textarea { width:100%; min-height:60px; margin-top:8px; font:inherit; }
+  .nav { display:flex; gap:8px; margin-top:12px; } .nav button { padding:10px 16px; font-size:15px; border-radius:6px; cursor:pointer; }
+  .primary { background:var(--focus); color:#fff; border:none; } .err { color:var(--yes); min-height:1.5em; }
+  @media (max-width: 800px) { main { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div><strong>Gán nhãn mù – M2</strong> <span class="muted">· theo docs/annotation_guide.md · không hiển thị dự đoán của máy</span></div>
+    <div id="progress" class="muted"></div>
+  </header>
+  <section class="card">
+    <div class="muted" id="meta"></div>
+    <h1 id="title"></h1>
+    <strong>Nguyên liệu</strong>
+    <ul class="ing" id="ingredients"></ul>
+    <details><summary>Cách làm (chỉ mở khi cần)</summary><p id="directions"></p></details>
+  </section>
+  <section class="card">
+    <strong>Nhóm dị ứng</strong> <span class="muted">(mặc định: Không)</span>
+    <table id="allergens"></table>
+    <p><strong>Chế độ ăn</strong> <span class="muted">(bắt buộc chọn)</span></p>
+    <table id="diets"></table>
+    <textarea id="note" placeholder="Ghi chú (chỗ phân vân, nếu có)"></textarea>
+    <div class="err" id="err"></div>
+    <div class="nav">
+      <button id="prev">← Trước</button>
+      <button id="save" class="primary">Lưu & tiếp (Ctrl+Enter)</button>
+      <button id="next">Sau →</button>
+    </div>
+  </section>
+</main>
+<script>
+const ALLERGENS = [["milk","Sữa"],["egg","Trứng"],["fish","Cá"],["crustacean_shellfish","Giáp xác (tôm, cua)"],
+  ["tree_nuts","Hạt cây"],["peanut","Đậu phộng"],["wheat","Lúa mì"],["soy","Đậu nành"],["sesame","Mè"]];
+const DIETS = [["vegetarian","Vegetarian (ăn chay)"],["vegan","Vegan (thuần chay)"]];
+const LEVELS = [["yes","Có"],["maybe","Có thể"],["no","Không"]];
+let order = 1, total = 0, labels = {};
+
+function row(table, key, name) {
+  const tr = document.createElement("tr"); tr.dataset.key = key;
+  tr.innerHTML = `<td class="name">${name}</td><td><div class="seg">${LEVELS.map(([v, t]) =>
+    `<button type="button" data-v="${v}" aria-pressed="false">${t}</button>`).join("")}</div></td>`;
+  tr.querySelectorAll("button").forEach(b => b.onclick = () => { labels[key] = b.dataset.v; paint(); });
+  table.appendChild(tr);
+}
+ALLERGENS.forEach(([k, n]) => row(document.getElementById("allergens"), k, n));
+DIETS.forEach(([k, n]) => row(document.getElementById("diets"), k, n));
+
+function paint() {
+  document.querySelectorAll("tr[data-key]").forEach(tr => {
+    const v = labels[tr.dataset.key];
+    tr.classList.toggle("unset", !v);
+    tr.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.v === v)));
+  });
+}
+
+async function load(o) {
+  const r = await fetch(`/api/recipe/${o}`); if (!r.ok) return;
+  const d = await r.json(); order = d.order; total = d.total;
+  document.getElementById("meta").textContent = `#${d.order} / ${d.total} · ${d.category} · id ${d.recipe_id}`;
+  document.getElementById("title").textContent = d.title;
+  const ul = document.getElementById("ingredients"); ul.innerHTML = "";
+  d.ingredients.forEach(l => { const li = document.createElement("li"); li.textContent = l; ul.appendChild(li); });
+  document.getElementById("directions").textContent = d.directions;
+  labels = d.saved ? { ...d.saved.labels } : Object.fromEntries(ALLERGENS.map(([k]) => [k, "no"]));
+  document.getElementById("note").value = d.saved ? d.saved.note : "";
+  document.getElementById("err").textContent = d.saved ? "Đã lưu trước đó – sửa rồi bấm Lưu nếu cần." : "";
+  paint(); window.scrollTo(0, 0);
+}
+
+async function progress() {
+  const s = await (await fetch("/api/state")).json();
+  document.getElementById("progress").textContent = `Đã gán ${s.labeled} / ${s.total}`;
+  return s;
+}
+
+async function save() {
+  const r = await fetch(`/api/label/${order}`, { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ labels, note: document.getElementById("note").value }) });
+  if (!r.ok) { document.getElementById("err").textContent = (await r.json()).detail; return; }
+  await progress();
+  if (order < total) load(order + 1); else document.getElementById("err").textContent = "Xong! Đã lưu đủ.";
+}
+
+document.getElementById("save").onclick = save;
+document.getElementById("prev").onclick = () => order > 1 && load(order - 1);
+document.getElementById("next").onclick = () => order < total && load(order + 1);
+document.addEventListener("keydown", e => {
+  if (e.ctrlKey && e.key === "Enter") { e.preventDefault(); save(); }
+  if (e.altKey && e.key === "ArrowLeft") document.getElementById("prev").click();
+  if (e.altKey && e.key === "ArrowRight") document.getElementById("next").click();
+});
+progress().then(s => load(Math.min(s.next, s.total)));
+</script>
+</body>
+</html>

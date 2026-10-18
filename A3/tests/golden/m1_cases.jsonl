@@ -1,0 +1,30 @@
+{"id": "vi01", "message": "Tôi dị ứng đậu phộng, gợi ý món tráng miệng dưới 30 phút", "intent": "search", "allergens": ["peanut"], "excl": [], "diet": null, "minutes": 30}
+{"id": "vi02", "message": "mon ga nuong khong co ngo", "intent": "search", "allergens": [], "excl": ["cilantro"], "diet": null, "minutes": null}
+{"id": "vi03", "message": "Gợi ý món chay cho bữa tối", "intent": "search", "allergens": [], "excl": [], "diet": "vegetarian", "minutes": null}
+{"id": "vi04", "message": "con tôi bị dị ứng sữa và trứng, làm bánh gì được?", "intent": "search", "allergens": ["milk", "egg"], "excl": [], "diet": null, "minutes": null}
+{"id": "vi05", "message": "món canh không có hải sản", "intent": "search", "allergens": ["fish", "crustacean_shellfish"], "excl": ["clam", "mussel", "oyster", "scallop", "squid", "octopus"], "diet": null, "minutes": null}
+{"id": "vi06", "message": "món thuần chay nấu trong 1 tiếng", "intent": "search", "allergens": [], "excl": [], "diet": "vegan", "minutes": 60}
+{"id": "vi07", "message": "tôi dị ứng đậu phụng", "intent": "search", "allergens": ["peanut"], "excl": [], "diet": null, "minutes": null}
+{"id": "vi08", "message": "dị ứng lạc, món salad nào ngon", "intent": "search", "allergens": ["peanut"], "excl": [], "diet": null, "minutes": null}
+{"id": "vi09", "message": "toi bi di ung tom cua, goi y mon mi", "intent": "search", "allergens": ["crustacean_shellfish"], "excl": [], "diet": null, "minutes": null}
+{"id": "vi10", "message": "món gà không dùng tỏi", "intent": "search", "allergens": [], "excl": ["garlic"], "diet": null, "minutes": null}
+{"id": "vi11", "message": "bánh mì không có gluten", "intent": "search", "allergens": ["wheat"], "excl": [], "diet": null, "minutes": null}
+{"id": "vi12", "message": "món ăn sáng nhanh dưới 15 phút", "intent": "search", "allergens": [], "excl": [], "diet": null, "minutes": 15}
+{"id": "vi13", "message": "giờ ăn được đậu phộng rồi", "intent": "refine", "allergens": [], "excl": [], "diet": null, "minutes": null, "remove_allergens": ["peanut"]}
+{"id": "vi14", "message": "thêm điều kiện không mè nữa", "intent": "refine", "allergens": ["sesame"], "excl": [], "diet": null, "minutes": null}
+{"id": "vi15", "message": "món thứ 2 làm thế nào?", "intent": "ask_detail", "allergens": [], "excl": [], "diet": null, "minutes": null, "ref": 2}
+{"id": "vi16", "message": "cảm ơn bạn nhiều", "intent": "chitchat", "allergens": [], "excl": [], "diet": null, "minutes": null}
+{"id": "vi17", "message": "giá vàng hôm nay bao nhiêu?", "intent": "out_of_scope", "allergens": [], "excl": [], "diet": null, "minutes": null}
+{"id": "vi18", "message": "nấu món gì với ức gà mà không có sữa", "intent": "search", "allergens": ["milk"], "excl": [], "diet": null, "minutes": null}
+{"id": "vi19", "message": "món tráng miệng không hạt điều, không hạnh nhân", "intent": "search", "allergens": ["tree_nuts"], "excl": [], "diet": null, "minutes": null}
+{"id": "vi20", "message": "mon an chay khong dau nanh", "intent": "search", "allergens": ["soy"], "excl": [], "diet": "vegetarian", "minutes": null}
+{"id": "en01", "message": "I'm allergic to shellfish, quick pasta dinner please", "intent": "search", "allergens": ["crustacean_shellfish"], "excl": [], "diet": null, "minutes": null}
+{"id": "en02", "message": "vegan curry without coconut, ready within an hour", "intent": "search", "allergens": [], "excl": ["coconut"], "diet": "vegan", "minutes": 60}
+{"id": "en03", "message": "nut-free cookies for a school party", "intent": "search", "allergens": ["tree_nuts", "peanut"], "excl": [], "diet": null, "minutes": null}
+{"id": "en04", "message": "dairy free mashed potatoes", "intent": "search", "allergens": ["milk"], "excl": [], "diet": null, "minutes": null}
+{"id": "en05", "message": "chicken soup with no onions", "intent": "search", "allergens": [], "excl": ["onion"], "diet": null, "minutes": null}
+{"id": "en06", "message": "what about something without eggs?", "intent": "refine", "allergens": ["egg"], "excl": [], "diet": null, "minutes": null}
+{"id": "en07", "message": "how long does the first one take?", "intent": "ask_detail", "allergens": [], "excl": [], "diet": null, "minutes": null, "ref": 1}
+{"id": "en08", "message": "who won the football match yesterday?", "intent": "out_of_scope", "allergens": [], "excl": [], "diet": null, "minutes": null}
+{"id": "en09", "message": "vegetarian lasagna under 45 minutes", "intent": "search", "allergens": [], "excl": [], "diet": "vegetarian", "minutes": 45}
+{"id": "en10", "message": "I can eat peanuts now, show me satay", "intent": "refine", "allergens": [], "excl": [], "diet": null, "minutes": null, "remove_allergens": ["peanut"]}

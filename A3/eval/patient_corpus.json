@@ -1,0 +1,732 @@
+{
+  "ran_at": "2026-10-17T23:12:55",
+  "git_commit": "a75c5e5",
+  "seed": 42,
+  "rules_sha256": {
+    "allergy_substance.csv": "6641534048bace717325052498b00bca3ef61cd2ed11b67ca238207b29ec7033",
+    "condition_nutrient.csv": "6a980e43671b2dda83b74387bffb5e61dd750ae7ea125ca368e3eda5b9cac41e",
+    "drug_food.csv": "8dc43558d5953b1e6cfbae72d870883c3dae610dbdc294a17673e4322421d261",
+    "encounter_class.csv": "aa8e3d52df553a0e4fe8ae944817dfad66107f715c9326416bbf6d3d35daf686",
+    "prompt_vitals.csv": "4474f0fea43b49eb79fee7303041b369b1ccdbbc2aaebaec26fa2a0da82c9e8d",
+    "include_loinc.csv": "caf69622c4828d39071cac96e14716a660c7111b9d2ae3db67d3644f863f35cc",
+    "exclude_loinc.csv": "5432a0bd98dd06f5d1323c7a91b5ab918ea5be6d41b381e1d9f04d4bc70c6611",
+    "exclude_codes.csv": "8e3d88a3d26d8932981bf314d7589e0bc08b3dd3dac5eb40d24150b2295ee784"
+  },
+  "sources": {
+    "sample": {
+      "dir": "data/synthea_sample_data_ccda_latest",
+      "description": "100 Sample Synthetic Patient Records, C-CDA (latest)",
+      "download_page": "https://synthea.mitre.org/downloads",
+      "file_url": "https://github.com/synthetichealth/synthea-sample-data/raw/9959d9178e/downloads/latest/synthea_sample_data_ccda_latest.zip",
+      "downloaded": "2026-10-17",
+      "sample_data_repo_commit": "9959d9178e",
+      "synthea_commit": "d9d07a6eef91ee5144293b42ab64224d84d124f8",
+      "synthea_commit_note": "from the sample-data commit message; synthea tag master-branch-latest on 2026-08-18, newer than v4.0.0",
+      "zip_sha256": "cac8f607b8acd56d38b69a3a8fd4877b3606e37ce486a670c8c232f2e0c4719d",
+      "files": 108,
+      "files_sha256_of_sorted_list": "0ef5872be883c3807e20fd8d782a9ad6763c9aff3d61dd796d5d59fc06aec1f9",
+      "verified": "2026-10-17: all 108 files match the zip at sample-data commit 9959d9178e (sha256)"
+    },
+    "generated": {
+      "dir": "data/synthea_generated_ccda",
+      "description": "12 Synthea patients chosen from a run of 1000",
+      "synthea_commit": "d9d07a6eef91ee5144293b42ab64224d84d124f8",
+      "command": "./run_synthea -s 42 -cs 42 -p 1000 -a 40-90 --exporter.ccda.export=true --exporter.fhir.export=false --generate.only_alive_patients=true",
+      "seed": 42,
+      "population": 1000,
+      "selection": "scripts/patient_select.py, seed 42, eval/patient_selection.json",
+      "files": 12,
+      "files_sha256_of_sorted_list": "caad75b0114d8965de9477551dc03b9d9b202657b7199d29e6f0e55fd2595171",
+      "generated": "2026-10-17",
+      "synthea_commit_note": "same commit and default settings as the sample (generate_samples.sh), plus the seed, the age range and only_alive_patients"
+    }
+  },
+  "per_source": {
+    "sample": {
+      "dir": "data/synthea_sample_data_ccda_latest",
+      "P1": {
+        "files": 108,
+        "parsed": 108,
+        "parse_errors": [],
+        "deceased": 8,
+        "alive": 100,
+        "software_name": {
+          "https://github.com/synthetichealth/synthea": 108
+        }
+      },
+      "P2": {
+        "allergies_dropped_not_in_force": 0,
+        "allergies_in_force": 105,
+        "problems_dropped_not_in_force": 2628
+      },
+      "P3": {
+        "food_allergies": 19
+      },
+      "P4": {
+        "disorders_kept": 263,
+        "dropped_suffix_finding": 507,
+        "dropped_suffix_none": 5,
+        "dropped_suffix_person": 2,
+        "dropped_suffix_situation": 103
+      },
+      "P5": {
+        "dropped_not_in_use": 3582,
+        "in_use": 267
+      },
+      "P6": {
+        "encounters": 5547,
+        "result_organizers": 2788,
+        "vitals_latest": 836
+      },
+      "P7": {
+        "encounter_death": 8,
+        "encounter_end_of_life": 8,
+        "encounter_substance_use": 8,
+        "identity_fields_not_read": 108,
+        "medication_substance_use": 1,
+        "organizer_death": 8,
+        "organizer_mental_health": 1324,
+        "organizer_not_relevant": 327,
+        "organizer_substance_use": 627,
+        "organizer_violence": 289,
+        "problem_substance_use": 9,
+        "section_29762-2_entries": 108,
+        "section_47420-5_entries": 2431
+      }
+    },
+    "generated": {
+      "dir": "data/synthea_generated_ccda",
+      "P1": {
+        "files": 12,
+        "parsed": 12,
+        "parse_errors": [],
+        "deceased": 0,
+        "alive": 12,
+        "software_name": {
+          "https://github.com/synthetichealth/synthea": 12
+        }
+      },
+      "P2": {
+        "allergies_dropped_not_in_force": 0,
+        "allergies_in_force": 9,
+        "problems_dropped_not_in_force": 1391
+      },
+      "P3": {
+        "food_allergies": 2
+      },
+      "P4": {
+        "disorders_kept": 148,
+        "dropped_suffix_finding": 97,
+        "dropped_suffix_none": 3,
+        "dropped_suffix_situation": 27
+      },
+      "P5": {
+        "dropped_not_in_use": 5195,
+        "in_use": 125
+      },
+      "P6": {
+        "encounters": 2466,
+        "result_organizers": 2863,
+        "vitals_latest": 89
+      },
+      "P7": {
+        "encounter_end_of_life": 7,
+        "identity_fields_not_read": 12,
+        "organizer_mental_health": 825,
+        "organizer_not_relevant": 412,
+        "organizer_substance_use": 456,
+        "organizer_violence": 194,
+        "section_29762-2_entries": 12,
+        "section_47420-5_entries": 1863
+      }
+    }
+  },
+  "total": {
+    "P1": {
+      "files": 120,
+      "parsed": 120,
+      "deceased": 8,
+      "alive": 112
+    },
+    "P2": {
+      "allergies_dropped_not_in_force": 0,
+      "allergies_in_force": 114,
+      "problems_dropped_not_in_force": 4019
+    },
+    "P3": {
+      "food_allergies": 21
+    },
+    "P4": {
+      "disorders_kept": 411,
+      "dropped_suffix_finding": 604,
+      "dropped_suffix_none": 8,
+      "dropped_suffix_person": 2,
+      "dropped_suffix_situation": 130
+    },
+    "P5": {
+      "dropped_not_in_use": 8777,
+      "in_use": 392
+    },
+    "P6": {
+      "encounters": 8013,
+      "result_organizers": 5651,
+      "vitals_latest": 925
+    },
+    "P7": {
+      "encounter_death": 8,
+      "encounter_end_of_life": 15,
+      "encounter_substance_use": 8,
+      "identity_fields_not_read": 120,
+      "medication_substance_use": 1,
+      "organizer_death": 8,
+      "organizer_mental_health": 2149,
+      "organizer_not_relevant": 739,
+      "organizer_substance_use": 1083,
+      "organizer_violence": 483,
+      "problem_substance_use": 9,
+      "section_29762-2_entries": 120,
+      "section_47420-5_entries": 4294
+    }
+  },
+  "db": {
+    "patients": [
+      {
+        "source": "generated",
+        "deceased": false,
+        "n": 12
+      },
+      {
+        "source": "sample",
+        "deceased": false,
+        "n": 100
+      },
+      {
+        "source": "sample",
+        "deceased": true,
+        "n": 8
+      }
+    ],
+    "nodes": [
+      {
+        "kind": "context",
+        "summary_source": "template",
+        "n": 2359
+      },
+      {
+        "kind": "fixed",
+        "summary_source": null,
+        "n": 480
+      },
+      {
+        "kind": "root",
+        "summary_source": null,
+        "n": 120
+      }
+    ]
+  },
+  "nutrient_rule_pass": {
+    "per_meal_fraction": 0.3333,
+    "reference_weights_kg": [
+      60,
+      70,
+      80
+    ],
+    "combined_weight_kg": 70,
+    "rules_file": "data/rules/condition_nutrient.csv",
+    "rules_sha256": "6a980e43671b2dda83b74387bffb5e61dd750ae7ea125ca368e3eda5b9cac41e",
+    "note": "per serving (recipe_nutrition); sugar_pct_kcal uses total sugars; filter rules combined with the strictest limit per nutrient (with_soft: soft rules added as if they filtered); warn rules are not part of the combined pass rate",
+    "per_rule": [
+      {
+        "label": "default",
+        "conditions": [
+          "*"
+        ],
+        "nutrient": "sodium_mg",
+        "op": "max",
+        "daily_value": 2000.0,
+        "unit": "mg",
+        "mode": "filter",
+        "source": "WHO 2012",
+        "per_serving_limit": 666.67,
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      {
+        "label": "default",
+        "conditions": [
+          "*"
+        ],
+        "nutrient": "sugar_pct_kcal",
+        "op": "max",
+        "daily_value": 10.0,
+        "unit": "%",
+        "mode": "warn",
+        "source": "WHO 2015",
+        "per_serving_limit": 10.0,
+        "pass": 18142,
+        "fail": 13976,
+        "unknown": 601,
+        "recipes": 32719,
+        "pass_rate_known": 0.5649,
+        "pass_rate_unknown_dropped": 0.5545,
+        "pass_rate_unknown_kept": 0.5728
+      },
+      {
+        "label": "Essential hypertension",
+        "conditions": [
+          "59621000"
+        ],
+        "nutrient": "sodium_mg",
+        "op": "max",
+        "daily_value": 2300.0,
+        "unit": "mg",
+        "mode": "filter",
+        "source": "DASH/NHLBI",
+        "per_serving_limit": 766.67,
+        "pass": 24027,
+        "fail": 8579,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.7369,
+        "pass_rate_unknown_dropped": 0.7343,
+        "pass_rate_unknown_kept": 0.7378
+      },
+      {
+        "label": "Essential hypertension",
+        "conditions": [
+          "59621000"
+        ],
+        "nutrient": "sat_fat_pct_kcal",
+        "op": "max",
+        "daily_value": 6.0,
+        "unit": "%",
+        "mode": "soft",
+        "source": "DASH/NHLBI",
+        "per_serving_limit": 6.0,
+        "pass": 5435,
+        "fail": 26207,
+        "unknown": 1077,
+        "recipes": 32719,
+        "pass_rate_known": 0.1718,
+        "pass_rate_unknown_dropped": 0.1661,
+        "pass_rate_unknown_kept": 0.199
+      },
+      {
+        "label": "Diabetes mellitus type 2",
+        "conditions": [
+          "44054006",
+          "90781000119102",
+          "157141000119108",
+          "368581000119106"
+        ],
+        "nutrient": "fiber_per_1000kcal",
+        "op": "min",
+        "daily_value": 14.0,
+        "unit": "g",
+        "mode": "soft",
+        "source": "ADA SoC 2026 §5",
+        "per_serving_limit": 14.0,
+        "pass": 7297,
+        "fail": 24210,
+        "unknown": 1212,
+        "recipes": 32719,
+        "pass_rate_known": 0.2316,
+        "pass_rate_unknown_dropped": 0.223,
+        "pass_rate_unknown_kept": 0.2601
+      },
+      {
+        "label": "Diabetes mellitus type 2",
+        "conditions": [
+          "44054006",
+          "90781000119102",
+          "157141000119108",
+          "368581000119106"
+        ],
+        "nutrient": "sodium_mg",
+        "op": "max",
+        "daily_value": 2300.0,
+        "unit": "mg",
+        "mode": "filter",
+        "source": "ADA",
+        "per_serving_limit": 766.67,
+        "pass": 24027,
+        "fail": 8579,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.7369,
+        "pass_rate_unknown_dropped": 0.7343,
+        "pass_rate_unknown_kept": 0.7378
+      },
+      {
+        "label": "Chronic kidney disease",
+        "conditions": [
+          "431855005",
+          "431856006",
+          "433144002",
+          "431857002",
+          "127013003"
+        ],
+        "nutrient": "sodium_mg",
+        "op": "max",
+        "daily_value": 2000.0,
+        "unit": "mg",
+        "mode": "filter",
+        "source": "KDIGO 2024",
+        "per_serving_limit": 666.67,
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69
+      },
+      {
+        "label": "CKD stage 3/4",
+        "conditions": [
+          "433144002",
+          "431857002"
+        ],
+        "nutrient": "protein_g_per_kg",
+        "op": "max",
+        "daily_value": 0.8,
+        "unit": "g/kg",
+        "mode": "filter",
+        "source": "KDIGO 2024",
+        "weight_kg": 60,
+        "per_serving_limit": 16.0,
+        "pass": 20634,
+        "fail": 11844,
+        "unknown": 241,
+        "recipes": 32719,
+        "pass_rate_known": 0.6353,
+        "pass_rate_unknown_dropped": 0.6306,
+        "pass_rate_unknown_kept": 0.638
+      },
+      {
+        "label": "CKD stage 3/4",
+        "conditions": [
+          "433144002",
+          "431857002"
+        ],
+        "nutrient": "protein_g_per_kg",
+        "op": "max",
+        "daily_value": 0.8,
+        "unit": "g/kg",
+        "mode": "filter",
+        "source": "KDIGO 2024",
+        "weight_kg": 70,
+        "per_serving_limit": 18.67,
+        "pass": 22080,
+        "fail": 10398,
+        "unknown": 241,
+        "recipes": 32719,
+        "pass_rate_known": 0.6798,
+        "pass_rate_unknown_dropped": 0.6748,
+        "pass_rate_unknown_kept": 0.6822
+      },
+      {
+        "label": "CKD stage 3/4",
+        "conditions": [
+          "433144002",
+          "431857002"
+        ],
+        "nutrient": "protein_g_per_kg",
+        "op": "max",
+        "daily_value": 0.8,
+        "unit": "g/kg",
+        "mode": "filter",
+        "source": "KDIGO 2024",
+        "weight_kg": 80,
+        "per_serving_limit": 21.33,
+        "pass": 23629,
+        "fail": 8849,
+        "unknown": 241,
+        "recipes": 32719,
+        "pass_rate_known": 0.7275,
+        "pass_rate_unknown_dropped": 0.7222,
+        "pass_rate_unknown_kept": 0.7295
+      },
+      {
+        "label": "CKD stage 3/4",
+        "conditions": [
+          "433144002",
+          "431857002"
+        ],
+        "nutrient": "potassium_mg",
+        "op": null,
+        "daily_value": null,
+        "unit": "",
+        "mode": "warn",
+        "source": "KDIGO 2024",
+        "measured": "warn only, no limit"
+      },
+      {
+        "label": "CKD stage 3/4",
+        "conditions": [
+          "433144002",
+          "431857002"
+        ],
+        "nutrient": "phosphorus_mg",
+        "op": null,
+        "daily_value": null,
+        "unit": "",
+        "mode": "warn",
+        "source": "KDIGO 2024",
+        "measured": "warn only, no limit"
+      },
+      {
+        "label": "Hyperglycemia / diabetes due to cystic fibrosis",
+        "conditions": [
+          "80394007",
+          "427089005"
+        ],
+        "nutrient": "",
+        "op": null,
+        "daily_value": null,
+        "unit": "",
+        "mode": "unmapped",
+        "source": "",
+        "measured": "warn only, no limit"
+      }
+    ],
+    "by_condition": [
+      {
+        "label": "default",
+        "conditions": [
+          "*"
+        ],
+        "filters": [
+          {
+            "nutrient": "sodium_mg",
+            "op": "max",
+            "per_serving_limit": 666.67,
+            "from": "default"
+          }
+        ],
+        "soft": [],
+        "warn_only": [
+          "sugar_pct_kcal"
+        ],
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69,
+        "with_soft": {
+          "pass": 22464,
+          "fail": 10142,
+          "unknown": 113,
+          "recipes": 32719,
+          "pass_rate_known": 0.689,
+          "pass_rate_unknown_dropped": 0.6866,
+          "pass_rate_unknown_kept": 0.69
+        }
+      },
+      {
+        "label": "Essential hypertension",
+        "conditions": [
+          "*",
+          "59621000"
+        ],
+        "filters": [
+          {
+            "nutrient": "sodium_mg",
+            "op": "max",
+            "per_serving_limit": 666.67,
+            "from": "default"
+          }
+        ],
+        "soft": [
+          "sat_fat_pct_kcal"
+        ],
+        "warn_only": [
+          "sugar_pct_kcal"
+        ],
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69,
+        "with_soft": {
+          "pass": 3985,
+          "fail": 27734,
+          "unknown": 1000,
+          "recipes": 32719,
+          "pass_rate_known": 0.1256,
+          "pass_rate_unknown_dropped": 0.1218,
+          "pass_rate_unknown_kept": 0.1524
+        }
+      },
+      {
+        "label": "Diabetes mellitus type 2",
+        "conditions": [
+          "*",
+          "157141000119108",
+          "368581000119106",
+          "44054006",
+          "90781000119102"
+        ],
+        "filters": [
+          {
+            "nutrient": "sodium_mg",
+            "op": "max",
+            "per_serving_limit": 666.67,
+            "from": "default"
+          }
+        ],
+        "soft": [
+          "fiber_per_1000kcal"
+        ],
+        "warn_only": [
+          "sugar_pct_kcal"
+        ],
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69,
+        "with_soft": {
+          "pass": 5254,
+          "fail": 26374,
+          "unknown": 1091,
+          "recipes": 32719,
+          "pass_rate_known": 0.1661,
+          "pass_rate_unknown_dropped": 0.1606,
+          "pass_rate_unknown_kept": 0.1939
+        }
+      },
+      {
+        "label": "Chronic kidney disease",
+        "conditions": [
+          "*",
+          "127013003",
+          "431855005",
+          "431856006",
+          "431857002",
+          "433144002"
+        ],
+        "filters": [
+          {
+            "nutrient": "sodium_mg",
+            "op": "max",
+            "per_serving_limit": 666.67,
+            "from": "default"
+          }
+        ],
+        "soft": [],
+        "warn_only": [
+          "sugar_pct_kcal"
+        ],
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69,
+        "with_soft": {
+          "pass": 22464,
+          "fail": 10142,
+          "unknown": 113,
+          "recipes": 32719,
+          "pass_rate_known": 0.689,
+          "pass_rate_unknown_dropped": 0.6866,
+          "pass_rate_unknown_kept": 0.69
+        }
+      },
+      {
+        "label": "CKD stage 3/4",
+        "conditions": [
+          "*",
+          "431857002",
+          "433144002"
+        ],
+        "filters": [
+          {
+            "nutrient": "sodium_mg",
+            "op": "max",
+            "per_serving_limit": 666.67,
+            "from": "default"
+          },
+          {
+            "nutrient": "protein_g_per_kg",
+            "op": "max",
+            "per_serving_limit": 18.67,
+            "from": "CKD stage 3/4"
+          }
+        ],
+        "soft": [],
+        "warn_only": [
+          "phosphorus_mg",
+          "potassium_mg",
+          "sugar_pct_kcal"
+        ],
+        "pass": 18468,
+        "fail": 14010,
+        "unknown": 241,
+        "recipes": 32719,
+        "pass_rate_known": 0.5686,
+        "pass_rate_unknown_dropped": 0.5644,
+        "pass_rate_unknown_kept": 0.5718,
+        "with_soft": {
+          "pass": 18468,
+          "fail": 14010,
+          "unknown": 241,
+          "recipes": 32719,
+          "pass_rate_known": 0.5686,
+          "pass_rate_unknown_dropped": 0.5644,
+          "pass_rate_unknown_kept": 0.5718
+        }
+      },
+      {
+        "label": "Hyperglycemia / diabetes due to cystic fibrosis",
+        "conditions": [
+          "*",
+          "427089005",
+          "80394007"
+        ],
+        "filters": [
+          {
+            "nutrient": "sodium_mg",
+            "op": "max",
+            "per_serving_limit": 666.67,
+            "from": "default"
+          }
+        ],
+        "soft": [],
+        "warn_only": [
+          "sugar_pct_kcal"
+        ],
+        "pass": 22464,
+        "fail": 10142,
+        "unknown": 113,
+        "recipes": 32719,
+        "pass_rate_known": 0.689,
+        "pass_rate_unknown_dropped": 0.6866,
+        "pass_rate_unknown_kept": 0.69,
+        "with_soft": {
+          "pass": 22464,
+          "fail": 10142,
+          "unknown": 113,
+          "recipes": 32719,
+          "pass_rate_known": 0.689,
+          "pass_rate_unknown_dropped": 0.6866,
+          "pass_rate_unknown_kept": 0.69
+        }
+      }
+    ]
+  },
+  "P8": "sampling is MV4 (scripts/patient_sample.py); deceased patients are left out"
+}

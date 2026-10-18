@@ -1,0 +1,86 @@
+"""V1c summaries. Both modes see only the prompt view; the LLM path runs against a fake chat_json (no Ollama)."""
+
+from pathlib import Path
+
+import pytest
+
+from api.patient import ccda, rules, summarize
+from api.patient.tree import build_tree
+from api.pipeline.llm import LLMError
+
+FIXTURE = Path(__file__).parent / "fixtures" / "Barton704_Upton904_887e4b4e-a3e1-b573-4a16-38386d3e0b88.xml"
+
+
+@pytest.fixture(scope="module")
+def rs():
+    return rules.load_rules()
+
+
+@pytest.fixture(scope="module")
+def nodes(rs):
+    return build_tree(ccda.read_record(FIXTURE, "sample", rs.p7)[0])
+
+
+def test_template_fills_context_nodes_only(nodes, rs):
+    out = summarize.summarize(nodes, rs, "template")
+    for n in out:
+        if n.kind == "context":
+            assert n.summary and n.summary_source == "template"
+        else:
+            assert n.summary is None and n.summary_source is None
+    cbc = next(n for n in out if n.node_id == "results.2021")
+    assert cbc.summary == "1 lab panel: CBC panel."
+
+
+def test_template_names_encounter_classes_not_visits(nodes, rs):
+    out = {n.node_id: n.summary for n in summarize.summarize(nodes, rs)}
+    assert out["encounters.2025"] == "2 encounters: wellness, problem visit."
+    text = " ".join(s for s in out.values() if s)
+    assert "Allergic disorder" not in text and "Well child" not in text  # visit names stay out of the TOC
+
+
+def test_llm_summary_used_when_the_model_answers(nodes, rs, monkeypatch):
+    calls = []
+
+    def fake(client, schema, messages, **kw):
+        calls.append(messages)
+        return {"summary": "One CBC panel in 2021."}
+    monkeypatch.setattr(summarize, "chat_json", fake)
+    out = summarize.summarize(nodes, rs, "llm", client=object())
+    cbc = next(n for n in out if n.node_id == "results.2021")
+    assert (cbc.summary, cbc.summary_source) == ("One CBC panel in 2021.", "llm")
+    assert len(calls) == sum(n.kind == "context" for n in nodes)  # fixed and root nodes never go to the model
+
+
+def test_llm_failing_twice_falls_back_to_the_template(nodes, rs, monkeypatch):
+    attempts = []
+
+    def broken(client, schema, messages, **kw):
+        attempts.append(1)
+        raise LLMError("not JSON")
+    monkeypatch.setattr(summarize, "chat_json", broken)
+    node = next(n for n in nodes if n.node_id == "results.2021")
+    out = summarize.summarize([node], rs, "llm", client=object())[0]
+    assert (out.summary, out.summary_source) == ("1 lab panel: CBC panel.", "template")
+    assert len(attempts) == 2
+
+
+def test_prompt_holds_no_identity_and_no_visit_name(nodes, rs):
+    text = "".join(m["content"] for n in nodes if n.kind == "context" for m in summarize.prompt(n, rs))
+    for word in ["Barton704", "Upton904", "raceCode", "Allergic disorder", "entry_id"]:
+        assert word not in text
+
+
+def test_a_long_node_is_cut_newest_first_to_fit_the_summary_prompt():
+    import json
+
+    from api.patient import summarize as sm
+    from api.patient.models import PatientNode
+    facts = [{"date": f"2020-{m:02d}-01", "display": "Comprehensive metabolic panel", "observations": [
+        {"display": "Glucose", "value": str(90 + i), "unit": "mg/dL", "date": f"2020-{m:02d}-01"} for i in range(40)]}
+        for m in range(1, 13)]
+    node = PatientNode("results.2020", "patient:x", "context", "Lab results 2020", None, facts, [])
+    msgs = sm.prompt(node, rules.load_rules())
+    data = json.loads(msgs[1]["content"])
+    assert len(msgs[1]["content"]) <= sm.SUMMARY_BUDGET_CHARS + 200 and data["older_entries_not_shown"] > 0
+    assert data["facts"][-1]["date"] == "2020-12-01"

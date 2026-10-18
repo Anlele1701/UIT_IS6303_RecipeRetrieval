@@ -1,0 +1,12 @@
+loinc,titles,files,entries,read
+48765-2,Allergies (87);Allergies and Adverse Reactions (21),108,105,yes
+10160-0,Medications (108),108,3850,yes
+30954-2,Diagnostic Results (108),108,5363,yes
+11450-4,Problems (108),108,3517,yes
+47519-4,Surgeries (107);Procedures (1),108,15884,yes
+46240-8,Encounters (108),108,5571,yes
+8716-3,Vital Signs (108),108,108,yes
+11369-6,Immunizations (108),108,1549,yes
+29762-2,Social History (108),108,108,no (P7)
+18776-5,Plan of Care (101),101,0,yes
+47420-5,Functional Status (94),94,2431,no (P7)

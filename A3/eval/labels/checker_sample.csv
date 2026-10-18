@@ -1,0 +1,2201 @@
+recipe_id,constraint,contains,evidence_line,evidence_ok
+30611,allergen:milk,yes,"1 (1 pound) loaf processed cheese, cubed",True
+30611,allergen:egg,no,,True
+30611,allergen:fish,no,,True
+30611,allergen:crustacean_shellfish,no,,True
+30611,allergen:tree_nuts,no,,True
+30611,allergen:peanut,no,,True
+30611,allergen:wheat,error,,False
+30611,allergen:soy,error,,False
+30611,allergen:sesame,error,,False
+30611,diet:vegetarian,error,,False
+30611,diet:vegan,error,,False
+4077,allergen:milk,yes,¼ cup shredded Cheddar cheese,True
+4077,allergen:egg,yes,3 eggs,True
+4077,allergen:fish,no,,True
+4077,allergen:crustacean_shellfish,no,,True
+4077,allergen:tree_nuts,no,,True
+4077,allergen:peanut,no,,True
+4077,allergen:wheat,yes,1 (9 inch) unbaked pastry shell,True
+4077,allergen:soy,no,,True
+4077,allergen:sesame,no,,True
+4077,diet:vegetarian,yes,1 cup diced cooked chicken,True
+4077,diet:vegan,yes,3 eggs,True
+5401,allergen:milk,yes,"4 tablespoons grated Parmesan cheese, or to taste",True
+5401,allergen:egg,yes,"4 tablespoons mayonnaise, or to taste",True
+5401,allergen:fish,no,,True
+5401,allergen:crustacean_shellfish,no,,True
+5401,allergen:tree_nuts,no,,True
+5401,allergen:peanut,no,,True
+5401,allergen:wheat,no,,True
+5401,allergen:soy,no,,True
+5401,allergen:sesame,no,,True
+5401,diet:vegetarian,no,,True
+5401,diet:vegan,no,,True
+19547,allergen:milk,no,,True
+19547,allergen:egg,no,,True
+19547,allergen:fish,no,,True
+19547,allergen:crustacean_shellfish,no,,True
+19547,allergen:tree_nuts,no,,True
+19547,allergen:peanut,no,,True
+19547,allergen:wheat,error,,False
+19547,allergen:soy,error,,False
+19547,allergen:sesame,error,,False
+19547,diet:vegetarian,error,,False
+19547,diet:vegan,error,,False
+7230,allergen:milk,yes,"1 large onion, grated",True
+7230,allergen:egg,yes,"1 egg, beaten",True
+7230,allergen:fish,no,,True
+7230,allergen:crustacean_shellfish,no,,True
+7230,allergen:tree_nuts,no,,True
+7230,allergen:peanut,no,,True
+7230,allergen:wheat,no,,True
+7230,allergen:soy,no,,True
+7230,allergen:sesame,no,,True
+7230,diet:vegetarian,yes,1 pound lean ground beef,True
+7230,diet:vegan,yes,"1 egg, beaten",True
+27039,allergen:milk,yes,¼ cup milk,True
+27039,allergen:egg,yes,1 egg,True
+27039,allergen:fish,no,,True
+27039,allergen:crustacean_shellfish,no,,True
+27039,allergen:tree_nuts,no,,True
+27039,allergen:peanut,no,,True
+27039,allergen:wheat,yes,2 cups all-purpose flour,True
+27039,allergen:soy,yes,2 cups all-purpose flour,True
+27039,allergen:sesame,no,,True
+27039,diet:vegetarian,no,,True
+27039,diet:vegan,yes,"¾ cup butter, 1 egg, ¼ cup milk",False
+23604,allergen:milk,yes,2 cups shredded Cheddar cheese,True
+23604,allergen:egg,yes,2 cups shredded Cheddar cheese,True
+23604,allergen:fish,no,,True
+23604,allergen:crustacean_shellfish,no,,True
+23604,allergen:tree_nuts,no,,True
+23604,allergen:peanut,no,,True
+23604,allergen:wheat,no,,True
+23604,allergen:soy,no,,True
+23604,allergen:sesame,no,,True
+23604,diet:vegetarian,yes,2 cups shredded Cheddar cheese,True
+23604,diet:vegan,yes,2 cups shredded Cheddar cheese,True
+11331,allergen:milk,yes,"- 1 cup butter, divided",False
+11331,allergen:egg,no,,True
+11331,allergen:fish,no,,True
+11331,allergen:crustacean_shellfish,yes,"- 2 pounds large prawns - peeled, deveined and butterflied",False
+11331,allergen:tree_nuts,no,,True
+11331,allergen:peanut,no,,True
+11331,allergen:wheat,yes,"- 1 cup butter, divided",False
+11331,allergen:soy,no,,True
+11331,allergen:sesame,no,,True
+11331,diet:vegetarian,yes,"- 2 pounds large prawns - peeled, deveined and butterflied",False
+11331,diet:vegan,yes,"- 1 cup butter, divided",False
+15440,allergen:milk,yes,2 ½ cups milk,True
+15440,allergen:egg,no,,True
+15440,allergen:fish,no,,True
+15440,allergen:crustacean_shellfish,no,,True
+15440,allergen:tree_nuts,no,,True
+15440,allergen:peanut,no,,True
+15440,allergen:wheat,no,,True
+15440,allergen:soy,no,,True
+15440,allergen:sesame,no,,True
+15440,diet:vegetarian,no,,True
+15440,diet:vegan,yes,2 ½ cups milk,True
+11055,allergen:milk,yes,1 ¾ cups lime juice,True
+11055,allergen:egg,no,,True
+11055,allergen:fish,yes,"3 pounds salmon fillets, cubed",True
+11055,allergen:crustacean_shellfish,yes,"4 cups uncooked medium shrimp, peeled and deveined",True
+11055,allergen:tree_nuts,no,,True
+11055,allergen:peanut,no,,True
+11055,allergen:wheat,error,,False
+11055,allergen:soy,error,,False
+11055,allergen:sesame,error,,False
+11055,diet:vegetarian,error,,False
+11055,diet:vegan,error,,False
+8434,allergen:milk,no,,True
+8434,allergen:egg,no,,True
+8434,allergen:fish,yes,1 ¾ cups Worcestershire sauce,True
+8434,allergen:crustacean_shellfish,no,,True
+8434,allergen:tree_nuts,no,,True
+8434,allergen:peanut,no,,True
+8434,allergen:wheat,no,,True
+8434,allergen:soy,no,,True
+8434,allergen:sesame,no,,True
+8434,diet:vegetarian,yes,1 ¾ cups Worcestershire sauce,True
+8434,diet:vegan,yes,1 ¾ cups Worcestershire sauce,True
+1196,allergen:milk,yes,¼ cup butter,True
+1196,allergen:egg,yes,"½ cup heavy cream, heated",True
+1196,allergen:fish,no,,True
+1196,allergen:crustacean_shellfish,no,,True
+1196,allergen:tree_nuts,no,,True
+1196,allergen:peanut,no,,True
+1196,allergen:wheat,yes,1 ½ tablespoons all-purpose flour,True
+1196,allergen:soy,no,,True
+1196,allergen:sesame,no,,True
+1196,diet:vegetarian,yes,4 cups chicken broth,True
+1196,diet:vegan,yes,"½ cup heavy cream, heated",True
+22993,allergen:milk,yes,"2 English muffins, split and toasted",True
+22993,allergen:egg,no,,True
+22993,allergen:fish,no,,True
+22993,allergen:crustacean_shellfish,no,,True
+22993,allergen:tree_nuts,yes,2 tablespoons chocolate-hazelnut spread (such as Nutella®),True
+22993,allergen:peanut,yes,2 tablespoons chocolate-hazelnut spread (such as Nutella®),True
+22993,allergen:wheat,yes,"2 English muffins, split and toasted",True
+22993,allergen:soy,yes,"2 English muffins, split and toasted",True
+22993,allergen:sesame,no,,True
+22993,diet:vegetarian,no,,True
+22993,diet:vegan,no,,True
+3608,allergen:milk,yes,¾ cup butter,True
+3608,allergen:egg,yes,3 eggs,True
+3608,allergen:fish,no,,True
+3608,allergen:crustacean_shellfish,no,,True
+3608,allergen:tree_nuts,no,,True
+3608,allergen:peanut,no,,True
+3608,allergen:wheat,yes,1 ½ cups all-purpose flour,True
+3608,allergen:soy,no,,True
+3608,allergen:sesame,no,,True
+3608,diet:vegetarian,no,,True
+3608,diet:vegan,yes,3 eggs,True
+14227,allergen:milk,no,,True
+14227,allergen:egg,no,,True
+14227,allergen:fish,no,,True
+14227,allergen:crustacean_shellfish,no,,True
+14227,allergen:tree_nuts,yes,12 ounces raw Spanish peanuts,True
+14227,allergen:peanut,yes,12 ounces raw Spanish peanuts,True
+14227,allergen:wheat,no,,True
+14227,allergen:soy,no,,True
+14227,allergen:sesame,no,,True
+14227,diet:vegetarian,no,,True
+14227,diet:vegan,no,,True
+2687,allergen:milk,yes,"3 tablespoons salted butter, divided",True
+2687,allergen:egg,yes,2 large eggs,True
+2687,allergen:fish,no,,True
+2687,allergen:crustacean_shellfish,no,,True
+2687,allergen:tree_nuts,no,,True
+2687,allergen:peanut,no,,True
+2687,allergen:wheat,yes,2 thick slices white bread,True
+2687,allergen:soy,no,,True
+2687,allergen:sesame,no,,True
+2687,diet:vegetarian,yes,"2 large eggs, 3 tablespoons salted butter, 2 thin slices smoked ham, 1 slice mild Cheddar cheese",False
+2687,diet:vegan,yes,"2 large eggs, 3 tablespoons salted butter, 2 thin slices smoked ham, 1 slice mild Cheddar cheese",False
+1260,allergen:milk,yes,3 cups milk,True
+1260,allergen:egg,yes,"1 (8 ounce) package cream cheese, softened",True
+1260,allergen:fish,no,,True
+1260,allergen:crustacean_shellfish,no,,True
+1260,allergen:tree_nuts,no,,True
+1260,allergen:peanut,no,,True
+1260,allergen:wheat,yes,- 2 (3.5 ounce) packages instant French vanilla pudding mix,False
+1260,allergen:soy,no,,True
+1260,allergen:sesame,no,,True
+1260,diet:vegetarian,yes,- 3 cups milk,False
+1260,diet:vegan,yes,- 3 cups milk,False
+4721,allergen:milk,no,,True
+4721,allergen:egg,no,,True
+4721,allergen:fish,no,,True
+4721,allergen:crustacean_shellfish,no,,True
+4721,allergen:tree_nuts,no,,True
+4721,allergen:peanut,no,,True
+4721,allergen:wheat,no,,True
+4721,allergen:soy,no,,True
+4721,allergen:sesame,no,,True
+4721,diet:vegetarian,yes,10 skinless chicken drumsticks,True
+4721,diet:vegan,yes,10 skinless chicken drumsticks,True
+23365,allergen:milk,yes,3 tablespoons butter,True
+23365,allergen:egg,yes,3 eggs,True
+23365,allergen:fish,no,,True
+23365,allergen:crustacean_shellfish,no,,True
+23365,allergen:tree_nuts,no,,True
+23365,allergen:peanut,no,,True
+23365,allergen:wheat,yes,1 (9 inch) deep dish frozen pie crust,True
+23365,allergen:soy,no,,True
+23365,allergen:sesame,no,,True
+23365,diet:vegetarian,yes,3 tablespoons butter,True
+23365,diet:vegan,yes,"3 tablespoons butter, ½ cup sour cream, 1 (12 fluid ounce) can evaporated milk, 3 eggs, 1 ½ cups shredded Monterey Jack cheese",False
+29678,allergen:milk,yes,4 ounces crumbled blue cheese,True
+29678,allergen:egg,yes,4 ounces crumbled blue cheese,True
+29678,allergen:fish,no,,True
+29678,allergen:crustacean_shellfish,no,,True
+29678,allergen:tree_nuts,yes,½ cup toasted chopped walnuts,True
+29678,allergen:peanut,no,,True
+29678,allergen:wheat,no,,True
+29678,allergen:soy,no,,True
+29678,allergen:sesame,no,,True
+29678,diet:vegetarian,yes,4 ounces crumbled blue cheese,True
+29678,diet:vegan,yes,4 ounces crumbled blue cheese,True
+22368,allergen:milk,yes,1 (8 ounce) container sour cream,True
+22368,allergen:egg,yes,1 (8 ounce) container sour cream,True
+22368,allergen:fish,no,,True
+22368,allergen:crustacean_shellfish,no,,True
+22368,allergen:tree_nuts,no,,True
+22368,allergen:peanut,no,,True
+22368,allergen:wheat,yes,2 (8 ounce) packages dinner rolls,True
+22368,allergen:soy,no,,True
+22368,allergen:sesame,no,,True
+22368,diet:vegetarian,yes,"1 (12 ounce) can corned beef, chopped",True
+22368,diet:vegan,yes,"1 (12 ounce) can corned beef, chopped",True
+19136,allergen:milk,yes,"½ cup butter, softened",True
+19136,allergen:egg,yes,"1 (8 ounce) package cream cheese, softened",True
+19136,allergen:fish,no,,True
+19136,allergen:crustacean_shellfish,no,,True
+19136,allergen:tree_nuts,no,,True
+19136,allergen:peanut,no,,True
+19136,allergen:wheat,yes,confectioners' sugar,False
+19136,allergen:soy,no,,True
+19136,allergen:sesame,no,,True
+19136,diet:vegetarian,no,,True
+19136,diet:vegan,yes,"butter, softened",False
+20356,allergen:milk,yes,¼ cup light sour cream,True
+20356,allergen:egg,yes,¼ cup light mayonnaise,True
+20356,allergen:fish,no,,True
+20356,allergen:crustacean_shellfish,no,,True
+20356,allergen:tree_nuts,no,,True
+20356,allergen:peanut,no,,True
+20356,allergen:wheat,no,,True
+20356,allergen:soy,no,,True
+20356,allergen:sesame,no,,True
+20356,diet:vegetarian,no,,True
+20356,diet:vegan,yes,¼ cup light mayonnaise,True
+12659,allergen:milk,no,,True
+12659,allergen:egg,no,,True
+12659,allergen:fish,no,,True
+12659,allergen:crustacean_shellfish,no,,True
+12659,allergen:tree_nuts,no,,True
+12659,allergen:peanut,no,,True
+12659,allergen:wheat,no,,True
+12659,allergen:soy,no,,True
+12659,allergen:sesame,no,,True
+12659,diet:vegetarian,yes,1 pound salmon fillets,True
+12659,diet:vegan,yes,1 pound salmon fillets,True
+31277,allergen:milk,no,,True
+31277,allergen:egg,no,,True
+31277,allergen:fish,no,,True
+31277,allergen:crustacean_shellfish,no,,True
+31277,allergen:tree_nuts,yes,pesto,False
+31277,allergen:peanut,no,,True
+31277,allergen:wheat,no,,True
+31277,allergen:soy,yes,½ teaspoon soy sauce,True
+31277,allergen:sesame,no,,True
+31277,diet:vegetarian,no,,True
+31277,diet:vegan,no,,True
+9082,allergen:milk,yes,2 (5 ounce) cod fillets,True
+9082,allergen:egg,no,,True
+9082,allergen:fish,yes,2 (5 ounce) cod fillets,True
+9082,allergen:crustacean_shellfish,no,,True
+9082,allergen:tree_nuts,no,,True
+9082,allergen:peanut,no,,True
+9082,allergen:wheat,no,,True
+9082,allergen:soy,no,,True
+9082,allergen:sesame,no,,True
+9082,diet:vegetarian,yes,2 (5 ounce) cod fillets,True
+9082,diet:vegan,yes,"2 (5 ounce) cod fillets, 2 tablespoons butter, melted, 1 tablespoon honey",False
+25743,allergen:milk,yes,1 packet dry onion soup mix,True
+25743,allergen:egg,yes,1 (10.75 ounce) can condensed golden mushroom soup,True
+25743,allergen:fish,no,,True
+25743,allergen:crustacean_shellfish,no,,True
+25743,allergen:tree_nuts,no,,True
+25743,allergen:peanut,no,,True
+25743,allergen:wheat,error,,False
+25743,allergen:soy,error,,False
+25743,allergen:sesame,error,,False
+25743,diet:vegetarian,error,,False
+25743,diet:vegan,error,,False
+2602,allergen:milk,yes,1 ½ cups shredded part-skim mozzarella cheese,True
+2602,allergen:egg,no,,True
+2602,allergen:fish,no,,True
+2602,allergen:crustacean_shellfish,no,,True
+2602,allergen:tree_nuts,no,,True
+2602,allergen:peanut,no,,True
+2602,allergen:wheat,yes,1 ½ cups shredded part-skim mozzarella cheese,True
+2602,allergen:soy,no,,True
+2602,allergen:sesame,no,,True
+2602,diet:vegetarian,yes,1 ½ cups shredded part-skim mozzarella cheese,True
+2602,diet:vegan,yes,1 ½ cups shredded part-skim mozzarella cheese,True
+6087,allergen:milk,yes,1 ½ cups shredded Cheddar cheese,True
+6087,allergen:egg,yes,4 eggs,True
+6087,allergen:fish,no,,True
+6087,allergen:crustacean_shellfish,no,,True
+6087,allergen:tree_nuts,no,,True
+6087,allergen:peanut,no,,True
+6087,allergen:wheat,yes,"3 cups dried breadcrumbs, divided",True
+6087,allergen:soy,no,,True
+6087,allergen:sesame,no,,True
+6087,diet:vegetarian,yes,"1 (16 ounce) package sliced honey ham, finely chopped",True
+6087,diet:vegan,yes,"1 (16 ounce) package sliced honey ham, finely chopped, 1 ½ cups shredded Cheddar cheese, 4 eggs",False
+15284,allergen:milk,no,,True
+15284,allergen:egg,no,,True
+15284,allergen:fish,no,,True
+15284,allergen:crustacean_shellfish,no,,True
+15284,allergen:tree_nuts,no,,True
+15284,allergen:peanut,no,,True
+15284,allergen:wheat,no,,True
+15284,allergen:soy,no,,True
+15284,allergen:sesame,no,,True
+15284,diet:vegetarian,no,,True
+15284,diet:vegan,no,,True
+30078,allergen:milk,no,,True
+30078,allergen:egg,no,,True
+30078,allergen:fish,yes,1 pinch bonito shavings (dry fish flakes),True
+30078,allergen:crustacean_shellfish,no,,True
+30078,allergen:tree_nuts,no,,True
+30078,allergen:peanut,no,,True
+30078,allergen:wheat,yes,1 tablespoon soy sauce,True
+30078,allergen:soy,yes,¼ (12 ounce) package silken tofu,True
+30078,allergen:sesame,yes,1 pinch toasted sesame seeds,True
+30078,diet:vegetarian,yes,1 pinch bonito shavings (dry fish flakes),True
+30078,diet:vegan,yes,1 pinch bonito shavings (dry fish flakes),True
+11428,allergen:milk,no,,True
+11428,allergen:egg,no,,True
+11428,allergen:fish,no,,True
+11428,allergen:crustacean_shellfish,no,,True
+11428,allergen:tree_nuts,no,,True
+11428,allergen:peanut,no,,True
+11428,allergen:wheat,no,,True
+11428,allergen:soy,no,,True
+11428,allergen:sesame,no,,True
+11428,diet:vegetarian,yes,"- 1 (5 ounce) can tuna, drained and flaked",False
+11428,diet:vegan,yes,"- 1 (5 ounce) can tuna, drained and flaked",False
+4412,allergen:milk,yes,1 ½ cups whole milk,True
+4412,allergen:egg,yes,2 tablespoons butter,True
+4412,allergen:fish,no,,True
+4412,allergen:crustacean_shellfish,no,,True
+4412,allergen:tree_nuts,no,,True
+4412,allergen:peanut,no,,True
+4412,allergen:wheat,yes,"3 large garlic cloves, minced",True
+4412,allergen:soy,no,,True
+4412,allergen:sesame,no,,True
+4412,diet:vegetarian,no,,True
+4412,diet:vegan,yes,1 ½ cups whole milk,True
+16597,allergen:milk,yes,3 eggs,True
+16597,allergen:egg,yes,3 eggs,True
+16597,allergen:fish,no,,True
+16597,allergen:crustacean_shellfish,no,,True
+16597,allergen:tree_nuts,yes,1 cup chopped pecans,True
+16597,allergen:peanut,no,,True
+16597,allergen:wheat,yes,3 cups all-purpose flour,True
+16597,allergen:soy,no,,True
+16597,allergen:sesame,no,,True
+16597,diet:vegetarian,no,,True
+16597,diet:vegan,yes,3 eggs,True
+10329,allergen:milk,yes,1 cup seafood breader,True
+10329,allergen:egg,yes,3 large eggs,True
+10329,allergen:fish,yes,"3 (14.75 ounce) cans salmon, drained and flaked",True
+10329,allergen:crustacean_shellfish,no,,True
+10329,allergen:tree_nuts,no,,True
+10329,allergen:peanut,no,,True
+10329,allergen:wheat,yes,1 cup seafood breader,True
+10329,allergen:soy,yes,1 cup seafood breader,True
+10329,allergen:sesame,no,,True
+10329,diet:vegetarian,yes,"3 (14.75 ounce) cans salmon, drained and flaked",True
+10329,diet:vegan,yes,3 large eggs,True
+18052,allergen:milk,yes,¾ cup butter,True
+18052,allergen:egg,yes,½ cup plain Greek yogurt,True
+18052,allergen:fish,no,,True
+18052,allergen:crustacean_shellfish,no,,True
+18052,allergen:tree_nuts,yes,1 cup chopped walnuts,True
+18052,allergen:peanut,no,,True
+18052,allergen:wheat,yes,2 cups all-purpose flour,True
+18052,allergen:soy,no,,True
+18052,allergen:sesame,no,,True
+18052,diet:vegetarian,yes,"2 eggs, beaten",True
+18052,diet:vegan,yes,"2 eggs, beaten",True
+28095,allergen:milk,yes,"¼ cup butter, melted",True
+28095,allergen:egg,yes,"¼ cup butter, melted",True
+28095,allergen:fish,no,,True
+28095,allergen:crustacean_shellfish,no,,True
+28095,allergen:tree_nuts,no,,True
+28095,allergen:peanut,no,,True
+28095,allergen:wheat,error,,False
+28095,allergen:soy,error,,False
+28095,allergen:sesame,error,,False
+28095,diet:vegetarian,error,,False
+28095,diet:vegan,error,,False
+22266,allergen:milk,yes,½ cup crumbled low-fat feta cheese,True
+22266,allergen:egg,no,,True
+22266,allergen:fish,no,,True
+22266,allergen:crustacean_shellfish,no,,True
+22266,allergen:tree_nuts,yes,½ cup toasted unsalted almonds,True
+22266,allergen:peanut,no,,True
+22266,allergen:wheat,no,,True
+22266,allergen:soy,no,,True
+22266,allergen:sesame,yes,3 teaspoons sesame oil,False
+22266,diet:vegetarian,no,,True
+22266,diet:vegan,yes,½ cup crumbled low-fat feta cheese,True
+16825,allergen:milk,yes,"2 tablespoons butter, softened",True
+16825,allergen:egg,yes,1 egg white,True
+16825,allergen:fish,no,,True
+16825,allergen:crustacean_shellfish,no,,True
+16825,allergen:tree_nuts,yes,¾ cup almond flour,True
+16825,allergen:peanut,no,,True
+16825,allergen:wheat,no,,True
+16825,allergen:soy,no,,True
+16825,allergen:sesame,no,,True
+16825,diet:vegetarian,no,,True
+16825,diet:vegan,yes,"2 tablespoons butter, softened",True
+28027,allergen:milk,yes,¾ cup fat-free milk,True
+28027,allergen:egg,no,,True
+28027,allergen:fish,no,,True
+28027,allergen:crustacean_shellfish,no,,True
+28027,allergen:tree_nuts,no,,True
+28027,allergen:peanut,no,,True
+28027,allergen:wheat,yes,2 cups bread flour,True
+28027,allergen:soy,no,,True
+28027,allergen:sesame,no,,True
+28027,diet:vegetarian,no,,True
+28027,diet:vegan,yes,¾ cup fat-free milk,True
+13886,allergen:milk,yes,4 tablespoons butter,True
+13886,allergen:egg,yes,"2 eggs, beaten",True
+13886,allergen:fish,no,,True
+13886,allergen:crustacean_shellfish,no,,True
+13886,allergen:tree_nuts,no,,True
+13886,allergen:peanut,no,,True
+13886,allergen:wheat,yes,1 cup dried bread crumbs,True
+13886,allergen:soy,no,,True
+13886,allergen:sesame,no,,True
+13886,diet:vegetarian,yes,"1 ½ pounds ground beef, ½ pound andouille sausage, 2 eggs",False
+13886,diet:vegan,yes,"4 tablespoons butter, ½ cup evaporated milk, 2 eggs, 1 ½ pounds ground beef, ½ pound andouille sausage",False
+23911,allergen:milk,yes,2 tablespoons grated Parmesan cheese,True
+23911,allergen:egg,no,,True
+23911,allergen:fish,no,,True
+23911,allergen:crustacean_shellfish,no,,True
+23911,allergen:tree_nuts,no,,True
+23911,allergen:peanut,no,,True
+23911,allergen:wheat,yes,1 (16 ounce) package tri-colored pasta assortment,True
+23911,allergen:soy,no,,True
+23911,allergen:sesame,no,,True
+23911,diet:vegetarian,no,,True
+23911,diet:vegan,yes,2 tablespoons grated Parmesan cheese,True
+7683,allergen:milk,no,,True
+7683,allergen:egg,no,,True
+7683,allergen:fish,no,,True
+7683,allergen:crustacean_shellfish,no,,True
+7683,allergen:tree_nuts,no,,True
+7683,allergen:peanut,no,,True
+7683,allergen:wheat,no,,True
+7683,allergen:soy,no,,True
+7683,allergen:sesame,no,,True
+7683,diet:vegetarian,yes,2 pounds chicken thighs,False
+7683,diet:vegan,yes,2 pounds chicken thighs,False
+21964,allergen:milk,yes,3 ounces grated fontina cheese,True
+21964,allergen:egg,yes,3 ounces grated fontina cheese,True
+21964,allergen:fish,no,,True
+21964,allergen:crustacean_shellfish,no,,True
+21964,allergen:tree_nuts,no,,True
+21964,allergen:peanut,no,,True
+21964,allergen:wheat,error,,False
+21964,allergen:soy,error,,False
+21964,allergen:sesame,error,,False
+21964,diet:vegetarian,error,,False
+21964,diet:vegan,error,,False
+30888,allergen:milk,yes,½ cup goat cheese,True
+30888,allergen:egg,no,,True
+30888,allergen:fish,no,,True
+30888,allergen:crustacean_shellfish,no,,True
+30888,allergen:tree_nuts,no,,True
+30888,allergen:peanut,no,,True
+30888,allergen:wheat,no,,True
+30888,allergen:soy,no,,True
+30888,allergen:sesame,no,,True
+30888,diet:vegetarian,no,,True
+30888,diet:vegan,yes,½ cup goat cheese,True
+28805,allergen:milk,yes,2 tablespoons milk,True
+28805,allergen:egg,yes,1 egg,True
+28805,allergen:fish,no,,True
+28805,allergen:crustacean_shellfish,no,,True
+28805,allergen:tree_nuts,no,,True
+28805,allergen:peanut,yes,2 tablespoons milk,True
+28805,allergen:wheat,yes,1 ¾ cups all-purpose flour,True
+28805,allergen:soy,no,,True
+28805,allergen:sesame,no,,True
+28805,diet:vegetarian,yes,2 tablespoons milk,True
+28805,diet:vegan,yes,"2 tablespoons milk, 1 egg",False
+6757,allergen:milk,yes,1 (3 pound) cottage ham,True
+6757,allergen:egg,no,,True
+6757,allergen:fish,no,,True
+6757,allergen:crustacean_shellfish,no,,True
+6757,allergen:tree_nuts,no,,True
+6757,allergen:peanut,no,,True
+6757,allergen:wheat,no,,True
+6757,allergen:soy,no,,True
+6757,allergen:sesame,no,,True
+6757,diet:vegetarian,yes,- 1 (3 pound) cottage ham,False
+6757,diet:vegan,yes,- 1 (3 pound) cottage ham,False
+15860,allergen:milk,no,,True
+15860,allergen:egg,no,,True
+15860,allergen:fish,no,,True
+15860,allergen:crustacean_shellfish,no,,True
+15860,allergen:tree_nuts,no,,True
+15860,allergen:peanut,no,,True
+15860,allergen:wheat,no,,True
+15860,allergen:soy,no,,True
+15860,allergen:sesame,no,,True
+15860,diet:vegetarian,no,,True
+15860,diet:vegan,no,,True
+13481,allergen:milk,yes,1 tablespoon butter,True
+13481,allergen:egg,no,,True
+13481,allergen:fish,no,,True
+13481,allergen:crustacean_shellfish,no,,True
+13481,allergen:tree_nuts,no,,True
+13481,allergen:peanut,no,,True
+13481,allergen:wheat,yes,1 tablespoon all-purpose flour,True
+13481,allergen:soy,no,,True
+13481,allergen:sesame,no,,True
+13481,diet:vegetarian,no,,True
+13481,diet:vegan,yes,1 tablespoon butter,True
+28518,allergen:milk,yes,"2 (8 ounce) packages cream cheese, softened",True
+28518,allergen:egg,yes,"2 (8 ounce) packages cream cheese, softened",True
+28518,allergen:fish,no,,True
+28518,allergen:crustacean_shellfish,no,,True
+28518,allergen:tree_nuts,yes,1 (3 ounce) package sliced almonds,True
+28518,allergen:peanut,no,,True
+28518,allergen:wheat,error,,False
+28518,allergen:soy,error,,False
+28518,allergen:sesame,error,,False
+28518,diet:vegetarian,error,,False
+28518,diet:vegan,error,,False
+29796,allergen:milk,yes,⅔ cup vanilla fat-free yogurt,True
+29796,allergen:egg,no,,True
+29796,allergen:fish,no,,True
+29796,allergen:crustacean_shellfish,no,,True
+29796,allergen:tree_nuts,no,,True
+29796,allergen:peanut,no,,True
+29796,allergen:wheat,no,,True
+29796,allergen:soy,no,,True
+29796,allergen:sesame,no,,True
+29796,diet:vegetarian,no,,True
+29796,diet:vegan,no,,True
+20943,allergen:milk,yes,2 tablespoons butter,True
+20943,allergen:egg,yes,1 cup heavy whipping cream,True
+20943,allergen:fish,no,,True
+20943,allergen:crustacean_shellfish,no,,True
+20943,allergen:tree_nuts,no,,True
+20943,allergen:peanut,no,,True
+20943,allergen:wheat,yes,1 tablespoon all-purpose flour,True
+20943,allergen:soy,no,,True
+20943,allergen:sesame,no,,True
+20943,diet:vegetarian,yes,2 cups chicken broth,True
+20943,diet:vegan,yes,"2 tablespoons butter, 1 cup heavy whipping cream",False
+11613,allergen:milk,yes,1 ½ cups sour cream,True
+11613,allergen:egg,yes,1 cup mayonnaise,True
+11613,allergen:fish,no,,True
+11613,allergen:crustacean_shellfish,yes,"1 cup imitation crabmeat, diced",True
+11613,allergen:tree_nuts,no,,True
+11613,allergen:peanut,no,,True
+11613,allergen:wheat,yes,1 ½ cups sour cream,True
+11613,allergen:soy,yes,1 cup mayonnaise,True
+11613,allergen:sesame,no,,True
+11613,diet:vegetarian,yes,"1 cup imitation crabmeat, diced",True
+11613,diet:vegan,yes,1 ½ cups sour cream,True
+28683,allergen:milk,yes,2 tablespoons grated Parmesan cheese,True
+28683,allergen:egg,yes,1 large egg,True
+28683,allergen:fish,no,,True
+28683,allergen:crustacean_shellfish,no,,True
+28683,allergen:tree_nuts,no,,True
+28683,allergen:peanut,no,,True
+28683,allergen:wheat,yes,- 1 cup bread crumbs,False
+28683,allergen:soy,no,,True
+28683,allergen:sesame,no,,True
+28683,diet:vegetarian,yes,- 1 pound ground chicken,False
+28683,diet:vegan,yes,- 1 large egg,False
+25010,allergen:milk,no,,True
+25010,allergen:egg,no,,True
+25010,allergen:fish,no,,True
+25010,allergen:crustacean_shellfish,no,,True
+25010,allergen:tree_nuts,no,,True
+25010,allergen:peanut,no,,True
+25010,allergen:wheat,no,,True
+25010,allergen:soy,no,,True
+25010,allergen:sesame,no,,True
+25010,diet:vegetarian,yes,"9 pounds fully-cooked, bone-in ham",True
+25010,diet:vegan,yes,"9 pounds fully-cooked, bone-in ham",True
+4339,allergen:milk,yes,½ cup melted butter,True
+4339,allergen:egg,no,,True
+4339,allergen:fish,no,,True
+4339,allergen:crustacean_shellfish,no,,True
+4339,allergen:tree_nuts,yes,½ cup chopped walnuts,True
+4339,allergen:peanut,no,,True
+4339,allergen:wheat,yes,24 ounces frozen dinner roll dough,True
+4339,allergen:soy,no,,True
+4339,allergen:sesame,no,,True
+4339,diet:vegetarian,no,,True
+4339,diet:vegan,yes,½ cup melted butter,True
+14652,allergen:milk,no,,True
+14652,allergen:egg,no,,True
+14652,allergen:fish,no,,True
+14652,allergen:crustacean_shellfish,no,,True
+14652,allergen:tree_nuts,no,,True
+14652,allergen:peanut,no,,True
+14652,allergen:wheat,no,,True
+14652,allergen:soy,no,,True
+14652,allergen:sesame,no,,True
+14652,diet:vegetarian,no,,True
+14652,diet:vegan,no,,True
+23166,allergen:milk,yes,1 cup plain Greek yogurt,True
+23166,allergen:egg,no,,True
+23166,allergen:fish,no,,True
+23166,allergen:crustacean_shellfish,no,,True
+23166,allergen:tree_nuts,no,,True
+23166,allergen:peanut,no,,True
+23166,allergen:wheat,no,,True
+23166,allergen:soy,no,,True
+23166,allergen:sesame,no,,True
+23166,diet:vegetarian,no,,True
+23166,diet:vegan,yes,1 cup plain Greek yogurt,True
+12383,allergen:milk,yes,6 (8 ounce) packages cream cheese,True
+12383,allergen:egg,yes,6 (8 ounce) packages cream cheese,True
+12383,allergen:fish,yes,3 pounds cooked salad shrimp,True
+12383,allergen:crustacean_shellfish,yes,3 pounds cooked salad shrimp,True
+12383,allergen:tree_nuts,no,,True
+12383,allergen:peanut,no,,True
+12383,allergen:wheat,no,,True
+12383,allergen:soy,no,,True
+12383,allergen:sesame,no,,True
+12383,diet:vegetarian,yes,3 pounds cooked salad shrimp,True
+12383,diet:vegan,yes,6 (8 ounce) packages cream cheese,True
+9832,allergen:milk,yes,½ cup heavy cream,True
+9832,allergen:egg,no,,True
+9832,allergen:fish,yes,"4 pounds mussels, cleaned and debearded",True
+9832,allergen:crustacean_shellfish,no,,True
+9832,allergen:tree_nuts,no,,True
+9832,allergen:peanut,no,,True
+9832,allergen:wheat,no,,True
+9832,allergen:soy,no,,True
+9832,allergen:sesame,no,,True
+9832,diet:vegetarian,yes,"4 pounds mussels, cleaned and debearded",True
+9832,diet:vegan,yes,½ cup heavy cream,True
+19733,allergen:milk,yes,½ teaspoon paprika,True
+19733,allergen:egg,yes,"12 hard boiled eggs, shells removed",True
+19733,allergen:fish,yes,1 teaspoon Worcestershire sauce,True
+19733,allergen:crustacean_shellfish,no,,True
+19733,allergen:tree_nuts,no,,True
+19733,allergen:peanut,no,,True
+19733,allergen:wheat,yes,"4 stalks celery, minced",True
+19733,allergen:soy,no,,True
+19733,allergen:sesame,no,,True
+19733,diet:vegetarian,yes,8 ounces bacon,True
+19733,diet:vegan,yes,"12 hard boiled eggs, shells removed",True
+27734,allergen:milk,no,,True
+27734,allergen:egg,no,,True
+27734,allergen:fish,yes,¼ cup Worcestershire sauce,True
+27734,allergen:crustacean_shellfish,no,,True
+27734,allergen:tree_nuts,no,,True
+27734,allergen:peanut,no,,True
+27734,allergen:wheat,yes,2 ½ pounds lean ground beef,True
+27734,allergen:soy,no,,True
+27734,allergen:sesame,no,,True
+27734,diet:vegetarian,yes,2 ½ pounds lean ground beef,True
+27734,diet:vegan,yes,"2 ½ pounds lean ground beef, 1 cup sour cream",False
+16458,allergen:milk,yes,6 eggs,True
+16458,allergen:egg,yes,6 eggs,True
+16458,allergen:fish,no,,True
+16458,allergen:crustacean_shellfish,no,,True
+16458,allergen:tree_nuts,no,,True
+16458,allergen:peanut,no,,True
+16458,allergen:wheat,error,,False
+16458,allergen:soy,error,,False
+16458,allergen:sesame,error,,False
+16458,diet:vegetarian,error,,False
+16458,diet:vegan,error,,False
+20734,allergen:milk,yes,½ cup shredded mozzarella cheese,True
+20734,allergen:egg,no,,True
+20734,allergen:fish,no,,True
+20734,allergen:crustacean_shellfish,no,,True
+20734,allergen:tree_nuts,no,,True
+20734,allergen:peanut,no,,True
+20734,allergen:wheat,yes,2 (6 inch) flour tortillas,True
+20734,allergen:soy,no,,True
+20734,allergen:sesame,no,,True
+20734,diet:vegetarian,no,,True
+20734,diet:vegan,yes,½ cup shredded mozzarella cheese,True
+26189,allergen:milk,yes,1 cup milk,True
+26189,allergen:egg,yes,"1 egg, beaten",True
+26189,allergen:fish,no,,True
+26189,allergen:crustacean_shellfish,no,,True
+26189,allergen:tree_nuts,no,,True
+26189,allergen:peanut,no,,True
+26189,allergen:wheat,yes,2 cups all-purpose flour,True
+26189,allergen:soy,no,,True
+26189,allergen:sesame,no,,True
+26189,diet:vegetarian,no,,True
+26189,diet:vegan,yes,"1 cup milk, 1 egg, beaten, ¼ cup butter, melted",False
+16897,allergen:milk,yes,2 tablespoons ghee (clarified butter),True
+16897,allergen:egg,no,,True
+16897,allergen:fish,no,,True
+16897,allergen:crustacean_shellfish,no,,True
+16897,allergen:tree_nuts,no,,True
+16897,allergen:peanut,no,,True
+16897,allergen:wheat,no,,True
+16897,allergen:soy,no,,True
+16897,allergen:sesame,no,,True
+16897,diet:vegetarian,yes,1 pound ground beef,True
+16897,diet:vegan,yes,1 pound ground beef,True
+20448,allergen:milk,no,,True
+20448,allergen:egg,yes,"2 egg whites, lightly beaten",True
+20448,allergen:fish,no,,True
+20448,allergen:crustacean_shellfish,no,,True
+20448,allergen:tree_nuts,no,,True
+20448,allergen:peanut,no,,True
+20448,allergen:wheat,yes,¼ cup seasoned bread crumbs,True
+20448,allergen:soy,no,,True
+20448,allergen:sesame,no,,True
+20448,diet:vegetarian,yes,3 pounds ground turkey,True
+20448,diet:vegan,yes,"3 pounds ground turkey, 2 egg whites",False
+9920,allergen:milk,yes,¼ cup butter,True
+9920,allergen:egg,yes,¼ cup butter,True
+9920,allergen:fish,no,,True
+9920,allergen:crustacean_shellfish,no,,True
+9920,allergen:tree_nuts,no,,True
+9920,allergen:peanut,no,,True
+9920,allergen:wheat,no,,True
+9920,allergen:soy,no,,True
+9920,allergen:sesame,no,,True
+9920,diet:vegetarian,yes,1 pound sole fillets,True
+9920,diet:vegan,yes,1 pound sole fillets,True
+10041,allergen:milk,no,,True
+10041,allergen:egg,no,,True
+10041,allergen:fish,yes,4 fresh tilapia fillets,True
+10041,allergen:crustacean_shellfish,no,,True
+10041,allergen:tree_nuts,no,,True
+10041,allergen:peanut,no,,True
+10041,allergen:wheat,no,,True
+10041,allergen:soy,no,,True
+10041,allergen:sesame,no,,True
+10041,diet:vegetarian,yes,4 fresh tilapia fillets,True
+10041,diet:vegan,yes,4 fresh tilapia fillets,True
+1339,allergen:milk,yes,"3 (8 ounce) packages cream cheese, softened",True
+1339,allergen:egg,yes,3 eggs,True
+1339,allergen:fish,no,,True
+1339,allergen:crustacean_shellfish,no,,True
+1339,allergen:tree_nuts,no,,True
+1339,allergen:peanut,no,,True
+1339,allergen:wheat,yes,1 cup chocolate cookie crumbs,True
+1339,allergen:soy,no,,True
+1339,allergen:sesame,no,,True
+1339,diet:vegetarian,no,,True
+1339,diet:vegan,yes,"3 (8 ounce) packages cream cheese, softened",True
+22071,allergen:milk,yes,2 (14.5 ounce) cans chicken broth,True
+22071,allergen:egg,no,,True
+22071,allergen:fish,no,,True
+22071,allergen:crustacean_shellfish,no,,True
+22071,allergen:tree_nuts,no,,True
+22071,allergen:peanut,no,,True
+22071,allergen:wheat,yes,2 (14.5 ounce) cans chicken broth,True
+22071,allergen:soy,no,,True
+22071,allergen:sesame,no,,True
+22071,diet:vegetarian,yes,2 (14.5 ounce) cans chicken broth,True
+22071,diet:vegan,yes,2 (14.5 ounce) cans chicken broth,True
+3776,allergen:milk,yes,½ cup sour cream,True
+3776,allergen:egg,yes,½ cup mayonnaise,True
+3776,allergen:fish,no,,True
+3776,allergen:crustacean_shellfish,no,,True
+3776,allergen:tree_nuts,no,,True
+3776,allergen:peanut,no,,True
+3776,allergen:wheat,no,,True
+3776,allergen:soy,no,,True
+3776,allergen:sesame,no,,True
+3776,diet:vegetarian,no,,True
+3776,diet:vegan,yes,- ½ cup sour cream,False
+4777,allergen:milk,no,,True
+4777,allergen:egg,no,,True
+4777,allergen:fish,no,,True
+4777,allergen:crustacean_shellfish,no,,True
+4777,allergen:tree_nuts,yes,- 1 pound chestnuts,False
+4777,allergen:peanut,yes,- 1 pound chestnuts,False
+4777,allergen:wheat,no,,True
+4777,allergen:soy,no,,True
+4777,allergen:sesame,no,,True
+4777,diet:vegetarian,no,,True
+4777,diet:vegan,no,,True
+26510,allergen:milk,yes,¾ cup warm milk (115 degrees F or 46 degrees C),True
+26510,allergen:egg,yes,2 eggs,True
+26510,allergen:fish,no,,True
+26510,allergen:crustacean_shellfish,no,,True
+26510,allergen:tree_nuts,yes,"¼ cup toasted almonds, chopped",True
+26510,allergen:peanut,no,,True
+26510,allergen:wheat,no,,True
+26510,allergen:soy,no,,True
+26510,allergen:sesame,yes,1 teaspoon sesame seeds (Optional),True
+26510,diet:vegetarian,no,,True
+26510,diet:vegan,yes,"2 eggs, 2 egg whites",False
+24714,allergen:milk,no,,True
+24714,allergen:egg,no,,True
+24714,allergen:fish,no,,True
+24714,allergen:crustacean_shellfish,no,,True
+24714,allergen:tree_nuts,no,,True
+24714,allergen:peanut,no,,True
+24714,allergen:wheat,no,,True
+24714,allergen:soy,no,,True
+24714,allergen:sesame,no,,True
+24714,diet:vegetarian,yes,6 (4 ounce) boneless pork loin chops,True
+24714,diet:vegan,yes,6 (4 ounce) boneless pork loin chops,True
+17836,allergen:milk,yes,1 cup sour cream,True
+17836,allergen:egg,yes,4 eggs,True
+17836,allergen:fish,no,,True
+17836,allergen:crustacean_shellfish,no,,True
+17836,allergen:tree_nuts,no,,True
+17836,allergen:peanut,no,,True
+17836,allergen:wheat,yes,1 (18.25 ounce) package white cake mix,True
+17836,allergen:soy,no,,True
+17836,allergen:sesame,no,,True
+17836,diet:vegetarian,no,,True
+17836,diet:vegan,yes,4 eggs,True
+18004,allergen:milk,no,,True
+18004,allergen:egg,no,,True
+18004,allergen:fish,no,,True
+18004,allergen:crustacean_shellfish,no,,True
+18004,allergen:tree_nuts,no,,True
+18004,allergen:peanut,no,,True
+18004,allergen:wheat,no,,True
+18004,allergen:soy,no,,True
+18004,allergen:sesame,no,,True
+18004,diet:vegetarian,yes,4 ½ quarts chicken broth,True
+18004,diet:vegan,yes,6 pounds cubed pork stew meat,True
+3933,allergen:milk,yes,2 cups shredded sharp Cheddar cheese,True
+3933,allergen:egg,yes,11 large eggs,True
+3933,allergen:fish,no,,True
+3933,allergen:crustacean_shellfish,no,,True
+3933,allergen:tree_nuts,no,,True
+3933,allergen:peanut,no,,True
+3933,allergen:wheat,no,,True
+3933,allergen:soy,no,,True
+3933,allergen:sesame,no,,True
+3933,diet:vegetarian,yes,1 pound breakfast sausage,True
+3933,diet:vegan,yes,11 large eggs,True
+19027,allergen:milk,no,,True
+19027,allergen:egg,no,,True
+19027,allergen:fish,no,,True
+19027,allergen:crustacean_shellfish,no,,True
+19027,allergen:tree_nuts,no,,True
+19027,allergen:peanut,no,,True
+19027,allergen:wheat,no,,True
+19027,allergen:soy,no,,True
+19027,allergen:sesame,no,,True
+19027,diet:vegetarian,yes,"5 pounds beef brisket, trimmed of fat",True
+19027,diet:vegan,yes,"5 pounds beef brisket, trimmed of fat",True
+13992,allergen:milk,yes,1 cup buttermilk,True
+13992,allergen:egg,yes,2 eggs,True
+13992,allergen:fish,no,,True
+13992,allergen:crustacean_shellfish,no,,True
+13992,allergen:tree_nuts,no,,True
+13992,allergen:peanut,no,,True
+13992,allergen:wheat,yes,3 cups all-purpose flour,True
+13992,allergen:soy,no,,True
+13992,allergen:sesame,no,,True
+13992,diet:vegetarian,no,,True
+13992,diet:vegan,yes,2 eggs,True
+25506,allergen:milk,yes,"1 (8 ounce) package cream cheese, at room temperature",True
+25506,allergen:egg,yes,2 large eggs,True
+25506,allergen:fish,no,,True
+25506,allergen:crustacean_shellfish,no,,True
+25506,allergen:tree_nuts,no,,True
+25506,allergen:peanut,no,,True
+25506,allergen:wheat,yes,2 ¼ cups all-purpose flour,True
+25506,allergen:soy,no,,True
+25506,allergen:sesame,no,,True
+25506,diet:vegetarian,yes,"1 (8 ounce) package cream cheese, at room temperature",True
+25506,diet:vegan,yes,"1 (8 ounce) package cream cheese, at room temperature",True
+30159,allergen:milk,yes,½ cup heavy cream,True
+30159,allergen:egg,no,,True
+30159,allergen:fish,no,,True
+30159,allergen:crustacean_shellfish,no,,True
+30159,allergen:tree_nuts,no,,True
+30159,allergen:peanut,no,,True
+30159,allergen:wheat,no,,True
+30159,allergen:soy,no,,True
+30159,allergen:sesame,no,,True
+30159,diet:vegetarian,yes,4 cups chicken broth,True
+30159,diet:vegan,yes,½ cup heavy cream,True
+17953,allergen:milk,yes,"2 small bananas, sliced",True
+17953,allergen:egg,yes,4 egg whites,True
+17953,allergen:fish,no,,True
+17953,allergen:crustacean_shellfish,no,,True
+17953,allergen:tree_nuts,no,,True
+17953,allergen:peanut,no,,True
+17953,allergen:wheat,no,,True
+17953,allergen:soy,no,,True
+17953,allergen:sesame,no,,True
+17953,diet:vegetarian,no,,True
+17953,diet:vegan,yes,4 egg whites,True
+21453,allergen:milk,no,,True
+21453,allergen:egg,no,,True
+21453,allergen:fish,no,,True
+21453,allergen:crustacean_shellfish,no,,True
+21453,allergen:tree_nuts,no,,True
+21453,allergen:peanut,no,,True
+21453,allergen:wheat,no,,True
+21453,allergen:soy,no,,True
+21453,allergen:sesame,yes,¼ teaspoon sesame seeds,True
+21453,diet:vegetarian,no,,True
+21453,diet:vegan,no,,True
+20376,allergen:milk,no,,True
+20376,allergen:egg,no,,True
+20376,allergen:fish,no,,True
+20376,allergen:crustacean_shellfish,no,,True
+20376,allergen:tree_nuts,no,,True
+20376,allergen:peanut,no,,True
+20376,allergen:wheat,yes,¾ cup whole wheat couscous,True
+20376,allergen:soy,no,,True
+20376,allergen:sesame,no,,True
+20376,diet:vegetarian,no,,True
+20376,diet:vegan,no,,True
+29271,allergen:milk,yes,¼ cup butter,True
+29271,allergen:egg,no,,True
+29271,allergen:fish,no,,True
+29271,allergen:crustacean_shellfish,no,,True
+29271,allergen:tree_nuts,no,,True
+29271,allergen:peanut,no,,True
+29271,allergen:wheat,yes,¼ cup all-purpose flour,True
+29271,allergen:soy,no,,True
+29271,allergen:sesame,no,,True
+29271,diet:vegetarian,yes,1 cup chopped chicken breast meat,True
+29271,diet:vegan,yes,1 cup chopped chicken breast meat,True
+24608,allergen:milk,yes,¼ cup butter,True
+24608,allergen:egg,yes,⅓ cup cream cheese,True
+24608,allergen:fish,yes,1 (10 ounce) can beef broth,True
+24608,allergen:crustacean_shellfish,no,,True
+24608,allergen:tree_nuts,no,,True
+24608,allergen:peanut,no,,True
+24608,allergen:wheat,yes,¼ cup all-purpose flour,True
+24608,allergen:soy,no,,True
+24608,allergen:sesame,no,,True
+24608,diet:vegetarian,yes,2 cups canned sliced mushrooms,True
+24608,diet:vegan,yes,¼ cup butter,True
+7863,allergen:milk,yes,"2 (16 ounce) cans whole peeled tomatoes, drained",True
+7863,allergen:egg,no,,True
+7863,allergen:fish,no,,True
+7863,allergen:crustacean_shellfish,no,,True
+7863,allergen:tree_nuts,no,,True
+7863,allergen:peanut,no,,True
+7863,allergen:wheat,no,,True
+7863,allergen:soy,no,,True
+7863,allergen:sesame,no,,True
+7863,diet:vegetarian,yes,- ½ pound bacon,False
+7863,diet:vegan,yes,- ½ pound bacon,False
+5582,allergen:milk,yes,"½ cup butter, softened",True
+5582,allergen:egg,yes,1 large egg,True
+5582,allergen:fish,no,,True
+5582,allergen:crustacean_shellfish,no,,True
+5582,allergen:tree_nuts,no,,True
+5582,allergen:peanut,yes,"peanut butter is not listed, but peanut butter is a product made from peanuts",False
+5582,allergen:wheat,yes,1 ½ cups all-purpose flour,True
+5582,allergen:soy,no,,True
+5582,allergen:sesame,no,,True
+5582,diet:vegetarian,no,,True
+5582,diet:vegan,yes,"½ cup plain yogurt, 1 large egg",False
+11431,allergen:milk,yes,2 tablespoons butter,True
+11431,allergen:egg,no,,True
+11431,allergen:fish,yes,8 (4 ounce) orange roughy fillets,True
+11431,allergen:crustacean_shellfish,no,,True
+11431,allergen:tree_nuts,no,,True
+11431,allergen:peanut,no,,True
+11431,allergen:wheat,yes,2 tablespoons all-purpose flour,True
+11431,allergen:soy,no,,True
+11431,allergen:sesame,no,,True
+11431,diet:vegetarian,yes,½ cup chicken broth,True
+11431,diet:vegan,yes,2 tablespoons butter,True
+28568,allergen:milk,yes,"½ cup butter, plus more for greasing",True
+28568,allergen:egg,yes,2 eggs,True
+28568,allergen:fish,no,,True
+28568,allergen:crustacean_shellfish,no,,True
+28568,allergen:tree_nuts,yes,¾ cup chopped toasted almonds,True
+28568,allergen:peanut,no,,True
+28568,allergen:wheat,yes,"2 ¾ cups all-purpose flour, plus more for dusting",True
+28568,allergen:soy,no,,True
+28568,allergen:sesame,no,,True
+28568,diet:vegetarian,no,,True
+28568,diet:vegan,yes,2 eggs,True
+26913,allergen:milk,yes,1 cup butter,True
+26913,allergen:egg,yes,4 eggs,True
+26913,allergen:fish,no,,True
+26913,allergen:crustacean_shellfish,no,,True
+26913,allergen:tree_nuts,yes,½ cup chopped walnuts,True
+26913,allergen:peanut,no,,True
+26913,allergen:wheat,yes,3 cups all-purpose flour,True
+26913,allergen:soy,no,,True
+26913,allergen:sesame,no,,True
+26913,diet:vegetarian,no,,True
+26913,diet:vegan,yes,4 eggs,True
+3380,allergen:milk,yes,2 ounces crumbled reduced-fat feta cheese,True
+3380,allergen:egg,no,,True
+3380,allergen:fish,no,,True
+3380,allergen:crustacean_shellfish,no,,True
+3380,allergen:tree_nuts,no,,True
+3380,allergen:peanut,no,,True
+3380,allergen:wheat,no,,True
+3380,allergen:soy,no,,True
+3380,allergen:sesame,no,,True
+3380,diet:vegetarian,yes,2 ounces crumbled reduced-fat feta cheese,True
+3380,diet:vegan,yes,2 ounces crumbled reduced-fat feta cheese,True
+5959,allergen:milk,yes,"¼ cup butter, softened",True
+5959,allergen:egg,no,,True
+5959,allergen:fish,no,,True
+5959,allergen:crustacean_shellfish,no,,True
+5959,allergen:tree_nuts,no,,True
+5959,allergen:peanut,no,,True
+5959,allergen:wheat,no,,True
+5959,allergen:soy,no,,True
+5959,allergen:sesame,no,,True
+5959,diet:vegetarian,yes,1 whole chicken,True
+5959,diet:vegan,yes,"¼ cup butter, softened",True
+1144,allergen:milk,yes,½ cup butter,True
+1144,allergen:egg,yes,4 eggs,True
+1144,allergen:fish,no,,True
+1144,allergen:crustacean_shellfish,no,,True
+1144,allergen:tree_nuts,no,,True
+1144,allergen:peanut,no,,True
+1144,allergen:wheat,yes,2 cups all-purpose flour,True
+1144,allergen:soy,no,,True
+1144,allergen:sesame,no,,True
+1144,diet:vegetarian,no,,True
+1144,diet:vegan,yes,4 eggs,True
+15679,allergen:milk,yes,¼ cup milk,True
+15679,allergen:egg,yes,2 large eggs,True
+15679,allergen:fish,no,,True
+15679,allergen:crustacean_shellfish,no,,True
+15679,allergen:tree_nuts,no,,True
+15679,allergen:peanut,yes,,False
+15679,allergen:wheat,yes,2 ¼ cups all-purpose flour,True
+15679,allergen:soy,no,,True
+15679,allergen:sesame,no,,True
+15679,diet:vegetarian,no,,True
+15679,diet:vegan,yes,"2 large eggs, ¼ cup milk",False
+10141,allergen:milk,yes,2 tablespoons Worcestershire sauce,True
+10141,allergen:egg,no,,True
+10141,allergen:fish,yes,2 tablespoons Worcestershire sauce,True
+10141,allergen:crustacean_shellfish,no,,True
+10141,allergen:tree_nuts,no,,True
+10141,allergen:peanut,no,,True
+10141,allergen:wheat,yes,3 cups diced potatoes,True
+10141,allergen:soy,yes,2 tablespoons Worcestershire sauce,True
+10141,allergen:sesame,no,,True
+10141,diet:vegetarian,yes,"5 slices bacon, 2 pounds catfish",False
+10141,diet:vegan,yes,"5 slices bacon, 2 pounds catfish",False
+5210,allergen:milk,yes,2 tablespoons grated Parmesan cheese,True
+5210,allergen:egg,no,,True
+5210,allergen:fish,no,,True
+5210,allergen:crustacean_shellfish,no,,True
+5210,allergen:tree_nuts,no,,True
+5210,allergen:peanut,no,,True
+5210,allergen:wheat,yes,1 (16 ounce) box penne pasta,True
+5210,allergen:soy,no,,True
+5210,allergen:sesame,no,,True
+5210,diet:vegetarian,yes,1 pound hot Italian sausage links,False
+5210,diet:vegan,yes,"1 pound hot Italian sausage links, 2 tablespoons grated Parmesan cheese",False
+26188,allergen:milk,yes,1 cup milk,True
+26188,allergen:egg,yes,1 egg,True
+26188,allergen:fish,no,,True
+26188,allergen:crustacean_shellfish,no,,True
+26188,allergen:tree_nuts,no,,True
+26188,allergen:peanut,no,,True
+26188,allergen:wheat,yes,"5 ½ cups all-purpose flour, divided",True
+26188,allergen:soy,no,,True
+26188,allergen:sesame,no,,True
+26188,diet:vegetarian,no,,True
+26188,diet:vegan,yes,"1 cup milk, 1 egg",False
+14244,allergen:milk,yes,1 ½ cups shredded part-skim mozzarella cheese,True
+14244,allergen:egg,yes,"8 eggs, beaten",True
+14244,allergen:fish,no,,True
+14244,allergen:crustacean_shellfish,no,,True
+14244,allergen:tree_nuts,no,,True
+14244,allergen:peanut,no,,True
+14244,allergen:wheat,yes,"6 English muffins, split in half",True
+14244,allergen:soy,no,,True
+14244,allergen:sesame,no,,True
+14244,diet:vegetarian,yes,"½ pound Odom's Tennessee Pride® Mild Country Sausage, thawed if frozen",True
+14244,diet:vegan,yes,"8 eggs, beaten",True
+28263,allergen:milk,no,,True
+28263,allergen:egg,no,,True
+28263,allergen:fish,no,,True
+28263,allergen:crustacean_shellfish,no,,True
+28263,allergen:tree_nuts,no,,True
+28263,allergen:peanut,no,,True
+28263,allergen:wheat,no,,True
+28263,allergen:soy,no,,True
+28263,allergen:sesame,no,,True
+28263,diet:vegetarian,yes,"- 8 skinless, boneless chicken breast halves",False
+28263,diet:vegan,yes,"- 8 skinless, boneless chicken breast halves",False
+31086,allergen:milk,yes,2 egg yolks,True
+31086,allergen:egg,yes,2 egg yolks,True
+31086,allergen:fish,no,,True
+31086,allergen:crustacean_shellfish,no,,True
+31086,allergen:tree_nuts,no,,True
+31086,allergen:peanut,no,,True
+31086,allergen:wheat,yes,"½ cup all-purpose flour, or as needed",False
+31086,allergen:soy,no,,True
+31086,allergen:sesame,yes,2 teaspoons sesame seeds,True
+31086,diet:vegetarian,yes,1 pound smelt,True
+31086,diet:vegan,yes,"1 pound smelt, 2 egg yolks",False
+2475,allergen:milk,no,,True
+2475,allergen:egg,no,,True
+2475,allergen:fish,no,,True
+2475,allergen:crustacean_shellfish,no,,True
+2475,allergen:tree_nuts,no,,True
+2475,allergen:peanut,no,,True
+2475,allergen:wheat,no,,True
+2475,allergen:soy,no,,True
+2475,allergen:sesame,no,,True
+2475,diet:vegetarian,no,,True
+2475,diet:vegan,no,,True
+12909,allergen:milk,yes,1 cup mayonnaise,True
+12909,allergen:egg,yes,1 cup mayonnaise,True
+12909,allergen:fish,yes,1 (3 pound) salmon fillet,True
+12909,allergen:crustacean_shellfish,no,,True
+12909,allergen:tree_nuts,no,,True
+12909,allergen:peanut,no,,True
+12909,allergen:wheat,no,,True
+12909,allergen:soy,no,,True
+12909,allergen:sesame,no,,True
+12909,diet:vegetarian,yes,1 (3 pound) salmon fillet,True
+12909,diet:vegan,yes,1 (3 pound) salmon fillet,True
+30418,allergen:milk,yes,¼ cup butter,True
+30418,allergen:egg,no,,True
+30418,allergen:fish,no,,True
+30418,allergen:crustacean_shellfish,no,,True
+30418,allergen:tree_nuts,no,,True
+30418,allergen:peanut,no,,True
+30418,allergen:wheat,no,,True
+30418,allergen:soy,no,,True
+30418,allergen:sesame,no,,True
+30418,diet:vegetarian,yes,- 4 pounds chicken wings,False
+30418,diet:vegan,yes,- ¼ cup butter,False
+18353,allergen:milk,no,,True
+18353,allergen:egg,no,,True
+18353,allergen:fish,yes,2 tablespoons fish sauce,True
+18353,allergen:crustacean_shellfish,no,,True
+18353,allergen:tree_nuts,no,,True
+18353,allergen:peanut,no,,True
+18353,allergen:wheat,yes,2 (8.8 ounce) pouches UNCLE BEN'S<sup>®</sup> READY RICE<sup>®</sup> - Whole Grain Brown,False
+18353,allergen:soy,yes,2 tablespoons light soy sauce,True
+18353,allergen:sesame,yes,2 tablespoons sesame seeds,True
+18353,diet:vegetarian,yes,"1 pound boneless, skinless chicken breasts",False
+18353,diet:vegan,yes,"1 pound boneless, skinless chicken breasts",False
+30824,allergen:milk,yes,7 ounces feta cheese,True
+30824,allergen:egg,no,,True
+30824,allergen:fish,no,,True
+30824,allergen:crustacean_shellfish,no,,True
+30824,allergen:tree_nuts,no,,True
+30824,allergen:peanut,no,,True
+30824,allergen:wheat,no,,True
+30824,allergen:soy,no,,True
+30824,allergen:sesame,no,,True
+30824,diet:vegetarian,yes,7 ounces feta cheese,True
+30824,diet:vegan,yes,7 ounces feta cheese,True
+28633,allergen:milk,yes,1 (15.25 ounce) package vanilla cake mix (such as Betty Crocker®),True
+28633,allergen:egg,yes,3 eggs,True
+28633,allergen:fish,no,,True
+28633,allergen:crustacean_shellfish,no,,True
+28633,allergen:tree_nuts,no,,True
+28633,allergen:peanut,no,,True
+28633,allergen:wheat,yes,1 (15.25 ounce) package vanilla cake mix (such as Betty Crocker®),True
+28633,allergen:soy,no,,True
+28633,allergen:sesame,no,,True
+28633,diet:vegetarian,no,,True
+28633,diet:vegan,yes,3 eggs,True
+13309,allergen:milk,no,,True
+13309,allergen:egg,no,,True
+13309,allergen:fish,no,,True
+13309,allergen:crustacean_shellfish,no,,True
+13309,allergen:tree_nuts,no,,True
+13309,allergen:peanut,no,,True
+13309,allergen:wheat,no,,True
+13309,allergen:soy,no,,True
+13309,allergen:sesame,no,,True
+13309,diet:vegetarian,no,,True
+13309,diet:vegan,no,,True
+30891,allergen:milk,yes,¼ cup softened unsalted butter,True
+30891,allergen:egg,yes,1 large egg,True
+30891,allergen:fish,no,,True
+30891,allergen:crustacean_shellfish,no,,True
+30891,allergen:tree_nuts,no,,True
+30891,allergen:peanut,no,,True
+30891,allergen:wheat,no,,True
+30891,allergen:soy,no,,True
+30891,allergen:sesame,no,,True
+30891,diet:vegetarian,no,,True
+30891,diet:vegan,yes,"¼ cup softened unsalted butter, 1 large egg",False
+11177,allergen:milk,yes,1 cup shredded Monterey Jack cheese,True
+11177,allergen:egg,yes,3 tablespoons mayonnaise,True
+11177,allergen:fish,no,,True
+11177,allergen:crustacean_shellfish,yes,"1 pound shrimp, peeled and deveined",True
+11177,allergen:tree_nuts,no,,True
+11177,allergen:peanut,no,,True
+11177,allergen:wheat,no,,True
+11177,allergen:soy,no,,True
+11177,allergen:sesame,no,,True
+11177,diet:vegetarian,yes,"1 pound shrimp, peeled and deveined",True
+11177,diet:vegan,yes,3 tablespoons mayonnaise,True
+7422,allergen:milk,no,,True
+7422,allergen:egg,yes,"4 eggs, beaten",True
+7422,allergen:fish,no,,True
+7422,allergen:crustacean_shellfish,no,,True
+7422,allergen:tree_nuts,no,,True
+7422,allergen:peanut,no,,True
+7422,allergen:wheat,yes,3 cups chopped paratha (Indian flatbread),True
+7422,allergen:soy,yes,"2 teaspoons soy sauce, divided",True
+7422,allergen:sesame,no,,True
+7422,diet:vegetarian,no,,True
+7422,diet:vegan,yes,"4 eggs, beaten",True
+30189,allergen:milk,no,,True
+30189,allergen:egg,no,,True
+30189,allergen:fish,no,,True
+30189,allergen:crustacean_shellfish,no,,True
+30189,allergen:tree_nuts,no,,True
+30189,allergen:peanut,no,,True
+30189,allergen:wheat,yes,2 cups all-purpose flour,True
+30189,allergen:soy,no,,True
+30189,allergen:sesame,no,,True
+30189,diet:vegetarian,no,,True
+30189,diet:vegan,no,,True
+3607,allergen:milk,yes,¾ cup milk,True
+3607,allergen:egg,no,,True
+3607,allergen:fish,no,,True
+3607,allergen:crustacean_shellfish,no,,True
+3607,allergen:tree_nuts,no,,True
+3607,allergen:peanut,no,,True
+3607,allergen:wheat,error,,False
+3607,allergen:soy,error,,False
+3607,allergen:sesame,error,,False
+3607,diet:vegetarian,error,,False
+3607,diet:vegan,error,,False
+30627,allergen:milk,yes,"6 tablespoons cold butter, diced",True
+30627,allergen:egg,yes,2 large eggs,True
+30627,allergen:fish,no,,True
+30627,allergen:crustacean_shellfish,no,,True
+30627,allergen:tree_nuts,yes,2 cups King Arthur Almond Flour,True
+30627,allergen:peanut,no,,True
+30627,allergen:wheat,no,,True
+30627,allergen:soy,no,,True
+30627,allergen:sesame,no,,True
+30627,diet:vegetarian,no,,True
+30627,diet:vegan,no,,True
+11448,allergen:milk,no,,True
+11448,allergen:egg,no,,True
+11448,allergen:fish,yes,"1 ½ pounds black cod (sablefish) fillets, cut into large pieces",True
+11448,allergen:crustacean_shellfish,no,,True
+11448,allergen:tree_nuts,no,,True
+11448,allergen:peanut,no,,True
+11448,allergen:wheat,no,,True
+11448,allergen:soy,yes,3 tablespoons soy sauce,False
+11448,allergen:sesame,yes,2 tablespoons sesame oil,True
+11448,diet:vegetarian,yes,1 ½ pounds black cod (sablefish) fillets,False
+11448,diet:vegan,yes,1 ½ pounds black cod (sablefish) fillets,False
+19572,allergen:milk,yes,1 cup milk,True
+19572,allergen:egg,yes,1 tablespoon butter,True
+19572,allergen:fish,no,,True
+19572,allergen:crustacean_shellfish,no,,True
+19572,allergen:tree_nuts,no,,True
+19572,allergen:peanut,yes,1 cup milk,True
+19572,allergen:wheat,yes,3 tablespoons all-purpose flour,True
+19572,allergen:soy,no,,True
+19572,allergen:sesame,no,,True
+19572,diet:vegetarian,yes,1 (14 ounce) can chicken broth,True
+19572,diet:vegan,yes,1 cup milk,True
+7186,allergen:milk,yes,1 cup shredded mozzarella cheese,True
+7186,allergen:egg,yes,1 cup shredded mozzarella cheese,True
+7186,allergen:fish,no,,True
+7186,allergen:crustacean_shellfish,no,,True
+7186,allergen:tree_nuts,no,,True
+7186,allergen:peanut,no,,True
+7186,allergen:wheat,error,,False
+7186,allergen:soy,error,,False
+7186,allergen:sesame,error,,False
+7186,diet:vegetarian,error,,False
+7186,diet:vegan,error,,False
+14129,allergen:milk,yes,sour cream,False
+14129,allergen:egg,yes,mayonnaise,False
+14129,allergen:fish,no,,True
+14129,allergen:crustacean_shellfish,no,,True
+14129,allergen:tree_nuts,no,,True
+14129,allergen:peanut,no,,True
+14129,allergen:wheat,no,,True
+14129,allergen:soy,no,,True
+14129,allergen:sesame,no,,True
+14129,diet:vegetarian,yes,1 tablespoon buttermilk,True
+14129,diet:vegan,yes,1 tablespoon buttermilk,True
+17549,allergen:milk,yes,¾ cup milk,True
+17549,allergen:egg,yes,3 eggs,True
+17549,allergen:fish,no,,True
+17549,allergen:crustacean_shellfish,no,,True
+17549,allergen:tree_nuts,yes,¼ cup chopped pecans,True
+17549,allergen:peanut,no,,True
+17549,allergen:wheat,yes,½ (12 count) package Hawaiian bread rolls (such as King's®),True
+17549,allergen:soy,no,,True
+17549,allergen:sesame,no,,True
+17549,diet:vegetarian,yes,3 eggs,True
+17549,diet:vegan,yes,3 eggs,True
+16059,allergen:milk,no,,True
+16059,allergen:egg,no,,True
+16059,allergen:fish,no,,True
+16059,allergen:crustacean_shellfish,no,,True
+16059,allergen:tree_nuts,no,,True
+16059,allergen:peanut,no,,True
+16059,allergen:wheat,no,,True
+16059,allergen:soy,no,,True
+16059,allergen:sesame,no,,True
+16059,diet:vegetarian,no,,True
+16059,diet:vegan,no,,True
+5591,allergen:milk,no,,True
+5591,allergen:egg,no,,True
+5591,allergen:fish,no,,True
+5591,allergen:crustacean_shellfish,no,,True
+5591,allergen:tree_nuts,no,,True
+5591,allergen:peanut,no,,True
+5591,allergen:wheat,error,,False
+5591,allergen:soy,error,,False
+5591,allergen:sesame,error,,False
+5591,diet:vegetarian,error,,False
+5591,diet:vegan,error,,False
+25521,allergen:milk,yes,1 cup heavy whipping cream,True
+25521,allergen:egg,yes,1 cup heavy whipping cream,True
+25521,allergen:fish,no,,True
+25521,allergen:crustacean_shellfish,no,,True
+25521,allergen:tree_nuts,yes,3 tablespoons chocolate-hazelnut spread (such as Nutella®),True
+25521,allergen:peanut,yes,3 tablespoons chocolate-hazelnut spread (such as Nutella®),True
+25521,allergen:wheat,yes,baking spray with flour,True
+25521,allergen:soy,yes,1 (16.5 ounce) package refrigerated cookie dough (such as Pillsbury),False
+25521,allergen:sesame,no,,True
+25521,diet:vegetarian,no,,True
+25521,diet:vegan,yes,1 cup heavy whipping cream,True
+20,allergen:milk,no,,True
+20,allergen:egg,no,,True
+20,allergen:fish,no,,True
+20,allergen:crustacean_shellfish,no,,True
+20,allergen:tree_nuts,no,,True
+20,allergen:peanut,no,,True
+20,allergen:wheat,no,,True
+20,allergen:soy,no,,True
+20,allergen:sesame,no,,True
+20,diet:vegetarian,yes,1 (1 ounce) package taco seasoning mix,True
+20,diet:vegan,yes,1 (1 ounce) package taco seasoning mix,True
+10057,allergen:milk,no,,True
+10057,allergen:egg,no,,True
+10057,allergen:fish,yes,"1 pound large shrimp, peeled and deveined with tails attached",True
+10057,allergen:crustacean_shellfish,yes,"1 pound large shrimp, peeled and deveined with tails attached",True
+10057,allergen:tree_nuts,no,,True
+10057,allergen:peanut,no,,True
+10057,allergen:wheat,yes,¾ cup all-purpose flour,True
+10057,allergen:soy,no,,True
+10057,allergen:sesame,no,,True
+10057,diet:vegetarian,yes,"1 pound large shrimp, peeled and deveined with tails attached",True
+10057,diet:vegan,yes,"1 pound large shrimp, peeled and deveined with tails attached",True
+1744,allergen:milk,yes,1 ½ cups heavy cream,True
+1744,allergen:egg,no,,True
+1744,allergen:fish,no,,True
+1744,allergen:crustacean_shellfish,no,,True
+1744,allergen:tree_nuts,no,,True
+1744,allergen:peanut,no,,True
+1744,allergen:wheat,yes,1 (12 ounce) package bow tie pasta,True
+1744,allergen:soy,no,,True
+1744,allergen:sesame,no,,True
+1744,diet:vegetarian,yes,1 pound sweet Italian sausage,False
+1744,diet:vegan,yes,"1 pound sweet Italian sausage, 1 (28 ounce) can Italian-style plum tomatoes, 1 ½ cups heavy cream",False
+17895,allergen:milk,no,,True
+17895,allergen:egg,no,,True
+17895,allergen:fish,no,,True
+17895,allergen:crustacean_shellfish,no,,True
+17895,allergen:tree_nuts,no,,True
+17895,allergen:peanut,no,,True
+17895,allergen:wheat,no,,True
+17895,allergen:soy,no,,True
+17895,allergen:sesame,no,,True
+17895,diet:vegetarian,no,,True
+17895,diet:vegan,no,,True
+26826,allergen:milk,yes,1 cup buttermilk,True
+26826,allergen:egg,yes,1 egg,True
+26826,allergen:fish,no,,True
+26826,allergen:crustacean_shellfish,no,,True
+26826,allergen:tree_nuts,no,,True
+26826,allergen:peanut,no,,True
+26826,allergen:wheat,yes,1 ¼ cups all-purpose flour,True
+26826,allergen:soy,no,,True
+26826,allergen:sesame,no,,True
+26826,diet:vegetarian,no,,True
+26826,diet:vegan,yes,1 egg,True
+31607,allergen:milk,yes,"3 tablespoons butter, melted",True
+31607,allergen:egg,yes,2 tablespoons grated Parmesan cheese,True
+31607,allergen:fish,no,,True
+31607,allergen:crustacean_shellfish,no,,True
+31607,allergen:tree_nuts,no,,True
+31607,allergen:peanut,no,,True
+31607,allergen:wheat,yes,"flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",False
+31607,allergen:soy,no,,True
+31607,allergen:sesame,no,,True
+31607,diet:vegetarian,no,,True
+31607,diet:vegan,yes,"3 tablespoons butter, melted",True
+616,allergen:milk,yes,¼ cup Butter,True
+616,allergen:egg,yes,¼ cup Butter,True
+616,allergen:fish,no,,True
+616,allergen:crustacean_shellfish,no,,True
+616,allergen:tree_nuts,no,,True
+616,allergen:peanut,no,,True
+616,allergen:wheat,yes,¼ cup all-purpose flour,True
+616,allergen:soy,no,,True
+616,allergen:sesame,no,,True
+616,diet:vegetarian,yes,2 pounds veal shanks,False
+616,diet:vegan,yes,2 pounds veal shanks,False
+19078,allergen:milk,yes,"1 pound Monterey Jack cheese, shredded, divided",True
+19078,allergen:egg,yes,1 cup sour cream,True
+19078,allergen:fish,no,,True
+19078,allergen:crustacean_shellfish,no,,True
+19078,allergen:tree_nuts,no,,True
+19078,allergen:peanut,no,,True
+19078,allergen:wheat,yes,6 (12 inch) flour tortillas,True
+19078,allergen:soy,no,,True
+19078,allergen:sesame,no,,True
+19078,diet:vegetarian,yes,1 ½ cups chicken broth,True
+19078,diet:vegan,yes,1 cup sour cream,True
+25104,allergen:milk,yes,1 tablespoon butter,True
+25104,allergen:egg,yes,1 cup fat free half-and-half,True
+25104,allergen:fish,no,,True
+25104,allergen:crustacean_shellfish,no,,True
+25104,allergen:tree_nuts,no,,True
+25104,allergen:peanut,no,,True
+25104,allergen:wheat,no,,True
+25104,allergen:soy,no,,True
+25104,allergen:sesame,no,,True
+25104,diet:vegetarian,yes,2 cups chicken broth,True
+25104,diet:vegan,yes,1 tablespoon butter,True
+18452,allergen:milk,yes,4 cups dry milk powder,True
+18452,allergen:egg,no,,True
+18452,allergen:fish,no,,True
+18452,allergen:crustacean_shellfish,no,,True
+18452,allergen:tree_nuts,no,,True
+18452,allergen:peanut,yes,3 ½ cups peanut butter,True
+18452,allergen:wheat,no,,True
+18452,allergen:soy,no,,True
+18452,allergen:sesame,no,,True
+18452,diet:vegetarian,no,,True
+18452,diet:vegan,yes,3 ½ cups honey,True
+4238,allergen:milk,yes,1 pint light cream,True
+4238,allergen:egg,no,,True
+4238,allergen:fish,no,,True
+4238,allergen:crustacean_shellfish,no,,True
+4238,allergen:tree_nuts,yes,2 ounces pine nuts,True
+4238,allergen:peanut,no,,True
+4238,allergen:wheat,no,,True
+4238,allergen:soy,no,,True
+4238,allergen:sesame,no,,True
+4238,diet:vegetarian,no,,True
+4238,diet:vegan,yes,1 pint light cream,True
+26185,allergen:milk,yes,2 tablespoons unsalted butter,True
+26185,allergen:egg,yes,2 tablespoons unsalted butter,True
+26185,allergen:fish,no,,True
+26185,allergen:crustacean_shellfish,no,,True
+26185,allergen:tree_nuts,no,,True
+26185,allergen:peanut,no,,True
+26185,allergen:wheat,no,,True
+26185,allergen:soy,no,,True
+26185,allergen:sesame,no,,True
+26185,diet:vegetarian,yes,"4 strips bacon, cut into 1-inch pieces",True
+26185,diet:vegan,yes,2 tablespoons unsalted butter,True
+18478,allergen:milk,no,,True
+18478,allergen:egg,no,,True
+18478,allergen:fish,no,,True
+18478,allergen:crustacean_shellfish,no,,True
+18478,allergen:tree_nuts,no,,True
+18478,allergen:peanut,no,,True
+18478,allergen:wheat,no,,True
+18478,allergen:soy,no,,True
+18478,allergen:sesame,no,,True
+18478,diet:vegetarian,no,,True
+18478,diet:vegan,no,,True
+21380,allergen:milk,no,,True
+21380,allergen:egg,no,,True
+21380,allergen:fish,no,,True
+21380,allergen:crustacean_shellfish,no,,True
+21380,allergen:tree_nuts,no,,True
+21380,allergen:peanut,no,,True
+21380,allergen:wheat,no,,True
+21380,allergen:soy,no,,True
+21380,allergen:sesame,no,,True
+21380,diet:vegetarian,no,,True
+21380,diet:vegan,no,,True
+8487,allergen:milk,yes,"1 cup heavy cream, chilled",True
+8487,allergen:egg,yes,3 eggs,True
+8487,allergen:fish,no,,True
+8487,allergen:crustacean_shellfish,no,,True
+8487,allergen:tree_nuts,no,,True
+8487,allergen:peanut,no,,True
+8487,allergen:wheat,yes,1 cup sifted all-purpose flour,True
+8487,allergen:soy,no,,True
+8487,allergen:sesame,no,,True
+8487,diet:vegetarian,yes,1 teaspoon unflavored gelatin,True
+8487,diet:vegan,yes,3 eggs,True
+15421,allergen:milk,yes,1 ½ cups nonfat plain yogurt,True
+15421,allergen:egg,no,,True
+15421,allergen:fish,no,,True
+15421,allergen:crustacean_shellfish,no,,True
+15421,allergen:tree_nuts,no,,True
+15421,allergen:peanut,no,,True
+15421,allergen:wheat,yes,1 cup all-purpose flour,True
+15421,allergen:soy,yes,1 cup all-purpose flour,True
+15421,allergen:sesame,no,,True
+15421,diet:vegetarian,no,,True
+15421,diet:vegan,yes,1 ½ tablespoons butter,True
+2398,allergen:milk,yes,"2 tablespoons olive oil, or more as needed",True
+2398,allergen:egg,no,,True
+2398,allergen:fish,yes,"1 pound extra large shrimp (16-20), peeled and deveined, tail left on",True
+2398,allergen:crustacean_shellfish,yes,"1 pound extra large shrimp (16-20), peeled and deveined, tail left on",True
+2398,allergen:tree_nuts,no,,True
+2398,allergen:peanut,no,,True
+2398,allergen:wheat,no,,True
+2398,allergen:soy,no,,True
+2398,allergen:sesame,no,,True
+2398,diet:vegetarian,yes,"1 pound extra large shrimp (16-20), peeled and deveined, tail left on",True
+2398,diet:vegan,yes,"1 pound extra large shrimp (16-20), peeled and deveined, tail left on",True
+6427,allergen:milk,yes,1 (6 ounce) container fat-free Greek yogurt (such as Fage®),True
+6427,allergen:egg,no,,True
+6427,allergen:fish,no,,True
+6427,allergen:crustacean_shellfish,no,,True
+6427,allergen:tree_nuts,yes,2 tablespoons chopped pecans,True
+6427,allergen:peanut,no,,True
+6427,allergen:wheat,no,,True
+6427,allergen:soy,no,,True
+6427,allergen:sesame,no,,True
+6427,diet:vegetarian,yes,"1 ¼ cups cubed, cooked chicken",True
+6427,diet:vegan,yes,1 (6 ounce) container fat-free Greek yogurt (such as Fage®),True
+16617,allergen:milk,yes,¼ cup freshly grated Parmesan cheese,True
+16617,allergen:egg,no,,True
+16617,allergen:fish,no,,True
+16617,allergen:crustacean_shellfish,no,,True
+16617,allergen:tree_nuts,no,,True
+16617,allergen:peanut,no,,True
+16617,allergen:wheat,no,,True
+16617,allergen:soy,no,,True
+16617,allergen:sesame,no,,True
+16617,diet:vegetarian,no,,True
+16617,diet:vegan,yes,¼ cup freshly grated Parmesan cheese,True
+22986,allergen:milk,yes,2 cups crumbled blue cheese,True
+22986,allergen:egg,yes,2 cups crumbled blue cheese,True
+22986,allergen:fish,no,,True
+22986,allergen:crustacean_shellfish,no,,True
+22986,allergen:tree_nuts,no,,True
+22986,allergen:peanut,no,,True
+22986,allergen:wheat,no,,True
+22986,allergen:soy,no,,True
+22986,allergen:sesame,no,,True
+22986,diet:vegetarian,yes,2 cups crumbled blue cheese,True
+22986,diet:vegan,yes,2 cups crumbled blue cheese,True
+13040,allergen:milk,yes,¾ cup heavy whipping cream,True
+13040,allergen:egg,yes,½ cup grated Parmesan cheese,True
+13040,allergen:fish,no,,True
+13040,allergen:crustacean_shellfish,no,,True
+13040,allergen:tree_nuts,no,,True
+13040,allergen:peanut,no,,True
+13040,allergen:wheat,yes,1 (16 ounce) package penne pasta,True
+13040,allergen:soy,no,,True
+13040,allergen:sesame,no,,True
+13040,diet:vegetarian,no,,True
+13040,diet:vegan,yes,¾ cup heavy whipping cream,True
+6636,allergen:milk,no,,True
+6636,allergen:egg,yes,- 1 egg white,False
+6636,allergen:fish,no,,True
+6636,allergen:crustacean_shellfish,no,,True
+6636,allergen:tree_nuts,yes,- 1 pound pecan halves,False
+6636,allergen:peanut,no,,True
+6636,allergen:wheat,error,,False
+6636,allergen:soy,error,,False
+6636,allergen:sesame,error,,False
+6636,diet:vegetarian,error,,False
+6636,diet:vegan,error,,False
+17969,allergen:milk,yes,¼ cup sour cream,True
+17969,allergen:egg,no,,True
+17969,allergen:fish,no,,True
+17969,allergen:crustacean_shellfish,no,,True
+17969,allergen:tree_nuts,no,,True
+17969,allergen:peanut,no,,True
+17969,allergen:wheat,no,,True
+17969,allergen:soy,no,,True
+17969,allergen:sesame,no,,True
+17969,diet:vegetarian,yes,½ pound ground beef,True
+17969,diet:vegan,yes,½ cup sour cream,False
+31603,allergen:milk,yes,½ cup butter,True
+31603,allergen:egg,yes,"2 egg whites, stiffly beaten",True
+31603,allergen:fish,no,,True
+31603,allergen:crustacean_shellfish,no,,True
+31603,allergen:tree_nuts,yes,1 pound pecan halves,True
+31603,allergen:peanut,no,,True
+31603,allergen:wheat,no,,True
+31603,allergen:soy,no,,True
+31603,allergen:sesame,no,,True
+31603,diet:vegetarian,no,,True
+31603,diet:vegan,yes,"2 egg whites, stiffly beaten",True
+32401,allergen:milk,no,,True
+32401,allergen:egg,no,,True
+32401,allergen:fish,no,,True
+32401,allergen:crustacean_shellfish,no,,True
+32401,allergen:tree_nuts,no,,True
+32401,allergen:peanut,no,,True
+32401,allergen:wheat,no,,True
+32401,allergen:soy,no,,True
+32401,allergen:sesame,no,,True
+32401,diet:vegetarian,no,,True
+32401,diet:vegan,no,,True
+28925,allergen:milk,yes,"1 stick butter, melted",True
+28925,allergen:egg,yes,"2 eggs, beaten",True
+28925,allergen:fish,no,,True
+28925,allergen:crustacean_shellfish,no,,True
+28925,allergen:tree_nuts,no,,True
+28925,allergen:peanut,no,,True
+28925,allergen:wheat,yes,6 tablespoons all-purpose flour,True
+28925,allergen:soy,no,,True
+28925,allergen:sesame,no,,True
+28925,diet:vegetarian,no,,True
+28925,diet:vegan,yes,"2 eggs, beaten",True
+17218,allergen:milk,yes,2 cups milk,True
+17218,allergen:egg,yes,2 cups milk,True
+17218,allergen:fish,no,,True
+17218,allergen:crustacean_shellfish,no,,True
+17218,allergen:tree_nuts,no,,True
+17218,allergen:peanut,no,,True
+17218,allergen:wheat,error,,False
+17218,allergen:soy,error,,False
+17218,allergen:sesame,error,,False
+17218,diet:vegetarian,error,,False
+17218,diet:vegan,error,,False
+430,allergen:milk,yes,¾ cup milk,True
+430,allergen:egg,yes,1 egg,True
+430,allergen:fish,no,,True
+430,allergen:crustacean_shellfish,no,,True
+430,allergen:tree_nuts,no,,True
+430,allergen:peanut,no,,True
+430,allergen:wheat,yes,1 ½ cups unbleached all-purpose flour,True
+430,allergen:soy,no,,True
+430,allergen:sesame,no,,True
+430,diet:vegetarian,yes,1 egg,True
+430,diet:vegan,yes,1 egg,True
+1678,allergen:milk,yes,1 ½ teaspoons butter,True
+1678,allergen:egg,yes,1 tablespoon grated Parmesan cheese,True
+1678,allergen:fish,no,,True
+1678,allergen:crustacean_shellfish,no,,True
+1678,allergen:tree_nuts,no,,True
+1678,allergen:peanut,no,,True
+1678,allergen:wheat,yes,"3 slices bacon, chopped",True
+1678,allergen:soy,no,,True
+1678,allergen:sesame,no,,True
+1678,diet:vegetarian,yes,"3 slices bacon, chopped",True
+1678,diet:vegan,yes,"3 slices bacon, chopped",True
+7728,allergen:milk,yes,6 tablespoons milk,True
+7728,allergen:egg,yes,1 egg,True
+7728,allergen:fish,no,,True
+7728,allergen:crustacean_shellfish,no,,True
+7728,allergen:tree_nuts,no,,True
+7728,allergen:peanut,yes,6 tablespoons milk,True
+7728,allergen:wheat,yes,1 ⅔ cups all-purpose flour,True
+7728,allergen:soy,no,,True
+7728,allergen:sesame,no,,True
+7728,diet:vegetarian,yes,6 tablespoons milk,True
+7728,diet:vegan,yes,"6 tablespoons milk, 1 egg",False
+29780,allergen:milk,yes,MIRACLE WHIP Light Dressing,False
+29780,allergen:egg,no,,True
+29780,allergen:fish,no,,True
+29780,allergen:crustacean_shellfish,no,,True
+29780,allergen:tree_nuts,no,,True
+29780,allergen:peanut,no,,True
+29780,allergen:wheat,no,,True
+29780,allergen:soy,no,,True
+29780,allergen:sesame,no,,True
+29780,diet:vegetarian,no,,True
+29780,diet:vegan,no,,True
+22813,allergen:milk,no,,True
+22813,allergen:egg,no,,True
+22813,allergen:fish,no,,True
+22813,allergen:crustacean_shellfish,no,,True
+22813,allergen:tree_nuts,no,,True
+22813,allergen:peanut,no,,True
+22813,allergen:wheat,no,,True
+22813,allergen:soy,no,,True
+22813,allergen:sesame,no,,True
+22813,diet:vegetarian,no,,True
+22813,diet:vegan,no,,True
+17294,allergen:milk,yes,"½ cup shredded Mexican cheese blend, or to taste",True
+17294,allergen:egg,no,,True
+17294,allergen:fish,no,,True
+17294,allergen:crustacean_shellfish,no,,True
+17294,allergen:tree_nuts,no,,True
+17294,allergen:peanut,no,,True
+17294,allergen:wheat,yes,"2 pounds pork shoulder roast, or more to taste",True
+17294,allergen:soy,no,,True
+17294,allergen:sesame,no,,True
+17294,diet:vegetarian,yes,"2 pounds pork shoulder roast, or more to taste",True
+17294,diet:vegan,yes,"6 tablespoons sour cream, or to taste",True
+3417,allergen:milk,yes,2 tablespoons butter,True
+3417,allergen:egg,yes,2 tablespoons butter,True
+3417,allergen:fish,no,,True
+3417,allergen:crustacean_shellfish,no,,True
+3417,allergen:tree_nuts,no,,True
+3417,allergen:peanut,no,,True
+3417,allergen:wheat,yes,1 tablespoon all-purpose flour,True
+3417,allergen:soy,no,,True
+3417,allergen:sesame,no,,True
+3417,diet:vegetarian,yes,1 cup chicken broth,True
+3417,diet:vegan,yes,"2 tablespoons butter, ½ cup heavy cream",False
+9908,allergen:milk,yes,3 tablespoons mayonnaise,True
+9908,allergen:egg,yes,3 tablespoons mayonnaise,True
+9908,allergen:fish,yes,2 (6 ounce) salmon fillets,True
+9908,allergen:crustacean_shellfish,no,,True
+9908,allergen:tree_nuts,no,,True
+9908,allergen:peanut,no,,True
+9908,allergen:wheat,no,,True
+9908,allergen:soy,no,,True
+9908,allergen:sesame,no,,True
+9908,diet:vegetarian,yes,2 (6 ounce) salmon fillets,True
+9908,diet:vegan,yes,2 (6 ounce) salmon fillets,True
+31582,allergen:milk,yes,1 (8 ounce) container sour cream,True
+31582,allergen:egg,yes,¼ cup mayonnaise,True
+31582,allergen:fish,no,,True
+31582,allergen:crustacean_shellfish,no,,True
+31582,allergen:tree_nuts,yes,¼ cup sliced almonds,True
+31582,allergen:peanut,no,,True
+31582,allergen:wheat,yes,"1 (5 ounce) can chunk chicken, drained and flaked",True
+31582,allergen:soy,no,,True
+31582,allergen:sesame,no,,True
+31582,diet:vegetarian,yes,"1 (5 ounce) can chunk chicken, drained and flaked",True
+31582,diet:vegan,yes,"1 (5 ounce) can chunk chicken, drained and flaked, 1 (8 ounce) container sour cream, ¼ cup mayonnaise, 1 cup Havarti cheese, ¼ cup finely shredded Parmesan cheese",False
+11048,allergen:milk,yes,1 cup shredded mozzarella cheese,True
+11048,allergen:egg,no,,True
+11048,allergen:fish,yes,4 (4 ounce) cod fillets,True
+11048,allergen:crustacean_shellfish,no,,True
+11048,allergen:tree_nuts,no,,True
+11048,allergen:peanut,no,,True
+11048,allergen:wheat,no,,True
+11048,allergen:soy,no,,True
+11048,allergen:sesame,no,,True
+11048,diet:vegetarian,yes,4 (4 ounce) cod fillets,True
+11048,diet:vegan,yes,1 cup shredded mozzarella cheese,True
+27801,allergen:milk,yes,½ cup milk,True
+27801,allergen:egg,yes,2 large eggs,True
+27801,allergen:fish,no,,True
+27801,allergen:crustacean_shellfish,no,,True
+27801,allergen:tree_nuts,no,,True
+27801,allergen:peanut,yes,"5 tablespoons rum, divided",True
+27801,allergen:wheat,yes,2 cups all-purpose flour,True
+27801,allergen:soy,no,,True
+27801,allergen:sesame,no,,True
+27801,diet:vegetarian,yes,½ cup milk,True
+27801,diet:vegan,yes,"½ cup milk, 2 large eggs",False
+18266,allergen:milk,no,,True
+18266,allergen:egg,no,,True
+18266,allergen:fish,no,,True
+18266,allergen:crustacean_shellfish,no,,True
+18266,allergen:tree_nuts,no,,True
+18266,allergen:peanut,no,,True
+18266,allergen:wheat,no,,True
+18266,allergen:soy,no,,True
+18266,allergen:sesame,no,,True
+18266,diet:vegetarian,yes,½ cup beef stock,True
+18266,diet:vegan,yes,½ cup beef stock,True
+2045,allergen:milk,yes,½ cup butter,True
+2045,allergen:egg,yes,1 egg,True
+2045,allergen:fish,no,,True
+2045,allergen:crustacean_shellfish,no,,True
+2045,allergen:tree_nuts,no,,True
+2045,allergen:peanut,yes,½ cup peanut butter,True
+2045,allergen:wheat,yes,1 cup all-purpose flour,True
+2045,allergen:soy,no,,True
+2045,allergen:sesame,no,,True
+2045,diet:vegetarian,no,,True
+2045,diet:vegan,yes,1 egg,True
+1916,allergen:milk,yes,3 large eggs,True
+1916,allergen:egg,yes,3 large eggs,True
+1916,allergen:fish,no,,True
+1916,allergen:crustacean_shellfish,no,,True
+1916,allergen:tree_nuts,no,,True
+1916,allergen:peanut,no,,True
+1916,allergen:wheat,yes,3 cups all-purpose flour,True
+1916,allergen:soy,no,,True
+1916,allergen:sesame,no,,True
+1916,diet:vegetarian,no,,True
+1916,diet:vegan,yes,3 large eggs,True
+15397,allergen:milk,yes,1 cup shredded Cheddar cheese,True
+15397,allergen:egg,yes,1 cup sour cream,True
+15397,allergen:fish,no,,True
+15397,allergen:crustacean_shellfish,no,,True
+15397,allergen:tree_nuts,no,,True
+15397,allergen:peanut,no,,True
+15397,allergen:wheat,yes,1 ½ cups uncooked instant rice,True
+15397,allergen:soy,no,,True
+15397,allergen:sesame,no,,True
+15397,diet:vegetarian,yes,1 (14.5 ounce) can chicken broth,True
+15397,diet:vegan,yes,1 cup sour cream,True
+2163,allergen:milk,no,,True
+2163,allergen:egg,yes,"2 large eggs, beaten",True
+2163,allergen:fish,no,,True
+2163,allergen:crustacean_shellfish,yes,"¼ cup shrimp - washed, peeled, and cut into small pieces",True
+2163,allergen:tree_nuts,no,,True
+2163,allergen:peanut,no,,True
+2163,allergen:wheat,yes,2 ounces dried thin rice noodles,True
+2163,allergen:soy,no,,True
+2163,allergen:sesame,no,,True
+2163,diet:vegetarian,yes,"¾ cup ground chicken, ¼ cup shrimp",False
+2163,diet:vegan,yes,"2 large eggs, ¾ cup ground chicken, ¼ cup shrimp",False
+12639,allergen:milk,yes,2 tablespoons butter,True
+12639,allergen:egg,no,,True
+12639,allergen:fish,yes,1 (6 ounce) lobster tail,True
+12639,allergen:crustacean_shellfish,no,,True
+12639,allergen:tree_nuts,no,,True
+12639,allergen:peanut,no,,True
+12639,allergen:wheat,yes,½ pound angel hair pasta,True
+12639,allergen:soy,no,,True
+12639,allergen:sesame,no,,True
+12639,diet:vegetarian,yes,1 (6 ounce) lobster tail,True
+12639,diet:vegan,yes,1 (6 ounce) lobster tail,True
+26898,allergen:milk,yes,¾ cup buttermilk,True
+26898,allergen:egg,yes,1 egg,True
+26898,allergen:fish,no,,True
+26898,allergen:crustacean_shellfish,no,,True
+26898,allergen:tree_nuts,no,,True
+26898,allergen:peanut,no,,True
+26898,allergen:wheat,no,,True
+26898,allergen:soy,no,,True
+26898,allergen:sesame,no,,True
+26898,diet:vegetarian,no,,True
+26898,diet:vegan,no,,True
+16492,allergen:milk,yes,4 ½ tablespoons shredded mozzarella cheese,True
+16492,allergen:egg,no,,True
+16492,allergen:fish,no,,True
+16492,allergen:crustacean_shellfish,no,,True
+16492,allergen:tree_nuts,no,,True
+16492,allergen:peanut,no,,True
+16492,allergen:wheat,yes,1 (13.8 ounce) package refrigerated pizza dough (such as Pillsbury®),True
+16492,allergen:soy,no,,True
+16492,allergen:sesame,no,,True
+16492,diet:vegetarian,yes,1 (1.75 ounce) package pepperoni (such as Hormel®),True
+16492,diet:vegan,yes,4 ½ tablespoons shredded mozzarella cheese,True
+15977,allergen:milk,no,,True
+15977,allergen:egg,no,,True
+15977,allergen:fish,no,,True
+15977,allergen:crustacean_shellfish,no,,True
+15977,allergen:tree_nuts,no,,True
+15977,allergen:peanut,no,,True
+15977,allergen:wheat,no,,True
+15977,allergen:soy,no,,True
+15977,allergen:sesame,no,,True
+15977,diet:vegetarian,yes,5 cups chicken broth,True
+15977,diet:vegan,yes,5 cups chicken broth,True
+4747,allergen:milk,no,,True
+4747,allergen:egg,no,,True
+4747,allergen:fish,no,,True
+4747,allergen:crustacean_shellfish,no,,True
+4747,allergen:tree_nuts,no,,True
+4747,allergen:peanut,no,,True
+4747,allergen:wheat,no,,True
+4747,allergen:soy,no,,True
+4747,allergen:sesame,no,,True
+4747,diet:vegetarian,no,,True
+4747,diet:vegan,no,,True
+8165,allergen:milk,yes,2 teaspoons Worcestershire sauce,True
+8165,allergen:egg,yes,"1 egg, lightly beaten",True
+8165,allergen:fish,yes,2 teaspoons Worcestershire sauce,True
+8165,allergen:crustacean_shellfish,no,,True
+8165,allergen:tree_nuts,no,,True
+8165,allergen:peanut,no,,True
+8165,allergen:wheat,yes,"1 egg, lightly beaten",True
+8165,allergen:soy,yes,1 (1 ounce) package dry onion soup mix,True
+8165,allergen:sesame,no,,True
+8165,diet:vegetarian,yes,2 pounds extra-lean ground beef,True
+8165,diet:vegan,yes,"1 egg, lightly beaten",True
+2006,allergen:milk,yes,2 cups flaked coconut,True
+2006,allergen:egg,yes,1 egg,True
+2006,allergen:fish,yes,24 shrimp,True
+2006,allergen:crustacean_shellfish,no,,True
+2006,allergen:tree_nuts,yes,2 cups flaked coconut,True
+2006,allergen:peanut,no,,True
+2006,allergen:wheat,yes,24 shrimp,True
+2006,allergen:soy,no,,True
+2006,allergen:sesame,no,,True
+2006,diet:vegetarian,yes,24 shrimp,True
+2006,diet:vegan,yes,1 egg,True
+24072,allergen:milk,yes,8 ounces ricotta cheese gnocchi,True
+24072,allergen:egg,no,,True
+24072,allergen:fish,no,,True
+24072,allergen:crustacean_shellfish,no,,True
+24072,allergen:tree_nuts,no,,True
+24072,allergen:peanut,no,,True
+24072,allergen:wheat,yes,2 teaspoons all-purpose flour,True
+24072,allergen:soy,no,,True
+24072,allergen:sesame,no,,True
+24072,diet:vegetarian,yes,"2 chicken sausage links (such as Aidells®), sliced",True
+24072,diet:vegan,yes,8 ounces ricotta cheese gnocchi,True
+6424,allergen:milk,no,,True
+6424,allergen:egg,no,,True
+6424,allergen:fish,no,,True
+6424,allergen:crustacean_shellfish,no,,True
+6424,allergen:tree_nuts,no,,True
+6424,allergen:peanut,no,,True
+6424,allergen:wheat,no,,True
+6424,allergen:soy,yes,- ⅓ cup soy sauce,False
+6424,allergen:sesame,no,,True
+6424,diet:vegetarian,yes,- 1 pound skin-on salmon fillet,False
+6424,diet:vegan,yes,- 1 pound skin-on salmon fillet,False
+751,allergen:milk,yes,Campbell's® Condensed Cream of Mushroom Soup (Regular or 98% Fat Free),False
+751,allergen:egg,no,,True
+751,allergen:fish,yes,Worcestershire sauce,False
+751,allergen:crustacean_shellfish,no,,True
+751,allergen:tree_nuts,no,,True
+751,allergen:peanut,no,,True
+751,allergen:wheat,error,,False
+751,allergen:soy,error,,False
+751,allergen:sesame,error,,False
+751,diet:vegetarian,error,,False
+751,diet:vegan,error,,False
+22086,allergen:milk,yes,1 tablespoon mayonnaise,True
+22086,allergen:egg,yes,1 tablespoon mayonnaise,True
+22086,allergen:fish,no,,True
+22086,allergen:crustacean_shellfish,no,,True
+22086,allergen:tree_nuts,yes,1 tablespoon chopped walnuts,True
+22086,allergen:peanut,no,,True
+22086,allergen:wheat,yes,"- 2 slices honey whole wheat bread, toasted",False
+22086,allergen:soy,yes,"- 2 slices honey whole wheat bread, toasted",False
+22086,allergen:sesame,no,,True
+22086,diet:vegetarian,yes,- 2 slices of smoked turkey breast,False
+22086,diet:vegan,yes,- 2 slices of smoked turkey breast,False
+23224,allergen:milk,yes,2 teaspoons butter,True
+23224,allergen:egg,no,,True
+23224,allergen:fish,no,,True
+23224,allergen:crustacean_shellfish,no,,True
+23224,allergen:tree_nuts,no,,True
+23224,allergen:peanut,no,,True
+23224,allergen:wheat,no,,True
+23224,allergen:soy,no,,True
+23224,allergen:sesame,no,,True
+23224,diet:vegetarian,no,,True
+23224,diet:vegan,yes,2 teaspoons butter,True
+20669,allergen:milk,yes,2 tablespoons grated Parmesan cheese,True
+20669,allergen:egg,no,,True
+20669,allergen:fish,yes,3 tablespoons Worcestershire sauce,True
+20669,allergen:crustacean_shellfish,no,,True
+20669,allergen:tree_nuts,no,,True
+20669,allergen:peanut,no,,True
+20669,allergen:wheat,yes,"5 large hamburger buns, toasted",True
+20669,allergen:soy,no,,True
+20669,allergen:sesame,no,,True
+20669,diet:vegetarian,yes,1 ½ pounds lean ground beef,True
+20669,diet:vegan,yes,"1 ½ pounds lean ground beef, 2 tablespoons grated Parmesan cheese",False
+27467,allergen:milk,no,,True
+27467,allergen:egg,no,,True
+27467,allergen:fish,no,,True
+27467,allergen:crustacean_shellfish,no,,True
+27467,allergen:tree_nuts,no,,True
+27467,allergen:peanut,no,,True
+27467,allergen:wheat,no,,True
+27467,allergen:soy,no,,True
+27467,allergen:sesame,no,,True
+27467,diet:vegetarian,yes,2 (28 ounce) cans diced tomatoes,True
+27467,diet:vegan,yes,1 pound lean ground beef,True
+21862,allergen:milk,yes,2 (15 ounce) cans unsweetened coconut cream,True
+21862,allergen:egg,no,,True
+21862,allergen:fish,yes,"1 teaspoon fish sauce, or more to taste",True
+21862,allergen:crustacean_shellfish,no,,True
+21862,allergen:tree_nuts,yes,2 (15 ounce) cans unsweetened coconut cream,True
+21862,allergen:peanut,no,,True
+21862,allergen:wheat,no,,True
+21862,allergen:soy,no,,True
+21862,allergen:sesame,no,,True
+21862,diet:vegetarian,yes,"1 pound boneless, skinless chicken breasts, cut into bite-sized pieces",True
+21862,diet:vegan,yes,"1 pound boneless, skinless chicken breasts, cut into bite-sized pieces",True
+5926,allergen:milk,no,,True
+5926,allergen:egg,no,,True
+5926,allergen:fish,no,,True
+5926,allergen:crustacean_shellfish,no,,True
+5926,allergen:tree_nuts,no,,True
+5926,allergen:peanut,no,,True
+5926,allergen:wheat,no,,True
+5926,allergen:soy,no,,True
+5926,allergen:sesame,no,,True
+5926,diet:vegetarian,no,,True
+5926,diet:vegan,no,,True
+10888,allergen:milk,no,,True
+10888,allergen:egg,no,,True
+10888,allergen:fish,yes,4 (4 ounce) skinless halibut or haddock fillets,True
+10888,allergen:crustacean_shellfish,no,,True
+10888,allergen:tree_nuts,no,,True
+10888,allergen:peanut,no,,True
+10888,allergen:wheat,error,,False
+10888,allergen:soy,error,,False
+10888,allergen:sesame,error,,False
+10888,diet:vegetarian,error,,False
+10888,diet:vegan,error,,False
+12443,allergen:milk,no,,True
+12443,allergen:egg,no,,True
+12443,allergen:fish,no,,True
+12443,allergen:crustacean_shellfish,no,,True
+12443,allergen:tree_nuts,no,,True
+12443,allergen:peanut,no,,True
+12443,allergen:wheat,yes,"1 cup high-protein crisp rice and wheat cereal (such as Kellogg's® Special K®), crushed",True
+12443,allergen:soy,no,,True
+12443,allergen:sesame,no,,True
+12443,diet:vegetarian,yes,4 (3 ounce) fillets cod fillets,True
+12443,diet:vegan,yes,4 (3 ounce) fillets cod fillets,True
+15799,allergen:milk,yes,4 cups shredded Cheddar-Monterey Jack cheese blend,True
+15799,allergen:egg,yes,1 egg substitute (such as Egg Beaters® Southwestern Style),False
+15799,allergen:fish,no,,True
+15799,allergen:crustacean_shellfish,no,,True
+15799,allergen:tree_nuts,no,,True
+15799,allergen:peanut,no,,True
+15799,allergen:wheat,no,,True
+15799,allergen:soy,no,,True
+15799,allergen:sesame,no,,True
+15799,diet:vegetarian,yes,"2 (6 ounce) packages Canadian bacon, quartered",True
+15799,diet:vegan,yes,"2 (6 ounce) packages Canadian bacon, quartered",True
+27881,allergen:milk,error,,False
+27881,allergen:egg,error,,False
+27881,allergen:fish,error,,False
+27881,allergen:crustacean_shellfish,error,,False
+27881,allergen:tree_nuts,error,,False
+27881,allergen:peanut,error,,False
+27881,allergen:wheat,yes,3 cups all-purpose flour,True
+27881,allergen:soy,no,,True
+27881,allergen:sesame,no,,True
+27881,diet:vegetarian,no,,True
+27881,diet:vegan,yes,3 eggs,True
+1765,allergen:milk,yes,"½ cup butter, softened",True
+1765,allergen:egg,yes,¼ cup grated Parmesan cheese,True
+1765,allergen:fish,no,,True
+1765,allergen:crustacean_shellfish,no,,True
+1765,allergen:tree_nuts,no,,True
+1765,allergen:peanut,no,,True
+1765,allergen:wheat,yes,1 loaf unsliced Italian bread,True
+1765,allergen:soy,no,,True
+1765,allergen:sesame,no,,True
+1765,diet:vegetarian,no,,True
+1765,diet:vegan,yes,"½ cup butter, softened",True
+3029,allergen:milk,yes,"2 tablespoons butter, or more to taste",True
+3029,allergen:egg,no,,True
+3029,allergen:fish,no,,True
+3029,allergen:crustacean_shellfish,no,,True
+3029,allergen:tree_nuts,no,,True
+3029,allergen:peanut,no,,True
+3029,allergen:wheat,no,,True
+3029,allergen:soy,no,,True
+3029,allergen:sesame,no,,True
+3029,diet:vegetarian,no,,True
+3029,diet:vegan,yes,"- 2 tablespoons butter, or more to taste",False
+7465,allergen:milk,yes,1 (14 ounce) can coconut milk,True
+7465,allergen:egg,no,,True
+7465,allergen:fish,yes,"1 pound cod fillets, cut into chunks",True
+7465,allergen:crustacean_shellfish,no,,True
+7465,allergen:tree_nuts,yes,1 (14 ounce) can coconut milk,True
+7465,allergen:peanut,no,,True
+7465,allergen:wheat,no,,True
+7465,allergen:soy,no,,True
+7465,allergen:sesame,no,,True
+7465,diet:vegetarian,yes,"1 pound cod fillets, cut into chunks",True
+7465,diet:vegan,yes,"1 pound cod fillets, cut into chunks",True
+9409,allergen:milk,no,,True
+9409,allergen:egg,no,,True
+9409,allergen:fish,no,,True
+9409,allergen:crustacean_shellfish,no,,True
+9409,allergen:tree_nuts,no,,True
+9409,allergen:peanut,no,,True
+9409,allergen:wheat,yes,⅓ cup soy sauce,True
+9409,allergen:soy,yes,⅓ cup soy sauce,True
+9409,allergen:sesame,no,,True
+9409,diet:vegetarian,yes,4 salmon steaks,False
+9409,diet:vegan,yes,4 salmon steaks,False
+8758,allergen:milk,yes,kasseri cheese,False
+8758,allergen:egg,yes,kasseri cheese,False
+8758,allergen:fish,no,,True
+8758,allergen:crustacean_shellfish,no,,True
+8758,allergen:tree_nuts,no,,True
+8758,allergen:peanut,no,,True
+8758,allergen:wheat,yes,"¼ cup all-purpose flour,",False
+8758,allergen:soy,no,,True
+8758,allergen:sesame,no,,True
+8758,diet:vegetarian,no,,True
+8758,diet:vegan,yes,1 (4 ounce) package kasseri cheese,True
+5819,allergen:milk,no,,True
+5819,allergen:egg,no,,True
+5819,allergen:fish,no,,True
+5819,allergen:crustacean_shellfish,no,,True
+5819,allergen:tree_nuts,no,,True
+5819,allergen:peanut,no,,True
+5819,allergen:wheat,no,,True
+5819,allergen:soy,no,,True
+5819,allergen:sesame,no,,True
+5819,diet:vegetarian,no,,True
+5819,diet:vegan,no,,True
+2297,allergen:milk,yes,1 tablespoon butter,True
+2297,allergen:egg,yes,1 recipe pastry for a 9 inch double crust pie,True
+2297,allergen:fish,no,,True
+2297,allergen:crustacean_shellfish,no,,True
+2297,allergen:tree_nuts,no,,True
+2297,allergen:peanut,no,,True
+2297,allergen:wheat,no,,True
+2297,allergen:soy,no,,True
+2297,allergen:sesame,no,,True
+2297,diet:vegetarian,no,,True
+2297,diet:vegan,no,,True
+9320,allergen:milk,yes,2 tablespoons butter,True
+9320,allergen:egg,yes,2 tablespoons butter,True
+9320,allergen:fish,no,,True
+9320,allergen:crustacean_shellfish,yes,"1 pound uncooked medium shrimp, peeled and deveined",True
+9320,allergen:tree_nuts,no,,True
+9320,allergen:peanut,no,,True
+9320,allergen:wheat,yes,12 ounces angel hair pasta,True
+9320,allergen:soy,no,,True
+9320,allergen:sesame,no,,True
+9320,diet:vegetarian,yes,"1 pound uncooked medium shrimp, peeled and deveined",True
+9320,diet:vegan,yes,"2 tablespoons butter, 1 small tomato, 1 pound uncooked medium shrimp, peeled and deveined, ¼ cup heavy whipping cream",False
+16689,allergen:milk,yes,1 cup shredded Swiss cheese,True
+16689,allergen:egg,yes,5 eggs,True
+16689,allergen:fish,no,,True
+16689,allergen:crustacean_shellfish,no,,True
+16689,allergen:tree_nuts,no,,True
+16689,allergen:peanut,no,,True
+16689,allergen:wheat,yes,2 teaspoons all-purpose flour,True
+16689,allergen:soy,no,,True
+16689,allergen:sesame,no,,True
+16689,diet:vegetarian,yes,2 cups diced cooked rotisserie chicken,True
+16689,diet:vegan,yes,"5 eggs, ½ cup half-and-half, 1 cup shredded Swiss cheese, ½ cup shredded Monterey Jack cheese",False
+21650,allergen:milk,yes,⅓ cup milk,True
+21650,allergen:egg,yes,1 beaten egg,True
+21650,allergen:fish,no,,True
+21650,allergen:crustacean_shellfish,no,,True
+21650,allergen:tree_nuts,no,,True
+21650,allergen:peanut,no,,True
+21650,allergen:wheat,error,,False
+21650,allergen:soy,error,,False
+21650,allergen:sesame,error,,False
+21650,diet:vegetarian,error,,False
+21650,diet:vegan,error,,False
+12252,allergen:milk,no,,True
+12252,allergen:egg,no,,True
+12252,allergen:fish,no,,True
+12252,allergen:crustacean_shellfish,yes,"- ½ pound medium shrimp, or more to taste",False
+12252,allergen:tree_nuts,no,,True
+12252,allergen:peanut,no,,True
+12252,allergen:wheat,no,,True
+12252,allergen:soy,no,,True
+12252,allergen:sesame,no,,True
+12252,diet:vegetarian,yes,"½ pound medium shrimp, or more to taste",True
+12252,diet:vegan,yes,"½ pound medium shrimp, or more to taste",True
+6065,allergen:milk,yes,"1 tablespoon butter, softened",True
+6065,allergen:egg,yes,"1 tablespoon butter, softened",True
+6065,allergen:fish,no,,True
+6065,allergen:crustacean_shellfish,no,,True
+6065,allergen:tree_nuts,no,,True
+6065,allergen:peanut,no,,True
+6065,allergen:wheat,no,,True
+6065,allergen:soy,no,,True
+6065,allergen:sesame,no,,True
+6065,diet:vegetarian,no,,True
+6065,diet:vegan,no,,True
+12814,allergen:milk,yes,"4 ounces American cheese, cubed",True
+12814,allergen:egg,yes,"3 hard-cooked eggs, chopped",True
+12814,allergen:fish,no,,True
+12814,allergen:crustacean_shellfish,no,,True
+12814,allergen:tree_nuts,no,,True
+12814,allergen:peanut,no,,True
+12814,allergen:wheat,yes,4 hot dog buns,True
+12814,allergen:soy,no,,True
+12814,allergen:sesame,no,,True
+12814,diet:vegetarian,yes,"1 (5 ounce) can tuna, drained and flaked",True
+12814,diet:vegan,yes,"4 ounces American cheese, cubed, 3 hard-cooked eggs, chopped, ½ cup mayonnaise",False
+17052,allergen:milk,yes,1 ½ cups ricotta cheese,True
+17052,allergen:egg,no,,True
+17052,allergen:fish,no,,True
+17052,allergen:crustacean_shellfish,no,,True
+17052,allergen:tree_nuts,no,,True
+17052,allergen:peanut,no,,True
+17052,allergen:wheat,no,,True
+17052,allergen:soy,no,,True
+17052,allergen:sesame,no,,True
+17052,diet:vegetarian,yes,"- 4 skinless, boneless chicken breast halves - cut into strips",False
+17052,diet:vegan,yes,- 1 ½ cups ricotta cheese,False

@@ -1,0 +1,543 @@
+alias,target_type,target,resolve,note
+đậu phộng,allergen,peanut,fixed,
+dau phong,allergen,peanut,fixed,không dấu
+đậu phụng,allergen,peanut,fixed,biến thể chính tả
+dau phung,allergen,peanut,fixed,không dấu; biến thể chính tả
+lạc,allergen,peanut,fixed,miền Bắc
+lac,allergen,peanut,fixed,không dấu; miền Bắc
+hạt lạc,allergen,peanut,fixed,
+hat lac,allergen,peanut,fixed,không dấu
+sữa,allergen,milk,fixed,
+sua,allergen,milk,fixed,không dấu
+sữa bò,allergen,milk,fixed,
+sua bo,allergen,milk,fixed,không dấu
+đồ sữa,allergen,milk,fixed,
+do sua,allergen,milk,fixed,không dấu
+chế phẩm từ sữa,allergen,milk,fixed,
+che pham tu sua,allergen,milk,fixed,không dấu
+lactose,allergen,milk,fixed,không dung nạp lactose → tránh sữa
+trứng,allergen,egg,fixed,
+trung,allergen,egg,fixed,không dấu
+trứng gà,allergen,egg,fixed,
+trung ga,allergen,egg,fixed,không dấu
+cá,allergen,fish,fixed,
+ca,allergen,fish,fixed,không dấu
+tôm,allergen,crustacean_shellfish,fixed,
+tom,allergen,crustacean_shellfish,fixed,không dấu
+cua,allergen,crustacean_shellfish,fixed,
+ghẹ,allergen,crustacean_shellfish,fixed,
+ghe,allergen,crustacean_shellfish,fixed,không dấu
+tôm hùm,allergen,crustacean_shellfish,fixed,
+tom hum,allergen,crustacean_shellfish,fixed,không dấu
+tép,allergen,crustacean_shellfish,fixed,
+tep,allergen,crustacean_shellfish,fixed,không dấu
+giáp xác,allergen,crustacean_shellfish,fixed,
+giap xac,allergen,crustacean_shellfish,fixed,không dấu
+động vật có vỏ,allergen,crustacean_shellfish,fixed,shellfish
+dong vat co vo,allergen,crustacean_shellfish,fixed,không dấu; shellfish
+các loại hạt,allergen,tree_nuts,fixed,
+cac loai hat,allergen,tree_nuts,fixed,không dấu
+hạt cây,allergen,tree_nuts,fixed,
+hat cay,allergen,tree_nuts,fixed,không dấu
+quả hạch,allergen,tree_nuts,fixed,
+qua hach,allergen,tree_nuts,fixed,không dấu
+hạt điều,allergen,tree_nuts,fixed,
+hat dieu,allergen,tree_nuts,fixed,không dấu
+hạnh nhân,allergen,tree_nuts,fixed,
+hanh nhan,allergen,tree_nuts,fixed,không dấu
+óc chó,allergen,tree_nuts,fixed,
+oc cho,allergen,tree_nuts,fixed,không dấu
+hạt óc chó,allergen,tree_nuts,fixed,
+hat oc cho,allergen,tree_nuts,fixed,không dấu
+hồ đào,allergen,tree_nuts,fixed,pecan
+ho dao,allergen,tree_nuts,fixed,không dấu; pecan
+hạt dẻ cười,allergen,tree_nuts,fixed,pistachio
+hat de cuoi,allergen,tree_nuts,fixed,không dấu; pistachio
+hạt phỉ,allergen,tree_nuts,fixed,hazelnut
+hat phi,allergen,tree_nuts,fixed,không dấu; hazelnut
+hạt mắc ca,allergen,tree_nuts,fixed,macadamia
+hat mac ca,allergen,tree_nuts,fixed,không dấu; macadamia
+hạt thông,allergen,tree_nuts,fixed,pine nut
+hat thong,allergen,tree_nuts,fixed,không dấu; pine nut
+hạt dẻ,allergen,tree_nuts,fixed,"chestnut, bảo thủ"
+hat de,allergen,tree_nuts,fixed,"không dấu; chestnut, bảo thủ"
+lúa mì,allergen,wheat,fixed,
+lua mi,allergen,wheat,fixed,không dấu
+bột mì,allergen,wheat,fixed,
+bot mi,allergen,wheat,fixed,không dấu
+gluten,allergen,wheat,fixed,gluten ≈ lúa mì (gần đúng)
+đậu nành,allergen,soy,fixed,
+dau nanh,allergen,soy,fixed,không dấu
+đậu tương,allergen,soy,fixed,miền Bắc
+dau tuong,allergen,soy,fixed,không dấu; miền Bắc
+mè,allergen,sesame,fixed,
+me,allergen,sesame,fixed,không dấu
+vừng,allergen,sesame,fixed,miền Bắc
+vung,allergen,sesame,fixed,không dấu; miền Bắc
+hạt mè,allergen,sesame,fixed,
+hat me,allergen,sesame,fixed,không dấu
+hạt vừng,allergen,sesame,fixed,
+hat vung,allergen,sesame,fixed,không dấu
+thịt gà,ingredient,chicken,fixed,
+thit ga,ingredient,chicken,fixed,không dấu
+gà,ingredient,chicken,fixed,
+ga,ingredient,chicken,fixed,không dấu
+ức gà,ingredient,chicken breast,fixed,
+uc ga,ingredient,chicken breast,fixed,không dấu
+đùi gà,ingredient,chicken thigh,fixed,
+dui ga,ingredient,chicken thigh,fixed,không dấu
+cánh gà,ingredient,chicken wing,fixed,
+canh ga,ingredient,chicken wing,fixed,không dấu
+thịt bò,ingredient,beef,fixed,
+thit bo,ingredient,beef,fixed,không dấu
+bò,ingredient,beef,fixed,
+bò băm,ingredient,beef,fixed,ground beef
+bo bam,ingredient,beef,fixed,không dấu; ground beef
+thịt heo,ingredient,pork,fixed,
+thit heo,ingredient,pork,fixed,không dấu
+thịt lợn,ingredient,pork,fixed,
+thit lon,ingredient,pork,fixed,không dấu
+heo,ingredient,pork,fixed,
+lợn,ingredient,pork,fixed,
+lon,ingredient,pork,fixed,không dấu
+ba chỉ,ingredient,pork belly,fixed,
+ba chi,ingredient,pork belly,fixed,không dấu
+ba rọi,ingredient,pork belly,fixed,
+ba roi,ingredient,pork belly,fixed,không dấu
+sườn heo,ingredient,pork sparerib,fixed,
+suon heo,ingredient,pork sparerib,fixed,không dấu
+thịt xông khói,ingredient,bacon,fixed,
+thit xong khoi,ingredient,bacon,fixed,không dấu
+giăm bông,ingredient,ham,fixed,
+giam bong,ingredient,ham,fixed,không dấu
+thịt nguội,ingredient,ham,fixed,
+thit nguoi,ingredient,ham,fixed,không dấu
+xúc xích,ingredient,sausage,fixed,
+xuc xich,ingredient,sausage,fixed,không dấu
+lạp xưởng,ingredient,sausage,fixed,
+lap xuong,ingredient,sausage,fixed,không dấu
+thịt cừu,ingredient,lamb,fixed,
+thit cuu,ingredient,lamb,fixed,không dấu
+cừu,ingredient,lamb,fixed,
+cuu,ingredient,lamb,fixed,không dấu
+gà tây,ingredient,turkey,fixed,
+ga tay,ingredient,turkey,fixed,không dấu
+vịt,ingredient,duck,fixed,
+vit,ingredient,duck,fixed,không dấu
+thịt vịt,ingredient,duck,fixed,
+thit vit,ingredient,duck,fixed,không dấu
+cá hồi,ingredient,salmon,fixed,
+ca hoi,ingredient,salmon,fixed,không dấu
+cá ngừ,ingredient,tuna,fixed,
+ca ngu,ingredient,tuna,fixed,không dấu
+cá tuyết,ingredient,cod,fixed,
+ca tuyet,ingredient,cod,fixed,không dấu
+cá rô phi,ingredient,tilapia,fixed,
+ca ro phi,ingredient,tilapia,fixed,không dấu
+cá cơm,ingredient,anchovy fillet,fixed,
+ca com,ingredient,anchovy fillet,fixed,không dấu
+mực,ingredient,squid,fixed,
+muc,ingredient,squid,fixed,không dấu
+nghêu,ingredient,clam,fixed,
+ngheu,ingredient,clam,fixed,không dấu
+ngao,ingredient,clam,fixed,miền Bắc
+hàu,ingredient,oyster,fixed,
+hau,ingredient,oyster,fixed,không dấu
+sò điệp,ingredient,scallop,fixed,
+so diep,ingredient,scallop,fixed,không dấu
+vẹm,ingredient,mussel,fixed,
+vem,ingredient,mussel,fixed,không dấu
+chem chép,ingredient,mussel,fixed,
+chem chep,ingredient,mussel,fixed,không dấu
+tôm,ingredient,shrimp,fixed,
+tom,ingredient,shrimp,fixed,không dấu
+cua,ingredient,crab,fixed,
+tôm hùm,ingredient,lobster,fixed,
+tom hum,ingredient,lobster,fixed,không dấu
+thịt cua,ingredient,crabmeat,fixed,
+thit cua,ingredient,crabmeat,fixed,không dấu
+mỡ heo,ingredient,lard,fixed,
+mo heo,ingredient,lard,fixed,không dấu
+mỡ lợn,ingredient,lard,fixed,
+mo lon,ingredient,lard,fixed,không dấu
+gelatin,ingredient,unflavored gelatin,fixed,
+gelatine,ingredient,unflavored gelatin,fixed,
+trứng,ingredient,egg,fixed,
+trung,ingredient,egg,fixed,không dấu
+lòng đỏ trứng,ingredient,egg yolk,fixed,
+long do trung,ingredient,egg yolk,fixed,không dấu
+lòng trắng trứng,ingredient,egg white,fixed,
+long trang trung,ingredient,egg white,fixed,không dấu
+sữa tươi,ingredient,milk,fixed,
+sua tuoi,ingredient,milk,fixed,không dấu
+sữa,ingredient,milk,fixed,
+sua,ingredient,milk,fixed,không dấu
+bơ lạt,ingredient,butter,fixed,
+bo lat,ingredient,butter,fixed,không dấu
+bơ nhạt,ingredient,butter,fixed,
+bo nhat,ingredient,butter,fixed,không dấu
+bơ thực vật,ingredient,margarine,fixed,
+bo thuc vat,ingredient,margarine,fixed,không dấu
+phô mai,ingredient,cheese,fixed,
+pho mai,ingredient,cheese,fixed,không dấu
+phó mát,ingredient,cheese,fixed,
+pho mat,ingredient,cheese,fixed,không dấu
+pho mát,ingredient,cheese,fixed,
+phô mai kem,ingredient,cream cheese,fixed,
+pho mai kem,ingredient,cream cheese,fixed,không dấu
+cream cheese,ingredient,cream cheese,fixed,
+kem tươi,ingredient,heavy cream,fixed,
+kem tuoi,ingredient,heavy cream,fixed,không dấu
+kem whipping,ingredient,heavy cream,fixed,
+kem chua,ingredient,sour cream,fixed,
+sữa chua,ingredient,yogurt,fixed,
+sua chua,ingredient,yogurt,fixed,không dấu
+sữa đặc,ingredient,sweetened condensed milk,fixed,
+sua dac,ingredient,sweetened condensed milk,fixed,không dấu
+sữa đặc có đường,ingredient,sweetened condensed milk,fixed,
+sua dac co duong,ingredient,sweetened condensed milk,fixed,không dấu
+sữa bột,ingredient,milk powder,fixed,
+sua bot,ingredient,milk powder,fixed,không dấu
+mayonnaise,ingredient,mayonnaise,fixed,
+sốt mayonnaise,ingredient,mayonnaise,fixed,
+sot mayonnaise,ingredient,mayonnaise,fixed,không dấu
+quả bơ,ingredient,avocado,fixed,
+qua bo,ingredient,avocado,fixed,không dấu
+trái bơ,ingredient,avocado,fixed,
+trai bo,ingredient,avocado,fixed,không dấu
+tỏi,ingredient,garlic,fixed,
+toi,ingredient,garlic,fixed,không dấu
+hành tây,ingredient,onion,fixed,
+hanh tay,ingredient,onion,fixed,không dấu
+hành lá,ingredient,green onion,fixed,
+hanh la,ingredient,green onion,fixed,không dấu
+hành tím,ingredient,shallot,fixed,
+hanh tim,ingredient,shallot,fixed,không dấu
+hẹ tây,ingredient,shallot,fixed,
+he tay,ingredient,shallot,fixed,không dấu
+ngò,ingredient,cilantro,fixed,
+ngò rí,ingredient,cilantro,fixed,
+ngo ri,ingredient,cilantro,fixed,không dấu
+rau mùi,ingredient,cilantro,fixed,miền Bắc
+rau mui,ingredient,cilantro,fixed,không dấu; miền Bắc
+gừng,ingredient,ginger,fixed,
+gung,ingredient,ginger,fixed,không dấu
+sả,ingredient,lemongrass,fixed,
+sa,ingredient,lemongrass,fixed,không dấu
+ớt,ingredient,chile pepper,fixed,
+ot,ingredient,chile pepper,fixed,không dấu
+ớt chuông,ingredient,bell pepper,fixed,
+ot chuong,ingredient,bell pepper,fixed,không dấu
+chanh vàng,ingredient,lemon,fixed,
+chanh vang,ingredient,lemon,fixed,không dấu
+nước cốt chanh,ingredient,lime juice,fixed,
+nuoc cot chanh,ingredient,lime juice,fixed,không dấu
+cà chua,ingredient,tomato,fixed,
+ca chua,ingredient,tomato,fixed,không dấu
+cà rốt,ingredient,carrot,fixed,
+ca rot,ingredient,carrot,fixed,không dấu
+khoai tây,ingredient,potato,fixed,
+khoai tay,ingredient,potato,fixed,không dấu
+khoai lang,ingredient,sweet potato,fixed,
+khoai môn,ingredient,taro,fixed,
+khoai mon,ingredient,taro,fixed,không dấu
+nấm,ingredient,mushroom,fixed,
+nam,ingredient,mushroom,fixed,không dấu
+dưa leo,ingredient,cucumber,fixed,
+dua leo,ingredient,cucumber,fixed,không dấu
+dưa chuột,ingredient,cucumber,fixed,miền Bắc
+dua chuot,ingredient,cucumber,fixed,không dấu; miền Bắc
+bắp cải,ingredient,cabbage,fixed,
+bap cai,ingredient,cabbage,fixed,không dấu
+cải thảo,ingredient,napa cabbage,fixed,
+cai thao,ingredient,napa cabbage,fixed,không dấu
+cải chíp,ingredient,bok choy,fixed,
+cai chip,ingredient,bok choy,fixed,không dấu
+cải bó xôi,ingredient,spinach,fixed,
+cai bo xoi,ingredient,spinach,fixed,không dấu
+rau bina,ingredient,spinach,fixed,
+bông cải xanh,ingredient,broccoli,fixed,
+bong cai xanh,ingredient,broccoli,fixed,không dấu
+súp lơ xanh,ingredient,broccoli,fixed,
+sup lo xanh,ingredient,broccoli,fixed,không dấu
+bông cải trắng,ingredient,cauliflower,fixed,
+bong cai trang,ingredient,cauliflower,fixed,không dấu
+súp lơ,ingredient,cauliflower,fixed,
+sup lo,ingredient,cauliflower,fixed,không dấu
+cà tím,ingredient,eggplant,fixed,
+ca tim,ingredient,eggplant,fixed,không dấu
+bí ngòi,ingredient,zucchini,fixed,
+bi ngoi,ingredient,zucchini,fixed,không dấu
+bí đỏ,ingredient,pumpkin,fixed,
+bi do,ingredient,pumpkin,fixed,không dấu
+bắp,ingredient,corn,fixed,
+bap,ingredient,corn,fixed,không dấu
+ngô,ingredient,corn,fixed,miền Bắc
+đậu hà lan,ingredient,pea,fixed,
+dau ha lan,ingredient,pea,fixed,không dấu
+đậu que,ingredient,green bean,fixed,
+dau que,ingredient,green bean,fixed,không dấu
+giá,ingredient,bean sprout,fixed,
+gia,ingredient,bean sprout,fixed,không dấu
+giá đỗ,ingredient,bean sprout,fixed,
+gia do,ingredient,bean sprout,fixed,không dấu
+cần tây,ingredient,celery,fixed,
+can tay,ingredient,celery,fixed,không dấu
+rau diếp,ingredient,lettuce,fixed,
+rau diep,ingredient,lettuce,fixed,không dấu
+xà lách,ingredient,lettuce,fixed,
+xa lach,ingredient,lettuce,fixed,không dấu
+củ cải,ingredient,radish,fixed,
+cu cai,ingredient,radish,fixed,không dấu
+củ cải trắng,ingredient,daikon radish,fixed,
+cu cai trang,ingredient,daikon radish,fixed,không dấu
+đậu bắp,ingredient,okra,fixed,
+dau bap,ingredient,okra,fixed,không dấu
+tỏi tây,ingredient,leek,fixed,
+toi tay,ingredient,leek,fixed,không dấu
+chuối,ingredient,banana,fixed,
+chuoi,ingredient,banana,fixed,không dấu
+xoài,ingredient,mango,fixed,
+xoai,ingredient,mango,fixed,không dấu
+dứa,ingredient,pineapple,fixed,
+thơm,ingredient,pineapple,fixed,miền Nam
+thom,ingredient,pineapple,fixed,không dấu; miền Nam
+khóm,ingredient,pineapple,fixed,miền Nam
+khom,ingredient,pineapple,fixed,không dấu; miền Nam
+táo,ingredient,apple,fixed,
+tao,ingredient,apple,fixed,không dấu
+cam,ingredient,orange,fixed,
+dâu tây,ingredient,strawberry,fixed,
+dau tay,ingredient,strawberry,fixed,không dấu
+dừa,ingredient,coconut,fixed,
+vải,ingredient,lychee,fixed,
+vai,ingredient,lychee,fixed,không dấu
+mít,ingredient,jackfruit,fixed,
+mit,ingredient,jackfruit,fixed,không dấu
+đu đủ,ingredient,papaya,fixed,
+du du,ingredient,papaya,fixed,không dấu
+dưa hấu,ingredient,watermelon,fixed,
+dua hau,ingredient,watermelon,fixed,không dấu
+đào,ingredient,peach,fixed,
+dao,ingredient,peach,fixed,không dấu
+lê,ingredient,pear,fixed,
+le,ingredient,pear,fixed,không dấu
+nho,ingredient,grape,fixed,
+việt quất,ingredient,blueberry,fixed,
+viet quat,ingredient,blueberry,fixed,không dấu
+nho khô,ingredient,raisin,fixed,
+nho kho,ingredient,raisin,fixed,không dấu
+anh đào,ingredient,cherry,fixed,
+anh dao,ingredient,cherry,fixed,không dấu
+húng quế,ingredient,basil,fixed,
+hung que,ingredient,basil,fixed,không dấu
+rau quế,ingredient,basil,fixed,
+rau que,ingredient,basil,fixed,không dấu
+bạc hà,ingredient,mint,fixed,
+bac ha,ingredient,mint,fixed,không dấu
+húng lủi,ingredient,mint,fixed,
+hung lui,ingredient,mint,fixed,không dấu
+ngò tây,ingredient,parsley,fixed,
+ngo tay,ingredient,parsley,fixed,không dấu
+mùi tây,ingredient,parsley,fixed,
+mui tay,ingredient,parsley,fixed,không dấu
+thì là,ingredient,dill,fixed,
+thi la,ingredient,dill,fixed,không dấu
+hương thảo,ingredient,rosemary,fixed,
+huong thao,ingredient,rosemary,fixed,không dấu
+cỏ xạ hương,ingredient,thyme,fixed,
+co xa huong,ingredient,thyme,fixed,không dấu
+lá oregano,ingredient,oregano,fixed,
+la oregano,ingredient,oregano,fixed,không dấu
+thìa là ai cập,ingredient,cumin,fixed,
+thia la ai cap,ingredient,cumin,fixed,không dấu
+quế,ingredient,cinnamon,fixed,
+que,ingredient,cinnamon,fixed,không dấu
+hoa hồi,ingredient,star anise,fixed,
+hoa hoi,ingredient,star anise,fixed,không dấu
+hồi,ingredient,star anise,fixed,
+hoi,ingredient,star anise,fixed,không dấu
+nghệ,ingredient,turmeric,fixed,
+nghe,ingredient,turmeric,fixed,không dấu
+bột nghệ,ingredient,turmeric,fixed,
+bot nghe,ingredient,turmeric,fixed,không dấu
+bột cà ri,ingredient,curry powder,fixed,
+bot ca ri,ingredient,curry powder,fixed,không dấu
+ớt bột,ingredient,chili powder,fixed,
+ot bot,ingredient,chili powder,fixed,không dấu
+bột ớt,ingredient,chili powder,fixed,
+bot ot,ingredient,chili powder,fixed,không dấu
+ớt paprika,ingredient,paprika,fixed,
+ot paprika,ingredient,paprika,fixed,không dấu
+ngũ vị hương,ingredient,chinese five spice powder,fixed,
+ngu vi huong,ingredient,chinese five spice powder,fixed,không dấu
+tiêu,ingredient,black pepper,fixed,
+tieu,ingredient,black pepper,fixed,không dấu
+hạt tiêu,ingredient,black pepper,fixed,
+hat tieu,ingredient,black pepper,fixed,không dấu
+muối,ingredient,salt,fixed,
+muoi,ingredient,salt,fixed,không dấu
+bột tỏi,ingredient,garlic powder,fixed,
+bot toi,ingredient,garlic powder,fixed,không dấu
+bột hành,ingredient,onion powder,fixed,
+bot hanh,ingredient,onion powder,fixed,không dấu
+đường,ingredient,white sugar,fixed,
+duong,ingredient,white sugar,fixed,không dấu
+đường trắng,ingredient,white sugar,fixed,
+duong trang,ingredient,white sugar,fixed,không dấu
+đường nâu,ingredient,brown sugar,fixed,
+duong nau,ingredient,brown sugar,fixed,không dấu
+đường bột,ingredient,confectioners sugar,fixed,
+duong bot,ingredient,confectioners sugar,fixed,không dấu
+mật ong,ingredient,honey,fixed,
+mat ong,ingredient,honey,fixed,không dấu
+bột mì,ingredient,all purpose flour,fixed,
+bot mi,ingredient,all purpose flour,fixed,không dấu
+bột bắp,ingredient,cornstarch,fixed,
+bot bap,ingredient,cornstarch,fixed,không dấu
+bột ngô,ingredient,cornstarch,fixed,
+bot ngo,ingredient,cornstarch,fixed,không dấu
+bột nở,ingredient,baking powder,fixed,
+bot no,ingredient,baking powder,fixed,không dấu
+muối nở,ingredient,baking soda,fixed,
+muoi no,ingredient,baking soda,fixed,không dấu
+baking soda,ingredient,baking soda,fixed,
+men nở,ingredient,yeast,fixed,
+men no,ingredient,yeast,fixed,không dấu
+gạo,ingredient,rice,fixed,
+gao,ingredient,rice,fixed,không dấu
+cơm,ingredient,rice,fixed,
+com,ingredient,rice,fixed,không dấu
+bánh mì,ingredient,bread,fixed,
+banh mi,ingredient,bread,fixed,không dấu
+vụn bánh mì,ingredient,bread crumb,fixed,
+vun banh mi,ingredient,bread crumb,fixed,không dấu
+mì ống,ingredient,pasta,fixed,
+mi ong,ingredient,pasta,fixed,không dấu
+nui,ingredient,pasta,fixed,
+mì ý,ingredient,spaghetti,fixed,
+mi y,ingredient,spaghetti,fixed,không dấu
+bún,ingredient,rice noodle,fixed,
+bun,ingredient,rice noodle,fixed,không dấu
+phở,ingredient,rice noodle,fixed,bánh phở
+pho,ingredient,rice noodle,fixed,không dấu; bánh phở
+bánh tráng,ingredient,rice paper,fixed,
+banh trang,ingredient,rice paper,fixed,không dấu
+yến mạch,ingredient,rolled oat,fixed,
+yen mach,ingredient,rolled oat,fixed,không dấu
+đậu gà,ingredient,chickpea,fixed,
+dau ga,ingredient,chickpea,fixed,không dấu
+đậu đen,ingredient,black bean,fixed,
+dau den,ingredient,black bean,fixed,không dấu
+đậu lăng,ingredient,lentil,fixed,
+dau lang,ingredient,lentil,fixed,không dấu
+diêm mạch,ingredient,quinoa,fixed,
+diem mach,ingredient,quinoa,fixed,không dấu
+đậu hũ,ingredient,tofu,fixed,
+dau hu,ingredient,tofu,fixed,không dấu
+đậu phụ,ingredient,tofu,fixed,miền Bắc
+dau phu,ingredient,tofu,fixed,không dấu; miền Bắc
+tàu hũ,ingredient,tofu,fixed,
+tau hu,ingredient,tofu,fixed,không dấu
+đậu phộng,ingredient,peanut,fixed,
+dau phong,ingredient,peanut,fixed,không dấu
+bơ đậu phộng,ingredient,peanut butter,fixed,
+bo dau phong,ingredient,peanut butter,fixed,không dấu
+hạt điều,ingredient,cashew,fixed,
+hat dieu,ingredient,cashew,fixed,không dấu
+hạnh nhân,ingredient,almond,fixed,
+hanh nhan,ingredient,almond,fixed,không dấu
+óc chó,ingredient,walnut,fixed,
+oc cho,ingredient,walnut,fixed,không dấu
+hồ đào,ingredient,pecan,fixed,
+ho dao,ingredient,pecan,fixed,không dấu
+hạt dẻ cười,ingredient,pistachio,fixed,
+hat de cuoi,ingredient,pistachio,fixed,không dấu
+hạt phỉ,ingredient,hazelnut,fixed,
+hat phi,ingredient,hazelnut,fixed,không dấu
+hạt mè,ingredient,sesame seed,fixed,
+hat me,ingredient,sesame seed,fixed,không dấu
+mè,ingredient,sesame seed,fixed,
+me,ingredient,sesame seed,fixed,không dấu
+dầu mè,ingredient,sesame oil,fixed,
+dau me,ingredient,sesame oil,fixed,không dấu
+dầu vừng,ingredient,sesame oil,fixed,
+dau vung,ingredient,sesame oil,fixed,không dấu
+nước tương,ingredient,soy sauce,fixed,
+nuoc tuong,ingredient,soy sauce,fixed,không dấu
+xì dầu,ingredient,soy sauce,fixed,
+xi dau,ingredient,soy sauce,fixed,không dấu
+nước mắm,ingredient,fish sauce,fixed,
+nuoc mam,ingredient,fish sauce,fixed,không dấu
+dầu hào,ingredient,oyster sauce,fixed,
+dau hao,ingredient,oyster sauce,fixed,không dấu
+mắm tôm,ingredient,shrimp paste,fixed,
+mam tom,ingredient,shrimp paste,fixed,không dấu
+tương đen,ingredient,hoisin sauce,fixed,
+tuong den,ingredient,hoisin sauce,fixed,không dấu
+tương ớt,ingredient,chili sauce,fixed,
+tuong ot,ingredient,chili sauce,fixed,không dấu
+sriracha,ingredient,sriracha sauce,fixed,
+giấm,ingredient,vinegar,fixed,
+giam,ingredient,vinegar,fixed,không dấu
+giấm gạo,ingredient,rice vinegar,fixed,
+giam gao,ingredient,rice vinegar,fixed,không dấu
+dầu ô liu,ingredient,olive oil,fixed,
+dau o liu,ingredient,olive oil,fixed,không dấu
+dầu oliu,ingredient,olive oil,fixed,
+dau oliu,ingredient,olive oil,fixed,không dấu
+dầu ăn,ingredient,vegetable oil,fixed,
+dau an,ingredient,vegetable oil,fixed,không dấu
+dầu dừa,ingredient,coconut oil,fixed,
+dau dua,ingredient,coconut oil,fixed,không dấu
+nước cốt dừa,ingredient,coconut milk,fixed,
+nuoc cot dua,ingredient,coconut milk,fixed,không dấu
+sữa dừa,ingredient,coconut milk,fixed,
+sua dua,ingredient,coconut milk,fixed,không dấu
+sô cô la,ingredient,chocolate,fixed,
+so co la,ingredient,chocolate,fixed,không dấu
+socola,ingredient,chocolate,fixed,
+vani,ingredient,vanilla extract,fixed,
+tương cà,ingredient,ketchup,fixed,
+tuong ca,ingredient,ketchup,fixed,không dấu
+mù tạt,ingredient,mustard,fixed,
+mu tat,ingredient,mustard,fixed,không dấu
+bia,ingredient,beer,fixed,
+rượu vang đỏ,ingredient,red wine,fixed,
+ruou vang do,ingredient,red wine,fixed,không dấu
+rượu vang trắng,ingredient,white wine,fixed,
+ruou vang trang,ingredient,white wine,fixed,không dấu
+nước,ingredient,water,fixed,
+nuoc,ingredient,water,fixed,không dấu
+bơ,ingredient,butter,context,theo ngữ cảnh món
+bơ,ingredient,avocado,context,theo ngữ cảnh món
+kem,ingredient,vanilla ice cream,context,theo ngữ cảnh món
+kem,ingredient,heavy cream,context,theo ngữ cảnh món
+mì,ingredient,noodle,context,theo ngữ cảnh món
+mi,ingredient,noodle,context,không dấu; theo ngữ cảnh món
+mì,ingredient,pasta,context,theo ngữ cảnh món
+mi,ingredient,pasta,context,không dấu; theo ngữ cảnh món
+chanh,ingredient,lime,all,cả chanh ta và chanh vàng
+chanh,ingredient,lemon,all,cả chanh ta và chanh vàng
+hành,ingredient,onion,ask,hỏi lại người dùng
+hanh,ingredient,onion,ask,không dấu; hỏi lại người dùng
+hành,ingredient,green onion,ask,hỏi lại người dùng
+hanh,ingredient,green onion,ask,không dấu; hỏi lại người dùng
+hành,ingredient,shallot,ask,hỏi lại người dùng
+hanh,ingredient,shallot,ask,không dấu; hỏi lại người dùng
+hải sản,allergen,fish,all,cá + giáp xác + nhuyễn thể
+hai san,allergen,fish,all,không dấu; cá + giáp xác + nhuyễn thể
+hải sản,allergen,crustacean_shellfish,all,cá + giáp xác + nhuyễn thể
+hai san,allergen,crustacean_shellfish,all,không dấu; cá + giáp xác + nhuyễn thể
+hải sản,ingredient,clam,all,cá + giáp xác + nhuyễn thể
+hai san,ingredient,clam,all,không dấu; cá + giáp xác + nhuyễn thể
+hải sản,ingredient,mussel,all,cá + giáp xác + nhuyễn thể
+hai san,ingredient,mussel,all,không dấu; cá + giáp xác + nhuyễn thể
+hải sản,ingredient,oyster,all,cá + giáp xác + nhuyễn thể
+hai san,ingredient,oyster,all,không dấu; cá + giáp xác + nhuyễn thể
+hải sản,ingredient,scallop,all,cá + giáp xác + nhuyễn thể
+hai san,ingredient,scallop,all,không dấu; cá + giáp xác + nhuyễn thể
+hải sản,ingredient,squid,all,cá + giáp xác + nhuyễn thể
+hai san,ingredient,squid,all,không dấu; cá + giáp xác + nhuyễn thể
+hải sản,ingredient,octopus,all,cá + giáp xác + nhuyễn thể
+hai san,ingredient,octopus,all,không dấu; cá + giáp xác + nhuyễn thể

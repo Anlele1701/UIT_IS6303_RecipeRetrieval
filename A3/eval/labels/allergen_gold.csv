@@ -1,0 +1,206 @@
+sample_order,recipe_id,milk,egg,fish,crustacean_shellfish,tree_nuts,peanut,wheat,soy,sesame,vegetarian,vegan,note,labeled_at
+1,30611,yes,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:39:31
+2,4077,yes,yes,no,no,no,no,yes,no,no,no,no,,2026-10-14T20:43:32
+3,5401,yes,yes,no,no,no,no,no,no,no,yes,no,,2026-10-14T20:43:57
+4,19547,no,no,no,no,no,no,yes,no,no,yes,yes,,2026-10-14T20:44:07
+5,7230,no,yes,no,no,no,no,no,no,no,no,no,,2026-10-14T20:44:24
+6,27039,yes,yes,no,no,no,no,yes,no,no,yes,no,,2026-10-14T20:44:30
+7,23604,yes,no,no,no,no,no,no,no,no,yes,no,,2026-10-14T20:44:36
+8,11331,yes,no,no,yes,no,no,no,no,no,no,no,,2026-10-14T20:44:43
+9,15440,yes,no,no,no,no,no,no,no,no,yes,no,,2026-10-14T20:44:48
+10,11055,no,no,yes,yes,no,no,no,no,no,no,no,,2026-10-14T20:44:54
+11,8434,no,no,yes,no,no,no,no,no,no,no,no,"Cá=Có do Worcestershire (cá cơm). Lúa mì/đậu nành của Worcestershire tùy hãng, để Không.",2026-10-14T20:45:01
+1,30611,yes,no,no,no,no,no,maybe,maybe,no,no,no,"Lúa mì/đậu nành = Có thể: tamale và chili đóng hộp tùy hãng (bột mì, đạm đậu nành). Sữa = Có do processed cheese. Beef nên không chay.",2026-10-14T20:51:19
+2,4077,yes,yes,no,no,no,no,yes,maybe,no,no,no,Đậu nành = Có thể: dầu đậu nành trong mayonnaise.,2026-10-14T20:51:25
+3,5401,yes,yes,no,no,no,no,no,maybe,no,no,no,Đậu nành = Có thể: dầu đậu nành trong mayonnaise. Parmesan thường dùng rennet động vật nên không chay.,2026-10-14T20:51:30
+7,23604,yes,no,no,no,no,no,no,no,no,no,no,Parmesan/Romano thường dùng rennet động vật nên không chay.,2026-10-14T20:51:38
+12,1196,yes,no,no,no,no,no,yes,no,no,no,no,,2026-10-14T20:55:23
+13,22993,yes,yes,no,no,yes,no,yes,yes,no,yes,no,"Nutella: sữa, hạt phỉ, lecithin đậu nành (nhãn sản phẩm). Marshmallow cream: lòng trắng trứng sấy, không gelatin. English muffin: tùy hãng, sữa/đậu nành đã Có từ nguồn khác.",2026-10-14T20:55:24
+14,3608,yes,yes,no,no,no,no,yes,no,no,yes,no,,2026-10-14T20:55:25
+15,14227,yes,no,no,no,no,yes,no,yes,no,yes,no,"Peanut butter chips (Reese's): đậu phộng, whey, đậu nành. Chocolate chips: sữa/đậu nành tùy hãng.",2026-10-14T20:55:26
+16,2687,yes,yes,no,no,no,no,yes,maybe,no,no,no,Đậu nành Có thể: mayonnaise (dầu đậu nành) và bánh mì đóng gói tùy hãng.,2026-10-14T20:55:27
+17,1260,yes,no,no,no,no,no,yes,yes,no,yes,no,"Bánh quy kem sandwich (loại Oreo): lúa mì, lecithin đậu nành.",2026-10-14T20:55:27
+18,4721,no,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:55:28
+19,23365,yes,yes,no,no,no,no,yes,maybe,no,maybe,no,Đậu nành Có thể: leek soup mix không tra được thành phần. Vegetarian Có thể: Monterey Jack tùy loại rennet.,2026-10-14T20:55:29
+20,29678,yes,no,no,no,yes,no,no,no,no,maybe,no,Vegetarian Có thể: blue cheese (chung chung) tùy loại rennet.,2026-10-14T20:55:43
+21,22368,yes,no,no,no,no,no,yes,yes,no,no,no,Dry onion soup mix (loại Lipton): protein đậu nành và lúa mì thủy phân (nhãn sản phẩm).,2026-10-14T20:55:44
+22,19136,yes,no,no,no,no,no,no,no,no,yes,no,,2026-10-14T20:55:44
+23,20356,yes,yes,no,no,no,no,no,maybe,no,yes,no,Đậu nành Có thể: dầu đậu nành trong mayonnaise.,2026-10-14T20:55:45
+24,12659,no,no,yes,no,no,no,yes,no,no,no,no,,2026-10-14T20:55:46
+25,31277,no,no,no,no,no,no,yes,yes,no,yes,yes,Danh sách không có tahini hay hạt thông nên Mè và Hạt cây = Không.,2026-10-14T20:55:47
+26,9082,yes,no,yes,no,no,no,no,no,no,no,no,,2026-10-14T20:55:48
+27,25743,no,no,no,no,no,no,yes,yes,no,no,no,"Onion soup mix và golden mushroom soup: lúa mì (nhãn sản phẩm), soup mix có protein đậu nành.",2026-10-14T20:55:48
+28,2602,yes,no,no,no,no,no,no,no,no,maybe,no,Vegetarian Có thể: mozzarella tùy loại rennet. Lớp vỏ chỉ là phô mai nên Lúa mì = Không.,2026-10-14T20:55:49
+29,6087,yes,yes,no,no,no,no,yes,maybe,no,no,no,Đậu nành Có thể: vụn bánh mì đóng gói tùy hãng.,2026-10-14T20:55:50
+30,15284,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T20:55:51
+31,30078,no,no,yes,no,no,no,yes,yes,yes,no,no,Dashi và bonito là cá; nước tương có đậu nành và lúa mì.,2026-10-14T20:56:12
+32,11428,no,no,yes,no,no,no,no,no,no,no,no,,2026-10-14T20:56:12
+33,4412,yes,no,no,no,no,no,yes,no,no,no,no,Vegetarian Không: Parmesan (rennet động vật).,2026-10-14T20:56:13
+34,16597,no,yes,no,no,yes,no,yes,no,no,yes,no,,2026-10-14T20:56:14
+35,10329,no,yes,yes,no,no,no,maybe,no,no,no,no,Lúa mì Có thể: seafood breader tùy hãng.,2026-10-14T20:56:15
+36,18052,yes,yes,no,no,yes,no,yes,maybe,no,yes,no,Đậu nành Có thể: chocolate chips tùy hãng (lecithin).,2026-10-14T20:56:16
+37,28095,yes,no,no,no,no,no,yes,no,no,yes,no,,2026-10-14T20:56:16
+38,22266,yes,no,no,no,yes,no,no,no,yes,maybe,no,Vegetarian Có thể: feta tùy loại rennet.,2026-10-14T20:56:17
+39,16825,yes,yes,no,no,yes,no,no,no,no,yes,no,,2026-10-14T20:56:18
+40,28027,yes,no,no,no,no,no,yes,no,no,yes,no,,2026-10-14T20:56:19
+41,13886,yes,yes,yes,no,no,no,yes,maybe,no,no,no,Cá Có: Worcestershire. Đậu nành Có thể: vụn bánh mì đóng gói tùy hãng.,2026-10-14T20:56:20
+42,23911,yes,maybe,no,no,no,no,yes,maybe,no,no,no,"Trứng/Đậu nành Có thể: nước sốt Caesar chay không rõ thành phần (có thể có lòng đỏ, dầu đậu nành). Vegetarian Không do Parmesan.",2026-10-14T20:56:21
+43,7683,no,no,no,no,no,no,maybe,maybe,no,no,no,Lúa mì/Đậu nành Có thể: chicken bouillon cube tùy hãng. Lúa mạch (barley) không tính là lúa mì.,2026-10-14T20:56:50
+44,21964,yes,no,no,no,no,no,yes,maybe,no,no,no,Đậu nành Có thể: bánh mì sourdough đóng gói tùy hãng.,2026-10-14T20:56:50
+45,30888,yes,no,no,no,no,no,no,no,no,maybe,no,Vegetarian Có thể: goat cheese tùy loại rennet (nguồn không thống nhất).,2026-10-14T20:56:51
+46,28805,yes,yes,no,no,maybe,maybe,yes,maybe,no,maybe,no,"Easter candy không nêu loại: hạt cây, đậu phộng, đậu nành, gelatin tùy kẹo. Shortening vị bơ thường từ dầu đậu nành.",2026-10-14T20:56:52
+47,6757,no,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:56:53
+48,15860,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T20:56:54
+49,13481,yes,no,no,no,no,no,yes,no,no,yes,no,,2026-10-14T20:56:54
+50,28518,yes,yes,no,no,yes,no,no,maybe,no,yes,no,Đậu nành Có thể: baking white chocolate thường có lecithin đậu nành (chưa xác minh nhãn).,2026-10-14T20:56:55
+51,29796,yes,no,no,no,no,no,no,no,no,yes,no,,2026-10-14T20:56:56
+52,20943,yes,no,no,no,no,no,yes,no,no,no,no,,2026-10-14T20:56:57
+53,11613,yes,yes,yes,maybe,no,no,yes,maybe,no,no,no,"Imitation crab (surimi): cá, lòng trắng trứng, tinh bột lúa mì; hương cua có thể từ giáp xác nên Giáp xác Có thể. Đậu nành Có thể: mayonnaise và vegetable soup mix.",2026-10-14T20:56:58
+54,28683,yes,yes,no,no,no,no,yes,maybe,no,no,no,Đậu nành Có thể: vụn bánh mì đóng gói tùy hãng.,2026-10-14T20:56:59
+55,25010,no,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:57:18
+56,4339,yes,maybe,no,no,yes,no,yes,maybe,no,yes,no,Trứng/Đậu nành Có thể: bột bánh mì cuộn đông lạnh và pudding mix tùy hãng.,2026-10-14T20:57:19
+57,14652,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T20:57:20
+58,23166,yes,no,no,no,no,no,no,no,no,yes,no,,2026-10-14T20:57:21
+59,12383,yes,no,no,yes,no,no,no,no,no,no,no,,2026-10-14T20:57:22
+60,9832,yes,no,no,no,no,no,no,no,no,no,no,"Mussels là nhuyễn thể, không thuộc nhóm giáp xác theo guide.",2026-10-14T20:57:23
+61,19733,no,yes,yes,no,no,no,no,maybe,no,no,no,Cá Có: Worcestershire. Đậu nành Có thể: dầu đậu nành trong mayonnaise.,2026-10-14T20:57:24
+62,27734,yes,no,yes,no,no,no,maybe,maybe,no,no,no,"Lúa mì/Đậu nành Có thể: beef bouillon cube tùy hãng. Cá Có: Worcestershire. Bia Coors làm từ lúa mạch, không tính lúa mì.",2026-10-14T20:57:25
+63,16458,maybe,yes,no,no,no,no,yes,maybe,no,no,no,Sữa/Đậu nành Có thể: croutons đóng gói tùy hãng.,2026-10-14T20:57:26
+64,20734,yes,no,no,no,no,no,yes,no,no,maybe,no,Vegetarian Có thể: mozzarella tùy loại rennet.,2026-10-14T20:57:27
+65,26189,yes,yes,no,no,no,no,yes,no,no,yes,no,,2026-10-14T20:57:28
+66,16897,yes,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:57:29
+67,20448,no,yes,no,no,no,no,yes,maybe,no,no,no,Đậu nành Có thể: seasoned bread crumbs tùy hãng.,2026-10-14T20:57:46
+68,9920,yes,no,yes,no,no,no,no,no,no,no,no,,2026-10-14T20:57:47
+69,10041,no,no,yes,no,no,no,no,no,no,no,no,,2026-10-14T20:57:48
+70,1339,yes,yes,no,no,no,no,yes,maybe,no,yes,no,Đậu nành Có thể: cookie crumbs và white chocolate chips tùy hãng (lecithin).,2026-10-14T20:57:49
+71,22071,no,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:57:50
+72,3776,yes,yes,no,no,no,no,no,maybe,no,yes,no,Đậu nành Có thể: dầu đậu nành trong mayonnaise.,2026-10-14T20:57:51
+73,4777,no,no,no,no,yes,no,no,no,no,yes,yes,,2026-10-14T20:57:52
+74,26510,yes,yes,no,no,yes,no,no,no,yes,yes,no,"Mè là nguyên liệu tùy chọn (Optional), vẫn tính Có. Công thức gluten-free nên Lúa mì = Không.",2026-10-14T20:57:53
+75,24714,no,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:57:54
+76,17836,maybe,yes,no,no,no,no,yes,maybe,no,yes,no,"Sữa: sour cream Có, nhưng ghi lại: cake mix và pudding mix tùy hãng. Đậu nành Có thể: cake mix/pudding mix.",2026-10-14T20:57:55
+76,17836,yes,yes,no,no,no,no,yes,maybe,no,yes,no,Đậu nành Có thể: cake mix và pudding mix tùy hãng.,2026-10-14T20:58:04
+77,18004,no,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:58:23
+78,3933,yes,yes,no,no,no,no,no,no,no,no,no,,2026-10-14T20:58:24
+79,19027,no,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:58:25
+80,13992,yes,yes,no,no,no,no,yes,maybe,no,yes,no,"Đậu nành Có thể: ""butter or margarine"" (margarine thường từ dầu đậu nành).",2026-10-14T20:58:26
+81,25506,yes,yes,no,no,no,no,yes,maybe,no,yes,no,Đậu nành Có thể: chocolate chips tùy hãng (lecithin).,2026-10-14T20:58:27
+82,30159,yes,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:58:28
+83,17953,yes,yes,no,no,no,no,no,maybe,no,yes,no,Đậu nành Có thể: socola bào/caramel topping tùy hãng.,2026-10-14T20:58:29
+84,21453,no,no,no,no,no,no,no,no,yes,yes,yes,,2026-10-14T20:58:30
+85,20376,no,no,no,no,no,no,yes,no,no,yes,yes,,2026-10-14T20:58:31
+86,29271,yes,no,no,no,no,no,yes,no,no,no,no,,2026-10-14T20:58:32
+87,24608,yes,maybe,yes,no,no,no,yes,no,no,no,no,"Trứng Có thể: ""noodles"" có thể là mì trứng. Cá Có: Worcestershire.",2026-10-14T20:58:33
+88,7863,no,no,no,no,no,no,maybe,maybe,no,no,no,Lúa mì/Đậu nành Có thể: beef bouillon granules tùy hãng; bia không nêu loại.,2026-10-14T20:58:34
+89,5582,yes,yes,no,no,no,no,yes,no,no,yes,no,,2026-10-14T20:58:51
+90,11431,yes,no,yes,no,no,no,yes,no,no,no,no,,2026-10-14T20:58:52
+91,28568,yes,yes,no,no,yes,no,yes,maybe,no,yes,no,Đậu nành Có thể: white chocolate tùy hãng (lecithin).,2026-10-14T20:58:53
+92,26913,yes,yes,no,no,yes,no,yes,no,no,yes,no,,2026-10-14T20:58:54
+93,3380,yes,no,no,no,no,no,no,no,no,maybe,no,Vegetarian Có thể: feta tùy loại rennet.,2026-10-14T20:58:55
+94,5959,yes,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:58:56
+95,1144,yes,yes,no,no,no,no,yes,no,no,yes,no,,2026-10-14T20:58:57
+96,15679,yes,yes,no,no,no,no,yes,no,no,yes,no,,2026-10-14T20:58:58
+97,10141,no,no,yes,no,no,no,no,no,no,no,no,Cá Có: catfish và Worcestershire.,2026-10-14T20:58:59
+98,5210,yes,no,no,no,no,no,yes,no,no,no,no,,2026-10-14T20:59:00
+99,26188,yes,yes,no,no,no,no,yes,maybe,no,yes,no,Đậu nành Có thể: shortening thường từ dầu đậu nành.,2026-10-14T20:59:01
+100,14244,yes,yes,no,no,no,no,yes,maybe,no,no,no,Đậu nành Có thể: English muffin đóng gói tùy hãng.,2026-10-14T20:59:02
+101,28263,no,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:59:20
+102,31086,no,yes,yes,no,no,no,yes,no,yes,no,no,,2026-10-14T20:59:22
+103,2475,no,no,no,no,no,no,no,no,no,yes,no,Vegan Không do có mật ong.,2026-10-14T20:59:23
+104,12909,no,yes,yes,no,no,no,no,maybe,no,no,no,Đậu nành Có thể: dầu đậu nành trong mayonnaise.,2026-10-14T20:59:24
+105,30418,yes,no,no,no,no,no,no,no,no,no,no,,2026-10-14T20:59:25
+106,18353,no,no,yes,no,no,no,yes,yes,yes,no,no,,2026-10-14T20:59:26
+107,30824,yes,no,no,no,no,no,no,no,no,maybe,no,Vegetarian Có thể: feta tùy loại rennet.,2026-10-14T20:59:27
+108,28633,yes,yes,no,no,no,no,yes,maybe,no,yes,no,Sữa Có: Cool Whip có thành phần sữa (chưa xác minh nhãn). Đậu nành Có thể: cake mix/pudding mix tùy hãng.,2026-10-14T20:59:28
+109,13309,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T20:59:29
+110,30891,yes,yes,no,no,no,no,no,no,no,yes,no,Công thức gluten-free nên Lúa mì = Không. Bột dừa không tính hạt cây (FDA 2025).,2026-10-14T20:59:30
+111,11177,yes,yes,no,yes,no,no,no,maybe,no,no,no,Đậu nành Có thể: dầu đậu nành trong mayonnaise.,2026-10-14T20:59:31
+112,7422,maybe,yes,no,no,no,no,yes,yes,no,yes,no,Sữa Có thể: paratha thường có ghee/bơ/sữa tùy hãng.,2026-10-14T20:59:32
+113,30189,no,no,no,no,no,no,yes,maybe,no,yes,maybe,Vegan Có thể và Đậu nành Có thể: candy stars không rõ thành phần (tên công thức nói vegan nhưng nguyên liệu không xác nhận).,2026-10-14T20:59:54
+114,3607,yes,no,no,no,no,no,no,no,no,yes,no,,2026-10-14T20:59:55
+115,30627,yes,yes,no,no,yes,no,no,no,no,yes,no,Công thức gluten-free nên Lúa mì = Không.,2026-10-14T20:59:56
+116,11448,no,no,yes,no,no,no,yes,yes,yes,no,no,,2026-10-14T20:59:57
+117,19572,yes,no,no,no,no,no,yes,no,no,no,no,,2026-10-14T20:59:58
+118,7186,yes,maybe,no,no,no,no,yes,maybe,no,no,no,"Trứng/Đậu nành Có thể: Ranch dressing tùy hãng (lòng đỏ, dầu đậu nành).",2026-10-14T20:59:59
+119,14129,yes,yes,no,no,no,no,no,maybe,no,yes,no,Đậu nành Có thể: dầu đậu nành trong mayonnaise.,2026-10-14T21:00:00
+120,17549,yes,yes,no,no,yes,no,yes,maybe,no,yes,no,Đậu nành Có thể: Hawaiian rolls và cooking spray tùy hãng.,2026-10-14T21:00:01
+121,16059,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T21:00:02
+122,5591,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T21:00:03
+123,25521,yes,maybe,no,no,yes,no,yes,yes,no,maybe,no,Trứng Có thể: cookie dough đóng gói tùy hãng. Vegetarian Có thể: marshmallow thường có gelatin. Nutella: hạt phỉ và lecithin đậu nành.,2026-10-14T21:00:04
+124,20,no,no,no,no,no,no,maybe,maybe,no,no,no,Lúa mì/Đậu nành Có thể: taco seasoning mix tùy hãng.,2026-10-14T21:00:05
+125,10057,no,no,no,yes,no,no,yes,no,no,no,no,Dừa không tính hạt cây (FDA 2025).,2026-10-14T21:00:20
+126,1744,yes,no,no,no,no,no,yes,no,no,no,no,,2026-10-14T21:00:21
+127,17895,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T21:00:22
+128,26826,yes,yes,no,no,no,no,yes,no,no,yes,no,,2026-10-14T21:00:23
+129,31607,yes,no,no,no,no,no,no,no,no,no,no,Vegetarian Không: Parmesan.,2026-10-14T21:00:24
+130,616,yes,no,no,no,no,no,yes,no,no,no,no,,2026-10-14T21:00:25
+131,19078,yes,no,no,no,no,no,yes,maybe,no,no,no,Đậu nành Có thể: enchilada sauce và refried beans đóng hộp tùy hãng.,2026-10-14T21:00:26
+132,25104,yes,no,no,no,no,no,no,no,no,no,no,,2026-10-14T21:00:27
+133,18452,yes,no,no,no,no,yes,no,no,no,yes,no,,2026-10-14T21:00:28
+134,4238,yes,no,no,no,yes,no,no,no,no,no,no,Vegetarian Không: Parmesan.,2026-10-14T21:00:29
+135,26185,yes,no,no,no,no,no,no,no,no,no,no,,2026-10-14T21:00:30
+136,18478,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T21:00:31
+137,21380,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T21:00:46
+138,8487,yes,yes,no,no,no,no,yes,no,no,no,no,Vegetarian Không: gelatin.,2026-10-14T21:00:48
+139,15421,yes,no,no,no,no,no,yes,no,no,yes,no,,2026-10-14T21:00:49
+140,2398,no,no,no,yes,no,no,no,no,no,no,no,,2026-10-14T21:00:50
+141,6427,yes,no,no,no,yes,no,no,no,no,no,no,,2026-10-14T21:00:51
+142,16617,yes,no,no,no,no,no,no,no,no,no,no,Vegetarian Không: Parmesan.,2026-10-14T21:00:52
+143,22986,yes,no,no,no,no,no,yes,maybe,no,no,no,Đậu nành Có thể: dinner rolls đóng gói tùy hãng.,2026-10-14T21:00:53
+144,13040,yes,no,no,no,no,no,yes,no,no,no,no,Vegetarian Không: Parmesan.,2026-10-14T21:00:54
+145,6636,no,yes,no,no,yes,no,no,no,no,yes,no,,2026-10-14T21:00:55
+146,17969,yes,no,no,no,no,no,maybe,maybe,no,no,no,Lúa mì/Đậu nành Có thể: taco seasoning tùy hãng.,2026-10-14T21:00:56
+147,31603,yes,yes,no,no,yes,no,no,no,no,yes,no,,2026-10-14T21:00:56
+148,32401,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T21:00:57
+149,28925,yes,yes,no,no,no,no,yes,no,no,yes,no,,2026-10-14T21:01:13
+150,17218,yes,no,no,no,no,no,yes,maybe,no,yes,no,"Đậu nành Có thể: cake mix, pudding mix và chocolate chips tùy hãng.",2026-10-14T21:01:13
+151,430,yes,yes,no,no,no,no,yes,no,no,yes,no,,2026-10-14T21:01:14
+152,1678,yes,no,no,no,no,no,no,no,no,no,no,,2026-10-14T21:01:15
+153,7728,yes,yes,no,no,no,no,yes,no,no,yes,no,,2026-10-14T21:01:16
+154,29780,no,yes,no,no,no,no,no,maybe,no,yes,no,Miracle Whip: có trứng; Đậu nành Có thể do dầu đậu nành (chưa xác minh nhãn).,2026-10-14T21:01:17
+155,22813,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T21:01:18
+156,17294,yes,no,no,no,no,no,no,no,no,no,no,,2026-10-14T21:01:18
+157,3417,yes,no,no,no,no,no,yes,no,no,no,no,,2026-10-14T21:01:19
+158,9908,no,yes,yes,no,no,no,no,maybe,no,no,no,Đậu nành Có thể: dầu đậu nành trong mayonnaise.,2026-10-14T21:01:20
+159,31582,yes,yes,no,no,yes,no,maybe,maybe,no,no,no,Lúa mì/Đậu nành Có thể: dry Italian dressing mix tùy hãng; đậu nành cũng từ mayonnaise.,2026-10-14T21:01:21
+160,11048,yes,no,yes,no,no,no,no,no,no,no,no,,2026-10-14T21:01:22
+161,27801,yes,yes,no,no,no,no,yes,no,no,yes,no,,2026-10-14T21:01:38
+162,18266,no,no,no,no,no,no,no,no,no,no,no,,2026-10-14T21:01:39
+163,2045,yes,yes,no,no,no,yes,yes,maybe,no,yes,no,Đậu nành Có thể: chocolate chips tùy hãng (lecithin).,2026-10-14T21:01:41
+164,1916,no,yes,no,no,no,no,yes,no,no,yes,no,,2026-10-14T21:01:42
+165,15397,yes,no,no,no,no,no,maybe,maybe,no,no,no,Lúa mì/Đậu nành Có thể: taco seasoning tùy hãng.,2026-10-14T21:01:43
+166,2163,no,yes,no,yes,no,no,no,no,no,no,no,,2026-10-14T21:01:44
+167,12639,yes,no,no,yes,no,no,yes,no,no,no,no,,2026-10-14T21:01:45
+168,26898,yes,yes,no,no,no,no,maybe,no,no,yes,no,Lúa mì Có thể: self-rising cornmeal (loại mix) thường có bột mì.,2026-10-14T21:01:46
+169,16492,yes,no,no,no,no,no,yes,maybe,no,no,no,Đậu nành Có thể: bột pizza đóng gói tùy hãng.,2026-10-14T21:01:47
+170,15977,no,no,no,no,no,no,no,no,no,no,no,,2026-10-14T21:01:48
+171,4747,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T21:01:49
+172,8165,no,yes,yes,no,no,no,yes,yes,no,no,no,Dry onion soup mix (loại Lipton): protein đậu nành và lúa mì thủy phân. Cá Có: Worcestershire.,2026-10-14T21:01:50
+173,2006,no,yes,no,yes,no,no,yes,no,no,no,no,Dừa không tính hạt cây (FDA 2025).,2026-10-14T21:02:11
+174,24072,yes,maybe,no,no,no,no,yes,no,no,no,no,Trứng Có thể: gnocchi đóng gói tùy hãng.,2026-10-14T21:02:13
+175,6424,no,no,yes,no,no,no,yes,yes,no,no,no,,2026-10-14T21:02:14
+176,751,yes,no,yes,no,no,no,yes,maybe,no,no,no,Cream of mushroom của Campbell: sữa và lúa mì (chưa xác minh nhãn); Đậu nành Có thể. Cá Có: Worcestershire.,2026-10-14T21:02:15
+177,22086,maybe,yes,no,no,yes,no,yes,maybe,no,no,no,Sữa/Đậu nành Có thể: bánh mì whole wheat đóng gói và mayonnaise tùy hãng.,2026-10-14T21:02:16
+178,23224,yes,no,no,no,no,no,no,no,no,yes,no,,2026-10-14T21:02:17
+179,20669,yes,no,yes,no,no,no,yes,maybe,no,no,no,Cá Có: Worcestershire. Đậu nành Có thể: hamburger buns tùy hãng.,2026-10-14T21:02:18
+180,27467,no,no,no,no,no,no,maybe,maybe,no,no,no,Lúa mì/Đậu nành Có thể: beef base (Better Than Bouillon) chưa xác minh nhãn.,2026-10-14T21:02:19
+181,21862,no,no,yes,maybe,no,no,no,no,no,no,no,Giáp xác Có thể: tom yum paste thường có tôm. Dừa không tính hạt cây.,2026-10-14T21:02:20
+182,5926,no,no,no,no,no,no,no,no,no,yes,yes,,2026-10-14T21:02:21
+183,10888,no,no,yes,no,no,no,no,no,no,no,no,,2026-10-14T21:02:22
+184,12443,no,no,yes,no,no,no,yes,maybe,no,no,no,Đậu nành Có thể: Special K protein có thể chứa đạm đậu nành (chưa xác minh nhãn).,2026-10-14T21:02:23
+185,15799,yes,yes,no,no,no,no,no,no,no,no,no,Egg substitute (Egg Beaters) làm từ lòng trắng trứng nên Trứng = Có.,2026-10-14T21:02:45
+186,27881,yes,yes,no,no,maybe,no,yes,no,no,yes,no,Hạt cây Có thể: almond extract có thể là chiết xuất hạnh nhân thật hoặc hương liệu tổng hợp.,2026-10-14T21:02:47
+187,1765,yes,no,no,no,no,no,yes,maybe,no,no,no,Vegetarian Không: Parmesan. Đậu nành Có thể: bánh mì Italian đóng gói tùy hãng.,2026-10-14T21:02:48
+188,3029,yes,no,no,no,no,no,no,no,no,yes,no,,2026-10-14T21:02:49
+189,7465,no,no,yes,no,no,no,no,no,no,no,no,Dừa không tính hạt cây (FDA 2025).,2026-10-14T21:02:50
+190,9409,no,no,yes,no,no,no,yes,yes,no,no,no,,2026-10-14T21:02:51
+191,8758,yes,no,no,no,no,no,yes,no,no,maybe,no,Vegetarian Có thể: kasseri tùy loại rennet (chưa tra được thành phần).,2026-10-14T21:02:52
+192,5819,no,no,no,no,maybe,no,no,no,no,yes,yes,Hạt cây Có thể: amaretto có thể làm từ hạnh nhân hoặc hạt mơ tùy hãng.,2026-10-14T21:02:53
+193,2297,yes,no,no,no,no,no,yes,no,no,yes,no,,2026-10-14T21:02:54
+194,9320,yes,no,no,yes,no,no,yes,no,no,no,no,,2026-10-14T21:02:55
+195,16689,yes,yes,no,no,no,no,yes,no,no,no,no,,2026-10-14T21:02:56
+196,21650,yes,yes,no,no,no,no,yes,maybe,no,maybe,no,"Vegetarian/Đậu nành Có thể: corn muffin mix tùy hãng (một số mix dùng mỡ heo, dầu đậu nành).",2026-10-14T21:02:57
+197,12252,no,no,no,yes,no,no,no,no,no,no,no,Dừa không tính hạt cây (FDA 2025).,2026-10-14T21:02:58
+198,6065,yes,no,no,no,no,no,no,no,no,maybe,no,Vegetarian Có thể: marshmallow thường có gelatin.,2026-10-14T21:02:59
+199,12814,yes,yes,yes,no,no,no,yes,maybe,no,no,no,Đậu nành Có thể: mayonnaise và hot dog buns tùy hãng.,2026-10-14T21:03:00
+200,17052,yes,no,no,no,no,no,no,no,no,no,no,,2026-10-14T21:03:01

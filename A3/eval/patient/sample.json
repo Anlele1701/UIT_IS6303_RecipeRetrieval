@@ -1,0 +1,756 @@
+{
+  "ran_at": "2026-10-17T23:16:26",
+  "seed": 42,
+  "total": 100,
+  "rule": "    uv run scripts/patient_sample.py        # -> eval/patient/sample.json",
+  "living_patients": 112,
+  "by_primary": {
+    "hypertension": 15,
+    "none": 58,
+    "multi": 16,
+    "food_allergy": 10,
+    "diabetes": 1
+  },
+  "by_source": {
+    "sample": 88,
+    "generated": 12
+  },
+  "by_stratum": {
+    "hypertension": 28,
+    "ckd": 15,
+    "multi": 16,
+    "diabetes": 16,
+    "food_allergy": 12
+  },
+  "patients": [
+    {
+      "patient_id": "00bcbfc6-c7b9-bd0e-3d95-071f9fba6321",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "029c95e2-d252-d8d3-3626-7f347182d6d7",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "06476266-59b1-ded7-4138-3c7543fd4981",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "06eb6dda-a918-928f-76cf-6bf370cf2014",
+      "source": "generated",
+      "strata": [
+        "ckd",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "09c573e2-a45d-aa5e-6a17-3c682155e6e3",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "1426480f-ccc7-2393-40bd-f92ccf2b74b2",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "197ec76f-0730-2587-9ff9-a0f60104a782",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "1dabc422-e007-d5ee-791f-9e08a8fd9b6a",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "1e32a1a3-3638-cb8c-7253-ff98a97dc0fe",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "239b0c86-371a-3080-fcd9-8379b296bc9a",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "23b59226-8f0a-41c1-f828-e3d5d80fece4",
+      "source": "generated",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "23da8e71-dfb9-9773-1bc1-7b5e31d085b5",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "2569f81e-c2ce-d7e1-6e8d-4f3ed87d2b50",
+      "source": "generated",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "2e9a9dab-f5b6-8960-d3ce-7834bb5e7344",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "2fb99851-6f31-04a6-be96-6fef4663e208",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "3099d813-4f5c-fc43-31d8-7bba5dc84bed",
+      "source": "sample",
+      "strata": [
+        "food_allergy"
+      ],
+      "primary": "food_allergy"
+    },
+    {
+      "patient_id": "30ed72f3-240e-4973-a0b8-25369e1a9c1e",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "31f368d9-3fdc-a15f-ccdc-fafa74a860e9",
+      "source": "sample",
+      "strata": [
+        "food_allergy"
+      ],
+      "primary": "food_allergy"
+    },
+    {
+      "patient_id": "3314e296-2326-2826-271d-a7be5b896db9",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "3368f8e7-5e00-7794-1e39-f65cb954d43d",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "355a4d50-2628-aa65-c336-deacf4d606fb",
+      "source": "sample",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "35f80d0e-eaad-ef68-b762-3a1c12a872c1",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "3732fde5-efc6-d57a-517b-0500f2177181",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "3935e8a9-9b9f-fd00-fe22-bcb810d0330b",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "3a9c6df2-621a-6239-0760-e58544d252f6",
+      "source": "sample",
+      "strata": [
+        "food_allergy"
+      ],
+      "primary": "food_allergy"
+    },
+    {
+      "patient_id": "3c0e60c4-176e-2c4c-3b85-b46be390cf5e",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "3eec36b2-71cc-13c4-489a-495c45318bc3",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "45f3a7b6-d706-f174-d043-16814aa127ed",
+      "source": "sample",
+      "strata": [
+        "food_allergy"
+      ],
+      "primary": "food_allergy"
+    },
+    {
+      "patient_id": "46fcc34a-97a1-f038-9bb1-4ae87116ae61",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "47f53fb7-16ab-f63c-fa3d-dc617e3ae676",
+      "source": "generated",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "4af53267-820e-7687-87a4-f6716ef64a2e",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "4be6b5fb-2a19-943a-9249-7068445be4cc",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "4e71643c-f046-a74f-c2e2-4049efe17cd4",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "5693c080-f485-91e7-54b9-ad9a8c12af62",
+      "source": "sample",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "56b965d9-80c5-f49f-9c06-992c23180414",
+      "source": "generated",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "food_allergy",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "5780b82b-0419-ffe6-fde4-a2fcce9695f5",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "57efda89-b582-bb08-8a2d-e06b2c184bfc",
+      "source": "sample",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "5dae1e9e-46fb-5537-54f4-8837a56dd3d5",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "6095681c-dfc1-8f20-411c-42cef37189fa",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "65cbad6a-eb9d-420e-9bab-b4f9c6aab7db",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "6923f921-fd64-7f26-98c1-e2c545b743fd",
+      "source": "generated",
+      "strata": [
+        "diabetes"
+      ],
+      "primary": "diabetes"
+    },
+    {
+      "patient_id": "6a703775-432b-ba7d-d53a-c4d7bb0f5b58",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "6c4283c9-228b-2774-7d25-fbb5a14bdc1b",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "6d04a400-ad21-5951-b092-c14b6358d4c5",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "7132442e-b0b9-a886-e28d-f83700e5a3bd",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "716c6d0a-2a5d-0aaa-9ced-312ed6a943da",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "765bd034-e8d7-f102-eb1c-4b7792fc5684",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "7af6b271-f16d-21e1-882a-7bff71005a7b",
+      "source": "sample",
+      "strata": [
+        "diabetes",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "82623afe-e51c-e02e-1dd7-15a4394d0e92",
+      "source": "sample",
+      "strata": [
+        "food_allergy",
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "83093df7-a1e4-b827-72e6-c6d604fd7748",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "87f7ad7b-85f9-d26d-5a41-9933f4039331",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "887e4b4e-a3e1-b573-4a16-38386d3e0b88",
+      "source": "sample",
+      "strata": [
+        "food_allergy"
+      ],
+      "primary": "food_allergy"
+    },
+    {
+      "patient_id": "88db9fa3-255b-030c-2736-c9219ace87ac",
+      "source": "generated",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "8b9df7af-24b3-66ee-afeb-2734ebcbd33c",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "8c5b83b2-737e-46cf-953b-414e07ed78e7",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "8ece28c6-f931-b0e0-5c0e-72b8d8d3c86a",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "955dbe2e-6cad-28a6-5b0c-79a3f657c4e8",
+      "source": "generated",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "97e39468-6488-ca8f-fac2-235a80b4dcf7",
+      "source": "sample",
+      "strata": [
+        "food_allergy"
+      ],
+      "primary": "food_allergy"
+    },
+    {
+      "patient_id": "9a3814bb-f5b0-05f3-928e-fe6640d5aa2a",
+      "source": "sample",
+      "strata": [
+        "food_allergy"
+      ],
+      "primary": "food_allergy"
+    },
+    {
+      "patient_id": "9c26986a-d81d-62f0-ee7a-ab8bb6377434",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "9c5b16dc-8a47-896c-4d74-f96f8c98891b",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "a406f356-c8b4-54ad-e79c-54a5e15ffc19",
+      "source": "sample",
+      "strata": [
+        "food_allergy"
+      ],
+      "primary": "food_allergy"
+    },
+    {
+      "patient_id": "a45aa142-d1e9-d944-f2c7-05015c90762d",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "a5816bea-ad10-431f-1281-47baa2cf249b",
+      "source": "sample",
+      "strata": [
+        "food_allergy"
+      ],
+      "primary": "food_allergy"
+    },
+    {
+      "patient_id": "a6d0791e-4c15-58e6-c30a-ec25e285ace9",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "a7793f06-5e65-d1c3-5eeb-6aa1cb24df73",
+      "source": "generated",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "ad48e669-959c-b6f8-8ddb-dda7a6d37473",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "adec1419-cf81-6640-abe6-cac7c0c1b9d4",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "afb99eee-0bd5-8853-8a32-fad74da7b103",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "b47b258f-735b-a8c0-16e3-b100a13ac7bd",
+      "source": "generated",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "b50c66af-4d1c-7987-03d7-e5b65fdf880f",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "babc4b97-d859-0fe4-2874-fb6fe493ae6b",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "bca1691f-8839-1d66-ed01-471134d55738",
+      "source": "sample",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "bd4e49cb-391b-d08a-c7ab-b585e7bd5758",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "c1453af6-5763-f853-7da2-a16adee55469",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "c823813e-2588-4814-6eb4-824974791862",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "ca443842-f546-d34c-a69b-b044cfe007d9",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "cbd1dd48-89c3-3fdb-434e-3f0802738abf",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "cc3eac4a-34a7-9a15-1522-8087135631b7",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "ccaa0537-4e7f-99d8-8b79-c7c94c749579",
+      "source": "sample",
+      "strata": [
+        "food_allergy"
+      ],
+      "primary": "food_allergy"
+    },
+    {
+      "patient_id": "ce86c570-e9d0-bc6d-b4ec-4997fe03d590",
+      "source": "generated",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "d21f2794-014b-c66b-3688-888382ab7434",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "d21fc5fa-6dc5-8058-1d11-5fd631086b72",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "d309f605-948b-962f-ca72-878ce8b8d154",
+      "source": "sample",
+      "strata": [
+        "hypertension"
+      ],
+      "primary": "hypertension"
+    },
+    {
+      "patient_id": "d537941e-1fb7-9868-939a-a26252da8be1",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "dc77ef0d-1846-94fd-cce5-a7a555009d17",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "e142981b-3577-4115-584d-d9676df7fcff",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "e34a6a5e-1d77-508d-8be3-8816e9df8046",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "e503e9b3-d149-653b-92df-ca4a8cb68e16",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "e7c068bb-6d29-27d3-0b8b-ec0406cc91b7",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "e9cefaa0-33c4-ddf2-e2b1-c4b328fe71cf",
+      "source": "generated",
+      "strata": [
+        "ckd",
+        "diabetes",
+        "hypertension",
+        "multi"
+      ],
+      "primary": "multi"
+    },
+    {
+      "patient_id": "edb5a2e3-a981-d33c-5eac-1ca8adde82d3",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "ee4b7339-ca58-b6af-c199-04b6d5761c73",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "f30304ab-8e45-1cbd-9833-cadf568373b4",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "f5749532-3295-ad01-d9b5-932c997e7a01",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "f6359fe4-4340-2820-8b76-593a45f5186c",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "f6745f8a-8107-443e-8946-3e6329d20408",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "f67eaca3-2366-7ee2-6887-a5bd449b54a6",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "f870c432-0887-125e-f778-cf5110d3de1d",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    },
+    {
+      "patient_id": "fd0d7b3a-307d-07b8-9d7e-2424e1feb9e4",
+      "source": "sample",
+      "strata": [],
+      "primary": "none"
+    }
+  ]
+}

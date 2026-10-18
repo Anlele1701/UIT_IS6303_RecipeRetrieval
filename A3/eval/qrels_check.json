@@ -1,0 +1,8 @@
+{
+  "what": "Round 1 pairs (Hybrid semantic top 5) re-judged blind with the round 2 prompt: 60 relevant and 60 not, seed 603",
+  "pairs": 120,
+  "agree": 110,
+  "kappa": 0.83,
+  "relevant_kept": 55,
+  "not_relevant_kept": 55
+}

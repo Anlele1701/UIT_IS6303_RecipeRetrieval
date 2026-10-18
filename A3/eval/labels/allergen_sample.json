@@ -1,0 +1,130 @@
+{
+  "size": 200,
+  "holdout": 50,
+  "seeds": {
+    "sample": 42,
+    "holdout": 43,
+    "order": 44
+  },
+  "recipes": 32719,
+  "per_category": {
+    "251": {
+      "recipes": 1,
+      "sampled": 0,
+      "holdout": 0
+    },
+    "515": {
+      "recipes": 1,
+      "sampled": 0,
+      "holdout": 0
+    },
+    "appetizers-and-snacks": {
+      "recipes": 3895,
+      "sampled": 24,
+      "holdout": 6
+    },
+    "bbq-grilling": {
+      "recipes": 2,
+      "sampled": 0,
+      "holdout": 0
+    },
+    "bread": {
+      "recipes": 2647,
+      "sampled": 16,
+      "holdout": 4
+    },
+    "breakfast-and-brunch": {
+      "recipes": 1344,
+      "sampled": 8,
+      "holdout": 2
+    },
+    "desserts": {
+      "recipes": 3865,
+      "sampled": 24,
+      "holdout": 6
+    },
+    "drinks": {
+      "recipes": 402,
+      "sampled": 3,
+      "holdout": 1
+    },
+    "everyday-cooking": {
+      "recipes": 543,
+      "sampled": 3,
+      "holdout": 1
+    },
+    "fruits-and-vegetables": {
+      "recipes": 254,
+      "sampled": 2,
+      "holdout": 0
+    },
+    "holidays-and-events": {
+      "recipes": 11,
+      "sampled": 0,
+      "holdout": 0
+    },
+    "ingredients": {
+      "recipes": 2,
+      "sampled": 0,
+      "holdout": 0
+    },
+    "main-dish": {
+      "recipes": 2938,
+      "sampled": 18,
+      "holdout": 4
+    },
+    "meat-and-poultry": {
+      "recipes": 1873,
+      "sampled": 11,
+      "holdout": 3
+    },
+    "pasta-and-noodles": {
+      "recipes": 117,
+      "sampled": 1,
+      "holdout": 0
+    },
+    "salad": {
+      "recipes": 2803,
+      "sampled": 17,
+      "holdout": 4
+    },
+    "seafood": {
+      "recipes": 1325,
+      "sampled": 8,
+      "holdout": 2
+    },
+    "side-dish": {
+      "recipes": 3179,
+      "sampled": 19,
+      "holdout": 5
+    },
+    "soups-stews-and-chili": {
+      "recipes": 2628,
+      "sampled": 16,
+      "holdout": 4
+    },
+    "trusted-brands-recipes-and-tips": {
+      "recipes": 1203,
+      "sampled": 7,
+      "holdout": 2
+    },
+    "uncategorized": {
+      "recipes": 596,
+      "sampled": 4,
+      "holdout": 1
+    },
+    "world-cuisine": {
+      "recipes": 3090,
+      "sampled": 19,
+      "holdout": 5
+    }
+  },
+  "categories_with_no_sample": [
+    "251",
+    "515",
+    "bbq-grilling",
+    "holidays-and-events",
+    "ingredients"
+  ],
+  "sha256": "57fb493c1e716d049180cccb24455eb61b51860cd52ea4d00b189322cc5c5eec"
+}

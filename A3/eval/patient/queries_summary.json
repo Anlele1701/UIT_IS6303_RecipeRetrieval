@@ -1,0 +1,30 @@
+{
+  "ran_at": "2026-10-17T23:23:32",
+  "seed": 42,
+  "paraphrase_model": "llama3.1:8b",
+  "patients": 100,
+  "questions": 300,
+  "by_type": {
+    "no_constraint": 100,
+    "added_constraint": 100,
+    "needs_context": 100
+  },
+  "by_lang": {
+    "vi": 151,
+    "en": 149
+  },
+  "by_type2_variant": {
+    "diet": 34,
+    "exclude": 45,
+    "time": 21
+  },
+  "paraphrase_kept": 208,
+  "unanswerable": 0,
+  "log": {
+    "type1_unanswerable": 0,
+    "type2_unanswerable": 0
+  },
+  "v7_min_recipes": 3584,
+  "manual_check_patients": 20,
+  "written_by_people": 0
+}
