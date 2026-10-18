@@ -735,3 +735,7 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 - M7 ở route `patient_info` chuyển sang câu trả lời do code sinh quá nhiều: 5/10 ở P-Vectorless coded. Có hai nguyên nhân:
   - (a) `VI_WORDS` có chữ "the" (tức "thế"), nên câu trả lời tiếng Anh bị coi là tiếng Việt;
   - (b) số liệu thô nhiều chữ số thập phân (`7.45597543353983`) mà mô hình làm tròn thành `7.46`, nên bị coi là số lạ.
+- **Quyết định (Thy, 18/10/2026): không sửa (a) và (b).** Ghi vào phần hạn chế của báo cáo:
+  - tỉ lệ câu trả lời do code sinh ở route `patient_info` bị đẩy lên vì báo động giả. Câu trả lời tiếng Anh có hai chữ "the" bị coi là tiếng Việt, và số làm tròn từ số liệu thô bị coi là số lạ;
+  - khi đó câu trả lời là `values_answer`, liệt kê đúng giá trị của hồ sơ, nên an toàn, chỉ kém tự nhiên;
+  - mỗi lượt như vậy có `fallback` và cờ M7 trong `turns.jsonl`, nên báo cáo tách được số do lỗi (a) (`lang:*`) và (b) (`number:*`).
