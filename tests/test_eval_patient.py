@@ -63,3 +63,13 @@ def test_named_ingredients_match_whole_words_only():
     lines = ["2 cups chicken broth", "3 large leeks, sliced", "1 cup chopped onions"]
     assert ep.names_in(lines, ["clam juice", "leek", "onion", "garlic"]) == ["leek", "onion"]
     assert ep.names_in(["1 tbsp scallion"], ["scallop"]) == []
+
+
+def test_s_profile_runs_once_and_stands_for_both_inputs():
+    t = [{"qid": "q1", "preset": "S-Profile", "input": "coded"}, {"qid": "q1", "preset": "S-Profile", "input": "narrative", "old": 1},
+         {"qid": "q1", "preset": "P-Vector", "input": "narrative"}]
+    out = ep.shared_turns(t)
+    narr = [x for x in out if x["preset"] == "S-Profile" and x["input"] == "narrative"]
+    assert len(out) == 3 and narr == [{"qid": "q1", "preset": "S-Profile", "input": "narrative", "shared_from": "coded"}]
+    only_narrative = [{"qid": "q1", "preset": "S-Profile", "input": "narrative"}]
+    assert ep.shared_turns(only_narrative) == only_narrative

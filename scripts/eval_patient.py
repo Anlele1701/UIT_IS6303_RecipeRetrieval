@@ -6,7 +6,8 @@
     uv run scripts/eval_patient.py score eval/runs/<ts>/patient                    # re-score (after adjudication)
 
 `run` asks every question in a new session, once per preset and input mode (coded entries, or the narrative
-section tables; P-Direct reads codes, so it is N/A on the narrative), with the full pipeline (M1-M7), and
+section tables; P-Direct reads codes, so it is N/A on the narrative; S-Profile reads no record, so it runs
+on the coded input only and stands for both), with the full pipeline (M1-M7), and
 appends one line per turn to turns.jsonl. `score` reads turns.jsonl and the DB and writes metrics.json,
 per_query.csv and table.md:
 
@@ -50,6 +51,9 @@ PATIENT = ROOT / "eval" / "patient"
 PRESETS = ["P-Direct", "P-Vectorless", "P-Vectorless-Fixed", "P-Vector", "S-Profile"]
 INPUTS = ["coded", "narrative"]
 REFERENCE = "P-Vectorless"
+# Presets that read nothing of the record (profile off): the input mode cannot change a turn, so they run once on
+# the coded input and score() copies those turns into the narrative table (300 turns fewer, nothing lost)
+INPUT_FREE = {"S-Profile"}
 TYPES = ["food_allergy_substances", "conditions", "medications"]
 K = 5
 SEED = 42
@@ -157,7 +161,7 @@ def run(args) -> Path:
         "models": {"qu": config.QU_MODEL, "gen": config.GEN_MODEL, "embed": config.EMBED_MODEL,
                    "rerank": config.RERANK_MODEL, "checker": checker.CHECKER_MODEL},
         "inputs": inputs, "presets": presets, "limit": args.limit, "qids": [q["qid"] for q in questions],
-        "frozen": frozen["sha256"], "k": K,
+        "frozen": frozen["sha256"], "k": K, "input_free_presets": sorted(INPUT_FREE),
         "llm_cache": str(llm_log), "llm_cache_lines_at_start": _lines(llm_log)}
     sys.stdout.reconfigure(encoding="utf-8")
     with psycopg.connect(config.DATABASE_URL) as conn, httpx.Client(timeout=1800) as client:
@@ -165,7 +169,8 @@ def run(args) -> Path:
         settings["ruleset_version"] = bot.rules.version
         settings_path.write_text(json.dumps(settings, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         todo = [(q, n, i) for i in inputs for n in presets for q in questions
-                if not (i == "narrative" and n == "P-Direct") and (q["qid"], n, i) not in done]
+                if not (i == "narrative" and (n == "P-Direct" or (n in INPUT_FREE and "coded" in inputs)))
+                and (q["qid"], n, i) not in done]
         print(f"{len(todo)} turns to run ({len(done)} already in {turns_path})")
         with open(turns_path, "a", encoding="utf-8") as f:
             for j, (q, n, i) in enumerate(todo, 1):
@@ -184,6 +189,18 @@ def _lines(path: Path) -> int:
 
 
 # ---- metrics on one turn (pure: tested on hand-built data) ---------------------------------------------------
+
+def shared_turns(turns: list[dict]) -> list[dict]:
+    """The coded turns of an INPUT_FREE preset stand for its narrative turns too (marked shared_from: coded),
+    when the run has narrative turns at all; narrative turns of such a preset are then dropped (runs made before
+    this rule), so both tables read the same. A narrative-only run keeps its own."""
+    coded = {t["preset"] for t in turns if t["input"] == "coded" and t["preset"] in INPUT_FREE}
+    if not coded or not any(t["input"] == "narrative" for t in turns):
+        return turns
+    kept = [t for t in turns if not (t["input"] == "narrative" and t["preset"] in coded)]
+    return kept + [{**t, "input": "narrative", "shared_from": "coded"} for t in turns
+                   if t["input"] == "coded" and t["preset"] in coded]
+
 
 def prf(pred: list[str], gold: list[str]) -> dict:
     p, g = set(pred), set(gold)
@@ -289,7 +306,7 @@ def score(run_dir: Path, client=None) -> dict:
     from significance import interval
     from stats import rate
 
-    turns = read_jsonl(run_dir / "turns.jsonl")
+    turns = shared_turns(read_jsonl(run_dir / "turns.jsonl"))
     qs = {q["qid"]: q for q in read_jsonl(PATIENT / "queries.jsonl")}
     gold = {g["patient_id"]: g for g in read_jsonl(PATIENT / "gold.jsonl")}
     rs = rules.load_rules()
@@ -518,7 +535,8 @@ def render(metrics: dict) -> str:
             + ", ".join(f"{k} {v}" for k, v in ch["by_status"].items())
             + f". Mục mới vào hàng duyệt mù `{metrics['queue']}`: {metrics['queue_new']} (pending tính là vi phạm).",
             "Dị ứng và chế độ ăn do bộ kiểm độc lập chấm; nguyên liệu có tên (từ hồ sơ hoặc hội thoại) so khớp nguyên "
-            "từ trên dòng nguyên liệu thô; giới hạn thời gian đọc cột total_minutes; dinh dưỡng đọc cột dinh dưỡng.", ""]
+            "từ trên dòng nguyên liệu thô; giới hạn thời gian đọc cột total_minutes; dinh dưỡng đọc cột dinh dưỡng.",
+            "S-Profile không đọc hồ sơ nên chỉ chạy ở chế độ coded; dòng narrative của nó dùng chung các lượt đó.", ""]
     return "\n".join(out)
 
 
