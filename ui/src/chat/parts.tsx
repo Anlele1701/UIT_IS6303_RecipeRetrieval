@@ -21,8 +21,10 @@ export function AnswerText({ text, onRecipe, onNode }: {
         )
         const h = /^\[H:([^\]]+)\]$/.exec(part)
         if (h) return (
-          <button key={i} type="button" onClick={() => onNode(h[1])} title="Mở mục này trong hồ sơ"
-            className="mx-0.5 rounded bg-dense/12 px-1 text-xs font-semibold text-dense hover:bg-dense/20">hồ sơ: {h[1]}</button>
+          <button key={i} type="button" onClick={() => onNode(h[1])} title={`Mở mục ${h[1]} trong hồ sơ`}
+            className="mx-0.5 rounded bg-dense/12 px-1 text-xs font-semibold text-dense hover:bg-dense/20">
+            hồ sơ{h[1].startsWith('patient:') ? '' : `: ${h[1]}`}
+          </button>
         )
         if (part.startsWith('**') && part.endsWith('**')) return <strong key={i}>{part.slice(2, -2)}</strong>
         return <span key={i}>{part}</span>
@@ -268,10 +270,20 @@ export function RecipeModal({ recipe, onClose }: { recipe: RecipeDetail | 'loadi
   )
 }
 
+const short = (v: unknown) => {
+  const n = Number(v)
+  return typeof v === 'string' && v.trim() !== '' && !Number.isNaN(n) ? String(Math.round(n * 100) / 100) : String(v)
+}
+
+/** One allow-listed fact in words; a lab panel lists its observations as "name: value unit". */
 function factLine(f: Record<string, unknown>): string {
-  return Object.entries(f).filter(([, v]) => v != null && v !== '' && !(Array.isArray(v) && !v.length))
-    .map(([k, v]) => `${k}: ${Array.isArray(v) ? v.map(x => (typeof x === 'object' ? JSON.stringify(x) : String(x))).join('; ') : String(v)}`)
+  const obs = Array.isArray(f.observations) ? (f.observations as Record<string, unknown>[]) : null
+  const head = Object.entries(f).filter(([k, v]) => k !== 'observations' && v != null && v !== '' && !(Array.isArray(v) && !v.length))
+    .map(([k, v]) => `${k}: ${Array.isArray(v) ? v.map(String).join('; ') : short(v)}`)
     .join(' · ')
+  if (!obs?.length) return head
+  const lines = obs.map(o => `${String(o.display ?? '?').split(' [')[0].split(' in ')[0]}: ${short(o.value)}${o.unit ? ` ${o.unit}` : ''}`)
+  return [head, ...lines.map(l => `  ${l}`)].join('\n')
 }
 
 /** The record tree as a model sees it (prompt views only), with the node an [H:] citation named opened. */
@@ -291,7 +303,7 @@ export function TreeDrawer({ nodes, focus, onClose }: { nodes: TreeNode[] | 'loa
                 </summary>
                 {n.facts.length === 0 ? <p className="mt-1 text-xs text-muted">Không có mục nào được phép hiển thị.</p> : (
                   <ul className="mt-1.5 flex flex-col gap-1 text-xs text-ink-soft">
-                    {n.facts.slice(0, 60).map((f, i) => <li key={i}>{factLine(f)}</li>)}
+                    {n.facts.slice(0, 60).map((f, i) => <li key={i} className="whitespace-pre-wrap">{factLine(f)}</li>)}
                     {n.facts.length > 60 && <li className="text-muted">… và {n.facts.length - 60} mục khác</li>}
                   </ul>
                 )}

@@ -245,6 +245,7 @@ export default function ChatPage() {
                   ))}
                   <div className="max-w-[90%] text-sm text-ink">
                     {t.text ? <AnswerText text={t.text} onRecipe={showRecipe} onNode={openNode} />
+                      : t.done ? <span className="text-muted">Cấu hình này chỉ truy hồi công thức, không sinh câu trả lời (ví dụ B0).</span>
                       : !t.error && <span className="text-muted">{busy && i === turns.length - 1 ? 'Đang trả lời…' : ''}</span>}
                     {t.error && <p role="alert" className="mt-2 rounded-md border border-danger/40 bg-danger/8 px-3 py-2 text-danger">{t.error}</p>}
                     {t.done && (
