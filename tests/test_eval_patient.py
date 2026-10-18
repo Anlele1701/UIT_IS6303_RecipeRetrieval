@@ -57,3 +57,9 @@ def test_a_changed_frozen_set_stops_the_run(monkeypatch):
     monkeypatch.setattr(fz, "digests", lambda: {"queries.jsonl": "x", "gold.jsonl": "y"})
     with pytest.raises(SystemExit):
         ep.check_frozen()
+
+
+def test_named_ingredients_match_whole_words_only():
+    lines = ["2 cups chicken broth", "3 large leeks, sliced", "1 cup chopped onions"]
+    assert ep.names_in(lines, ["clam juice", "leek", "onion", "garlic"]) == ["leek", "onion"]
+    assert ep.names_in(["1 tbsp scallion"], ["scallop"]) == []

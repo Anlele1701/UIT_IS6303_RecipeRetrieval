@@ -138,7 +138,9 @@ def run(args) -> Path:
     import httpx
     import psycopg
 
+    import checker
     from api.pipeline import orchestrator as orch
+    from api.pipeline.llm import CACHE as llm_log
     from api.rerank import Reranker
 
     frozen = check_frozen()
@@ -153,11 +155,10 @@ def run(args) -> Path:
         "started": datetime.now().isoformat(timespec="seconds"), "machine": machine(), "git": git_commit(),
         "seed": config.SEED, "sample_seed": SEED, "per_meal_fraction": config.PER_MEAL_FRACTION,
         "models": {"qu": config.QU_MODEL, "gen": config.GEN_MODEL, "embed": config.EMBED_MODEL,
-                   "rerank": config.RERANK_MODEL, "checker": config.CHECKER_MODEL},
+                   "rerank": config.RERANK_MODEL, "checker": checker.CHECKER_MODEL},
         "inputs": inputs, "presets": presets, "limit": args.limit, "qids": [q["qid"] for q in questions],
         "frozen": frozen["sha256"], "k": K,
-        "llm_cache_lines_at_start": _lines(ROOT / "data" / "cache" / "llm.jsonl")}
-    llm_log = ROOT / "data" / "cache" / "llm.jsonl"
+        "llm_cache": str(llm_log), "llm_cache_lines_at_start": _lines(llm_log)}
     sys.stdout.reconfigure(encoding="utf-8")
     with psycopg.connect(config.DATABASE_URL) as conn, httpx.Client(timeout=1800) as client:
         bot = orch.Assistant(conn, client, Reranker().score)
@@ -265,10 +266,16 @@ def truth(conn, rs, pid: str, cache: dict) -> dict:
 
 
 def checker_constraints(t: dict, dialogue: dict) -> tuple[list[str], list[str]]:
-    record = [f"allergen:{a}" for a in t["allergens"]] + [f"ingredient:{i}" for i in t["ingredients"]]
-    talk = ([f"diet:{dialogue['diet']}"] if dialogue.get("diet") else []) + \
-        [f"ingredient:{i}" for i in dialogue.get("ingredients_exclude", [])]
-    return record, talk
+    """What the independent checker judges: allergen groups (record) and the diet (dialogue), as in M2. Named
+    ingredients are matched in the raw lines instead (names_in): asked one by one, the checker read "chicken
+    broth" as "clam juice" (MV4c smoke run)."""
+    return [f"allergen:{a}" for a in t["allergens"]], [f"diet:{dialogue['diet']}"] if dialogue.get("diet") else []
+
+
+def names_in(lines: list[str], names: list[str]) -> list[str]:
+    """Named ingredients found as whole words (plural s/es allowed) in a Recipe's raw ingredient lines."""
+    text = " | ".join(lines).lower()
+    return [n for n in names if re.search(rf"\b{re.escape(n.lower())}(e?s)?\b", text)]
 
 
 def score(run_dir: Path, client=None) -> dict:
@@ -287,7 +294,8 @@ def score(run_dir: Path, client=None) -> dict:
     gold = {g["patient_id"]: g for g in read_jsonl(PATIENT / "gold.jsonl")}
     rs = rules.load_rules()
     narrative_tree = set(narrative.FIXED_IDS) | {nid for _, nid, k in narrative.SECTIONS if k == "context"}
-    rows, verdicts, cache = [], {}, {}
+    settings = json.loads((run_dir / "settings.json").read_text(encoding="utf-8"))
+    rows, verdicts, cache, lines = [], {}, {}, {}
     seen: set[tuple] = set()
     with psycopg.connect(config.DATABASE_URL) as conn, (client or httpx.Client(timeout=900)) as http:
         ccache = checker.load_cache()
@@ -318,41 +326,50 @@ def score(run_dir: Path, client=None) -> dict:
                 r["node_hit"] = int(node_hit(pp.get("nodes_read", []), q.get("relevant_nodes", []), t["input"]))
             tree = narrative_tree | {f"patient:{t['patient_id']}"} if t["input"] == "narrative" else tr["tree"]
             r.update(h_citations(t["answer"], tree, set(pp.get("nodes_read", []))))
-            record, talk = checker_constraints(tr, q["dialogue_constraints"])
+            dc = q["dialogue_constraints"]
+            record, talk = checker_constraints(tr, dc)
+            mt = dc.get("max_total_minutes")
+            mins = dict(conn.execute("SELECT id, total_minutes FROM recipe WHERE id = ANY(%s)", [top]).fetchall()) \
+                if mt and top else {}
+            hits = {}  # per Recipe: broke a named ingredient of the record / of the dialogue (or its time limit)
             for rid in top:
-                todo = record + talk
-                if todo:
-                    for c, v in checker.check(conn, http, rid, todo, ccache).items():
+                if record + talk:
+                    for c, v in checker.check(conn, http, rid, record + talk, ccache).items():
                         verdicts[(rid, c)] = v
-            r["_record"], r["_talk"], r["_top"] = record, talk, top
+                if rid not in lines:
+                    lines[rid] = adjudicate.raw_lines(conn, rid)
+                hits[rid] = {"record": bool(names_in(lines[rid], tr["ingredients"])),
+                             "talk": bool(names_in(lines[rid], dc.get("ingredients_exclude", [])))
+                             or bool(mt and mins.get(rid) is not None and mins[rid] > mt)}
+            r["_record"], r["_talk"], r["_top"], r["_hits"] = record, talk, top, hits
+            r["has_record_constraint"] = bool(tr["allergens"] or tr["ingredients"])
+            r["has_dialogue_constraint"] = bool(dc)
             if tr["limits"] and top:
                 vals = nutrient_values(conn, top, list(tr["limits"]))
                 nv = nutrition_viol(top, tr["limits"], vals)
                 r.update(nutr_viol=nv["viol"], nutr_unknown=nv["unknown"], safe_nutrition=int(nv["viol"] == 0),
                          cvr_nutrition=nv["viol"] / len(top))
-            mt = q["dialogue_constraints"].get("max_total_minutes")
-            if mt and top:
-                mins = dict(conn.execute("SELECT id, total_minutes FROM recipe WHERE id = ANY(%s)", [top]).fetchall())
-                r["time_viol"] = sum(1 for rid in top if mins.get(rid) is not None and mins[rid] > mt)
             rows.append(r)
         scored = adjudicate.score_all(conn, verdicts)
-        queued = adjudicate.write_queue(conn, scored)
+        queue = run_dir / "checker_queue.csv" if settings.get("limit") else adjudicate.QUEUE  # smoke runs stay out
+        queued = adjudicate.write_queue(conn, scored, queue)
     by = {(s.recipe_id, s.constraint): s for s in scored}
     for r in rows:
-        for part in ("record", "talk"):
+        top, hits = r.pop("_top"), r.pop("_hits")
+        for part, name, has in (("record", "allergen", "has_record_constraint"),
+                                ("talk", "dialogue", "has_dialogue_constraint")):
             cs = r.pop(f"_{part}")
-            if not cs or not r["_top"]:
+            if not r[has] or not top:
                 continue
-            raw = sum(any(by[(rid, c)].raw for c in cs) for rid in r["_top"])
-            adj = sum(any(by[(rid, c)].adjudicated for c in cs) for rid in r["_top"])
-            name = "allergen" if part == "record" else "dialogue"  # time limits: the column, time_viol
+            raw = sum(hits[rid][part] or any(by[(rid, c)].raw for c in cs) for rid in top)
+            adj = sum(hits[rid][part] or any(by[(rid, c)].adjudicated for c in cs) for rid in top)
             r.update({f"viol_{name}_raw": raw, f"viol_{name}_adj": adj, f"safe_{name}_raw": int(raw == 0),
-                      f"safe_{name}_adj": int(adj == 0), f"cvr_{name}_raw": raw / len(r["_top"]),
-                      f"cvr_{name}_adj": adj / len(r["_top"])})
-        r.pop("_top")
+                      f"safe_{name}_adj": int(adj == 0), f"cvr_{name}_raw": raw / len(top),
+                      f"cvr_{name}_adj": adj / len(top)})
     metrics = {"all": summarize(rows, rate, interval), "sample_only": summarize(
         [r for r in rows if r["source"] == "sample"], rate, interval),
-        "checker": adjudicate.summary(scored, len({rid for rid, _ in verdicts})), "queue_new": queued}
+        "checker": adjudicate.summary(scored, len({rid for rid, _ in verdicts})), "queue_new": queued,
+        "queue": str(queue.relative_to(ROOT)) if queue.is_relative_to(ROOT) else str(queue)}
     write_outputs(run_dir, rows, metrics)
     return metrics
 
@@ -384,7 +401,6 @@ def summarize(rows: list[dict], rate, interval) -> dict:
             vals = [r[m] for r in rs_ if r.get(m) is not None]
             s[m] = sum(vals) / len(vals) if vals else None
         s["nutr_unknown_recipes"] = sum(r.get("nutr_unknown") or 0 for r in rs_)
-        s["time_viol_recipes"] = sum(r.get("time_viol") or 0 for r in rs_)
         s["h"] = {k: sum(r[k] for r in rs_) for k in ("h_cites", "h_valid", "h_read")}
         s["fallback_by_route"] = {rt: rate(sum(r["fallback"] for r in rs_ if r["route"] == rt),
                                            sum(r["route"] == rt for r in rs_))
@@ -400,7 +416,7 @@ def summarize(rows: list[dict], rate, interval) -> dict:
 
 def _mean(xs):
     xs = [x for x in xs if x is not None]
-    return round(sum(xs) / len(xs), 1) if xs else None
+    return round(sum(xs) / len(xs), 1) if xs else "–"
 
 
 def comparisons(rows: list[dict]) -> dict:
@@ -500,7 +516,9 @@ def render(metrics: dict) -> str:
     ch = metrics["checker"]
     out += ["## Bộ kiểm độc lập", "", f"Công thức được kiểm: {ch['recipes']}. Trạng thái các phán quyết \"yes\": "
             + ", ".join(f"{k} {v}" for k, v in ch["by_status"].items())
-            + f". Mục mới vào hàng duyệt mù: {metrics['queue_new']} (pending tính là vi phạm).", ""]
+            + f". Mục mới vào hàng duyệt mù `{metrics['queue']}`: {metrics['queue_new']} (pending tính là vi phạm).",
+            "Dị ứng và chế độ ăn do bộ kiểm độc lập chấm; nguyên liệu có tên (từ hồ sơ hoặc hội thoại) so khớp nguyên "
+            "từ trên dòng nguyên liệu thô; giới hạn thời gian đọc cột total_minutes; dinh dưỡng đọc cột dinh dưỡng.", ""]
     return "\n".join(out)
 
 

@@ -6,6 +6,7 @@ JSON calls (M1); generation is streamed and not cached, since the UI shows it li
 
 import hashlib
 import json
+import os
 import threading
 from collections.abc import Iterator
 from pathlib import Path
@@ -14,7 +15,8 @@ import httpx
 
 from .. import config
 
-CACHE = Path(__file__).resolve().parents[2] / "data" / "cache" / "llm.jsonl"
+# LLM_CACHE_FILE: another cache file, e.g. an empty one to time cold calls without touching the shared cache
+CACHE = Path(os.environ.get("LLM_CACHE_FILE") or Path(__file__).resolve().parents[2] / "data" / "cache" / "llm.jsonl")
 _lock = threading.Lock()
 _cache: dict[str, dict] | None = None
 
