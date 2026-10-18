@@ -631,7 +631,7 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 
 ---
 
-## MV4 – Đánh giá nhánh hồ sơ bệnh nhân (bắt đầu 17/10/2026)
+## MV4 – Đánh giá nhánh hồ sơ bệnh nhân (17–18/10/2026) · 🚦 đã duyệt 18/10/2026
 
 ### Quyết định đầu MV4 (Thy, 17/10/2026)
 - Viết code và chạy thử (khoảng 10 câu) trên CPU máy này. **Lần chạy đầy đủ do Thy chạy trên máy GPU** (`docs/run_mv4_gpu.md`).
@@ -687,7 +687,7 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
   - Norethindrone không có luật trong `drug_food.csv`, nên không vào prompt (`prompt_view`).
 - **Đóng băng** `eval/patient/queries.jsonl` và `gold.jsonl` (`eval/patient/frozen.json`; queries `efac0618…`, gold `4e2fbf8e…`). `make_patient_queries.py` từ chối chạy lại; test kiểm sha256.
 
-### MV4c – Baseline, chế độ narrative, `eval_patient.py`, chạy thử (18/10/2026) · 🚦 chờ duyệt
+### MV4c – Baseline, chế độ narrative, `eval_patient.py`, chạy thử (18/10/2026) · đã duyệt
 
 **Quyết định (Thy, 18/10/2026):** lần chạy đầy đủ chạy trên máy này (RTX 4060 Laptop, 8 GB), thay cho "máy GPU khác". Máy này có GPU và Ollama đã chạy trên GPU; nhận định "máy CPU" lúc lên kế hoạch là sai.
 
@@ -740,7 +740,7 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
   - khi đó câu trả lời là `values_answer`, liệt kê đúng giá trị của hồ sơ, nên an toàn, chỉ kém tự nhiên;
   - mỗi lượt như vậy có `fallback` và cờ M7 trong `turns.jsonl`, nên báo cáo tách được số do lỗi (a) (`lang:*`) và (b) (`number:*`).
 
-### MV4d – Lần chạy đầy đủ (18/10/2026) · chờ Thy gán nhãn hàng duyệt, rồi 🚦 gate MV4
+### MV4d – Lần chạy đầy đủ (18/10/2026) · đã duyệt
 - **V1c:** 2.359 tóm tắt LLM cho các nút ngữ cảnh của 120 bệnh nhân, 33 phút. Mục lục của V2 giờ dùng tóm tắt này; các lần chạy thử ở MV4c dùng tóm tắt template.
 - **Run** `eval/runs/20261018-132948/patient` (đã commit):
   - 2.400 lượt trên RTX 4060 Laptop, từ 13:29 đến 21:58 (đã gồm bước chấm);
@@ -794,3 +794,5 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
   - Wilcoxon (Holm) cho p từ 0,07 đến 0,30, vì phần lớn bệnh nhân có chênh lệch bằng 0;
   - bảng độ nhạy chỉ trên `sample` (26 bệnh nhân) cùng chiều, và chênh lệch lớn hơn.
 - **Vi phạm dị ứng duy nhất còn lại ở P-Vectorless** (cả P-Direct): pq103, R21159. Dòng "dry-roasted, unsalted peanuts" không được bộ gắn thẻ gắn `peanut` (món này chỉ có thẻ `sesame`). Đây là lỗi bỏ sót của bộ gắn thẻ ở M2, và mọi preset lọc theo thẻ đều chịu chung. Ghi vào phần hạn chế.
+
+**Gate MV4 (Thy, 18/10/2026): duyệt.** Số liệu chính thức là run `eval/runs/20261018-132948/patient` sau khi adjudicate (`b1f0c1a`). Bước tiếp theo là MV5, bắt đầu bằng plan mode.
