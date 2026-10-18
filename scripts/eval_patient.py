@@ -152,10 +152,18 @@ def run(args) -> Path:
     out.mkdir(parents=True, exist_ok=True)
     turns_path = out / "turns.jsonl"
     done = {(t["qid"], t["preset"], t["input"]) for t in read_jsonl(turns_path)} if turns_path.exists() else set()
-    questions = pick(read_jsonl(PATIENT / "queries.jsonl"), args.limit)
-    inputs, presets = args.input.split(","), args.presets.split(",")
     settings_path = out / "settings.json"
-    settings = json.loads(settings_path.read_text(encoding="utf-8")) if settings_path.exists() else {
+    if args.resume and settings_path.exists():  # carry on with the run's own questions, presets and inputs
+        settings = json.loads(settings_path.read_text(encoding="utf-8"))
+        by_qid = {q["qid"]: q for q in read_jsonl(PATIENT / "queries.jsonl")}
+        questions = [by_qid[i] for i in settings["qids"]]
+        inputs, presets = settings["inputs"], settings["presets"]
+        settings.setdefault("resumed", []).append(datetime.now().isoformat(timespec="seconds"))
+    else:
+        questions = pick(read_jsonl(PATIENT / "queries.jsonl"), args.limit)
+        inputs, presets = args.input.split(","), args.presets.split(",")
+        settings = None
+    settings = settings or {
         "started": datetime.now().isoformat(timespec="seconds"), "machine": machine(), "git": git_commit(),
         "seed": config.SEED, "sample_seed": SEED, "per_meal_fraction": config.PER_MEAL_FRACTION,
         "models": {"qu": config.QU_MODEL, "gen": config.GEN_MODEL, "embed": config.EMBED_MODEL,
