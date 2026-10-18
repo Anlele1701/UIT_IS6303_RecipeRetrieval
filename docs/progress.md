@@ -739,3 +739,34 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
   - tỉ lệ câu trả lời do code sinh ở route `patient_info` bị đẩy lên vì báo động giả. Câu trả lời tiếng Anh có hai chữ "the" bị coi là tiếng Việt, và số làm tròn từ số liệu thô bị coi là số lạ;
   - khi đó câu trả lời là `values_answer`, liệt kê đúng giá trị của hồ sơ, nên an toàn, chỉ kém tự nhiên;
   - mỗi lượt như vậy có `fallback` và cờ M7 trong `turns.jsonl`, nên báo cáo tách được số do lỗi (a) (`lang:*`) và (b) (`number:*`).
+
+### MV4d – Lần chạy đầy đủ (18/10/2026) · chờ Thy gán nhãn hàng duyệt, rồi 🚦 gate MV4
+- **V1c:** 2.359 tóm tắt LLM cho các nút ngữ cảnh của 120 bệnh nhân, 33 phút. Mục lục của V2 giờ dùng tóm tắt này; các lần chạy thử ở MV4c dùng tóm tắt template.
+- **Run** `eval/runs/20261018-132948/patient` (đã commit):
+  - 2.400 lượt trên RTX 4060 Laptop, từ 13:29 đến 21:58 (đã gồm bước chấm);
+  - 1.583 lượt đầu chạy với code `b0fd1da`. Lần chạy dừng ở pq084: một câu trả lời M6 lặp vô hạn (Ollama chạy với context shift), và bộ chặn prompt bắt được ở lần sinh lại;
+  - Thy duyệt giới hạn **2.048 token sinh ra cho M6** (`a209290`; không lượt nào trong 1.583 lượt trước vượt 1.231 token), rồi chạy tiếp 817 lượt bằng `--resume`. `settings.json` ghi cả hai commit. Không câu trả lời nào chạm giới hạn.
+- **Số liệu chính** (từ `table.md`; dị ứng tính trên 74 câu của 37 bệnh nhân có ràng buộc dị ứng hoặc nguyên liệu trong hồ sơ; phiếu pending đang tính là vi phạm):
+
+| Đầu vào | Preset | Recall dị ứng (bỏ sót ca/BN) | Safe@5 dị ứng adj | Safe@5 dinh dưỡng | Chọn nút đúng | Trả lời do code |
+|---|---|---|---|---|---|---|
+| coded | P-Direct | 100% (0/0) | 86% | 100% | 0% | 14% |
+| coded | **P-Vectorless** | 100% (0/0) | 86% | 100% | 78% | 8% |
+| coded | P-Vectorless-Fixed | 35% (41/12) | 81% | 96% | 87% | 8% |
+| coded | P-Vector | 14% (54/11) | 78% | 98% | 84% | 8% |
+| coded | S-Profile | – | 77% | 36% | – | 0% |
+| narrative | P-Vectorless | 86% (9/3) | 86% | 100% | – | 12% |
+| narrative | P-Vectorless-Fixed | 14% (54/12) | 81% | 94% | – | 11% |
+| narrative | P-Vector | 18% (52/12) | 81% | 94% | – | 9% |
+
+- **So sánh theo bệnh nhân** (bootstrap, Holm; kèm Wilcoxon, Holm):
+  - recall dị ứng, P-Vectorless hơn P-Vectorless-Fixed +0,69 và hơn P-Vector +0,82 ở coded, +0,69 ở narrative; p < 0,005 ở cả hai cách tính;
+  - Safe@5 dinh dưỡng hơn S-Profile +0,64 (p < 0,001);
+  - Safe@5 dinh dưỡng hơn P-Vectorless-Fixed +0,04 ở coded: p bootstrap 0,015, nhưng p Wilcoxon 0,78. Phần lớn bệnh nhân có chênh lệch bằng 0, và Wilcoxon (`zsplit`) xử lý số 0 rất thận trọng; báo cáo nêu cả hai;
+  - Safe@5 dị ứng: P-Vectorless hơn các baseline +0,05 đến +0,10, nhưng chưa có ý nghĩa sau Holm (37 bệnh nhân; còn 89 phiếu pending).
+- **Chọn nút đúng:** P-Vectorless 78%, thấp hơn P-Vectorless-Fixed (87%, p bootstrap 0,016) vì chỉ chọn tối đa 3 nút ngữ cảnh. Nhưng P-Vectorless-Fixed đổi lại recall dị ứng chỉ 35%.
+- **[H:]:** mọi trích dẫn đều trỏ vào nút có thật. Phần "không đọc" là các trích dẫn tới nút gốc `patient:<id>`.
+- **Chi phí** (lượt đầu của bệnh nhân): coded P-Vectorless 0 lời gọi LLM ở V1–V3; narrative P-Vectorless 2,1 lời gọi, đọc ~19.500 ký tự, V3 mất 16 giây; sang các lượt sau thì gần như toàn cache hit.
+- **Bộ kiểm độc lập:** 227 công thức. 15 phiếu "yes" bị loại vì bằng chứng do chính bộ kiểm đánh dấu là không hợp lệ; **89 phiếu đưa vào hàng duyệt mù** `eval/labels/checker_queue.csv`.
+
+**Cần Thy:** gán nhãn 89 phiếu vào `eval/labels/checker_adjudication.csv` (theo `docs/annotation_guide.md` mục 8). Sau đó chạy `uv run scripts/eval_patient.py score eval/runs/20261018-132948/patient` để có CVR adjudicated cuối cùng, rồi đến gate MV4.
