@@ -71,4 +71,4 @@ def test_v2_asks_the_independent_checker_not_the_tags():
     item = {"gold": {"intent": "search", "constraints": {**mt.empty_constraints(), "allergens_exclude": ["milk"]}},
             "dish_keyword": "soup"}
     res = mt.v2_fits(Conn(), check, item)
-    assert res == {"ok": True, "recipe_id": 2, "read": [1, 2]} and calls[0] == (1, ("allergen:milk",))
+    assert res == {"ok": True, "recipe_id": 2, "read": [1, 2], "errors": []} and calls[0] == (1, ("allergen:milk",))

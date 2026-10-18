@@ -321,13 +321,21 @@ def v2_fits(conn, check, item: dict) -> dict:
     sql, params = tag_sql(item["gold"], item.get("dish_keyword"))
     ids = [r for (r,) in conn.execute(sql + " LIMIT %s", params + [V2_RECIPES])]
     cons = checker_constraints(item["gold"])
-    read = []
+    read, errors = [], []
     for rid in ids:
-        verdicts = check(rid, cons) if cons else {}
+        verdicts = None
+        for _ in range(2):  # a checker call that times out is retried once, then that Recipe does not count
+            try:
+                verdicts = check(rid, cons) if cons else {}
+                break
+            except Exception as e:  # httpx timeouts, Ollama errors: logged in the item, never a silent pass
+                errors.append(f"R{rid}: {type(e).__name__}")
         read.append(rid)
+        if verdicts is None:
+            continue
         if all(v.contains == "no" for v in verdicts.values()):
-            return {"ok": True, "recipe_id": rid, "read": read}
-    return {"ok": False, "recipe_id": None, "read": read}
+            return {"ok": True, "recipe_id": rid, "read": read, "errors": errors}
+    return {"ok": False, "recipe_id": None, "read": read, "errors": errors}
 
 
 def v2_none(conn, item: dict) -> dict:
@@ -458,6 +466,9 @@ def main():
             sets[name] = trimmed
             flow["sets"][name] = {"generated": len(items), "rejected": {k: counts.get(k, 0) for k in ("V1", "V2", "V3", "V4", "V5")},
                                   "kept": len(kept), "trimmed_to_target": len(kept) - len(trimmed), "candidates": len(trimmed)}
+            errs = sum(len((it.get("v2") or {}).get("errors", [])) for it in items)
+            if errs:  # checker calls that failed twice: those Recipes did not count for V2
+                flow["sets"][name]["v2_checker_errors"] = errs
             if name == "t2":
                 flow["sets"][name]["paraphrased"] = sum(bool(it.get("paraphrased")) for it in trimmed)
                 flow["sets"][name]["by_lang"] = dict(Counter(it["lang"] for it in trimmed))
