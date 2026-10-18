@@ -686,3 +686,50 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
   - Thuốc dùng một lần có ngày kết thúc `UNK` (Alteplase, fentanyl…) được tính "đang dùng" theo quy tắc 2.2 của đặc tả. Đây là hạn chế của quy tắc (ảnh hưởng độ đo trích thuốc, không ảnh hưởng ràng buộc). Ghi vào mục 4.6.
   - Norethindrone không có luật trong `drug_food.csv`, nên không vào prompt (`prompt_view`).
 - **Đóng băng** `eval/patient/queries.jsonl` và `gold.jsonl` (`eval/patient/frozen.json`; queries `efac0618…`, gold `4e2fbf8e…`). `make_patient_queries.py` từ chối chạy lại; test kiểm sha256.
+
+### MV4c – Baseline, chế độ narrative, `eval_patient.py`, chạy thử (18/10/2026) · 🚦 chờ duyệt
+
+**Đã làm**
+- `api/patient/narrative.py`: chế độ đầu vào narrative. Mỗi section của bảng `<text>` là một nút (`narrative.*`). Không có mã hay `statusCode`. Các dòng P7 bị bỏ (dựa vào cột Code) trước khi văn bản đến mô hình. Chế độ này chỉ dùng khi đánh giá.
+- `api/patient/baselines.py`:
+  - qwen trích ràng buộc theo JSON schema (dị ứng thực phẩm, bệnh, thuốc đang dùng). Văn bản dài được đọc từng phần 12.000 ký tự rồi gộp kết quả. Mô tả được tra mã qua một từ điển lấy từ mọi file hồ sơ.
+  - P-Vector: chunk 8 dòng, embed bằng nomic, lấy top 6 theo câu hỏi.
+  - P-Vectorless-Fixed: mô hình chọn trong mọi nút. Prompt ghi rõ nút không được chọn thì không được đọc.
+- Orchestrator chạy đủ 5 preset × 2 chế độ đầu vào. P-Direct trên narrative = N/A. S-Profile không đọc hồ sơ nên chỉ chạy ở chế độ coded và dùng chung kết quả cho bảng narrative. Tổng **2.400 lượt** cho lần chạy đầy đủ.
+- `scripts/eval_patient.py`:
+  - hai lệnh `run` (có `--resume`, dùng lại thiết lập trong `settings.json`) và `score`; tự kiểm bộ câu đã đóng băng;
+  - độ đo: trích P/R/F1 và số ca dị ứng bỏ sót; chọn nút đúng (chỉ chế độ coded); chi phí; CVR@5 và Safe@5 theo dị ứng, dinh dưỡng và hội thoại (raw và adjudicated); [H:]; câu trả lời do code sinh;
+  - bootstrap và Wilcoxon theo bệnh nhân, Holm trong từng họ; bảng độ nhạy chỉ trên `sample`;
+  - lần chạy có `--limit` ghi hàng duyệt vào thư mục run, không ghi vào `eval/labels/`.
+- `docs/run_mv4_gpu.md`: hướng dẫn chạy đầy đủ.
+
+**Lỗi tìm thấy khi chạy thử, đã sửa** (mục 2, 5, 6 và 7 sửa code MV3; Thy duyệt 18/10)
+1. Bộ kiểm LLM, khi được hỏi từng nguyên liệu nhuyễn thể một, đọc "chicken broth" thành "clam juice". Nguyên liệu có tên giờ được chấm bằng so khớp nguyên từ trên dòng nguyên liệu thô.
+2. **Ollama giữ tối đa nửa `num_ctx` cho prompt và bỏ phần đầu (system prompt) mà không báo lỗi.** Log ghi 46 prompt bị cắt, lớn nhất 178.004 token. Trong 100 bệnh nhân của P8 có 28 người vượt mức ở route `patient_info` (coded) và 14 người vượt mức ở bước trích narrative. Cách sửa:
+   - `llm.py` từ chối prompt chắc chắn quá dài, và báo `PromptTooLong` khi `prompt_eval_count` chạm nửa `num_ctx`;
+   - M6 `patient_info` lấy mục mới nhất trước trong ngân sách 11.000 ký tự, `num_ctx` 16384, ghi `older_entries_not_shown`, và trace ghi `record_omitted`;
+   - bước trích đọc từng phần;
+   - V1c lấy mục mới nhất trước trong 12.000 ký tự (16k);
+   - V2 dùng `num_ctx` 8192 (mục lục lớn nhất ~2.300 token);
+   - embed không cho cắt (`truncate: false`).
+3. Ollama từ chối 450 lời gọi tokenize song song khi embed. Giờ embed theo lô 32.
+4. `--resume` ban đầu lấy `--limit` từ dòng lệnh. Đã dừng kịp, không có lượt thừa.
+5. **V2 không biết ngày của hồ sơ**, nên với qwen thì năm 2026 là tương lai, và chọn nút đúng 0/5. Prompt giờ ghi ngày của hồ sơ; kết quả lên 4/5 trong lần chạy thử cuối.
+6. Reranker trên CPU mất khoảng 12 giây mỗi lượt. Giờ dùng torch `2.11.0+cu128`, 50 cặp mất 0,16 giây. Test hồi quy không đổi thứ tự công thức.
+
+**Lần chạy thử cuối** (`eval/runs/20261018-123903/patient`; 10 câu, 80 lượt, 11 phút; nhiều lời gọi đã có cache):
+
+| | Kết quả |
+|---|---|
+| Trích, coded | P-Direct và P-Vectorless 100%; P-Vectorless-Fixed bệnh F1 3%, bỏ sót 1/2 dị ứng; P-Vector bỏ sót 1/2 dị ứng |
+| Trích, narrative | P-Vectorless thuốc F1 90%, bệnh 49%, bỏ sót 1/2 dị ứng; P-Vector và P-Vectorless-Fixed bỏ sót 2/2 |
+| Safe@5 dinh dưỡng | 100% với mọi preset có đọc hồ sơ; 40% với S-Profile |
+| Safe@5 dị ứng | 100% với mọi preset (4 câu; món được gợi ý tình cờ không chứa chất gây dị ứng) |
+| Chọn nút đúng, coded | P-Vectorless 4/5, P-Vectorless-Fixed 5/5, P-Vector 5/5, P-Direct 0/5 (không đọc nút ngữ cảnh) |
+
+Ước tính cho 2.400 lượt khoảng 5,5 giờ nếu có cache; chạy không có cache thì khoảng 6–8 giờ.
+
+**Còn mở (chờ Thy):**
+- M7 ở route `patient_info` chuyển sang câu trả lời do code sinh quá nhiều: 5/10 ở P-Vectorless coded. Có hai nguyên nhân:
+  - (a) `VI_WORDS` có chữ "the" (tức "thế"), nên câu trả lời tiếng Anh bị coi là tiếng Việt;
+  - (b) số liệu thô nhiều chữ số thập phân (`7.45597543353983`) mà mô hình làm tròn thành `7.46`, nên bị coi là số lạ.
