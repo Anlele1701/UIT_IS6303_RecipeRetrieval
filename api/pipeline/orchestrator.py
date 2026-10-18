@@ -13,6 +13,8 @@ calls. A deceased or unknown patient gets no session (PatientUnavailable).
 
 import time
 import uuid
+from datetime import date
+from pathlib import Path
 from collections.abc import Iterator
 from contextlib import contextmanager
 from dataclasses import dataclass
@@ -24,7 +26,8 @@ from psycopg.types.json import Jsonb
 
 from .. import config
 from ..embed import embed_query
-from ..patient import navigate, profile_store
+from ..patient import baselines, narrative, navigate, profile_store
+from ..patient.mapping import build_profile
 from ..patient import rules as patient_rules
 from ..patient.prompt_view import prompt_view
 from . import m4_retrieve as m4
@@ -39,6 +42,7 @@ from .m5_postprocess import cards as load_cards
 from .m5_postprocess import nutrient_values, recipe_detail, top_recipes
 from .schemas import RecipeCard, SessionState, StateItem, Understanding, Verification
 
+ROOT = Path(__file__).resolve().parents[2]
 HISTORY_CHARS = 600  # an old assistant answer is cut to this for M1 and M6
 LOCKED_VI = "Ràng buộc này đến từ hồ sơ bệnh nhân, không gỡ được qua tin nhắn; cần xác nhận trên giao diện."
 LOCKED_EN = "This constraint comes from the patient's record and cannot be lifted by a chat message; confirm it in the interface."
@@ -89,6 +93,8 @@ class Assistant:
         self.lex = lex or RuntimeLexicon.load(conn)
         self.strategy, self.k = strategy, k
         self._rules = None  # the patient rule set, loaded on the first patient turn
+        self.patient_input = "coded"  # "narrative": the section tables of the C-CDA (eval_patient.py --input, MV4)
+        self._chunk_vecs: dict = {}  # P-Vector: (patient, input) -> chunk embeddings
 
     @property
     def rules(self):
@@ -313,28 +319,93 @@ class Assistant:
 
     # ---- patient record (MV3) --------------------------------------------------------------------------------
     def _patient_start(self, pid: str, flags: Flags, tr: Trace) -> dict:
-        """V1 (the tree) and V3 (the cached profile), before M1."""
-        if flags.profile_mode in MV4_MODES:
-            raise NotImplementedError(f"profile_mode {flags.profile_mode!r} needs api/patient/baselines.py (MV4)")
+        """V1 (the tree) and V3 (the profile), before M1. The MV4 modes read the record per turn: their profile
+        is built in _patient_select, after the selection. The narrative input (evaluation only) reads the section
+        tables of the C-CDA file and has a model extract the constraints (api/patient/baselines.py)."""
+        mode, text_input = flags.profile_mode, self.patient_input == "narrative"
+        if text_input and mode == "direct":
+            raise ValueError("P-Direct reads coded entries: not applicable to the narrative input")
         with tr.stage("v1") as p:
-            nodes = profile_store.load_nodes(self.conn, pid)
-            p.update(nodes=len(nodes), context_nodes=sum(n.kind == "context" for n in nodes))
+            if text_input:
+                src_dir, src_file = self.conn.execute(
+                    "SELECT source_dir, source_file FROM patient WHERE patient_id = %s", [pid]).fetchone()
+                nodes, today = narrative.narrative_nodes(ROOT / src_dir / src_file, self.rules.p7)
+            else:
+                nodes = profile_store.load_nodes(self.conn, pid)
+                today = self.conn.execute("SELECT record_date FROM patient WHERE patient_id = %s",
+                                          [pid]).fetchone()[0].isoformat()
+            p.update(input=self.patient_input, nodes=len(nodes), context_nodes=sum(n.kind == "context" for n in nodes))
+        pt = {"patient_id": pid, "nodes": nodes, "today": today, "profile": None, "extract_calls": 0,
+              "entities": None, "chunks_read": None}
+        if mode in MV4_MODES:
+            return pt
         with tr.stage("v3") as p:
-            profile = profile_store.load_or_build(self.conn, pid, self.rules, flags.profile_mode)
-            p.update(ruleset_version=profile.ruleset_version, mode=profile.mode, llm_calls=0,
-                     allergens=sorted(profile.allergens_exclude), ingredients=len(profile.ingredients_exclude),
-                     nutrient_limits=sorted(profile.nutrient_limits), nutrient_soft=sorted(profile.nutrient_soft),
-                     warnings=len(profile.warnings), unmapped=len(profile.unmapped))
-        return {"patient_id": pid, "nodes": nodes, "profile": profile}
+            if text_input:  # P-Vectorless on the narrative: the model reads the four fixed sections
+                text = "\n\n".join(narrative.as_text(n) for n in nodes if n.kind == "fixed")
+                self._from_text(pt, text, narrative.latest_weight(nodes), mode)
+            else:
+                pt["profile"] = profile_store.load_or_build(self.conn, pid, self.rules, mode)
+                pt["entities"] = baselines.coded_entities(nodes)
+            self._v3_payload(p, pt)
+        return pt
+
+    def _from_text(self, pt: dict, text: str, weight: dict | None, mode: str) -> None:
+        ids = baselines.FIXED_ID if self.patient_input == "narrative" else None
+        prof, items, calls = baselines.profile_from_text(self.client, text, weight, self.rules, pt["today"],
+                                                         pt["patient_id"], mode, ids)
+        pt.update(profile=prof, entities=baselines.entities(items), extract_calls=calls, extract_chars=len(text))
+
+    @staticmethod
+    def _v3_payload(p: dict, pt: dict) -> None:
+        prof = pt["profile"]
+        p.update(ruleset_version=prof.ruleset_version, mode=prof.mode, llm_calls=pt["extract_calls"],
+                 allergens=sorted(prof.allergens_exclude), ingredients=len(prof.ingredients_exclude),
+                 nutrient_limits=sorted(prof.nutrient_limits), nutrient_soft=sorted(prof.nutrient_soft),
+                 warnings=len(prof.warnings), unmapped=len(prof.unmapped), entities=pt["entities"])
+
+    def _vector_select(self, pt: dict, message: str) -> tuple[navigate.Selection, str]:
+        """P-Vector: chunks of the record text, the top TOP_K by the message (nomic-embed-text). A record's chunk
+        embeddings are kept on the Assistant (they do not depend on the message)."""
+        key = (pt["patient_id"], self.patient_input)
+        table = baselines.chunk_table(baselines.node_lines(pt["nodes"], self.patient_input == "narrative"))
+        if not table:
+            pt["chunks_read"] = []
+            return navigate.Selection([]), ""
+        if key not in self._chunk_vecs:
+            self._chunk_vecs[key] = baselines._embed(self.client, [f"search_document: {t}" for t, _ in table])
+        docs = self._chunk_vecs[key]
+
+        def embed(texts):
+            return docs if texts[0].startswith("search_document: ") else baselines._embed(self.client, texts)
+        picked = baselines.top_chunks(self.client, [t for t, _ in table], message, embed=embed)
+        pt["chunks_read"] = picked
+        ids = list(dict.fromkeys(nid for i in picked for nid in table[i][1]))
+        return navigate.Selection(ids, chosen=[f"chunk:{i}" for i in picked]), "\n\n".join(table[i][0] for i in picked)
 
     def _patient_select(self, pt: dict, u: Understanding, message: str, flags: Flags, tr: Trace) -> dict:
-        """V2, then the patient_profile event (sent before constraints)."""
+        """V2 (and V3 for the MV4 modes), then the patient_profile event (sent before constraints)."""
         needs = u.needs_record_context or u.intent == "patient_info"
+        mode, text = flags.profile_mode, None
         with tr.stage("v2") as p:
-            sel = navigate.select_nodes(pt["nodes"], message, needs, flags.profile_mode, self.rules, self.client)
+            if mode == "vector":
+                sel, text = self._vector_select(pt, message)
+            else:
+                sel = navigate.select_nodes(pt["nodes"], message, needs, mode, self.rules, self.client)
             p.update(needs_context=needs, node_ids=sel.node_ids, chosen=sel.chosen, dropped=sel.dropped,
                      llm_calls=sel.llm_calls, fallback=sel.fallback)
         pt["selection"] = sel
+        if pt["profile"] is None:  # MV4 modes: the constraints come from what this turn read
+            with tr.stage("v3") as p:
+                read = [n for n in pt["nodes"] if n.kind == "root" or n.node_id in sel.node_ids]
+                if mode == "vector" or self.patient_input == "narrative":
+                    if text is None:  # P-Vectorless-Fixed on the narrative: the sections the model picked
+                        text = "\n\n".join(narrative.as_text(n) for n in read if n.kind != "root")
+                    self._from_text(pt, text, baselines.weight_from_text(text), mode)
+                else:  # P-Vectorless-Fixed on the coded entries: the rule tables on the nodes the model picked
+                    pt["profile"] = build_profile(read, self.rules, date.fromisoformat(pt["today"]), mode,
+                                                  pt["patient_id"])
+                    pt["entities"] = baselines.coded_entities(read, set(sel.node_ids))
+                self._v3_payload(p, pt)
         prof = pt["profile"]
         return {"patient_id": pt["patient_id"], "allergens_exclude": sorted(prof.allergens_exclude),
                 "ingredients_exclude": sorted(prof.ingredients_exclude),
@@ -343,7 +414,9 @@ class Assistant:
                 "warnings": prof.warnings, "unmapped": prof.unmapped, "ruleset_version": prof.ruleset_version,
                 "evidence": {k: [{"node_id": e.node_id, "text": e.text} for e in v]
                              for k, v in sorted(prof.evidence.items())},
-                "nodes_read": sel.node_ids, "llm_calls": sel.llm_calls,
+                "nodes_read": sel.node_ids, "llm_calls": sel.llm_calls + pt["extract_calls"],
+                "input": self.patient_input, "entities": pt["entities"], "chunks_read": pt["chunks_read"],
+                "extract_calls": pt["extract_calls"], "extract_chars": pt.get("extract_chars", 0),
                 "latency_ms": {k: v for k, v in tr.ms.items() if k in {"v1", "v2", "v3"}}}
 
     def _block(self, pt: dict, state: SessionState) -> str:
@@ -370,9 +443,9 @@ class Assistant:
         names = []
         if numbers is not None:
             for n in pt["nodes"]:
-                if n.node_id == "problems.active":
+                if n.node_id in {"problems.active", "narrative.problems"}:
                     for f in n.facts:
-                        display = f.get("display") or ""
+                        display = f.get("display") or f.get("description") or ""
                         names += [display, display.replace("(disorder)", "").strip()]
         return m7.PatientCheck(node_ids={n.node_id for n in pt["nodes"]}, avoid_terms=terms, numbers=numbers,
                                condition_names=names, lang=pt.get("lang") if numbers is not None else None)

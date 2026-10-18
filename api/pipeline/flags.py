@@ -20,7 +20,7 @@ class Flags:
 
 
 PROFILE_MODES = {"direct", "vectorless", "vectorless_nofixed", "vector"}
-MV4_MODES = {"vectorless_nofixed", "vector"}  # need api/patient/baselines.py (MV4)
+MV4_MODES = {"vectorless_nofixed", "vector"}  # read the record per turn: the profile follows the selection
 
 
 S = Flags()
