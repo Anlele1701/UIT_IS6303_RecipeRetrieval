@@ -219,3 +219,31 @@ export const recommend = (
 export const getPatient = (id: string, signal?: AbortSignal) => getJson<PatientProfile>(`/patients/${id}`, signal)
 
 export const getDietPlan = (id: string, signal?: AbortSignal) => getJson<DietPlan>(`/patients/${id}/diet-plan`, signal)
+
+// --- Where the active conditions come from (GET /patients/{id}/active-conditions) ---------------
+
+export type ConditionSource = 'sql' | 'tree' | 'dense'
+
+export interface ConditionRef {
+  code: string
+  description: string
+}
+
+export interface ActiveConditionsResult {
+  source: ConditionSource
+  conditions: ConditionRef[]
+  /** The answer key: always read from the tables. */
+  sql_conditions: ConditionRef[]
+  missing_vs_sql: string[]
+  extra_vs_sql: string[]
+  /** Sections (tree) or pieces (dense) that were read. */
+  selected: string[]
+  chars_read: number
+  llm_calls: number
+  invented_codes: string[]
+  error: string | null
+  timings_ms: Record<string, number>
+}
+
+export const getActiveConditions = (id: string, source: ConditionSource, signal?: AbortSignal) =>
+  getJson<ActiveConditionsResult>(`/patients/${id}/active-conditions?source=${source}`, signal)

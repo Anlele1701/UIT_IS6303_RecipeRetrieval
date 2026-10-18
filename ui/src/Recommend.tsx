@@ -4,6 +4,7 @@ import {
   type AppliedLimit, type DietPlan, type PatientProfile, type PatientRow, type RecommendedRecipe,
   type RecommendResponse, type Strategy, type UnsupportedCondition,
 } from './api'
+import CompareSources from './CompareSources'
 import { useStrategy } from './useStrategy'
 import { useTheme } from './useTheme'
 
@@ -497,6 +498,10 @@ export default function Recommend() {
                 {Object.entries(data.timings_ms).map(([k2, v]) => `${k2} ${Math.round(v)} ms`).join(' · ')}
               </p>
             </>
+          )}
+
+          {patientId && selected?.status === 'ready' && (
+            <CompareSources key={patientId} patientId={patientId} plan={selected.plan} />
           )}
         </main>
       </div>
