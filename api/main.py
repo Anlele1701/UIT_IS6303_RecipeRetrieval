@@ -19,6 +19,7 @@ from . import config, retrieval, strategies
 from .deps import get_conn
 from .embed import embed_query
 from .filters import SearchParams
+from .chat_api import router as chat_router
 from .patient_api import router as patient_router
 from .rerank import Reranker
 
@@ -27,8 +28,11 @@ from .rerank import Reranker
 async def lifespan(app: FastAPI):
     app.state.pool = ConnectionPool(config.DATABASE_URL, min_size=1, max_size=8, open=True)
     app.state.http = httpx.Client(timeout=30)
+    app.state.llm = httpx.Client(timeout=900)  # the chat pipeline's Ollama calls (generation can take minutes on CPU)
     app.state.reranker = Reranker()
+    app.state.lex = None  # the chat lexicon, loaded on the first chat request (api/chat_api.py)
     yield
+    app.state.llm.close()
     app.state.http.close()
     app.state.pool.close()
 
@@ -36,6 +40,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(title="Recipe Search", lifespan=lifespan,
               description="Sparse (BM25), Dense (vector) and Hybrid (RRF + rerank) retrieval over recipe Chunks.")
 app.include_router(patient_router)
+app.include_router(chat_router)
 
 
 class Hit(BaseModel):
@@ -104,6 +109,12 @@ def ui():
     return FileResponse(STATIC / "index.html")
 
 
+@app.get("/chat", include_in_schema=False)
+def chat_page():
+    """The chat page: the same app, which switches on the path (POST /chat is the API)."""
+    return FileResponse(STATIC / "index.html")
+
+
 @app.get("/report", include_in_schema=False)
 def report():
     """The Report page: the same app, which switches on the path and reads /report.json."""
@@ -165,6 +176,13 @@ def health(request: Request):
         status["embedding"] = "ok"
     except Exception as e:
         status["embedding"] = f"error: {e}"
+    try:  # the chat models (not needed by search: reported, not counted in ok)
+        tags = {m["name"] for m in request.app.state.http.get(f"{config.OLLAMA_URL}/api/tags").json()["models"]}
+        want = {config.QU_MODEL, config.GEN_MODEL}
+        status["llm"] = "ok" if all(any(t.split(":latest")[0] == w or t == w for t in tags) for w in want) \
+            else f"missing: {sorted(want - tags)}"
+    except Exception as e:
+        status["llm"] = f"error: {e}"
     ok = status["database"] == "ok" and status["embedding"] == "ok"
     if not ok:
         raise HTTPException(503, status)

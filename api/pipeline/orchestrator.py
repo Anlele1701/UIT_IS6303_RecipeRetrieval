@@ -41,7 +41,7 @@ from .m2_state import merge
 from .m3_router import detail_recipe, route
 from .m5_postprocess import cards as load_cards
 from .m5_postprocess import nutrient_values, recipe_detail, top_recipes
-from .schemas import RecipeCard, SessionState, StateItem, Understanding, Verification
+from .schemas import RecipeCard, SessionState, StateItem, Understanding, Verification, parse_limit
 
 ROOT = Path(__file__).resolve().parents[2]
 HISTORY_CHARS = 600  # an old assistant answer is cut to this for M1 and M6
@@ -149,10 +149,7 @@ class Assistant:
             raise RecordLiftRefused(f"session {sid} is not about a patient")
         if confirm is not True:
             raise RecordLiftRefused("a constraint from the patient's record is lifted only with confirm=true")
-        name = self.conn.execute("SELECT preset FROM chat_session WHERE id = %s", [sid]).fetchone()[0]
-        mode = preset(name).profile_mode
-        profile = profile_store.load_or_build(self.conn, pid, self.rules,
-                                              mode if mode in {"direct", "vectorless"} else "vectorless")
+        profile = self._record_profile(sid, pid)
         lifts = self.record_lifts(sid)
         if constraint_id.startswith("record:"):
             groups = {g["group_id"]: g["members"] for g in record_groups(profile, profile_store.load_nodes(self.conn, pid))}
@@ -178,6 +175,74 @@ class Assistant:
         self.conn.commit()
         row = next(x for x in self.record_lifts(sid) if x["constraint_id"] == constraint_id)
         return {**row, "kept": kept}
+
+    def _record_profile(self, sid: uuid.UUID, pid: str):
+        """The record's profile by the rule tables, in the session preset's mode (coded vectorless for the MV4
+        modes, which read the record per turn): what a lift is checked against and the UI's groups come from."""
+        name = self.conn.execute("SELECT preset FROM chat_session WHERE id = %s", [sid]).fetchone()[0]
+        mode = preset(name).profile_mode
+        return profile_store.load_or_build(self.conn, pid, self.rules,
+                                           mode if mode in {"direct", "vectorless"} else "vectorless")
+
+    # ---- what the UI reads and edits (M4; contract in docs/plan/A3_ke_hoach_build.md 6.5) ------------------
+    @staticmethod
+    def constraint_id_of(state_type: str, value: str) -> str:
+        """A session_constraint row -> the id the UI names it by (6.5.3): record ids for the record's types,
+        <type>:<value> for the others (dialogue only)."""
+        if state_type in {"nutrient", "nutrient_soft"}:
+            return f"{'nutrient' if state_type == 'nutrient' else 'soft'}:{parse_limit(value)[0]}"
+        return f"{ {'ingredient_exclude': 'ingredient', 'ingredient_include': 'include'}.get(state_type, state_type)}:{value}"
+
+    def session_view(self, sid: uuid.UUID) -> dict | None:
+        """GET /sessions/{id}: the session, its messages and the constraints in force, with their ids."""
+        row = self.conn.execute("SELECT preset, patient_id, lang, created_at FROM chat_session WHERE id = %s",
+                                [sid]).fetchone()
+        if row is None:
+            return None
+        name, pid, lang, created = row
+        messages = [{"id": i, "role": r, "content": c, "recipe_ids": list(ids), "created_at": t.isoformat()}
+                    for i, r, c, ids, t in self.conn.execute(
+                        "SELECT id, role, content, recipe_ids, created_at FROM chat_message WHERE session_id = %s "
+                        "ORDER BY id", [sid])]
+        constraints = [{"constraint_id": self.constraint_id_of(t, v), "type": t, "value": v, "scope": sc,
+                        "source": src, "evidence": [{"node_id": e.get("node_id"), "text": e.get("text")}
+                                                    for e in (ev or [])]}
+                       for t, v, sc, src, ev in self.conn.execute(
+                           "SELECT type, value, scope, source, evidence FROM session_constraint WHERE session_id = %s "
+                           "AND active ORDER BY id", [sid])]
+        out = {"id": str(sid), "preset": name, "patient_id": pid, "lang": lang, "created_at": created.isoformat(),
+               "messages": messages, "constraints": constraints}
+        if pid is not None:
+            lifts = self.record_lifts(sid)
+            profile = without(self._record_profile(sid, pid), self.lifted_ids(lifts))
+            out.update(lifted=lifts, groups=record_groups(profile, profile_store.load_nodes(self.conn, pid)),
+                       warnings=list(profile.warnings))
+        return out
+
+    def set_preset(self, sid: uuid.UUID, name: str) -> None:
+        preset(name)  # ValueError on an unknown preset
+        self.conn.execute("UPDATE chat_session SET preset = %s WHERE id = %s", [name, sid])
+        self.conn.commit()
+
+    def remove_constraint(self, sid: uuid.UUID, constraint_id: str, confirm: bool = False,
+                          reason: str | None = None) -> dict:
+        """PATCH /chat/{session}/constraints/{constraint_id}: a record constraint or group is lifted (needs
+        confirm, lift_record_constraint); a dialogue constraint is switched off, so M2 no longer carries it.
+        LookupError when the session holds no such constraint."""
+        pid = self.patient_of(sid)
+        if constraint_id.startswith("record:"):
+            return {"kind": "record", **self.lift_record_constraint(sid, constraint_id, confirm, reason)}
+        rows = [(i, src) for i, t, v, src in self.conn.execute(
+            "SELECT id, type, value, source FROM session_constraint WHERE session_id = %s AND active", [sid])
+            if self.constraint_id_of(t, v) == constraint_id]
+        if any(src == "patient" for _, src in rows) or (
+                not rows and pid is not None and constraint_id in constraint_ids(self._record_profile(sid, pid))):
+            return {"kind": "record", **self.lift_record_constraint(sid, constraint_id, confirm, reason)}
+        if not rows:
+            raise LookupError(f"session {sid} holds no constraint {constraint_id!r}")
+        self.conn.execute("UPDATE session_constraint SET active = false WHERE id = ANY(%s)", [[i for i, _ in rows]])
+        self.conn.commit()
+        return {"kind": "dialogue", "constraint_id": constraint_id}
 
     def _deactivate_record_item(self, sid: uuid.UUID, constraint_id: str) -> None:
         """The stored state drops the lifted item at once (the next turn would drop it too)."""
