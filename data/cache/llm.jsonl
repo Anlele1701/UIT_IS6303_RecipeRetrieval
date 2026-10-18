@@ -4488,3 +4488,237 @@
 {"key": "9e3fc44b63f551b4b9960b27847391f6a1d34eea91dd61c8d0413f59b5d791a2", "model": "qwen2.5:7b", "out": {"intent": "ask_detail", "query_en": "", "allergens_exclude": ["milk"], "ingredients_exclude": [], "ingredients_include": [], "diet": "none", "max_total_minutes": 0, "lasting": [], "remove_allergens": [], "remove_ingredients": [], "remove_diet": false, "remove_time": false, "ref_recipe": 2}}
 {"key": "3fe32211cc000585b44fbbe68ab9e4d11c40290d3670a7948834532b3267a280", "model": "qwen2.5:7b", "out": {"intent": "refine", "query_en": "shrimp pasta", "allergens_exclude": [], "ingredients_exclude": [], "ingredients_include": [], "diet": "none", "max_total_minutes": 0, "lasting": [], "remove_allergens": ["crustacean_shellfish"], "remove_ingredients": [], "remove_diet": false, "remove_time": false, "ref_recipe": 0}}
 {"key": "83f63af0dd2ea44db006d1817e2a45d2c287037d72087162aea0d012c5794914", "model": "qwen2.5:7b", "out": {"intent": "search", "query_en": "dinner chicken", "allergens_exclude": [], "ingredients_exclude": [], "ingredients_include": [], "diet": "none", "max_total_minutes": 0, "lasting": [], "remove_allergens": [], "remove_ingredients": [], "remove_diet": false, "remove_time": false, "ref_recipe": 0, "needs_record_context": false}}
+{"key": "bfcd3d4c3b14b1ac844891e298fac37482767db2b863453906827fd1975c517e", "model": "llama3.1:8b", "out": {"paraphrase": "tìm bánh mì không có mè"}}
+{"key": "8270c09b5a3aba2e48e8836c0b1d56380baba4b0f43511f92143fa3fc9dd2612", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh quy không chứa nấm"}}
+{"key": "e8b6e6351e4fd5583a2af19333149cc36b2a8f28f140a7031c800970c7a5609c", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món tráng miệng chay"}}
+{"key": "bea4d33ae05e47e0a138ac66c168b8d8dfd03aade253217571bdeab2578ee63f", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món súp nấu nhanh dưới 15 phút"}}
+{"key": "be6f590c98b9c9d05bcec772002138453a038d188494012bce0211e897f72054", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng cá, cần món cà ri nấu trong 45 phút"}}
+{"key": "5a7a2472775ddf91423e8851ece160b45d89c916ff8a5115c1c86ec472c6313e", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món cà ri chay không có ngò"}}
+{"key": "2d6c367e5169867ea49da26a24d9fa38ecc91a06be3eb89ee734fdde9b4e6aa3", "model": "llama3.1:8b", "out": {"paraphrase": "tôi dị ứng tôm cua, gợi ý bánh quy chay"}}
+{"key": "7b4ebe3b28d67c7f963f4a843deaf78e489ad3ecd08b7d32d3438842fb166029", "model": "llama3.1:8b", "out": {"paraphrase": "I'd like a soup suggestion that's egg-free"}}
+{"key": "13e791af039869dff47b15ec3457270192a27a207b66cdeef8de05baab8f4a55", "model": "llama3.1:8b", "out": {"paraphrase": "I need a beef dish without mushrooms"}}
+{"key": "f465740a1313c5e92648e13c4ed0166903d0f829f37b240ca342f8ed6720badb", "model": "llama3.1:8b", "out": {"paraphrase": "What's a good vegan pasta dish?"}}
+{"key": "391bd282c51052ec7e2fa9c07839c536ffd1e8676e3ebdffd95dd97906184c6f", "model": "llama3.1:8b", "out": {"paraphrase": "Beef stir-fry ready in under 30 minutes"}}
+{"key": "fcbfd5d911f522ec8db0c90c488a66875aa09b88921a6a3c8bdcb22fee4c49e3", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to peanuts, can you make a quick bread?"}}
+{"key": "9ee3082dbafeb50b8b997691be697b0969a4f61edfbf49a18b1767e89383f558", "model": "llama3.1:8b", "out": {"paraphrase": "vegan salad without cilantro"}}
+{"key": "c2ea683fe74c38246c006f9741ed07e1d3cf3cba01ae973b465f76d94bda88b1", "model": "llama3.1:8b", "out": {"paraphrase": "I'd love a sesame-free vegetarian rice dish"}}
+{"key": "4627545a22fa28b7f099ef30232948b1de20412af5e9921f1d5d9618b9b3dcd6", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần một món súp không có sữa vì tôi dị ứng sữa"}}
+{"key": "a17f957581858b91da278c74a44f1f7c48e4112d8fd7bbe9851f61f8d59250ae", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món cà ri không có tỏi"}}
+{"key": "142cb8cebf0755f09fee4196fd3456da871a9a44ecc60e077bdb98bd181a48cc", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh mì chay"}}
+{"key": "10a9e05627bb46ec62cd05da25e41430411a45c1affffdd7cf19b2fd3b59ebc9", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món cơm nấu nhanh dưới 30 phút"}}
+{"key": "d541397f2131b9b8932c14bef9b041480b5452b54f281b4034e813e859254727", "model": "llama3.1:8b", "out": {"paraphrase": "tôi dị ứng trứng, cần món salad nấu dưới 30 phút"}}
+{"key": "af33d18dbb75eff251517da79fc2397d68736bcb949e73b91ad830fc3851615d", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món xào chay không có cà chua"}}
+{"key": "7ee897f0496af6f63fcad6f000fa32d83fc0ee07c5125befb287f69342f6f5b1", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần bánh mì thuần chay vì tôi dị ứng trứng"}}
+{"key": "a9ac247df47d9d24e7e65c92349020b725b761d3863d6285a90671ce2d9564be", "model": "llama3.1:8b", "out": {"paraphrase": "What's a good egg-free curry?"}}
+{"key": "5d873b3ffc42dcf8c26a4cfdcf7b131ad1b7b04c374e97b8b349186c08781600", "model": "llama3.1:8b", "out": {"paraphrase": "Beef dish without mushrooms"}}
+{"key": "90be11795eebecd4d817f351c865b4e2e0e47a637d48f198007961f5243cf5aa", "model": "llama3.1:8b", "out": {"paraphrase": "What kind of vegetarian cookies would you like me to suggest?"}}
+{"key": "c4be25e99de56d086edf3df1ed99aa3a627077e4fc9b936e44b06492286a1d95", "model": "llama3.1:8b", "out": {"paraphrase": "beef stir-fry"}}
+{"key": "3bbff12a05347ef4f14262c390c281afda3555ffde17a21ea8ec0e383f0cb4d1", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to fish, can I have a salad quickly?"}}
+{"key": "14cc6226056467644454f50daafb1975275442d06d281b989fe886106f987648", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian salad without cilantro"}}
+{"key": "739b298df08fe503dd28db009e0924b2cfe0749dbabc2865ee4ae6bf16d5686e", "model": "llama3.1:8b", "out": {"paraphrase": "What's a vegan chicken dish that's wheat-free?"}}
+{"key": "d087e392a60dc3918afdce15876c59341294899c8ae0e378ba5ebf46320ff6e5", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng mè, có thể gợi ý món xào không có mè"}}
+{"key": "26376757c0d34af43e8c078e44e20e5c8a7284a264fbc75707449886583ccd8a", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món salad không có nấm"}}
+{"key": "501d8383dfc80f41857492afc74a30f100df86be2ba02645895f7f5bfd0ad8e5", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món tráng miệng thuần chay"}}
+{"key": "deea9560af572ce7b18edecfb7f66b3731b4f1c9ab8e8daac266db3ffa871dc1", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món gà nấu nhanh"}}
+{"key": "01c10d94739d86616a824dda640a6e3ce60c6907f49b9d676fbb726ecbe99a4c", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần món bò nấu nhanh dưới 45 phút vì tôi dị ứng trứng"}}
+{"key": "6fe2b9aea1a35f140dca1aa21ef3d07b3372db87232d29b62a4fb8712cf14eb1", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món súp chay không có cà chua"}}
+{"key": "047fdc58f1d42e39bd1602f352d676e710548a9ef896831d3b580b4754c2dbec", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng sữa, nên ăn salad chay"}}
+{"key": "3898e9c65020dc6a0ed1720d4c9e24bb65c197b028bd4db83a0b9b452ecc0ce1", "model": "llama3.1:8b", "out": {"paraphrase": "What kind of bread is sesame-free?"}}
+{"key": "00624d66b13464ae01fed79c01224c405ccf2173755ae72e0ff158c750062f57", "model": "llama3.1:8b", "out": {"paraphrase": "suggest a bread without mushrooms"}}
+{"key": "46262eec317327f24a0e695ee17e0fb4d7f8e19074a811fd17df5e9dfc1afbd6", "model": "llama3.1:8b", "out": {"paraphrase": "I'd love to recommend a delicious vegan pasta dish"}}
+{"key": "6867464a3676245dfd439f98d536489b66bc2cbea21c54c8f0215e18130307e9", "model": "llama3.1:8b", "out": {"paraphrase": "I need a quick chicken dish ready in under 15 minutes"}}
+{"key": "6c87a310a7720f8808d4f934b2cdeafd71ba26cf0bd58b6e980690fbabf010db", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to shellfish, can I get a beef dish in under 15 minutes"}}
+{"key": "6de1876eabc0d97e00ecf7caa8d01111546e1c577fa2724260ff54dbf213212f", "model": "llama3.1:8b", "out": {"paraphrase": "Vegan curry without mushrooms"}}
+{"key": "50f7b4f140156814001606d34647ab689120347ee999eef5d791cde53f3bb8c0", "model": "llama3.1:8b", "out": {"paraphrase": "I'm looking for a soy-free vegan pasta dish"}}
+{"key": "7018093daeadfd22341ce3ca0b6bb1a0e2d1e5c1fede7f831f70fb170d040934", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món súp không có hành tây"}}
+{"key": "7546326dc0fef20d34e2dd73677a8dfc20529c82e8ca29adfc0a83f6bf939651", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món tráng miệng thuần chay"}}
+{"key": "7df74cabcbcdb3e2b977269b0c85b5fd9cd06facb666cbf96bb056754eaa7a69", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món cơm nấu nhanh dưới 15 phút"}}
+{"key": "bcccafae5f91fbe2bf06b5f42928d5e4c44ebdca28a75891bb0a421c80d0d4df", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng các loại hạt như hạnh nhân, cần bánh mì nấu dưới 30 phút"}}
+{"key": "fd9b6f7be2c7c154ed0b860b43ae6414061ba47948004ce67f59574cf78410f8", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món gà thuần chay không có ớt chuông"}}
+{"key": "bdcae6e0b4d3628dfed91d8e47cca5c0033f07f62d903c8c183126f5cd62e628", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món gà chay cho người dị ứng sữa"}}
+{"key": "483cdd41f5939eb78fabfd18d56104891bbbabe55abfca401d7e90b628e2f80c", "model": "llama3.1:8b", "out": {"paraphrase": "I'd like a cookie recipe without fish"}}
+{"key": "e28149f8eb30a187173c893762b0f26a49dee1d798fe7c76bf8d00a8f7132584", "model": "llama3.1:8b", "out": {"paraphrase": "I need a dessert that doesn't have garlic"}}
+{"key": "009cceab74df239c1935e2e0b9279aedee959dc083166c9108ea759a59d6df47", "model": "llama3.1:8b", "out": {"paraphrase": "What about a vegetarian soup?"}}
+{"key": "68b59675446845fa66b663ab4690d9a07862eda2c2940c6501a27f1e9db7566f", "model": "llama3.1:8b", "out": {"paraphrase": "Quick rice dish ready in under 15 minutes"}}
+{"key": "2168ce8d2ea68ad622e4793ed65126c6b8b37e3f789cba6dd45221e55b29cf86", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to tree nuts, can I have a chicken dish ready in under 30 minutes?"}}
+{"key": "60729de4d229fa6753836809a6674d7306ad77ee1ce9402237a5a69e834b11b5", "model": "llama3.1:8b", "out": {"paraphrase": "suggest a veg salad without bell peppers"}}
+{"key": "0511b9cc0fd743c47440a6174b1062c262cf9482cf778cb3767a8f99c4fcc475", "model": "llama3.1:8b", "out": {"paraphrase": "I'm looking for a wheat-free vegetarian beef dish"}}
+{"key": "81cbcb5daa92774395f402a8ef1f60e154663b0c48c94718392b1de9709488f1", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần một món mì Ý không có cá vì tôi dị ứng với nó"}}
+{"key": "bd306df6bf8bd4dda698c16e13c3ae2083aa66401e9d201d22cc5a115165b604", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món tráng miệng không có cà chua"}}
+{"key": "671286dfc1d96adfbf91e93c8b77fd0057c86625a714796dfd090dd710dc48bc", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món mì Ý chay"}}
+{"key": "19e984c0e3249f19342782b20cc5d1ef6f83091b3fb354df3591a14ee9f302a8", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món salad nấu nhanh dưới 30 phút"}}
+{"key": "02dc8316950c78c619a19e2d470f7fa981fe0c8937a677d0deb0a369aa09ff06", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng tôm cua, cần món salad nấu dưới 30 phút"}}
+{"key": "ac1003b58a033455427de694e1ebc6a333d3d0de07347d3615e011eba392467d", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món cà ri thuần chay không có ngò"}}
+{"key": "98dea8ec455d5db182d4e54d59819d8144117cc1eaa22cdc64bb9485458d4cd0", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần bánh mì thuần chay vì tôi dị ứng mè"}}
+{"key": "3f944dd9d9b94f4d1f2c9824a232189375541174c408af1f6f4816c7cf6f3146", "model": "llama3.1:8b", "out": {"paraphrase": "What's a good soup that doesn't have tree nuts?"}}
+{"key": "922db353f75b117d01d59b6d315962929ab45c1282cc7ee6a3c574940630aa8f", "model": "llama3.1:8b", "out": {"paraphrase": "suggest a soup without onions"}}
+{"key": "5be9f2a7dfc56124b93f472b94f6d02b7b2628da8a62b0d301294363cdcc7626", "model": "llama3.1:8b", "out": {"paraphrase": "I was wondering if you could recommend a vegan rice dish"}}
+{"key": "406a3de51902d7257709428a38cb5d23b0b69c4069bfd1bfcd8ae89144c954af", "model": "llama3.1:8b", "out": {"paraphrase": "salad ready in under 15 minutes"}}
+{"key": "d728536b16c8f9f4d888914de2c72f604b94c8a3e25e882b3682526fbd1b936e", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to sesame, can you suggest a beef dish that can be prepared in under 30 minutes?"}}
+{"key": "06cef099e4ad1eeb324c79028445faff536c9299b48eba39b91c01312a061074", "model": "llama3.1:8b", "out": {"paraphrase": "Vegan stir-fry without bell peppers"}}
+{"key": "eff5401682afbe4ab9e57fcc622ee79a548f0a27accb7ea6d9263b5ea907313d", "model": "llama3.1:8b", "out": {"paraphrase": "What's a good vegan curry that doesn't have eggs?"}}
+{"key": "95c691c8e275695ada267c5b09dcfb95bbb6ed6bef2fbaf52f61b95c2df3ff9e", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng lúa mì, bạn có thể gợi ý bánh quy cho tôi không?"}}
+{"key": "4642543e6be7c7835cb850f9c15d38805cee27ac727dc0739d83caf852385dae", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh quy không chứa nấm"}}
+{"key": "5b4639e2671113a43d6b6235fac868f465e61c1ec0d0b81867906dec56bf90b3", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh mì chay"}}
+{"key": "b53b05a9d38836a3e682d9aad09f9884f848b678fed01468205d6edad6fe7c70", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món cơm nấu nhanh dưới 30 phút"}}
+{"key": "25c21246b87dbb1c68d7890281cbef8a477ead52a1f7d85682f201997a55d1d4", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần bánh quy không có tôm cua và nấu trong dưới 30 phút"}}
+{"key": "dc4987ac77fa432a89db4ae5210af16eafbdfc9f783a28a81749475752f818f0", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh ngọt chay không có ớt chuông"}}
+{"key": "b57f462522c3a398c6b19c48f943797e77b71832e00c55347958f87885a29cae", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng cá, nên ăn bánh ngọt chay"}}
+{"key": "d014a952c9a4ff8be5ee1726982e272fba7b81d1ccb75216b37da23b6877cf87", "model": "llama3.1:8b", "out": {"paraphrase": "What about a beef dish that doesn't have peanuts in it?"}}
+{"key": "46345e2d5e50f424e7339cc2da3184bf872127fdd7bddc6cee24466a9de30ce5", "model": "llama3.1:8b", "out": {"paraphrase": "cookies without mushrooms"}}
+{"key": "1939508c0edfcc1287aa8b4d58b6154044b7044b255dd7ee69bef59be218a6f4", "model": "llama3.1:8b", "out": {"paraphrase": "I'd like to suggest a vegetarian chicken dish"}}
+{"key": "9dc53c386b50b465c332952e24e520f21213cb9b3713579dbc2cdb1cfdda3aec", "model": "llama3.1:8b", "out": {"paraphrase": "Quick stir-fry under 30 minutes"}}
+{"key": "91f26cba7421c9b7a03edff09d3c3deb2d4285ea061a5201924298bb1c7bcabf", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to shellfish, can I have a stir-fry in under 15 minutes"}}
+{"key": "894e38e1ed77f7841af7b1e37fbc7fef877531a64ca972265468e85bba3d1b4d", "model": "llama3.1:8b", "out": {"paraphrase": "Vegan stir-fry without mushrooms"}}
+{"key": "78c8ec04a51103b5f4c9ba1eeaa461d6827644d98e9fa648531293ad1fd13228", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to shellfish, what vegan beef dish would you recommend?"}}
+{"key": "296b352ed7906c5d95ed80107accebd8469715ea3b4a448768c1f757624e4903", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi bị dị ứng với mè, có thể gợi ý cho tôi một loại bánh ngọt không chứa mè?"}}
+{"key": "e862e35ca6e329d66fba8c6242ffdf900b681a94bcbdd8f40e34e268647746e0", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món cơm không có cà chua"}}
+{"key": "e346698d9f822131b54f68ef8ecfb498b8895cb8a1456993738940721a852c94", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý cách làm bánh mì nhanh dưới 45 phút"}}
+{"key": "733862b14cbee6a8a455e630a209844d4702c84155cc296ad260956ff3145baa", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng các loại hạt như hạnh nhân, cần món salad nấu dưới 45 phút"}}
+{"key": "fe9a45e22ae8699dc9b4c561e11fa84d862dc61640bc57d608b803179793796b", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh quy thuần chay không có hành tây"}}
+{"key": "4ae7ac11b7dde8c2dea78b335e54e558af4713e8ce43e70276d593640f319d9c", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng trứng, nên ăn món bò chay"}}
+{"key": "90741583feef7f14116b4c76902ca7601742370a3f795a6f07680fe953b2edad", "model": "llama3.1:8b", "out": {"paraphrase": "I'd be happy to suggest a fish-free stir-fry"}}
+{"key": "edb52a01052260bb6f41ffbc4d9301be400ecf98900fb178f1a0ade32ebe4c03", "model": "llama3.1:8b", "out": {"paraphrase": "stir-fry without onions"}}
+{"key": "31bf019febb43867f512cae7853191b602d94f1e0908b038cea4154b978494dc", "model": "llama3.1:8b", "out": {"paraphrase": "What about a vegan chicken dish?"}}
+{"key": "9cd8e6a481525d7c873d01441dd540b64c5055ca6758f64611282f6a5ae42865", "model": "llama3.1:8b", "out": {"paraphrase": "Quick dessert under 30 minutes"}}
+{"key": "f69bf44a9e61a3d06486342182ca0d32fed2fa26fe6538b2e9f5a9377d0d6125", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to peanuts, can I have a chicken dish ready in under 30 minutes?"}}
+{"key": "92b534fa48a853a6970fefa0994d1a3e439aa11cd562f086ca5dd446f1e4f3d4", "model": "llama3.1:8b", "out": {"paraphrase": "suggest a vegetarian beef dish without garlic"}}
+{"key": "cbdbe30956f23b614e4e749f0e9e4315bb0f8167fb013ecb1bb6ccfa8ce94a3a", "model": "llama3.1:8b", "out": {"paraphrase": "I'd like a vegan salad without tree nuts"}}
+{"key": "01af5561f526e8c5c6673ce2a90ed99b5b1e586605ad59e5c9c04508dd40cba8", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần một món xào không có đậu phộng vì tôi dị ứng với nó"}}
+{"key": "b6e0cbf54aacafe8b5bd39e03d48fb3a541fd1ba49463d4dd18bd24e5788eb53", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món mì Ý không có nấm"}}
+{"key": "2dcbd07ec15b539a9bb213248d97895f3449fd293c6ee18ed111d967a40e42de", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món cơm thuần chay"}}
+{"key": "4fc354462bfe06fa628d1a3aa7a558da97e6392d92a9c263ea9e411d1bb10af3", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh ngọt nấu nhanh dưới 30 phút"}}
+{"key": "1cf39c8b36cc521d9b04172cc81bb93eec15c62fafd8c420ac0b86ba7882848d", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng tôm cua, cần món cà ri nhanh dưới 30 phút"}}
+{"key": "29f2d0ca74cd4029f2c0cefc88e32d7dcc30dc8632cfa84c148e46c54ec5989e", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món xào thuần chay không có cà chua"}}
+{"key": "ebbdd4f7a70eec4b9b6fec8e08b66c3f8049d37221e7d3f122791b8288f36237", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần bánh ngọt chay vì tôi dị ứng sữa"}}
+{"key": "20a4d2dacf5aa198d5415d13b9dc5fed5b3a411663e4dd40ff0dd0c60c1b050f", "model": "llama3.1:8b", "out": {"paraphrase": "What's a good egg-free salad?"}}
+{"key": "9199f4253a799c14893dd3974e1e690af477393c4cf430e8796ab194019662a7", "model": "llama3.1:8b", "out": {"paraphrase": "Consider a spinach salad with strawberries and feta cheese"}}
+{"key": "f9b6b38c08b30c4964a178d5a0946573e68c06592b6ca5b2a3e09100152c2051", "model": "llama3.1:8b", "out": {"paraphrase": "I was wondering if you could recommend a vegetarian pasta dish"}}
+{"key": "18b9045c1274cc42463f228dd8478c53eee7c658eeef82ae4f154b5e31a3d81f", "model": "llama3.1:8b", "out": {"paraphrase": "salad ready in under 30 minutes"}}
+{"key": "f6fe4ecb4ee765ffa9503d0323416051d3ebf919a47dbe879bfe4073593fd944", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to eggs, can you suggest a quick pasta dish?"}}
+{"key": "dfc11c65b20b4215a83fb0ed527e9f5e68a3d27f21747793cf2a4ee49906e2b1", "model": "llama3.1:8b", "out": {"paraphrase": "Vegan rice dish without onions"}}
+{"key": "38def12fe86bb599c6a97cfaf5ea3977e4ae875b593faeb0a7838058e3eb8a35", "model": "llama3.1:8b", "out": {"paraphrase": "What's a good veggie dessert that's shellfish-free?"}}
+{"key": "1c026c7badab21b2670cbb6ec1ff96b4d1b2aaff028fc7ed490b95f05c80e5b1", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi có dị ứng với hạnh nhân, bạn có thể gợi ý món tráng miệng cho tôi không?"}}
+{"key": "baba143ca3ca319e549b21440c68cfd61352d1a88eafcf3540afa26e1009ee31", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món gà không có tỏi"}}
+{"key": "c382e5572a1b296577ca656e1a202f7549396af8216e8d0d25db6a24545b2948", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món cà ri thuần chay"}}
+{"key": "4a8978e1fc2e392d5b7af39592ea07b226e744356286aab7a166b7fcc8db944d", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món xào nhanh dưới 30 phút"}}
+{"key": "36b4aa851b7a49b4d665723d98ebf1bb3e00dc0fdfa27a493256fa63920e09aa", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần bánh mì không có đậu nành và nấu được dưới 30 phút"}}
+{"key": "6085e228a2353396b0a6601128f5d44b691ba82a79781e631869701e7ef8a15d", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món mì Ý thuần chay không có ớt chuông"}}
+{"key": "f67fa6e520f597d692a9055fd0afc8a600a243a940980d2f9d971a987473ee6b", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng đậu nành, nên ăn món bò thuần chay"}}
+{"key": "1d9f6a12551c6ce164d990390e8963c6dee54eeb01cde3e04772cccf56e9dde1", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to tree nuts, what rice dish would you recommend?"}}
+{"key": "a42f28b15916ab14a74ee5667d354d4997471158f616073fb75c5d0177381c3b", "model": "llama3.1:8b", "out": {"paraphrase": "I'd like to suggest a vegetarian rice dish"}}
+{"key": "485c3c741c3758bfacc2f8162cf39e82e1e5f992e11e63272ba7b57f6503b785", "model": "llama3.1:8b", "out": {"paraphrase": "I need a quick curry recipe"}}
+{"key": "266abc56f9bc9fe4bea67d52d37e9980735c9e512b463135970388223b0b55ee", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to peanuts, can you make cookies in under 45 minutes?"}}
+{"key": "5a8e21107ebdbc4a6210f5fb5a3bb6608397b1d20181e7dc07ed7c3f1a096844", "model": "llama3.1:8b", "out": {"paraphrase": "Vegetarian chicken dish without mushrooms"}}
+{"key": "20ca849c9cb43db4abfdc0962a5358acd2e94a02f582b9ec81c8e6d40d7311ef", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to wheat, what's a vegetarian dessert?"}}
+{"key": "54fa579ac4e7616e59bb18addeaeadebdee67f1aeadef675074c49b6e1aa5b29", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng đậu nành, cần gợi ý bánh ngọt"}}
+{"key": "cb0f5e89a31e04de1c2eef4820004e5d274621b7128012d6d2efad82dbc5d214", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh quy không có cà chua"}}
+{"key": "89562a645d9ebaf3d83833ffd72a79cb98a716ca0b18a0eab13aa91afe516429", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh mì thuần chay"}}
+{"key": "eca85f5633688670a073c9e824f03b2894c78410aae323a89fe0b16c3bc2efc9", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món tráng miệng nhanh dưới 45 phút"}}
+{"key": "4dc91fa7f80a67c40cccfa221e1f910ceaa739ffa3928cc6ea0d83893649bc9c", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng các loại hạt như hạnh nhân, cần bánh ngọt nấu dưới 15 phút"}}
+{"key": "0b3688a7c7ca6a1720b8de83b9a55633b769c5b1aeb66fad9594684393cd79ba", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món súp chay không có hành tây"}}
+{"key": "f3429a0336a092ddfe378e6eccf164b7a9a716caffc108be06e2d43c97563ac8", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng cá, nên ăn món bò chay"}}
+{"key": "32d070a662a0bac254298738a25f0681214271b4e1b74fb00031775734bcad54", "model": "llama3.1:8b", "out": {"paraphrase": "I'm looking for a tree nut-free cake suggestion"}}
+{"key": "91b896becfcd750ef72a49d365aee199a4d755b1137dcbd86754a157669290ec", "model": "llama3.1:8b", "out": {"paraphrase": "I need a mushroom-free salad"}}
+{"key": "0dd67c0e92864fcd4e76ceb7dd4c0df9749237dc05d3cc1ae3795531629a4976", "model": "llama3.1:8b", "out": {"paraphrase": "What about some veggie cookies?"}}
+{"key": "888def3e024abb3b94999ee7acb387a706d96aea90b2f329b54e355aa00feacc", "model": "llama3.1:8b", "out": {"paraphrase": "Chicken dish ready in under 45 minutes"}}
+{"key": "db986e0ad6cda1734b0376986a75a0b2a4da9cfac9002baeefb114af23c9eebd", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to soy, can you suggest a quick pasta dish?"}}
+{"key": "a6e15b6289dc9220b077a70cc45ad7caac269761e96b5bda27793b4628bf2d35", "model": "llama3.1:8b", "out": {"paraphrase": "vegan cookies without tomatoes"}}
+{"key": "9c30fe1c5f3730be8c5af630c7dade1e96f3ddd112a55c5943247729d541bd0d", "model": "llama3.1:8b", "out": {"paraphrase": "I'm looking for a vegan pasta dish that doesn't contain milk"}}
+{"key": "dc0769ed54ac819a97e8c8429827bf238100c60c9fbc4623eca1b4d30c72fd88", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần một món súp không có lúa mì vì tôi dị ứng với nó"}}
+{"key": "1aa7355e7e6d5be9100d68f7cc6648e7f8945e4f6d55481d1d4be94351cad7a7", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh mì không có nấm"}}
+{"key": "e0a8a0ae14aa9d39ac75340a3684f876e104f86cac7b2555ebc979ef00273995", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh quy chay"}}
+{"key": "6e8aade60b935d4a2194468feaef8736a53c65b8474e16615c1454d195a8d721", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món xào nấu nhanh dưới 30 phút"}}
+{"key": "f2563f06bfc55c9fe0f193d07a4e653a13ec99fe68eb680b8a8f4da66f2e75df", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng với hạnh nhân và muốn bánh ngọt được nấu trong 30 phút"}}
+{"key": "db9da056eb92a0a37cf875fbc50f19f1e0cf04a0618857bc9ba6fd0397a5fe11", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món cơm chay không có tỏi"}}
+{"key": "87fa0d798f007b5031ce599a0382b36e2757bc8f8c4d7fe1aec337517d33b7a5", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần bánh mì chay vì tôi dị ứng tôm cua"}}
+{"key": "a414dc097857bce296c0c9ec0d8fe5a2ec7570c6498f8f396c56ce7d80995204", "model": "llama3.1:8b", "out": {"paraphrase": "What's a good salad that doesn't have fish in it?"}}
+{"key": "63d7add27f1f4e625313105a100b20bc91a32c696a685e29b4db68823aecf925", "model": "llama3.1:8b", "out": {"paraphrase": "Chicken dish without tomatoes"}}
+{"key": "bcc2b7fafd32c7a66fccb186238df973db5a3fafe09e27df05ee29587d10b71a", "model": "llama3.1:8b", "out": {"paraphrase": "I was wondering if you could recommend a vegan chicken dish"}}
+{"key": "4147e6c0c2849e60870fbeb44f4a9b3e2f5d8bbac65c3d6ea9102961b15bca83", "model": "llama3.1:8b", "out": {"paraphrase": "quick cake"}}
+{"key": "ab3820951274244cf029657a24dc0a069c27272af59f3bf6007dfdd847cb96b0", "model": "llama3.1:8b", "out": {"paraphrase": "I need a shellfish-free bread that can be made in under 45 minutes"}}
+{"key": "e8b4b23760898ac805e8163d1512deaf99e7f52148c8de950bd7e2334fbfea42", "model": "llama3.1:8b", "out": {"paraphrase": "I need a veggie salad without onions"}}
+{"key": "d983b592b6e116bd885e3b89455fcbfee5b29413759d7e461abc32af0f2efce8", "model": "llama3.1:8b", "out": {"paraphrase": "What's a vegan chicken dish that's fish-free?"}}
+{"key": "d5a834222794cdd6954821f9233abb40c1fbf912f262acf8a1bbaa3d0a266795", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng đậu nành, giúp tôi có món súp"}}
+{"key": "a8a2fdb6039693714cbdcee6f4feaee593f38b408393a78005b37db04c5adecc", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món xào không có tỏi"}}
+{"key": "73be64cc9ef708e18711edb7db8c73fa27a563e87730a296478f320dd5799570", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món súp thuần chay"}}
+{"key": "ecbc674c3fa2da93b27122c245c9465fb52ade951a01f449ffd4958209b6955f", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh quy nấu nhanh"}}
+{"key": "cd8bf7ee6d833a1819d727f21b0e80014f6f18bd293a818480a4cc8c2b01f7da", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần món cơm nấu nhanh dưới 45 phút vì tôi dị ứng sữa"}}
+{"key": "8027834517365ad7fc4f8c4d3209e5f82a6ca403db90ecbfc8b327d7a84d4e4e", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món gà thuần chay không có cà chua"}}
+{"key": "b5e251131bc111a585145b412d71ca2f9856df44b22124eb22b580a9f2ca6079", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng lúa mì, nên gợi ý món mì Ý thuần chay"}}
+{"key": "2a4c05268e5eb6d4c0d673cefa418251523d58430fa4fdb5f2287f9d0147127c", "model": "llama3.1:8b", "out": {"paraphrase": "What kind of cake is safe for someone with a peanut allergy?"}}
+{"key": "2e5746085da49d4bfe8eae05b9d3ad97e078189a480180ad1fce70ff913b1e83", "model": "llama3.1:8b", "out": {"paraphrase": "I'd recommend a vegan chocolate mousse"}}
+{"key": "aaf9943fb8e55b7a09820ab7d1873bf5cd37b63de051777b08c5374fedd8b037", "model": "llama3.1:8b", "out": {"paraphrase": "I need a quick chicken recipe"}}
+{"key": "86e4720c779a55b9bd1907dd4cc3a4550b74a72c1bb5ec439203ffbf3c324836", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to eggs, can I get a curry in under 45 minutes"}}
+{"key": "3bf5dfcc06284974775144c85138a74adda801a6a8a0d9e3d1643166b42c3c2d", "model": "llama3.1:8b", "out": {"paraphrase": "Vegetarian beef dish without tomatoes"}}
+{"key": "cf09b547a21a36cd24f9cea779c72657cbd0eb149e05582e02dab3e40cab1f66", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to peanuts, what vegan beef dish can I have?"}}
+{"key": "edf8a3624d5a478758946f004296e2d64942b4eb6d2f34feaa58e5347cf2bf03", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng sữa, cần gợi ý bánh ngọt"}}
+{"key": "16508fb7cd0817db9ff7095266e10be198dcd425e0489a70406d604c65e7b527", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món mì Ý không có cà chua"}}
+{"key": "2fec95f9ee6ee1257dfda007c6daebb8ebafd0fb80b653a0cd8e0a0ba7b56957", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món gà chay"}}
+{"key": "266dde7149394a6dcfb4722c725fa488dbdef2af1816b425218de075ac8391f2", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món bò nấu nhanh dưới 15 phút"}}
+{"key": "7d66b1d93c142832d37030d2514eda3de1c63f729769a3101c2a6194383bb4a9", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng trứng, cần món salad nấu dưới 45 phút"}}
+{"key": "9c563cea0f465f450d74ff1fdb4cd2a8b889d4fbe3af298ee0569d2f5fde0d89", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món mì Ý thuần chay không có ớt chuông"}}
+{"key": "5568695f9d387e4c320d79d3d7f2689a634bd2f1e1011c9772f4f49e90f8f35b", "model": "llama3.1:8b", "out": {"paraphrase": "tôi dị ứng các loại hạt như hạnh nhân, gợi ý món tráng miệng thuần chay"}}
+{"key": "ef002472aa95415a693b92a6cb0b5effd8e0dc4097434f23f2fd4d305a0fa97b", "model": "llama3.1:8b", "out": {"paraphrase": "I'd like a soy-free salad suggestion"}}
+{"key": "5a501a8cc87bd41c65d87102f6ab892b7f5041ba0c61a89f865842bde904dbdb", "model": "llama3.1:8b", "out": {"paraphrase": "I need a salad recipe without bell peppers"}}
+{"key": "a70733a39a3909fbc02f643151e67baeb562de7e4d05de561e84c3ecd75e2c49", "model": "llama3.1:8b", "out": {"paraphrase": "What about vegan cookies?"}}
+{"key": "1c54c153fb878920f5d74e12c9ea87483787b93a8753a3babea5a7effd21bc8d", "model": "llama3.1:8b", "out": {"paraphrase": "Quick cookie recipe under 15 minutes"}}
+{"key": "6613c0b50814ec2cc8ac7b7cea844276f6287be720a4c4f802d6f4d71eab8883", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to sesame, can you make a cake quickly?"}}
+{"key": "ad430d2ca52d7adb4ffcb8b5ca4950a583739585447ca85fc957148e120e4105", "model": "llama3.1:8b", "out": {"paraphrase": "vegan beef dish without tomatoes"}}
+{"key": "514678ab7d4ba03526a894afcf5d05a03ca5686f53988567457d4fd4cacf304e", "model": "llama3.1:8b", "out": {"paraphrase": "I'd like a vegan salad without shellfish"}}
+{"key": "a24e70e642d15bee9342f3a0dd88d45257f4be5dbe1e0d51b45cfaf565d350c3", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng sữa, có thể gợi ý món xào không có sữa cho tôi không?"}}
+{"key": "21b980ad7b93287b11eee47b56f9dd6601fd12e507bb05a0d18d2ebb216af48e", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món xào không có ớt chuông"}}
+{"key": "cd8004ba674cad97060e0e1640fc1aa62783a204a96745cd4f9612a5f0ba1bcf", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món gà chay"}}
+{"key": "67d2130bafd5d2db7cbc361f20a92fd0d48bc3cd9ef96b05cec42501d9164643", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh ngọt nấu nhanh dưới 15 phút"}}
+{"key": "f1eb4833955c19572f6fa8d0ee03e732e6f057dfd259764c9fff9f303680273e", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng cá, cần món tráng miệng nấu dưới 15 phút"}}
+{"key": "e09d37b64ecd32479eec6ed6323d77f044e9cc619aca7f195e24fde9ed6e6035", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh ngọt thuần chay không có hành tây"}}
+{"key": "c8fbee2b5870497de940fa858c8a887f905c504729833e6f8ee21f5fb97c5fb9", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần một món súp thuần chay vì tôi dị ứng đậu phộng"}}
+{"key": "4016026696ffa14eec53a66893beab5336ea68155d7c8b8216c70a4e48161b49", "model": "llama3.1:8b", "out": {"paraphrase": "What bread is soy-free?"}}
+{"key": "50e1508ac4c7f8391dd3291c9e8a7a6146bf74bff73a77bba5f222721da197b8", "model": "llama3.1:8b", "out": {"paraphrase": "suggest a soup without bell peppers"}}
+{"key": "a8120249c124dc8376dc498628671c34ded2299e578c19e3d114866a56a17ae7", "model": "llama3.1:8b", "out": {"paraphrase": "What about a vegetarian dessert?"}}
+{"key": "44359bb640daa0c9b4ca5214f76b2258b3fbe3a28085e9d0d867a7753d495236", "model": "llama3.1:8b", "out": {"paraphrase": "quick dessert under 45 minutes"}}
+{"key": "bf3063791be40fbdc74a7a516c1211b3ae0312f01df718b3d8513aa13966f454", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to milk, can I have a cookie in under 15 minutes"}}
+{"key": "b2276f6c66a29928eaeb5a908a6ab215409cf9838b0b600ce3c314dba20b8763", "model": "llama3.1:8b", "out": {"paraphrase": "Vegan cookies without onions"}}
+{"key": "dafb753c2e6bac6a6cf85d1d4a1e56482c5a468f19caba597dfe4c480dd84d15", "model": "llama3.1:8b", "out": {"paraphrase": "What's a good sesame-free veggie salad?"}}
+{"key": "22ce9ce24be416b22ee9235272c1c28fe84fca77926000eefedeceff7f8ffcb9", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng trứng, có thể ăn mì Ý không?"}}
+{"key": "dc1a224a25d8097fda4e61854031c5fd07ae4cd423e88b05974478bdcf21d502", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh mì không có cà chua"}}
+{"key": "fdbffc57cca25d6452e1a4cb9ff2d6b9fd295ee1be0f48356c865e4c54f82212", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh ngọt thuần chay"}}
+{"key": "866e786ca0b21e1425f6fa2465b141eb1aaf1576c1e7694f003f40ec878c54e6", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng đậu phộng, cần bánh ngọt nấu nhanh"}}
+{"key": "e01a9c7dcfff086699a6596c5801118ffd4cad6f1c0ee2ae21bc31a524b4e62b", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món xào thuần chay không có cà chua"}}
+{"key": "369719b7d1064fdc2765d7e68d772626f68e18cd656586bfd18e0dfd962315b1", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng đậu nành, nên gợi ý món xào chay"}}
+{"key": "c2b4752922a6d2a73d53a81bfbb6ad2c53a9838b4e41e6fc46588fb945bdd9a4", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to peanuts, what rice dish would you recommend?"}}
+{"key": "88448e3cc6ade22326ffb4473e007d1271e64c3092855ece3f755d1f7daafdf4", "model": "llama3.1:8b", "out": {"paraphrase": "suggest a cookie without bell peppers"}}
+{"key": "5e7b9b4a0f2afdeaa0c04eeac49b6a255af81d99adacee40dee9ffdb3ded2874", "model": "llama3.1:8b", "out": {"paraphrase": "I'd like to suggest a vegan chicken dish"}}
+{"key": "2c56b75b146a531bde04eda3a78be9edbab9248e99ff9ca44e6e144412b5bbbf", "model": "llama3.1:8b", "out": {"paraphrase": "I need a salad recipe that's ready in under 45 minutes"}}
+{"key": "f5884242443ec4d9a13b6652755290b454a18951bcf710bd9d9392788e418015", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to fish, can I make cookies in under 45 minutes?"}}
+{"key": "89be0facc09964d978c83a7ef7faae206536eec8f8635172f341e1d9264cb73d", "model": "llama3.1:8b", "out": {"paraphrase": "Vegan bread without onions"}}
+{"key": "4ef53c607334274ee7076392ec930b09682740e2de1e1dfe7798110a9ba6905d", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to peanuts, what vegetarian rice dish can I have?"}}
+{"key": "aa688732294a0e617d4bd5d89312b6b42c7914e6a243e4ad22681f608785879c", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng đậu phộng, có thể gợi ý bánh quy không?"}}
+{"key": "8e461f27f27bfa04c7530a9a5328df276006dc4a44fa354c06c955fe18d5bbc2", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món salad không có tỏi"}}
+{"key": "9d04116f2df6cdb11d086ce689d56075244910b67460f864942b8496ad086f02", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món bò chay"}}
+{"key": "10c6ef20f082ae004b2aaea2d275a7867ef2decde638e813d7d679ccd5af1ad6", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh quy nhanh dưới 15 phút"}}
+{"key": "c017e1a5ff2cd11e5ba0ac8b949bb7251f672c590d78f7de6e8f9921978e131b", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng tôm cua, cần món mì Ý nấu nhanh"}}
+{"key": "fab51b96d282a7615391c16808902b7ac93162780785075627709f315334a848", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món cà ri chay không có cà chua"}}
+{"key": "1ede903ea38ef81dfa972aa2f0e8fd49b31286ae38ff656b80f87f7c2aa93755", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng trứng, nên ăn món bò thuần chay"}}
+{"key": "ee2e6d5ec2411dcfb0b55c251b8d76097387d2bdd306014180ee2e49c141a178", "model": "llama3.1:8b", "out": {"paraphrase": "I'd like a tree nut-free dessert suggestion"}}
+{"key": "2511bd7b3059ea10aefb7a7ef949beb26660e12adfa9507d38a0801f853de152", "model": "llama3.1:8b", "out": {"paraphrase": "I need a curry recipe without bell peppers"}}
+{"key": "0d5535c2fb6cb44a453b294a816935df671e30b3413ef7bbbd76a02076530a16", "model": "llama3.1:8b", "out": {"paraphrase": "Can you recommend a vegetarian chicken dish?"}}
+{"key": "f689a7e23b8074b7651431d07c6d97a68f18cec6c2745147c990e363b7adba26", "model": "llama3.1:8b", "out": {"paraphrase": "Quick soup option"}}
+{"key": "c16522a9c6394c600e796f287db68c65c6105f79515fba301407a9d7dc1f0f75", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to eggs, can I have a stir-fry in under 15 minutes"}}
+{"key": "5f62bfb8b677bafa5cc2f5fd030ffe548e6c45063b4be975f58d7d1d554ec635", "model": "llama3.1:8b", "out": {"paraphrase": "veggie cookies no cilantro"}}
+{"key": "be0a02766fedc7aa22624ba50220b3c03fdd814486ad0969dcc9609b96bdd19e", "model": "llama3.1:8b", "out": {"paraphrase": "I'd like a vegan beef dish that doesn't include fish"}}
+{"key": "5b6155a58dd059b9b51dd42507afccc41d112b29bb4f44acf01105d0b37091c1", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi cần bánh mì không có mè vì tôi dị ứng mè"}}
+{"key": "1921b53913fe5eb4cfc3e749db8ab2c3f5bff7fc9ccb20d7b4fc783b38d0ff86", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý bánh mì không có cà chua"}}
+{"key": "e6148fbc1fda80205290611a1831d3e8bea3ae9c2f23ad19b0ec2bbad98cbf31", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món salad nấu nhanh dưới 45 phút"}}
+{"key": "e58da46c27729ed29a9dad5ff7742fe3165f971791ab83314e84ce77871d1bf7", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng đậu phộng, cần bánh mì dưới 30 phút"}}
+{"key": "0b70cdf749f8686842a6fe059c92507f7dd5653d0b62e134385a481d3a4424d5", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món salad chay không có cà chua"}}
+{"key": "123ec8604eb2627dac11ab9dda7e701c1f3cc791cb2c82589bf040a13f84fbf8", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi dị ứng sữa, nên ăn salad thuần chay"}}
+{"key": "f8c163a308bce7cadc378e186370f322518e50c94d65fc4af766f1cfcc044256", "model": "llama3.1:8b", "out": {"paraphrase": "What's a good pasta dish that doesn't have shellfish in it?"}}
+{"key": "dc6f891814a9656b48f103ae9e50adcbad9dadcb823891ebb8243b86f388784c", "model": "llama3.1:8b", "out": {"paraphrase": "suggest a salad without onions"}}
+{"key": "b1c88f9db9336e68b7b37654382d9faabe2ec73c35d1bd9a588a10b56b07676e", "model": "llama3.1:8b", "out": {"paraphrase": "I was wondering if you could recommend a vegetarian dish that's similar to chicken."}}
+{"key": "0654ae1b3ece8018616c2c9d49d1570fdf08bfe597a993cc0af6e56c0882ee3b", "model": "llama3.1:8b", "out": {"paraphrase": "quick cookie recipe under 15 minutes"}}
+{"key": "1060e5bfca4a363e3128c91156fd8b3f1a8ec93612a9dfe9cef71d55cc286e4f", "model": "llama3.1:8b", "out": {"paraphrase": "I'm allergic to peanuts, can you suggest a quick chicken dish?"}}
+{"key": "3b17287b48b06c158605acc15c73878bcc3f500b0a21507e3d25f833ac108f90", "model": "llama3.1:8b", "out": {"paraphrase": "I need a vegetarian pasta dish without cilantro"}}
+{"key": "0e1bb6c3878afb727d7634a89b7c60851882e498eb6fb1b4f074847360aa711e", "model": "llama3.1:8b", "out": {"paraphrase": "What's a good sesame-free veggie stir-fry?"}}
+{"key": "02813cfd7e31e0317f771f5082e9cfb69aa67ea1bc6f42744d5ad7c943e8a784", "model": "llama3.1:8b", "out": {"paraphrase": "Tôi có thể ăn bánh ngọt không có đậu phộng"}}
+{"key": "a37906b5d1f3bb31c56ca63fc5b8dcd97209a5e83126e4b62a0fe4b14ddacfe2", "model": "llama3.1:8b", "out": {"paraphrase": "gợi ý món bò không có tỏi"}}
