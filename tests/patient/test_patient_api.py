@@ -65,3 +65,9 @@ def test_no_name_in_any_patient_endpoint(client):
                        ("/patients", f"/patients/{PID}/tree", f"/patients/{PID}/profile")])
     for name in NAMES:
         assert name not in text
+
+
+def test_the_profile_lists_one_group_per_allergy_entry(client):
+    groups = {g["group_id"]: g for g in client.get(f"/patients/{PID}/profile").json()["groups"]}
+    assert set(groups) == {"record:allergy/735029006", "record:allergy/412071004"}
+    assert len(groups["record:allergy/735029006"]["members"]) == 21 and groups["record:allergy/412071004"]["text"]

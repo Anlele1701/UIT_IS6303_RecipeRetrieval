@@ -371,3 +371,50 @@ def test_a_lifted_nutrient_limit_is_matched_by_column():
     q = without(p, {"nutrient:sodium_mg", "soft:fiber_per_1000kcal"})
     assert q.nutrient_limits == {} and q.nutrient_soft == {} and set(q.evidence) == {"allergen:wheat"}
     assert p.nutrient_limits and without(p, set()) is p  # pure: the input is untouched
+
+
+def test_a_group_lift_takes_every_constraint_of_one_allergy_entry_in_one_row(bot, monkeypatch):
+    fake_models(monkeypatch, [Understanding(lang="vi", query_en="tea")], ["[R3]"])
+    sid = bot.new_session("S", PID)
+    out = bot.lift_record_constraint(sid, "record:allergy/735029006", confirm=True, reason="hết dị ứng hải sản")
+    assert "allergen:crustacean_shellfish" in out["members"] and "ingredient:clam" in out["members"]
+    assert len(out["members"]) == 21 and out["kept"] == []
+    assert bot.conn.execute("SELECT count(*) FROM session_record_lift WHERE session_id = %s", [sid]).fetchone()[0] == 1
+    evs = dict(events(bot, sid, "gợi ý món"))
+    prof = evs["patient_profile"]
+    assert prof["allergens_exclude"] == ["wheat"] and prof["ingredients_exclude"] == []
+    assert [g["group_id"] for g in prof["groups"]] == ["record:allergy/412071004"]
+
+
+def test_one_member_of_a_group_can_still_be_lifted_alone(bot, monkeypatch):
+    # "only allergic to shrimp, clams are fine": the molluscs go, the crustacean group stays
+    fake_models(monkeypatch, [Understanding(lang="vi", query_en="tea")], ["[R3]"])
+    sid = bot.new_session("S", PID)
+    bot.lift_record_constraint(sid, "ingredient:clam", confirm=True)
+    prof = dict(events(bot, sid, "gợi ý món"))["patient_profile"]
+    assert "crustacean_shellfish" in prof["allergens_exclude"] and "clam" not in prof["ingredients_exclude"]
+    shellfish = next(g for g in prof["groups"] if g["group_id"] == "record:allergy/735029006")
+    assert "ingredient:clam" not in shellfish["members"] and len(shellfish["members"]) == 20
+
+
+def test_a_constraint_two_entries_yield_stays_until_both_groups_are_lifted(bot, monkeypatch):
+    from api.patient.models import Evidence, PatientNode, PatientProfile
+    ev = [Evidence("allergies", "e-almond", "Almond"), Evidence("allergies", "e-walnut", "Walnut")]
+    profile = PatientProfile(PID, frozenset({"tree_nuts"}), frozenset(), {}, [], [],
+                             {"allergen:tree_nuts": ev}, "v", "vectorless")
+    nodes = [PatientNode("allergies", None, "fixed", "Allergies", None,
+                         [{"entry_id": "e-almond", "substance_code": "102259006"},
+                          {"entry_id": "e-walnut", "substance_code": "227515004"}], [])]
+    monkeypatch.setattr(orch.profile_store, "load_or_build", lambda *a, **k: profile)
+    monkeypatch.setattr(orch.profile_store, "load_nodes", lambda *a, **k: nodes)
+    sid = bot.new_session("S", PID)
+    first = bot.lift_record_constraint(sid, "record:allergy/102259006", confirm=True)
+    assert first["members"] == [] and first["kept"] == ["allergen:tree_nuts"]  # the walnut entry still yields it
+    second = bot.lift_record_constraint(sid, "record:allergy/227515004", confirm=True)
+    assert second["members"] == ["allergen:tree_nuts"] and second["kept"] == []
+    assert bot.lifted_ids(bot.record_lifts(sid)) == {"allergen:tree_nuts"}
+
+
+def test_an_unknown_group_is_refused(bot):
+    with pytest.raises(orch.RecordLiftRefused, match="not a group"):
+        bot.lift_record_constraint(bot.new_session("S", PID), "record:allergy/000", confirm=True)

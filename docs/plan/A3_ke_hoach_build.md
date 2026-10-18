@@ -334,8 +334,12 @@ event: done
  "warnings": ["Nên ưu tiên món ít đường (đường dưới 10% năng lượng, WHO)."], "unmapped": [],
  "ruleset_version": "…",
  "evidence": {"allergen:wheat": [{"node_id": "allergies", "text": "Wheat – Eruption of skin, Dyspnea, Moderate"}]},
- "lifted": [{"constraint_id": "allergen:crustacean_shellfish", "reason": "bác sĩ xác nhận",
+ "lifted": [{"constraint_id": "ingredient:clam", "members": ["ingredient:clam"], "reason": "bác sĩ: ăn được nghêu",
              "confirmed_at": "2026-10-18T22:10:00+07:00"}],
+ "groups": [{"group_id": "record:allergy/735029006", "node_id": "allergies",
+             "text": "Shellfish – Cough, Eruption of skin, …", "members": ["allergen:crustacean_shellfish", "ingredient:abalone", "…"]},
+            {"group_id": "record:allergy/412071004", "node_id": "allergies",
+             "text": "Wheat – Eruption of skin, Dyspnea, Moderate", "members": ["allergen:wheat"]}],
  "nodes_read": ["allergies", "problems.active", "meds.active", "vitals.latest", "results.2026"],
  "llm_calls": 1, "latency_ms": {"v1": 3.0, "v2": 520.0, "v3": 0.6},
  "input": "coded", "entities": {"…": "…"}, "chunks_read": null, "extract_calls": 0, "extract_chars": 0}
@@ -344,6 +348,7 @@ event: done
 - Giới hạn dinh dưỡng tính cho **một khẩu phần** (ADR-0007). `["max", 666.67]` nghĩa là natri ≤ 666,67 mg mỗi khẩu phần.
 - `nutrient_soft` chỉ dùng để xếp hạng, không lọc.
 - `evidence` có khóa là `constraint_id` (6.5.3). Mỗi phần tử là `{node_id, text}`; `node_id` trỏ tới nút trong cây (6.5.2).
+- `groups`: mỗi dòng dị ứng trong hồ sơ là một nhóm. `members` gồm các ràng buộc **còn hiệu lực** mà dòng đó sinh ra. Ràng buộc dinh dưỡng không thuộc nhóm nào.
 - `input`, `entities`, `chunks_read`, `extract_*` là trường dùng cho đánh giá; UI bỏ qua.
 
 **`constraints`**
@@ -388,7 +393,7 @@ Mọi endpoint chỉ trả những gì mô hình được thấy: facts qua allo
 |---|---|
 | `GET /patients?alive_only=true` | `[{patient_id, source, sex, age_years, record_date, deceased, summary:{allergens, nutrient_limits, nutrient_soft, warnings}}]`. Người đã mất chỉ hiện khi `alive_only=false`, và không có `summary`. |
 | `GET /patients/{id}/tree` | Các nút theo thứ tự `[{node_id, parent_id, kind: root\|fixed\|context, title, summary, facts}]`. `facts` là prompt view: dị ứng thực phẩm có luật, bệnh có trong `condition_nutrient.csv`, thuốc có luật, sinh hiệu được phép, panel xét nghiệm, loại lần khám kèm tháng (không có tên lần khám). |
-| `GET /patients/{id}/profile?mode=vectorless\|direct` | Hồ sơ ràng buộc đầy đủ theo bảng luật, **trước** khi gỡ: `{patient_id, allergens_exclude, ingredients_exclude, nutrient_limits, nutrient_soft, warnings, unmapped, evidence:{constraint_id:[{node_id, text}]}, ruleset_version, mode}`. Hồ sơ hiệu lực của một phiên nằm trong sự kiện `patient_profile`. |
+| `GET /patients/{id}/profile?mode=vectorless\|direct` | Hồ sơ ràng buộc đầy đủ theo bảng luật, **trước** khi gỡ: `{patient_id, allergens_exclude, ingredients_exclude, nutrient_limits, nutrient_soft, warnings, unmapped, evidence:{constraint_id:[{node_id, text}]}, groups:[{group_id, node_id, text, members}], ruleset_version, mode}`. Hồ sơ hiệu lực của một phiên nằm trong sự kiện `patient_profile`. |
 
 Ví dụ một dòng của `GET /patients` (bệnh nhân fixture):
 
@@ -400,19 +405,24 @@ Ví dụ một dòng của `GET /patients` (bệnh nhân fixture):
 
 #### 6.5.3. Gỡ ràng buộc: `PATCH /chat/{session}/constraints/{constraint_id}` (route do M4 làm)
 - Body: `{"action": "remove", "confirm": bool, "reason"?: string}`.
-- **`constraint_id`** ổn định qua các lượt:
-  - với ràng buộc hồ sơ là khóa bằng chứng: `allergen:<nhóm>`, `ingredient:<tên>`, `nutrient:<cột>`, `soft:<cột>` (`api/patient/models.constraint_ids`);
-  - với ràng buộc hội thoại, M4 tự đặt theo cùng dạng `<type>:<value>`.
+- **`constraint_id`** ổn định qua các lượt, có hai loại:
+  - **một ràng buộc:** `allergen:<nhóm>`, `ingredient:<tên>`, `nutrient:<cột>`, `soft:<cột>`, tức khóa bằng chứng (`api/patient/models.constraint_ids`);
+  - **một nhóm:** `record:allergy/<mã SNOMED của chất>`, gồm mọi ràng buộc mà một dòng dị ứng của hồ sơ sinh ra (`api/patient/mapping.record_groups`). Ví dụ dị ứng hải sản có vỏ là `allergen:crustacean_shellfish` cộng 20 `ingredient:` nhuyễn thể.
+  - Với ràng buộc hội thoại, M4 tự đặt theo dạng `<type>:<value>`.
 - **Ràng buộc hồ sơ:** route gọi `Assistant.lift_record_constraint(session_id, constraint_id, confirm, reason)`.
-  - Cần `confirm = true`. Không có thì `RecordLiftRefused`, trả **409**. Phiên không có bệnh nhân, hoặc mục không thuộc hồ sơ, cũng trả **409**.
-  - Thành công thì trả `{constraint_id, reason, confirmed_at}` và lưu một dòng vào `session_record_lift` (migration 009), có lưu vết.
-  - Từ lượt sau, phiên chạy trên hồ sơ đã bỏ mục đó ở M2, M4, M6 và M7. Mục đã gỡ hiện trong `patient_profile.lifted`.
+  - Cần `confirm = true`. Không có thì `RecordLiftRefused`, trả **409**. Phiên không có bệnh nhân, hoặc id không thuộc hồ sơ, cũng trả **409**.
+  - **Gỡ một nhóm** chạy trong một transaction và ghi **một** dòng `session_record_lift` có `members` (các id đã gỡ). Một thành viên mà một dòng dị ứng khác cũng sinh ra (ví dụ `allergen:tree_nuts` từ cả hạnh nhân lẫn óc chó) được **giữ** cho tới khi nhóm kia cũng được gỡ. Kết quả trả về cho biết các id đó trong `kept`.
+  - **Gỡ từng mục vẫn làm được.** Ví dụ bác sĩ xác nhận "chỉ dị ứng tôm, ăn được nghêu": gỡ `ingredient:clam` và các nguyên liệu nhuyễn thể khác, giữ `allergen:crustacean_shellfish`. Ràng buộc dinh dưỡng chỉ gỡ từng mục.
+  - Thành công thì trả `{constraint_id, members, kept, reason, confirmed_at}`. Từ lượt sau, phiên chạy trên hồ sơ đã bỏ các mục trong `members`, ở M2, M4, M6 và M7. Lịch sử gỡ hiện trong `patient_profile.lifted`.
   - **Tin nhắn chat không gỡ được ràng buộc hồ sơ.**
 - **Ràng buộc hội thoại:** sửa hoặc xóa chip không cần `confirm`. Hành vi giống gỡ bằng lời ở M2.
-- **Gom nhóm:** một dòng dị ứng trong hồ sơ có thể sinh nhiều ràng buộc có chung bằng chứng. Ví dụ dị ứng hải sản có vỏ sinh `allergen:crustacean_shellfish` cộng 20 `ingredient:` nhuyễn thể. UI nên gom theo `evidence` thành một chip, và khi xác nhận gỡ thì gọi PATCH cho mọi `constraint_id` trong nhóm.
 
 #### 6.5.4. Gợi ý hiển thị cho M4
-- **Chip ràng buộc hồ sơ:** có biểu tượng khóa, tooltip là `evidence.text` kèm liên kết tới nút. Nút "xác nhận gỡ" mở hộp thoại có ô lý do, rồi gọi PATCH với `confirm=true`. Chip đã gỡ chuyển sang trạng thái "đã gỡ" (lấy từ `lifted`).
+- **Chip ràng buộc hồ sơ:** **một chip cho mỗi nhóm** trong `patient_profile.groups`. Chip có biểu tượng khóa, nhãn là `text`, và liên kết tới `node_id`.
+  - Nút "xác nhận gỡ" mở hộp thoại có ô lý do, rồi gọi PATCH với `group_id` và `confirm=true`.
+  - Nút "chi tiết" liệt kê `members`, mỗi mục có nút gỡ riêng.
+  - Ràng buộc dinh dưỡng mỗi cái một chip.
+  - Mục đã gỡ hiện ở trạng thái "đã gỡ" (lấy từ `lifted`). Nếu kết quả gỡ nhóm có `kept`, báo rằng các mục đó vẫn còn vì một dòng dị ứng khác cũng sinh ra chúng.
 - **`record_locked`:** hiển thị như một thông báo ngay dưới tin nhắn của người dùng.
 - **`warnings`:** hiển thị như cảnh báo cố định của phiên. Giới hạn mềm hiển thị là "ưu tiên", không phải "loại".
 - **Banner:** công cụ chỉ hỗ trợ chọn món, không thay lời khuyên y tế.

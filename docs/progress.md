@@ -821,3 +821,11 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
   - kết quả: 524 test nhanh pass; test hồi quy cho nhánh không có bệnh nhân không đổi.
 
 **Cần Thy:** duyệt hợp đồng ở mục 6.5 và ADR-0008.
+
+**Sau góp ý của Thy về gom nhóm (18/10/2026):**
+- **Id nhóm** `record:allergy/<mã SNOMED của chất>`: mọi ràng buộc mà một dòng dị ứng sinh ra (`mapping.record_groups`, suy từ `entry_id` của bằng chứng). Ví dụ bệnh nhân fixture: hải sản có vỏ 21 thành viên, lúa mì 1.
+- **Gỡ nhóm** chạy trong một transaction và ghi một dòng có `members` (migration 010, đã áp; bảng còn trống trước đó).
+  - Thành viên mà một dòng dị ứng khác cũng sinh ra được **giữ** cho tới khi nhóm kia cũng được gỡ, và trả về trong `kept`. Trên 112 bệnh nhân còn sống có 12 ràng buộc như vậy.
+- **Gỡ từng mục vẫn giữ nguyên**, ví dụ "chỉ dị ứng tôm, ăn được nghêu". Ràng buộc dinh dưỡng chỉ gỡ từng mục.
+- `patient_profile` và `GET /patients/{id}/profile` có thêm `groups`. Hợp đồng 6.5.3, 6.5.4 và ADR-0008 đã cập nhật.
+- Test: thêm 5 test (gỡ nhóm một dòng; gỡ riêng một thành viên; thành viên dùng chung giữ tới khi gỡ cả hai nhóm; nhóm không tồn tại; API có `groups`). Kết quả: 529 test nhanh pass.

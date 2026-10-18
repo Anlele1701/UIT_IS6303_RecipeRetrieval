@@ -16,7 +16,7 @@ from collections import defaultdict
 from datetime import date
 
 from . import nutrition
-from .models import Evidence, PatientNode, PatientProfile
+from .models import Evidence, PatientNode, PatientProfile, constraint_ids
 from .rules import NUTRIENT_COLUMN, RuleSet
 
 FOOD_ALLERGY = "414285001"
@@ -162,3 +162,23 @@ def _limit(nutrient, rows, target, key, weight, weight_fact, warnings, evidence)
         evidence[f"{key}:{column}"].append(
             Evidence("vitals.latest", weight_fact.get("entry_id") or "",
                      f"Cân nặng {weight_fact.get('value')} {weight_fact.get('unit') or ''} ({weight_fact.get('date')})"))
+
+
+def record_groups(profile: PatientProfile, nodes: list[PatientNode]) -> list[dict]:
+    """The record constraints grouped by the allergy entry they come from (MV5, ADR-0008): one group per entry,
+    id record:allergy/<SNOMED code>, with the evidence text and its member constraint ids. A constraint two
+    entries yield is in both groups. Nutrient limits are not grouped: they are lifted one by one."""
+    code_of = {f.get("entry_id"): f.get("substance_code") for f in _facts(nodes, "allergies") if f.get("entry_id")}
+    groups: dict[str, dict] = {}
+    for cid in constraint_ids(profile):
+        if not cid.startswith(("allergen:", "ingredient:")):
+            continue
+        for e in profile.evidence.get(cid, []):
+            code = code_of.get(e.entry_id)
+            if not code:
+                continue
+            g = groups.setdefault(f"record:allergy/{code}", {"group_id": f"record:allergy/{code}", "node_id": e.node_id,
+                                                             "text": e.text, "members": []})
+            if cid not in g["members"]:
+                g["members"].append(cid)
+    return list(groups.values())

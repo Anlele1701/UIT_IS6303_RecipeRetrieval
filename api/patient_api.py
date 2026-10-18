@@ -16,6 +16,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from .deps import get_conn
 from .patient import profile_store
 from .patient import rules as patient_rules
+from .patient.mapping import record_groups
 from .patient.prompt_view import prompt_view
 
 router = APIRouter(prefix="/patients", tags=["patients"])
@@ -72,4 +73,5 @@ def patient_tree(patient_id: str, conn=Depends(get_conn)) -> list[dict]:
 def patient_profile(patient_id: str, mode: Literal["vectorless", "direct"] = "vectorless",
                     conn=Depends(get_conn)) -> dict:
     _living(conn, patient_id)
-    return profile_view(profile_store.load_or_build(conn, patient_id, rules(), mode))
+    profile = profile_store.load_or_build(conn, patient_id, rules(), mode)
+    return {**profile_view(profile), "groups": record_groups(profile, profile_store.load_nodes(conn, patient_id))}
