@@ -658,7 +658,7 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 - 12 người sinh thêm (nhóm đa bệnh lớn tuổi) so với 100 người mẫu. Bảng độ nhạy chỉ trên `sample` vẫn giữ như đã quyết.
 - Có cần tìm hiểu 17 bản ghi không được xuất C-CDA không.
 
-### MV4b – Mẫu P8 và bộ câu hỏi (17/10/2026) · 🚦 chờ duyệt (chưa đóng băng)
+### MV4b – Mẫu P8 và bộ câu hỏi (17/10/2026) · 🚦 đã duyệt, đóng băng 18/10/2026
 - `scripts/patient_sample.py` → `eval/patient/sample.json`: **100 bệnh nhân** còn sống (88 mẫu, 12 sinh thêm). Lấy toàn bộ 42 người có ràng buộc, cộng 58/70 người không ràng buộc (seed 42).
   - Tầng chính: đa bệnh 16, tăng huyết áp 15, dị ứng thực phẩm 10, tiểu đường 1, không ràng buộc 58.
   - Theo tầng (một người có thể ở nhiều tầng): tiểu đường 16, CKD 15, đa bệnh 16, tăng huyết áp 28, dị ứng thực phẩm 12.
@@ -677,3 +677,12 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 1. Duyệt bộ câu: đọc `eval/patient/queries.jsonl`, đặc biệt các câu `paraphrase_ok = true` trôi nghĩa. Có thể chỉ định qid nào cần dùng lại câu mẫu.
 2. Điền `eval/patient/manual_check.csv` (các cột `*_ok`, `note`).
 3. Xong 1 và 2 thì chạy (hoặc bảo mình chạy) `scripts/freeze_patient_set.py --approved-by Thy`.
+
+**Gate MV4b (Thy, 18/10/2026):**
+- `eval/patient/manual_check.csv`: Thy đối chiếu 20/20 bệnh nhân bằng script độc lập `eval/patient/verify_manual_check.py` (không import `api/patient`) cộng soát tay. Cả ba cột (dị ứng thực phẩm, bệnh, thuốc) đều `ok` ở 20/20.
+- Lưu ý trong ghi chú của Thy, mình đã kiểm:
+  - 3 bệnh nhân sinh thêm không có mã "Diabetes mellitus type 2", chỉ có biến chứng "due to type 2 diabetes" (hoặc "Prediabetes (finding)"). **Luật ADA (chất xơ, luật mềm) vẫn được áp** cho cả 3, vì các mã biến chứng nằm trong luật T2D từ MV2 (`eval/patient_profiles.json`).
+  - CKD giai đoạn 1, 2, 3 cùng active: luật protein áp vì có mã giai đoạn 3.
+  - Thuốc dùng một lần có ngày kết thúc `UNK` (Alteplase, fentanyl…) được tính "đang dùng" theo quy tắc 2.2 của đặc tả. Đây là hạn chế của quy tắc (ảnh hưởng độ đo trích thuốc, không ảnh hưởng ràng buộc). Ghi vào mục 4.6.
+  - Norethindrone không có luật trong `drug_food.csv`, nên không vào prompt (`prompt_view`).
+- **Đóng băng** `eval/patient/queries.jsonl` và `gold.jsonl` (`eval/patient/frozen.json`; queries `efac0618…`, gold `4e2fbf8e…`). `make_patient_queries.py` từ chối chạy lại; test kiểm sha256.
