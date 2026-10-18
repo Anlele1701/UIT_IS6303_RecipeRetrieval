@@ -1,5 +1,5 @@
 ---
-status: proposed (MV5, 18/10/2026; chờ Thy duyệt ở gate MV5)
+status: accepted (Thy, 18/10/2026, gate MV5)
 ---
 
 # Ràng buộc từ hồ sơ bệnh nhân chỉ được gỡ bằng xác nhận trên giao diện, có lưu vết theo phiên

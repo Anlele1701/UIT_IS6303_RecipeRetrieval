@@ -797,7 +797,7 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 
 **Gate MV4 (Thy, 18/10/2026): duyệt.** Số liệu chính thức là run `eval/runs/20261018-132948/patient` sau khi adjudicate (`b1f0c1a`). Bước tiếp theo là MV5, bắt đầu bằng plan mode.
 
-## MV5 – Giao nhánh hồ sơ cho M4 (18/10/2026) · 🚦 chờ duyệt
+## MV5 – Giao nhánh hồ sơ cho M4 (18/10/2026) · 🚦 đã duyệt 18/10/2026
 
 **Phạm vi (Thy chọn, 18/10):** ghi hợp đồng, và code phần riêng của hồ sơ có test. Để lại cho M4: `POST /chat` (SSE), API phiên, route `PATCH`, UI.
 
@@ -829,3 +829,5 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 - **Gỡ từng mục vẫn giữ nguyên**, ví dụ "chỉ dị ứng tôm, ăn được nghêu". Ràng buộc dinh dưỡng chỉ gỡ từng mục.
 - `patient_profile` và `GET /patients/{id}/profile` có thêm `groups`. Hợp đồng 6.5.3, 6.5.4 và ADR-0008 đã cập nhật.
 - Test: thêm 5 test (gỡ nhóm một dòng; gỡ riêng một thành viên; thành viên dùng chung giữ tới khi gỡ cả hai nhóm; nhóm không tồn tại; API có `groups`). Kết quả: 529 test nhanh pass.
+
+**Gate MV5 (Thy, 18/10/2026): duyệt.** Hợp đồng `docs/plan/A3_ke_hoach_build.md` mục 6.5 và ADR-0008 (accepted). Nhánh hồ sơ bệnh nhân MV0–MV5 hoàn tất; M4 (API `/chat`, route PATCH, UI) dùng hợp đồng này.
