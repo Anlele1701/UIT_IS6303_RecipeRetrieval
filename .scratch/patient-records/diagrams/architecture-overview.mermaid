@@ -1,0 +1,52 @@
+---
+title: Tổng quan — gợi ý món ăn theo hồ sơ bệnh
+---
+flowchart TB
+    Ask(["Người dùng chọn một bệnh nhân và hỏi muốn ăn gì"])
+
+    subgraph Main["Khi trả lời một câu hỏi"]
+        direction TB
+        Read["1. Đọc hồ sơ<br/>bệnh đang mắc, dị ứng thức ăn"]
+        Map["2. Tra quy tắc ăn uống<br/>bệnh trở thành giới hạn dinh dưỡng"]
+        Find["3. Tìm món trong kho công thức<br/>đúng ý hỏi, đúng giới hạn, không chứa chất dị ứng"]
+        Tell["4. Viết câu trả lời<br/>nêu bệnh, quy tắc và món được chọn"]
+        Read --> Map --> Find --> Tell
+    end
+
+    Ask --> Read
+    Tell --> Answer(["Món gợi ý, kèm lý do và bằng chứng"])
+
+    subgraph Data["Đã chuẩn bị sẵn, không sinh lúc trả lời"]
+        direction LR
+        EHR[("Hồ sơ bệnh nhân<br/>Synthea")]
+        Rules[("Bảng quy tắc<br/>có nguồn, không do AI bịa")]
+        Recipes[("Kho công thức nấu ăn")]
+    end
+
+    EHR --> Read
+    Rules --> Map
+    Recipes --> Find
+
+    subgraph AI["AI chỉ hỗ trợ hai việc"]
+        direction LR
+        Embed["Hiểu ý câu hỏi<br/>để tìm món gần nghĩa"]
+        Writer["Viết lời giải thích"]
+    end
+
+    Embed -.-> Find
+    Writer -.-> Tell
+
+    Side["Nhánh đo, dự kiến: đọc hồ sơ dạng văn bản rồi đối chiếu với SQL<br/>Không được quyết định giới hạn ăn"]
+    EHR -.-> Side
+
+    classDef ask fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px;
+    classDef step fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px;
+    classDef data fill:#e8f5e9,stroke:#4caf50,stroke-width:2px;
+    classDef ai fill:#fff3e0,stroke:#ff9800,stroke-width:2px;
+    classDef side fill:#eeeeee,stroke:#757575,stroke-width:2px,stroke-dasharray: 5 5;
+
+    class Ask,Answer ask;
+    class Read,Map,Find,Tell step;
+    class EHR,Rules,Recipes data;
+    class Embed,Writer ai;
+    class Side side;

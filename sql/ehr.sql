@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS ehr.observation (
 );
 CREATE INDEX IF NOT EXISTS observation_patient_code_idx ON ehr.observation (patient_id, code, observed_at DESC);
 
--- Loaded but not used yet: recipes have no allergen field, only free-text ingredient lines.
+-- Food allergies are screened against Recipe titles and ingredient lines (api/allergens.py).
 CREATE TABLE IF NOT EXISTS ehr.allergy (
   patient_id   uuid NOT NULL REFERENCES ehr.patient(id) ON DELETE CASCADE,
   start_date   date NOT NULL,
@@ -69,3 +69,12 @@ CREATE TABLE IF NOT EXISTS ehr.allergy (
   category     text                      -- food / medication / environment
 );
 CREATE INDEX IF NOT EXISTS allergy_patient_idx ON ehr.allergy (patient_id);
+
+-- Derived data, rebuilt by scripts/render_ehr_documents.py and never edited by hand: each patient's record
+-- as one Markdown document, for the vectorless (tree navigation) branch. Only the evaluation reads it;
+-- /recommend decides from the tables above.
+CREATE TABLE IF NOT EXISTS ehr.record_document (
+  patient_id   uuid PRIMARY KEY REFERENCES ehr.patient(id) ON DELETE CASCADE,
+  markdown     text NOT NULL,
+  rendered_at  timestamptz NOT NULL DEFAULT now()
+);

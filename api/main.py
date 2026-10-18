@@ -16,8 +16,8 @@ from fastapi.staticfiles import StaticFiles
 from psycopg_pool import ConnectionPool
 from pydantic import BaseModel
 
-from . import allergens, config, dietary_rules, llm, patients, recommend, retrieval, strategies
-from .embed import embed_query
+from . import allergens, config, dietary_rules, ehr_navigator, llm, patients, recommend, retrieval, strategies
+from .embed import embed_documents, embed_query, embed_query_array
 from .filters import SearchParams
 from .rerank import Reranker
 
@@ -180,6 +180,58 @@ def patient_diet_plan(patient_id: UUID, request: Request, conn=Depends(get_conn)
     plan = dietary_rules.derive_diet_plan(_profile(conn, patient_id), request.app.state.rules,
                                           dietary_rules.filterable_nutrients(), config.MEALS_PER_DAY)
     return plan
+
+
+class ConditionOut(BaseModel):
+    code: str
+    description: str
+
+
+class ActiveConditionsOut(BaseModel):
+    source: Literal["sql", "tree", "dense"]
+    conditions: list[ConditionOut]
+    sql_conditions: list[ConditionOut]  # the answer key, always from the tables
+    missing_vs_sql: list[str]  # codes SQL has and this source did not return
+    extra_vs_sql: list[str]  # codes this source returned that SQL does not call active
+    selected: list[str]  # sections (tree) or pieces (dense) that were read
+    chars_read: int
+    llm_calls: int
+    invented_codes: list[str]  # named by the model but not in the text it read; dropped
+    error: str | None
+    timings_ms: dict[str, float]
+
+
+@app.get("/patients/{patient_id}/active-conditions", response_model=ActiveConditionsOut)
+def patient_active_conditions(patient_id: UUID, request: Request, source: Literal["sql", "tree", "dense"] = "sql",
+                              conn=Depends(get_conn)):
+    """The patient's active conditions as `source` finds them, next to the SQL answer.
+
+    For demonstration and measurement of the vectorless branch only: `tree` has the LLM navigate the record
+    document by its table of contents, `dense` retrieves pieces by embedding. Neither feeds /recommend,
+    which always reads the tables.
+    """
+    profile = _profile(conn, patient_id)
+    sql = [ConditionOut(code=c.code, description=c.description) for c in profile.active_conditions]
+    if source == "sql":
+        return ActiveConditionsOut(source=source, conditions=sql, sql_conditions=sql, missing_vs_sql=[],
+                                   extra_vs_sql=[], selected=[], chars_read=0, llm_calls=0, invented_codes=[],
+                                   error=None, timings_ms={})
+    row = conn.execute("SELECT markdown FROM ehr.record_document WHERE patient_id = %s", [str(patient_id)]).fetchone()
+    if row is None:
+        raise HTTPException(409, "this patient has no record document; run scripts/render_ehr_documents.py")
+    http = request.app.state.http
+    ask = lambda messages: llm.chat(http, messages, json_mode=True)  # noqa: E731
+    if source == "tree":
+        found = ehr_navigator.tree_active_conditions(row[0], ask)
+    else:
+        found = ehr_navigator.dense_active_conditions(
+            row[0], ask, lambda texts: embed_documents(http, texts), lambda text: embed_query_array(http, text))
+    truth = {c.code for c in sql}
+    return ActiveConditionsOut(
+        source=source, conditions=[ConditionOut(code=c.code, description=c.description) for c in found.conditions],
+        sql_conditions=sql, missing_vs_sql=sorted(truth - found.codes), extra_vs_sql=sorted(found.codes - truth),
+        selected=found.selected, chars_read=found.chars_read, llm_calls=found.llm_calls, invented_codes=found.rejected,
+        error=found.error, timings_ms=found.timings_ms)
 
 
 @app.post("/recommend", response_model=recommend.RecommendResponse)

@@ -237,8 +237,8 @@ def stats(conn: psycopg.Connection, top: int = 40) -> str:
 
 def reset(conn: psycopg.Connection) -> None:
     with conn.transaction():
-        conn.execute("TRUNCATE ehr.allergy, ehr.observation, ehr.medication, ehr.condition, "
-                     "ehr.patient, ehr.cohort_run")
+        conn.execute("TRUNCATE ehr.record_document, ehr.allergy, ehr.observation, ehr.medication, "
+                     "ehr.condition, ehr.patient, ehr.cohort_run")
 
 
 def main(argv: list[str] | None = None) -> None:

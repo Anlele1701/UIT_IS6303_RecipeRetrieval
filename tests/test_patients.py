@@ -141,3 +141,47 @@ def test_unknown_and_malformed_patient_ids(client):
     assert client.get(f"/patients/{UUID(int=999)}").status_code == 404
     assert client.get(f"/patients/{UUID(int=999)}/diet-plan").status_code == 404
     assert client.get("/patients/not-a-uuid/diet-plan").status_code == 422
+
+
+# --- active conditions by source -------------------------------------------------------------
+
+
+def _fake_models(monkeypatch, pick="active_conditions"):
+    import json
+    import numpy as np
+
+    def chat(http, messages, **kw):
+        prompt = messages[-1]["content"]
+        if "table of contents" in prompt:
+            return json.dumps({"sections": [pick]})
+        return json.dumps({"conditions": [{"code": "59621000", "description": "Essential hypertension (disorder)"},
+                                          {"code": "11111", "description": "invented"}]})
+    monkeypatch.setattr("api.main.llm.chat", chat)
+    monkeypatch.setattr("api.main.embed_documents", lambda http, texts: np.ones((len(texts), 2), dtype=np.float32))
+    monkeypatch.setattr("api.main.embed_query_array", lambda http, text: np.ones(2, dtype=np.float32))
+
+
+def test_active_conditions_default_to_sql_and_need_no_document(client):
+    body = client.get(f"/patients/{P[1]}/active-conditions").json()
+    assert body["source"] == "sql" and {c["code"] for c in body["conditions"]} == {"59621000", "160903007"}
+    assert body["missing_vs_sql"] == [] and body["llm_calls"] == 0
+
+
+def test_tree_and_dense_are_compared_with_sql_and_invented_codes_are_dropped(client, ehr, monkeypatch):
+    from api import ehr_document
+    ehr.execute("INSERT INTO ehr.record_document VALUES (%s, %s) ON CONFLICT (patient_id) DO UPDATE SET markdown = "
+                "EXCLUDED.markdown", [str(P[1]), ehr_document.render_patient(ehr, P[1])])
+    _fake_models(monkeypatch)
+    app.state.http = object()
+    tree = client.get(f"/patients/{P[1]}/active-conditions?source=tree").json()
+    assert [c["code"] for c in tree["conditions"]] == ["59621000"] and tree["invented_codes"] == ["11111"]
+    assert tree["missing_vs_sql"] == ["160903007"] and tree["extra_vs_sql"] == [] and tree["selected"] == ["active_conditions"]
+    dense = client.get(f"/patients/{P[1]}/active-conditions?source=dense").json()
+    assert dense["source"] == "dense" and dense["llm_calls"] == 1 and dense["error"] is None
+
+
+def test_a_patient_without_a_document_cannot_be_read_by_tree(client, ehr):
+    ehr.execute("DELETE FROM ehr.record_document WHERE patient_id = %s", [str(P[2])])
+    assert client.get(f"/patients/{P[2]}/active-conditions?source=tree").status_code == 409
+    assert client.get(f"/patients/{UUID(int=999)}/active-conditions?source=tree").status_code == 404
+    assert client.get(f"/patients/{P[2]}/active-conditions?source=oops").status_code == 422
