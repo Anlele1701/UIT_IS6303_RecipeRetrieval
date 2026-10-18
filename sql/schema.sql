@@ -75,6 +75,8 @@ CREATE TABLE recipe_ingredient (
 
 -- Patient records read vectorless, and their link to chat sessions (MV1)
 \ir patient.sql
+-- Confirmed lifts of record constraints in a chat session (MV5)
+\ir record_lift.sql
 
 -- ---------------------------------------------------------------------------
 -- Chunking strategies (ADR-0002). A strategy is searchable only once loaded_at

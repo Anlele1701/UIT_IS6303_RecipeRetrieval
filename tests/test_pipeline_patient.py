@@ -329,3 +329,45 @@ def test_values_answer_puts_the_newest_facts_first_within_a_node():
         {"display": "BMP", "date": "2026-01-04", "observations": [{"display": "Sodium", "value": "141", "unit": "mmol/L"}]},
         {"display": "BMP", "date": "2026-08-16", "observations": [{"display": "Sodium", "value": "139", "unit": "mmol/L"}]}]}]
     assert m7.values_answer(views, "en").splitlines()[1] == "- Sodium: 139 mmol/L (2026-08-16) [H:results.2026]"
+
+
+def test_a_confirmed_lift_takes_the_record_constraint_out_from_the_next_turn(bot, monkeypatch):
+    prompts = []
+    fake_models(monkeypatch, [Understanding(lang="vi", query_en="tea"), Understanding(lang="vi", query_en="tea")],
+                ["[R3]", "[R3]"], prompts)
+    sid = bot.new_session("S", PID)
+    first = dict(events(bot, sid, "gợi ý món"))
+    assert "crustacean_shellfish" in first["constraints"]["constraints"]["allergens_exclude"]
+    out = bot.lift_record_constraint(sid, "allergen:crustacean_shellfish", confirm=True, reason="bác sĩ xác nhận")
+    assert out["constraint_id"] == "allergen:crustacean_shellfish" and out["reason"] == "bác sĩ xác nhận"
+    active = bot.conn.execute("SELECT count(*) FROM session_constraint WHERE session_id = %s AND active AND "
+                              "value = 'crustacean_shellfish'", [sid]).fetchone()[0]
+    assert active == 0  # gone from the stored state at once, not only from the next turn
+    second = dict(events(bot, sid, "gợi ý món"))
+    assert second["patient_profile"]["allergens_exclude"] == ["wheat"]
+    assert [x["constraint_id"] for x in second["patient_profile"]["lifted"]] == ["allergen:crustacean_shellfish"]
+    assert second["constraints"]["constraints"]["allergens_exclude"] == ["wheat"]
+    block = prompts[1][0]["content"].split("<patient_profile>")[1].split("</patient_profile>")[0]
+    assert "crustacean" not in block and "wheat" in block  # M6's PATIENT_PROFILE block no longer names it
+
+
+def test_a_lift_needs_confirmation_a_patient_and_a_record_constraint(bot):
+    sid = bot.new_session("S", PID)
+    with pytest.raises(orch.RecordLiftRefused, match="confirm=true"):
+        bot.lift_record_constraint(sid, "allergen:wheat", confirm=False)
+    with pytest.raises(orch.RecordLiftRefused, match="not a constraint"):
+        bot.lift_record_constraint(sid, "allergen:peanut", confirm=True)
+    with pytest.raises(orch.RecordLiftRefused, match="not about a patient"):
+        bot.lift_record_constraint(bot.new_session("S"), "allergen:wheat", confirm=True)
+    assert bot.record_lifts(sid) == []
+
+
+def test_a_lifted_nutrient_limit_is_matched_by_column():
+    from api.patient.models import PatientProfile, constraint_ids, without
+    p = PatientProfile("p", frozenset({"wheat"}), frozenset({"clam"}), {"sodium_mg": ("max", 666.67)}, [], [],
+                       {"nutrient:sodium_mg": [], "allergen:wheat": []}, "v", "vectorless",
+                       {"fiber_per_1000kcal": ("min", 14.0)})
+    assert constraint_ids(p) == ["allergen:wheat", "ingredient:clam", "nutrient:sodium_mg", "soft:fiber_per_1000kcal"]
+    q = without(p, {"nutrient:sodium_mg", "soft:fiber_per_1000kcal"})
+    assert q.nutrient_limits == {} and q.nutrient_soft == {} and set(q.evidence) == {"allergen:wheat"}
+    assert p.nutrient_limits and without(p, set()) is p  # pure: the input is untouched

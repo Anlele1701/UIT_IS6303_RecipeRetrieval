@@ -3,7 +3,7 @@
 Nothing here holds a name, address, race, ethnicity or file name: a PatientRecord is the record after P2-P7.
 """
 
-from dataclasses import asdict, dataclass, field
+from dataclasses import asdict, dataclass, field, replace
 from datetime import date
 from typing import Literal
 
@@ -140,3 +140,28 @@ class PatientProfile:
                    list(d["unmapped"]), {k: [Evidence(**e) for e in v] for k, v in d["evidence"].items()},
                    d["ruleset_version"], d["mode"],
                    {k: (v[0], float(v[1])) for k, v in d.get("nutrient_soft", {}).items()})
+
+
+def constraint_ids(profile: PatientProfile) -> list[str]:
+    """The ids the UI names a record constraint by (stable across turns; the profile's evidence keys):
+    allergen:<group>, ingredient:<name>, nutrient:<column>, soft:<column>."""
+    return ([f"allergen:{a}" for a in sorted(profile.allergens_exclude)]
+            + [f"ingredient:{i}" for i in sorted(profile.ingredients_exclude)]
+            + [f"nutrient:{c}" for c in sorted(profile.nutrient_limits)]
+            + [f"soft:{c}" for c in sorted(profile.nutrient_soft)])
+
+
+def without(profile: PatientProfile, lifted: set[str]) -> PatientProfile:
+    """The profile in force in a session: the constraints the user lifted with confirmation (MV5) taken out, with
+    their evidence. M2, M4, M6 and M7 all read this one, so a lifted constraint is gone everywhere at once."""
+    if not lifted:
+        return profile
+
+    def keep(prefix: str, key: str) -> bool:
+        return f"{prefix}:{key}" not in lifted
+    return replace(profile,
+                   allergens_exclude=frozenset(a for a in profile.allergens_exclude if keep("allergen", a)),
+                   ingredients_exclude=frozenset(i for i in profile.ingredients_exclude if keep("ingredient", i)),
+                   nutrient_limits={c: v for c, v in profile.nutrient_limits.items() if keep("nutrient", c)},
+                   nutrient_soft={c: v for c, v in profile.nutrient_soft.items() if keep("soft", c)},
+                   evidence={k: v for k, v in profile.evidence.items() if k not in lifted})

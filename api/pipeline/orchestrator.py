@@ -28,12 +28,13 @@ from .. import config
 from ..embed import embed_query
 from ..patient import baselines, narrative, navigate, profile_store
 from ..patient.mapping import build_profile
+from ..patient.models import constraint_ids, without
 from ..patient import rules as patient_rules
 from ..patient.prompt_view import prompt_view
 from . import m4_retrieve as m4
 from . import m6_generate as m6
 from . import m7_verify as m7
-from .flags import MV4_MODES, Flags
+from .flags import MV4_MODES, Flags, preset
 from .lexicon import RuntimeLexicon
 from .m1_understand import ALLERGEN_WORDS, detect_lang, understand
 from .m2_state import merge
@@ -50,6 +51,10 @@ LOCKED_EN = "This constraint comes from the patient's record and cannot be lifte
 
 class PatientUnavailable(ValueError):
     """No session for a deceased or unknown patient (Thy, after MV0)."""
+
+
+class RecordLiftRefused(ValueError):
+    """A record constraint cannot be lifted this way: no confirmation, no patient, or not one of its constraints."""
 
 
 @dataclass
@@ -119,6 +124,40 @@ class Assistant:
         row = self.conn.execute("SELECT patient_id FROM chat_session WHERE id = %s", [sid]).fetchone()
         return row[0] if row else None
 
+    # ---- record constraints lifted with confirmation (MV5; the UI's PATCH, M4) --------------------------------
+    def record_lifts(self, sid: uuid.UUID) -> list[dict]:
+        return [{"constraint_id": c, "reason": r, "confirmed_at": t.isoformat()} for c, r, t in self.conn.execute(
+            "SELECT constraint_id, reason, confirmed_at FROM session_record_lift WHERE session_id = %s "
+            "ORDER BY confirmed_at, constraint_id", [sid])]
+
+    def lift_record_constraint(self, sid: uuid.UUID, constraint_id: str, confirm: bool,
+                               reason: str | None = None) -> dict:
+        """What PATCH /chat/{session}/constraints/{constraint_id} with a record constraint calls: the only way one
+        leaves a session (a chat message cannot lift it, M2). Needs confirm=True and an id the record yields
+        (models.constraint_ids); from the next turn on, the session runs on the profile without it."""
+        pid = self.patient_of(sid)
+        if pid is None:
+            raise RecordLiftRefused(f"session {sid} is not about a patient")
+        if confirm is not True:
+            raise RecordLiftRefused("a constraint from the patient's record is lifted only with confirm=true")
+        name = self.conn.execute("SELECT preset FROM chat_session WHERE id = %s", [sid]).fetchone()[0]
+        mode = preset(name).profile_mode
+        profile = profile_store.load_or_build(self.conn, pid, self.rules,
+                                              mode if mode in {"direct", "vectorless"} else "vectorless")
+        if constraint_id not in constraint_ids(profile):
+            raise RecordLiftRefused(f"{constraint_id!r} is not a constraint of this patient's record")
+        self.conn.execute("INSERT INTO session_record_lift (session_id, constraint_id, reason) VALUES (%s, %s, %s) "
+                          "ON CONFLICT (session_id, constraint_id) DO NOTHING", [sid, constraint_id, reason])
+        kind, _, key = constraint_id.partition(":")
+        state_type = {"allergen": "allergen", "ingredient": "ingredient_exclude", "nutrient": "nutrient",
+                      "soft": "nutrient_soft"}[kind]
+        exact = kind in {"allergen", "ingredient"}  # nutrient rows hold "<column><=<limit>"
+        self.conn.execute("UPDATE session_constraint SET active = false WHERE session_id = %s AND active AND "
+                          "source = 'patient' AND type = %s AND (value = %s OR (NOT %s AND (value LIKE %s OR value "
+                          "LIKE %s)))", [sid, state_type, key, exact, key + "<=%", key + ">=%"])
+        self.conn.commit()
+        return next(x for x in self.record_lifts(sid) if x["constraint_id"] == constraint_id)
+
     def state(self, sid: uuid.UUID) -> SessionState:
         items = [StateItem(type=t, value=v, scope=s) for t, v, s in self.conn.execute(
             "SELECT type, value, scope FROM session_constraint WHERE session_id = %s AND active ORDER BY id",
@@ -159,6 +198,8 @@ class Assistant:
         history = self.history(sid) if flags.conv else []
         pid = self.patient_of(sid)
         pt = self._patient_start(pid, flags, tr) if pid is not None and flags.profile else None
+        if pt:
+            pt["session_id"] = sid
         self._pt = pt
 
         with tr.stage("m1") as p:
@@ -414,7 +455,8 @@ class Assistant:
                                                   pt["patient_id"])
                     pt["entities"] = baselines.coded_entities(read, set(sel.node_ids))
                 self._v3_payload(p, pt)
-        prof = pt["profile"]
+        lifted = self.record_lifts(pt["session_id"])  # confirmed in the interface (MV5): out of M2, M4, M6, M7
+        prof = pt["profile"] = without(pt["profile"], {x["constraint_id"] for x in lifted})
         return {"patient_id": pt["patient_id"], "allergens_exclude": sorted(prof.allergens_exclude),
                 "ingredients_exclude": sorted(prof.ingredients_exclude),
                 "nutrient_limits": {k: list(v) for k, v in sorted(prof.nutrient_limits.items())},
@@ -423,6 +465,7 @@ class Assistant:
                 "evidence": {k: [{"node_id": e.node_id, "text": e.text} for e in v]
                              for k, v in sorted(prof.evidence.items())},
                 "nodes_read": sel.node_ids, "llm_calls": sel.llm_calls + pt["extract_calls"],
+                "lifted": lifted,
                 "input": self.patient_input, "entities": pt["entities"], "chunks_read": pt["chunks_read"],
                 "extract_calls": pt["extract_calls"], "extract_chars": pt.get("extract_chars", 0),
                 "latency_ms": {k: v for k, v in tr.ms.items() if k in {"v1", "v2", "v3"}}}
