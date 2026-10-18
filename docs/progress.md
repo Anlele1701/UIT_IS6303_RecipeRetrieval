@@ -867,3 +867,13 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 - duyệt giao diện.
 
 Kịch bản 1b sẽ thấy lại vấn đề đã biết của gate M3: R18880 lọt qua vì lỗi parser dấu phẩy.
+
+**Sau khi Thy chạy demo và gửi ảnh (18/10/2026):**
+- Sửa 3 lỗi hiển thị (`acc5065`):
+  - trích dẫn tới nút gốc hiện gọn là "hồ sơ";
+  - kết quả xét nghiệm trong cây hồ sơ hiện từng dòng (tên: giá trị đơn vị) thay vì JSON;
+  - có ghi chú khi preset không sinh câu trả lời (B0).
+- **Quyết định (Thy): không sửa** hai lỗi sau, ghi thành vấn đề đã biết:
+  1. **Trôi ngôn ngữ ở M6** (kịch bản 2, route `detail`): câu trả lời tiếng Việt chuyển sang tiếng Trung giữa chừng. M7 chỉ kiểm ngôn ngữ ở route `patient_info`.
+  2. **M1 ghi cả nhóm dị ứng lẫn nguyên liệu** cho cùng một ý ("dị ứng đậu phộng" sinh ra chip "Dị ứng đậu phộng" và "Không dùng peanut (lượt này)"). Tên nguyên liệu hiện bằng tên chuẩn tiếng Anh.
+- Các nhận xét 1–4 của gate M3 vẫn thấy được khi demo, như dự kiến.
