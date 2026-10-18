@@ -796,3 +796,28 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 - **Vi phạm dị ứng duy nhất còn lại ở P-Vectorless** (cả P-Direct): pq103, R21159. Dòng "dry-roasted, unsalted peanuts" không được bộ gắn thẻ gắn `peanut` (món này chỉ có thẻ `sesame`). Đây là lỗi bỏ sót của bộ gắn thẻ ở M2, và mọi preset lọc theo thẻ đều chịu chung. Ghi vào phần hạn chế.
 
 **Gate MV4 (Thy, 18/10/2026): duyệt.** Số liệu chính thức là run `eval/runs/20261018-132948/patient` sau khi adjudicate (`b1f0c1a`). Bước tiếp theo là MV5, bắt đầu bằng plan mode.
+
+## MV5 – Giao nhánh hồ sơ cho M4 (18/10/2026) · 🚦 chờ duyệt
+
+**Phạm vi (Thy chọn, 18/10):** ghi hợp đồng, và code phần riêng của hồ sơ có test. Để lại cho M4: `POST /chat` (SSE), API phiên, route `PATCH`, UI.
+
+**Đã làm**
+- **Endpoint đọc** (`api/patient_api.py`, gắn vào `api/main.py`; `get_conn` chuyển sang `api/deps.py`):
+  - `GET /patients` (lọc `alive_only`, có tóm tắt ràng buộc), `GET /patients/{id}/tree`, `GET /patients/{id}/profile`;
+  - chỉ trả prompt view (allow-list, ADR-0006), không có `entry_id`, không có tên; 404 khi không có bệnh nhân, 409 khi đã mất.
+- **Xác nhận gỡ ràng buộc hồ sơ** (ADR-0008, *proposed*):
+  - migration 009 (bảng `session_record_lift`, đã áp);
+  - `Assistant.lift_record_constraint(session, constraint_id, confirm, reason)` cho route PATCH; cần `confirm=true` và id phải thuộc hồ sơ;
+  - mỗi lượt dùng hồ sơ hiệu lực `without(profile, lifted)` ở M2, M4, M6 và M7; sự kiện `patient_profile` có thêm `lifted`;
+  - tin nhắn chat vẫn không gỡ được ràng buộc hồ sơ.
+- **Hợp đồng cho M4:** `docs/plan/A3_ke_hoach_build.md` mục 6.5, viết lại.
+  - Thứ tự sự kiện SSE, và đủ các trường của `patient_profile`, `constraints` (`record_locked`), `recipes` (`nutrients`), `done` (`flags`, `fallback`, `done_reason`).
+  - Ba endpoint, có ví dụ từ bệnh nhân fixture.
+  - `PATCH /chat/{session}/constraints/{constraint_id}`: dạng id, mã lỗi, gỡ theo nhóm bằng chứng.
+  - Gợi ý hiển thị (chip khóa, `record_locked`, `[H:]`, `fallback`).
+- **Test:**
+  - 5 test API (allow-list, không có `entry_id`, 404 và 409, không có tên);
+  - 3 test cho việc gỡ (gỡ có xác nhận thì lượt sau không còn lọc và khối M6 không còn nhắc; từ chối khi thiếu `confirm`, khi id không thuộc hồ sơ, khi phiên không có bệnh nhân; `without` là hàm thuần);
+  - kết quả: 524 test nhanh pass; test hồi quy cho nhánh không có bệnh nhân không đổi.
+
+**Cần Thy:** duyệt hợp đồng ở mục 6.5 và ADR-0008.
