@@ -1,8 +1,97 @@
 recipe_id,constraint,evidence_line,violation,reviewer,date,note
-2920,allergen:wheat,3 tablespoons Worcestershire sauce,no,Thy,2026-10-17,"decision after MV3, item 2: gluten (if any) from malt vinegar made from barley; barley is not FDA wheat"
-8897,allergen:wheat,2 (6 ounce) fillets salmon (1-inch thick),no,Thy,2026-10-17,"after MV3 round 2, item 3: all six queued verdicts are checker errors (salmon is not wheat)"
-7750,allergen:crustacean_shellfish,"¾ pound mahi mahi fillets, diced, or more to taste",no,Thy,2026-10-17,"after MV3 round 2, item 3: mahi mahi is a fish, not a crustacean"
-11169,allergen:crustacean_shellfish,1 ½ cups plain non-fat yogurt,no,Thy,2026-10-17,"after MV3 round 2, item 3: yogurt is not a crustacean"
-31477,allergen:crustacean_shellfish,1 teaspoon Worcestershire sauce,no,Thy,2026-10-17,"after MV3 round 2, item 3: Worcestershire holds anchovy (fish), no crustacean"
-31477,allergen:wheat,1 teaspoon Worcestershire sauce,no,Thy,2026-10-17,"after MV3 round 2, item 3: as R2920, barley malt vinegar is not FDA wheat"
-10006,allergen:crustacean_shellfish,16 ounces chile sauce,no,Thy,2026-10-17,"after MV3 round 2, item 3: a sauce for shrimp; no shrimp among its ingredients"
+2920,allergen:wheat,3 tablespoons Worcestershire sauce,no,Thy,10/17/2026,"decision after MV3, item 2: gluten (if any) from malt vinegar made from barley; barley is not FDA wheat"
+8897,allergen:wheat,2 (6 ounce) fillets salmon (1-inch thick),no,Thy,10/17/2026,"after MV3 round 2, item 3: all six queued verdicts are checker errors (salmon is not wheat)"
+7750,allergen:crustacean_shellfish,"¾ pound mahi mahi fillets, diced, or more to taste",no,Thy,10/17/2026,"after MV3 round 2, item 3: mahi mahi is a fish, not a crustacean"
+11169,allergen:crustacean_shellfish,1 ½ cups plain non-fat yogurt,no,Thy,10/17/2026,"after MV3 round 2, item 3: yogurt is not a crustacean"
+31477,allergen:crustacean_shellfish,1 teaspoon Worcestershire sauce,no,Thy,10/17/2026,"after MV3 round 2, item 3: Worcestershire holds anchovy (fish), no crustacean"
+31477,allergen:wheat,1 teaspoon Worcestershire sauce,no,Thy,10/17/2026,"after MV3 round 2, item 3: as R2920, barley malt vinegar is not FDA wheat"
+10006,allergen:crustacean_shellfish,16 ounces chile sauce,no,Thy,10/17/2026,"after MV3 round 2, item 3: a sauce for shrimp; no shrimp among its ingredients"
+387,allergen:egg,1 tablespoon butter,no,Thy,10/18/2026,"bơ là sữa, không phải trứng"
+387,allergen:wheat,"1 (14.5 ounce) can Italian-style diced tomatoes, undrained",no,Thy,10/18/2026,"cà chua hộp nêm kiểu Ý: cà chua, gia vị; không có lúa mì"
+641,allergen:egg,"2 (8 ounce) packages cream cheese, softened",no,Thy,10/18/2026,"cream cheese là sữa, không có trứng"
+861,allergen:wheat,1 pound penne pasta,yes,Thy,10/18/2026,penne làm từ bột semolina lúa mì cứng (durum)
+1083,allergen:egg,"1 (8 ounce) package cream cheese, softened",no,Thy,10/18/2026,"cream cheese là sữa, không có trứng"
+1083,allergen:wheat,1 (8 ounce) package penne pasta,yes,Thy,10/18/2026,penne làm từ bột semolina lúa mì cứng (durum)
+1707,allergen:egg,1 cup grated Pecorino Romano cheese,no,Thy,10/18/2026,"Pecorino Romano là phô mai (sữa cừu), không có trứng"
+1707,allergen:milk,2 tablespoons butter,yes,Thy,10/18/2026,bơ là sữa
+2446,allergen:egg,"3 large eggs, room temperature",yes,Thy,10/18/2026,trứng
+3144,allergen:tree_nuts,3 cups unsweetened almond milk,yes,Thy,10/18/2026,sữa hạnh nhân làm từ hạnh nhân
+4075,allergen:egg,"1 cup dried bread crumbs, seasoned",no,Thy,10/18/2026,"vụn bánh mì nêm: bột mì, men, gia vị; thường không có trứng"
+5018,allergen:crustacean_shellfish,6 eggs,no,Thy,10/18/2026,trứng không phải giáp xác
+5018,allergen:wheat,¾ cup milk,no,Thy,10/18/2026,sữa không chứa lúa mì
+5082,allergen:wheat,2 cubes chicken bouillon,no,Thy,10/18/2026,"MỨC CÓ THỂ: viên bouillon gà, có hãng dùng bột mì/protein lúa mì thủy phân (tùy hãng); theo bước duyệt chỉ có/không nên ghi no, xem ghi chú quyết định"
+5082,diet:vegetarian,1 (14.5 ounce) can chicken broth,yes,Thy,10/18/2026,nước dùng gà không đạt chay
+5119,allergen:egg,1 (8 ounce) package uncooked penne pasta,no,Thy,10/18/2026,"pasta khô thông thường chỉ có semolina và nước, không có trứng"
+5119,allergen:tree_nuts,2 tablespoons pine nuts,yes,Thy,10/18/2026,hạt thông thuộc nhóm hạt cây theo hướng dẫn
+5443,allergen:crustacean_shellfish,"1 pound fresh shrimp, peeled and deveined",yes,Thy,10/18/2026,tôm
+7803,allergen:tree_nuts,¼ teaspoon almond extract,no,Thy,10/18/2026,"MỨC CÓ THỂ: almond extract nguyên chất làm từ dầu hạnh nhân đắng (hoặc nhân mơ/đào), tùy hãng; ghi no, xem ghi chú quyết định"
+8033,allergen:egg,¾ pound processed cheese,no,Thy,10/18/2026,"phô mai chế biến là sữa, không có trứng"
+8033,allergen:milk,¾ pound processed cheese,yes,Thy,10/18/2026,phô mai chế biến chứa sữa
+8033,diet:vegetarian,"4 1/2 breast, bone removeds skinless, boneless chicken breast halves - boiled, cut into bite size pieces",yes,Thy,10/18/2026,ức gà không đạt chay
+8871,allergen:egg,1 (16 ounce) bottle Italian salad dressing,no,Thy,10/18/2026,sốt Italian dạng dầu giấm thường không có trứng (một số hãng creamy Italian có trứng)
+8871,allergen:wheat,1 (16 ounce) package uncooked rotini pasta,yes,Thy,10/18/2026,rotini làm từ semolina lúa mì cứng
+9441,allergen:crustacean_shellfish,"5 ounces smoked salmon, cut into small pieces",no,Thy,10/18/2026,"cá hồi xông khói là cá, không phải giáp xác"
+10335,allergen:crustacean_shellfish,"1 pound large shrimp, peeled and deveined",yes,Thy,10/18/2026,tôm
+10865,allergen:peanut,Asian Pineapple Sesame Dressing (recipe below),no,Thy,10/18/2026,"công thức con không có trong dữ liệu; tên chỉ nêu dứa và mè, không có đậu phộng"
+11605,allergen:egg,2 tablespoons butter,no,Thy,10/18/2026,"bơ là sữa, không phải trứng"
+11679,allergen:egg,"2 anchovy fillets, diced",no,Thy,10/18/2026,"cá cơm là cá, không phải trứng"
+12367,allergen:crustacean_shellfish,"2 pounds clams in shell, scrubbed",no,Thy,10/18/2026,"nghêu là nhuyễn thể, không thuộc nhóm giáp xác (hướng dẫn mục 2); nếu ràng buộc đến từ hồ sơ ""Shellfish"" thì nghêu bị chặn ở ràng buộc nguyên liệu riêng"
+12367,allergen:wheat,1 (16 ounce) package spaghetti,yes,Thy,10/18/2026,spaghetti làm từ semolina lúa mì cứng
+13750,allergen:egg,½ cup freshly grated Parmesan cheese,no,Thy,10/18/2026,"Parmesan là phô mai, không có trứng"
+13750,allergen:wheat,1 (16 ounce) package uncooked spaghetti,yes,Thy,10/18/2026,spaghetti làm từ semolina lúa mì cứng
+14306,allergen:wheat,2 cups all-purpose flour,yes,Thy,10/18/2026,bột mì đa dụng
+14954,allergen:egg,"4 ounces PHILADELPHIA Cream Cheese, cubed",no,Thy,10/18/2026,"cream cheese là sữa, không có trứng"
+15941,allergen:tree_nuts,"½ cup walnuts, coarsely chopped",yes,Thy,10/18/2026,óc chó
+16506,allergen:egg,½ cup crumbled feta cheese,no,Thy,10/18/2026,"feta là phô mai, không có trứng"
+16506,allergen:milk,½ cup crumbled feta cheese,yes,Thy,10/18/2026,feta là sản phẩm sữa (cừu/dê); FDA tính vào nhóm milk
+16506,allergen:tree_nuts,½ cup slivered almonds,yes,Thy,10/18/2026,hạnh nhân
+16735,diet:vegetarian,2 teaspoons beef bouillon granules,yes,Thy,10/18/2026,hạt nêm bò không đạt chay
+17079,allergen:egg,1 ½ tablespoons butter,no,Thy,10/18/2026,"bơ là sữa, không phải trứng"
+17104,allergen:egg,3 tablespoons egg whites,yes,Thy,10/18/2026,lòng trắng trứng
+17104,allergen:milk,"2 tablespoons shredded Cheddar cheese, or as desired",yes,Thy,10/18/2026,phô mai Cheddar
+17491,allergen:wheat,1 (16 ounce) package small curd cottage cheese,no,Thy,10/18/2026,"cottage cheese là sữa, không có lúa mì"
+17506,allergen:tree_nuts,¼ cup chopped pecans,yes,Thy,10/18/2026,hồ đào
+18077,allergen:egg,8 ounces grated Parmesan cheese,no,Thy,10/18/2026,"Parmesan là phô mai, không có trứng"
+18577,allergen:soy,1 tablespoon soy sauce,yes,Thy,10/18/2026,nước tương làm từ đậu nành
+18684,allergen:tree_nuts,"¼ cup slivered almonds, toasted",yes,Thy,10/18/2026,hạnh nhân
+19194,allergen:egg,½ cup grated Parmesan cheese,no,Thy,10/18/2026,"Parmesan là phô mai, không có trứng"
+19194,allergen:wheat,8 ounces angel hair pasta,yes,Thy,10/18/2026,mì angel hair làm từ semolina lúa mì cứng
+19431,allergen:crustacean_shellfish,"1 (6 ounce) can salmon, drained and flaked",no,Thy,10/18/2026,"cá hồi đóng hộp là cá, không phải giáp xác"
+19789,diet:vegetarian,"4 eggs, beaten",no,Thy,10/18/2026,trứng vẫn đạt chay (vegetarian) theo hướng dẫn mục 3
+20387,allergen:wheat,1 (15 ounce) can chicken broth,no,Thy,10/18/2026,nước dùng gà đóng hộp thường không có lúa mì
+20480,allergen:egg,1 quart heavy cream,no,Thy,10/18/2026,"kem tươi là sữa, không có trứng"
+20480,allergen:milk,1 quart heavy cream,yes,Thy,10/18/2026,kem tươi là sữa
+20480,allergen:wheat,2 (14.5 ounce) cans chicken broth,no,Thy,10/18/2026,nước dùng gà đóng hộp thường không có lúa mì
+20480,diet:vegetarian,2 (14.5 ounce) cans chicken broth,yes,Thy,10/18/2026,nước dùng gà không đạt chay
+21159,allergen:peanut,"1 tablespoon chopped dry-roasted, unsalted peanuts",yes,Thy,10/18/2026,đậu phộng
+21641,allergen:egg,2 tablespoons shredded Cheddar cheese,no,Thy,10/18/2026,"Cheddar là phô mai, không có trứng"
+21951,allergen:egg,2 eggs,yes,Thy,10/18/2026,trứng
+22151,allergen:egg,¾ cup mayonnaise,yes,Thy,10/18/2026,mayonnaise làm từ lòng đỏ trứng
+22151,allergen:milk,¼ cup whipping cream,yes,Thy,10/18/2026,kem tươi là sữa
+22353,allergen:egg,"2 eggs, beaten",yes,Thy,10/18/2026,trứng
+22353,allergen:soy,"½ (12 ounce) package silken tofu, cut into 1/2-inch cubes",yes,Thy,10/18/2026,đậu hũ non làm từ đậu nành
+22353,allergen:wheat,"2 eggs, beaten",no,Thy,10/18/2026,"trứng không chứa lúa mì. LƯU Ý: công thức có ""1 teaspoon soy sauce"" (nước tương thường chứa lúa mì) nên VẪN vi phạm wheat ở dòng khác"
+22353,diet:vegetarian,"2 ounces cooked ham, thinly sliced",yes,Thy,10/18/2026,giăm bông không đạt chay
+22378,allergen:egg,4 ounces crumbled goat cheese,no,Thy,10/18/2026,"phô mai dê là sữa, không có trứng"
+22378,allergen:milk,4 ounces crumbled goat cheese,yes,Thy,10/18/2026,phô mai dê là sữa; FDA tính sữa dê vào nhóm milk
+22378,allergen:tree_nuts,¾ cup candied walnuts,yes,Thy,10/18/2026,óc chó tẩm đường
+22438,allergen:egg,"2 tablespoons mayonnaise, or to taste",yes,Thy,10/18/2026,mayonnaise làm từ lòng đỏ trứng
+23940,allergen:egg,1 cup mayonnaise,yes,Thy,10/18/2026,mayonnaise làm từ lòng đỏ trứng
+24065,allergen:egg,1 ¼ cups thousand island salad dressing,yes,Thy,10/18/2026,sốt thousand island có nền mayonnaise (trứng)
+24065,allergen:milk,4 slices Swiss cheese,yes,Thy,10/18/2026,phô mai Swiss
+24065,diet:vegetarian,"6 breast half, bone and skin removed (blank)s skinless, boneless chicken breast halves",yes,Thy,10/18/2026,ức gà không đạt chay
+24104,allergen:milk,2 tablespoons unsalted butter,yes,Thy,10/18/2026,bơ là sữa
+24104,diet:vegetarian,2 tablespoons unsalted butter,no,Thy,10/18/2026,"bơ vẫn đạt chay. LƯU Ý: công thức có đùi gà (""chicken thighs"") nên VẪN vi phạm chay ở dòng khác"
+24155,allergen:egg,¼ cup unsalted butter,no,Thy,10/18/2026,"bơ là sữa, không phải trứng"
+24471,allergen:egg,"2 large garlic cloves, minced",no,Thy,10/18/2026,"tỏi không chứa trứng. LƯU Ý: công thức có ""wide egg noodles"" nên VẪN vi phạm trứng ở dòng khác"
+24640,allergen:wheat,2 cups refrigerated shredded hash brown potatoes,no,Thy,10/18/2026,"khoai tây bào sợi làm lạnh thường chỉ có khoai tây và chất bảo quản, không có lúa mì"
+26096,allergen:wheat,1 tablespoon all-purpose flour,yes,Thy,10/18/2026,bột mì đa dụng
+26692,diet:vegetarian,"3 meatless breakfast patties, cooked and crumbled",no,Thy,10/18/2026,patty chay (meatless) đạt chay
+28231,allergen:milk,½ cup shredded sharp Cheddar cheese,yes,Thy,10/18/2026,phô mai Cheddar
+28322,allergen:egg,"3 cloves garlic, chopped",no,Thy,10/18/2026,tỏi không chứa trứng
+28322,allergen:wheat,1 (16 ounce) package spaghetti,yes,Thy,10/18/2026,spaghetti làm từ semolina lúa mì cứng
+29070,allergen:milk,2 ½ cups milk,yes,Thy,10/18/2026,sữa
+29544,allergen:tree_nuts,1 ½ cups heavy whipping cream,no,Thy,10/18/2026,"kem tươi là sữa, không phải hạt cây"
+29547,allergen:wheat,2 cups all-purpose flour,yes,Thy,10/18/2026,bột mì đa dụng
+31689,allergen:wheat,"15 frozen empanada wrappers, thawed",yes,Thy,10/18/2026,vỏ empanada làm từ bột mì
+32637,allergen:egg,1 cup whole-milk ricotta cheese,no,Thy,10/18/2026,"ricotta là phô mai, không có trứng"

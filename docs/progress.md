@@ -770,3 +770,27 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 - **Bộ kiểm độc lập:** 227 công thức. 15 phiếu "yes" bị loại vì bằng chứng do chính bộ kiểm đánh dấu là không hợp lệ; **89 phiếu đưa vào hàng duyệt mù** `eval/labels/checker_queue.csv`.
 
 **Cần Thy:** gán nhãn 89 phiếu vào `eval/labels/checker_adjudication.csv` (theo `docs/annotation_guide.md` mục 8). Sau đó chạy `uv run scripts/eval_patient.py score eval/runs/20261018-132948/patient` để có CVR adjudicated cuối cùng, rồi đến gate MV4.
+
+**Sau khi Thy gán nhãn (18/10/2026):**
+- `eval/labels/checker_adjudication.csv`: 89 nhãn mới. Ban đầu cả 89 ghi `reviewer = claude-draft`; Thy đã duyệt và đổi thành `Thy`. 7 nhãn cũ giữ nguyên giá trị (Excel đổi định dạng ngày thành `10/18/2026`).
+  - Kết quả 89 phiếu: 48 vi phạm thật, 41 không vi phạm; 15 phiếu đã bị loại tự động vì bằng chứng do chính bộ kiểm đánh dấu là không hợp lệ.
+- **Sửa bộ chấm** (áp như nhau cho mọi preset): phép so khớp tên nguyên liệu coi "oyster mushrooms" (nấm sò) là "oyster" (hàu), 7 lần. Rà toàn bộ các dòng khớp thì đây là loại báo động giả duy nhất. `FALSE_FRIENDS` giờ xóa cụm này trước khi so khớp.
+- **Kết quả adjudicated cuối cùng** (`eval_patient.py score`; 74 câu của 37 bệnh nhân có ràng buộc dị ứng hoặc nguyên liệu trong hồ sơ):
+
+| Đầu vào | Preset | Safe@5 dị ứng adj | CVR@5 dị ứng raw / adj |
+|---|---|---|---|
+| coded | P-Direct | 99% (73/74) | 5,7% / 0,3% |
+| coded | **P-Vectorless** | **99% (73/74)** | 5,7% / 0,3% |
+| coded | P-Vectorless-Fixed | 91% | 8,4% / 3,5% |
+| coded | P-Vector | 82% | 10,5% / 5,9% |
+| coded | S-Profile | 81% | 11,4% / 6,2% |
+| narrative | P-Vectorless | 97% | 5,7% / 0,5% |
+| narrative | P-Vectorless-Fixed | 89% | 9,2% / 4,3% |
+| narrative | P-Vector | 86% | 8,6% / 4,1% |
+
+- **So sánh Safe@5 dị ứng theo bệnh nhân** (37 bệnh nhân; bootstrap, Holm):
+  - coded: P-Vectorless hơn P-Vectorless-Fixed +0,08 (p 0,017), hơn P-Vector +0,16 (p 0,001), hơn S-Profile +0,18 (p < 0,001);
+  - narrative: hơn P-Vector +0,11 (p 0,011), hơn S-Profile +0,16 (p < 0,001); so với P-Vectorless-Fixed +0,08 (p 0,066);
+  - Wilcoxon (Holm) cho p từ 0,07 đến 0,30, vì phần lớn bệnh nhân có chênh lệch bằng 0;
+  - bảng độ nhạy chỉ trên `sample` (26 bệnh nhân) cùng chiều, và chênh lệch lớn hơn.
+- **Vi phạm dị ứng duy nhất còn lại ở P-Vectorless** (cả P-Direct): pq103, R21159. Dòng "dry-roasted, unsalted peanuts" không được bộ gắn thẻ gắn `peanut` (món này chỉ có thẻ `sesame`). Đây là lỗi bỏ sót của bộ gắn thẻ ở M2, và mọi preset lọc theo thẻ đều chịu chung. Ghi vào phần hạn chế.

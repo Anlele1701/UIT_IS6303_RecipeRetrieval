@@ -22,15 +22,15 @@ Sinh tự động bởi `scripts/eval_patient.py score`. Không sửa tay.
 
 | Đầu vào | Preset | Câu | Safe@5 dị ứng (adj) | CVR@5 dị ứng raw / adj | Safe@5 dinh dưỡng | CVR@5 dinh dưỡng | Safe@5 hội thoại (adj) | Chọn nút đúng | Trả lời do code |
 |---|---|---|---|---|---|---|---|---|---|
-| coded | P-Direct | 300 | 86% (64/74) [77–92] | 5.9% / 4.1% | 100% (200/200) [98–100] | 0.0% | 83% (83/100) [74–89] | 0% (0/100) [0–4] | 14% (42/300) [11–18] |
-| coded | P-Vector | 300 | 78% (58/74) [68–86] | 10.8% / 9.7% | 98% (195/200) [94–99] | 1.4% | 81% (81/100) [72–87] | 84% (84/100) [76–90] | 8% (23/300) [5–11] |
-| coded | P-Vectorless | 300 | 86% (64/74) [77–92] | 5.9% / 4.1% | 100% (200/200) [98–100] | 0.0% | 83% (83/100) [74–89] | 78% (78/100) [69–85] | 8% (24/300) [5–12] |
-| coded | P-Vectorless-Fixed | 300 | 81% (60/74) [71–88] | 8.6% / 7.6% | 96% (192/200) [92–98] | 1.6% | 81% (81/100) [72–87] | 87% (87/100) [79–92] | 8% (25/300) [6–12] |
-| coded | S-Profile | 300 | 77% (57/74) [66–85] | 11.4% / 10.3% | 36% (72/200) [30–43] | 29.0% | 79% (79/100) [70–86] | – | 0% (0/300) [0–1] |
-| narrative | P-Vector | 300 | 81% (60/74) [71–88] | 8.9% / 7.8% | 94% (189/200) [90–97] | 2.2% | 80% (80/100) [71–87] | – | 9% (26/300) [6–12] |
-| narrative | P-Vectorless | 300 | 86% (64/74) [77–92] | 5.9% / 4.9% | 100% (200/200) [98–100] | 0.0% | 83% (83/100) [74–89] | – | 12% (35/300) [9–16] |
-| narrative | P-Vectorless-Fixed | 300 | 81% (60/74) [71–88] | 9.5% / 8.4% | 94% (189/200) [90–97] | 2.4% | 79% (79/100) [70–86] | – | 11% (33/300) [8–15] |
-| narrative | S-Profile | 300 | 77% (57/74) [66–85] | 11.4% / 10.3% | 36% (72/200) [30–43] | 29.0% | 79% (79/100) [70–86] | – | 0% (0/300) [0–1] |
+| coded | P-Direct | 300 | 99% (73/74) [93–100] | 5.7% / 0.3% | 100% (200/200) [98–100] | 0.0% | 86% (86/100) [78–91] | 0% (0/100) [0–4] | 14% (42/300) [11–18] |
+| coded | P-Vector | 300 | 82% (61/74) [72–89] | 10.5% / 5.9% | 98% (195/200) [94–99] | 1.4% | 84% (84/100) [76–90] | 84% (84/100) [76–90] | 8% (23/300) [5–11] |
+| coded | P-Vectorless | 300 | 99% (73/74) [93–100] | 5.7% / 0.3% | 100% (200/200) [98–100] | 0.0% | 86% (86/100) [78–91] | 78% (78/100) [69–85] | 8% (24/300) [5–12] |
+| coded | P-Vectorless-Fixed | 300 | 91% (67/74) [82–95] | 8.4% / 3.5% | 96% (192/200) [92–98] | 1.6% | 84% (84/100) [76–90] | 87% (87/100) [79–92] | 8% (25/300) [6–12] |
+| coded | S-Profile | 300 | 81% (60/74) [71–88] | 11.4% / 6.2% | 36% (72/200) [30–43] | 29.0% | 80% (80/100) [71–87] | – | 0% (0/300) [0–1] |
+| narrative | P-Vector | 300 | 86% (64/74) [77–92] | 8.6% / 4.1% | 94% (189/200) [90–97] | 2.2% | 83% (83/100) [74–89] | – | 9% (26/300) [6–12] |
+| narrative | P-Vectorless | 300 | 97% (72/74) [91–99] | 5.7% / 0.5% | 100% (200/200) [98–100] | 0.0% | 86% (86/100) [78–91] | – | 12% (35/300) [9–16] |
+| narrative | P-Vectorless-Fixed | 300 | 89% (66/74) [80–94] | 9.2% / 4.3% | 94% (189/200) [90–97] | 2.4% | 82% (82/100) [73–88] | – | 11% (33/300) [8–15] |
+| narrative | S-Profile | 300 | 81% (60/74) [71–88] | 11.4% / 6.2% | 36% (72/200) [30–43] | 29.0% | 80% (80/100) [71–87] | – | 0% (0/300) [0–1] |
 
 ### Chi phí V1–V3 (trung bình mỗi lượt; lượt đầu của bệnh nhân / các lượt sau)
 
@@ -51,15 +51,15 @@ Sinh tự động bởi `scripts/eval_patient.py score`. Không sửa tay.
 | Họ | So sánh | Số BN | Chênh lệch [KTC 95%] | p bootstrap (Holm) | p Wilcoxon (Holm) |
 |---|---|---|---|---|---|
 | coded|safe_allergen_adj | P-Vectorless - P-Direct | 37 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
-| coded|safe_allergen_adj | P-Vectorless - P-Vectorless-Fixed | 37 | +0.054 [+0.000, +0.122] | 0.091 (0.182) | 0.366 (0.958) |
-| coded|safe_allergen_adj | P-Vectorless - P-Vector | 37 | +0.081 [+0.014, +0.176] | 0.030 (0.119) | 0.240 (0.958) |
-| coded|safe_allergen_adj | P-Vectorless - S-Profile | 37 | +0.095 [+0.000, +0.203] | 0.057 (0.171) | 0.251 (0.958) |
-| narrative|safe_allergen_adj | P-Vectorless - P-Vectorless-Fixed | 37 | +0.054 [+0.000, +0.122] | 0.086 (0.172) | 0.366 (0.753) |
-| narrative|safe_allergen_adj | P-Vectorless - P-Vector | 37 | +0.054 [+0.000, +0.135] | 0.260 (0.260) | 0.537 (0.753) |
-| narrative|safe_allergen_adj | P-Vectorless - S-Profile | 37 | +0.095 [+0.000, +0.203] | 0.057 (0.171) | 0.251 (0.753) |
-| coded-narrative|safe_allergen_adj | P-Vectorless | 37 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
-| coded-narrative|safe_allergen_adj | P-Vectorless-Fixed | 37 | +0.000 [-0.041, +0.041] | 1.000 (1.000) | 1.000 (1.000) |
-| coded-narrative|safe_allergen_adj | P-Vector | 37 | -0.027 [-0.068, +0.000] | 0.256 (1.000) | 0.537 (1.000) |
+| coded|safe_allergen_adj | P-Vectorless - P-Vectorless-Fixed | 37 | +0.081 [+0.027, +0.162] | 0.008 (0.017) | 0.151 (0.302) |
+| coded|safe_allergen_adj | P-Vectorless - P-Vector | 37 | +0.162 [+0.068, +0.284] | 0.000 (0.001) | 0.054 (0.163) |
+| coded|safe_allergen_adj | P-Vectorless - S-Profile | 37 | +0.176 [+0.081, +0.297] | 0.000 (0.000) | 0.018 (0.072) |
+| narrative|safe_allergen_adj | P-Vectorless - P-Vectorless-Fixed | 37 | +0.081 [+0.000, +0.176] | 0.066 (0.066) | 0.254 (0.302) |
+| narrative|safe_allergen_adj | P-Vectorless - P-Vector | 37 | +0.108 [+0.027, +0.203] | 0.006 (0.011) | 0.151 (0.302) |
+| narrative|safe_allergen_adj | P-Vectorless - S-Profile | 37 | +0.162 [+0.068, +0.270] | 0.000 (0.000) | 0.032 (0.095) |
+| coded-narrative|safe_allergen_adj | P-Vectorless | 37 | +0.014 [+0.000, +0.041] | 0.722 (1.000) | 0.752 (1.000) |
+| coded-narrative|safe_allergen_adj | P-Vectorless-Fixed | 37 | +0.014 [-0.027, +0.068] | 0.786 (1.000) | 0.763 (1.000) |
+| coded-narrative|safe_allergen_adj | P-Vector | 37 | -0.041 [-0.095, +0.000] | 0.083 (0.333) | 0.366 (1.000) |
 | coded-narrative|safe_allergen_adj | S-Profile | 37 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
 | coded|safe_nutrition | P-Vectorless - P-Direct | 100 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
 | coded|safe_nutrition | P-Vectorless - P-Vectorless-Fixed | 100 | +0.040 [+0.010, +0.075] | 0.005 (0.015) | 0.259 (0.778) |
@@ -73,12 +73,12 @@ Sinh tự động bởi `scripts/eval_patient.py score`. Không sửa tay.
 | coded-narrative|safe_nutrition | P-Vector | 100 | +0.030 [+0.005, +0.060] | 0.034 (0.135) | 0.268 (1.000) |
 | coded-narrative|safe_nutrition | S-Profile | 100 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
 | coded|safe_dialogue_adj | P-Vectorless - P-Direct | 100 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
-| coded|safe_dialogue_adj | P-Vectorless - P-Vectorless-Fixed | 100 | +0.020 [+0.000, +0.050] | 0.257 (1.000) | 0.696 (1.000) |
-| coded|safe_dialogue_adj | P-Vectorless - P-Vector | 100 | +0.020 [+0.000, +0.050] | 0.257 (1.000) | 0.696 (1.000) |
-| coded|safe_dialogue_adj | P-Vectorless - S-Profile | 100 | +0.040 [-0.040, +0.120] | 0.368 (1.000) | 0.491 (1.000) |
-| narrative|safe_dialogue_adj | P-Vectorless - P-Vectorless-Fixed | 100 | +0.040 [+0.010, +0.080] | 0.030 (0.089) | 0.444 (1.000) |
-| narrative|safe_dialogue_adj | P-Vectorless - P-Vector | 100 | +0.030 [+0.000, +0.070] | 0.095 (0.190) | 0.562 (1.000) |
-| narrative|safe_dialogue_adj | P-Vectorless - S-Profile | 100 | +0.040 [-0.040, +0.120] | 0.368 (0.368) | 0.491 (1.000) |
+| coded|safe_dialogue_adj | P-Vectorless - P-Vectorless-Fixed | 100 | +0.020 [+0.000, +0.050] | 0.257 (0.772) | 0.696 (1.000) |
+| coded|safe_dialogue_adj | P-Vectorless - P-Vector | 100 | +0.020 [+0.000, +0.050] | 0.257 (0.772) | 0.696 (1.000) |
+| coded|safe_dialogue_adj | P-Vectorless - S-Profile | 100 | +0.060 [-0.010, +0.130] | 0.126 (0.504) | 0.293 (1.000) |
+| narrative|safe_dialogue_adj | P-Vectorless - P-Vectorless-Fixed | 100 | +0.040 [+0.010, +0.080] | 0.030 (0.089) | 0.444 (0.887) |
+| narrative|safe_dialogue_adj | P-Vectorless - P-Vector | 100 | +0.030 [+0.000, +0.070] | 0.095 (0.190) | 0.562 (0.887) |
+| narrative|safe_dialogue_adj | P-Vectorless - S-Profile | 100 | +0.060 [-0.010, +0.130] | 0.126 (0.190) | 0.293 (0.880) |
 | coded-narrative|safe_dialogue_adj | P-Vectorless | 100 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
 | coded-narrative|safe_dialogue_adj | P-Vectorless-Fixed | 100 | +0.020 [+0.000, +0.050] | 0.270 (1.000) | 0.696 (1.000) |
 | coded-narrative|safe_dialogue_adj | P-Vector | 100 | +0.010 [-0.020, +0.050] | 0.782 (1.000) | 0.847 (1.000) |
@@ -115,15 +115,15 @@ Sinh tự động bởi `scripts/eval_patient.py score`. Không sửa tay.
 
 | Đầu vào | Preset | Câu | Safe@5 dị ứng (adj) | CVR@5 dị ứng raw / adj | Safe@5 dinh dưỡng | CVR@5 dinh dưỡng | Safe@5 hội thoại (adj) | Chọn nút đúng | Trả lời do code |
 |---|---|---|---|---|---|---|---|---|---|
-| coded | P-Direct | 264 | 83% (43/52) [70–91] | 6.9% / 5.0% | 100% (176/176) [98–100] | 0.0% | 81% (71/88) [71–88] | 0% (0/88) [0–4] | 15% (39/264) [11–20] |
-| coded | P-Vector | 264 | 73% (38/52) [60–83] | 13.5% / 12.3% | 99% (175/176) [97–100] | 0.6% | 81% (71/88) [71–88] | 85% (75/88) [76–91] | 8% (22/264) [6–12] |
-| coded | P-Vectorless | 264 | 83% (43/52) [70–91] | 6.9% / 5.0% | 100% (176/176) [98–100] | 0.0% | 81% (71/88) [71–88] | 78% (69/88) [69–86] | 8% (20/264) [5–11] |
-| coded | P-Vectorless-Fixed | 264 | 77% (40/52) [64–86] | 10.8% / 9.6% | 98% (172/176) [94–99] | 0.8% | 81% (71/88) [71–88] | 85% (75/88) [76–91] | 8% (21/264) [5–12] |
-| coded | S-Profile | 264 | 69% (36/52) [56–80] | 14.6% / 13.1% | 36% (64/176) [30–44] | 28.9% | 78% (69/88) [69–86] | – | 0% (0/264) [0–1] |
-| narrative | P-Vector | 264 | 75% (39/52) [62–85] | 11.5% / 10.0% | 98% (172/176) [94–99] | 0.9% | 80% (70/88) [70–87] | – | 8% (22/264) [6–12] |
-| narrative | P-Vectorless | 264 | 83% (43/52) [70–91] | 7.3% / 5.8% | 100% (176/176) [98–100] | 0.0% | 81% (71/88) [71–88] | – | 13% (34/264) [9–17] |
-| narrative | P-Vectorless-Fixed | 264 | 75% (39/52) [62–85] | 12.7% / 11.5% | 98% (172/176) [94–99] | 1.1% | 80% (70/88) [70–87] | – | 11% (29/264) [8–15] |
-| narrative | S-Profile | 264 | 69% (36/52) [56–80] | 14.6% / 13.1% | 36% (64/176) [30–44] | 28.9% | 78% (69/88) [69–86] | – | 0% (0/264) [0–1] |
+| coded | P-Direct | 264 | 100% (52/52) [93–100] | 6.5% / 0.0% | 100% (176/176) [98–100] | 0.0% | 84% (74/88) [75–90] | 0% (0/88) [0–4] | 15% (39/264) [11–20] |
+| coded | P-Vector | 264 | 79% (41/52) [66–88] | 13.1% / 7.7% | 99% (175/176) [97–100] | 0.6% | 84% (74/88) [75–90] | 85% (75/88) [76–91] | 8% (22/264) [6–12] |
+| coded | P-Vectorless | 264 | 100% (52/52) [93–100] | 6.5% / 0.0% | 100% (176/176) [98–100] | 0.0% | 84% (74/88) [75–90] | 78% (69/88) [69–86] | 8% (20/264) [5–11] |
+| coded | P-Vectorless-Fixed | 264 | 88% (46/52) [77–95] | 10.4% / 4.6% | 98% (172/176) [94–99] | 0.8% | 84% (74/88) [75–90] | 85% (75/88) [76–91] | 8% (21/264) [5–12] |
+| coded | S-Profile | 264 | 75% (39/52) [62–85] | 14.6% / 8.5% | 36% (64/176) [30–44] | 28.9% | 80% (70/88) [70–87] | – | 0% (0/264) [0–1] |
+| narrative | P-Vector | 264 | 83% (43/52) [70–91] | 11.2% / 5.4% | 98% (172/176) [94–99] | 0.9% | 83% (73/88) [74–89] | – | 8% (22/264) [6–12] |
+| narrative | P-Vectorless | 264 | 98% (51/52) [90–100] | 6.9% / 0.4% | 100% (176/176) [98–100] | 0.0% | 84% (74/88) [75–90] | – | 13% (34/264) [9–17] |
+| narrative | P-Vectorless-Fixed | 264 | 85% (44/52) [72–92] | 12.3% / 6.2% | 98% (172/176) [94–99] | 1.1% | 83% (73/88) [74–89] | – | 11% (29/264) [8–15] |
+| narrative | S-Profile | 264 | 75% (39/52) [62–85] | 14.6% / 8.5% | 36% (64/176) [30–44] | 28.9% | 80% (70/88) [70–87] | – | 0% (0/264) [0–1] |
 
 ### Chi phí V1–V3 (trung bình mỗi lượt; lượt đầu của bệnh nhân / các lượt sau)
 
@@ -144,15 +144,15 @@ Sinh tự động bởi `scripts/eval_patient.py score`. Không sửa tay.
 | Họ | So sánh | Số BN | Chênh lệch [KTC 95%] | p bootstrap (Holm) | p Wilcoxon (Holm) |
 |---|---|---|---|---|---|
 | coded|safe_allergen_adj | P-Vectorless - P-Direct | 26 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
-| coded|safe_allergen_adj | P-Vectorless - P-Vectorless-Fixed | 26 | +0.058 [+0.000, +0.154] | 0.253 (0.507) | 0.473 (0.946) |
-| coded|safe_allergen_adj | P-Vectorless - P-Vector | 26 | +0.096 [+0.000, +0.212] | 0.088 (0.264) | 0.298 (0.893) |
-| coded|safe_allergen_adj | P-Vectorless - S-Profile | 26 | +0.135 [+0.000, +0.269] | 0.053 (0.213) | 0.192 (0.769) |
-| narrative|safe_allergen_adj | P-Vectorless - P-Vectorless-Fixed | 26 | +0.077 [+0.000, +0.173] | 0.088 (0.176) | 0.298 (0.596) |
-| narrative|safe_allergen_adj | P-Vectorless - P-Vector | 26 | +0.077 [+0.000, +0.192] | 0.253 (0.253) | 0.473 (0.596) |
-| narrative|safe_allergen_adj | P-Vectorless - S-Profile | 26 | +0.135 [+0.000, +0.269] | 0.053 (0.160) | 0.192 (0.577) |
-| coded-narrative|safe_allergen_adj | P-Vectorless | 26 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
-| coded-narrative|safe_allergen_adj | P-Vectorless-Fixed | 26 | +0.019 [+0.000, +0.058] | 0.750 (1.000) | 0.710 (1.000) |
-| coded-narrative|safe_allergen_adj | P-Vector | 26 | -0.019 [-0.058, +0.000] | 0.750 (1.000) | 0.710 (1.000) |
+| coded|safe_allergen_adj | P-Vectorless - P-Vectorless-Fixed | 26 | +0.115 [+0.038, +0.212] | 0.006 (0.012) | 0.103 (0.207) |
+| coded|safe_allergen_adj | P-Vectorless - P-Vector | 26 | +0.212 [+0.077, +0.385] | 0.002 (0.007) | 0.058 (0.174) |
+| coded|safe_allergen_adj | P-Vectorless - S-Profile | 26 | +0.250 [+0.115, +0.404] | 0.000 (0.000) | 0.009 (0.037) |
+| narrative|safe_allergen_adj | P-Vectorless - P-Vectorless-Fixed | 26 | +0.135 [+0.038, +0.250] | 0.008 (0.017) | 0.103 (0.207) |
+| narrative|safe_allergen_adj | P-Vectorless - P-Vector | 26 | +0.154 [+0.038, +0.288] | 0.008 (0.017) | 0.103 (0.207) |
+| narrative|safe_allergen_adj | P-Vectorless - S-Profile | 26 | +0.231 [+0.096, +0.385] | 0.000 (0.001) | 0.017 (0.052) |
+| coded-narrative|safe_allergen_adj | P-Vectorless | 26 | +0.019 [+0.000, +0.058] | 0.722 (1.000) | 0.710 (1.000) |
+| coded-narrative|safe_allergen_adj | P-Vectorless-Fixed | 26 | +0.038 [+0.000, +0.096] | 0.263 (1.000) | 0.473 (1.000) |
+| coded-narrative|safe_allergen_adj | P-Vector | 26 | -0.038 [-0.096, +0.000] | 0.262 (1.000) | 0.473 (1.000) |
 | coded-narrative|safe_allergen_adj | S-Profile | 26 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
 | coded|safe_nutrition | P-Vectorless - P-Direct | 88 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
 | coded|safe_nutrition | P-Vectorless - P-Vectorless-Fixed | 88 | +0.023 [+0.000, +0.051] | 0.104 (0.313) | 0.538 (1.000) |
@@ -168,10 +168,10 @@ Sinh tự động bởi `scripts/eval_patient.py score`. Không sửa tay.
 | coded|safe_dialogue_adj | P-Vectorless - P-Direct | 88 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
 | coded|safe_dialogue_adj | P-Vectorless - P-Vectorless-Fixed | 88 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
 | coded|safe_dialogue_adj | P-Vectorless - P-Vector | 88 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
-| coded|safe_dialogue_adj | P-Vectorless - S-Profile | 88 | +0.023 [-0.057, +0.102] | 0.664 (1.000) | 0.713 (1.000) |
+| coded|safe_dialogue_adj | P-Vectorless - S-Profile | 88 | +0.045 [-0.023, +0.125] | 0.286 (1.000) | 0.454 (1.000) |
 | narrative|safe_dialogue_adj | P-Vectorless - P-Vectorless-Fixed | 88 | +0.011 [+0.000, +0.034] | 0.725 (1.000) | 0.834 (1.000) |
 | narrative|safe_dialogue_adj | P-Vectorless - P-Vector | 88 | +0.011 [+0.000, +0.034] | 0.725 (1.000) | 0.834 (1.000) |
-| narrative|safe_dialogue_adj | P-Vectorless - S-Profile | 88 | +0.023 [-0.057, +0.102] | 0.664 (1.000) | 0.713 (1.000) |
+| narrative|safe_dialogue_adj | P-Vectorless - S-Profile | 88 | +0.045 [-0.023, +0.125] | 0.286 (0.857) | 0.454 (1.000) |
 | coded-narrative|safe_dialogue_adj | P-Vectorless | 88 | +0.000 [+0.000, +0.000] | 1.000 (1.000) | 1.000 (1.000) |
 | coded-narrative|safe_dialogue_adj | P-Vectorless-Fixed | 88 | +0.011 [+0.000, +0.034] | 0.725 (1.000) | 0.834 (1.000) |
 | coded-narrative|safe_dialogue_adj | P-Vector | 88 | +0.011 [+0.000, +0.034] | 0.725 (1.000) | 0.834 (1.000) |
@@ -190,7 +190,7 @@ Sinh tự động bởi `scripts/eval_patient.py score`. Không sửa tay.
 
 ## Bộ kiểm độc lập
 
-Công thức được kiểm: 227. Trạng thái các phán quyết "yes": dropped_flagged 15, dropped_not_verbatim 0, confirmed 0, rejected 0, pending 89. Mục mới vào hàng duyệt mù `eval\labels\checker_queue.csv`: 89 (pending tính là vi phạm).
+Công thức được kiểm: 227. Trạng thái các phán quyết "yes": dropped_flagged 15, dropped_not_verbatim 0, confirmed 48, rejected 41, pending 0. Mục mới vào hàng duyệt mù `eval\labels\checker_queue.csv`: 0 (pending tính là vi phạm).
 Dị ứng và chế độ ăn do bộ kiểm độc lập chấm; nguyên liệu có tên (từ hồ sơ hoặc hội thoại) so khớp nguyên từ trên dòng nguyên liệu thô; giới hạn thời gian đọc cột total_minutes; dinh dưỡng đọc cột dinh dưỡng.
 S-Profile không đọc hồ sơ nên chỉ chạy ở chế độ coded; dòng narrative của nó dùng chung các lượt đó.
 Câu trả lời bị cắt ở giới hạn 2.048 token của M6: không có.

@@ -73,3 +73,8 @@ def test_s_profile_runs_once_and_stands_for_both_inputs():
     assert len(out) == 3 and narr == [{"qid": "q1", "preset": "S-Profile", "input": "narrative", "shared_from": "coded"}]
     only_narrative = [{"qid": "q1", "preset": "S-Profile", "input": "narrative"}]
     assert ep.shared_turns(only_narrative) == only_narrative
+
+
+def test_a_food_that_only_shares_the_name_is_not_a_violation():
+    assert ep.names_in(["4 ounces chopped fresh oyster mushrooms"], ["oyster"]) == []
+    assert ep.names_in(["1 dozen fresh oysters", "1 cup oyster crackers"], ["oyster"]) == ["oyster"]

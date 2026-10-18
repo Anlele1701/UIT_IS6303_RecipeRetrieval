@@ -298,9 +298,13 @@ def checker_constraints(t: dict, dialogue: dict) -> tuple[list[str], list[str]]:
     return [f"allergen:{a}" for a in t["allergens"]], [f"diet:{dialogue['diet']}"] if dialogue.get("diet") else []
 
 
+FALSE_FRIENDS = re.compile(r"\boyster\s+mushrooms?\b|\boyster\s+crackers?\b")  # a name inside another food (MV4d)
+
+
 def names_in(lines: list[str], names: list[str]) -> list[str]:
-    """Named ingredients found as whole words (plural s/es allowed) in a Recipe's raw ingredient lines."""
-    text = " | ".join(lines).lower()
+    """Named ingredients found as whole words (plural s/es allowed) in a Recipe's raw ingredient lines; a food
+    that only shares the name ("oyster mushrooms" for an oyster allergy) is blanked first."""
+    text = FALSE_FRIENDS.sub(" ", " | ".join(lines).lower())
     return [n for n in names if re.search(rf"\b{re.escape(n.lower())}(e?s)?\b", text)]
 
 
