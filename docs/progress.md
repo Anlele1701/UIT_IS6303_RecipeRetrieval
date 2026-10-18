@@ -689,6 +689,8 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 
 ### MV4c – Baseline, chế độ narrative, `eval_patient.py`, chạy thử (18/10/2026) · 🚦 chờ duyệt
 
+**Quyết định (Thy, 18/10/2026):** lần chạy đầy đủ chạy trên máy này (RTX 4060 Laptop, 8 GB), thay cho "máy GPU khác". Máy này có GPU và Ollama đã chạy trên GPU; nhận định "máy CPU" lúc lên kế hoạch là sai.
+
 **Đã làm**
 - `api/patient/narrative.py`: chế độ đầu vào narrative. Mỗi section của bảng `<text>` là một nút (`narrative.*`). Không có mã hay `statusCode`. Các dòng P7 bị bỏ (dựa vào cột Code) trước khi văn bản đến mô hình. Chế độ này chỉ dùng khi đánh giá.
 - `api/patient/baselines.py`:
