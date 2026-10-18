@@ -841,7 +841,7 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 
 **Gate MV5 (Thy, 18/10/2026): duyệt.** Hợp đồng `docs/plan/A3_ke_hoach_build.md` mục 6.5 và ADR-0008 (accepted). Nhánh hồ sơ bệnh nhân MV0–MV5 hoàn tất; M4 (API `/chat`, route PATCH, UI) dùng hợp đồng này.
 
-## M4 – API và giao diện chat (18/10/2026) · 🚦 chờ duyệt
+## M4 – API và giao diện chat (18/10/2026) · 🚦 đã duyệt 18/10/2026
 
 **Quyết định (Thy, 18/10):** có dropdown preset trong ngăn cài đặt (mặc định S, hoặc P-Vectorless khi có bệnh nhân); ô chọn hồ sơ bệnh nhân đặt ngay trên trang `/chat`.
 
@@ -877,3 +877,5 @@ Kịch bản 1b sẽ thấy lại vấn đề đã biết của gate M3: R18880 
   1. **Trôi ngôn ngữ ở M6** (kịch bản 2, route `detail`): câu trả lời tiếng Việt chuyển sang tiếng Trung giữa chừng. M7 chỉ kiểm ngôn ngữ ở route `patient_info`.
   2. **M1 ghi cả nhóm dị ứng lẫn nguyên liệu** cho cùng một ý ("dị ứng đậu phộng" sinh ra chip "Dị ứng đậu phộng" và "Không dùng peanut (lượt này)"). Tên nguyên liệu hiện bằng tên chuẩn tiếng Anh.
 - Các nhận xét 1–4 của gate M3 vẫn thấy được khi demo, như dự kiến.
+
+**Gate M4 (Thy, 18/10/2026): duyệt.** Ảnh demo do Thy chụp. Các vấn đề đã biết (gate M3 và demo M4) giữ nguyên.
