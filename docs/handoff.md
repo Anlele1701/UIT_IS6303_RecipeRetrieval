@@ -72,6 +72,7 @@ uv run scripts/check_env.py                    # sinh lại docs/env.md cho máy
 uv run python -m pytest -q                     # nhanh, khoảng 30 giây, không cần Ollama
 uv run python -m pytest -q -m slow             # golden M1 và 4 kịch bản demo, cần Ollama
 uv run scripts/chat_cli.py --preset S          # chat thử; /state /trace /reset /quit
+uv run uvicorn api.main:app --port 8000        # UI chat ở http://localhost:8000/chat (docs/demo_m4.md)
 ```
 
 Trên Windows:

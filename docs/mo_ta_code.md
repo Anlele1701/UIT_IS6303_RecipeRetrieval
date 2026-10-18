@@ -5,7 +5,7 @@ Tài liệu này mô tả code đang có trong repo ngày 17/10/2026: dữ liệ
 **Tóm tắt trạng thái:**
 - Lớp dữ liệu và gắn thẻ đã xong (M1, M2).
 - Pipeline hội thoại M1–M7 đã code xong (M3), chạy được qua `scripts/chat_cli.py`, nhưng chưa qua gate.
-- **Chưa có API `/chat` và UI chat** (thuộc M4). UI hiện có là trang tìm kiếm và trang Report kế thừa từ A1.
+- **API chat và UI chat (M4, 18/10/2026):** `api/chat_api.py` (`POST /chat` SSE, `GET/PATCH /sessions/{id}`, `PATCH /chat/{session}/constraints/{id}`, `GET /recipes/{id}`, `POST /feedback`) và trang `/chat` (`ui/src/chat/`). Bên cạnh đó vẫn có trang Search và trang Report kế thừa từ A1. Cách demo: `docs/demo_m4.md`.
 - Nhánh hồ sơ bệnh nhân (MV0–MV5): đã có endpoint `GET /patients`, `GET /patients/{id}/tree`, `GET /patients/{id}/profile` (`api/patient_api.py`), và cơ chế xác nhận gỡ ràng buộc hồ sơ (`Assistant.lift_record_constraint`, bảng `session_record_lift`). Hợp đồng đầy đủ cho M4 ở `docs/plan/A3_ke_hoach_build.md` mục 6.5.
 
 ---
@@ -222,7 +222,7 @@ Tham số chung (`api/filters.py`): `q`, `strategy` (bắt buộc), `k`, `catego
 
 ## 6. Luồng hội thoại (A3, pipeline M1–M7)
 
-Code ở `api/pipeline/`. Điểm vào là `Assistant.run_turn` trong `orchestrator.py`. Hiện tại chỉ `scripts/chat_cli.py` và test gọi nó; M4 sẽ nối nó vào API `/chat` (SSE).
+Code ở `api/pipeline/`. Điểm vào là `Assistant.run_turn` trong `orchestrator.py`. API `POST /chat` (`api/chat_api.py`) chuyển mỗi sự kiện của nó thành một sự kiện SSE; `scripts/chat_cli.py` và test cũng gọi nó.
 
 ### 6.1. Một lượt chat
 

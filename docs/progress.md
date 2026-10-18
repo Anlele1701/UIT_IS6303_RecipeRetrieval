@@ -840,3 +840,30 @@ Test chậm: hồi quy khi không có bệnh nhân **pass**; 3 kịch bản demo
 - Test: thêm 5 test (gỡ nhóm một dòng; gỡ riêng một thành viên; thành viên dùng chung giữ tới khi gỡ cả hai nhóm; nhóm không tồn tại; API có `groups`). Kết quả: 529 test nhanh pass.
 
 **Gate MV5 (Thy, 18/10/2026): duyệt.** Hợp đồng `docs/plan/A3_ke_hoach_build.md` mục 6.5 và ADR-0008 (accepted). Nhánh hồ sơ bệnh nhân MV0–MV5 hoàn tất; M4 (API `/chat`, route PATCH, UI) dùng hợp đồng này.
+
+## M4 – API và giao diện chat (18/10/2026) · 🚦 chờ duyệt
+
+**Quyết định (Thy, 18/10):** có dropdown preset trong ngăn cài đặt (mặc định S, hoặc P-Vectorless khi có bệnh nhân); ô chọn hồ sơ bệnh nhân đặt ngay trên trang `/chat`.
+
+**Đã làm**
+- **API** (`api/chat_api.py`; chỉ gọi pipeline):
+  - `POST /chat` stream SSE theo hợp đồng 6.5; lỗi giữa chừng thành `event: error`;
+  - `GET/PATCH /sessions/{id}`, `PATCH /chat/{session}/constraints/{id}` (ràng buộc hội thoại tắt ngay; ràng buộc hồ sơ và nhóm cần `confirm`, nếu không trả 409), `GET /recipes/{id}`, `POST /feedback`;
+  - `/health` báo thêm trạng thái các model Ollama;
+  - hàm phía pipeline: `Assistant.session_view`, `remove_constraint`, `constraint_id_of`, `set_preset`;
+  - lifespan có client LLM riêng (timeout 900 giây) và lexicon tải một lần.
+- **UI** (`ui/src/chat/`: `api.ts`, `labels.ts`, `parts.tsx`, `ChatPage.tsx`; nav có thêm Chat):
+  - stream từng token, rồi thay bằng `done.answer`;
+  - `[R<id>]` dẫn tới thẻ công thức; `[H:<node>]` mở cây hồ sơ;
+  - thẻ công thức có huy hiệu dị ứng và "có thể chứa", dinh dưỡng bị giới hạn (tô đỏ nếu vượt), chi tiết công thức;
+  - panel ràng buộc: chip hội thoại có nút xóa; **mỗi nhóm hồ sơ một chip khóa**, có "chi tiết" và "xác nhận gỡ" (hộp thoại có lý do); giới hạn dinh dưỡng mỗi cái một chip; mục đã gỡ;
+  - `record_locked`, `warnings`, ghi chú `fallback` và `done_reason`, banner miễn trừ, 👍/👎, chọn bệnh nhân, cài đặt preset.
+- **Test:** 7 test API (thứ tự SSE, không có tên bệnh nhân, 409/422/404, sự kiện lỗi, xóa chip hội thoại, gỡ hồ sơ có xác nhận và gỡ nhóm, preset, chi tiết công thức, feedback). Kết quả: 536 test nhanh pass. `npm run build` sạch; `npm run lint` không có cảnh báo mới (các cảnh báo cũ nằm trong `src/report/`).
+- **Chạy thật** (RTX 4060, reranker trên `cuda`): kịch bản 1 với S mất 12,4 giây cho 124 token. Kịch bản có bệnh nhân: `patient_profile` đến trước, có `record_locked`; gỡ nhóm không có xác nhận trả 409, có xác nhận thì gỡ 21 mục.
+- Đã dừng một uvicorn cũ (mở từ 17/10, còn chạy code trước M4).
+
+**Cần Thy** (🚦 gate M4):
+- chạy các kịch bản trong `docs/demo_m4.md` trên giao diện và chụp ảnh;
+- duyệt giao diện.
+
+Kịch bản 1b sẽ thấy lại vấn đề đã biết của gate M3: R18880 lọt qua vì lỗi parser dấu phẩy.

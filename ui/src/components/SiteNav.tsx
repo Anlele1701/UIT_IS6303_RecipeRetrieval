@@ -1,11 +1,12 @@
-// Links between the search page, the Report page and the API docs FastAPI serves at /docs.
+// Links between the chat assistant, the search page, the Report page and the API docs FastAPI serves at /docs.
 const LINKS = [
+  { href: '/chat', label: 'Chat' },
   { href: '/', label: 'Search' },
   { href: '/report', label: 'Report' },
   { href: '/docs', label: 'API' },
 ] as const
 
-export function SiteNav({ current }: { current: '/' | '/report' }) {
+export function SiteNav({ current }: { current: '/' | '/report' | '/chat' }) {
   return (
     <nav aria-label="Pages" className="flex items-center gap-1 text-sm">
       {LINKS.map(l => (
