@@ -72,3 +72,31 @@ Cả hai số được báo cáo **cho mọi preset, kể cả B0 và B1**, theo
 - Người duyệt trả lời một câu: dòng bằng chứng có thật sự làm công thức chứa nhóm đó không. Xét theo thành phần thật như mục 1. Ví dụ: "salmon" → không chứa lúa mì; "1 cup flour" → có.
 - Nhãn ghi vào `eval/labels/checker_adjudication.csv` (`recipe_id, constraint, evidence_line, violation = yes|no, reviewer, date, note`), để chạy lại ra cùng kết quả.
 - Đã có: R2920 / `allergen:wheat` (Worcestershire) = **no**. Thy quyết định ngày 17/10/2026: gluten (nếu có) đến từ giấm mạch nha làm từ lúa mạch, mà lúa mạch không thuộc nhóm wheat của FDA.
+
+## 6. Duyệt gold bộ test A3 (V6, M5)
+
+Mở trang duyệt: `uv run scripts/testset_review.py`, rồi vào `http://localhost:8766`.
+- Trang chỉ hiện câu hỏi và gold đề xuất (lấy từ mẫu câu). Không có dự đoán của M1, thẻ hay kết quả bộ kiểm.
+- Mỗi lần lưu là một dòng trong `eval/labels/testset_review.csv`; dòng cuối của mỗi câu là kết quả, nên dừng và làm tiếp được.
+
+**Gold là gì:** ý định và ràng buộc mà **người hỏi muốn**, theo schema của M1.
+
+| Trường | Cách điền |
+|---|---|
+| Ý định | `search` (tìm món mới), `refine` (sửa yêu cầu của lượt trước), `ask_detail` (hỏi về một món đã gợi ý), `out_of_scope` (không liên quan nấu ăn), `chitchat` (chào hỏi) |
+| Dị ứng | chỉ nhóm người hỏi **nói là dị ứng hoặc không ăn được** (9 nhóm FDA) |
+| Loại nguyên liệu | nguyên liệu bị loại mà không phải dị ứng ("không có hành"), ghi tên tiếng Anh như trong từ điển: `onion`, `garlic`, `cilantro`, `mushroom`, `tomato`, `bell pepper` |
+| Chế độ ăn | `vegetarian` (chay) hoặc `vegan` (thuần chay); để trống nếu không nói |
+| Tối đa (phút) | chỉ khi người hỏi nói giới hạn thời gian |
+| Hỏi món thứ (T4) | vị trí món trong câu trả lời trước ("món thứ 2" = 2) |
+
+**Với mỗi câu, chọn một trong ba:**
+1. **Đúng (phím 1):** gold đề xuất khớp với ý người hỏi.
+2. **Sửa (phím 2):** chỉnh form rồi bấm "Lưu bản sửa".
+   - Dùng khi câu diễn đạt lại làm đổi nghĩa, hoặc gold thiếu hay thừa một ràng buộc.
+   - Câu viết tay và câu T1 có cảnh báo vàng thì luôn kiểm và điền.
+3. **Loại (phím 3):** ghi lý do vào ô ghi chú. Dùng khi câu tối nghĩa, sai ngôn ngữ, hoặc không còn tự nhiên.
+
+**T4 (hội thoại):** mỗi lượt có gold riêng. Ràng buộc của một lượt là **toàn bộ** ràng buộc đang áp dụng ở lượt đó, tức đã cộng các lượt trước và bỏ những gì người dùng đã gỡ.
+
+**Nhịp làm:** khoảng 350 câu. Phần lớn chỉ cần bấm "Đúng", nên ước tính 1,5–2 giờ. Xong thì báo; khi Thy bảo, mình sẽ chạy `scripts/freeze_testset.py --approved-by Thy`.
