@@ -347,7 +347,7 @@ def score(run_dir: Path, client=None) -> dict:
                 r["allergy_recall"] = (r["food_allergy_substances_tp"] / len(g["food_allergy_substances"])
                                        if g["food_allergy_substances"] else None)
                 r["allergy_missed"] = r["food_allergy_substances_fn"]
-            if q["type"] == "needs_context" and pp:
+            if q["type"] == "needs_context" and pp and t["input"] == "coded":  # narrative: one node per section, a hit is near certain
                 r["node_hit"] = int(node_hit(pp.get("nodes_read", []), q.get("relevant_nodes", []), t["input"]))
             tree = narrative_tree | {f"patient:{t['patient_id']}"} if t["input"] == "narrative" else tr["tree"]
             r.update(h_citations(t["answer"], tree, set(pp.get("nodes_read", []))))
@@ -544,7 +544,8 @@ def render(metrics: dict) -> str:
             + f". Mục mới vào hàng duyệt mù `{metrics['queue']}`: {metrics['queue_new']} (pending tính là vi phạm).",
             "Dị ứng và chế độ ăn do bộ kiểm độc lập chấm; nguyên liệu có tên (từ hồ sơ hoặc hội thoại) so khớp nguyên "
             "từ trên dòng nguyên liệu thô; giới hạn thời gian đọc cột total_minutes; dinh dưỡng đọc cột dinh dưỡng.",
-            "S-Profile không đọc hồ sơ nên chỉ chạy ở chế độ coded; dòng narrative của nó dùng chung các lượt đó.", ""]
+            "S-Profile không đọc hồ sơ nên chỉ chạy ở chế độ coded; dòng narrative của nó dùng chung các lượt đó.",
+            "Chọn nút đúng chỉ tính ở chế độ coded: ở narrative mỗi section là một nút (narrative.results), nên gần như luôn trúng.", ""]
     return "\n".join(out)
 
 
