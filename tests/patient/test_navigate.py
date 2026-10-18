@@ -70,8 +70,15 @@ def test_the_prompt_is_only_the_table_of_contents(nodes, rs, monkeypatch):
         assert word not in text
 
 
-def test_mv4_modes_are_refused_until_built(nodes, rs):
-    with pytest.raises(NotImplementedError, match="MV4"):
+def test_nofixed_reads_only_what_the_model_picks_even_the_fixed_nodes(nodes, rs, monkeypatch):
+    calls = fake(monkeypatch, [{"node_ids": ["meds.active", "results.2021", "allergies"]}])
+    sel = navigate.select_nodes(nodes, "món tối", False, "vectorless_nofixed", rs, None)  # needs_context is moot
+    assert sel.node_ids == ["meds.active", "results.2021", "allergies"] and sel.llm_calls == 1
+    assert "at most 6" in calls[0][0]["content"] and "allergies" in calls[0][1]["content"]
+
+
+def test_vector_mode_does_not_walk_the_tree(nodes, rs):
+    with pytest.raises(ValueError, match="chunks"):
         navigate.select_nodes(nodes, "x", True, "vector", rs, None)
 
 
@@ -85,3 +92,9 @@ def test_the_patient_golden_draft_is_well_formed_and_still_a_draft():
     for r in rows:
         assert keys <= set(r) and isinstance(r["remove"], list), r["id"]
         assert r["status"].startswith("draft"), r["id"]  # only Thy turns a case into approved
+
+
+def test_only_the_nofixed_prompt_says_unpicked_sections_are_not_read():
+    rs = rules.load_rules()
+    assert navigate.NOFIXED_NOTE in navigate.prompt("q", [], rs, 6, nofixed=True)[0]["content"]
+    assert navigate.NOFIXED_NOTE not in navigate.prompt("q", [], rs)[0]["content"]  # P-Vectorless cache keys kept

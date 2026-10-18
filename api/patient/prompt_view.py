@@ -9,7 +9,11 @@ only what a rule table lets through. The tree in the DB keeps everything; eviden
     vitals.latest    LOINC codes in prompt_vitals.csv
     results.<year>   organizers (already allow-listed by include_loinc.csv at read time)
     encounters.<y>   the generic class (encounter_class.csv) and the month; never the visit's name
+    narrative.*      evaluation only (eval_patient.py --input narrative): the table rows minus P7, with no
+                     allow-list, since the narrative has no codes to check one against (a known gap, MV4c)
 """
+
+import re
 
 from .models import PatientNode
 from .rules import RuleSet
@@ -42,7 +46,17 @@ def visible_facts(node: PatientNode, rs: RuleSet) -> list[dict]:
                 for f in facts]
     if nid.startswith("encounters."):
         return [{"class": encounter_class(rs, f.get("code")), "month": (f.get("date") or "")[:7]} for f in facts]
+    if nid.startswith("narrative."):
+        return [_narrative_fact(f) for f in facts]
     return []  # an unknown node shows nothing
+
+
+def _narrative_fact(f: dict) -> dict:
+    out = {"description": f.get("description"), "date": f.get("start") or None, "stop": f.get("stop") or None}
+    m = re.match(r"\s*([\d.]+)\s*(.*)", f.get("value") or "")
+    if m:  # "83.6 kg" -> value and unit, so M7's number check reads it like a coded vital sign
+        out.update(value=m.group(1), unit=m.group(2).strip() or None)
+    return out
 
 
 def prompt_view(node: PatientNode, rs: RuleSet, with_summary: bool = True) -> dict:

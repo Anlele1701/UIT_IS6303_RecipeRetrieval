@@ -34,20 +34,24 @@ def _load() -> dict[str, dict]:
     return _cache
 
 
-def cache_key(model: str, schema: dict, messages: list[dict], temperature: float) -> str:
-    return hashlib.sha256(json.dumps([model, schema, messages, temperature, config.SEED],
-                                     ensure_ascii=False, sort_keys=True).encode()).hexdigest()
+NUM_CTX = 4096
+
+
+def cache_key(model: str, schema: dict, messages: list[dict], temperature: float, num_ctx: int = NUM_CTX) -> str:
+    """num_ctx enters the key only when it is not the default, so keys written before it existed still match."""
+    parts = [model, schema, messages, temperature, config.SEED] + ([num_ctx] if num_ctx != NUM_CTX else [])
+    return hashlib.sha256(json.dumps(parts, ensure_ascii=False, sort_keys=True).encode()).hexdigest()
 
 
 def chat_json(client: httpx.Client, schema: dict, messages: list[dict], model: str = config.QU_MODEL,
-              temperature: float = config.QU_TEMPERATURE, use_cache: bool = True) -> dict:
+              temperature: float = config.QU_TEMPERATURE, use_cache: bool = True, num_ctx: int = NUM_CTX) -> dict:
     """One structured-output call; the parsed JSON object. Raises LLMError on a reply that is not JSON."""
-    k = cache_key(model, schema, messages, temperature)
+    k = cache_key(model, schema, messages, temperature, num_ctx)
     if use_cache and k in _load():
         return _load()[k]
     r = client.post(f"{config.OLLAMA_URL}/api/chat", json={
         "model": model, "stream": False, "format": schema, "messages": messages,
-        "options": {"temperature": temperature, "seed": config.SEED, "num_ctx": 4096}}, timeout=600)
+        "options": {"temperature": temperature, "seed": config.SEED, "num_ctx": num_ctx}}, timeout=600)
     r.raise_for_status()
     try:
         out = json.loads(r.json()["message"]["content"])
