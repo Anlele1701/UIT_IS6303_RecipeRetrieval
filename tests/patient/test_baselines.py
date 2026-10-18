@@ -74,3 +74,16 @@ def test_a_copied_narrative_row_maps_like_its_description():
     ent = baselines.entities({"food_allergies": [], "conditions": ["1993-03-05 -> no end date: Essential hypertension (disorder)"],
                               "medications": ["2016-07-15 -> 2017-07-21: lisinopril 10 MG Oral Tablet"]})
     assert ent["conditions"] == ["59621000"] and ent["medications"] == ["314076"]
+
+
+def test_embeddings_go_in_small_batches_and_keep_their_order():
+    import httpx
+    sizes = []
+
+    def handler(request):
+        import json
+        texts = json.loads(request.content)["input"]
+        sizes.append(len(texts))
+        return httpx.Response(200, json={"embeddings": [[float(t.split()[-1]), 1.0] for t in texts]})
+    v = baselines._embed(httpx.Client(transport=httpx.MockTransport(handler)), [f"doc {i}" for i in range(70)])
+    assert sizes == [32, 32, 6] and v.shape == (70, 2) and v[69, 0] > v[1, 0]

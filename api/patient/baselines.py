@@ -207,19 +207,26 @@ def chunks(lines: list[str], size: int = CHUNK_LINES) -> list[str]:
     return ["\n".join(lines[i:i + size]) for i in range(0, len(lines), size)]
 
 
+EMBED_BATCH = 32  # Ollama tokenizes a call's inputs in parallel; 450 at once got "connection refused" (MV4c)
+
+
 def _embed(client: httpx.Client, texts: list[str], attempts: int = 3) -> np.ndarray:
-    """A 400 from Ollama while it swaps models went away on the next call (MV4c smoke run): retry, then raise
-    with Ollama's message."""
-    for attempt in range(1, attempts + 1):
-        r = client.post(f"{config.OLLAMA_URL}/api/embed", json={"model": config.EMBED_MODEL, "input": texts},
-                        timeout=600)
-        if r.status_code == 200 or attempt == attempts:
-            break
-        print(f"embed: HTTP {r.status_code} {r.text[:200]!r}, retry {attempt}", file=sys.stderr)
-        time.sleep(5 * attempt)
-    if r.status_code != 200:
-        raise httpx.HTTPStatusError(f"embed failed: HTTP {r.status_code} {r.text[:300]}", request=r.request, response=r)
-    v = np.asarray(r.json()["embeddings"], dtype=np.float32)
+    """Unit vectors, EMBED_BATCH texts per call. A 400 is retried, then raised with Ollama's message."""
+    out = []
+    for b in range(0, len(texts), EMBED_BATCH):
+        part = texts[b:b + EMBED_BATCH]
+        for attempt in range(1, attempts + 1):
+            r = client.post(f"{config.OLLAMA_URL}/api/embed", json={"model": config.EMBED_MODEL, "input": part},
+                            timeout=600)
+            if r.status_code == 200 or attempt == attempts:
+                break
+            print(f"embed: HTTP {r.status_code} {r.text[:200]!r}, retry {attempt}", file=sys.stderr)
+            time.sleep(5 * attempt)
+        if r.status_code != 200:
+            raise httpx.HTTPStatusError(f"embed failed: HTTP {r.status_code} {r.text[:300]}", request=r.request,
+                                        response=r)
+        out += r.json()["embeddings"]
+    v = np.asarray(out, dtype=np.float32)
     return v / np.linalg.norm(v, axis=1, keepdims=True)
 
 
