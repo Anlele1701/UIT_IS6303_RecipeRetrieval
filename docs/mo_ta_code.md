@@ -6,6 +6,7 @@ Tài liệu này mô tả code đang có trong repo ngày 17/10/2026: dữ liệ
 - Lớp dữ liệu và gắn thẻ đã xong (M1, M2).
 - Pipeline hội thoại M1–M7 đã code xong (M3), chạy được qua `scripts/chat_cli.py`, nhưng chưa qua gate.
 - **Chưa có API `/chat` và UI chat** (thuộc M4). UI hiện có là trang tìm kiếm và trang Report kế thừa từ A1.
+- Nhánh hồ sơ bệnh nhân (MV0–MV5): đã có endpoint `GET /patients`, `GET /patients/{id}/tree`, `GET /patients/{id}/profile` (`api/patient_api.py`), và cơ chế xác nhận gỡ ràng buộc hồ sơ (`Assistant.lift_record_constraint`, bảng `session_record_lift`). Hợp đồng đầy đủ cho M4 ở `docs/plan/A3_ke_hoach_build.md` mục 6.5.
 
 ---
 
@@ -262,7 +263,8 @@ flowchart TD
 
 `run_turn` sinh ra chuỗi sự kiện theo định dạng SSE 6.5 trong kế hoạch build:
 
-1. `constraints`: `session_id`, intent, ràng buộc đang áp dụng, thông báo, route, câu hỏi lại (nếu có).
+0. `patient_profile` (chỉ khi phiên có bệnh nhân): hồ sơ ràng buộc hiệu lực, bằng chứng `[H:node_id]`, các mục đã xác nhận gỡ (`lifted`), số lời gọi LLM và độ trễ V1–V3.
+1. `constraints`: `session_id`, intent, ràng buộc đang áp dụng, thông báo, route, câu hỏi lại (nếu có); với bệnh nhân thêm `record_locked`.
 2. `recipes`: danh sách thẻ công thức rút gọn (id, tiêu đề, thời gian, dị ứng, chế độ ăn, điểm).
 3. `token`: từng mảnh câu trả lời khi đang stream.
 4. `done`: `answer` bản cuối, trích dẫn hợp lệ, trích dẫn bị bỏ, có sinh lại hay không, số token, độ trễ từng bước.

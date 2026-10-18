@@ -307,14 +307,115 @@ USER: {u_t}
 ```
 - Chỉ đưa các trường cần thiết vào ngữ cảnh (focus mode [R09]). Công thức xếp hạng cao nhất đặt đầu [S14].
 
-### 6.5. Định dạng sự kiện SSE của `POST /chat`
+### 6.5. Hợp đồng API cho M4: sự kiện SSE của `POST /chat` và endpoint hồ sơ bệnh nhân
+
+Cập nhật ở MV5 (18/10/2026), lấy đúng theo những gì code đang phát (`api/pipeline/orchestrator.py`). Endpoint hồ sơ đã có trong `api/patient_api.py`. **M4 làm** `POST /chat`, `GET/PATCH /sessions/{id}`, route `PATCH /chat/{session}/constraints/{id}` và UI.
+
+#### 6.5.1. `POST /chat` (M4 làm)
+- Body: `{session_id?, message, preset = "S", patient_id?}`.
+- Không có `session_id` thì tạo phiên mới bằng `Assistant.new_session(preset, patient_id)`.
+- `patient_id` chỉ có tác dụng khi tạo phiên mới. Bệnh nhân không tồn tại hoặc đã mất thì `PatientUnavailable`, trả **409**.
+- Trả về SSE, mỗi lượt các sự kiện theo đúng thứ tự:
+
 ```
-event: constraints  data: {session_id, message_id, constraints, intent}
-event: recipes      data: [{id, title, total_minutes, allergens, score}]
-event: token        data: "..."
-event: done         data: {citations:[id...], verified:true, usage:{prompt_tokens, completion_tokens},
-                           latency_ms:{m1, m4, m5, m6_ttft, m6_total, total}}
+event: patient_profile   (chỉ khi phiên có bệnh nhân và preset đọc hồ sơ; luôn đứng TRƯỚC constraints)
+event: constraints
+event: recipes           (chỉ route retrieve và detail)
+event: token             (0..n lần; mỗi lần là một đoạn chữ)
+event: done
 ```
+
+**`patient_profile`**: hồ sơ hiệu lực của lượt này, đã bỏ các mục được xác nhận gỡ.
+
+```json
+{"patient_id": "887e4b4e-…", "allergens_exclude": ["crustacean_shellfish", "wheat"],
+ "ingredients_exclude": ["abalone", "clam", "…"],
+ "nutrient_limits": {"sodium_mg": ["max", 666.67]}, "nutrient_soft": {"fiber_per_1000kcal": ["min", 14.0]},
+ "warnings": ["Nên ưu tiên món ít đường (đường dưới 10% năng lượng, WHO)."], "unmapped": [],
+ "ruleset_version": "…",
+ "evidence": {"allergen:wheat": [{"node_id": "allergies", "text": "Wheat – Eruption of skin, Dyspnea, Moderate"}]},
+ "lifted": [{"constraint_id": "allergen:crustacean_shellfish", "reason": "bác sĩ xác nhận",
+             "confirmed_at": "2026-10-18T22:10:00+07:00"}],
+ "nodes_read": ["allergies", "problems.active", "meds.active", "vitals.latest", "results.2026"],
+ "llm_calls": 1, "latency_ms": {"v1": 3.0, "v2": 520.0, "v3": 0.6},
+ "input": "coded", "entities": {"…": "…"}, "chunks_read": null, "extract_calls": 0, "extract_chars": 0}
+```
+
+- Giới hạn dinh dưỡng tính cho **một khẩu phần** (ADR-0007). `["max", 666.67]` nghĩa là natri ≤ 666,67 mg mỗi khẩu phần.
+- `nutrient_soft` chỉ dùng để xếp hạng, không lọc.
+- `evidence` có khóa là `constraint_id` (6.5.3). Mỗi phần tử là `{node_id, text}`; `node_id` trỏ tới nút trong cây (6.5.2).
+- `input`, `entities`, `chunks_read`, `extract_*` là trường dùng cho đánh giá; UI bỏ qua.
+
+**`constraints`**
+
+```json
+{"session_id": "…", "message_id": 123, "intent": "search|refine|ask_detail|patient_info|chitchat|out_of_scope",
+ "route": "retrieve|detail|patient_info|chat|clarify", "clarify": null,
+ "constraints": {"allergens_exclude": [], "ingredients_exclude": [], "ingredients_include": [], "diet": null,
+                 "max_total_minutes": null, "max_calories": null, "category": null,
+                 "nutrient_limits": {"sodium_mg": ["max", 666.67]}, "nutrient_soft": {}},
+ "notices": ["from_record:allergen:crustacean_shellfish"],
+ "record_locked": [{"constraint": "allergen:crustacean_shellfish",
+                    "message": "Ràng buộc này đến từ hồ sơ bệnh nhân, không gỡ được qua tin nhắn; cần xác nhận trên giao diện."}]}
+```
+
+- `record_locked` chỉ có trong phiên có bệnh nhân. Nó xuất hiện khi tin nhắn tìm cách gỡ một ràng buộc của hồ sơ (ví dụ "tôi ăn được tôm rồi"). UI hiển thị `message` và đưa người dùng tới nút "xác nhận gỡ" (6.5.3).
+- Ràng buộc trong `constraints` là ràng buộc hội thoại cộng ràng buộc hồ sơ hiệu lực. Phân biệt nguồn bằng cách so với `patient_profile`, hoặc đọc `session_constraint.source` qua `GET /sessions/{id}` (M4).
+
+**`recipes`**: `[{id, title, total_minutes, allergens, allergens_may, diet_flags, score, nutrients?}]`. Trường `nutrients` (`{cột: giá trị mỗi khẩu phần | null}`) chỉ có khi phiên có giới hạn dinh dưỡng.
+
+**`token`**: một đoạn chữ của câu trả lời. Trích dẫn trong câu trả lời có hai dạng:
+- `[R<id>]` trỏ tới một công thức trong `recipes`;
+- `[H:<node_id>]` trỏ tới một nút của cây hồ sơ. UI biến nó thành liên kết mở nút trong `GET /patients/{id}/tree`.
+
+**`done`**
+
+```json
+{"message_id": 124, "answer": "…", "citations": [3, 17], "verified": true, "removed": [], "regenerated": false,
+ "usage": {"prompt_tokens": 1550, "completion_tokens": 140, "done_reason": "stop"},
+ "latency_ms": {"m1": 900, "m4": 60, "m5": 300, "m6_ttft": 700, "m6_total": 6000, "total": 8000},
+ "flags": [], "fallback": false}
+```
+
+- `answer` là câu trả lời **cuối cùng**. Sau M7 nó có thể khác các `token` đã phát: một trích dẫn có thể bị bỏ, hoặc câu trả lời được sinh lại, hoặc được thay bằng câu do code viết. UI thay nội dung đã stream bằng `answer` khi nhận `done`.
+- `flags` và `fallback` chỉ có trong phiên có bệnh nhân. `fallback = true` nghĩa là câu trả lời do code viết (`values_answer`, `drop_sentences`, `recipes_answer`). UI nên ghi chú nhỏ, ví dụ "câu trả lời tóm tắt từ hồ sơ".
+- `usage.done_reason = "length"` nghĩa là câu trả lời bị cắt ở giới hạn 2.048 token của M6.
+
+#### 6.5.2. Endpoint hồ sơ bệnh nhân (đã có, `api/patient_api.py`)
+Mọi endpoint chỉ trả những gì mô hình được thấy: facts qua allow-list (`prompt_view`, ADR-0006). Không có tên, không có `entry_id`, không có dữ liệu P7. Lỗi chung: **404** khi không có bệnh nhân, **409** khi bệnh nhân đã mất (với `tree` và `profile`).
+
+| Endpoint | Trả về |
+|---|---|
+| `GET /patients?alive_only=true` | `[{patient_id, source, sex, age_years, record_date, deceased, summary:{allergens, nutrient_limits, nutrient_soft, warnings}}]`. Người đã mất chỉ hiện khi `alive_only=false`, và không có `summary`. |
+| `GET /patients/{id}/tree` | Các nút theo thứ tự `[{node_id, parent_id, kind: root\|fixed\|context, title, summary, facts}]`. `facts` là prompt view: dị ứng thực phẩm có luật, bệnh có trong `condition_nutrient.csv`, thuốc có luật, sinh hiệu được phép, panel xét nghiệm, loại lần khám kèm tháng (không có tên lần khám). |
+| `GET /patients/{id}/profile?mode=vectorless\|direct` | Hồ sơ ràng buộc đầy đủ theo bảng luật, **trước** khi gỡ: `{patient_id, allergens_exclude, ingredients_exclude, nutrient_limits, nutrient_soft, warnings, unmapped, evidence:{constraint_id:[{node_id, text}]}, ruleset_version, mode}`. Hồ sơ hiệu lực của một phiên nằm trong sự kiện `patient_profile`. |
+
+Ví dụ một dòng của `GET /patients` (bệnh nhân fixture):
+
+```json
+{"patient_id": "887e4b4e-a3e1-b573-4a16-38386d3e0b88", "source": "sample", "sex": "M", "age_years": 21,
+ "record_date": "2026-08-25", "deceased": false,
+ "summary": {"allergens": ["crustacean_shellfish", "wheat"], "nutrient_limits": ["sodium_mg"], "nutrient_soft": [], "warnings": 1}}
+```
+
+#### 6.5.3. Gỡ ràng buộc: `PATCH /chat/{session}/constraints/{constraint_id}` (route do M4 làm)
+- Body: `{"action": "remove", "confirm": bool, "reason"?: string}`.
+- **`constraint_id`** ổn định qua các lượt:
+  - với ràng buộc hồ sơ là khóa bằng chứng: `allergen:<nhóm>`, `ingredient:<tên>`, `nutrient:<cột>`, `soft:<cột>` (`api/patient/models.constraint_ids`);
+  - với ràng buộc hội thoại, M4 tự đặt theo cùng dạng `<type>:<value>`.
+- **Ràng buộc hồ sơ:** route gọi `Assistant.lift_record_constraint(session_id, constraint_id, confirm, reason)`.
+  - Cần `confirm = true`. Không có thì `RecordLiftRefused`, trả **409**. Phiên không có bệnh nhân, hoặc mục không thuộc hồ sơ, cũng trả **409**.
+  - Thành công thì trả `{constraint_id, reason, confirmed_at}` và lưu một dòng vào `session_record_lift` (migration 009), có lưu vết.
+  - Từ lượt sau, phiên chạy trên hồ sơ đã bỏ mục đó ở M2, M4, M6 và M7. Mục đã gỡ hiện trong `patient_profile.lifted`.
+  - **Tin nhắn chat không gỡ được ràng buộc hồ sơ.**
+- **Ràng buộc hội thoại:** sửa hoặc xóa chip không cần `confirm`. Hành vi giống gỡ bằng lời ở M2.
+- **Gom nhóm:** một dòng dị ứng trong hồ sơ có thể sinh nhiều ràng buộc có chung bằng chứng. Ví dụ dị ứng hải sản có vỏ sinh `allergen:crustacean_shellfish` cộng 20 `ingredient:` nhuyễn thể. UI nên gom theo `evidence` thành một chip, và khi xác nhận gỡ thì gọi PATCH cho mọi `constraint_id` trong nhóm.
+
+#### 6.5.4. Gợi ý hiển thị cho M4
+- **Chip ràng buộc hồ sơ:** có biểu tượng khóa, tooltip là `evidence.text` kèm liên kết tới nút. Nút "xác nhận gỡ" mở hộp thoại có ô lý do, rồi gọi PATCH với `confirm=true`. Chip đã gỡ chuyển sang trạng thái "đã gỡ" (lấy từ `lifted`).
+- **`record_locked`:** hiển thị như một thông báo ngay dưới tin nhắn của người dùng.
+- **`warnings`:** hiển thị như cảnh báo cố định của phiên. Giới hạn mềm hiển thị là "ưu tiên", không phải "loại".
+- **Banner:** công cụ chỉ hỗ trợ chọn món, không thay lời khuyên y tế.
 
 ### 6.6. Định nghĩa metric dùng trong code
 - **rel′(q,r)** = rel(q,r) × 1[bộ kiểm báo r thỏa C_q]. nDCG@10′ tính trên rel′.
