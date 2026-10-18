@@ -184,7 +184,7 @@ Số liệu lấy từ `eval/labels/report_allergen.{json,md}`, lần lặp 1, s
 
 ---
 
-## M3 – Pipeline hội thoại M1–M7 (15/10/2026) · ⏸ code xong, chưa qua gate
+## M3 – Pipeline hội thoại M1–M7 (15/10/2026) · 🚦 đã duyệt 18/10/2026
 
 Bàn giao sang máy khác: xem `docs/handoff.md`.
 
@@ -218,6 +218,15 @@ Bàn giao sang máy khác: xem `docs/handoff.md`.
 ### Việc còn lại trước gate M3
 - Thử khoảng 20 câu bằng `chat_cli`, ghi lỗi.
 - Quyết định cách xử lý lỗi parser ở mục 1.
+
+**Gate M3 (Thy, 18/10/2026): duyệt.**
+- Pipeline M1–M7 đã được kiểm qua các mốc MV3 và MV4.
+- Bốn nhận xét ở trên **chưa sửa** và được giữ thành vấn đề đã biết:
+  - **(1) lỗi parser dấu phẩy:** vẫn còn. Ở MV4 nó gây ra vi phạm dị ứng duy nhất còn lại của P-Vectorless (pq103, R21159, "dry-roasted, unsalted peanuts"). Sửa nó sẽ đổi bộ gắn thẻ đã duyệt ở M2, nên cần Thy quyết định riêng;
+  - (2) M7 giữ trích dẫn đã nói rõ là "không phù hợp";
+  - (3) "không gạo nếp" thành `rice`;
+  - (4) câu trả lời chép định dạng thẻ ngữ cảnh.
+- Mục (5) về độ trễ đã đổi: trên GPU (RTX 4060), mỗi lượt trong lần chạy MV4 mất trung bình 7–15 giây.
 
 ---
 
@@ -390,7 +399,7 @@ Số liệu ở `eval/patient_corpus.json` và `docs/patient_corpus_report.md`, 
 
 ---
 
-## MV2 – Luật và hồ sơ ràng buộc (17/10/2026) · 🚦 chờ duyệt
+## MV2 – Luật và hồ sơ ràng buộc (17/10/2026) · 🚦 đã duyệt 18/10/2026
 
 ### Quyết định đầu MV2 (Thy, 17/10/2026)
 - Lần khám: LLM chỉ thấy loại chung (`encounter_class.csv`).
