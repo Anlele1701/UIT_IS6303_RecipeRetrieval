@@ -293,7 +293,8 @@ class Assistant:
         done = {"message_id": reply_id, "citations": v.citations, "verified": v.verified,
                 "removed": v.removed, "regenerated": v.regenerated, "answer": answer,
                 "usage": {"prompt_tokens": usage.get("prompt_tokens", 0),
-                          "completion_tokens": usage.get("completion_tokens", 0)},
+                          "completion_tokens": usage.get("completion_tokens", 0),
+                          "done_reason": usage.get("done_reason")},
                 "latency_ms": tr.ms}
         if pt:
             done["flags"] = v.flags
@@ -313,6 +314,8 @@ class Assistant:
                 answer = "".join(m6.generate(self.client, retry, more, num_ctx=num_ctx))
                 for key in ("prompt_tokens", "completion_tokens"):
                     usage[key] = usage.get(key, 0) + more.get(key, 0)
+                if more.get("done_reason") == "length":  # the regeneration hit GEN_MAX_TOKENS
+                    usage["done_reason"] = "length"
                 second = m7.verify(answer, cards, c, check) if check else m7.verify(answer, cards, c)
                 answer = m7.strip(answer, second.removed, second.bad_nodes)
                 v = second.model_copy(update={"regenerated": True, "removed": v.removed + second.removed,

@@ -32,6 +32,8 @@ class PromptTooLong(RuntimeError):
 
 
 GEN_CTX = 8192
+GEN_MAX_TOKENS = 2048  # Ollama runs with context shift: without a cap a looping answer never ends (MV4d pq084);
+#                       the longest of 1,583 turns before the cap was 1,231 tokens (both calls)
 CHARS_PER_TOKEN_MAX = 4  # an English-ish upper bound: chars/4 never overestimates the tokens of this data
 TRUNCATION_SLACK = 64  # Ollama may reuse a few cached prompt tokens and leave them out of prompt_eval_count
 
@@ -102,7 +104,8 @@ def chat_stream(client: httpx.Client, messages: list[dict], model: str = config.
     check_fits(messages, num_ctx)
     with client.stream("POST", f"{config.OLLAMA_URL}/api/chat", json={
             "model": model, "stream": True, "messages": messages,
-            "options": {"temperature": temperature, "seed": config.SEED, "num_ctx": num_ctx}}, timeout=900) as r:
+            "options": {"temperature": temperature, "seed": config.SEED, "num_ctx": num_ctx,
+                        "num_predict": GEN_MAX_TOKENS}}, timeout=900) as r:
         r.raise_for_status()
         for line in r.iter_lines():
             if not line:
@@ -115,4 +118,5 @@ def chat_stream(client: httpx.Client, messages: list[dict], model: str = config.
                 if usage is not None:
                     usage["prompt_tokens"] = chunk.get("prompt_eval_count", 0)
                     usage["completion_tokens"] = chunk.get("eval_count", 0)
+                    usage["done_reason"] = chunk.get("done_reason")  # "length": cut at GEN_MAX_TOKENS
                 check_not_cut(chunk.get("prompt_eval_count"), num_ctx)

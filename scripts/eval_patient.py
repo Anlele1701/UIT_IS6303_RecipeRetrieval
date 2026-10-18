@@ -158,7 +158,8 @@ def run(args) -> Path:
         by_qid = {q["qid"]: q for q in read_jsonl(PATIENT / "queries.jsonl")}
         questions = [by_qid[i] for i in settings["qids"]]
         inputs, presets = settings["inputs"], settings["presets"]
-        settings.setdefault("resumed", []).append(datetime.now().isoformat(timespec="seconds"))
+        settings.setdefault("resumed", []).append({"at": datetime.now().isoformat(timespec="seconds"),
+                                                   "git": git_commit(), "turns_before": len(done)})
     else:
         questions = pick(read_jsonl(PATIENT / "queries.jsonl"), args.limit)
         inputs, presets = args.input.split(","), args.presets.split(",")
@@ -336,7 +337,8 @@ def score(run_dir: Path, client=None) -> dict:
                  "v_calls": pp.get("llm_calls"), "extract_chars": pp.get("extract_chars"),
                  **{f"lat_{s}": t["latency_ms"].get(s) for s in ("v1", "v2", "v3", "total")},
                  "gen_tokens": t["usage"]["prompt_tokens"] + t["usage"]["completion_tokens"],
-                 "fallback": int(bool(t["fallback"])), "fallback_kind": t["fallback_kind"]}
+                 "fallback": int(bool(t["fallback"])), "fallback_kind": t["fallback_kind"],
+                 "gen_cut": int(t["usage"].get("done_reason") == "length")}
             seen.add(key)
             ent = pp.get("entities")
             g = gold[t["patient_id"]]
@@ -426,6 +428,7 @@ def summarize(rows: list[dict], rate, interval) -> dict:
             vals = [r[m] for r in rs_ if r.get(m) is not None]
             s[m] = sum(vals) / len(vals) if vals else None
         s["nutr_unknown_recipes"] = sum(r.get("nutr_unknown") or 0 for r in rs_)
+        s["gen_cut"] = sum(r.get("gen_cut") or 0 for r in rs_)  # answers cut at GEN_MAX_TOKENS
         s["h"] = {k: sum(r[k] for r in rs_) for k in ("h_cites", "h_valid", "h_read")}
         s["fallback_by_route"] = {rt: rate(sum(r["fallback"] for r in rs_ if r["route"] == rt),
                                            sum(r["route"] == rt for r in rs_))
@@ -545,6 +548,9 @@ def render(metrics: dict) -> str:
             "Dị ứng và chế độ ăn do bộ kiểm độc lập chấm; nguyên liệu có tên (từ hồ sơ hoặc hội thoại) so khớp nguyên "
             "từ trên dòng nguyên liệu thô; giới hạn thời gian đọc cột total_minutes; dinh dưỡng đọc cột dinh dưỡng.",
             "S-Profile không đọc hồ sơ nên chỉ chạy ở chế độ coded; dòng narrative của nó dùng chung các lượt đó.",
+            "Câu trả lời bị cắt ở giới hạn 2.048 token của M6: "
+            + (", ".join(f"{k} {v['gen_cut']}" for k, v in metrics["all"]["table"].items() if v.get("gen_cut"))
+               or "không có") + ".",
             "Chọn nút đúng chỉ tính ở chế độ coded: ở narrative mỗi section là một nút (narrative.results), nên gần như luôn trúng.", ""]
     return "\n".join(out)
 

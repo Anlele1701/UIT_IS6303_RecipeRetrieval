@@ -69,3 +69,18 @@ def test_extract_merges_the_pieces(monkeypatch):
     monkeypatch.setattr(baselines, "pieces", lambda text, limit=0: ["one", "two"])
     items, calls = baselines.extract(None, "one two", "2026-10-23")
     assert calls == 2 and items == {"food_allergies": ["Peanut"], "conditions": ["B"], "medications": ["A"]}
+
+
+def test_generation_is_capped_and_a_cut_answer_is_reported():
+    sent = {}
+
+    def handler(request):
+        sent.update(json.loads(request.content)["options"])
+        lines = [{"message": {"content": "loop "}, "done": False},
+                 {"message": {"content": ""}, "done": True, "done_reason": "length", "prompt_eval_count": 100,
+                  "eval_count": llm.GEN_MAX_TOKENS}]
+        return httpx.Response(200, content="\n".join(json.dumps(x) for x in lines).encode())
+    usage = {}
+    out = "".join(llm.chat_stream(httpx.Client(transport=httpx.MockTransport(handler)),
+                                  [{"role": "user", "content": "hi"}], usage=usage))
+    assert out == "loop " and sent["num_predict"] == llm.GEN_MAX_TOKENS and usage["done_reason"] == "length"
