@@ -16,8 +16,10 @@ from psycopg_pool import ConnectionPool
 from pydantic import BaseModel
 
 from . import config, retrieval, strategies
+from .deps import get_conn
 from .embed import embed_query
 from .filters import SearchParams
+from .patient_api import router as patient_router
 from .rerank import Reranker
 
 
@@ -33,6 +35,7 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="Recipe Search", lifespan=lifespan,
               description="Sparse (BM25), Dense (vector) and Hybrid (RRF + rerank) retrieval over recipe Chunks.")
+app.include_router(patient_router)
 
 
 class Hit(BaseModel):
@@ -78,9 +81,6 @@ def _embed(request: Request, text: str) -> str:
         raise HTTPException(503, f"embedding service unavailable: {e}") from e
 
 
-def get_conn(request: Request):
-    with request.app.state.pool.connection() as conn:
-        yield conn
 
 
 def searchable(params: Annotated[SearchParams, Query()], conn=Depends(get_conn)) -> SearchParams:
