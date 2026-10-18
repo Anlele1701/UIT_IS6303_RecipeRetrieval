@@ -69,3 +69,18 @@ def test_prompt_holds_no_identity_and_no_visit_name(nodes, rs):
     text = "".join(m["content"] for n in nodes if n.kind == "context" for m in summarize.prompt(n, rs))
     for word in ["Barton704", "Upton904", "raceCode", "Allergic disorder", "entry_id"]:
         assert word not in text
+
+
+def test_a_long_node_is_cut_newest_first_to_fit_the_summary_prompt():
+    import json
+
+    from api.patient import summarize as sm
+    from api.patient.models import PatientNode
+    facts = [{"date": f"2020-{m:02d}-01", "display": "Comprehensive metabolic panel", "observations": [
+        {"display": "Glucose", "value": str(90 + i), "unit": "mg/dL", "date": f"2020-{m:02d}-01"} for i in range(40)]}
+        for m in range(1, 13)]
+    node = PatientNode("results.2020", "patient:x", "context", "Lab results 2020", None, facts, [])
+    msgs = sm.prompt(node, rules.load_rules())
+    data = json.loads(msgs[1]["content"])
+    assert len(msgs[1]["content"]) <= sm.SUMMARY_BUDGET_CHARS + 200 and data["older_entries_not_shown"] > 0
+    assert data["facts"][-1]["date"] == "2020-12-01"

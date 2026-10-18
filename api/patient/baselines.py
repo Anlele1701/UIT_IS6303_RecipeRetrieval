@@ -216,7 +216,8 @@ def _embed(client: httpx.Client, texts: list[str], attempts: int = 3) -> np.ndar
     for b in range(0, len(texts), EMBED_BATCH):
         part = texts[b:b + EMBED_BATCH]
         for attempt in range(1, attempts + 1):
-            r = client.post(f"{config.OLLAMA_URL}/api/embed", json={"model": config.EMBED_MODEL, "input": part},
+            r = client.post(f"{config.OLLAMA_URL}/api/embed",  # truncate off: an error, never a silent cut
+                            json={"model": config.EMBED_MODEL, "input": part, "truncate": False},
                             timeout=600)
             if r.status_code == 200 or attempt == attempts:
                 break

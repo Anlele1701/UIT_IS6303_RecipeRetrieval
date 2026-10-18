@@ -20,6 +20,8 @@ from .prompt_view import prompt_view
 from .rules import RuleSet
 
 SCHEMA = {"type": "object", "required": ["summary"], "properties": {"summary": {"type": "string"}}}
+SUMMARY_CTX = 16384  # Ollama keeps half for the prompt
+SUMMARY_BUDGET_CHARS = 12000  # the node's facts, newest first (166 of 2,209 nodes run to 183k chars; MV4c)
 SYSTEM = ("You summarize one section of a patient's medical record for a table of contents. Write ONE short English "
           "sentence (at most 30 words) saying what the section holds, naming the main tests or visit types and any "
           "value that matters for diet (glucose, kidney function, sodium, potassium, cholesterol, iron). "
@@ -53,8 +55,13 @@ def template_summary(node: PatientNode, rs: RuleSet) -> str:
 
 
 def prompt(node: PatientNode, rs: RuleSet) -> list[dict]:
-    view = prompt_view(node, rs, with_summary=False)
+    """The node's prompt view, cut newest-first by code to fit (m6.fit_views): a long node says how many older
+    entries it leaves out, so the sentence covers what was shown."""
+    from ..pipeline.m6_generate import fit_views
+    view = fit_views([prompt_view(node, rs, with_summary=False)], SUMMARY_BUDGET_CHARS)[0][0]
     data = {"title": view["title"], "facts": view["facts"]}
+    if view.get("older_entries_not_shown"):
+        data["older_entries_not_shown"] = view["older_entries_not_shown"]
     return [{"role": "system", "content": SYSTEM},
             {"role": "user", "content": json.dumps(data, ensure_ascii=False, sort_keys=True)}]
 
@@ -63,7 +70,8 @@ def llm_summary(client: httpx.Client, node: PatientNode, rs: RuleSet, attempts: 
     """The model's sentence, or None after `attempts` failures (the caller keeps the template)."""
     for _ in range(attempts):
         try:
-            out = chat_json(client, SCHEMA, prompt(node, rs), model=config.QU_MODEL, temperature=0.0)
+            out = chat_json(client, SCHEMA, prompt(node, rs), model=config.QU_MODEL, temperature=0.0,
+                            num_ctx=SUMMARY_CTX)
         except (LLMError, httpx.HTTPError):
             continue
         text = str(out.get("summary", "")).strip()

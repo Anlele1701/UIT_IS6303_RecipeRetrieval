@@ -22,6 +22,7 @@ from .rules import RuleSet
 
 MAX_NODES = 3
 MAX_NODES_ALL = 6  # vectorless_nofixed: the fixed four plus two context nodes
+NAV_CTX = 8192  # the largest P8 table of contents is ~2.3k tokens: over the 2,048 Ollama keeps of 4096 (MV4c)
 SCHEMA = {"type": "object", "required": ["node_ids"],
           "properties": {"node_ids": {"type": "array", "items": {"type": "string"}}}}
 SYSTEM = ("You pick which sections of a patient's record answer a question about the patient's diet. You see only "
@@ -72,7 +73,7 @@ def select_nodes(nodes: list[PatientNode], question: str, needs_context: bool, m
     for _ in range(attempts):
         calls += 1  # a cached reply still counts: the turn would have called the model
         try:
-            out = chat_json(client, SCHEMA, messages, model=config.QU_MODEL, temperature=0.0)
+            out = chat_json(client, SCHEMA, messages, model=config.QU_MODEL, temperature=0.0, num_ctx=NAV_CTX)
         except (LLMError, httpx.HTTPError):
             continue
         picked = [str(i) for i in out.get("node_ids", []) if isinstance(i, str)]
