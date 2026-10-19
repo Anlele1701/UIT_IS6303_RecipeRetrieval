@@ -879,3 +879,28 @@ Kịch bản 1b sẽ thấy lại vấn đề đã biết của gate M3: R18880 
 - Các nhận xét 1–4 của gate M3 vẫn thấy được khi demo, như dự kiến.
 
 **Gate M4 (Thy, 18/10/2026): duyệt.** Ảnh demo do Thy chụp. Các vấn đề đã biết (gate M3 và demo M4) giữ nguyên.
+
+## M5 – Bộ test A3 (19/10/2026) · đang làm
+
+**Quyết định (Thy, 18/10):** duyệt gold V6 trên trang web duyệt nhanh.
+
+**Đã làm**
+- `scripts/make_testset.py`: sinh ứng viên T1–T4, gold lấy từ mẫu câu, và lọc V1–V5 có mã và số đếm (`eval/testset/testset_flow.json`).
+  - **V2** dùng bộ kiểm độc lập: SQL chọn ứng viên theo thẻ, bộ kiểm đọc tối đa 5 công thức. Với T3 thì giữ câu khi SQL không tìm ra công thức nào.
+  - **V3** kiểm bằng dấu tiếng Việt, không dùng `detect_lang` của M1 (vì hàm đó coi câu tiếng Anh có hai chữ "the" là tiếng Việt).
+- `scripts/testset_review.py` (+ `.html`): trang duyệt mù ở cổng 8766. `scripts/freeze_testset.py`: áp kết quả duyệt và đóng băng bằng sha256. Hướng dẫn ở `docs/annotation_guide.md` mục 6.
+- Lần chạy đầu dừng vì một lời gọi bộ kiểm quá 600 giây; nay thử lại một lần và đếm số lỗi. Lần chạy hai cho T3 28 câu và T4 39 hội thoại, vì V4 so lượt đầu của T4 và T3 thiếu tổ hợp. Đã sửa: V4 so cả hội thoại, thêm 21 tổ hợp mâu thuẫn và 6 câu ngoài miền, khi cắt thì giữ đủ một nửa tiếng Việt.
+
+**Luồng lọc** (lần chạy cuối, 0 lỗi gọi bộ kiểm):
+
+| Tập | Sinh ra | V1 | V2 | V3 | V4 | V5 | Còn | Ứng viên |
+|---|---|---|---|---|---|---|---|---|
+| T1 | 150 | 0 | – | 0 | 0 | 0 | 150 | 100 |
+| T2 | 240 | 0 | 4 | 0 | 48 | 0 | 188 | 150 (vi 75, en 75; 107 câu được diễn đạt lại) |
+| T3 | 98 | 0 | 34 | 0 | 0 | 0 | 64 | 50 (36 mâu thuẫn, 14 ngoài miền) |
+| T4 | 65 | 0 | 3 | 0 | 22 | 0 | 40 | 40 hội thoại |
+
+**Cần Thy:**
+1. Điền khoảng 30 câu viết tay vào `eval/testset/handwritten.csv`, rồi chạy lại `make_testset.py` (dùng lại cache, các câu đã sinh giữ nguyên).
+2. Duyệt gold V6 ở `uv run scripts/testset_review.py`.
+3. Báo khi xong để mình chạy `freeze_testset.py`, rồi đến 🚦 gate M5.
