@@ -1,0 +1,108 @@
+{
+  "started": "2026-10-19T09:36:05",
+  "machine": {
+    "node": "DESKTOP-H3JGG26",
+    "os": "Windows-11-10.0.26200-SP0",
+    "processor": "AMD64 Family 25 Model 117 Stepping 2, AuthenticAMD",
+    "python": "3.12.10",
+    "gpu": "NVIDIA GeForce RTX 4060 Laptop GPU, 8188 MiB"
+  },
+  "git": "b7daea9020ce7cb4722d2a0502cab0d05f25cf63-dirty",
+  "seed": 42,
+  "sample_seed": 42,
+  "sample": {
+    "t1": 10,
+    "t2": 17,
+    "t3": 6,
+    "t4": 4
+  },
+  "limit": null,
+  "qids": {
+    "t1": [
+      "t1_004",
+      "t1_015",
+      "t1_032",
+      "t1_036",
+      "t1_082",
+      "t1_095",
+      "t1_101",
+      "t1_102",
+      "t1_103",
+      "t1_105"
+    ],
+    "t2": [
+      "t2_011",
+      "t2_017",
+      "t2_033",
+      "t2_034",
+      "t2_037",
+      "t2_056",
+      "t2_059",
+      "t2_067",
+      "t2_076",
+      "t2_153",
+      "t2_157",
+      "t2_158",
+      "t2_161",
+      "t2_163",
+      "t2_165",
+      "t2_166",
+      "t2_167"
+    ],
+    "t3": [
+      "t3_002",
+      "t3_008",
+      "t3_017",
+      "t3_037",
+      "t3_042",
+      "t3_051"
+    ],
+    "t4": [
+      "t4_006",
+      "t4_009",
+      "t4_013",
+      "t4_028"
+    ]
+  },
+  "presets": {
+    "t1-t3": [
+      "B0",
+      "B1",
+      "S",
+      "S-QU",
+      "S-Filter",
+      "S-Norm",
+      "S-Rerank",
+      "S-Verify"
+    ],
+    "t4": [
+      "B0",
+      "B1",
+      "S",
+      "S-QU",
+      "S-Filter",
+      "S-Norm",
+      "S-Rerank",
+      "S-Verify",
+      "S-Conv"
+    ]
+  },
+  "testset_sha256": {
+    "t1.jsonl": "436480724daf5ec2a6d3b0492a1742dddba5fa649c664a3ed265b95d625b83bf",
+    "t2.jsonl": "62ee3a90eae5f9cebb95a4943d3d5263cec4cd09a6791105046432440550223f",
+    "t3.jsonl": "9d7b62561c843d87a3fc50faa29667fc6ffbd744e1400e27a144ccb26af6edf4",
+    "t4.jsonl": "420d988826093ace063d0038530b7cef140751050c697e0cf6094ed387e2e5f4"
+  },
+  "models": {
+    "qu": "qwen2.5:7b",
+    "gen": "qwen2.5:7b",
+    "embed": "nomic-embed-text",
+    "rerank": "mixedbread-ai/mxbai-rerank-base-v1",
+    "checker": "llama3.1:8b",
+    "judge": "llama3.1:8b"
+  },
+  "k_context": 5,
+  "rank_depth": 10,
+  "strategy": "semantic",
+  "finished": "2026-10-19T10:10:12"
+}

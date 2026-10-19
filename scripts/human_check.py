@@ -32,6 +32,7 @@ N = {"relevance": 50, "answer": 50, "checker_yes": 30, "checker_no": 30}
 
 def make_sample(run_dir: Path) -> str:
     """Draw the three samples from a scored run; display fields go to the page, answers to the run's key file."""
+    run_dir = run_dir.resolve()
     sys.path.insert(0, str(ROOT))
     sys.path.insert(0, str(ROOT / "scripts"))
     import psycopg

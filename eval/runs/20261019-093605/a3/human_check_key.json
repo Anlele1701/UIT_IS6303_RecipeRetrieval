@@ -1,0 +1,362 @@
+{
+ "rel_01": 2,
+ "rel_02": 2,
+ "rel_03": 2,
+ "rel_04": 2,
+ "rel_05": 2,
+ "rel_06": 2,
+ "rel_07": 2,
+ "rel_08": 2,
+ "rel_09": 2,
+ "rel_10": 2,
+ "rel_11": 2,
+ "rel_12": 2,
+ "rel_13": 2,
+ "rel_14": 2,
+ "rel_15": 2,
+ "rel_16": 2,
+ "rel_17": 2,
+ "rel_18": 2,
+ "rel_19": 1,
+ "rel_20": 1,
+ "rel_21": 1,
+ "rel_22": 1,
+ "rel_23": 1,
+ "rel_24": 1,
+ "rel_25": 1,
+ "rel_26": 1,
+ "rel_27": 1,
+ "rel_28": 1,
+ "rel_29": 1,
+ "rel_30": 1,
+ "rel_31": 1,
+ "rel_32": 1,
+ "rel_33": 1,
+ "rel_34": 1,
+ "rel_35": 0,
+ "rel_36": 0,
+ "rel_37": 0,
+ "rel_38": 0,
+ "rel_39": 0,
+ "rel_40": 0,
+ "rel_41": 0,
+ "rel_42": 0,
+ "rel_43": 0,
+ "rel_44": 0,
+ "rel_45": 0,
+ "rel_46": 0,
+ "rel_47": 0,
+ "rel_48": 0,
+ "rel_49": 0,
+ "rel_50": 0,
+ "ans_01": {
+  "qid": "t4_028",
+  "preset": "S-Norm",
+  "turn": 1
+ },
+ "ans_02": {
+  "qid": "t1_036",
+  "preset": "S-Filter",
+  "turn": 0
+ },
+ "ans_03": {
+  "qid": "t2_158",
+  "preset": "S-QU",
+  "turn": 0
+ },
+ "ans_04": {
+  "qid": "t3_008",
+  "preset": "S-Norm",
+  "turn": 0
+ },
+ "ans_05": {
+  "qid": "t2_165",
+  "preset": "S-Filter",
+  "turn": 0
+ },
+ "ans_06": {
+  "qid": "t1_032",
+  "preset": "S-Rerank",
+  "turn": 0
+ },
+ "ans_07": {
+  "qid": "t1_101",
+  "preset": "S-QU",
+  "turn": 0
+ },
+ "ans_08": {
+  "qid": "t2_056",
+  "preset": "S-Filter",
+  "turn": 0
+ },
+ "ans_09": {
+  "qid": "t4_028",
+  "preset": "S-Conv",
+  "turn": 0
+ },
+ "ans_10": {
+  "qid": "t4_028",
+  "preset": "S-Verify",
+  "turn": 2
+ },
+ "ans_11": {
+  "qid": "t1_103",
+  "preset": "B1",
+  "turn": 0
+ },
+ "ans_12": {
+  "qid": "t2_153",
+  "preset": "S-Norm",
+  "turn": 0
+ },
+ "ans_13": {
+  "qid": "t1_004",
+  "preset": "S",
+  "turn": 0
+ },
+ "ans_14": {
+  "qid": "t4_028",
+  "preset": "S-Conv",
+  "turn": 2
+ },
+ "ans_15": {
+  "qid": "t4_009",
+  "preset": "S-QU",
+  "turn": 1
+ },
+ "ans_16": {
+  "qid": "t2_067",
+  "preset": "S",
+  "turn": 0
+ },
+ "ans_17": {
+  "qid": "t2_161",
+  "preset": "S-Norm",
+  "turn": 0
+ },
+ "ans_18": {
+  "qid": "t4_028",
+  "preset": "S-Conv",
+  "turn": 3
+ },
+ "ans_19": {
+  "qid": "t4_028",
+  "preset": "B1",
+  "turn": 1
+ },
+ "ans_20": {
+  "qid": "t2_033",
+  "preset": "S",
+  "turn": 0
+ },
+ "ans_21": {
+  "qid": "t1_095",
+  "preset": "S",
+  "turn": 0
+ },
+ "ans_22": {
+  "qid": "t2_166",
+  "preset": "S-Norm",
+  "turn": 0
+ },
+ "ans_23": {
+  "qid": "t2_034",
+  "preset": "S",
+  "turn": 0
+ },
+ "ans_24": {
+  "qid": "t2_034",
+  "preset": "S-Verify",
+  "turn": 0
+ },
+ "ans_25": {
+  "qid": "t2_017",
+  "preset": "B1",
+  "turn": 0
+ },
+ "ans_26": {
+  "qid": "t4_009",
+  "preset": "S",
+  "turn": 1
+ },
+ "ans_27": {
+  "qid": "t1_036",
+  "preset": "S",
+  "turn": 0
+ },
+ "ans_28": {
+  "qid": "t1_103",
+  "preset": "S-Norm",
+  "turn": 0
+ },
+ "ans_29": {
+  "qid": "t4_009",
+  "preset": "S-Rerank",
+  "turn": 0
+ },
+ "ans_30": {
+  "qid": "t2_059",
+  "preset": "S",
+  "turn": 0
+ },
+ "ans_31": {
+  "qid": "t1_015",
+  "preset": "S-Filter",
+  "turn": 0
+ },
+ "ans_32": {
+  "qid": "t4_006",
+  "preset": "S-Rerank",
+  "turn": 0
+ },
+ "ans_33": {
+  "qid": "t2_011",
+  "preset": "S-Verify",
+  "turn": 0
+ },
+ "ans_34": {
+  "qid": "t2_165",
+  "preset": "S",
+  "turn": 0
+ },
+ "ans_35": {
+  "qid": "t4_006",
+  "preset": "S-Verify",
+  "turn": 2
+ },
+ "ans_36": {
+  "qid": "t4_028",
+  "preset": "S-QU",
+  "turn": 0
+ },
+ "ans_37": {
+  "qid": "t1_004",
+  "preset": "S-Filter",
+  "turn": 0
+ },
+ "ans_38": {
+  "qid": "t2_158",
+  "preset": "S-Filter",
+  "turn": 0
+ },
+ "ans_39": {
+  "qid": "t4_028",
+  "preset": "B1",
+  "turn": 0
+ },
+ "ans_40": {
+  "qid": "t2_059",
+  "preset": "S-Norm",
+  "turn": 0
+ },
+ "ans_41": {
+  "qid": "t4_006",
+  "preset": "S-Filter",
+  "turn": 1
+ },
+ "ans_42": {
+  "qid": "t3_017",
+  "preset": "S-Filter",
+  "turn": 0
+ },
+ "ans_43": {
+  "qid": "t1_105",
+  "preset": "S-Norm",
+  "turn": 0
+ },
+ "ans_44": {
+  "qid": "t2_165",
+  "preset": "S-Rerank",
+  "turn": 0
+ },
+ "ans_45": {
+  "qid": "t1_101",
+  "preset": "S-Verify",
+  "turn": 0
+ },
+ "ans_46": {
+  "qid": "t1_102",
+  "preset": "S-Rerank",
+  "turn": 0
+ },
+ "ans_47": {
+  "qid": "t3_051",
+  "preset": "B1",
+  "turn": 0
+ },
+ "ans_48": {
+  "qid": "t3_017",
+  "preset": "B1",
+  "turn": 0
+ },
+ "ans_49": {
+  "qid": "t3_017",
+  "preset": "S-QU",
+  "turn": 0
+ },
+ "ans_50": {
+  "qid": "t4_013",
+  "preset": "S-Conv",
+  "turn": 0
+ },
+ "chk_01": "yes",
+ "chk_02": "yes",
+ "chk_03": "yes",
+ "chk_04": "yes",
+ "chk_05": "yes",
+ "chk_06": "yes",
+ "chk_07": "yes",
+ "chk_08": "yes",
+ "chk_09": "yes",
+ "chk_10": "yes",
+ "chk_11": "yes",
+ "chk_12": "yes",
+ "chk_13": "yes",
+ "chk_14": "yes",
+ "chk_15": "yes",
+ "chk_16": "yes",
+ "chk_17": "yes",
+ "chk_18": "yes",
+ "chk_19": "yes",
+ "chk_20": "yes",
+ "chk_21": "yes",
+ "chk_22": "yes",
+ "chk_23": "yes",
+ "chk_24": "yes",
+ "chk_25": "yes",
+ "chk_26": "yes",
+ "chk_27": "yes",
+ "chk_28": "yes",
+ "chk_29": "yes",
+ "chk_30": "yes",
+ "chk_31": "no",
+ "chk_32": "no",
+ "chk_33": "no",
+ "chk_34": "no",
+ "chk_35": "no",
+ "chk_36": "no",
+ "chk_37": "no",
+ "chk_38": "no",
+ "chk_39": "no",
+ "chk_40": "no",
+ "chk_41": "no",
+ "chk_42": "no",
+ "chk_43": "no",
+ "chk_44": "no",
+ "chk_45": "no",
+ "chk_46": "no",
+ "chk_47": "no",
+ "chk_48": "no",
+ "chk_49": "no",
+ "chk_50": "no",
+ "chk_51": "no",
+ "chk_52": "no",
+ "chk_53": "no",
+ "chk_54": "no",
+ "chk_55": "no",
+ "chk_56": "no",
+ "chk_57": "no",
+ "chk_58": "no",
+ "chk_59": "no",
+ "chk_60": "no"
+}
