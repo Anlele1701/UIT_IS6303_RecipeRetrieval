@@ -65,3 +65,18 @@ def test_the_human_check_page_hides_the_machine():
     assert "key" not in src and "judge" not in src  # the page serves the sample, never the key file
     html = Path(hc.PAGE).read_text(encoding="utf-8")
     assert "judge" not in html.split("<script>")[1] and "contains\"]" not in html
+
+
+def test_a_broken_checker_reply_becomes_an_error_verdict_not_a_crash():
+    import json
+    from types import SimpleNamespace
+
+    class Checker:
+        Verdict = staticmethod(lambda contains, line, ok: SimpleNamespace(contains=contains))
+        calls = 0
+
+        def check(self, conn, client, rid, cons, cache):
+            Checker.calls += 1
+            raise json.JSONDecodeError("cut", "{", 1)
+    out = ea.safe_check(Checker(), None, None, 7, ["allergen:milk"], {})
+    assert Checker.calls == 2 and out["allergen:milk"].contains == "error"

@@ -291,10 +291,12 @@ def score(run_dir: Path) -> dict:
                 for rid in set(t["recipe_ids"][:K]) | set(t["ranked"][:DEPTH]):
                     need[rid] |= set(cons)
         for rid, cons in need.items():
-            for c, v in checker.check(conn, client, rid, sorted(cons), cache).items():
+            for c, v in safe_check(checker, conn, client, rid, sorted(cons), cache).items():
                 verdicts[(rid, c)] = v
         scored = {(s.recipe_id, s.constraint): s for s in adjudicate.score_all(conn, verdicts)}
-        queue_new = adjudicate.write_queue(conn, list(scored.values()))
+        settings = json.loads((run_dir / "settings.json").read_text(encoding="utf-8"))
+        queue = adjudicate.QUEUE if settings.get("sample") else run_dir / "checker_queue.csv"  # smoke runs stay out
+        queue_new = adjudicate.write_queue(conn, list(scored.values()), queue)
 
         def breaks(rid: int, g: dict, mode: str) -> bool:
             """mode: strict | lenient | adj. Named ingredients and time break in every mode."""
@@ -393,6 +395,18 @@ def score(run_dir: Path) -> dict:
         run_dir, {(r["qid"], r["preset"], r["turn"]): r.get("faithful") for r in rows})
     write_outputs(run_dir, rows, metrics)
     return metrics
+
+
+def safe_check(checker, conn, client, rid: int, cons: list[str], cache: dict, attempts: int = 2) -> dict:
+    """checker.check, retried once when the model's reply is not JSON or the call fails; then every constraint is
+    an "error" verdict (scored like unsure: a violation in strict, not in lenient), never a crash of the scoring."""
+    for _ in range(attempts):
+        try:
+            return checker.check(conn, client, rid, cons, cache)
+        except Exception as e:  # json.JSONDecodeError (a cut reply), httpx timeouts
+            last = e
+    print(f"checker failed twice on R{rid}: {type(last).__name__}", file=sys.stderr)
+    return {c: checker.Verdict("error", "", False) for c in cons}
 
 
 def error_groups(t, r, g, gold, rel, turns, items, verdicts, raw) -> list[str]:
