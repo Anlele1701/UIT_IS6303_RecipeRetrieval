@@ -130,3 +130,30 @@ def test_a_broken_checker_reply_becomes_an_error_verdict_not_a_crash():
             raise json.JSONDecodeError("cut", "{", 1)
     out = ea.safe_check(Checker(), None, None, 7, ["allergen:milk"], {})
     assert Checker.calls == 2 and out["allergen:milk"].contains == "error"
+
+
+def test_the_adjudication_sheet_round_trips_without_overwriting(tmp_path):
+    import csv
+    import adjudication_sheet as ad
+    queue, labels, sheet = tmp_path / "q.csv", tmp_path / "l.csv", tmp_path / "s.csv"
+    with open(queue, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["recipe_id", "title", "constraint", "evidence_line", "ingredient_lines"])
+        w.writerows([[1, "A", "allergen:milk", "1 cup butter", "1 cup butter | salt"],
+                     [2, "B", "allergen:fish", "pancetta", "pancetta"]])
+    labels.write_text("recipe_id,constraint,evidence_line,violation,reviewer,date,note\n"
+                      "1,allergen:milk,1 cup butter,yes,Thy,10/18/2026,\n", encoding="utf-8")
+    assert ad.export_sheet(sheet, queue, labels).startswith("1 pending")  # labeled rows are not exported
+    rows = list(csv.DictReader(sheet.read_text(encoding="utf-8-sig").splitlines()))
+    assert rows[0]["recipe_id"] == "2" and "cá" in rows[0]["group_note"]
+    rows[0]["violation"] = "maybe"
+    for bad in (True, False):
+        with open(sheet, "w", newline="", encoding="utf-8-sig") as f:
+            w = csv.DictWriter(f, fieldnames=ad.SHEET_FIELDS)
+            w.writeheader()
+            w.writerows(rows)
+        if bad:
+            assert ad.import_sheet(sheet, labels).startswith("not imported")
+            rows[0]["violation"] = "không"
+    out = ad.import_sheet(sheet, labels)
+    assert out.startswith("imported 1") and ad.adjudicate.load_labels(labels)[(2, "allergen:fish")]["violation"] == "no"
