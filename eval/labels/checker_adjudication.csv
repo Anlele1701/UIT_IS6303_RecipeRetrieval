@@ -95,3 +95,193 @@ recipe_id,constraint,evidence_line,violation,reviewer,date,note
 29547,allergen:wheat,2 cups all-purpose flour,yes,Thy,10/18/2026,bột mì đa dụng
 31689,allergen:wheat,"15 frozen empanada wrappers, thawed",yes,Thy,10/18/2026,vỏ empanada làm từ bột mì
 32637,allergen:egg,1 cup whole-milk ricotta cheese,no,Thy,10/18/2026,"ricotta là phô mai, không có trứng"
+42,allergen:milk,1 cup butter,yes,Thy,10/19/2026,
+103,allergen:sesame,"2 tablespoons sesame seeds, toasted",yes,Thy,10/19/2026,
+317,allergen:sesame,2 tablespoons sesame seeds,yes,Thy,10/19/2026,
+376,allergen:sesame,2 teaspoons toasted sesame oil,yes,Thy,10/19/2026,
+580,allergen:egg,4 tablespoons mayonnaise,yes,Thy,10/19/2026,Mayonnaise có trứng
+580,diet:vegetarian,"1 skinless, boneless chicken breast half",yes,Thy,10/19/2026,
+849,allergen:egg,"2 (8 ounce) packages cream cheese, softened",yes,Thy,10/19/2026,Đúng là vi phạm nhưng dòng bằng chứng sai: bánh angel food làm từ lòng trắng trứng
+849,allergen:wheat,1 (10 inch) angel food cake,yes,Thy,10/19/2026,
+2069,diet:vegan,"1 ½ pounds boneless chuck roast, cut into 1 1/2-inch cubes",yes,Thy,10/19/2026,
+2163,allergen:egg,"2 large eggs, beaten",yes,Thy,10/19/2026,
+2163,allergen:wheat,2 ounces dried thin rice noodles,no,Thy,10/19/2026,Bún gạo và bánh tráng không có lúa mì
+2500,allergen:sesame,2 tablespoons sesame seeds,yes,Thy,10/19/2026,
+2806,diet:vegetarian,"2 tablespoons fish sauce, or more to taste",yes,Thy,10/19/2026,
+2833,allergen:wheat,1 (3 ounce) package any flavor ramen noodles,yes,Thy,10/19/2026,
+3089,allergen:wheat,1 ⅓ cups milk,no,Thy,10/19/2026,"Bánh pudding gạo, không có thành phần lúa mì"
+3411,allergen:milk,3 cups milk,yes,Thy,10/19/2026,
+3497,allergen:milk,¼ cup butter,yes,Thy,10/19/2026,
+3768,allergen:fish,"½ cup butter, divided",yes,Thy,10/19/2026,Đúng là vi phạm nhưng dòng bằng chứng sai: lingcod là cá
+4199,allergen:wheat,4 tablespoons cornstarch,yes,Thy,10/19/2026,Đúng là vi phạm nhưng dòng bằng chứng sai: nước tương thường có lúa mì
+4641,allergen:milk,2 cups heavy cream,yes,Thy,10/19/2026,
+4867,allergen:crustacean_shellfish,"1 pound cooked crabmeat, flaked",yes,Thy,10/19/2026,
+5248,allergen:sesame,2 teaspoons sesame seeds,yes,Thy,10/19/2026,
+5543,allergen:crustacean_shellfish,1 teaspoon Old Bay Seasoning TM,no,Thy,10/19/2026,"Món chay giả cua (làm từ zucchini); Old Bay là gia vị, không có giáp xác"
+5787,allergen:wheat,2 (3 ounce) packages ramen noodles (such as Nissin® Top Ramen®),yes,Thy,10/19/2026,
+6487,allergen:sesame,½ teaspoon sesame oil (Optional),yes,Thy,10/19/2026,Dòng có ghi (Optional) vẫn tính
+6487,allergen:soy,1 tablespoon soy sauce,yes,Thy,10/19/2026,
+6530,allergen:fish,12 medium sea scallops,no,Thy,10/19/2026,"Sò điệp là nhuyễn thể, không phải cá; ghee là bơ"
+6531,allergen:sesame,⅛ cup sesame seeds,yes,Thy,10/19/2026,
+6641,allergen:milk,1 tablespoon butter,yes,Thy,10/19/2026,
+6765,allergen:tree_nuts,3 ounces pine nuts,yes,Thy,10/19/2026,
+6952,allergen:wheat,1 (18.25 ounce) package yellow cake mix,yes,Thy,10/19/2026,
+7168,allergen:sesame,1 tablespoon sesame seeds,yes,Thy,10/19/2026,
+7168,allergen:soy,3 tablespoons soy sauce,yes,Thy,10/19/2026,
+7679,allergen:fish,2 tablespoons unsalted butter,no,Thy,10/19/2026,Sò điệp là nhuyễn thể; dòng bằng chứng là bơ
+7729,allergen:crustacean_shellfish,"1 pound lump crabmeat, picked free of shell",yes,Thy,10/19/2026,
+7822,allergen:milk,½ cup butter,yes,Thy,10/19/2026,
+7880,allergen:sesame,2 tablespoons sesame oil,yes,Thy,10/19/2026,
+7880,allergen:soy,4 tablespoons soy sauce,yes,Thy,10/19/2026,
+7993,allergen:soy,½ cup fermented soybeans,yes,Thy,10/19/2026,
+8191,allergen:egg,"6 hard-boiled eggs, peeled",yes,Thy,10/19/2026,
+8227,allergen:milk,1 tablespoon butter,yes,Thy,10/19/2026,
+8379,diet:vegan,2 pounds cubed beef stew meat,yes,Thy,10/19/2026,
+8505,allergen:wheat,1 (3 ounce) package any flavor ramen noodles,yes,Thy,10/19/2026,
+8917,allergen:fish,12 sea scallops,no,Thy,10/19/2026,"Sò điệp là nhuyễn thể, không phải cá"
+8919,allergen:fish,"1 (3 ounce) fillet cod, or more to taste",yes,Thy,10/19/2026,
+8946,allergen:egg,3 cups milk,no,Thy,10/19/2026,"Bánh graham, pudding, kem đánh bông, frosting: không có trứng; dòng bằng chứng là sữa"
+8984,allergen:crustacean_shellfish,1 pound flaked cooked crabmeat,yes,Thy,10/19/2026,
+9028,allergen:crustacean_shellfish,"10 large shrimp - peeled, deveined, and cut into thirds",yes,Thy,10/19/2026,
+9090,allergen:fish,9 tablespoons whipped butter,no,Thy,10/19/2026,Sò điệp là nhuyễn thể; dòng bằng chứng là bơ
+9157,allergen:crustacean_shellfish,1 pound fresh lump crabmeat,yes,Thy,10/19/2026,
+9295,allergen:tree_nuts,½ cup coarsely chopped peanuts,no,Thy,10/19/2026,Lạc (peanut) không tính là hạt cây
+9643,allergen:milk,"½ cup Alfredo sauce, or as needed (Optional)",yes,Thy,10/19/2026,Dòng có ghi (Optional) vẫn tính
+9650,allergen:wheat,3 tablespoons all-purpose flour,yes,Thy,10/19/2026,
+9884,allergen:sesame,½ tablespoon sesame seeds,yes,Thy,10/19/2026,
+9884,allergen:soy,1 tablespoon soy sauce,yes,Thy,10/19/2026,
+10082,allergen:crustacean_shellfish,"1 pound cooked medium shrimp, peeled and deveined",yes,Thy,10/19/2026,
+10244,allergen:crustacean_shellfish,"10 ounces shrimp, peeled, deveined and minced",yes,Thy,10/19/2026,
+10342,allergen:wheat,"12 (6 inch) flour tortillas, warmed",yes,Thy,10/19/2026,
+10421,allergen:fish,8 ounces fresh crabmeat,no,Thy,10/19/2026,"Cua và tôm là giáp xác, không phải cá; không có cá vây"
+10564,allergen:fish,6 (6 ounce) fillets sea bass,yes,Thy,10/19/2026,
+10720,allergen:sesame,1 tablespoon sesame oil,yes,Thy,10/19/2026,
+10720,allergen:soy,2 tablespoons soy sauce,yes,Thy,10/19/2026,
+10740,allergen:fish,1 (12 ounce) cod fillet,yes,Thy,10/19/2026,
+10778,allergen:fish,4 (4 ounce) cod fillets,yes,Thy,10/19/2026,
+10882,allergen:crustacean_shellfish,"1 (6 ounce) can lump crabmeat, drained",yes,Thy,10/19/2026,
+10910,allergen:fish,"2 (6.5 ounce) cans minced clams, drained",no,Thy,10/19/2026,"Nghêu là nhuyễn thể, không phải cá"
+11033,allergen:tree_nuts,"3 tablespoons pine nuts, lightly toasted",yes,Thy,10/19/2026,
+11191,allergen:wheat,"8 buttery round crackers (such as Ritz®), crushed",yes,Thy,10/19/2026,
+11343,allergen:egg,"5 spring onions, cut in half",no,Thy,10/19/2026,Không có trứng; dòng bằng chứng là hành lá
+11392,allergen:fish,"1 (12 ounce) cod, cut into 1-inch chunks",yes,Thy,10/19/2026,
+11554,allergen:crustacean_shellfish,"1 (6 ounce) can crabmeat, drained, flaked and cartilage removed",yes,Thy,10/19/2026,
+11664,allergen:fish,"6 (6 ounce) fillets black cod, bones removed",yes,Thy,10/19/2026,
+11833,allergen:crustacean_shellfish,10 large shrimp,yes,Thy,10/19/2026,
+11944,allergen:crustacean_shellfish,"1 pound lump crabmeat, picked over for pieces of shell",yes,Thy,10/19/2026,
+11966,allergen:tree_nuts,¾ cup salted peanuts,no,Thy,10/19/2026,Lạc (peanut) không tính là hạt cây
+11968,allergen:milk,1 (16 ounce) jar Alfredo sauce,yes,Thy,10/19/2026,
+12202,allergen:fish,"14 ounces red snapper fillets, cut into slices",yes,Thy,10/19/2026,
+12246,allergen:crustacean_shellfish,"1 pound uncooked medium shrimp - peeled, deveined, and chopped",yes,Thy,10/19/2026,
+12354,allergen:crustacean_shellfish,1 (8 ounce) package imitation crabmeat,yes,Thy,10/19/2026,"Cua giả (surimi) chủ yếu làm từ cá nhưng thường có chiết xuất cua; giữ yes để an toàn, Thy cân nhắc"
+12478,allergen:wheat,"4 green onions, chopped",no,Thy,10/19/2026,Không có thành phần lúa mì; dòng bằng chứng là hành lá
+12537,allergen:wheat,½ (8 ounce) package dried rice noodles,no,Thy,10/19/2026,"Dùng bún gạo, không có lúa mì"
+12572,allergen:fish,6 (6 ounce) cod fillets,yes,Thy,10/19/2026,
+12618,allergen:crustacean_shellfish,"2 (6 ounce) cans crab meat, drained",yes,Thy,10/19/2026,
+12819,allergen:wheat,12 (6 inch) corn tortillas,no,Thy,10/19/2026,"Bánh tortilla bắp, không phải lúa mì"
+12959,allergen:crustacean_shellfish,"32 uncooked shrimp, deveined but with shells",yes,Thy,10/19/2026,
+13091,allergen:tree_nuts,¾ cup walnut halves,yes,Thy,10/19/2026,
+13247,allergen:sesame,1 cup sesame seeds,yes,Thy,10/19/2026,
+13408,allergen:wheat,1 (8 ounce) package dried rice noodles,yes,Thy,10/19/2026,Đúng là vi phạm nhưng dòng bằng chứng sai: nước tương thường có lúa mì
+13617,allergen:egg,"1 (8 ounce) package 1/3-less-fat cream cheese, softened",no,Thy,10/19/2026,"Không có trứng: cream cheese, pudding, Oreo, kem đánh bông"
+13849,allergen:sesame,"¼ cup sesame seeds, divided",yes,Thy,10/19/2026,
+14374,allergen:milk,1 ⅔ cups milk,yes,Thy,10/19/2026,
+14417,allergen:milk,¼ cup milk,yes,Thy,10/19/2026,
+14693,allergen:wheat,2 cups quick cooking oats,no,Thy,10/19/2026,Yến mạch không phải lúa mì; công thức không có bột mì
+15062,allergen:sesame,"4 teaspoons sesame oil, divided",yes,Thy,10/19/2026,
+15240,allergen:sesame,½ cup sesame seeds,yes,Thy,10/19/2026,
+15269,allergen:tree_nuts,"2 tablespoons pine nuts, toasted",yes,Thy,10/19/2026,
+15320,allergen:sesame,1 teaspoon sesame seeds,yes,Thy,10/19/2026,
+15886,diet:vegetarian,2 pounds ground pork,yes,Thy,10/19/2026,
+16057,allergen:tree_nuts,1 cup pine nuts,yes,Thy,10/19/2026,
+16152,allergen:egg,"1 (16 ounce) container frozen whipped topping, thawed, divided",no,Thy,10/19/2026,Không có trứng; kem đánh bông không chứa trứng
+16323,allergen:wheat,8 slices stale bread,yes,Thy,10/19/2026,
+16531,allergen:egg,"2 (8 ounce) containers frozen whipped topping, thawed",no,Thy,10/19/2026,Không có trứng; kem đánh bông không chứa trứng
+16563,allergen:milk,2 cups milk,yes,Thy,10/19/2026,
+16630,allergen:fish,2 tablespoons fish sauce,yes,Thy,10/19/2026,
+16630,allergen:wheat,1 (8 ounce) package rice noodles,no,Thy,10/19/2026,"Dùng bún gạo, không có lúa mì"
+16651,allergen:egg,1 ¼ cups graham cracker crumbs,no,Thy,10/19/2026,Không có trứng; bánh graham và cream cheese không chứa trứng
+16651,allergen:wheat,1 ¼ cups graham cracker crumbs,yes,Thy,10/19/2026,Bánh graham làm từ bột mì
+17312,diet:vegan,3 tablespoons soy sauce,no,Thy,10/19/2026,"Không có sản phẩm động vật: nước tương, đường, bột bắp"
+17405,allergen:wheat,1 ½ tablespoons all-purpose flour,yes,Thy,10/19/2026,
+17475,allergen:sesame,3 tablespoons sesame seeds,yes,Thy,10/19/2026,
+17926,allergen:tree_nuts,¾ cup chopped pecans,yes,Thy,10/19/2026,
+18135,allergen:milk,1 cup nonfat milk,yes,Thy,10/19/2026,
+18436,allergen:egg,"1 (8 ounce) package cream cheese, softened",no,Thy,10/19/2026,Không có trứng; dòng bằng chứng là cream cheese
+18597,allergen:egg,"1 (8 ounce) container frozen whipped topping, thawed",no,Thy,10/19/2026,Không có trứng; dòng bằng chứng là kem đánh bông
+18929,allergen:egg,¾ cup heavy cream,no,Thy,10/19/2026,Không có trứng; dòng bằng chứng là kem tươi
+18929,allergen:wheat,¾ cup heavy cream,no,Thy,10/19/2026,Không có lúa mì; dòng bằng chứng là kem tươi
+18961,allergen:sesame,2 (2 ounce) packages dried chipped beef,no,Thy,10/19/2026,Không có mè; dòng bằng chứng là thịt bò khô
+19023,diet:vegan,"2 (15 ounce) cans chickpeas, drained and rinsed",no,Thy,10/19/2026,Món thuần chay; bơ đậu phộng không phải sản phẩm động vật
+19116,diet:vegan,2 pounds cubed beef stew meat,yes,Thy,10/19/2026,
+19159,allergen:egg,1 cup all-purpose flour,no,Thy,10/19/2026,Bánh không trứng; dòng bằng chứng là bột mì
+19342,allergen:fish,2 pounds boneless cod fillets,yes,Thy,10/19/2026,
+19647,allergen:wheat,1 (6.75 ounce) package thin rice noodles,no,Thy,10/19/2026,"Bún gạo, nước mắm, sambal: không có lúa mì"
+20010,allergen:milk,"¼ cup shredded Cheddar cheese, or as desired (Optional)",yes,Thy,10/19/2026,Dòng có ghi (Optional) vẫn tính
+20047,allergen:sesame,1 teaspoon sesame oil,yes,Thy,10/19/2026,
+20600,allergen:tree_nuts,1 tablespoon pine nuts,yes,Thy,10/19/2026,
+20758,diet:vegan,1 (14 ounce) can tomato sauce,no,Thy,10/19/2026,Món thuần chay; dòng bằng chứng là sốt cà chua
+20832,allergen:tree_nuts,"½ cup pine nuts, or more to taste",yes,Thy,10/19/2026,
+21159,allergen:tree_nuts,"1 tablespoon chopped dry-roasted, unsalted peanuts",no,Thy,10/19/2026,Lạc (peanut) không tính là hạt cây
+21199,allergen:wheat,1 ½ cups chunky blue cheese dressing,no,Thy,10/19/2026,Không thấy thành phần lúa mì; dòng bằng chứng là sốt blue cheese
+21268,allergen:egg,1 (12 ounce) container whipped topping (such as Cool Whip®),no,Thy,10/19/2026,Không có trứng; kem đánh bông và marshmallow không chứa trứng
+21438,allergen:soy,½ cup shelled edamame (green soybeans),yes,Thy,10/19/2026,
+21462,allergen:milk,¼ cup warm milk,yes,Thy,10/19/2026,Có sữa và bơ
+21605,allergen:sesame,1 teaspoon sesame seeds,yes,Thy,10/19/2026,
+21842,allergen:wheat,1 (6 inch) corn tortilla,no,Thy,10/19/2026,"Bánh tortilla bắp, không phải lúa mì"
+21860,allergen:tree_nuts,⅓ cup peanut butter,no,Thy,10/19/2026,"Chỉ có lạc (peanut), không tính là hạt cây"
+21862,allergen:fish,"1 teaspoon fish sauce, or more to taste",yes,Thy,10/19/2026,
+21934,diet:vegan,4 cups salsa,no,Thy,10/19/2026,Món thuần chay; salsa không có sản phẩm động vật
+22494,allergen:milk,1 cup low-fat milk,yes,Thy,10/19/2026,
+22512,allergen:sesame,2 teaspoons sesame oil,yes,Thy,10/19/2026,
+22607,allergen:tree_nuts,½ cup coarsely chopped cashews,yes,Thy,10/19/2026,
+22691,allergen:wheat,"1 slice bread, shredded",yes,Thy,10/19/2026,
+22776,allergen:crustacean_shellfish,1 (10.5 ounce) can Campbell's® Condensed French Onion Soup,no,Thy,10/19/2026,"Không có giáp xác; sốt Worcestershire có cá cơm, không phải giáp xác"
+23540,allergen:fish,¼ cup fish sauce,yes,Thy,10/19/2026,
+23655,allergen:sesame,½ tablespoon sesame seeds,yes,Thy,10/19/2026,
+23655,allergen:soy,¼ cup Kikkoman Less Sodium Soy Sauce,yes,Thy,10/19/2026,
+23734,allergen:wheat,1 (12 ounce) package dried rice noodles,no,Thy,10/19/2026,Bún gạo; dùng nước mắm chay
+23931,allergen:soy,6 tablespoons soy sauce,yes,Thy,10/19/2026,
+24023,diet:vegan,"1 (14.5 ounce) can chickpeas, drained and rinsed",yes,Thy,10/19/2026,
+24120,allergen:milk,"2 eggs, beaten (Optional)",no,Thy,10/19/2026,Trứng không phải sữa; không có sữa trong công thức
+24518,allergen:sesame,1 (10.75 ounce) can cream of chicken soup,no,Thy,10/19/2026,Không có mè; dòng bằng chứng là súp kem gà
+24574,allergen:egg,"2 (16 ounce) tubs reduced-fat frozen whipped topping, thawed",yes,Thy,10/19/2026,Đúng là vi phạm nhưng dòng bằng chứng sai: bánh angel food làm từ lòng trắng trứng
+24574,allergen:wheat,"1 prepared angel food cake, cut into chunks",yes,Thy,10/19/2026,
+25039,allergen:soy,1 teaspoon soy sauce,yes,Thy,10/19/2026,
+25045,diet:vegan,"1 ½ pounds sirloin tips, cubed",yes,Thy,10/19/2026,
+25227,allergen:milk,1 (16 ounce) jar prepared Alfredo sauce,yes,Thy,10/19/2026,
+25288,allergen:milk,"4 ounces PHILADELPHIA Neufchatel cheese, cubed",yes,Thy,10/19/2026,
+25334,allergen:tree_nuts,⅓ cup toasted walnut pieces,yes,Thy,10/19/2026,
+25626,diet:vegan,1 (8 ounce) can tomato sauce,no,Thy,10/19/2026,Món thuần chay; dòng bằng chứng là sốt cà chua
+25928,allergen:milk,1 ½ cups sour cream,yes,Thy,10/19/2026,
+26101,allergen:milk,½ cup milk (Optional),yes,Thy,10/19/2026,Dòng có ghi (Optional) vẫn tính
+26154,diet:vegan,2 pounds cubed beef stew meat,yes,Thy,10/19/2026,
+26510,allergen:sesame,1 teaspoon sesame seeds (Optional),yes,Thy,10/19/2026,Dòng có ghi (Optional) vẫn tính
+26746,allergen:egg,1 (21 ounce) can apple pie filling,no,Thy,10/19/2026,Không có trứng; vỏ bánh crescent và nhân táo không chứa trứng
+26746,allergen:wheat,2 (8 ounce) packages refrigerated crescent roll dough,yes,Thy,10/19/2026,
+26968,allergen:wheat,2 cups whole wheat flour,yes,Thy,10/19/2026,
+27122,allergen:sesame,"½ cup sesame seeds, toasted",yes,Thy,10/19/2026,
+27133,allergen:wheat,1 ½ cups whole wheat flour,yes,Thy,10/19/2026,
+27492,diet:vegan,1 pound ground beef,yes,Thy,10/19/2026,
+28051,allergen:wheat,"24 lumpia wrappers, defrosted",yes,Thy,10/19/2026,
+28105,allergen:sesame,½ cup prepared stir-fry sauce,no,Thy,10/19/2026,"Không có mè rõ ràng; 'stir-fry sauce' đóng chai không ghi rõ thành phần (một số loại có dầu mè), Thy cân nhắc"
+28105,allergen:soy,½ cup prepared stir-fry sauce,yes,Thy,10/19/2026,'stir-fry sauce' đóng chai hầu như đều có nước tương
+28147,allergen:wheat,2 ½ cups whole wheat flour,yes,Thy,10/19/2026,
+28479,allergen:wheat,2 cups gluten-free all-purpose baking flour,no,Thy,10/19/2026,"Dùng bột không gluten, không có lúa mì"
+28629,allergen:egg,"3 cups cold whole milk, divided",no,Thy,10/19/2026,Gelato không trứng; dòng bằng chứng là sữa
+28743,allergen:egg,"2 sticks unsalted butter, room temperature",no,Thy,10/19/2026,Không có trứng; dòng bằng chứng là bơ
+29029,diet:vegan,"1 pound venison, cut into strips",yes,Thy,10/19/2026,
+29203,allergen:fish,"1 dash fish sauce, or to taste (Optional)",yes,Thy,10/19/2026,Dòng có ghi (Optional) vẫn tính
+29203,allergen:wheat,1 (16 ounce) package rice noodles,no,Thy,10/19/2026,"Bún gạo và bột đậu gà, không có lúa mì"
+29394,diet:vegan,1 (28 ounce) can crushed tomatoes,no,Thy,10/19/2026,Món thuần chay; dòng bằng chứng là cà chua nghiền
+29568,allergen:tree_nuts,½ cup pecans,yes,Thy,10/19/2026,
+29721,allergen:tree_nuts,"½ cup dry roasted peanuts, coarsely chopped",no,Thy,10/19/2026,Lạc (peanut) không tính là hạt cây
+30014,allergen:wheat,1 (8 ounce) package dried lo mein noodles,yes,Thy,10/19/2026,
+30176,allergen:wheat,1 cup all-purpose flour,yes,Thy,10/19/2026,
+30202,allergen:wheat,1 cup white whole wheat flour,yes,Thy,10/19/2026,
+30381,allergen:milk,1 cup all-purpose flour,no,Thy,10/19/2026,Không có sữa; dòng bằng chứng là bột mì
+31501,allergen:egg,2 (3 ounce) packages JELL-O Cherry Flavor Gelatin,no,Thy,10/19/2026,"Không có trứng: bánh quy chocolate wafer, Jell-O, cream cheese, Cool Whip"
+31546,allergen:milk,½ cup milk,yes,Thy,10/19/2026,
+31748,allergen:crustacean_shellfish,3 tablespoons Worcestershire sauce,no,Thy,10/19/2026,"Sốt Worcestershire có cá cơm (cá), không phải giáp xác"
+32543,allergen:wheat,4 cups all-purpose flour,yes,Thy,10/19/2026,
+32640,allergen:sesame,2 teaspoons sesame oil,yes,Thy,10/19/2026,

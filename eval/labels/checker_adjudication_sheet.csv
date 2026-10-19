@@ -5,7 +5,7 @@
 salt and pepper to taste
 1 dash garlic salt
 ¾ cup grated Romano cheese
-½ cup grated Parmesan cheese",,
+½ cup grated Parmesan cheese",yes,
 2,103,Quick Beef Stir-Fry,allergen:sesame,"mè: dầu mè, tahini, hạt mè","2 tablespoons sesame seeds, toasted","2 tablespoons vegetable oil
 1 pound beef sirloin, cut into 2-inch strips
 1 ½ cups fresh broccoli florets
@@ -14,7 +14,7 @@ salt and pepper to taste
 1  green onion, chopped
 1 teaspoon minced garlic
 2 tablespoons soy sauce
-2 tablespoons sesame seeds, toasted",,
+2 tablespoons sesame seeds, toasted",yes,
 3,317,Beef Bulgogi,allergen:sesame,"mè: dầu mè, tahini, hạt mè",2 tablespoons sesame seeds,"1 pound flank steak, thinly sliced
 5 tablespoons soy sauce
 2 ½ tablespoons white sugar
@@ -22,7 +22,7 @@ salt and pepper to taste
 2 tablespoons minced garlic
 2 tablespoons sesame seeds
 2 tablespoons sesame oil
-½ teaspoon ground black pepper",,
+½ teaspoon ground black pepper",yes,
 4,376,Easy Korean Ground Beef Bowl,allergen:sesame,"mè: dầu mè, tahini, hạt mè",2 teaspoons toasted sesame oil,"1 pound lean ground beef
 5 cloves garlic, crushed
 1 tablespoon freshly grated ginger
@@ -32,7 +32,7 @@ salt and pepper to taste
 ¼ teaspoon crushed red pepper
 6  green onions, chopped, divided
 4 cups hot cooked brown rice
-1 tablespoon toasted sesame seeds",,
+1 tablespoon toasted sesame seeds",yes,
 5,580,Banh Mi,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)",4 tablespoons mayonnaise,"½ cup rice vinegar
 ¼ cup water
 ¼ cup white sugar
@@ -47,7 +47,7 @@ ground black pepper to taste
 ¼ cup thinly sliced cucumber
 1 tablespoon fresh cilantro leaves
 1 small jalapeno pepper - seeded and cut into 1/16-inch-thick matchsticks
-1 wedge lime",,
+1 wedge lime",yes,Mayonnaise có trứng
 6,580,Banh Mi,diet:vegetarian,"chay: KHÔNG có thịt, gia cầm, cá, hải sản, gelatin, mỡ động vật, nước dùng thịt/cá","1 skinless, boneless chicken breast half","½ cup rice vinegar
 ¼ cup water
 ¼ cup white sugar
@@ -62,19 +62,19 @@ ground black pepper to taste
 ¼ cup thinly sliced cucumber
 1 tablespoon fresh cilantro leaves
 1 small jalapeno pepper - seeded and cut into 1/16-inch-thick matchsticks
-1 wedge lime",,
+1 wedge lime",yes,
 7,849,Strawberry Angel Food Dessert,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)","2 (8 ounce) packages cream cheese, softened","1 (10 inch) angel food cake
 2 (8 ounce) packages cream cheese, softened
 1 cup white sugar
 1 (8 ounce) container frozen whipped topping, thawed
 1 quart fresh strawberries, sliced
-1 (18 ounce) jar strawberry glaze",,
+1 (18 ounce) jar strawberry glaze",yes,Đúng là vi phạm nhưng dòng bằng chứng sai: bánh angel food làm từ lòng trắng trứng
 8,849,Strawberry Angel Food Dessert,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 (10 inch) angel food cake,"1 (10 inch) angel food cake
 2 (8 ounce) packages cream cheese, softened
 1 cup white sugar
 1 (8 ounce) container frozen whipped topping, thawed
 1 quart fresh strawberries, sliced
-1 (18 ounce) jar strawberry glaze",,
+1 (18 ounce) jar strawberry glaze",yes,
 9,2069,Ghormeh Sabzi (Persian Herb Stew),diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)","1 ½ pounds boneless chuck roast, cut into 1 1/2-inch cubes","¼ cup canola oil, divided
 1 large yellow onion, finely chopped
 1 teaspoon ground turmeric
@@ -89,7 +89,7 @@ ground black pepper to taste
 salt and ground black pepper to taste
 1  lemon, juiced
 4  dried Persian limes (limoo amani), or more to taste
-1 (15 ounce) can red kidney beans, drained and rinsed",,
+1 (15 ounce) can red kidney beans, drained and rinsed",yes,
 10,2163,Authentic Vietnamese Spring Rolls (Nem Ran Hay Cha Gio),allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)","2 large eggs, beaten","2 ounces dried thin rice noodles
 ¾ cup ground chicken
 ¼ cup shrimp - washed, peeled, and cut into small pieces
@@ -101,7 +101,7 @@ salt and ground black pepper to taste
 ½ teaspoon salt
 ½ teaspoon ground black pepper
 24  rice paper wrappers
-2 cups vegetable oil for frying",,
+2 cups vegetable oil for frying",yes,
 11,2163,Authentic Vietnamese Spring Rolls (Nem Ran Hay Cha Gio),allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",2 ounces dried thin rice noodles,"2 ounces dried thin rice noodles
 ¾ cup ground chicken
 ¼ cup shrimp - washed, peeled, and cut into small pieces
@@ -113,14 +113,14 @@ salt and ground black pepper to taste
 ½ teaspoon salt
 ½ teaspoon ground black pepper
 24  rice paper wrappers
-2 cups vegetable oil for frying",,
+2 cups vegetable oil for frying",no,Bún gạo và bánh tráng không có lúa mì
 12,2500,Sesame Beef,allergen:sesame,"mè: dầu mè, tahini, hạt mè",2 tablespoons sesame seeds,"1 pound round steak
 4 tablespoons soy sauce
 4 tablespoons white sugar
 4 tablespoons vegetable oil
 2 cloves garlic, minced
 2  green onions, chopped
-2 tablespoons sesame seeds",,
+2 tablespoons sesame seeds",yes,
 13,2806,Banh Xeo (Vietnamese Crepes),diet:vegetarian,"chay: KHÔNG có thịt, gia cầm, cá, hải sản, gelatin, mỡ động vật, nước dùng thịt/cá","2 tablespoons fish sauce, or more to taste","1 cup rice flour
 ½ teaspoon white sugar
 ½ teaspoon salt
@@ -134,10 +134,10 @@ salt and ground black pepper to taste
 2 tablespoons fish sauce, or more to taste
 salt to taste
 1 pound mung bean sprouts
-4  lettuce leaves, or as needed",,
+4  lettuce leaves, or as needed",yes,
 14,2833,Cheesy Ramen Noodles,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 (3 ounce) package any flavor ramen noodles,"2 cups water
 1 (3 ounce) package any flavor ramen noodles
-1 slice American cheese",,
+1 slice American cheese",yes,
 15,3089,Chef John's Classic Rice Pudding,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 ⅓ cups milk,"½ cup uncooked long-grain white rice
 ¼ teaspoon kosher salt
 1 cup water
@@ -147,7 +147,7 @@ salt to taste
 ⅛ teaspoon ground cinnamon
 1  large egg yolk
 1 tablespoon cold butter
-2 tablespoons dried cherries, chopped",,
+2 tablespoons dried cherries, chopped",no,"Bánh pudding gạo, không có thành phần lúa mì"
 16,3411,Chicken Fettuccini Alfredo,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",3 cups milk,"6  skinless, boneless chicken breast halves - cut into cubes
 6 tablespoons butter, divided
 4 cloves garlic, minced, divided
@@ -163,12 +163,12 @@ salt to taste
 ¾ cup grated Parmesan cheese
 8 ounces shredded Colby-Monterey Jack cheese
 3  roma (plum) tomatoes, diced
-½ cup sour cream",,
+½ cup sour cream",yes,
 17,3497,Simple Beef Flavored Gravy,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",¼ cup butter,"1 ½ cups water
 3 teaspoons beef bouillon
 ¼ cup all-purpose flour
 1  onion, chopped
-¼ cup butter",,
+¼ cup butter",yes,
 18,3768,Pan-Seared and Crusted Ling Cod,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)","½ cup butter, divided","3 tablespoons salt
 1 ½ pounds lingcod, cleaned and boned
 salt and ground black pepper to taste
@@ -176,7 +176,7 @@ salt and ground black pepper to taste
 ½ cup butter, divided
 1 ½ cups bread crumbs
 ½ cup grated Parmesan cheese
-1 teaspoon lemon pepper",,
+1 teaspoon lemon pepper",yes,Đúng là vi phạm nhưng dòng bằng chứng sai: lingcod là cá
 19,4199,Steak and Rice,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",4 tablespoons cornstarch,"1 ½ pounds round steak
 2 tablespoons vegetable oil
 1  green bell pepper
@@ -189,7 +189,7 @@ salt and ground black pepper to taste
 ½ teaspoon ground ginger
 2 cups water
 1 cup white rice
-2 cups water",,
+2 cups water",yes,Đúng là vi phạm nhưng dòng bằng chứng sai: nước tương thường có lúa mì
 20,4641,Lighter Chicken Fettuccine Alfredo,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",2 cups heavy cream,"2 large boneless skinless chicken breasts
 2 cups low-sodium chicken broth
 4 cloves garlic, minced
@@ -199,14 +199,14 @@ ground black pepper to taste
 salt to taste
 1 pound fettuccine
 1 sprig chopped fresh parsley
-2 cups freshly grated Parmigiano-Reggiano cheese, divided",,
+2 cups freshly grated Parmigiano-Reggiano cheese, divided",yes,
 21,4867,True Maryland Crab Cakes,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)","1 pound cooked crabmeat, flaked","3 tablespoons pancake mix
 1 tablespoon prepared yellow mustard
 3 tablespoons mayonnaise, or to taste
 1  egg, beaten
 1 tablespoon chopped fresh parsley
 1 pound cooked crabmeat, flaked
-3 cups vegetable oil for frying",,
+3 cups vegetable oil for frying",yes,
 22,5248,My Favorite Sesame Noodles,allergen:sesame,"mè: dầu mè, tahini, hạt mè",2 teaspoons sesame seeds,"½ (8 ounce) package spaghetti
 2 tablespoons peanut butter
 1 tablespoon honey
@@ -216,7 +216,7 @@ salt to taste
 1 teaspoon ground ginger
 1 clove garlic, minced
 1  green onion, chopped
-2 teaspoons sesame seeds",,
+2 teaspoons sesame seeds",yes,
 23,5543,"Connie's Zucchini ""Crab"" Cakes",allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",1 teaspoon Old Bay Seasoning TM,"2 ½ cups grated zucchini
 1  egg, beaten
 2 tablespoons butter, melted
@@ -224,7 +224,7 @@ salt to taste
 ¼ cup minced onion
 1 teaspoon Old Bay Seasoning TM
 ¼ cup all-purpose flour
-½ cup vegetable oil for frying",,
+½ cup vegetable oil for frying",no,"Món chay giả cua (làm từ zucchini); Old Bay là gia vị, không có giáp xác"
 24,5787,Asian Ground Beef Noodle Bowls,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",2 (3 ounce) packages ramen noodles (such as Nissin® Top Ramen®),"1 pound ground beef
 2 teaspoons green onion, white part only, thinly sliced
 2 ½ cups water
@@ -238,7 +238,7 @@ salt to taste
 ½ teaspoon Chinese five-spice powder
 ¼ teaspoon ground ginger
 2 tablespoons green onions, green parts only, thinly sliced
-2 teaspoons sesame seeds",,
+2 teaspoons sesame seeds",yes,
 25,6487,Shrimp Stir-Fry,allergen:sesame,"mè: dầu mè, tahini, hạt mè",½ teaspoon sesame oil (Optional),"3 tablespoons cornstarch
 1 ¾ cups Swanson® Chicken Stock
 1 tablespoon soy sauce
@@ -248,7 +248,7 @@ salt to taste
 4 cups cut-up fresh vegetables (see Note)
 ½ teaspoon ground ginger
 ⅛ teaspoon garlic powder
-4 cups hot cooked regular long-grain white rice",,
+4 cups hot cooked regular long-grain white rice",yes,Dòng có ghi (Optional) vẫn tính
 26,6487,Shrimp Stir-Fry,allergen:soy,"đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",1 tablespoon soy sauce,"3 tablespoons cornstarch
 1 ¾ cups Swanson® Chicken Stock
 1 tablespoon soy sauce
@@ -258,13 +258,13 @@ salt to taste
 4 cups cut-up fresh vegetables (see Note)
 ½ teaspoon ground ginger
 ⅛ teaspoon garlic powder
-4 cups hot cooked regular long-grain white rice",,
+4 cups hot cooked regular long-grain white rice",yes,
 27,6530,Pan-Seared Lemon and Garlic Scallops,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",12 medium sea scallops,"12 medium sea scallops
 1 teaspoon salt, or more to taste
 5 tablespoons clarified butter (ghee), warm
 2 tablespoons lemon juice
 2 cloves garlic, minced
-3 tablespoons clarified butter (ghee)",,
+3 tablespoons clarified butter (ghee)",no,"Sò điệp là nhuyễn thể, không phải cá; ghee là bơ"
 28,6531,Chicken Mole with Four Chiles,allergen:sesame,"mè: dầu mè, tahini, hạt mè",⅛ cup sesame seeds,"4  dried mulato chiles
 4  dried ancho chiles
 4  dried guajillo chiles
@@ -280,7 +280,7 @@ salt to taste
 ⅛ cup sesame seeds
 1 (14 ounce) can whole peeled tomatoes
 1  tablet of Mexican chocolate, such as Abuelita or Ibarra
-1 whole chicken",,
+1 whole chicken",yes,
 29,6641,Beef Bourguignon Without the Burgundy,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",1 tablespoon butter,"1 (2 1/2 pound) boneless beef chuck roast, cut into 2-inch cubes
 salt and freshly ground black pepper to taste
 2 tablespoons vegetable oil
@@ -292,7 +292,7 @@ salt and freshly ground black pepper to taste
 2  carrots, cut into 1-inch pieces
 2 stalks celery, cut into 1/2-inch pieces
 4 sprigs fresh thyme
-1  bay leaf",,
+1  bay leaf",yes,
 30,6765,Cherry Tomato Salad,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",3 ounces pine nuts,"40  cherry tomatoes, halved
 1 cup pitted and sliced green olives
 1 (6 ounce) can black olives, drained and sliced
@@ -302,7 +302,7 @@ salt and freshly ground black pepper to taste
 2 tablespoons red wine vinegar
 1 tablespoon white sugar
 1 teaspoon dried oregano
-salt and pepper to taste",,
+salt and pepper to taste",yes,
 31,6952,Great Pumpkin Dessert,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 (18.25 ounce) package yellow cake mix,"1 (15 ounce) can pumpkin puree
 1 (12 fluid ounce) can evaporated milk
 3  eggs
@@ -310,7 +310,7 @@ salt and pepper to taste",,
 4 teaspoons pumpkin pie spice
 1 (18.25 ounce) package yellow cake mix
 ¾ cup butter, melted
-1 ½ cups chopped walnuts",,
+1 ½ cups chopped walnuts",yes,
 32,7168,Stir Fried Sesame Vegetables with Rice,allergen:sesame,"mè: dầu mè, tahini, hạt mè",1 tablespoon sesame seeds,"1 ½ cups vegetable broth
 ¾ cup uncooked long-grain white rice
 1 tablespoon margarine
@@ -323,7 +323,7 @@ salt and pepper to taste",,
 2 teaspoons minced fresh ginger root
 1 teaspoon minced garlic
 3 tablespoons soy sauce
-1 tablespoon sesame oil",,
+1 tablespoon sesame oil",yes,
 33,7168,Stir Fried Sesame Vegetables with Rice,allergen:soy,"đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",3 tablespoons soy sauce,"1 ½ cups vegetable broth
 ¾ cup uncooked long-grain white rice
 1 tablespoon margarine
@@ -336,7 +336,7 @@ salt and pepper to taste",,
 2 teaspoons minced fresh ginger root
 1 teaspoon minced garlic
 3 tablespoons soy sauce
-1 tablespoon sesame oil",,
+1 tablespoon sesame oil",yes,
 34,7679,Balsamic-Glazed Sea Scallops,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",2 tablespoons unsalted butter,"12 large sea scallops
 ¼ teaspoon seafood seasoning (such as Old Bay®)
 ¼ teaspoon salt
@@ -346,7 +346,7 @@ salt and pepper to taste",,
 ½ cup dry white wine
 1 tablespoon balsamic vinegar
 1 teaspoon Dijon mustard
-1 tablespoon chopped fresh tarragon  (Optional)",,
+1 tablespoon chopped fresh tarragon  (Optional)",no,Sò điệp là nhuyễn thể; dòng bằng chứng là bơ
 35,7729,Cajun Crab Cakes (No Breadcrumbs),allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)","1 pound lump crabmeat, picked free of shell","2 tablespoons salted butter
 ½  onion, finely chopped
 2 stalks celery, finely chopped
@@ -369,26 +369,26 @@ salt and pepper to taste",,
 1 tablespoon chile-garlic sauce (such as Sriracha®)
 2 teaspoons Creole seasoning (such as Tony Chachere's®)
 2 teaspoons parsley flakes
-1 teaspoon paprika",,
+1 teaspoon paprika",yes,
 36,7822,Fettuccine Alfredo V,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",½ cup butter,"10 ounces fettuccini pasta
 ½ cup butter
 5 cloves garlic, chopped
 1 cup heavy cream
 1  egg yolk
 2 cups freshly grated Parmesan cheese
-2 tablespoons dried parsley",,
+2 tablespoons dried parsley",yes,
 37,7880,Cauliflower Rice Stir-Fry,allergen:sesame,"mè: dầu mè, tahini, hạt mè",2 tablespoons sesame oil,"2 tablespoons sesame oil
 1 teaspoon minced garlic
 1 teaspoon grated fresh ginger
 2 (12 ounce) packages frozen riced cauliflower medley
 4 tablespoons soy sauce
-2  eggs, lightly beaten",,
+2  eggs, lightly beaten",yes,
 38,7880,Cauliflower Rice Stir-Fry,allergen:soy,"đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",4 tablespoons soy sauce,"2 tablespoons sesame oil
 1 teaspoon minced garlic
 1 teaspoon grated fresh ginger
 2 (12 ounce) packages frozen riced cauliflower medley
 4 tablespoons soy sauce
-2  eggs, lightly beaten",,
+2  eggs, lightly beaten",yes,
 39,7993,Nong's Khao Man Gai,allergen:soy,"đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",½ cup fermented soybeans,"2 quarts water
 1 (3 pound) whole chicken
 1 head garlic
@@ -409,7 +409,7 @@ salt and pepper to taste",,
 ⅓ cup white vinegar
 ⅓ cup thin soy sauce
 1 bunch fresh cilantro
-1 cup cucumber slices",,
+1 cup cucumber slices",yes,
 40,8191,Caramelized Pork Belly (Thit Kho),allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)","6 hard-boiled eggs, peeled","2 pounds pork belly, trimmed
 2 tablespoons white sugar
 5  shallots, sliced
@@ -417,7 +417,7 @@ salt and pepper to taste",,
 3 tablespoons fish sauce
 ground black pepper to taste
 13 fluid ounces coconut water
-6  hard-boiled eggs, peeled",,
+6  hard-boiled eggs, peeled",yes,
 41,8227,No Sour Cream Beef Stroganoff,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",1 tablespoon butter,"1 ½ pounds ground beef
 salt to taste
 1 tablespoon butter
@@ -428,7 +428,7 @@ salt to taste
 ½ cup white wine
 1 (10.5 ounce) can cream of mushroom soup
 ½ (10.5 ounce) can beef broth
-Worcestershire sauce to taste",,
+Worcestershire sauce to taste",yes,
 42,8379,Dutch Oven Beef Stew,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)",2 pounds cubed beef stew meat,"½ cup all-purpose flour
 1 tablespoon ground paprika, or more to taste
 salt and ground black pepper to taste
@@ -442,29 +442,29 @@ salt and ground black pepper to taste
 1 stalk celery, chopped
 1 ½ tablespoons Worcestershire sauce
 2 cloves garlic, minced
-2  bay leaves",,
+2  bay leaves",yes,
 43,8505,Dorm Room Cheesy Tuna and Noodles,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 (3 ounce) package any flavor ramen noodles,"1 cup boiling water
 1 (3 ounce) package any flavor ramen noodles
 1 (3 ounce) can water-packed tuna, drained
-2 slices American cheese",,
+2 slices American cheese",yes,
 44,8917,Quick Pan-Seared Scallops,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",12 sea scallops,"2 tablespoons olive oil
 1 small shallot, minced
 1  lemon, juiced
 12  sea scallops
 1 pinch salt and freshly ground black pepper
-2 tablespoons chopped fresh parsley, or to taste",,
+2 tablespoons chopped fresh parsley, or to taste",no,"Sò điệp là nhuyễn thể, không phải cá"
 45,8919,"Oh, Cod!",allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)","1 (3 ounce) fillet cod, or more to taste","2 tablespoons olive oil
 ½  onion, chopped
 1 clove garlic, chopped
 1 teaspoon lemon pepper
 1 (3 ounce) fillet cod, or more to taste
 2 tablespoons dry white wine
-1 tablespoon grated Parmesan cheese, or to taste  (Optional)",,
+1 tablespoon grated Parmesan cheese, or to taste  (Optional)",yes,
 46,8946,Chocolate Eclair Dessert,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)",3 cups milk,"2 individual packages graham crackers
 2 (3 ounce) packages instant vanilla pudding mix
 3 cups milk
 1 (8 ounce) container frozen whipped topping, thawed
-1 (16 ounce) package prepared chocolate frosting",,
+1 (16 ounce) package prepared chocolate frosting",no,"Bánh graham, pudding, kem đánh bông, frosting: không có trứng; dòng bằng chứng là sữa"
 47,8984,Aunt Ruth's Crab Cakes,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",1 pound flaked cooked crabmeat,"16  saltine crackers, finely crushed
 2 tablespoons water
 1 pound flaked cooked crabmeat
@@ -475,7 +475,7 @@ salt and ground black pepper to taste
 1 tablespoon seafood seasoning (such as Old Bay®)  (Optional)
 ⅛ teaspoon salt
 ⅛ teaspoon black pepper
-½ cup vegetable oil for frying",,
+½ cup vegetable oil for frying",yes,
 48,9028,Salmon and Shrimp Cakes,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)","10 large shrimp - peeled, deveined, and cut into thirds","1 teaspoon vegetable oil
 2 tablespoons finely chopped red onion
 1 tablespoon finely chopped green bell pepper
@@ -488,7 +488,7 @@ salt and ground black pepper to taste
 1 pound salmon fillets, chopped
 10  large shrimp - peeled, deveined, and cut into thirds
 1 cup panko bread crumbs
-1 ½ teaspoons garlic salt",,
+1 ½ teaspoons garlic salt",yes,
 49,9090,Basil Pan-Seared Scallops over Pasta,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",9 tablespoons whipped butter,"1 (16 ounce) package farfalle (bow tie) pasta
 24  scallops, rinsed and drained
 ¾ cup olive oil
@@ -497,7 +497,7 @@ salt and ground black pepper to taste
 1 teaspoon salt
 ½ teaspoon ground black pepper
 2 tablespoons dried basil
-9 tablespoons whipped butter",,
+9 tablespoons whipped butter",no,Sò điệp là nhuyễn thể; dòng bằng chứng là bơ
 50,9157,Paleo Maryland Crab Cakes,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",1 pound fresh lump crabmeat,"1  large egg
 2 tablespoons mayonnaise
 1 teaspoon Dijon mustard
@@ -511,7 +511,7 @@ ground black pepper to taste
 1 tablespoon finely diced red pepper
 2 teaspoons sliced green onion
 1 tablespoon chopped fresh parsley
-⅓ cup almond flour",,
+⅓ cup almond flour",yes,
 51,9295,Saigon Noodle Salad,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",½ cup coarsely chopped peanuts,"¼ cup water, or more to taste
 3 tablespoons lime juice
 3 tablespoons fish sauce
@@ -529,7 +529,7 @@ ground black pepper to taste
 2 ⅔ tablespoons chopped fresh mint
 2 ⅔ tablespoons chopped fresh cilantro
 2 ⅔ tablespoons chopped fresh basil
-½ cup coarsely chopped peanuts",,
+½ cup coarsely chopped peanuts",no,Lạc (peanut) không tính là hạt cây
 52,9643,Old Bay® Shrimp and Pasta Alfredo,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)","½ cup Alfredo sauce, or as needed (Optional)","½ cup olive oil
 4 cloves garlic, chopped, or to taste
 1 pound jumbo shrimp, peeled and deveined
@@ -537,7 +537,7 @@ ground black pepper to taste
 1 tablespoon crushed red pepper flakes, or to taste
 1 (16 ounce) package angel hair pasta
 ½ cup Alfredo sauce, or as needed  (Optional)
-1 tablespoon freshly squeezed lemon juice",,
+1 tablespoon freshly squeezed lemon juice",yes,Dòng có ghi (Optional) vẫn tính
 53,9650,NO YOLKS® Tuna Noodle Casserole,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",3 tablespoons all-purpose flour,"6 ounces NO YOLKS® Extra Broad Noodles
 1 tablespoon olive oil
 1 (8 ounce) package sliced fresh mushrooms
@@ -555,7 +555,7 @@ Dash Worcestershire sauce
 1 pinch Fresh ground black pepper to taste
 1 cup panko bread crumbs
 1 tablespoon butter, melted
-Salt and pepper, to taste",,
+Salt and pepper, to taste",yes,
 54,9884,Honey Shrimp Stir-Fry,allergen:sesame,"mè: dầu mè, tahini, hạt mè",½ tablespoon sesame seeds,"1 tablespoon soy sauce
 ½ tablespoon fish sauce
 ½ tablespoon sesame seeds
@@ -574,7 +574,7 @@ Salt and pepper, to taste",,
 ¼ pound peeled and deveined shrimp
 2 cloves garlic, finely minced
 4 cups cooked white rice
-Chopped scallions for garnish",,
+Chopped scallions for garnish",yes,
 55,9884,Honey Shrimp Stir-Fry,allergen:soy,"đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",1 tablespoon soy sauce,"1 tablespoon soy sauce
 ½ tablespoon fish sauce
 ½ tablespoon sesame seeds
@@ -593,7 +593,7 @@ Chopped scallions for garnish",,
 ¼ pound peeled and deveined shrimp
 2 cloves garlic, finely minced
 4 cups cooked white rice
-Chopped scallions for garnish",,
+Chopped scallions for garnish",yes,
 56,10082,Spicy Shrimp Primavera,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)","1 pound cooked medium shrimp, peeled and deveined","¼ cup olive oil
 ¼ cup thinly sliced green bell pepper
 ¼ cup thinly sliced red bell pepper
@@ -614,7 +614,7 @@ Chopped scallions for garnish",,
 1 teaspoon dried oregano
 ¾ teaspoon ground black pepper
 1 pound cooked medium shrimp, peeled and deveined
-1 (16 ounce) package angel hair pasta",,
+1 (16 ounce) package angel hair pasta",yes,
 57,10244,Salmon and Shrimp Cakes from Chef Bubba,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)","10 ounces shrimp, peeled, deveined and minced","10 ounces shrimp, peeled, deveined and minced
 1 cup finely chopped red bell pepper
 3 tablespoons extra virgin olive oil, divided
@@ -627,7 +627,7 @@ Chopped scallions for garnish",,
 2 tablespoons chopped fresh chives
 1  fresh jalapeno pepper, seeded and chopped
 2  eggs, well beaten
-1 (8 ounce) package cream cheese, softened",,
+1 (8 ounce) package cream cheese, softened",yes,
 58,10342,20-Minute Shrimp Fajitas Sheet Pan Dinner,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường","12 (6 inch) flour tortillas, warmed","nonstick cooking spray
 1 ½ pounds uncooked medium shrimp, peeled and deveined
 1  yellow bell pepper, thinly sliced
@@ -645,7 +645,7 @@ Chopped scallions for garnish",,
 1 medium lime, juiced, or as needed
 12 (6 inch) flour tortillas, warmed
 1  avocado, sliced, or to taste
-¼ cup chopped fresh cilantro",,
+¼ cup chopped fresh cilantro",yes,
 59,10421,Seafood Strata with Pesto,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",8 ounces fresh crabmeat,"12 slices day-old sourdough bread, crusts removed
 1 cup basil pesto
 3 tablespoons butter
@@ -661,7 +661,7 @@ Chopped scallions for garnish",,
 ⅛ teaspoon cayenne pepper
 ½ cup panko bread crumbs
 1 medium tomato, cut into wedges
-1 tablespoon chopped fresh basil or chives for garnish",,
+1 tablespoon chopped fresh basil or chives for garnish",no,"Cua và tôm là giáp xác, không phải cá; không có cá vây"
 60,10564,Pan-Roasted Miso-Marinated Sea Bass,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",6 (6 ounce) fillets sea bass,"¼ cup white sugar
 1 tablespoon dark corn syrup
 1 ½ teaspoons soy sauce
@@ -673,7 +673,7 @@ Chopped scallions for garnish",,
 1 clove garlic, minced
 1  shallot, minced
 5 tablespoons canola oil, divided
-6 (6 ounce) fillets sea bass",,
+6 (6 ounce) fillets sea bass",yes,
 61,10720,Sesame Shrimp and Snow Peas Stir-Fry,allergen:sesame,"mè: dầu mè, tahini, hạt mè",1 tablespoon sesame oil,"⅓ cup chicken broth
 2 tablespoons soy sauce
 2 tablespoons dry sherry
@@ -685,7 +685,7 @@ Chopped scallions for garnish",,
 2 cloves garlic, minced
 8 ounces snow peas, ends trimmed
 1 pound uncooked medium shrimp, peeled and deveined
-1 ½ cups cooked brown rice, warmed",,
+1 ½ cups cooked brown rice, warmed",yes,
 62,10720,Sesame Shrimp and Snow Peas Stir-Fry,allergen:soy,"đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",2 tablespoons soy sauce,"⅓ cup chicken broth
 2 tablespoons soy sauce
 2 tablespoons dry sherry
@@ -697,7 +697,7 @@ Chopped scallions for garnish",,
 2 cloves garlic, minced
 8 ounces snow peas, ends trimmed
 1 pound uncooked medium shrimp, peeled and deveined
-1 ½ cups cooked brown rice, warmed",,
+1 ½ cups cooked brown rice, warmed",yes,
 63,10740,Miso Glazed Cod,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",1 (12 ounce) cod fillet,"1 (12 ounce) cod fillet
 3 tablespoons sugar
 3 tablespoons water
@@ -707,7 +707,7 @@ Chopped scallions for garnish",,
 1 pound slender asparagus spears, trimmed
 ½ pound shiitake mushrooms, sliced
 ½ teaspoon kosher salt and freshly ground black pepper
-Reynolds Wrap® Aluminum Foil",,
+Reynolds Wrap® Aluminum Foil",yes,
 64,10778,"Pan-Seared Cod, Broccoli, and Mushrooms with Creamy Alfredo Sauce",allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",4 (4 ounce) cod fillets,"2 tablespoons cornstarch
 ½ teaspoon paprika
 ½ teaspoon kosher salt
@@ -728,7 +728,7 @@ Salt to taste
 ⅛ teaspoon kosher salt
 ¼ cup water
 1  lemon, cut into wedges
-2 tablespoons pecan halves, toasted",,
+2 tablespoons pecan halves, toasted",yes,
 65,10882,Crab Cakes with Curried Yogurt Sauce,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)","1 (6 ounce) can lump crabmeat, drained","¼ cup mayonnaise
 ¼ cup plain yogurt
 1 teaspoon curry powder
@@ -747,14 +747,14 @@ Salt to taste
 1 dash lemon juice
 Old Bay Seasoning TM to taste
 1 (6 ounce) can lump crabmeat, drained
-2 tablespoons olive oil",,
+2 tablespoons olive oil",yes,
 66,10910,Cape Cod Clam Chowder,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)","2 (6.5 ounce) cans minced clams, drained","2 tablespoons butter
 ½  yellow onion, chopped
 2 (8 ounce) bottles clam juice
 1  baking potato, peeled and diced
 ½ cup heavy cream
 2 (6.5 ounce) cans minced clams, drained
-salt and ground black pepper to taste",,
+salt and ground black pepper to taste",no,"Nghêu là nhuyễn thể, không phải cá"
 67,11033,Pasta al Mediterraneo,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)","3 tablespoons pine nuts, lightly toasted","2 (5 ounce) cans tuna, drained
 1 pound perciatelli pasta
 12  kalamata olives, pitted and sliced
@@ -764,7 +764,7 @@ salt and ground black pepper to taste",,
 4 ounces fresh basil, chopped
 1  lemon, juiced
 6 tablespoons olive oil
-2 ounces feta cheese  (Optional)",,
+2 ounces feta cheese  (Optional)",yes,
 68,11191,Baked Cajun Tilapia,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường","8 buttery round crackers (such as Ritz®), crushed","⅓ cup mayonnaise
 ½ teaspoon ground cumin
 ½ teaspoon onion powder
@@ -772,7 +772,7 @@ salt and ground black pepper to taste",,
 ¼ teaspoon garlic powder
 ¼ teaspoon ground black pepper
 ½ pound tilapia fillets
-8  buttery round crackers (such as Ritz®), crushed",,
+8  buttery round crackers (such as Ritz®), crushed",yes,
 69,11343,Goi Cuon (Vietnamese Spring Roll with Pork and Prawns),allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)","5 spring onions, cut in half","½ pound pork tenderloin, cut into thin strips
 ½ pound prawns, peeled and deveined
 ¼ pound rice vermicelli noodles
@@ -780,7 +780,7 @@ salt and ground black pepper to taste",,
 1 bunch fresh cilantro, leaves picked from stems
 5  spring onions, cut in half
 ¼ cup fresh mint leaves, or more to taste
-¼ head romaine lettuce, cut into bite-size pieces",,
+¼ head romaine lettuce, cut into bite-size pieces",no,Không có trứng; dòng bằng chứng là hành lá
 70,11392,Asian Fish Tacos with Sesame-Ginger Slaw,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)","1 (12 ounce) cod, cut into 1-inch chunks","2 cups thinly sliced green cabbage
 ½ cup thinly sliced red bell pepper
 ⅓ cup sliced green onions (1/4-inch pieces)
@@ -803,7 +803,7 @@ salt and ground black pepper to taste",,
 1 (12 ounce) cod, cut into 1-inch chunks
 4 (6 inch) flour tortillas
 ½  lime, or to taste
-¼ cup roasted cashews",,
+¼ cup roasted cashews",yes,
 71,11554,Crab and Corn Cakes with Roasted Pepper-Yogurt Aioli,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)","1 (6 ounce) can crabmeat, drained, flaked and cartilage removed","½ cup whole wheat panko bread crumbs
 ½ cup cornmeal
 ¼ teaspoon salt
@@ -816,7 +816,7 @@ salt and ground black pepper to taste",,
 2 (5.3 ounce) containers VOSKOS® Nonfat Vanilla Greek Yogurt
 ¼ cup roasted red peppers, drained
 4 teaspoons lemon juice
-2 cloves garlic, minced",,
+2 cloves garlic, minced",yes,
 72,11664,Japanese Miso-Glazed Cod,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)","6 (6 ounce) fillets black cod, bones removed","6 (6 ounce) fillets black cod, bones removed
 ⅓ cup white miso paste
 ¼ cup dark brown sugar
@@ -824,7 +824,7 @@ salt and ground black pepper to taste",,
 1 teaspoon toasted sesame oil
 2 tablespoons sesame seeds, for garnish
 2  scallions, chopped
-1 teaspoon toasted sesame oil",,
+1 teaspoon toasted sesame oil",yes,
 73,11833,Paella II,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",10 large shrimp,"20  mussels, cleaned and debearded
 10 large shrimp
 2 large squid, cleaned and sliced into rings
@@ -836,7 +836,7 @@ salt and ground black pepper to taste",,
 3 cups long-grain white rice
 1 pinch saffron
 1 teaspoon paprika
-1 cup green peas",,
+1 cup green peas",yes,
 74,11944,Brazilian Crab Cakes (Casquinha de Siri),allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)","1 pound lump crabmeat, picked over for pieces of shell","2 tablespoons olive oil
 1  onion, chopped
 1 clove garlic, minced
@@ -851,7 +851,7 @@ salt and ground black pepper to taste",,
 1 dash hot pepper sauce, or to taste
 salt and ground black pepper to taste
 clean scallop shells
-¼ cup grated Parmesan cheese, or to taste",,
+¼ cup grated Parmesan cheese, or to taste",yes,
 75,11966,Craving-Vietnamese Salad,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",¾ cup salted peanuts,"¼ cup mirin (Japanese sweet wine)
 3 tablespoons soy sauce
 3 tablespoons fish sauce
@@ -872,14 +872,14 @@ clean scallop shells
 ⅓ cup mirin (Japanese sweet wine)
 ¼ cup fish sauce
 1 tablespoon sriracha sauce, or more to taste
-¾ cup salted peanuts",,
+¾ cup salted peanuts",no,Lạc (peanut) không tính là hạt cây
 76,11968,Sauteed Abalone,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",1 (16 ounce) jar Alfredo sauce,"1 (16 ounce) package linguine pasta
 2 pounds abalone without shell
 3  limes, juiced
 3 cloves garlic, chopped
 2 tablespoons olive oil
 2  green bell peppers, sliced
-1 (16 ounce) jar Alfredo sauce",,
+1 (16 ounce) jar Alfredo sauce",yes,
 77,12202,Khao Dom Pla (Rice Soup with Fish),allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)","14 ounces red snapper fillets, cut into slices","1 quart chicken stock
 14 ounces red snapper fillets, cut into slices
 2 cups cooked rice
@@ -887,7 +887,7 @@ clean scallop shells
 2  stalks gai lan (Chinese broccoli), diced
 2  green onions, sliced
 5 sprigs pak chi farang (culantro)
-sea salt to taste",,
+sea salt to taste",yes,
 78,12246,Shrimp and Crawfish Cakes,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)","1 pound uncooked medium shrimp - peeled, deveined, and chopped","1 pound uncooked medium shrimp - peeled, deveined, and chopped
 1 pound peeled crawfish tails, chopped
 8 ounces crushed saltine crackers
@@ -901,7 +901,7 @@ sea salt to taste",,
 1 teaspoon cayenne pepper
 ½ teaspoon seafood seasoning (such as Old Bay®)
 1 cup panko bread crumbs
-½ cup olive oil",,
+½ cup olive oil",yes,
 79,12354,Imitation Crab and Vegetable Casserole,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",1 (8 ounce) package imitation crabmeat,"1 tablespoon olive oil
 1 (16 ounce) package frozen broccoli, carrots, and cauliflower combination
 1 cup bread cubes
@@ -909,7 +909,7 @@ sea salt to taste",,
 1 (10.75 ounce) can  condensed cream of mushroom soup
 1 (8 ounce) package cream cheese, softened
 1 (8 ounce) package imitation crabmeat
-2 teaspoons seafood seasoning (such as Old Bay®)",,
+2 teaspoons seafood seasoning (such as Old Bay®)",yes,"Cua giả (surimi) chủ yếu làm từ cá nhưng thường có chiết xuất cua; giữ yes để an toàn, Thy cân nhắc"
 80,12478,Shrimp Pu-Pu,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường","4 green onions, chopped","1 (8 ounce) package cream cheese
 ½ cup mayonnaise
 ½ teaspoon curry powder
@@ -917,7 +917,7 @@ sea salt to taste",,
 4  green onions, chopped
 2  hard-cooked eggs, grated
 salt to taste
-1 pinch paprika, for garnish",,
+1 pinch paprika, for garnish",no,Không có thành phần lúa mì; dòng bằng chứng là hành lá
 81,12537,Prawn and Mussel Soup with Rice Noodles,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",½ (8 ounce) package dried rice noodles,"4 ounces mussels, cleaned and debearded
 ½ (8 ounce) package dried rice noodles
 1 quart water
@@ -929,7 +929,7 @@ salt to taste
 1 teaspoon sliced garlic
 ½ teaspoon salt
 4 ounces prawns, peeled and deveined
-1 tablespoon chopped fresh parsley",,
+1 tablespoon chopped fresh parsley",no,"Dùng bún gạo, không có lúa mì"
 82,12572,Light and Cheesy Panko Crusted Cod,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",6 (6 ounce) cod fillets,"Non-stick cooking spray
 1 (9.74 ounce) package Idahoan Signature™ Russets Mashed Potatoes
 6 (6 ounce) cod fillets
@@ -944,7 +944,7 @@ salt and pepper to taste
 1 tablespoon garlic powder
 2 tablespoons chopped fresh chives
 1 tablespoon mayonnaise
-salt and pepper to taste",,
+salt and pepper to taste",yes,
 83,12618,Crabby Crusted Chickpea Cakes,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)","2 (6 ounce) cans crab meat, drained","2 (15 ounce) cans chickpeas (garbanzo beans), drained and rinsed
 1  onion, chopped
 ½ cup chopped fresh parsley, divided
@@ -960,7 +960,7 @@ salt and pepper to taste",,
 1 tablespoon celery seed
 1 ½ teaspoons white sugar
 ½ teaspoon paprika
-1 large head romaine lettuce heart, shredded",,
+1 large head romaine lettuce heart, shredded",yes,
 84,12819,Shrimp Tacos with Avocado Tomatillo Salsa,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",12 (6 inch) corn tortillas,"1  avocado - peeled, pitted and diced
 ½  white onion, chopped
 4  fresh tomatillos, husks removed
@@ -974,7 +974,7 @@ salt and pepper to taste",,
 1 tablespoon olive oil
 12 (6 inch) corn tortillas
 1 cup shredded cabbage
-2  limes",,
+2  limes",no,"Bánh tortilla bắp, không phải lúa mì"
 85,12959,Ocean Packets,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)","32 uncooked shrimp, deveined but with shells","½ cup unsalted butter, melted
 1 tablespoon grated fresh lemon peel
 32  clams in shell, scrubbed
@@ -983,7 +983,7 @@ salt and pepper to taste",,
 8 ears corn on the cob, cut into quarters
 32  large cherry tomatoes
 8  12x12-inch squares aluminum foil
-1 tablespoon chopped fresh chives",,
+1 tablespoon chopped fresh chives",yes,
 86,13091,"Orange, Walnut, Gorgonzola and Mixed Greens Salad with Fresh Citrus Vinaigrette",allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",¾ cup walnut halves,"¾ cup walnut halves
 10 ounces mixed salad greens with arugula
 2  large navel oranges, peeled and sectioned
@@ -996,7 +996,7 @@ salt and pepper to taste",,
 2 teaspoons Dijon mustard
 ¼ teaspoon dried oregano
 ¼ teaspoon ground black pepper
-¼ cup crumbled Gorgonzola cheese",,
+¼ cup crumbled Gorgonzola cheese",yes,
 87,13247,Aunt Anne's Sesame Cookies,allergen:sesame,"mè: dầu mè, tahini, hạt mè",1 cup sesame seeds,"1 cup butter
 ¾ cup sugar
 1  egg, room temperature
@@ -1005,7 +1005,7 @@ salt and pepper to taste",,
 ¼ teaspoon baking powder
 ⅛ teaspoon salt
 ½ cup milk, or as needed
-1 cup sesame seeds",,
+1 cup sesame seeds",yes,
 88,13408,Thai Rice Noodle Salad,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 (8 ounce) package dried rice noodles,"1 (8 ounce) package dried rice noodles
 1 tablespoon olive oil
 ¼ head romaine lettuce, chopped
@@ -1026,14 +1026,14 @@ salt and pepper to taste",,
 1  lime, juiced
 1 teaspoon salt
 ¼ teaspoon ground turmeric
-¼ teaspoon paprika",,
+¼ teaspoon paprika",yes,Đúng là vi phạm nhưng dòng bằng chứng sai: nước tương thường có lúa mì
 89,13617,Oreo® Cookies and Cream Dessert,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)","1 (8 ounce) package 1/3-less-fat cream cheese, softened","1 (8 ounce) package 1/3-less-fat cream cheese, softened
 1 cup powdered sugar
 4 tablespoons butter, room temperature
 3 cups milk
 2 (3.5 ounce) packages instant vanilla pudding mix
 1 (8 ounce) container frozen whipped topping (such as Cool Whip®), thawed
-1 (16 ounce) package chocolate sandwich cookies (such as Oreo®), crushed into chunks",,
+1 (16 ounce) package chocolate sandwich cookies (such as Oreo®), crushed into chunks",no,"Không có trứng: cream cheese, pudding, Oreo, kem đánh bông"
 90,13849,Most Amazing Challah,allergen:sesame,"mè: dầu mè, tahini, hạt mè","¼ cup sesame seeds, divided","4 (.25 ounce) packages quick-rise yeast
 4 cups warm water (110 degrees F/45 degrees C)
 2 tablespoons salt
@@ -1043,7 +1043,7 @@ salt and pepper to taste",,
 12 cups bread flour, or as needed
 1  egg
 ½ teaspoon vanilla extract
-¼ cup sesame seeds, divided",,
+¼ cup sesame seeds, divided",yes,
 91,14374,Easy Chicken and Broccoli Alfredo,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",1 ⅔ cups milk,"8 ounces fettuccine or spaghetti, uncooked
 2 cups fresh broccoli florets
 ¼ cup KRAFT Zesty Italian Dressing
@@ -1051,7 +1051,7 @@ salt and pepper to taste",,
 1 ⅔ cups milk
 4 ounces PHILADELPHIA Cream Cheese, cubed
 ¼ cup KRAFT Grated Parmesan Cheese
-½ teaspoon dried basil leaves",,
+½ teaspoon dried basil leaves",yes,
 92,14417,Heather's Beef Enchiladas,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",¼ cup milk,"cooking spray
 ½ teaspoon garlic powder
 ¼ teaspoon ground black pepper
@@ -1071,14 +1071,14 @@ salt and pepper to taste",,
 ½ cup shredded Cheddar-Monterey Jack cheese blend
 ¼ cup milk
 7 large flour tortillas, or as needed
-½ cup shredded Cheddar-Monterey Jack cheese blend",,
+½ cup shredded Cheddar-Monterey Jack cheese blend",yes,
 93,14693,Super-Moist No-Bake Chocolate and Oatmeal Cookies,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",2 cups quick cooking oats,"2 cups white sugar
 ½ cup milk
 ½ cup butter
 4 teaspoons cocoa powder
 ½ cup creamy peanut butter
 2 teaspoons pure vanilla extract
-2 cups quick cooking oats",,
+2 cups quick cooking oats",no,Yến mạch không phải lúa mì; công thức không có bột mì
 94,15062,Slow Cooker Bulgogi,allergen:sesame,"mè: dầu mè, tahini, hạt mè","4 teaspoons sesame oil, divided","½ cup soy sauce, divided
 ¼ cup white sugar, divided
 4 teaspoons sesame oil, divided
@@ -1086,13 +1086,13 @@ salt and pepper to taste",,
 1 teaspoon ground black pepper, divided
 1 ½ pounds beef, thinly sliced
 ½ teaspoon sesame seeds
-1  green onion, cut into 1-inch pieces, or more to taste",,
+1  green onion, cut into 1-inch pieces, or more to taste",yes,
 95,15240,Very Simple Spelt Bread,allergen:sesame,"mè: dầu mè, tahini, hạt mè",½ cup sesame seeds,"8 cups spelt flour
 ½ cup sesame seeds
 ½ teaspoon salt, or to taste
 1 tablespoon blackstrap molasses
 2 teaspoons baking soda
-4 ¼ cups milk",,
+4 ¼ cups milk",yes,
 96,15269,Orzo with Chicken and Artichokes,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)","2 tablespoons pine nuts, toasted","3 teaspoons olive oil, divided
 3 ounces pancetta bacon, diced
 ½ medium onion, chopped
@@ -1104,7 +1104,7 @@ salt and pepper to taste",,
 5 ounces baby spinach
 1 (16 ounce) package orzo pasta
 2 tablespoons pine nuts, toasted
-⅛ cup balsamic vinegar",,
+⅛ cup balsamic vinegar",yes,
 97,15320,Chap Chee Noodles,allergen:sesame,"mè: dầu mè, tahini, hạt mè",1 teaspoon sesame seeds,"1 tablespoon soy sauce
 1 tablespoon sesame oil
 2  green onions, finely chopped
@@ -1122,7 +1122,7 @@ salt and pepper to taste",,
 2 tablespoons soy sauce
 1 tablespoon sugar
 ½ teaspoon salt
-¼ teaspoon black pepper",,
+¼ teaspoon black pepper",yes,
 98,15886,Banh Mi Burgers,diet:vegetarian,"chay: KHÔNG có thịt, gia cầm, cá, hải sản, gelatin, mỡ động vật, nước dùng thịt/cá",2 pounds ground pork,"½ cup chopped cucumber, seeded if large
 ¼ cup thinly sliced green onion
 ¼ cup chopped carrot
@@ -1138,7 +1138,7 @@ salt and pepper to taste",,
 1 teaspoon fish sauce
 6  sesame seed hamburger buns
 1 teaspoon chopped fresh basil  (Optional)
-1 teaspoon chopped fresh mint  (Optional)",,
+1 teaspoon chopped fresh mint  (Optional)",yes,
 99,16057,Elegant Orzo with Wilted Spinach and Pine Nuts,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",1 cup pine nuts,"1 (16 ounce) package uncooked orzo
 ½ cup olive oil
 2 tablespoons butter
@@ -1150,7 +1150,7 @@ salt and pepper to taste",,
 ⅛ cup balsamic vinegar
 1 (8 ounce) package crumbled feta cheese
 ½  fresh tomato, chopped
-salt to taste",,
+salt to taste",yes,
 100,16152,Vanilla and Chocolate Delight,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)","1 (16 ounce) container frozen whipped topping, thawed, divided","1 cup finely chopped pecans
 1 cup all-purpose flour
 ½ cup butter, melted
@@ -1160,14 +1160,14 @@ salt to taste",,
 3 cups milk
 1 (3.9 ounce) package instant chocolate pudding mix
 1 (3.4 ounce) package instant vanilla pudding mix
-2 (1.45 ounce) bars milk chocolate with crispy rice, crumbled",,
+2 (1.45 ounce) bars milk chocolate with crispy rice, crumbled",no,Không có trứng; kem đánh bông không chứa trứng
 101,16323,Bread and Butter Pudding,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",8 slices stale bread,"8 slices stale bread
 ½ cup butter, softened
 ½ cup white sugar
 ½ cup dried currants
 1 ¾ cups milk
 2  eggs
-1 pinch ground nutmeg",,
+1 pinch ground nutmeg",yes,
 102,16531,Jimmy Carter Dessert,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)","2 (8 ounce) containers frozen whipped topping, thawed","1 ½ cups graham cracker crumbs
 ¼ cup white sugar
 ⅓ cup butter, melted
@@ -1179,14 +1179,14 @@ salt to taste",,
 1 (3.9 ounce) package instant chocolate pudding mix
 3 cups milk
 ¼ cup chopped peanuts
-⅛ cup grated semisweet chocolate",,
+⅛ cup grated semisweet chocolate",no,Không có trứng; kem đánh bông không chứa trứng
 103,16563,Fettuccini Alfredo I,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",2 cups milk,"8 ounces dry fettuccine pasta
 4 ½ tablespoons butter
 2 ½ tablespoons all-purpose flour
 2 cups milk
 1 teaspoon minced garlic
 5 drops hot pepper sauce
-½ cup grated Parmesan cheese",,
+½ cup grated Parmesan cheese",yes,
 104,16630,Khao Soi Soup,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",2 tablespoons fish sauce,"2 tablespoons vegetable oil
 3  shallots, chopped
 3 cloves garlic, minced
@@ -1206,7 +1206,7 @@ salt to taste",,
 1 (8 ounce) package rice noodles
 1 cup pickled mustard cabbage, thinly sliced  (Optional)
 ½ cup coarsely chopped fresh cilantro
-1  lime, cut into wedges",,
+1  lime, cut into wedges",yes,
 105,16630,Khao Soi Soup,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 (8 ounce) package rice noodles,"2 tablespoons vegetable oil
 3  shallots, chopped
 3 cloves garlic, minced
@@ -1226,7 +1226,7 @@ salt to taste",,
 1 (8 ounce) package rice noodles
 1 cup pickled mustard cabbage, thinly sliced  (Optional)
 ½ cup coarsely chopped fresh cilantro
-1  lime, cut into wedges",,
+1  lime, cut into wedges",no,"Dùng bún gạo, không có lúa mì"
 106,16651,Cherry Dessert,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)",1 ¼ cups graham cracker crumbs,"1 ¼ cups graham cracker crumbs
 ¾ cup margarine, melted
 1 (8 ounce) package cream cheese
@@ -1234,7 +1234,7 @@ salt to taste",,
 1 dash vanilla extract
 1 dash almond extract
 1 cup heavy cream
-1 (12 ounce) can cherry pie filling",,
+1 (12 ounce) can cherry pie filling",no,Không có trứng; bánh graham và cream cheese không chứa trứng
 107,16651,Cherry Dessert,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 ¼ cups graham cracker crumbs,"1 ¼ cups graham cracker crumbs
 ¾ cup margarine, melted
 1 (8 ounce) package cream cheese
@@ -1242,13 +1242,13 @@ salt to taste",,
 1 dash vanilla extract
 1 dash almond extract
 1 cup heavy cream
-1 (12 ounce) can cherry pie filling",,
+1 (12 ounce) can cherry pie filling",yes,Bánh graham làm từ bột mì
 108,17312,Chicken or Beef Stir-Fry Sauce,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)",3 tablespoons soy sauce,"½ cup water
 3 tablespoons soy sauce
 2 tablespoons white sugar
 2 tablespoons cornstarch
 ½ teaspoon garlic powder
-¼ teaspoon ground ginger",,
+¼ teaspoon ground ginger",no,"Không có sản phẩm động vật: nước tương, đường, bột bắp"
 109,17405,NO YOLKS® Creamy Chicken Noodle Casserole,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 ½ tablespoons all-purpose flour,"6 ounces NO YOLKS® Extra Broad Noodles
 1 tablespoon olive oil
 1 (8 ounce) package sliced fresh mushrooms
@@ -1264,7 +1264,7 @@ salt to taste",,
 2  breast half, bone and skin removed (blank)s cooked chicken breasts, chopped
 1 cup panko bread crumbs
 1 tablespoon butter, melted
-1 pinch Salt and pepper, to taste",,
+1 pinch Salt and pepper, to taste",yes,
 110,17475,Multigrain Seeded Bread,allergen:sesame,"mè: dầu mè, tahini, hạt mè",3 tablespoons sesame seeds,"1 ½ cups whole wheat flour
 ¾ cup all-purpose flour
 1 (.25 ounce) package active dry yeast
@@ -1276,7 +1276,7 @@ salt to taste",,
 1 cup water
 2 tablespoons molasses
 1  egg white
-1 tablespoon 1% milk",,
+1 tablespoon 1% milk",yes,
 111,17926,Quinoa Salad with Dried Fruit and Nuts,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",¾ cup chopped pecans,"1 ½ cups quinoa
 ¼ teaspoon salt
 3 ½ cups water
@@ -1289,7 +1289,7 @@ salt to taste",,
 2 tablespoons lemon juice
 2 tablespoons sesame oil
 ⅓ cup chopped fresh cilantro
-¾ cup chopped pecans",,
+¾ cup chopped pecans",yes,
 112,18135,Lighter Fettuccini Alfredo,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",1 cup nonfat milk,"12 ounces dry fettuccine pasta
 1 cup nonfat milk
 ½ cup reduced fat margarine
@@ -1297,7 +1297,7 @@ salt to taste",,
 ¼ teaspoon garlic powder
 ½ teaspoon minced garlic
 ¼ teaspoon onion salt
-1 cup grated Parmesan cheese",,
+1 cup grated Parmesan cheese",yes,
 113,18436,Chocolate Sin Pie,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)","1 (8 ounce) package cream cheese, softened","cooking spray (such as Pam®)
 1 ½ cups self-rising flour
 1 cup chopped pecans
@@ -1307,24 +1307,24 @@ salt to taste",,
 1 cup confectioners' sugar
 3 cups milk
 1 (5.9 ounce) package instant chocolate pudding mix
-1 (12 ounce) container frozen whipped topping (such as Cool Whip®), thawed",,
+1 (12 ounce) container frozen whipped topping (such as Cool Whip®), thawed",no,Không có trứng; dòng bằng chứng là cream cheese
 114,18597,Mari's Dessert Pie,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)","1 (8 ounce) container frozen whipped topping, thawed","½ cup butter
 1 cup all-purpose flour
 ¼ cup white sugar
 1 (8 ounce) package cream cheese
 ½ cup white sugar
 1 (8 ounce) container frozen whipped topping, thawed
-1 (3.9 ounce) package instant chocolate pudding mix",,
+1 (3.9 ounce) package instant chocolate pudding mix",no,Không có trứng; dòng bằng chứng là kem đánh bông
 115,18929,Cherry-Mascarpone Cheese Dessert,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)",¾ cup heavy cream,"1 (8 ounce) container mascarpone cheese
 5 tablespoons confectioners' sugar
 ¾ cup heavy cream
 1 teaspoon vanilla extract
-2 cups sweet cherries, halved and pitted",,
+2 cups sweet cherries, halved and pitted",no,Không có trứng; dòng bằng chứng là kem tươi
 116,18929,Cherry-Mascarpone Cheese Dessert,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",¾ cup heavy cream,"1 (8 ounce) container mascarpone cheese
 5 tablespoons confectioners' sugar
 ¾ cup heavy cream
 1 teaspoon vanilla extract
-2 cups sweet cherries, halved and pitted",,
+2 cups sweet cherries, halved and pitted",no,Không có lúa mì; dòng bằng chứng là kem tươi
 117,18961,Rye Bread Boat Dip,allergen:sesame,"mè: dầu mè, tahini, hạt mè",2 (2 ounce) packages dried chipped beef,"3 cups sour cream
 3 cups mayonnaise
 2 (2 ounce) packages dried chipped beef
@@ -1332,7 +1332,7 @@ salt to taste",,
 2 tablespoons minced onion
 2 teaspoons seasoned salt (such as Spice Islands® Beau Monde Seasoning)
 2 teaspoons chopped fresh dill
-1 (1 pound) loaf rye bread",,
+1 (1 pound) loaf rye bread",no,Không có mè; dòng bằng chứng là thịt bò khô
 118,19023,African Sweet Potato Stew,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)","2 (15 ounce) cans chickpeas, drained and rinsed","1  onion, chopped
 2 small jalapeno peppers, seeded and chopped
 3 cloves garlic, minced
@@ -1347,7 +1347,7 @@ salt to taste",,
 2 (15 ounce) cans diced tomatoes, drained
 2 (15 ounce) cans chickpeas, drained and rinsed
 ¼ cup peanut butter
-1 (15 ounce) can sliced green beans, drained",,
+1 (15 ounce) can sliced green beans, drained",no,Món thuần chay; bơ đậu phộng không phải sản phẩm động vật
 119,19116,Instant Pot® Spicy Beef Curry Stew,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)",2 pounds cubed beef stew meat,"2 tablespoons olive oil
 2 pounds cubed beef stew meat
 salt and ground black pepper to taste
@@ -1359,7 +1359,7 @@ salt and ground black pepper to taste
 1 (28 ounce) can fire-roasted diced tomatoes
 1 pound Yukon Gold potatoes
 3  carrots, sliced
-1 large onion, sliced",,
+1 large onion, sliced",yes,
 120,19159,Eggless Date Cake,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)",1 cup all-purpose flour,"¾ cup milk
 18  dates, pitted and left whole
 ½ cup brown sugar
@@ -1368,7 +1368,7 @@ salt and ground black pepper to taste
 1 cup all-purpose flour
 1 teaspoon baking soda
 1 teaspoon ground cinnamon  (Optional)
-¼ cup chopped walnuts  (Optional)",,
+¼ cup chopped walnuts  (Optional)",no,Bánh không trứng; dòng bằng chứng là bột mì
 121,19342,Chef John's Fisherman's Pie,allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",2 pounds boneless cod fillets,"3  russet potatoes, peeled and cut into chunks
 3 tablespoons butter
 1 pinch freshly grated nutmeg
@@ -1387,7 +1387,7 @@ salt and ground black pepper to taste
 1 pinch cayenne pepper, or to taste
 2 pounds boneless cod fillets
 ½  lemon, juiced
-1 tablespoon chopped fresh chives for garnish",,
+1 tablespoon chopped fresh chives for garnish",yes,
 122,19647,Spicy Rice Noodle Salad,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 (6.75 ounce) package thin rice noodles,"1 (6.75 ounce) package thin rice noodles
 3 cloves garlic, minced
 ⅓ cup seasoned rice vinegar
@@ -1401,7 +1401,7 @@ salt and ground black pepper to taste
 ½ cup chopped peanuts
 1 teaspoon sesame oil
 6  grilled boneless, skinless chicken thighs  (Optional)
-¼ cup Fresno chile peppers, cut into rings  (Optional)",,
+¼ cup Fresno chile peppers, cut into rings  (Optional)",no,"Bún gạo, nước mắm, sambal: không có lúa mì"
 123,20010,Low Carb Broccoli Soup,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)","¼ cup shredded Cheddar cheese, or as desired (Optional)","1 tablespoon extra-virgin olive oil
 1 large onion, finely chopped
 2 cloves garlic, minced
@@ -1410,7 +1410,7 @@ salt and ground black pepper to taste
 ⅛ teaspoon ground black pepper
 5 cups vegetable broth
 ¼ cup freshly squeezed lemon juice
-¼ cup shredded Cheddar cheese, or as desired  (Optional)",,
+¼ cup shredded Cheddar cheese, or as desired  (Optional)",yes,Dòng có ghi (Optional) vẫn tính
 124,20047,Sesame Lime Steak Wraps,allergen:sesame,"mè: dầu mè, tahini, hạt mè",1 teaspoon sesame oil,"½ pound eye of round, thinly sliced
 ¼ cup lime juice
 ¼ cup honey
@@ -1420,7 +1420,7 @@ salt and ground black pepper to taste
 1 teaspoon sesame oil
 1 teaspoon finely chopped fresh ginger root
 4 leaves red leaf lettuce - rinsed, dried and torn
-4 (8 inch) flour tortillas",,
+4 (8 inch) flour tortillas",yes,
 125,20600,Spiralized Apple Salad,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",1 tablespoon pine nuts,"2 tablespoons extra-virgin olive oil
 2 tablespoons white balsamic vinegar
 1 tablespoon Dijon mustard
@@ -1428,7 +1428,7 @@ salt and ground black pepper to taste
 2  unpeeled Granny Smith apples
 1  unpeeled Red Delicious apple
 ½  lime, juiced
-1 tablespoon pine nuts",,
+1 tablespoon pine nuts",yes,
 126,20758,Red Bean Stew,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)",1 (14 ounce) can tomato sauce,"2 tablespoons olive oil
 1  onion, thinly sliced
 1 bunch fresh cilantro, stems removed and leaves minced
@@ -1438,7 +1438,7 @@ salt and ground black pepper to taste
 ½ teaspoon ground cumin
 1 (14 ounce) can tomato sauce
 1 (15 ounce) can red beans, drained and rinsed
-salt and ground black pepper to taste",,
+salt and ground black pepper to taste",no,Món thuần chay; dòng bằng chứng là sốt cà chua
 127,20832,Green Bean Orzo Pasta,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)","½ cup pine nuts, or more to taste","1 ½ cups orzo pasta
 1 (12 ounce) bag fresh green beans, trimmed
 3 tablespoons olive oil, divided
@@ -1446,7 +1446,7 @@ salt and ground black pepper to taste",,
 1 (14.5 ounce) can petite diced tomatoes, drained and rinsed
 ½ cup grated Parmesan cheese
 1 teaspoon dried basil
-salt and ground black pepper to taste",,
+salt and ground black pepper to taste",yes,
 128,21159,"Mango, Carrot, and Arugula Salad",allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)","1 tablespoon chopped dry-roasted, unsalted peanuts","5  mangoes - peeled, seeded, and diced
 3 large carrots, shredded
 ¾ (5 ounce) package baby arugula
@@ -1461,11 +1461,11 @@ salt and ground black pepper to taste",,
 1 packet granular no-calorie sucralose sweetener (such as Splenda®)
 1 dash lime juice
 salt and ground black pepper to taste
-1 tablespoon chopped cilantro",,
+1 tablespoon chopped cilantro",no,Lạc (peanut) không tính là hạt cây
 129,21199,Chipotle Blue Cheese Dip,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 ½ cups chunky blue cheese dressing,"1 (7 ounce) can chipotle peppers in adobo sauce
 1 cup mayonnaise
 2 tablespoons milk
-1 ½ cups chunky blue cheese dressing",,
+1 ½ cups chunky blue cheese dressing",no,Không thấy thành phần lúa mì; dòng bằng chứng là sốt blue cheese
 130,21268,Pink Ambrosia,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)",1 (12 ounce) container whipped topping (such as Cool Whip®),"1 (14 ounce) can sweetened condensed milk (such as Eagle Brand®)
 1 (12 ounce) container whipped topping (such as Cool Whip®)
 1 teaspoon vanilla extract
@@ -1473,7 +1473,7 @@ salt and ground black pepper to taste
 1 (8 ounce) can crushed pineapple, drained
 1 cup shredded coconut
 1 cup finely chopped pecans
-1 cup miniature marshmallows  (Optional)",,
+1 cup miniature marshmallows  (Optional)",no,Không có trứng; kem đánh bông và marshmallow không chứa trứng
 131,21438,Zucchini and Soy Bean Stir Fry,allergen:soy,"đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",½ cup shelled edamame (green soybeans),"⅓ cup broccoli florets
 ⅓ cup cauliflower florets
 ½ cup shelled edamame (green soybeans)
@@ -1485,7 +1485,7 @@ salt and ground black pepper to taste
 5 large mushrooms, sliced
 1 tablespoon finely chopped garlic
 1 ½ tablespoons reduced-sodium teriyaki sauce
-2 tablespoons agave nectar",,
+2 tablespoons agave nectar",yes,
 132,21462,Creamy Ham and Bean Soup (Gluten Free),allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",¼ cup warm milk,"1  Yukon Gold potato, peeled and diced
 ½ head cauliflower, chopped
 12  baby carrots
@@ -1499,7 +1499,7 @@ salt and ground black pepper to taste
 1 (14 ounce) can navy beans, undrained
 1 cup chicken broth
 1 (14 ounce) can navy beans, drained
-1 clove garlic",,
+1 clove garlic",yes,Có sữa và bơ
 133,21605,Giant Bundt® Muffuletta Sandwich,allergen:sesame,"mè: dầu mè, tahini, hạt mè",1 teaspoon sesame seeds,"1  serving cooking spray
 2 (11 ounce) cans refrigerated French bread dough (such as Pillsbury®)
 ⅓ cup olive oil
@@ -1512,12 +1512,12 @@ salt and ground black pepper to taste
 10  black olives, sliced
 ½ cup sliced fire-roasted red peppers
 1 teaspoon olive oil
-1 teaspoon sesame seeds",,
+1 teaspoon sesame seeds",yes,
 134,21842,Chinese Dan-Bin,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 (6 inch) corn tortilla,"1 slice bacon
 1  egg, beaten
 1 (6 inch) corn tortilla
 ¼ cup sweet corn kernels
-1 tablespoon smooth salsa",,
+1 tablespoon smooth salsa",no,"Bánh tortilla bắp, không phải lúa mì"
 135,21860,Vegan Spaghetti Squash Noodle Salad with Peanut Sauce,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",⅓ cup peanut butter,"½ small spaghetti squash, halved and seeded
 ⅓ cup peanut butter
 2 tablespoons tamari
@@ -1533,7 +1533,7 @@ salt and ground black pepper to taste
 1  carrot, shredded
 2  scallions, minced
 1 sprig fresh mint, thinly sliced
-¼ cup roasted, salted peanuts",,
+¼ cup roasted, salted peanuts",no,"Chỉ có lạc (peanut), không tính là hạt cây"
 136,21862,Thai Coconut Soup (Tom Kha Gai),allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)","1 teaspoon fish sauce, or more to taste","3 stalks green onions
 1 bunch cilantro, divided
 4 cups water
@@ -1544,7 +1544,7 @@ salt and ground black pepper to taste
 2 (15 ounce) cans straw mushrooms
 2 (15 ounce) cans sliced bamboo shoots
 2 (15 ounce) cans unsweetened coconut cream
-1 teaspoon fish sauce, or more to taste",,
+1 teaspoon fish sauce, or more to taste",yes,
 137,21934,Salsa Vegetable Soup,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)",4 cups salsa,"2 tablespoons olive oil
 ½  onion, diced
 1  yellow bell pepper, diced
@@ -1562,7 +1562,7 @@ salt and ground black pepper to taste
 1 pinch chili powder
 1 pinch ground paprika
 1 head broccoli, cut into florets
-½ cup frozen peas",,
+½ cup frozen peas",no,Món thuần chay; salsa không có sản phẩm động vật
 138,22494,Lighter Potato and Leek Soup,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",1 cup low-fat milk,"2  leeks, white parts only, thinly sliced
 3 tablespoons olive oil
 3 cloves garlic, smashed
@@ -1573,7 +1573,7 @@ salt and ground black pepper to taste
 ½ teaspoon chili-garlic sauce
 cracked black pepper to taste
 5  unpeeled potatoes, diced
-1 cup low-fat milk",,
+1 cup low-fat milk",yes,
 139,22512,Roast Beef Wraps with Maille® Old Style Mustard,allergen:sesame,"mè: dầu mè, tahini, hạt mè",2 teaspoons sesame oil,"4  tortilla wraps
 Roast beef:
 4 slices roast beef cooked rare
@@ -1585,7 +1585,7 @@ Freshly ground black pepper
 Maille® Old Style mustard cream:
 ½ cup whipping cream
 2 tablespoons Maille® Old Style Mustard
-Salt and freshly ground black pepper",,
+Salt and freshly ground black pepper",yes,
 140,22607,Honey-Quinoa Salad with Cherries and Cashews,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",½ cup coarsely chopped cashews,"1 cup water
 ⅔ cup quinoa, rinsed and drained
 ½ teaspoon salt, divided
@@ -1600,7 +1600,7 @@ Salt and freshly ground black pepper",,
 ½ cup coarsely chopped cashews
 ½ cup dried apricots, thinly sliced
 ¼ cup thinly sliced red onion
-4 cups torn Bibb lettuce",,
+4 cups torn Bibb lettuce",yes,
 141,22691,Banh Mi Sliders,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường","1 slice bread, shredded","½ pound ground beef
 ½ pound ground pork
 ½ cup rolled oats
@@ -1613,13 +1613,13 @@ Salt and freshly ground black pepper",,
 1 tablespoon soy sauce
 1 tablespoon minced fresh ginger root
 ½ tablespoon sesame oil
-1 (15 ounce) package slider-size burger buns",,
+1 (15 ounce) package slider-size burger buns",yes,
 142,22776,Dripping Roast Beef Sandwiches with Melted Provolone,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",1 (10.5 ounce) can Campbell's® Condensed French Onion Soup,"1 (10.5 ounce) can  Campbell's® Condensed French Onion Soup
 1 tablespoon reduced sodium Worcestershire sauce
 ¾ pound thinly sliced deli roast beef
 4  Pepperidge Farm® Classic Soft Hoagie Rolls with Sesame Seeds
 4 slices diced provolone cheese, cut in half
-¼ cup drained hot or mild pickled banana pepper rings",,
+¼ cup drained hot or mild pickled banana pepper rings",no,"Không có giáp xác; sốt Worcestershire có cá cơm, không phải giáp xác"
 143,23540,Nuoc Cham (Vietnamese Dipping Sauce),allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",¼ cup fish sauce,"¼ cup white sugar
 ½ cup warm water
 ¼ cup fish sauce
@@ -1627,7 +1627,7 @@ Salt and freshly ground black pepper",,
 ½  lemon, juiced
 3 cloves garlic, minced
 3  Thai chile peppers, chopped
-1  green onion, thinly sliced",,
+1  green onion, thinly sliced",yes,
 144,23655,Sesame Vegetable Stir-Fry,allergen:sesame,"mè: dầu mè, tahini, hạt mè",½ tablespoon sesame seeds,"1 pound broccoli
 ¼ pound fresh snow peas, strings removed
 1  red onion, sliced
@@ -1635,7 +1635,7 @@ Salt and freshly ground black pepper",,
 1  red bell pepper, cut into 1/4-inch strips
 2 teaspoons minced garlic
 ¼ cup Kikkoman Less Sodium Soy Sauce
-½ tablespoon sesame seeds",,
+½ tablespoon sesame seeds",yes,
 145,23655,Sesame Vegetable Stir-Fry,allergen:soy,"đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",¼ cup Kikkoman Less Sodium Soy Sauce,"1 pound broccoli
 ¼ pound fresh snow peas, strings removed
 1  red onion, sliced
@@ -1643,7 +1643,7 @@ Salt and freshly ground black pepper",,
 1  red bell pepper, cut into 1/4-inch strips
 2 teaspoons minced garlic
 ¼ cup Kikkoman Less Sodium Soy Sauce
-½ tablespoon sesame seeds",,
+½ tablespoon sesame seeds",yes,
 146,23734,Vietnamese Rice Noodle Salad,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 (12 ounce) package dried rice noodles,"5 cloves garlic
 1 cup loosely packed chopped cilantro
 ½  jalapeno pepper, seeded and minced
@@ -1656,7 +1656,7 @@ Salt and freshly ground black pepper",,
 ¼ cup chopped fresh mint
 4 leaves napa cabbage
 ¼ cup unsalted peanuts
-4 sprigs fresh mint",,
+4 sprigs fresh mint",no,Bún gạo; dùng nước mắm chay
 147,23931,Flavorful Beef Stir-Fry,allergen:soy,"đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",6 tablespoons soy sauce,"2 cups brown rice
 4 cups water
 2 tablespoons cornstarch
@@ -1673,7 +1673,7 @@ Salt and freshly ground black pepper",,
 1 (8 ounce) can sliced water chestnuts, undrained
 1 cup Chinese cabbage
 2 large heads bok choy, chopped
-1 tablespoon vegetable oil",,
+1 tablespoon vegetable oil",yes,
 148,24023,Moroccan Chickpea Stew,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)","1 (14.5 ounce) can chickpeas, drained and rinsed","1 tablespoon olive oil
 1 small onion, chopped
 2 cloves garlic, minced
@@ -1690,7 +1690,7 @@ Salt and freshly ground black pepper",,
 water, or enough to cover
 1 (14.5 ounce) can chickpeas, drained and rinsed
 1 bunch kale, ribs removed, chopped
-½ cup chopped fresh cilantro",,
+½ cup chopped fresh cilantro",yes,
 149,24120,Perfect Chicken Vegetable Soup,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)","2 eggs, beaten (Optional)","1 tablespoon vegetable oil
 2  skinless, boneless chicken breasts, cut into bite-sized pieces
 ½ large white onion, chopped
@@ -1700,25 +1700,25 @@ water, or enough to cover
 ¼ head cabbage, chopped
 1 large carrot, chopped
 2  eggs, beaten  (Optional)
-salt and ground black pepper to taste",,
+salt and ground black pepper to taste",no,Trứng không phải sữa; không có sữa trong công thức
 150,24518,Dorito® Casserole,allergen:sesame,"mè: dầu mè, tahini, hạt mè",1 (10.75 ounce) can cream of chicken soup,"1 pound ground beef
 1 (10.75 ounce) can  cream of chicken soup
 1 (10 ounce) can enchilada sauce
 10 fluid ounces milk
 1 (13 ounce) package flavored tortilla snack chips (such as Doritos®), crushed
-8 slices processed cheese food (such as Velveeta®)",,
+8 slices processed cheese food (such as Velveeta®)",no,Không có mè; dòng bằng chứng là súp kem gà
 151,24574,Angel Fruit Trifle,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)","2 (16 ounce) tubs reduced-fat frozen whipped topping, thawed","1 (12 ounce) package frozen blueberries
 1  prepared angel food cake, cut into chunks
 2 cups chopped fresh strawberries
 1 (12 ounce) package frozen peach slices, chopped
 1 (6 ounce) container fresh raspberries
-2 (16 ounce) tubs reduced-fat frozen whipped topping, thawed",,
+2 (16 ounce) tubs reduced-fat frozen whipped topping, thawed",yes,Đúng là vi phạm nhưng dòng bằng chứng sai: bánh angel food làm từ lòng trắng trứng
 152,24574,Angel Fruit Trifle,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường","1 prepared angel food cake, cut into chunks","1 (12 ounce) package frozen blueberries
 1  prepared angel food cake, cut into chunks
 2 cups chopped fresh strawberries
 1 (12 ounce) package frozen peach slices, chopped
 1 (6 ounce) container fresh raspberries
-2 (16 ounce) tubs reduced-fat frozen whipped topping, thawed",,
+2 (16 ounce) tubs reduced-fat frozen whipped topping, thawed",yes,
 153,25039,Thit Bo Xao Dau,allergen:soy,"đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",1 teaspoon soy sauce,"1 clove garlic, minced
 ¼ teaspoon ground black pepper
 1 teaspoon cornstarch
@@ -1728,7 +1728,7 @@ salt and ground black pepper to taste",,
 ½  onion, thinly sliced
 2 cups fresh green beans, washed and trimmed
 ¼ cup chicken broth
-1 teaspoon soy sauce",,
+1 teaspoon soy sauce",yes,
 154,25045,Cuban Beef Stew,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)","1 ½ pounds sirloin tips, cubed","2 tablespoons olive oil
 1  onion, chopped
 4 cloves garlic, minced
@@ -1744,12 +1744,12 @@ salt and ground black pepper to taste",,
 ¼ cup raisins
 2 tablespoons capers
 4  potatoes, peeled and quartered
-salt and pepper to taste",,
+salt and pepper to taste",yes,
 155,25227,Alfredo Chicken,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",1 (16 ounce) jar prepared Alfredo sauce,"6 ounces spiral pasta
 2 pounds chicken meat, cut into strips
 1 (.7 ounce) package Italian dressing mix
 1 tablespoon garlic powder
-1 (16 ounce) jar prepared Alfredo sauce",,
+1 (16 ounce) jar prepared Alfredo sauce",yes,
 156,25288,Fettuccine Alfredo with Chicken,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)","4 ounces PHILADELPHIA Neufchatel cheese, cubed","½ pound fettuccine, uncooked
 1 pound boneless skinless chicken breasts, cut into strips
 1 ¼ cups fat-free, reduced-sodium chicken broth
@@ -1757,12 +1757,12 @@ salt and pepper to taste",,
 4 ounces PHILADELPHIA Neufchatel cheese, cubed
 3 tablespoons KRAFT Grated Parmesan Cheese, divided
 ¼ teaspoon garlic powder
-¼ teaspoon pepper",,
+¼ teaspoon pepper",yes,
 157,25334,"Apple, Brie, and Walnut Salad",allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",⅓ cup toasted walnut pieces,"2  red apples, cored and thinly sliced
 ½ cup balsamic vinaigrette
 3 cups spring mix salad greens
 ½ cup sliced Brie cheese
-⅓ cup toasted walnut pieces",,
+⅓ cup toasted walnut pieces",yes,
 158,25626,Slow Cooker Mediterranean Stew,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)",1 (8 ounce) can tomato sauce,"1  butternut squash - peeled, seeded, and cubed
 2 cups cubed eggplant, with peel
 2 cups cubed zucchini
@@ -1778,7 +1778,7 @@ salt and pepper to taste",,
 ½ teaspoon ground turmeric
 ¼ teaspoon crushed red pepper
 ¼ teaspoon ground cinnamon
-¼ teaspoon paprika",,
+¼ teaspoon paprika",no,Món thuần chay; dòng bằng chứng là sốt cà chua
 159,25928,Roasted Butternut Squash Soup with Apples and Bacon,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",1 ½ cups sour cream,"1 (3 pound) butternut squash - peeled, seeded, and cubed
 1 tablespoon olive oil
 salt and ground black pepper to taste
@@ -1795,12 +1795,12 @@ salt and ground black pepper to taste
 1 cup apple cider
 1 ½ quarts chicken stock
 ½ teaspoon ground nutmeg  (Optional)
-1 ½ cups sour cream",,
+1 ½ cups sour cream",yes,
 160,26101,Asparagus Soup in Seconds,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",½ cup milk (Optional),"1 (15 ounce) can asparagus
 1 (14.5 ounce) can chicken broth
 ½ cup milk  (Optional)
 1 tablespoon butter  (Optional)
-salt and pepper to taste",,
+salt and pepper to taste",yes,Dòng có ghi (Optional) vẫn tính
 161,26154,Beef Stew I,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)",2 pounds cubed beef stew meat,"2 tablespoons olive oil
 2 pounds cubed beef stew meat
 2 tablespoons all-purpose flour
@@ -1813,7 +1813,7 @@ salt and pepper to taste",,
 2 teaspoons dried rosemary
 1 cup fresh corn kernels
 1 cup fresh green beans, cut into 1 inch pieces
-¼ cup instant rice",,
+¼ cup instant rice",yes,
 162,26510,Gluten-Free Multigrain Bread,allergen:sesame,"mè: dầu mè, tahini, hạt mè",1 teaspoon sesame seeds (Optional),"1 teaspoon butter, or as needed
 ¾ cup brown rice flour
 ¼ cup tapioca starch
@@ -1833,13 +1833,13 @@ salt and pepper to taste",,
 2 tablespoons agave nectar
 2 tablespoons olive oil
 2 teaspoons apple cider vinegar
-1 teaspoon sesame seeds  (Optional)",,
+1 teaspoon sesame seeds  (Optional)",yes,Dòng có ghi (Optional) vẫn tính
 163,26746,Apple Strudel Dessert,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)",1 (21 ounce) can apple pie filling,"2 (8 ounce) packages refrigerated crescent roll dough
 1 (21 ounce) can apple pie filling
-1 teaspoon ground cinnamon",,
+1 teaspoon ground cinnamon",no,Không có trứng; vỏ bánh crescent và nhân táo không chứa trứng
 164,26746,Apple Strudel Dessert,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",2 (8 ounce) packages refrigerated crescent roll dough,"2 (8 ounce) packages refrigerated crescent roll dough
 1 (21 ounce) can apple pie filling
-1 teaspoon ground cinnamon",,
+1 teaspoon ground cinnamon",yes,
 165,26968,Date and Chocolate Chip Whole Wheat Scones,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",2 cups whole wheat flour,"2 cups whole wheat flour
 1 cup all purpose flour
 3 tablespoons baking powder
@@ -1851,7 +1851,7 @@ salt and pepper to taste",,
 ½ cup chocolate chips
 1 ½ cups milk
 milk for brushing
-extra sugar and cinnamon to sprinkle",,
+extra sugar and cinnamon to sprinkle",yes,
 166,27122,Bruce's Honey Sesame Bread,allergen:sesame,"mè: dầu mè, tahini, hạt mè","½ cup sesame seeds, toasted","1 ¼ cups water
 ¼ cup honey
 1 tablespoon powdered buttermilk
@@ -1859,7 +1859,7 @@ extra sugar and cinnamon to sprinkle",,
 3 cups bread flour
 3 tablespoons wheat bran
 ½ cup sesame seeds, toasted
-2 ¼ teaspoons active dry yeast",,
+2 ¼ teaspoons active dry yeast",yes,
 167,27133,Whole Wheat Banana Bread with Flaxseed and Oats,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 ½ cups whole wheat flour,"1 ½ cups whole wheat flour
 ⅔ cup brown sugar
 ½ cup flaxseed meal
@@ -1873,7 +1873,7 @@ extra sugar and cinnamon to sprinkle",,
 ⅓ cup buttermilk
 1 tablespoon buttermilk
 1 teaspoon vanilla extract
-3  bananas, mashed",,
+3  bananas, mashed",yes,
 168,27492,Mom's Basic Vegetable Beef Stew,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)",1 pound ground beef,"1 tablespoon olive oil, or as needed
 2  onions, roughly chopped, divided
 4  carrots, cut into 1/2-inch rounds
@@ -1889,26 +1889,26 @@ salt and ground black pepper to taste
 1 (32 ounce) can diced tomatoes with juice
 1 pound ground beef
 4  potatoes, peeled and cut into chunks
-1 stalk celery, chopped",,
+1 stalk celery, chopped",yes,
 169,28051,Banana Lumpia,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường","24 lumpia wrappers, defrosted","oil for deep frying
 ¼ cup brown sugar, or as needed
 6 large bananas, halved crosswise and then lengthwise
 24  lumpia wrappers, defrosted
-1 tablespoon water, or as needed",,
+1 tablespoon water, or as needed",yes,
 170,28105,Asian Beef and Vegetable Stir-Fry,allergen:sesame,"mè: dầu mè, tahini, hạt mè",½ cup prepared stir-fry sauce,"1 pound beef top sirloin steak boneless, cut 1 inch thick
 4 cups assorted fresh vegetables, such as sugar snap peas, broccoli florets, bell pepper and carrot strips
 1 clove garlic, minced
 ½ cup prepared stir-fry sauce
 ⅛ teaspoon crushed red pepper, or to taste
 2 cups hot cooked rice
-2 tablespoons unsalted dry-roasted peanuts  (Optional)",,
+2 tablespoons unsalted dry-roasted peanuts  (Optional)",no,"Không có mè rõ ràng; 'stir-fry sauce' đóng chai không ghi rõ thành phần (một số loại có dầu mè), Thy cân nhắc"
 171,28105,Asian Beef and Vegetable Stir-Fry,allergen:soy,"đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",½ cup prepared stir-fry sauce,"1 pound beef top sirloin steak boneless, cut 1 inch thick
 4 cups assorted fresh vegetables, such as sugar snap peas, broccoli florets, bell pepper and carrot strips
 1 clove garlic, minced
 ½ cup prepared stir-fry sauce
 ⅛ teaspoon crushed red pepper, or to taste
 2 cups hot cooked rice
-2 tablespoons unsalted dry-roasted peanuts  (Optional)",,
+2 tablespoons unsalted dry-roasted peanuts  (Optional)",yes,'stir-fry sauce' đóng chai hầu như đều có nước tương
 172,28147,Banana Chocolate Meal-in-a-Muffin,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",2 ½ cups whole wheat flour,"cooking spray
 4  bananas, mashed
 ¼ cup brown sugar
@@ -1920,7 +1920,7 @@ salt and ground black pepper to taste
 1 teaspoon baking powder
 1 teaspoon ground cinnamon
 ¼ cup chocolate chips
-¼ cup chopped walnuts  (Optional)",,
+¼ cup chopped walnuts  (Optional)",yes,
 173,28479,Gluten-Free Pumpkin Cookies,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",2 cups gluten-free all-purpose baking flour,"2 cups gluten-free all-purpose baking flour
 1 ½ teaspoons baking powder
 1 teaspoon ground ginger
@@ -1932,12 +1932,12 @@ salt and ground black pepper to taste
 ½ cup white sugar
 2  eggs
 1 cup shredded coconut
-1 cup pumpkin puree",,
+1 cup pumpkin puree",no,"Dùng bột không gluten, không có lúa mì"
 174,28629,Eggless Chocolate Gelato,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)","3 cups cold whole milk, divided","3 cups cold whole milk, divided
 ¼ cup white sugar
 3 tablespoons cornstarch
 ¼ teaspoon salt
-7 ounces fine-quality bittersweet chocolate, finely chopped",,
+7 ounces fine-quality bittersweet chocolate, finely chopped",no,Gelato không trứng; dòng bằng chứng là sữa
 175,28743,Peach-Raspberry Crisp,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)","2 sticks unsalted butter, room temperature","1 teaspoon unsalted butter, or as needed
 6 large  fresh peaches
 ¾ cup white sugar, divided
@@ -1949,7 +1949,7 @@ salt and ground black pepper to taste
 1 cup all-purpose flour
 1 cup oats (such as Quaker Oats®)
 2 sticks unsalted butter, room temperature
-¼ teaspoon salt",,
+¼ teaspoon salt",no,Không có trứng; dòng bằng chứng là bơ
 176,29029,Easy Venison Stew,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)","1 pound venison, cut into strips","2 tablespoons olive oil
 1  onion, chopped
 2 cloves minced garlic
@@ -1959,7 +1959,7 @@ salt and ground black pepper to taste
 ½ teaspoon dried thyme
 ½ teaspoon dried sage
 ¼ teaspoon dried tarragon
-¼ teaspoon salt",,
+¼ teaspoon salt",yes,
 177,29203,Burmese Chicken-Coconut Soup (Ohn No Kyawswe),allergen:fish,"cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)","1 dash fish sauce, or to taste (Optional)","½  onion, chopped
 1 (1 inch) piece fresh ginger root, peeled and chopped
 2 cloves garlic, chopped
@@ -1982,7 +1982,7 @@ salt and freshly ground black pepper to taste
 1 cup chopped fresh cilantro
 1 dash fish sauce, or to taste  (Optional)
 1 cup crispy fried rice noodles  (Optional)
-1 pinch curry powder, or to taste  (Optional)",,
+1 pinch curry powder, or to taste  (Optional)",yes,Dòng có ghi (Optional) vẫn tính
 178,29203,Burmese Chicken-Coconut Soup (Ohn No Kyawswe),allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 (16 ounce) package rice noodles,"½  onion, chopped
 1 (1 inch) piece fresh ginger root, peeled and chopped
 2 cloves garlic, chopped
@@ -2005,7 +2005,7 @@ salt and freshly ground black pepper to taste
 1 cup chopped fresh cilantro
 1 dash fish sauce, or to taste  (Optional)
 1 cup crispy fried rice noodles  (Optional)
-1 pinch curry powder, or to taste  (Optional)",,
+1 pinch curry powder, or to taste  (Optional)",no,"Bún gạo và bột đậu gà, không có lúa mì"
 179,29394,Mediterranean Vegetable Stew,diet:vegan,"thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)",1 (28 ounce) can crushed tomatoes,"2 tablespoons olive oil, divided
 1 cup chopped red onion
 2 cups coarsely chopped green pepper
@@ -2016,7 +2016,7 @@ salt and freshly ground black pepper to taste
 ½ cup kalamata olives, pitted and sliced
 1 (15 ounce) can chickpeas, drained and rinsed
 1 tablespoon chopped fresh rosemary
-1 cup coarsely chopped parsley",,
+1 cup coarsely chopped parsley",no,Món thuần chay; dòng bằng chứng là cà chua nghiền
 180,29568,Fruit and Broccoli Buffet Salad,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",½ cup pecans,"½ cup grapeseed oil
 ⅓ cup granulated sugar
 3 tablespoons cider vinegar
@@ -2031,7 +2031,7 @@ salt and freshly ground black pepper to taste
 2  oranges, peeled and sectioned
 2 ½ cups bite-size broccoli florets
 1  red apple, chopped
-1 cup grapes, halved",,
+1 cup grapes, halved",yes,
 181,29721,Malaysian Tangy Noodle Salad,allergen:tree_nuts,"hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)","½ cup dry roasted peanuts, coarsely chopped","1 (8 ounce) package thin rice noodles (vermicelli-style), uncooked
 1 (14 ounce) can baby corn, drained, cut into thirds
 1 (10 ounce) can chicken breast, drained and flaked
@@ -2044,7 +2044,7 @@ salt and freshly ground black pepper to taste
 ⅓ cup Thai sweet red chili sauce
 ⅓ cup fresh lime juice
 2 tablespoons soy sauce
-1 tablespoon minced fresh ginger",,
+1 tablespoon minced fresh ginger",no,Lạc (peanut) không tính là hạt cây
 182,30014,Easy Ground Turkey Lo Mein,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 (8 ounce) package dried lo mein noodles,"1 (8 ounce) package dried lo mein noodles
 4 teaspoons toasted sesame oil, divided
 1 pound lean ground turkey
@@ -2058,7 +2058,7 @@ salt and freshly ground black pepper to taste
 1 cup sugar snap peas
 ¼ cup diced red bell pepper
 1 (12 ounce) package fresh mung bean sprouts
-1 pinch red pepper flakes  (Optional)",,
+1 pinch red pepper flakes  (Optional)",yes,
 183,30176,Apple-Cranberry Crumble,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 cup all-purpose flour,"1 (12 ounce) package fresh cranberries
 2  apples, or more to taste, cut into 1-inch pieces
 ½ cup raisins
@@ -2069,7 +2069,7 @@ ground cinnamon
 1 teaspoon baking powder
 ¼ teaspoon salt
 1  egg
-¼ cup butter, melted",,
+¼ cup butter, melted",yes,
 184,30202,Healthier Apple Crisp II,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",1 cup white whole wheat flour,"10 cups unpeeled, cored, and sliced apples
 ½ cup white sugar
 1 tablespoon white whole wheat flour
@@ -2081,7 +2081,7 @@ ground cinnamon
 ½ cup chopped walnuts
 ¼ teaspoon baking powder
 ¼ teaspoon baking soda
-½ cup butter, melted",,
+½ cup butter, melted",yes,
 185,30381,Tokneneng (Filipino Street Food),allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",1 cup all-purpose flour,"12  eggs
 oil for deep frying
 4 tablespoons cornstarch, plus more as needed
@@ -2093,7 +2093,7 @@ bamboo skewer
 1 cup all-purpose flour
 ½ cup water
 salt and freshly ground black pepper to taste
-red and yellow food coloring",,
+red and yellow food coloring",no,Không có sữa; dòng bằng chứng là bột mì
 186,31501,Cherry-Chocolate Layered Dessert,allergen:egg,"trứng (mayonnaise, aioli, meringue, mì trứng)",2 (3 ounce) packages JELL-O Cherry Flavor Gelatin,"1 (9 ounce) package chocolate wafer cookies, finely crushed
 ½ cup butter, melted
 1 ½ cups boiling water
@@ -2102,12 +2102,12 @@ red and yellow food coloring",,
 2 ½ cups thawed COOL WHIP Whipped Topping, divided
 2 ounces BAKER'S Semi-Sweet Chocolate, shaved into curls
 2 ¼ cups fresh dark sweet cherries, pitted
-1 teaspoon powdered sugar",,
+1 teaspoon powdered sugar",no,"Không có trứng: bánh quy chocolate wafer, Jell-O, cream cheese, Cool Whip"
 187,31546,Queso con Carne,allergen:milk,"sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",½ cup milk,"1 (1 pound) loaf processed cheese (such as Velveeta®), cubed
 ½ cup milk
 2 pounds ground beef
 4 (10 ounce) cans diced tomatoes with green chile peppers (such as RO*TEL®)
-1 (1.25 ounce) package taco seasoning",,
+1 (1.25 ounce) package taco seasoning",yes,
 188,31748,Painted Chef's Classic Beef Carpaccio,allergen:crustacean_shellfish,"giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",3 tablespoons Worcestershire sauce,"2  eggs
 1 tablespoon Dijon mustard
 3 tablespoons fresh lemon juice
@@ -2118,7 +2118,7 @@ red and yellow food coloring",,
 salt and pepper to taste
 8 ounces frozen thinly sliced beef tenderloin carpaccio.
 1 tablespoon capers, for garnish
-1  lemon, cut into wedges",,
+1  lemon, cut into wedges",no,"Sốt Worcestershire có cá cơm (cá), không phải giáp xác"
 189,32543,Cucur Udang,allergen:wheat,"lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",4 cups all-purpose flour,"½ cup fresh shrimp
 shelled, deveined and halved
 ½ cup kucai (Chinese chives), cut into 1 inch pieces
@@ -2128,7 +2128,7 @@ shelled, deveined and halved
 salt to taste
 .183 drop yellow food coloring
 5 tablespoons water
-1 cup vegetable oil",,
+1 cup vegetable oil",yes,
 190,32640,Hoisin Asian Meatballs,allergen:sesame,"mè: dầu mè, tahini, hạt mè",2 teaspoons sesame oil,"1 pound lean ground beef
 ½ cup panko bread crumbs
 ¼ cup soy sauce, divided
@@ -2139,4 +2139,4 @@ salt to taste
 1  green onion, minced
 2 tablespoons rice vinegar
 2 teaspoons sesame oil
-1 (16 ounce) package frozen fried rice (such as Kahiki® Japanese-Style Fried Rice)",,
+1 (16 ounce) package frozen fried rice (such as Kahiki® Japanese-Style Fried Rice)",yes,
