@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kiểm tra của người (M6)</title>
+<style>
+  :root { --bg:#fafaf8; --fg:#1d1d1b; --muted:#6b6b66; --line:#ddd9d0; --card:#fff; --focus:#2457c5; --warn:#b3261e; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:16px/1.5 system-ui, "Segoe UI", sans-serif; background:var(--bg); color:var(--fg); }
+  main { max-width:1000px; margin:0 auto; padding:16px; display:grid; gap:16px; }
+  header { display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; align-items:center; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px; }
+  .muted { color:var(--muted); font-size:14px; } .badge { font-size:12px; padding:1px 8px; border-radius:999px; background:#eee; }
+  .q { font-size:19px; margin:6px 0; } ul { margin:6px 0; padding-left:20px; } li { margin:2px 0; font-size:14px; }
+  .answer { white-space:pre-wrap; background:#f5f5f2; padding:10px; border-radius:6px; }
+  details { margin-top:8px; } .row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin:8px 0; }
+  .row button { padding:6px 14px; border:1px solid var(--line); border-radius:6px; background:#fff; cursor:pointer; }
+  .row button[aria-pressed=true] { background:var(--focus); color:#fff; border-color:var(--focus); }
+  textarea { width:100%; min-height:50px; font:inherit; } .err { color:var(--warn); min-height:1.5em; }
+  .nav { display:flex; gap:8px; } .nav button { padding:10px 16px; border-radius:6px; cursor:pointer; border:1px solid var(--line); background:#fff; }
+  .primary { background:var(--focus)!important; color:#fff; border:none!important; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div><strong>Kiểm tra của người – M6</strong> <span class="muted">· không hiển thị điểm của judge hay phán quyết của bộ kiểm</span></div>
+    <div id="progress" class="muted"></div>
+  </header>
+  <section class="card"><div id="meta" class="muted"></div><div id="body"></div>
+    <textarea id="note" placeholder="Ghi chú (nếu có)"></textarea>
+    <div class="err" id="err"></div>
+    <div class="nav"><button id="prev">← Trước</button><button id="save" class="primary">Lưu & tiếp (Ctrl+Enter)</button><button id="next">Sau →</button></div>
+  </section>
+  <section class="card muted">
+    <b>Độ liên quan:</b> 2 = đúng loại món hoặc nhu cầu; 1 = đúng ý chính, sai chi tiết phụ; 0 = không liên quan. Không xét dị ứng hay ràng buộc (đã chấm riêng).<br>
+    <b>Câu trả lời:</b> bám ngữ cảnh = mọi điều câu trả lời nói về món đều có trong các công thức bên dưới; trích sai = trích một món không hợp với câu hỏi hoặc ràng buộc.<br>
+    <b>Bộ kiểm:</b> công thức có chứa thứ được hỏi không, dựa vào nguyên liệu (kể cả thành phần ẩn như bơ = sữa, mayonnaise = trứng).
+  </section>
+</main>
+<script>
+let order = 1, item = null, label = {};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"})[c]);
+const recipeHtml = r => `<b>${esc(r.title)}</b><ul>${r.ingredients.map(l => `<li>${esc(l)}</li>`).join("")}</ul>`;
+const choice = (field, opts) => `<div class="row"><span>${opts.label}</span>${opts.values.map(([v, t]) =>
+  `<button data-f="${field}" data-v='${JSON.stringify(v)}' aria-pressed="${JSON.stringify(label[field]) === JSON.stringify(v)}">${t}</button>`).join("")}</div>`;
+
+function render() {
+  let h = "";
+  if (item.task === "relevance") {
+    h = `<div class="q">${esc(item.query)}</div>${recipeHtml(item.recipe)}`
+      + choice("score", {label:"Độ liên quan", values:[[2,"2"],[1,"1"],[0,"0"]]});
+  } else if (item.task === "answer") {
+    h = `<div class="q">${esc(item.query)}</div><div class="answer">${esc(item.answer)}</div>`
+      + `<details open><summary>Các công thức trong ngữ cảnh</summary>${item.context.map(recipeHtml).join("")}</details>`
+      + choice("faithful", {label:"Bám ngữ cảnh?", values:[[true,"Có"],[false,"Không"]]})
+      + choice("answers", {label:"Trả lời đúng câu hỏi?", values:[[2,"Đúng"],[1,"Một phần"],[0,"Không"]]})
+      + choice("wrong_citation", {label:"Trích sai món?", values:[[true,"Có"],[false,"Không"]]});
+  } else {
+    h = `<div class="q">Công thức này có chứa: <b>${esc(item.item)}</b>?</div>${recipeHtml(item.recipe)}`
+      + choice("contains", {label:"Chứa?", values:[["yes","Có"],["unsure","Không chắc"],["no","Không"]]});
+  }
+  $("body").innerHTML = h;
+  document.querySelectorAll("[data-f]").forEach(b => b.onclick = () => { label[b.dataset.f] = JSON.parse(b.dataset.v); render(); });
+}
+
+async function load(n) {
+  const r = await fetch(`/api/item/${n}`); if (!r.ok) return;
+  item = await r.json(); order = item.order; label = item.saved ? item.saved.label : {};
+  $("note").value = item.saved ? item.saved.note : ""; $("err").textContent = "";
+  $("meta").innerHTML = `<span class="badge">${({relevance:"Độ liên quan", answer:"Câu trả lời", checker:"Bộ kiểm"})[item.task]}</span> ${item.id} · ${item.order}/${item.total}`;
+  render();
+  const st = await (await fetch("/api/state")).json(); $("progress").textContent = `Đã làm ${st.labeled}/${st.total}`;
+}
+async function save() {
+  const r = await fetch(`/api/label/${order}`, {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({label, note:$("note").value})});
+  if (!r.ok) { $("err").textContent = (await r.json()).detail; return; }
+  load(Math.min(order + 1, item.total));
+}
+$("save").onclick = save; $("prev").onclick = () => load(Math.max(1, order - 1)); $("next").onclick = () => load(order + 1);
+document.addEventListener("keydown", e => { if (e.ctrlKey && e.key === "Enter") save(); });
+fetch("/api/state").then(r => r.json()).then(s => load(s.next || 1));
+</script>
+</body>
+</html>

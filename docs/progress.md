@@ -919,3 +919,18 @@ Kịch bản 1b sẽ thấy lại vấn đề đã biết của gate M3: R18880 
 **Cần Thy:** 🚦 gate M5, xác nhận số lượng của bộ test đã đóng băng.
 
 **Gate M5 (Thy, 19/10/2026): duyệt.** Bộ test đóng băng: T1 105, T2 172, T3 55, T4 40. Bước tiếp theo là M6.
+
+## M6 – Thực nghiệm (19/10/2026) · đang làm
+
+**Quyết định (Thy, 19/10):**
+- giữ lỗi parser dấu phẩy, ghi thành hạn chế, và đếm riêng trong phân tích lỗi (nhóm `F3a_comma_parser_suspect`);
+- không chạy nhánh tùy chọn (S+Unknown, S+M3);
+- **M6b chỉ chạy khoảng 370 lượt**, thay vì khoảng 3.700: mẫu theo seed khoảng 10% mỗi tập (T1 10, T2 17, T3 6 câu, T4 4 hội thoại).
+  - 8 cấu hình chạy trên T1–T3; 9 cấu hình (thêm S−Conv) chạy trên T4.
+  - Mẫu nhỏ, nên phần lớn so sánh có thể không có ý nghĩa sau Holm; kết quả trình bày như xu hướng, kèm KTC.
+  - Độ trễ lấy từ chính lần chạy này, không chạy riêng 3 lần.
+  - Danh sách câu được ghi trong `settings.json`, nên có thể chạy thêm phần còn lại sau.
+
+**Đã làm**
+- M5 xếp hạng tới độ sâu 10 và ghi vào trace (`m5.ranked`) để tính nDCG@10; ngữ cảnh vẫn 5 công thức. Test hồi quy không đổi (`94ec68e`).
+- `scripts/eval_a3.py` (run/score/human-sample), `scripts/judge.py` (`llama3.1:8b`), `scripts/human_check.py` + `.html` (trang mù ở cổng 8767), 8 test.
