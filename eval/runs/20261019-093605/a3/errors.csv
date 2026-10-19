@@ -10,13 +10,13 @@ t1_102,0,F7_unfaithful
 t1_103,0,F7_unfaithful
 t2_011,0,F7_unfaithful
 t2_017,0,F7_unfaithful
-t2_033,0,F3_tagger_miss;F7_unfaithful
+t2_033,0,F7_unfaithful
 t2_034,0,F7_unfaithful
-t2_037,0,F3_tagger_miss;F7_unfaithful
+t2_037,0,F7_unfaithful
 t2_056,0,F3_tagger_miss;F7_unfaithful
 t2_059,0,F7_unfaithful
 t2_067,0,F7_unfaithful;F8_refusal
-t2_153,0,F1_constraint_extraction;F3_tagger_miss;F3a_comma_parser_suspect;F7_unfaithful
+t2_153,0,F1_constraint_extraction;F7_unfaithful
 t2_157,0,F1_constraint_extraction
 t2_158,0,F1_constraint_extraction
 t2_161,0,F7_unfaithful
@@ -24,9 +24,9 @@ t2_163,0,F1_constraint_extraction;F7_unfaithful
 t2_165,0,F1_constraint_extraction;F7_unfaithful
 t2_166,0,F1_constraint_extraction;F7_unfaithful
 t2_167,0,F7_unfaithful
-t3_002,0,F3_tagger_miss;F3a_comma_parser_suspect;F8_refusal
+t3_002,0,F8_refusal
 t3_008,0,F7_unfaithful;F8_refusal
-t3_017,0,F3_tagger_miss;F3a_comma_parser_suspect;F7_unfaithful
+t3_017,0,F7_unfaithful
 t4_006,0,F7_unfaithful
 t4_006,1,F3_tagger_miss;F7_unfaithful
 t4_009,1,F7_unfaithful
@@ -34,5 +34,5 @@ t4_013,0,F1_constraint_extraction;F7_unfaithful
 t4_013,1,F7_unfaithful
 t4_028,0,F7_unfaithful
 t4_028,1,F2_intent_routing;F7_unfaithful
-t4_028,2,F3_tagger_miss;F7_unfaithful
+t4_028,2,F7_unfaithful
 t4_028,3,F7_unfaithful
