@@ -61,7 +61,7 @@
 - 1 pinch salt and ground black pepper to taste","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R10097, R9545
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,2,0,—,Nói không có sữa nhưng R10097 có heavy cream
 2,ans_40,answer,"I'm allergic to sesame, can you suggest a beef dish that can be prepared in under 30 minutes?","[R7226] Savory Beef Stir-Fry | 25 min | This quick version of stir-fry is a great option, containing no sesame and fitting your time constraint. Enjoy the flavorful dish in under 30 minutes.","[R6848] Hamburger and Macaroni Hot Dish
 - 1 (8 ounce) package elbow macaroni
 - 1 pound ground beef
@@ -121,7 +121,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 tablespoon Worcestershire sauce","Ràng buộc của câu hỏi (gold): dị ứng sesame, ≤ 30 phút
 Món được trích: R7226
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Cảnh báo teriyaki có thể chứa mè: hợp lý
 3,ans_13,answer,spicy lime chicken and bean salad,"[R25370] Spicy Southwest Chopped Salad with Salsa Verde | 75 min | This recipe combines chicken, beans, and a spicy salsa verde, offering a flavorful and refreshing option. It's suitable for those avoiding eggs and milk, though it may contain a bit of spice and creaminess from the jalapeño and mayonnaise-like consistency from the tomatillos. Adjust the spice level to your liking.","[R22215] Lime-Poblano Chicken Salad
 - 1 cup shredded rotisserie chicken
 - ½  poblano pepper, diced
@@ -196,12 +196,12 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 4 teaspoons fresh lime juice","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R25370
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,2,0,—,Nói không có sữa nhưng món có cotija
 4,rel_30,relevance,refreshing japanese coffee jelly,"[R6767] Pepper Jelly Appetizer
 - 1 (8 ounce) package cream cheese, softened
 - ½ cup mild pepper jelly",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,
 5,rel_32,relevance,"Tôi dị ứng các loại hạt như hạnh nhân, cần món salad nấu dưới 45 phút","[R20919] Tomato-Basil Salad
 - 4  tomatoes, sliced
 - 1  onion, sliced and halved
@@ -212,7 +212,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ¼ teaspoon oregano
 - salt and ground black pepper to taste",,"Ý chính cần xét: loại món 'salad'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 6,rel_34,relevance,lam banh chuoi nuong the nao,"[R22691] Banh Mi Sliders
 - ½ pound ground beef
 - ½ pound ground pork
@@ -228,7 +228,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ½ tablespoon sesame oil
 - 1 (15 ounce) package slider-size burger buns",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,
 7,chk_37,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R1401] Michelle's Ultimate Beef Stroganoff Casserole
 - 1 (16 ounce) package egg noodles
 - 1 pound ground beef
@@ -238,7 +238,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 (8 ounce) package cream cheese
 - ½ cup milk, plus more to taste
 - 1 (11 ounce) can diced carrots",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 8,rel_28,relevance,peanut butter mango frosty blend,"[R6273] Lela's Protein Mango Smoothie
 - ½  mango, chopped, or more to taste
 - ½ cup low-fat vanilla yogurt
@@ -247,7 +247,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 scoop vanilla whey protein powder
 - 1 teaspoon honey, or to taste  (Optional)",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",1,—,—,—,—,Sinh tố xoài nhưng không có bơ đậu phộng
 9,rel_20,relevance,"I'm allergic to sesame, can you suggest a beef dish that can be prepared in under 30 minutes?","[R103] Quick Beef Stir-Fry
 - 2 tablespoons vegetable oil
 - 1 pound beef sirloin, cut into 2-inch strips
@@ -259,7 +259,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2 tablespoons soy sauce
 - 2 tablespoons sesame seeds, toasted",,"Ý chính cần xét: loại món 'beef'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 10,rel_23,relevance,refreshing japanese coffee jelly,"[R25947] Jelly Doughnuts
 - 1 cup warm milk (110 degrees F/45 degrees C)
 - ⅓ cup water
@@ -273,7 +273,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ¾ cup any flavor fruit jam
 - 2 quarts vegetable oil for frying",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,
 11,chk_55,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R12048] Fabienne's Fabulous Ahi Tuna Cups
 - 1 pound sushi-grade yellowfin (ahi) tuna steaks
 - 1  lemon, zested and juiced
@@ -286,7 +286,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ¼ teaspoon soy sauce
 - ¼ teaspoon celery salt
 - ⅛ teaspoon cayenne pepper",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,Mayonnaise không tính là sữa
 12,rel_49,relevance,"I'm allergic to sesame, suggest a bread","[R4339] Quick and Easy Monkey Bread
 - 24 ounces frozen dinner roll dough
 - 1 cup packed brown sugar
@@ -296,14 +296,14 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ½ cup chopped walnuts
 - ½ cup melted butter",,"Ý chính cần xét: loại món 'bread'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 13,rel_31,relevance,refreshing japanese coffee jelly,"[R3421] Vietnamese Iced Coffee
 - 4 cups water
 - ½ cup dark roast ground coffee beans
 - ½ cup sweetened condensed milk
 - 16  ice cubes",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",1,—,—,—,—,"Đồ uống cà phê, không phải thạch"
 14,chk_16,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R5635] Sesame Shrimp Stir-Fry
 - 2 cups water
 - 1 cup uncooked white rice
@@ -321,7 +321,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ⅛ cup cornstarch
 - ¾ cup chicken broth
 - ¼ teaspoon salt",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 15,ans_30,answer,"I'm allergic to sesame, can you suggest a beef dish that can be prepared in under 30 minutes?","[R7226] Savory Beef Stir-Fry | 25 min | This quick version of stir-fry is a great option, containing no sesame and fitting your time constraint. Enjoy the flavorful dish in under 30 minutes.","[R6848] Hamburger and Macaroni Hot Dish
 - 1 (8 ounce) package elbow macaroni
 - 1 pound ground beef
@@ -381,7 +381,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 tablespoon Worcestershire sauce","Ràng buộc của câu hỏi (gold): dị ứng sesame, ≤ 30 phút
 Món được trích: R7226
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,
 16,ans_19,answer,tôi dị ứng lúa mì,"Tôi tìm thấy một số công thức không chứa lúa mì:
 
 [R20953] Lui's Zucchini Leek Pho - 40 phút, không có dị ứng, không chứa lúa mì. Công thức này thay thế mì bằng zucchini, tạo ra một món phở ngon miệng mà không gây dị ứng.
@@ -456,7 +456,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 cup vegetable oil","Ràng buộc của câu hỏi (gold): dị ứng wheat
 Món được trích: R20953, R10938
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,2,0,—,'không có dị ứng' sai: tom yum có tôm và nước mắm
 17,chk_56,checker,"Công thức này có chứa: soybeans or a product made from soy: soy sauce, tofu, miso, edamame, tempeh, soy lecithin?","[R3557] Shrimp and Scallop Stir-Fry
 - 2 tablespoons butter, divided
 - 1 pound fresh asparagus, cut into 2-inch pieces
@@ -469,7 +469,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ½ teaspoon salt
 - ½ teaspoon ground black pepper
 - 3 tablespoons lemon juice",,"Nhóm: đậu nành: đậu phụ, nước tương, miso, edamame, tempeh
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 18,rel_01,relevance,"I'm allergic to shellfish, suggest a cake / actually I can eat shellfish now, suggest a cake again","[R15089] Mounds® Bar Cake
 - 1 cup butter
 - 2 cups white sugar
@@ -484,7 +484,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 ½ cups confectioners' sugar
 - 1 (16 ounce) package prepared milk chocolate frosting",,"Ý chính cần xét: loại món 'cake' (câu hội thoại: xét lượt cuối, có tính các lượt trước)
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 19,ans_10,answer,cần nấu dưới 30 phút,"[R13509] Creme Anglaise Sauce | 20 min | không chứa gluten | Creme Anglaise là một loại sauce creamy, phù hợp để trang trí các món dessert khác. Thời gian chuẩn bị chỉ khoảng 20 phút.
 
 [R7642] Sweetly Stewed Rhubarb | 30 min | không chứa gluten | Món stewed rhubarb ngọt ngào và độc đáo, dễ làm và phù hợp làm dessert nhanh chóng. Thời gian chuẩn bị là 30 phút.","[R13509] Creme Anglaise Sauce
@@ -527,7 +527,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 teaspoon sea salt (such as Maldon®)","Ràng buộc của câu hỏi (gold): dị ứng wheat, ≤ 30 phút
 Món được trích: R13509, R7642
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,
 20,rel_08,relevance,"I'm allergic to shellfish, can I get a beef dish in under 15 minutes","[R17485] Dried Beef Ball
 - 5 ounces dried beef, chopped
 - 2 (8 ounce) packages cream cheese, softened
@@ -535,7 +535,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 tablespoon Worcestershire sauce
 - ½ teaspoon seasoned salt",,"Ý chính cần xét: loại món 'beef'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",1,—,—,—,—,Món khai vị dip làm từ thịt bò khô
 21,ans_38,answer,cho mình món súp không có sữa và không có bơ,"Món súp Classic Dairy-Free Cream of Tomato and Basil Soup [R20851] không có sữa và không có bơ, mất khoảng 45 phút để nấu. Món súp này rất ngon và creamy, sử dụng kem dừa thay cho kem, phù hợp với người ăn chay và người ăn chay thực thụ.","[R22494] Lighter Potato and Leek Soup
 - 2  leeks, white parts only, thinly sliced
 - 3 tablespoons olive oil
@@ -612,7 +612,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 clove garlic","Ràng buộc của câu hỏi (gold): dị ứng milk
 Món được trích: R20851
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,
 22,rel_21,relevance,dinner nhanh cho 4 người không có cilantro,"[R11579] Simple Tuna Fish Tacos
 - 1 tablespoon olive oil
 - 4  Roma tomatoes, diced
@@ -626,7 +626,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - salt and ground black pepper to taste
 - 12  corn tortillas",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 23,ans_45,answer,cho mình xin công thức gà nướng mật ong,"[R17597] Spicy Honey-Roasted Chicken | 135 phút | Thành phần có thể chứa: sữa | Đảm bảo an toàn cho người dị ứng sữa, nhưng bạn nên kiểm tra nhãn thành phần. Gà nướng với mật ong và các gia vị cay tạo nên một lớp vỏ giòn, ngọt và cay, rất phù hợp cho cuối tuần.","[R17597] Spicy Honey-Roasted Chicken
 - 1 (6 pound) whole roasting chicken
 - ½ cup honey
@@ -684,7 +684,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2  skinless, boneless chicken breast halves, cut into bite-size pieces","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R17597
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,2,0,—,Nói an toàn cho dị ứng sữa nhưng món có bơ (butter)
 24,rel_13,relevance,"I'm allergic to sesame, suggest a bread","[R26638] Bread Machine Honey-Whole Wheat Bread
 - 1 ½ cups warm water
 - 2 tablespoons butter
@@ -696,7 +696,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 ½ tablespoons dry milk powder
 - 2 teaspoons active dry yeast",,"Ý chính cần xét: loại món 'bread'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 25,chk_39,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R23687] Asian Beef with Snow Peas
 - 3 tablespoons soy sauce
 - 2 tablespoons rice wine
@@ -707,7 +707,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 tablespoon minced garlic
 - 1 pound beef round steak, cut into thin strips
 - 8 ounces snow peas",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 26,chk_31,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R4199] Steak and Rice
 - 1 ½ pounds round steak
 - 2 tablespoons vegetable oil
@@ -722,7 +722,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2 cups water
 - 1 cup white rice
 - 2 cups water",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 27,ans_25,answer,gợi ý bánh mì chay,"[R20754] Vegetable Banh Mi | 40 phút | Nguyên liệu có thể thay thế: bỏ bớt nước fish sauce (mắm tôm) | Thời gian: 40 phút | Đây là một lựa chọn chay cho bánh mì, sử dụng các loại rau củ như cà rốt, jicama và nấm portobello sauté với mắm tôm, sriracha và bột five-spice.","[R3536] Moo Goo Gai Pan
 - 1 tablespoon vegetable oil
 - 1 cup sliced fresh mushrooms
@@ -810,7 +810,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2  lime wedges","Ràng buộc của câu hỏi (gold): chế độ vegetarian
 Món được trích: R20754
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,1,1,—,Nước mắm vi phạm chay; dịch sai thành 'mắm tôm'
 28,rel_19,relevance,tối nay ăn gì cho nhẹ bụng nhỉ,"[R580] Banh Mi
 - ½ cup rice vinegar
 - ¼ cup water
@@ -828,7 +828,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 small jalapeno pepper - seeded and cut into 1/16-inch-thick matchsticks
 - 1 wedge lime",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",1,—,—,—,—,"Bánh mì kẹp mayo, không thật sự nhẹ bụng"
 29,rel_36,relevance,gợi ý món tráng miệng / tôi dị ứng lúa mì / cần nấu dưới 30 phút,"[R19471] Malaysian Nasi Lemak
 - 2 cups coconut milk
 - 2 cups water
@@ -852,7 +852,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 3 tablespoons white sugar
 - ¼ cup tamarind juice",,"Ý chính cần xét: loại món 'pie' (câu hội thoại: xét lượt cuối, có tính các lượt trước)
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,
 30,ans_24,answer,suggest a bread without mushrooms,"Nothing in the provided recipes contains mushrooms, so any of them would be suitable. Here are a few options:
 
 - [R1692] Italian Bread Using a Bread Machine: A vegetarian bread made in a bread machine and then baked.
@@ -912,7 +912,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 (1 pound) loaf rye bread","Ràng buộc của câu hỏi (gold): không mushroom
 Món được trích: R1692, R28385, R26230, R27970, R18961
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,1,—,"R18961 là món dip, không phải bánh mì (câu trả lời có ghi chú điều này)"
 31,rel_15,relevance,suggest a bread without mushrooms,"[R3304] Honey Whole Wheat Bread
 - 1 ⅛ cups warm water (110 degrees F/45 degrees C)
 - 3 tablespoons honey
@@ -922,7 +922,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 2 tablespoons vegetable oil
 - 1 ½ teaspoons active dry yeast",,"Ý chính cần xét: loại món 'bread'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 32,ans_04,answer,milk-free fettuccine alfredo recipe,"[R18620] A Farewell to Basil Fettuccine | ? min | While not a traditional Alfredo, this recipe offers a milk-free pasta dish that can be paired with a creamy Alfredo sauce. It's vegetarian and made with fresh basil, offering a unique twist on fettuccine.
 
 [R11301] Spaghetti Aglio, Olio, e Peperoncino con Bottarga | 30 min | This recipe is not an Alfredo, but it provides a milk-free option using spaghetti, garlic, oil, and bottarga. It's quick and easy, taking about 30 minutes to prepare.","[R9643] Old Bay® Shrimp and Pasta Alfredo
@@ -969,7 +969,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 teaspoon dried basil","Ràng buộc của câu hỏi (gold): dị ứng milk
 Món được trích: R18620, R11301
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,1,1,—,Bịa 'ăn kèm sốt Alfredo'; món bottarga không phải alfredo
 33,chk_33,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R16735] Pork and Cabbage Soup
 - 1 pound pork sausage
 - 1 (14 ounce) can beef broth
@@ -981,7 +981,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 clove garlic, diced
 - 1 tablespoon dried marjoram
 - salt and pepper to taste",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 34,ans_18,answer,món thứ 3 làm thế nào?,"Món thứ 3 là Chicken Massaman Curry [R7993]. Đây là một curry gà với hương vị tamarind và kem dừa, hoàn thành trong khoảng 55 phút. Món này không chứa gluten, đậu nành hoặc các chất bảo quản, phù hợp với người ăn chay.","[R7993] Nong's Khao Man Gai
 - 2 quarts water
 - 1 (3 pound) whole chicken
@@ -1065,7 +1065,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 3 tablespoons fresh lime juice","Ràng buộc của câu hỏi (gold): dị ứng wheat, ≤ 30 phút
 Món được trích: R7993
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,0,1,—,R7993 là Khao Man Gai bị gọi là Massaman; bịa 'chay/không gluten/không đậu nành'
 35,ans_03,answer,cho mình món súp không có sữa và không có bơ,"Món súp phù hợp với yêu cầu của bạn là Chompchae Deopbap (Korean Spicy Tuna and Rice) [R11009]. Món này không chứa sữa hay bơ, chỉ sử dụng nước dùng tôm và các nguyên liệu khác để tạo vị. Thời gian nấu khoảng 50 phút.","[R11009] Chompchae Deopbap (Korean Spicy Tuna and Rice)
 - 1 cup uncooked white rice
 - 2 cups water
@@ -1151,7 +1151,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ¼ head romaine lettuce, cut into bite-size pieces","Ràng buộc của câu hỏi (gold): dị ứng milk
 Món được trích: R11009
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,0,1,—,R11009 không phải món súp; 'nước dùng tôm' là bịa
 36,chk_48,checker,"Công thức này có chứa: fish (any finfish) or a product made from fish, including anchovies, anchovy paste, fish sauce, Worcestershire sauce (made with anchovies), Caesar dressing, bonito flakes and dashi?","[R6335] Pan-Seared Duck Breast with Blueberry Sauce
 - 2 teaspoons salt
 - 1 teaspoon  fresh-ground black pepper
@@ -1172,7 +1172,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 2 tablespoons vegetable oil
 - 1 tablespoon butter
 - 2 tablespoons aged balsamic vinegar",,"Nhóm: cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,Pancetta không phải cá
 37,chk_08,checker,"Công thức này có chứa: soybeans or a product made from soy: soy sauce, tofu, miso, edamame, tempeh, soy lecithin?","[R9884] Honey Shrimp Stir-Fry
 - 1 tablespoon soy sauce
 - ½ tablespoon fish sauce
@@ -1193,7 +1193,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 2 cloves garlic, finely minced
 - 4 cups cooked white rice
 - Chopped scallions for garnish",,"Nhóm: đậu nành: đậu phụ, nước tương, miso, edamame, tempeh
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 38,chk_09,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R19647] Spicy Rice Noodle Salad
 - 1 (6.75 ounce) package thin rice noodles
 - 3 cloves garlic, minced
@@ -1209,7 +1209,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 teaspoon sesame oil
 - 6  grilled boneless, skinless chicken thighs  (Optional)
 - ¼ cup Fresno chile peppers, cut into rings  (Optional)",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,"Bún gạo, không có lúa mì"
 39,ans_23,answer,suggest a bread without mushrooms,"Nothing in the provided recipes contains mushrooms, so any of them would be suitable. Here are a few options:
 
 - [R1692] Italian Bread Using a Bread Machine: A vegetarian bread made in a bread machine, taking about 200 minutes.
@@ -1269,7 +1269,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 (1 pound) loaf rye bread","Ràng buộc của câu hỏi (gold): không mushroom
 Món được trích: R1692, R28385, R26230, R27970, R18961
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,1,—,"R18961 là món dip, không phải bánh mì; thời gian không kiểm được trên thẻ"
 40,ans_21,answer,leftover pulled pork sloppy joes,"[R21661] Mini Sloppy Joes with Pulled Pork | 45 min | This recipe uses leftover pulled pork without sauce, making it perfect for using up leftovers. It's quick and easy, requiring just 45 minutes of preparation. Serve these mini sandwiches as an appetizer or main dish.","[R21926] Instant Pot® Root Beer Pulled Pork Sloppy Joes
 - 1 (4 pound) pork loin
 - salt to taste
@@ -1347,7 +1347,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 4  whole-wheat hamburger buns","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R21661
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,
 41,chk_01,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R25288] Fettuccine Alfredo with Chicken
 - ½ pound fettuccine, uncooked
 - 1 pound boneless skinless chicken breasts, cut into strips
@@ -1357,7 +1357,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 3 tablespoons KRAFT Grated Parmesan Cheese, divided
 - ¼ teaspoon garlic powder
 - ¼ teaspoon pepper",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 42,ans_09,answer,gợi ý món tráng miệng,"[R27596] Four-Layer Mocha Cream Cake | 155 phút | phù hợp với người ăn chay | Món bánh kem mocha có nhiều lớp thơm ngon, dễ làm và phù hợp làm dessert. Thời gian chuẩn bị khoảng 155 phút.
 
 [R24574] Angel Fruit Trifle | 75 phút | phù hợp với người ăn chay | Trifle quả thơm mát, nhẹ nhàng với bánh angel food, trái cây tươi và kem tươi, rất phù hợp làm dessert mùa hè. Thời gian chuẩn bị khoảng 75 phút.","[R27596] Four-Layer Mocha Cream Cake
@@ -1412,7 +1412,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 2 (16 ounce) tubs reduced-fat frozen whipped topping, thawed","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R27596, R24574
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Thời gian không kiểm được trên thẻ
 43,rel_09,relevance,suggest a bread without mushrooms,"[R16211] Cranberry Orange Bread (For Bread Machine)
 - 3 cups all-purpose flour
 - 1 cup dried cranberries
@@ -1424,7 +1424,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 ½ teaspoons salt
 - 1 teaspoon orange oil",,"Ý chính cần xét: loại món 'bread'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 44,rel_03,relevance,gợi ý món tráng miệng,"[R3] Dessert Crepes
 - 4  eggs, lightly beaten
 - 1 ⅓ cups milk
@@ -1433,7 +1433,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2 tablespoons white sugar
 - ½ teaspoon salt",,"Ý chính cần xét: loại món 'pie'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,Hint ghi 'pie' hẹp hơn câu hỏi; chấm theo nhu cầu tráng miệng (nếu chấm đúng nghĩa 'pie' thì được 1)
 45,rel_29,relevance,suggest a soup without onions,"[R22515] Cheese Soup V
 - ½ cup chopped celery
 - ⅓ cup chopped carrot
@@ -1445,7 +1445,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1.3 cups chicken broth
 - 1 ¾ cups shredded Cheddar cheese",,"Ý chính cần xét: loại món 'soup'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 46,chk_34,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R24320] Cauliflower and Potato Stir-Fry - East Indian Recipe
 - 3 tablespoons canola oil
 - 2 teaspoons cumin seeds
@@ -1458,7 +1458,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 teaspoon ground turmeric
 - 1 teaspoon salt
 - ¼ cup chopped fresh cilantro, or to taste",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 47,rel_39,relevance,món pasta healthy cho người dị ứng nuts,"[R21860] Vegan Spaghetti Squash Noodle Salad with Peanut Sauce
 - ½ small spaghetti squash, halved and seeded
 - ⅓ cup peanut butter
@@ -1477,7 +1477,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 sprig fresh mint, thinly sliced
 - ¼ cup roasted, salted peanuts",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",1,—,—,—,—,"Salad sợi bí, không phải pasta"
 48,chk_29,checker,"Công thức này có chứa: crustacean shellfish (shrimp, prawn, crab, lobster, crayfish) or a product made from them, such as shrimp paste; molluscs such as clams, oysters, scallops or squid do not count?","[R10882] Crab Cakes with Curried Yogurt Sauce
 - ¼ cup mayonnaise
 - ¼ cup plain yogurt
@@ -1498,7 +1498,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - Old Bay Seasoning TM to taste
 - 1 (6 ounce) can lump crabmeat, drained
 - 2 tablespoons olive oil",,"Nhóm: giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 49,rel_02,relevance,suggest a beef dish ready in under 30 minutes,"[R4967] South Asian-Style Ground Beef (Keema)
 - 2 tablespoons butter, or more to taste
 - 2  onions, diced
@@ -1514,14 +1514,14 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2  potatoes, diced
 - 2  tomatoes, diced",,"Ý chính cần xét: loại món 'beef'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 50,chk_28,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R30231] Eggless Whole Wheat Muffins
 - 2 cups whole wheat flour
 - ½ teaspoon baking soda
 - ½ teaspoon salt
 - 3 tablespoons white sugar
 - 1 cup sour cream",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 51,ans_44,answer,mon an sang duoi 10 phut khong co bot mi,"Stir-Fried Kale and Broccoli Florets [R23505] là một lựa chọn phù hợp với thời gian nấu dưới 10 phút và không chứa bột mì. Đây là một món ăn nhẹ vegetarian, vegan với các nguyên liệu dễ tìm như rau xanh và tỏi. Thời gian nấu chỉ mất 10 phút.","[R17134] Russian Cheese Salad
 - 3 cups shredded mozzarella cheese
 - 2 tablespoons mayonnaise
@@ -1563,7 +1563,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 sprig fresh mint leaves","Ràng buộc của câu hỏi (gold): dị ứng wheat, ≤ 10 phút
 Món được trích: R23505
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,1,0,—,Món không hợp bữa sáng
 52,chk_38,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R30865] Chocolate Hummus
 - ¼ cup milk chocolate chips
 - 1 (15 ounce) can garbanzo beans, drained and rinsed
@@ -1572,7 +1572,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 teaspoon vanilla extract
 - ½ teaspoon salt
 - 2 tablespoons almond milk, or more as needed",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 53,ans_48,answer,công thức cá ngừ áp chảo không có cá,"Không tìm thấy công thức phù hợp trong CONTEXT. Công thức ""Khao Dom Pla (Rice Soup with Fish) [R12202]"" có chứa cá, trong khi bạn yêu cầu không có cá. Bạn có thể cân nhắc tìm kiếm công thức khác hoặc xem xét việc thay thế nguyên liệu cá bằng các loại rau củ hoặc đậu nành để phù hợp với yêu cầu của mình.","[R16630] Khao Soi Soup
 - 2 tablespoons vegetable oil
 - 3  shallots, chopped
@@ -1654,7 +1654,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - sea salt to taste","Ràng buộc của câu hỏi (gold): dị ứng fish
 Món được trích: R12202
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Từ chối đúng
 54,chk_13,checker,"Công thức này có chứa: any animal product: meat, poultry, fish, seafood, dairy, eggs, honey, gelatin or animal fat?","[R29394] Mediterranean Vegetable Stew
 - 2 tablespoons olive oil, divided
 - 1 cup chopped red onion
@@ -1667,7 +1667,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 (15 ounce) can chickpeas, drained and rinsed
 - 1 tablespoon chopped fresh rosemary
 - 1 cup coarsely chopped parsley",,"Nhóm: thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 55,ans_31,answer,peanut butter mango frosty blend,"[R15052] Peanut Butter Mango Smoothie | 5 min | This smoothie blends creamy peanut butter with sweet mango, creating a frosty and delicious blend. Contains milk and peanut allergens. [R31030] Mango Mayhem Peanut Butter Smoothie | 5 min | This smoothie is rich in protein and features peanut butter and frozen mango, making it a frosty treat. Contains milk and peanut allergens.","[R15052] Peanut Butter Mango Smoothie
 - 1 cup vanilla yogurt
 - 1  banana, broken into chunks
@@ -1709,7 +1709,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 2 tablespoons honey","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R15052, R31030
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,
 56,chk_24,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R29203] Burmese Chicken-Coconut Soup (Ohn No Kyawswe)
 - ½  onion, chopped
 - 1 (1 inch) piece fresh ginger root, peeled and chopped
@@ -1734,7 +1734,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 dash fish sauce, or to taste  (Optional)
 - 1 cup crispy fried rice noodles  (Optional)
 - 1 pinch curry powder, or to taste  (Optional)",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,"Bún gạo và bột đậu gà, không có lúa mì"
 57,chk_43,checker,"Công thức này có chứa: crustacean shellfish (shrimp, prawn, crab, lobster, crayfish) or a product made from them, such as shrimp paste; molluscs such as clams, oysters, scallops or squid do not count?","[R23238] Chef John's Corned Beef Hash
 - 1 ½ pounds potatoes, peeled and quartered
 - 1 ½ pounds cooked corned beef, finely chopped
@@ -1743,7 +1743,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 2 cloves garlic, crushed
 - 1 tablespoon butter
 - ¼ cup roasted tomato salsa",,"Nhóm: giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 58,chk_03,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R13849] Most Amazing Challah
 - 4 (.25 ounce) packages quick-rise yeast
 - 4 cups warm water (110 degrees F/45 degrees C)
@@ -1755,14 +1755,14 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1  egg
 - ½ teaspoon vanilla extract
 - ¼ cup sesame seeds, divided",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 59,chk_12,checker,"Công thức này có chứa: eggs or anything made with eggs (mayonnaise, aioli, meringue, egg noodles)?","[R18929] Cherry-Mascarpone Cheese Dessert
 - 1 (8 ounce) container mascarpone cheese
 - 5 tablespoons confectioners' sugar
 - ¾ cup heavy cream
 - 1 teaspoon vanilla extract
 - 2 cups sweet cherries, halved and pitted",,"Nhóm: trứng (mayonnaise, aioli, meringue, mì trứng)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 60,rel_04,relevance,suggest a bread without mushrooms,"[R28385] Sourdough Wheat Bread
 - 1 ½ cups sourdough starter
 - ⅓ cup warm water (110 degrees F/45 degrees C)
@@ -1773,7 +1773,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 3 cups all-purpose flour
 - 1 ½ teaspoons active dry yeast",,"Ý chính cần xét: loại món 'bread'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 61,chk_17,checker,"Công thức này có chứa: soybeans or a product made from soy: soy sauce, tofu, miso, edamame, tempeh, soy lecithin?","[R6487] Shrimp Stir-Fry
 - 3 tablespoons cornstarch
 - 1 ¾ cups Swanson® Chicken Stock
@@ -1785,7 +1785,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ½ teaspoon ground ginger
 - ⅛ teaspoon garlic powder
 - 4 cups hot cooked regular long-grain white rice",,"Nhóm: đậu nành: đậu phụ, nước tương, miso, edamame, tempeh
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 62,chk_52,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R13568] Alison's Gluten-Free Bread
 - 1  egg
 - ⅓ cup egg whites
@@ -1801,7 +1801,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 cup white rice flour
 - 1 cup brown rice flour
 - 1 tablespoon active dry yeast",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 63,chk_45,checker,"Công thức này có chứa: soybeans or a product made from soy: soy sauce, tofu, miso, edamame, tempeh, soy lecithin?","[R16930] Stir Fried Bok Choy
 - 1 large head bok choy
 - 1 tablespoon grapeseed oil
@@ -1811,7 +1811,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 3 cloves garlic, minced
 - ½ teaspoon Chinese five-spice powder, or more to taste
 - 1 pinch white sugar",,"Nhóm: đậu nành: đậu phụ, nước tương, miso, edamame, tempeh
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 64,chk_10,checker,"Công thức này có chứa: tree nuts (almond, walnut, pecan, cashew, pistachio, hazelnut, macadamia, Brazil nut, pine nut, chestnut) or a product made from them, such as pesto, marzipan, praline or nut butters other than peanut butter; coconut does not count?","[R21860] Vegan Spaghetti Squash Noodle Salad with Peanut Sauce
 - ½ small spaghetti squash, halved and seeded
 - ⅓ cup peanut butter
@@ -1829,7 +1829,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2  scallions, minced
 - 1 sprig fresh mint, thinly sliced
 - ¼ cup roasted, salted peanuts",,"Nhóm: hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,"Chỉ có lạc (peanut), không tính là hạt cây"
 65,chk_07,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R32640] Hoisin Asian Meatballs
 - 1 pound lean ground beef
 - ½ cup panko bread crumbs
@@ -1842,7 +1842,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2 tablespoons rice vinegar
 - 2 teaspoons sesame oil
 - 1 (16 ounce) package frozen fried rice (such as Kahiki® Japanese-Style Fried Rice)",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 66,chk_22,checker,"Công thức này có chứa: soybeans or a product made from soy: soy sauce, tofu, miso, edamame, tempeh, soy lecithin?","[R23931] Flavorful Beef Stir-Fry
 - 2 cups brown rice
 - 4 cups water
@@ -1861,7 +1861,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 cup Chinese cabbage
 - 2 large heads bok choy, chopped
 - 1 tablespoon vegetable oil",,"Nhóm: đậu nành: đậu phụ, nước tương, miso, edamame, tempeh
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 67,ans_22,answer,món pasta healthy cho người dị ứng nuts,"Món Healthy Pasta Primavera [R8069] phù hợp với yêu cầu của bạn. Món pasta này chứa nhiều rau củ như asparagus, mushrooms, và cherry tomatoes, đồng thời không chứa bất kỳ loại hạt nào. Thời gian chuẩn bị khoảng 40 phút.","[R8069] Healthy Pasta Primavera
 - 2 cups whole grain penne pasta
 - 1 tablespoon olive oil
@@ -1934,7 +1934,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ½ cup grated Parmesan cheese, or to taste","Ràng buộc của câu hỏi (gold): dị ứng tree_nuts
 Món được trích: R8069
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,
 68,chk_36,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R22394] Gaeng Daeng Sai Fak Thong Lae Moo (Red Curry with Pork and Squash)
 - 1 tablespoon vegetable oil
 - 1 tablespoon red curry paste, or to taste
@@ -1944,7 +1944,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 2 ¼ cups cabbage, coarsely chopped
 - 1 tablespoon fish sauce, or more to taste
 - 1 tablespoon white sugar, or more to taste",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,Nước cốt dừa không tính là sữa
 69,chk_11,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R9643] Old Bay® Shrimp and Pasta Alfredo
 - ½ cup olive oil
 - 4 cloves garlic, chopped, or to taste
@@ -1954,14 +1954,14 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 (16 ounce) package angel hair pasta
 - ½ cup Alfredo sauce, or as needed  (Optional)
 - 1 tablespoon freshly squeezed lemon juice",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,Alfredo sauce có ghi (Optional) nhưng vẫn tính
 70,rel_22,relevance,suggest a rice dish for dinner / no onions please,"[R6356] Chicken and Rice Casserole
 - 1 cup white rice
 - 4  skinless, boneless chicken breast halves
 - 1 (1 ounce) package French onion soup mix
 - 1 (10.75 ounce) can  condensed cream of mushroom soup",,"Ý chính cần xét: loại món 'rice' (câu hội thoại: xét lượt cuối, có tính các lượt trước)
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 71,ans_35,answer,how do I make the second one?,"It seems you're referring to the recipe [R24282] Pesto Chicken and Rice Bake. Here’s how to make it:
 
 ### Ingredients:
@@ -1996,7 +1996,7 @@ This recipe may contain milk (from the Alfredo sauce) and tree nuts (from the pe
 - ¼ cup freshly grated Parmesan cheese","Ràng buộc của câu hỏi (gold): không onion
 Món được trích: R24282
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,2,0,—,"Lượng nước ghi 1 1/2 cup, thẻ ghi 1 ¾ cup; các bước nấu không có trên thẻ"
 72,ans_08,answer,suggest a soup without onions,"[R13431] Simple Roasted Tomato Soup | 70 min | This tomato soup is free from onions and uses roasted Roma tomatoes for a deep, flavorful base. [R1233] Dry Onion Soup Mix | 5 min | This mix can be used as a replacement for traditional onion soup mix, ensuring no onions are included. Both recipes are suitable for those avoiding onions.","[R8599] Mushroom Soup Without Cream
 - 2 tablespoons butter
 - 1 cup peeled and sliced carrots
@@ -2053,7 +2053,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ⅛ teaspoon ground black pepper","Ràng buộc của câu hỏi (gold): không onion
 Món được trích: R13431, R1233
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,0,1,—,Nói không có hành nhưng R13431 có hành tây vàng; R1233 là hỗn hợp súp hành
 73,chk_59,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R3133] Ham Bone Soup
 - 1  ham bone with some meat
 - 1  onion, diced
@@ -2063,7 +2063,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1  green bell pepper, seeded and cubed
 - 4 cups water
 - 6 cubes  chicken bouillon",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,Viên bouillon gà thường không có sữa
 74,ans_29,answer,"I'm allergic to shellfish, suggest a cake","No recipes in the provided context contain shellfish or crustacean ingredients. However, all the recipes listed may contain allergens such as milk, eggs, or wheat. You may want to check the ingredient labels carefully or consider swapping out the milk in [R14890] Moist Chocolate Layer Cake with a milk-free alternative.","[R14890] Moist Chocolate Layer Cake
 - 2 teaspoons unsweetened cocoa powder (such as Hershey's®)
 - 2 cups cake flour
@@ -2135,7 +2135,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 4-inch round paper or cardboard stencil","Ràng buộc của câu hỏi (gold): dị ứng crustacean_shellfish
 Món được trích: R14890
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,1,0,—,Không có giáp xác: đúng; nhưng không đưa ra gợi ý rõ ràng
 75,ans_32,answer,suggest a rice dish for dinner,[R28354] Easy Curry Rice | 20 min | A simple and nice rice dish that can be prepared quickly for dinner. [R5944] Kickin' Rice | 35 min | A simple and versatile rice side dish that everyone loves! Both are suitable for a quick dinner.,"[R24656] Harvest Rice Dish
 - ½ cup slivered almonds
 - 2 cups chicken broth
@@ -2185,7 +2185,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 pinch salt","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R28354, R5944
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Thời gian không kiểm được trên thẻ
 76,chk_04,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R30176] Apple-Cranberry Crumble
 - 1 (12 ounce) package fresh cranberries
 - 2  apples, or more to taste, cut into 1-inch pieces
@@ -2198,7 +2198,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ¼ teaspoon salt
 - 1  egg
 - ¼ cup butter, melted",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 77,rel_14,relevance,gợi ý món tráng miệng / tôi dị ứng lúa mì,"[R3543] Flan II
 - ½ cup white sugar
 - 2 cups milk
@@ -2206,7 +2206,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 2  egg yolks, beaten
 - ⅜ cup white sugar",,"Ý chính cần xét: loại món 'pie' (câu hội thoại: xét lượt cuối, có tính các lượt trước)
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,Hint ghi 'pie'; chấm theo nhu cầu tráng miệng (nếu chấm đúng nghĩa 'pie' thì được 1)
 78,rel_42,relevance,suggest a rice dish for dinner / no onions please / how do I make the second one?,"[R26559] Baklava II
 - 2 cups white sugar
 - 2 cups water
@@ -2221,7 +2221,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 ½ cups unsalted butter, melted
 - 1 (16 ounce) package frozen phyllo pastry, thawed",,"Ý chính cần xét: loại món 'rice' (câu hội thoại: xét lượt cuối, có tính các lượt trước)
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,
 79,rel_38,relevance,suggest a rice dish for dinner / no onions please,"[R17095] Clinton's Special Vegetarian Quiche
 - 1 (17.5 ounce) package frozen puff pastry, thawed
 - 1 cup fresh spinach, cleaned and stemmed
@@ -2235,7 +2235,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - salt and pepper to taste
 - 2  tomatoes, thinly sliced",,"Ý chính cần xét: loại món 'rice' (câu hội thoại: xét lượt cuối, có tính các lượt trước)
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,
 80,chk_15,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R25928] Roasted Butternut Squash Soup with Apples and Bacon
 - 1 (3 pound) butternut squash - peeled, seeded, and cubed
 - 1 tablespoon olive oil
@@ -2254,7 +2254,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 ½ quarts chicken stock
 - ½ teaspoon ground nutmeg  (Optional)
 - 1 ½ cups sour cream",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 81,ans_43,answer,món canh nào nấu với bí đỏ ngon,"[Tìm thấy 4 món canh với bí đỏ:]
 
 - [R1435] Pumpkin Soup | 75 phút: Canh bí đỏ ngon và creamy, thường được phục vụ vào ngày Lễ Tạ Ơn. Tuy nhiên, món này có chứa sữa, nên bạn cần kiểm tra nhãn thành phần.
@@ -2324,7 +2324,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 cup half-and-half","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R1435, R22575, R27698, R29317
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,R22575 dùng red squash; ghi chú có sữa: đúng
 82,ans_28,answer,lam banh chuoi nuong the nao,"R8602 Grilled Peanut Butter and Banana Sandwich | 12 phút | Nguyên liệu gồm bơ đậu phộng, chuối và bánh mì. Sandwich này ngọt và ấm áp, thích hợp làm bữa sáng.","[R8602] Grilled Peanut Butter and Banana Sandwich
 - cooking spray
 - 2 tablespoons peanut butter
@@ -2374,7 +2374,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ¼ teaspoon kosher salt","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: không trích món nào
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,0,1,—,Hỏi bánh chuối nướng (banana bread) nhưng gợi ý sandwich R8602 (không đặt trong ngoặc []); thẻ có R6402/R16764 đúng loại
 83,ans_49,answer,công thức cá ngừ áp chảo không có cá,"Không tìm thấy công thức phù hợp trong CONTEXT. Công thức ""Khao Dom Pla (Rice Soup with Fish) [R12202]"" có chứa cá, trong khi bạn yêu cầu không có cá. Bạn có thể cân nhắc tìm kiếm công thức khác hoặc yêu cầu loại bỏ cá trong công thức đã cho.","[R16630] Khao Soi Soup
 - 2 tablespoons vegetable oil
 - 3  shallots, chopped
@@ -2456,7 +2456,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - sea salt to taste","Ràng buộc của câu hỏi (gold): dị ứng fish
 Món được trích: R12202
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Từ chối đúng
 84,chk_41,checker,"Công thức này có chứa: crustacean shellfish (shrimp, prawn, crab, lobster, crayfish) or a product made from them, such as shrimp paste; molluscs such as clams, oysters, scallops or squid do not count?","[R7855] Shipwreck Dinner
 - 1 pound lean ground beef
 - 1 (7.25 ounce) package macaroni and cheese mix
@@ -2466,7 +2466,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 cup frozen corn
 - 1 teaspoon seasoned salt (such as LAWRY'S®), or to taste
 - 1 cup shredded Cheddar cheese, divided",,"Nhóm: giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 85,ans_05,answer,mon an sang duoi 10 phut khong co bot mi,"[R18379] Gluten-Free Quinoa Noodles | 67 min | allergens: egg | may contain: none | diet: vegetarian | ingredients: 1 cup quinoa flour; 1 cup rice flour; 2 teaspoons xanthan gum; 1 teaspoon dried basil  (Optional); 1 teaspoon dried rosemary  (Optional); 1 teaspoon dried oregano  (Optional); ½ teaspoon salt; 2  eggs; 1  egg yolk; ⅓ cup water; 1 teaspoon olive oil; ⅓ cup rice flour, divided | Dù thời gian nấu vượt quá yêu cầu, công thức này vẫn không chứa bột mì và có thể thích hợp cho một bữa sáng nhanh chóng.","[R21330] NO YOLKS® Asian Fried Noodles
 - 1 ½ (12 ounce) packages NO YOLKS® Fine Noodles
 - 1 tablespoon canola oil
@@ -2543,7 +2543,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ⅓ cup rice flour, divided","Ràng buộc của câu hỏi (gold): dị ứng wheat, ≤ 10 phút
 Món được trích: R18379
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,0,1,—,"R18379 mất 67 phút, vượt giới hạn 10 phút; còn gọi là 'nhanh chóng'"
 86,rel_11,relevance,mình thích ăn tôm lắm. gợi ý món tôm rang đi,"[R9469] Pineapple-Shrimp Fried Rice
 - 2 tablespoons coconut oil (such as British Class®)
 - 1 medium onion, diced
@@ -2558,7 +2558,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 small tomato, diced
 - 3  green onions, thinly sliced",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",1,—,—,—,—,"Cơm chiên tôm, không phải tôm rang"
 87,chk_25,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R30202] Healthier Apple Crisp II
 - 10 cups unpeeled, cored, and sliced apples
 - ½ cup white sugar
@@ -2572,7 +2572,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ¼ teaspoon baking powder
 - ¼ teaspoon baking soda
 - ½ cup butter, melted",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 88,ans_17,answer,mình thích ăn tôm lắm. gợi ý món tôm rang đi,"Món Old Bay® Fried Shrimp [R9696] có thể phù hợp với bạn. Đây là một món tôm rang truyền thống, ngon miệng và dễ làm. Thời gian nấu khoảng 105 phút. Tuy nhiên, món này có chứa sữa, trứng, tôm và bột mì, nên bạn cần kiểm tra kỹ nhãn sản phẩm.","[R9696] Old Bay® Fried Shrimp
 - 1 pound large shrimp, peeled and deveined
 - 3 large eggs, or more as needed
@@ -2619,7 +2619,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 ½ cups vegetable oil","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R9696
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Món chiên chứ không phải tôm rang; thời gian không kiểm được
 89,chk_06,checker,"Công thức này có chứa: tree nuts (almond, walnut, pecan, cashew, pistachio, hazelnut, macadamia, Brazil nut, pine nut, chestnut) or a product made from them, such as pesto, marzipan, praline or nut butters other than peanut butter; coconut does not count?","[R5119] Spinach and Sun-Dried Tomato Pasta
 - 1 cup vegetable broth
 - 12  dehydrated sun-dried tomatoes
@@ -2630,7 +2630,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 clove garlic, minced
 - 1 bunch fresh spinach, rinsed and torn into bite-size pieces
 - ¼ cup grated Parmesan cheese",,"Nhóm: hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 90,chk_46,checker,"Công thức này có chứa: fish (any finfish) or a product made from fish, including anchovies, anchovy paste, fish sauce, Worcestershire sauce (made with anchovies), Caesar dressing, bonito flakes and dashi?","[R20627] Pho-Vietnamese Noodle Soup
 - 2 (14.5 ounce) cans chicken broth
 - 2  star anise pods, or more to taste
@@ -2642,13 +2642,13 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ¼ cup chopped carrots
 - ½ (8 ounce) package dried thin rice noodles
 - 1 tablespoon chopped green onion",,"Nhóm: cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 91,chk_44,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R4953] Food Processor Chocolate Whipped Cream Frosting
 - 1 cup heavy whipping cream
 - 1 teaspoon vanilla extract
 - 2 ½ tablespoons white sugar
 - 2 ½ tablespoons unsweetened cocoa powder",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 92,ans_14,answer,cần nấu dưới 30 phút,"- 20-Minute Shrimp Fajitas Sheet Pan Dinner [R10342]: Đây là một bữa ăn nhanh chóng, chỉ mất 20 phút và không chứa các thành phần gây dị ứng. 
 - Steak and Kale Soup [R21402]:Soup này chỉ mất 20 phút để nấu và không chứa các thành phần gây dị ứng.","[R10342] 20-Minute Shrimp Fajitas Sheet Pan Dinner
 - nonstick cooking spray
@@ -2702,7 +2702,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 8  buttery round crackers (such as Ritz®), crushed","Ràng buộc của câu hỏi (gold): dị ứng wheat, ≤ 30 phút
 Món được trích: R10342, R21402
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,1,1,—,R10342 có flour tortillas: vi phạm ràng buộc lúa mì; câu 'không chứa thành phần gây dị ứng' sai
 93,rel_24,relevance,"tôi dị ứng sữa, gợi ý món bò","[R23223] Tami's Red Sauce: Bolognese Tomato Sauce with Ground Beef
 - 1 pound ground beef
 - 2 (29 ounce) cans tomato sauce
@@ -2714,7 +2714,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 teaspoon salt
 - ½ teaspoon ground black pepper",,"Ý chính cần xét: loại món 'beef'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",1,—,—,—,—,"Nước sốt bò, không phải món bò hoàn chỉnh"
 94,rel_44,relevance,lam banh chuoi nuong the nao,"[R27823] Boozy Banana Bread
 - cooking spray
 - 2 cups all-purpose flour, sifted
@@ -2727,7 +2727,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 3 drops almond extract
 - 3 drops amaretto (almond-flavored liqueur)",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 95,rel_50,relevance,cho mình món súp không có sữa và không có bơ,"[R11343] Goi Cuon (Vietnamese Spring Roll with Pork and Prawns)
 - ½ pound pork tenderloin, cut into thin strips
 - ½ pound prawns, peeled and deveined
@@ -2738,7 +2738,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ¼ cup fresh mint leaves, or more to taste
 - ¼ head romaine lettuce, cut into bite-size pieces",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,
 96,ans_07,answer,cho mình xin công thức gà nướng mật ong,"Không tìm thấy công thức gà nướng mật ong trong CONTEXT. Bạn có thể thử mở rộng tìm kiếm với các từ khóa như ""gà nướng"" hoặc ""mật ong"" để tìm công thức phù hợp hơn?","[R10223] My Husband's Pad Thai Noodles
 - 1 (8 ounce) package dried wide rice noodles
 - ¼ cup fish sauce
@@ -2831,7 +2831,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 teaspoon fish sauce, or more to taste","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: không trích món nào
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Thẻ không có món phù hợp; trả lời không tìm thấy là đúng
 97,chk_49,checker,"Công thức này có chứa: meat, poultry, fish, seafood, gelatin, animal fat or a broth made from meat or fish?","[R21946] Hummus and Tapenade Sandwich Spread
 - ¼ cup pitted Kalamata olives, drained
 - 2 tablespoons pitted green olives
@@ -2843,7 +2843,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ⅛ teaspoon garlic powder
 - ⅛ teaspoon onion powder
 - ⅛ teaspoon ground black pepper",,"Nhóm: chay: KHÔNG có thịt, gia cầm, cá, hải sản, gelatin, mỡ động vật, nước dùng thịt/cá
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 98,ans_02,answer,creamy clam soup with potatoes,"[R10097] Classic Clam Chowder | A creamy clam chowder with potatoes, made from scratch. It takes about 30 minutes and is free from milk but may contain none of your other allergens. [R9545] Manhattan Clam Chowder | This soup is zesty and flavorful, containing potatoes and tomato and clam juice cocktail. It takes about 45 minutes to prepare and has no milk allergens but may contain none of your other allergens.","[R10097] Classic Clam Chowder
 - 2 slices thick-cut bacon, cut into small dice
 - 1 large onion, cut into medium dice
@@ -2904,7 +2904,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 pinch salt and ground black pepper to taste","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R10097, R9545
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,2,0,—,Nói không có sữa nhưng R10097 có heavy cream
 99,ans_06,answer,refreshing japanese coffee jelly,"[R1769] Coffee Jelly is a refreshing Japanese summertime treat that can be served solid in glasses or cubed in bowls. It takes 370 minutes to prepare and has no listed allergens, though it may contain undeclared ingredients.","[R1769] Coffee Jelly
 - 1 (.25 ounce) package unflavored gelatin
 - 2 tablespoons hot water
@@ -2940,7 +2940,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ½ cup mild pepper jelly","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R1769
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Thời gian không kiểm được trên thẻ
 100,rel_48,relevance,suggest a bread without mushrooms,"[R4769] Wild Mushroom Sauce
 - 4 tablespoons butter
 - ¼ cup finely chopped shallots
@@ -2953,7 +2953,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 6 fluid ounces beef demi glace
 - salt and freshly ground black pepper to taste",,"Ý chính cần xét: loại món 'bread'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,
 101,rel_16,relevance,cho mình món súp không có sữa và không có bơ,"[R25673] Celery Soup
 - 3 tablespoons olive oil, divided, or to taste
 - 1 large onion, chopped
@@ -2968,7 +2968,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ½ teaspoon salt-free seasoning blend (such as Penzeys Mural of Flavor), or to taste
 - salt and ground black pepper to taste",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 102,chk_32,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R2503] Crispy Ginger Beef
 - ¾ cup cornstarch
 - ½ cup water
@@ -2986,7 +2986,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 3 tablespoons soy sauce
 - 1 tablespoon sesame oil
 - 1 tablespoon red pepper flakes, or to taste",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 103,rel_43,relevance,gợi ý món tráng miệng / tôi dị ứng lúa mì,"[R19647] Spicy Rice Noodle Salad
 - 1 (6.75 ounce) package thin rice noodles
 - 3 cloves garlic, minced
@@ -3003,7 +3003,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 6  grilled boneless, skinless chicken thighs  (Optional)
 - ¼ cup Fresno chile peppers, cut into rings  (Optional)",,"Ý chính cần xét: loại món 'pie' (câu hội thoại: xét lượt cuối, có tính các lượt trước)
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,
 104,ans_34,answer,mon an sang duoi 10 phut khong co bot mi,"R10230: Lemon and Garlic Shrimp [10 phút] - Đây là một món ăn nhẹ nhanh chóng, phù hợp với yêu cầu của bạn. Món tôm sốt chanh và tỏi không chứa bột mì và thời gian chuẩn bị chỉ mất 10 phút.
 
 R23505: Stir-Fried Kale and Broccoli Florets [10 phút] - Món xào rau cải xanh và bông cải xanh cũng đáp ứng yêu cầu của bạn. Món này không chứa bột mì và thời gian chuẩn bị chỉ mất 10 phút.","[R10230] Lemon and Garlic Shrimp
@@ -3056,7 +3056,7 @@ R23505: Stir-Fried Kale and Broccoli Florets [10 phút] - Món xào rau cải xa
 - salt","Ràng buộc của câu hỏi (gold): dị ứng wheat, ≤ 10 phút
 Món được trích: không trích món nào
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,1,0,—,Không có bột mì: đúng; nhưng không phải món sáng; mã món không đặt trong []; thời gian không kiểm được
 105,rel_07,relevance,cookies without mushrooms,"[R28527] Gingerbread Cookies without Molasses
 - 1 cup butter
 - 1 ½ cups white sugar
@@ -3069,13 +3069,13 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ½ teaspoon ground cloves
 - ½ teaspoon salt",,"Ý chính cần xét: loại món 'cookie'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 106,chk_50,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R27657] Birthday Cake Watermelon Pizza
 - 1  center-cut slice of watermelon, 1 to 2 inches thick
 - ½ cup chocolate chips
 - 2 tablespoons half-and-half
 - 1 tablespoon multicolored candy sprinkles, or as needed",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 107,rel_46,relevance,"làm salad mà không có hành, mình ghét mùi hành lắm","[R11966] Craving-Vietnamese Salad
 - ¼ cup mirin (Japanese sweet wine)
 - 3 tablespoons soy sauce
@@ -3099,7 +3099,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 tablespoon sriracha sauce, or more to taste
 - ¾ cup salted peanuts",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 108,rel_37,relevance,gợi ý món tráng miệng / tôi dị ứng lúa mì / cần nấu dưới 30 phút / món thứ 3 làm thế nào?,"[R21083] Nicola's Pad Thai
 - 2 cups pad Thai rice noodles, soaked in water overnight and drained
 - ½ cup vegetable broth
@@ -3131,14 +3131,14 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 tablespoon chopped cilantro
 - 1 pinch paprika for garnish",,"Ý chính cần xét: loại món 'pie' (câu hội thoại: xét lượt cuối, có tính các lượt trước)
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,
 109,rel_25,relevance,mon an sang duoi 10 phut khong co bot mi,"[R17976] Quick and Easy Dip
 - 1 (16 ounce) can refried beans
 - 1 (8 ounce) container sour cream
 - 1 (8 ounce) jar medium salsa
 - 2 cups shredded Cheddar-Monterey Jack cheese blend",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,
 110,ans_33,answer,suggest a beef dish ready in under 30 minutes,"[R7226] Savory Beef Stir-Fry | 25 min | This quick version of stir-fry is easy to make and tastes great, just as good as any take-out. Ready in 25 minutes.
 
 [R16640] Korean BBQ Beef (Pul-Kogi) | 30 min | While this dish is close to the 30-minute mark, it offers a flavorful and unique beef dish that can be prepared in 30 minutes.","[R6848] Hamburger and Macaroni Hot Dish
@@ -3198,7 +3198,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 teaspoon freshly ground black pepper to taste","Ràng buộc của câu hỏi (gold): ≤ 30 phút
 Món được trích: R7226, R16640
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Thời gian không kiểm được trên thẻ
 111,ans_47,answer,bị tiểu đường thì nên uống thuốc gì,"Xin lỗi, CONTEXT không chứa thông tin về thuốc để điều trị tiểu đường. Tôi khuyên bạn nên tham khảo ý kiến bác sĩ hoặc chuyên gia y tế để được tư vấn về thuốc phù hợp.","[R2163] Authentic Vietnamese Spring Rolls (Nem Ran Hay Cha Gio)
 - 2 ounces dried thin rice noodles
 - ¾ cup ground chicken
@@ -3273,7 +3273,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 tablespoon chopped fresh cilantro","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: không trích món nào
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,"Từ chối đúng, khuyên hỏi bác sĩ"
 112,chk_47,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R18669] Instant Pot® Beef Pho
 - 3 pounds beef soup bones
 - 3  whole cloves
@@ -3291,7 +3291,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 12 ounces dry rice stick noodles
 - ¼ cup chopped cilantro
 - 2  green onions, chopped",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 113,rel_33,relevance,mình thích ăn tôm lắm. gợi ý món tôm rang đi,"[R8693] Authentic Pad Thai
 - 12 ounces dried rice noodles
 - ½ cup white sugar
@@ -3311,7 +3311,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 tablespoon paprika, or to taste
 - 1  lime, cut into wedges",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,"Pad Thai gà, không có tôm"
 114,ans_11,answer,lam banh chuoi nuong the nao,"Xin lỗi, trong CONTEXT không có công thức làm bánh chuối nướng. Bạn có thể thử tìm kiếm thêm công thức hoặc cung cấp thêm các hạn chế về nguyên liệu không?","[R7993] Nong's Khao Man Gai
 - 2 quarts water
 - 1 (3 pound) whole chicken
@@ -3391,7 +3391,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 (15 ounce) package slider-size burger buns","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: không trích món nào
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Thẻ không có bánh chuối; trả lời không tìm thấy là đúng (lỗi nằm ở bước truy hồi)
 115,ans_20,answer,"I'm allergic to sesame, suggest a bread","No recipes in the provided context contain sesame as an ingredient, but [R1692] Italian Bread Using a Bread Machine does not list sesame as an allergen. However, it does contain wheat and egg. The cook can substitute the egg with a flax egg or another egg-replacement method if needed. This recipe might be suitable for you, but always check ingredient labels.","[R1692] Italian Bread Using a Bread Machine
 - 4 cups unbleached all-purpose flour
 - 1 tablespoon light brown sugar
@@ -3445,7 +3445,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 (1 pound) loaf rye bread","Ràng buộc của câu hỏi (gold): dị ứng sesame
 Món được trích: R1692
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,
 116,chk_05,checker,"Công thức này có chứa: fish (any finfish) or a product made from fish, including anchovies, anchovy paste, fish sauce, Worcestershire sauce (made with anchovies), Caesar dressing, bonito flakes and dashi?","[R12572] Light and Cheesy Panko Crusted Cod
 - Non-stick cooking spray
 - 1 (9.74 ounce) package Idahoan Signature™ Russets Mashed Potatoes
@@ -3462,7 +3462,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 2 tablespoons chopped fresh chives
 - 1 tablespoon mayonnaise
 - salt and pepper to taste",,"Nhóm: cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 117,ans_01,answer,tôi dị ứng lúa mì,"[R4289] Maja Blanca | 125 phút | không chứa gluten | Maja blanca là một lựa chọn tốt cho dessert, không chứa gluten và phù hợp với người dị ứng lúa mì. Thời gian chuẩn bị khoảng 125 phút.
 
 [R16053] Chocolate Strawberries | 70 phút | không chứa gluten | Dâu tây bọc sô cô la đơn giản nhưng ngon miệng và phù hợp với người dị ứng lúa mì. Thời gian chuẩn bị khoảng 70 phút.","[R4289] Maja Blanca
@@ -3506,7 +3506,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 pint fresh strawberries with leaves","Ràng buộc của câu hỏi (gold): dị ứng wheat
 Món được trích: R4289, R16053
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Thời gian không kiểm được trên thẻ
 118,ans_16,answer,cookies without mushrooms,Nothing found that strictly avoids mushrooms. All recipes contain ingredients that might be derived from mushrooms or have mushroom as a cross-reactive allergen. Consider relaxing the constraint to another ingredient or allergen.,"[R28798] Cinnamon Roll Cookies
 - 2 ¾ cups all-purpose flour, plus more for rolling out dough
 - 1 teaspoon baking soda
@@ -3567,7 +3567,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 cup white sugar for decoration","Ràng buộc của câu hỏi (gold): không mushroom
 Món được trích: không trích món nào
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,0,0,—,"Các bánh quy đều không có nấm, nhưng câu trả lời nói không tìm thấy và bịa chuyện 'dị ứng chéo'"
 119,rel_40,relevance,suggest a soup without onions,"[R24120] Perfect Chicken Vegetable Soup
 - 1 tablespoon vegetable oil
 - 2  skinless, boneless chicken breasts, cut into bite-sized pieces
@@ -3580,7 +3580,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 2  eggs, beaten  (Optional)
 - salt and ground black pepper to taste",,"Ý chính cần xét: loại món 'soup'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 120,chk_20,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R26510] Gluten-Free Multigrain Bread
 - 1 teaspoon butter, or as needed
 - ¾ cup brown rice flour
@@ -3602,7 +3602,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2 tablespoons olive oil
 - 2 teaspoons apple cider vinegar
 - 1 teaspoon sesame seeds  (Optional)",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,Hạt mè có ghi (Optional) nhưng vẫn tính
 121,rel_41,relevance,"tôi dị ứng sữa, gợi ý món bò / giờ tôi ăn được sữa rồi, gợi ý lại món bò","[R2503] Crispy Ginger Beef
 - ¾ cup cornstarch
 - ½ cup water
@@ -3621,7 +3621,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 tablespoon sesame oil
 - 1 tablespoon red pepper flakes, or to taste",,"Ý chính cần xét: loại món 'beef' (câu hội thoại: xét lượt cuối, có tính các lượt trước)
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 122,chk_26,checker,"Công thức này có chứa: crustacean shellfish (shrimp, prawn, crab, lobster, crayfish) or a product made from them, such as shrimp paste; molluscs such as clams, oysters, scallops or squid do not count?","[R10082] Spicy Shrimp Primavera
 - ¼ cup olive oil
 - ¼ cup thinly sliced green bell pepper
@@ -3644,7 +3644,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ¾ teaspoon ground black pepper
 - 1 pound cooked medium shrimp, peeled and deveined
 - 1 (16 ounce) package angel hair pasta",,"Nhóm: giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 123,chk_14,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R13247] Aunt Anne's Sesame Cookies
 - 1 cup butter
 - ¾ cup sugar
@@ -3655,7 +3655,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ⅛ teaspoon salt
 - ½ cup milk, or as needed
 - 1 cup sesame seeds",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 124,chk_27,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R24120] Perfect Chicken Vegetable Soup
 - 1 tablespoon vegetable oil
 - 2  skinless, boneless chicken breasts, cut into bite-sized pieces
@@ -3667,7 +3667,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 large carrot, chopped
 - 2  eggs, beaten  (Optional)
 - salt and ground black pepper to taste",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 125,chk_02,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R7944] Erin's Easy Stir-Fry Sauce
 - 1 cup butter
 - ¾ cup soy sauce
@@ -3676,7 +3676,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2 teaspoons minced garlic
 - ½ teaspoon ground black pepper
 - ½ teaspoon crushed red pepper",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,Nước tương thường có lúa mì
 126,chk_54,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R17170] Real Thai Green Curry Paste (Nam Prik Gen Kayo Wan)
 - 1 cup chopped Thai chile peppers
 - 3  shallots, chopped
@@ -3692,7 +3692,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 tablespoon toasted coriander seeds
 - 1 tablespoon salt
 - 1 tablespoon ground white pepper",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 127,rel_26,relevance,mon an sang duoi 10 phut khong co bot mi,"[R12548] Japanese Scrambled Eggs with Pacific Saury
 - ½ cup water
 - 1 (5 ounce) can grilled Pacific saury
@@ -3701,7 +3701,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2  eggs, beaten
 - 2 tablespoons chopped scallion",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,Trứng bác kiểu Nhật: hợp bữa sáng
 128,ans_26,answer,"actually I can eat shellfish now, suggest a cake again","Sure! Here are some cake options from the provided recipes:
 
 - [R14890] Moist Chocolate Layer Cake | 55 min: This rich and moist chocolate cake is a crowd-pleaser and can be enjoyed by those who can eat shellfish.
@@ -3789,7 +3789,7 @@ All these cakes are free from milk, egg, and wheat allergens, and the Easy Heart
 - 4 cups confectioners' sugar","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R14890, R25492, R17173
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,2,0,—,"Nói không có sữa, trứng, lúa mì: sai (cả 3 món đều có)"
 129,rel_10,relevance,suggest a bread without mushrooms,"[R4339] Quick and Easy Monkey Bread
 - 24 ounces frozen dinner roll dough
 - 1 cup packed brown sugar
@@ -3799,7 +3799,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ½ cup chopped walnuts
 - ½ cup melted butter",,"Ý chính cần xét: loại món 'bread'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 130,chk_18,checker,"Công thức này có chứa: tree nuts (almond, walnut, pecan, cashew, pistachio, hazelnut, macadamia, Brazil nut, pine nut, chestnut) or a product made from them, such as pesto, marzipan, praline or nut butters other than peanut butter; coconut does not count?","[R29568] Fruit and Broccoli Buffet Salad
 - ½ cup grapeseed oil
 - ⅓ cup granulated sugar
@@ -3816,7 +3816,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2 ½ cups bite-size broccoli florets
 - 1  red apple, chopped
 - 1 cup grapes, halved",,"Nhóm: hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 131,rel_17,relevance,suggest a bread without mushrooms,"[R26231] Bread Machine Ezekiel Bread
 - ½ cup milk
 - ½ cup water
@@ -3836,7 +3836,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 teaspoon salt
 - 2 teaspoons bread machine yeast",,"Ý chính cần xét: loại món 'bread'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 132,chk_58,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R26379] Pasta e Fagioli I
 - 2 tablespoons olive oil
 - 1 cup chopped onion
@@ -3848,7 +3848,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 teaspoon dried basil leaves
 - ¼ teaspoon ground black pepper
 - ¼ pound seashell pasta",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 133,rel_47,relevance,dị ứng mè với đậu nành thì nấu món xào gì,"[R11390] Dinengdeng
 - 2 (8 ounce) fillets milkfish (bangus)
 - 1  tomato, quartered
@@ -3860,7 +3860,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ½ pound zucchini, cut into bite-size pieces
 - ½ pound fresh okra",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,"Món hầm/canh, không phải món xào"
 134,chk_23,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R24574] Angel Fruit Trifle
 - 1 (12 ounce) package frozen blueberries
 - 1  prepared angel food cake, cut into chunks
@@ -3868,7 +3868,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 (12 ounce) package frozen peach slices, chopped
 - 1 (6 ounce) container fresh raspberries
 - 2 (16 ounce) tubs reduced-fat frozen whipped topping, thawed",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,Bánh angel food làm từ bột mì
 135,chk_19,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R317] Beef Bulgogi
 - 1 pound flank steak, thinly sliced
 - 5 tablespoons soy sauce
@@ -3878,7 +3878,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2 tablespoons sesame seeds
 - 2 tablespoons sesame oil
 - ½ teaspoon ground black pepper",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 136,rel_45,relevance,egyptian hazelnut sesame dip,"[R19150] Fried Cauliflower (Egyptian Style)
 - 2 teaspoons ground cumin
 - 1 head cauliflower, cut into florets
@@ -3891,7 +3891,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ¼ cup milk, or as needed
 - 2 cups vegetable oil, or as needed",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",0,—,—,—,—,"Chỉ trùng ẩm thực Ai Cập, không phải món dip"
 137,ans_37,answer,spicy lime chicken and bean salad,"[R25370] Spicy Southwest Chopped Salad with Salsa Verde | 75 min | This recipe combines spicy elements with lime and beans, making it a flavorful option. It's not specifically a salad, but it can be served as such and adjusted to your liking.","[R22215] Lime-Poblano Chicken Salad
 - 1 cup shredded rotisserie chicken
 - ½  poblano pepper, diced
@@ -3966,7 +3966,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 4 teaspoons fresh lime juice","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R25370
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Câu 'không hẳn là salad' lệch với tên món nhưng không ảnh hưởng
 138,ans_41,answer,no onions please,"[R7919] Onion Rice is a simple and versatile rice side dish that everyone loves, taking about 40 minutes to prepare. While it traditionally includes onions, you can omit them to fit your needs.","[R6913] Simple Baked Rice
 - cooking spray
 - 1 cup long-grain rice
@@ -4019,7 +4019,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 ½ teaspoons taco seasoning","Ràng buộc của câu hỏi (gold): không onion
 Món được trích: R7919
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,0,1,—,Onion Rice vi phạm ràng buộc không hành
 139,chk_51,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R24253] USMC SOS
 - 1 pound ground beef
 - 1 ½ tablespoons butter
@@ -4027,7 +4027,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 cup beef broth
 - ½ cup evaporated milk
 - salt and pepper to taste",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 140,rel_35,relevance,dị ứng mè với đậu nành thì nấu món xào gì,"[R24320] Cauliflower and Potato Stir-Fry - East Indian Recipe
 - 3 tablespoons canola oil
 - 2 teaspoons cumin seeds
@@ -4041,7 +4041,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 teaspoon salt
 - ¼ cup chopped fresh cilantro, or to taste",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 141,ans_36,answer,gợi ý món tráng miệng,"Không tìm thấy món tráng miệng trong danh sách trên. Bạn có thể cân nhắc mở rộng yêu cầu để bao gồm các loại thực phẩm khác như trái cây tươi, bánh mì hoặc các món ăn nhẹ khác.","[R11343] Goi Cuon (Vietnamese Spring Roll with Pork and Prawns)
 - ½ pound pork tenderloin, cut into thin strips
 - ½ pound prawns, peeled and deveined
@@ -4122,7 +4122,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ¼ cup chicken broth","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: không trích món nào
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Thẻ không có món tráng miệng; trả lời không tìm thấy là đúng
 142,rel_27,relevance,suggest a rice dish for dinner / no onions please,"[R6913] Simple Baked Rice
 - cooking spray
 - 1 cup long-grain rice
@@ -4135,7 +4135,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1  bay leaf
 - 1 pinch ground black pepper, or to taste",,"Ý chính cần xét: loại món 'rice' (câu hội thoại: xét lượt cuối, có tính các lượt trước)
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 143,ans_12,answer,"nha minh co nguoi di ung trung, lam mon trang mieng gi duoc","Trong danh sách các món ăn, món Peach-Raspberry Crisp [R28743] có thể phù hợp vì nó không chứa trứng. Tuy nhiên, món này có chứa sữa và bột mì, nên bạn cần kiểm tra nhãn thành phần kỹ.","[R28743] Peach-Raspberry Crisp
 - 1 teaspoon unsalted butter, or as needed
 - 6 large  fresh peaches
@@ -4187,7 +4187,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2 (16 ounce) tubs reduced-fat frozen whipped topping, thawed","Ràng buộc của câu hỏi (gold): dị ứng egg
 Món được trích: R28743
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,
 144,ans_39,answer,gợi ý món tráng miệng,Không tìm thấy món tráng miệng trong danh sách trên. Bạn có thể cân nhắc mở rộng yêu cầu thành bao gồm các món ăn nhẹ hoặc đồ uống để có thêm lựa chọn phù hợp?,"[R11343] Goi Cuon (Vietnamese Spring Roll with Pork and Prawns)
 - ½ pound pork tenderloin, cut into thin strips
 - ½ pound prawns, peeled and deveined
@@ -4268,7 +4268,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ¼ cup chicken broth","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: không trích món nào
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Thẻ không có món tráng miệng; trả lời không tìm thấy là đúng
 145,chk_60,checker,"Công thức này có chứa: crustacean shellfish (shrimp, prawn, crab, lobster, crayfish) or a product made from them, such as shrimp paste; molluscs such as clams, oysters, scallops or squid do not count?","[R8520] Peanut Butter Cake
 - 2 cups all-purpose flour
 - 2 cups white sugar
@@ -4285,7 +4285,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - ⅓ cup milk
 - 1 teaspoon vanilla extract
 - 4 ¾ cups confectioners' sugar",,"Nhóm: giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 146,ans_42,answer,công thức cá ngừ áp chảo không có cá,Không tìm thấy công thức phù hợp với yêu cầu không có cá trong CONTEXT. Bạn có thể cân nhắc tìm kiếm công thức khác hoặc xem xét loại bỏ yêu cầu không có cá.,"[R3768] Pan-Seared and Crusted Ling Cod
 - 3 tablespoons salt
 - 1 ½ pounds lingcod, cleaned and boned
@@ -4365,7 +4365,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 2 tablespoons butter, cut into small pieces","Ràng buộc của câu hỏi (gold): dị ứng fish
 Món được trích: không trích món nào
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,Từ chối đúng
 147,rel_05,relevance,spicy lime chicken and bean salad,"[R21271] Spicy Corn and Black Bean Salad
 - 1 tablespoon olive oil
 - 4 cups corn kernels
@@ -4380,7 +4380,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 2 tablespoons orange juice
 - 1 pinch salt to taste",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",1,—,—,—,—,Salad đậu nhưng không có gà
 148,ans_15,answer,"actually I can eat shellfish now, suggest a cake again","[R9028] Salmon and Shrimp Cakes | 40 min | These cakes are a tasty and different salmon dish that you will definitely enjoy! They contain shrimp but are also suitable for those who can eat shellfish. Note that they may contain milk, egg, fish, crustacean shellfish, and wheat, so always check labels. [R11148] Shrimp Cakes with Old Bay® | 35 min | These cakes use Old Bay® seasoning and are a variation of crab cakes. They are free from eggs and may be a good option, but they do contain crustacean shellfish. Always check labels to ensure safety.","[R9028] Salmon and Shrimp Cakes
 - 1 teaspoon vegetable oil
 - 2 tablespoons finely chopped red onion
@@ -4462,7 +4462,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 sprig fresh flat-leaf parsley","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R9028, R11148
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,0,1,—,Hiểu 'cake' thành bánh hải sản; R11148 có trứng nhưng câu trả lời nói không có trứng
 149,ans_46,answer,tối nay ăn gì cho nhẹ bụng nhỉ,"[R22023] Boy, Oh Boy, Black Bean Salad | 30 phút | Không có thành phần gây dị ứng | Có thể thay thế nguyên liệu | Ăn nhẹ, ngon miệng, phù hợp cho bữa tối.
 
 [R10007] Love Mussels | 45 phút | Có chứa sữa | Có thể thay thế nguyên liệu | Món này nhẹ bụng, thích hợp cho bữa tối.","[R22613] Chicken Caesar Salad Sandwich
@@ -4524,7 +4524,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 cup chopped green onions","Ràng buộc của câu hỏi (gold): không có ràng buộc
 Món được trích: R22023, R10007
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,1,2,0,—,
 150,chk_53,checker,"Công thức này có chứa: eggs or anything made with eggs (mayonnaise, aioli, meringue, egg noodles)?","[R23540] Nuoc Cham (Vietnamese Dipping Sauce)
 - ¼ cup white sugar
 - ½ cup warm water
@@ -4534,7 +4534,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 3 cloves garlic, minced
 - 3  Thai chile peppers, chopped
 - 1  green onion, thinly sliced",,"Nhóm: trứng (mayonnaise, aioli, meringue, mì trứng)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 151,rel_12,relevance,tối nay ăn gì cho nhẹ bụng nhỉ,"[R8476] Refreshing Watermelon Salad
 - 3 tablespoons lime juice
 - 1 cup sliced red onion, cut lengthwise
@@ -4545,7 +4545,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - cracked black pepper
 - sea salt",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 152,chk_21,checker,"Công thức này có chứa: any animal product: meat, poultry, fish, seafood, dairy, eggs, honey, gelatin or animal fat?","[R4865] Homemade Vegetable Beef Soup
 - 1 ½ pounds beef stew meat, cut into 1/2-inch cubes
 - 2 (14 ounce) cans beef broth
@@ -4557,7 +4557,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ¼ teaspoon garlic powder, or to taste
 - ¼ tablespoon onion powder, or to taste
 - salt and ground black pepper, to taste",,"Nhóm: thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 153,ans_50,answer,"tôi dị ứng sữa, gợi ý món bò","Tìm thấy một số món bò phù hợp với yêu cầu của bạn:
 
 - Món Beef and Vegetable Soup [R26096]: Món súp bò và rau củ không chứa sữa, thời gian nấu khoảng 80 phút. Món này chứa bột mì, bạn có thể thay thế bằng bột yến mạch hoặc bột ngô nếu muốn.
@@ -4650,7 +4650,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 teaspoon dried rosemary","Ràng buộc của câu hỏi (gold): dị ứng milk
 Món được trích: R26096, R25823
 Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới
-Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,,,,—,
+Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi",—,0,2,0,—,Bịa 'nước sốt cà rốt' cho R25823 (thẻ ghi vegetable juice)
 154,rel_06,relevance,"I'm allergic to sesame, suggest a bread","[R28165] Health Dynamics Rye Bread
 - 2  eggs
 - ¾ cup warm water
@@ -4662,7 +4662,7 @@ Trích sai: một món được trích vi phạm ràng buộc gold, hoặc khôn
 - 1 ¼ teaspoons sea salt
 - 3 teaspoons active dry yeast",,"Ý chính cần xét: loại món 'bread'
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",2,—,—,—,—,
 155,chk_42,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R10230] Lemon and Garlic Shrimp
 - ⅓ cup lemon juice
 - 3 tablespoons butter
@@ -4670,7 +4670,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 tablespoon minced garlic, or more to taste
 - 1 cup frozen cooked salad shrimp, thawed
 - 1 pinch ground black pepper",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 156,chk_57,checker,"Công thức này có chứa: wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce?","[R12223] Nasi Lemak (Malaysia)
 - 2 cups uncooked basmati rice, rinsed and drained
 - 1 ¾ cups water
@@ -4688,7 +4688,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - salt to taste
 - 1  onion, sliced
 - 1 pound large shrimp, peeled and deveined",,"Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 157,chk_30,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R11968] Sauteed Abalone
 - 1 (16 ounce) package linguine pasta
 - 2 pounds abalone without shell
@@ -4697,7 +4697,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 2 tablespoons olive oil
 - 2  green bell peppers, sliced
 - 1 (16 ounce) jar Alfredo sauce",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,yes,
 158,chk_40,checker,"Công thức này có chứa: sesame seeds or a product made from sesame: sesame oil, tahini, hummus?","[R27970] Honey Multigrain Bread
 - ¾ cup cornmeal
 - 3 ¾ cups water
@@ -4708,7 +4708,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 1 cup rye flour
 - 1 cup whole wheat flour
 - 8 cups unbleached flour",,"Nhóm: mè: dầu mè, tahini, hạt mè
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,
 159,chk_35,checker,"Công thức này có chứa: milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)?","[R11851] Hoy Lai Pad Nam Prik Pow (Clams with Chili Paste and Basil)
 - 5 tablespoons vegetable oil
 - 5 cloves garlic, minced
@@ -4718,7 +4718,7 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - 3  Chee Fah chiles (mild red chiles)
 - 1 tablespoon white sugar
 - 1 cup Bai Kraprao (holy basil leaves), or to taste",,"Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)
-Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,,
+Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa",—,—,—,—,no,Nam prik pao không có sữa
 160,rel_18,relevance,món pasta healthy cho người dị ứng nuts,"[R8640] Fresh Tomato Marinara Sauce
 - 3 tablespoons olive oil
 - ½  onion, chopped
@@ -4736,4 +4736,4 @@ Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó
 - ¼ teaspoon crushed red pepper
 - 2 teaspoons balsamic vinegar, or more to taste",,"Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi
 2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn
-Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",,—,—,—,—,
+Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng",1,—,—,—,—,"Chỉ là nước sốt marinara, không phải món pasta hoàn chỉnh"
