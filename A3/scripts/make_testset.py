@@ -83,6 +83,26 @@ T3_CONFLICTS = [  # dish words that clash with a constraint: (vi dish, en dish, 
     ("gà nướng mè", "sesame chicken", "sesame chicken", {"allergens_exclude": ["sesame"]}),
     ("bò bít tết", "steak", "steak", {"diet": "vegan", "max_total_minutes": 15}),
     ("bánh kem dâu", "strawberry cake", "strawberry cake", {"allergens_exclude": ["wheat", "egg", "milk"]}),
+    ("gà nướng mật ong", "honey roast chicken", "roast chicken", {"diet": "vegan"}),
+    ("thịt heo quay", "roast pork", "roast pork", {"diet": "vegetarian"}),
+    ("tôm hùm nướng bơ", "lobster with butter", "lobster", {"allergens_exclude": ["crustacean_shellfish"]}),
+    ("cua rang me", "crab cakes", "crab cake", {"allergens_exclude": ["crustacean_shellfish"]}),
+    ("cá ngừ áp chảo", "seared tuna", "tuna steak", {"allergens_exclude": ["fish"]}),
+    ("súp kem nấm", "cream of mushroom soup", "cream of mushroom", {"allergens_exclude": ["milk"], "diet": "vegan"}),
+    ("bánh flan", "creme caramel", "flan", {"allergens_exclude": ["egg"]}),
+    ("bánh kem trứng", "custard tart", "custard", {"allergens_exclude": ["egg", "milk"]}),
+    ("sốt mayonnaise", "homemade mayonnaise", "mayonnaise", {"allergens_exclude": ["egg"]}),
+    ("bánh hạnh nhân", "almond cake", "almond", {"allergens_exclude": ["tree_nuts"]}),
+    ("sốt sa tế đậu phộng", "peanut satay sauce", "peanut sauce", {"allergens_exclude": ["peanut"]}),
+    ("bánh mì sandwich", "club sandwich", "club sandwich", {"allergens_exclude": ["wheat"]}),
+    ("mì Ý sốt bò bằm", "spaghetti bolognese", "bolognese", {"allergens_exclude": ["wheat"], "diet": "vegetarian"}),
+    ("pizza phô mai", "cheese pizza", "cheese pizza", {"allergens_exclude": ["milk", "wheat"]}),
+    ("sữa chua", "homemade yogurt", "yogurt", {"diet": "vegan", "allergens_exclude": ["milk"]}),
+    ("cá hồi xông khói", "smoked salmon", "smoked salmon", {"diet": "vegetarian"}),
+    ("đậu phụ chiên", "fried tofu", "fried tofu", {"allergens_exclude": ["soy"]}),
+    ("bánh mè", "sesame cookies", "sesame cookie", {"allergens_exclude": ["sesame"]}),
+    ("gà tây nướng", "roast turkey", "roast turkey", {"max_total_minutes": 20}),
+    ("bò hầm rượu vang", "beef bourguignon", "bourguignon", {"max_total_minutes": 30}),
 ]
 T3_OUT_OF_SCOPE = [("dự báo thời tiết Hà Nội ngày mai", "what's the weather in Hanoi tomorrow"),
                    ("123 nhân 47 bằng bao nhiêu", "what is 123 times 47"),
@@ -91,7 +111,13 @@ T3_OUT_OF_SCOPE = [("dự báo thời tiết Hà Nội ngày mai", "what's the w
                    ("tỉ giá đô la hôm nay là bao nhiêu", "what is the dollar exchange rate today"),
                    ("tôi có nên ngừng thuốc huyết áp không", "should I stop my blood pressure medication"),
                    ("đội nào vô địch World Cup 2022", "who won the 2022 World Cup"),
-                   ("dịch câu này sang tiếng Nhật giúp tôi", "translate this sentence into Japanese")]
+                   ("dịch câu này sang tiếng Nhật giúp tôi", "translate this sentence into Japanese"),
+                   ("giá vé máy bay đi Đà Nẵng tuần sau", "how much is a flight to Da Nang next week"),
+                   ("tôi bị tiểu đường, có nên tiêm insulin không", "I have diabetes, should I start insulin"),
+                   ("kể cho tôi nghe một câu chuyện cười", "tell me a joke"),
+                   ("cách sửa máy giặt bị kêu to", "how do I fix a noisy washing machine"),
+                   ("giải thích thuyết tương đối", "explain the theory of relativity"),
+                   ("cho tôi số điện thoại của bệnh viện gần nhất", "give me the phone number of the nearest hospital")]
 T4_SCRIPTS = [  # turns: (vi, en, intent, change to the state); ref = position asked about
     [("gợi ý {dish} cho bữa tối", "suggest a {dish} for dinner", "search", {}),
      ("không dùng {ing} nhé", "no {ing} please", "refine", {"ingredients_exclude": "+ing"}),
@@ -321,13 +347,21 @@ def v2_fits(conn, check, item: dict) -> dict:
     sql, params = tag_sql(item["gold"], item.get("dish_keyword"))
     ids = [r for (r,) in conn.execute(sql + " LIMIT %s", params + [V2_RECIPES])]
     cons = checker_constraints(item["gold"])
-    read = []
+    read, errors = [], []
     for rid in ids:
-        verdicts = check(rid, cons) if cons else {}
+        verdicts = None
+        for _ in range(2):  # a checker call that times out is retried once, then that Recipe does not count
+            try:
+                verdicts = check(rid, cons) if cons else {}
+                break
+            except Exception as e:  # httpx timeouts, Ollama errors: logged in the item, never a silent pass
+                errors.append(f"R{rid}: {type(e).__name__}")
         read.append(rid)
+        if verdicts is None:
+            continue
         if all(v.contains == "no" for v in verdicts.values()):
-            return {"ok": True, "recipe_id": rid, "read": read}
-    return {"ok": False, "recipe_id": None, "read": read}
+            return {"ok": True, "recipe_id": rid, "read": read, "errors": errors}
+    return {"ok": False, "recipe_id": None, "read": read, "errors": errors}
 
 
 def v2_none(conn, item: dict) -> dict:
@@ -364,12 +398,23 @@ def apply_filters(items: list[dict], titles: list[str], v2, kept_texts: list[str
             if not res["ok"]:
                 counts["V2"] += 1
                 continue
-        if any(jaccard(texts[0], s) >= JACCARD for s in seen):
+        whole = " ".join(texts)  # a T4 dialogue is compared as a whole, not by its (templated) first turn
+        if any(jaccard(whole, s) >= JACCARD for s in seen):
             counts["V4"] += 1
             continue
-        seen.append(texts[0])
+        seen.append(whole)
         kept.append(it)
     return kept, counts
+
+
+def balanced(items: list[dict], n: int) -> list[dict]:
+    """The first n items in generation order, as close to half Vietnamese and half English as the items allow."""
+    by = {"vi": [it for it in items if it["lang"] == "vi"], "en": [it for it in items if it["lang"] == "en"]}
+    take = {"vi": min(len(by["vi"]), n // 2), "en": min(len(by["en"]), n - n // 2)}
+    for lang, other in (("vi", "en"), ("en", "vi")):  # one language short: the other fills the gap
+        take[lang] = min(len(by[lang]), n - take[other])
+    keep = {id(it) for lang in by for it in by[lang][:take[lang]]}
+    return [it for it in items if id(it) in keep]
 
 
 # ---- run -------------------------------------------------------------------------------------------------------
@@ -453,11 +498,14 @@ def main():
         for name, items in (("t1", t1), ("t2", t2), ("t3", t3), ("t4", t4)):
             v2_fn = None if name == "t1" else v2  # T1: A1's own queries, answered by their source Recipe
             kept, counts = apply_filters(items, titles if name != "t1" else [], v2_fn, kept_texts)
-            trimmed = kept[:TARGET[name]]
-            kept_texts += [it["text"].split(" || ")[0] for it in trimmed]
+            trimmed = balanced(kept, TARGET[name])
+            kept_texts += [" ".join(t["text"] for t in it["turns"]) if "turns" in it else it["text"] for it in trimmed]
             sets[name] = trimmed
             flow["sets"][name] = {"generated": len(items), "rejected": {k: counts.get(k, 0) for k in ("V1", "V2", "V3", "V4", "V5")},
                                   "kept": len(kept), "trimmed_to_target": len(kept) - len(trimmed), "candidates": len(trimmed)}
+            errs = sum(len((it.get("v2") or {}).get("errors", [])) for it in items)
+            if errs:  # checker calls that failed twice: those Recipes did not count for V2
+                flow["sets"][name]["v2_checker_errors"] = errs
             if name == "t2":
                 flow["sets"][name]["paraphrased"] = sum(bool(it.get("paraphrased")) for it in trimmed)
                 flow["sets"][name]["by_lang"] = dict(Counter(it["lang"] for it in trimmed))

@@ -1,0 +1,373 @@
+item_id,decision,gold,note,flagged,flag_reason,reviewer,drafted_at
+t1_001,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_002,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_003,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_004,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_005,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_006,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_007,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_008,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_009,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_010,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_011,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_012,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_013,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}","no-bake không phải ràng buộc; peanut butter là nguyên liệu muốn có, không phải loại trừ",True,T1 có từ giống ràng buộc,claude-draft,2026-10-19T08:34:59
+t1_014,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_015,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_016,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_017,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_018,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_019,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_020,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_021,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_022,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_023,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_024,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_025,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_026,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_027,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_028,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_029,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_030,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_031,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_032,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_033,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_034,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_035,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_036,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_037,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_038,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_039,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_040,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_041,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_042,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_043,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_044,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_045,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_046,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_047,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_048,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_049,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_050,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_051,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_052,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_053,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_054,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_055,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_056,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_057,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_058,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_059,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_060,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_061,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_062,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",không ràng buộc,True,T1 có từ giống ràng buộc,claude-draft,2026-10-19T08:34:59
+t1_063,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_064,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_065,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_066,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_067,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_068,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_069,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_070,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_071,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_072,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_073,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",không ràng buộc,True,T1 có từ giống ràng buộc,claude-draft,2026-10-19T08:34:59
+t1_074,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_075,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_076,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_077,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_078,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_079,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_080,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_081,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_082,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_083,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_084,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_085,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_086,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_087,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_088,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_089,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_090,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_091,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_092,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_093,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_094,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_095,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_096,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_097,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_098,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_099,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_100,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t1_101,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",,True,viết tay,claude-draft,2026-10-19T08:34:59
+t1_102,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",,True,viết tay,claude-draft,2026-10-19T08:34:59
+t1_103,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",,True,"viết tay, cảnh báo V3",claude-draft,2026-10-19T08:34:59
+t1_104,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",,True,viết tay,claude-draft,2026-10-19T08:34:59
+t1_105,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",,True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_001,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_002,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_003,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_004,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_005,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_006,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_007,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_008,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_009,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_010,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_011,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_012,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_013,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_014,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_015,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_016,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_017,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_018,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_019,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_020,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_021,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_022,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_023,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_024,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_025,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_026,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_027,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_028,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_029,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_030,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_031,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_032,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_033,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_034,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_035,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_036,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_037,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_038,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_039,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_040,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_041,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_042,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_043,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_044,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_045,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_046,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_047,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_048,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_049,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_050,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_051,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_052,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_053,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_054,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_055,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_056,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_057,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_058,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_059,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_060,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_061,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_062,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_063,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_064,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_065,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_066,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_067,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_068,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_069,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_070,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_071,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_072,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_073,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_074,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_075,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_076,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_077,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_078,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_079,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_080,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_081,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_082,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_083,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_084,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_085,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_086,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_087,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_088,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_089,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_090,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_091,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_092,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_093,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_094,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_095,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_096,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_097,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_098,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_099,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_100,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_101,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_102,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_103,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_104,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_105,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_106,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_107,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_108,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_109,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_110,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_111,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_112,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_113,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_114,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_115,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_116,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_117,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_118,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_119,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_120,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_121,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_122,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_123,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_124,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_125,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_126,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_127,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_128,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_129,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_130,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_131,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_132,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_133,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_134,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_135,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_136,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_137,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_138,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_139,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_140,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_141,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_142,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_143,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_144,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_145,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_146,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_147,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_148,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t2_149,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_150,ok,,,True,đã diễn đạt lại,claude-draft,2026-10-19T08:34:59
+t2_151,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""peanut""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",lạc = đậu phộng; ràng buộc cho con của người hỏi,True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_152,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""fish"", ""crustacean_shellfish""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",hải sản: cá và giáp xác; nhuyễn thể không có nhóm riêng trong 9 nhóm FDA,True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_153,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""egg""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",,True,"viết tay, cảnh báo V3",claude-draft,2026-10-19T08:34:59
+t2_154,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": ""vegetarian"", ""max_total_minutes"": 20}}",,True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_155,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": ""vegan"", ""max_total_minutes"": null}}","giàu đạm: sở thích mềm, schema không biểu diễn",True,"viết tay, schema không biểu diễn đủ",claude-draft,2026-10-19T08:34:59
+t2_156,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""wheat""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}","gluten → wheat; lúa mạch, lúa mạch đen ngoài 9 nhóm (hạn chế)",True,"viết tay, schema không biểu diễn đủ",claude-draft,2026-10-19T08:34:59
+t2_157,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [""onion""], ""diet"": null, ""max_total_minutes"": null}}",không phải dị ứng,True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_158,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""milk""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}","bơ = butter, thuộc nhóm sữa",True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_159,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",bơ = avocado; không ràng buộc,True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_160,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""crustacean_shellfish""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",tôm cũng là giáp xác; ràng buộc vẫn áp cho cả nhóm,True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_161,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",thích tôm: không phải ràng buộc,True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_162,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",dị ứng trứng đã khỏi: không ràng buộc,True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_163,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""sesame"", ""soy""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",,True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_164,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}","đồ sống: schema không biểu diễn; để trống, kỳ vọng hệ nêu rõ không kiểm được",True,"viết tay, schema không biểu diễn đủ",claude-draft,2026-10-19T08:34:59
+t2_165,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""wheat""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": 10}}",không có bột mì → wheat,True,"viết tay, cảnh báo V3",claude-draft,2026-10-19T08:34:59
+t2_166,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""tree_nuts""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",nuts → tree_nuts; Thy cân nhắc thêm peanut,True,"viết tay, cảnh báo V3, schema không biểu diễn đủ",claude-draft,2026-10-19T08:34:59
+t2_167,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [""cilantro""], ""diet"": null, ""max_total_minutes"": null}}",khẩu phần 4 người không lọc,True,"viết tay, cảnh báo V3",claude-draft,2026-10-19T08:34:59
+t2_168,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": ""vegetarian"", ""max_total_minutes"": null}}","ăn trứng sữa → vegetarian, không phải vegan",True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_169,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""tree_nuts""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}","'hạt' mơ hồ; Thy cân nhắc thêm peanut (mè, hạt chia cũng là hạt)",True,"viết tay, schema không biểu diễn đủ",claude-draft,2026-10-19T08:34:59
+t2_170,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [""onion"", ""garlic""], ""diet"": null, ""max_total_minutes"": null}}",không cay: sở thích mềm; không suy ra bệnh,True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_171,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""peanut""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",,True,viết tay,claude-draft,2026-10-19T08:34:59
+t2_172,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""milk"", ""egg""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",bơ sữa = butter và sữa,True,viết tay,claude-draft,2026-10-19T08:34:59
+t3_001,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_002,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_003,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_004,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_005,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_006,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_007,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_008,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_009,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_010,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_011,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_012,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_013,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_014,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_015,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_016,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_017,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_018,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_019,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_020,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_021,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_022,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_023,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_024,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_025,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_026,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_027,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_028,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_029,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_030,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_031,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_032,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_033,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_034,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_035,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_036,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_037,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_038,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_039,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_040,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_041,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_042,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_043,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_044,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_045,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_046,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_047,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_048,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_049,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_050,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t3_051,edit,"{""intent"": ""out_of_scope"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}","hỏi thuốc: từ chối, khuyên hỏi bác sĩ",True,viết tay,claude-draft,2026-10-19T08:34:59
+t3_052,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",món có thể không có trong kho: tìm và trả lời không thấy,True,viết tay,claude-draft,2026-10-19T08:34:59
+t3_053,edit,"{""intent"": ""search"", ""constraints"": {""allergens_exclude"": [""egg"", ""milk"", ""wheat"", ""tree_nuts""], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": 5}}",không bột → wheat; không hạt → tree_nuts (Thy cân nhắc peanut); không đường: schema không biểu diễn,True,"viết tay, schema không biểu diễn đủ",claude-draft,2026-10-19T08:34:59
+t3_054,edit,"{""intent"": ""out_of_scope"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",,True,viết tay,claude-draft,2026-10-19T08:34:59
+t3_055,edit,"{""intent"": ""out_of_scope"", ""constraints"": {""allergens_exclude"": [], ""ingredients_exclude"": [], ""diet"": null, ""max_total_minutes"": null}}",chèn lệnh: từ chối,True,viết tay,claude-draft,2026-10-19T08:34:59
+t4_001,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_002,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_003,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_004,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_005,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_006,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_007,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_008,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_009,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_010,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_011,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_012,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_013,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_014,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_015,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_016,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_017,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_018,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_019,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_020,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_021,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_022,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_023,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_024,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_025,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_026,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_027,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_028,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_029,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_030,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_031,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_032,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_033,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_034,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_035,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_036,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_037,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_038,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_039,ok,,,False,,claude-draft,2026-10-19T08:34:59
+t4_040,ok,,,False,,claude-draft,2026-10-19T08:34:59

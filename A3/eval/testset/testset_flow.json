@@ -1,0 +1,124 @@
+{
+  "generated_at": "2026-10-19T08:27:57",
+  "seed": 42,
+  "paraphrase_model": "llama3.1:8b",
+  "checker_model": "llama3.1:8b",
+  "targets": {
+    "t1": 100,
+    "t2": 150,
+    "t3": 50,
+    "t4": 50
+  },
+  "sets": {
+    "t1": {
+      "generated": 150,
+      "rejected": {
+        "V1": 0,
+        "V2": 0,
+        "V3": 0,
+        "V4": 0,
+        "V5": 0
+      },
+      "kept": 150,
+      "trimmed_to_target": 50,
+      "candidates": 100,
+      "needs_gold": 3,
+      "V6": {
+        "reviewed": 105,
+        "ok": 105,
+        "edit": 0,
+        "drop": 0,
+        "bulk_ok": 97,
+        "final": 105
+      }
+    },
+    "t2": {
+      "generated": 240,
+      "rejected": {
+        "V1": 0,
+        "V2": 4,
+        "V3": 0,
+        "V4": 48,
+        "V5": 0
+      },
+      "kept": 188,
+      "trimmed_to_target": 38,
+      "candidates": 150,
+      "paraphrased": 109,
+      "by_lang": {
+        "vi": 75,
+        "en": 75
+      },
+      "V6": {
+        "reviewed": 172,
+        "ok": 172,
+        "edit": 0,
+        "drop": 0,
+        "bulk_ok": 41,
+        "final": 172
+      }
+    },
+    "t3": {
+      "generated": 98,
+      "rejected": {
+        "V1": 0,
+        "V2": 34,
+        "V3": 0,
+        "V4": 0,
+        "V5": 0
+      },
+      "kept": 64,
+      "trimmed_to_target": 14,
+      "candidates": 50,
+      "V6": {
+        "reviewed": 55,
+        "ok": 55,
+        "edit": 0,
+        "drop": 0,
+        "bulk_ok": 50,
+        "final": 55
+      }
+    },
+    "t4": {
+      "generated": 65,
+      "rejected": {
+        "V1": 0,
+        "V2": 3,
+        "V3": 0,
+        "V4": 22,
+        "V5": 0
+      },
+      "kept": 40,
+      "trimmed_to_target": 0,
+      "candidates": 40,
+      "V6": {
+        "reviewed": 40,
+        "ok": 40,
+        "edit": 0,
+        "drop": 0,
+        "bulk_ok": 40,
+        "final": 40
+      }
+    }
+  },
+  "handwritten": {
+    "rows": 32,
+    "rejected": {
+      "V1": 0,
+      "V4": 0,
+      "V5": 0
+    },
+    "kept": 32,
+    "v3_warnings": 5
+  },
+  "V6_review": {
+    "draft": "Claude drafted (eval/labels/testset_review_draft.csv, reviewer claude-draft); Thy confirmed",
+    "confirmed_one_by_one": 144,
+    "bulk_accepted": 228,
+    "one_by_one_first": "2026-10-19T08:36:51",
+    "one_by_one_last": "2026-10-19T08:37:23",
+    "one_by_one_seconds": 32,
+    "drafts_changed_by_thy": 0
+  },
+  "frozen_at": "2026-10-19T08:39:23"
+}

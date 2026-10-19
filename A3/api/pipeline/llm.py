@@ -72,15 +72,19 @@ def cache_key(model: str, schema: dict, messages: list[dict], temperature: float
 
 
 def chat_json(client: httpx.Client, schema: dict, messages: list[dict], model: str = config.QU_MODEL,
-              temperature: float = config.QU_TEMPERATURE, use_cache: bool = True, num_ctx: int = NUM_CTX) -> dict:
-    """One structured-output call; the parsed JSON object. Raises LLMError on a reply that is not JSON."""
+              temperature: float = config.QU_TEMPERATURE, use_cache: bool = True, num_ctx: int = NUM_CTX,
+              num_predict: int | None = None) -> dict:
+    """One structured-output call; the parsed JSON object. Raises LLMError on a reply that is not JSON.
+    num_predict caps the generated tokens (a looping reply otherwise runs on under context shift); a cut reply is
+    not JSON, so it raises LLMError. It is not part of the cache key: it never changes a reply that ends on its own."""
     k = cache_key(model, schema, messages, temperature, num_ctx)
     if use_cache and k in _load():
         return _load()[k]
     check_fits(messages, num_ctx)
     r = client.post(f"{config.OLLAMA_URL}/api/chat", json={
         "model": model, "stream": False, "format": schema, "messages": messages,
-        "options": {"temperature": temperature, "seed": config.SEED, "num_ctx": num_ctx}}, timeout=600)
+        "options": {"temperature": temperature, "seed": config.SEED, "num_ctx": num_ctx,
+                    **({"num_predict": num_predict} if num_predict else {})}}, timeout=600)
     r.raise_for_status()
     check_not_cut(r.json().get("prompt_eval_count"), num_ctx)
     try:

@@ -879,3 +879,96 @@ Kịch bản 1b sẽ thấy lại vấn đề đã biết của gate M3: R18880 
 - Các nhận xét 1–4 của gate M3 vẫn thấy được khi demo, như dự kiến.
 
 **Gate M4 (Thy, 18/10/2026): duyệt.** Ảnh demo do Thy chụp. Các vấn đề đã biết (gate M3 và demo M4) giữ nguyên.
+
+## M5 – Bộ test A3 (19/10/2026) · 🚦 đã duyệt 19/10/2026
+
+**Quyết định (Thy, 18/10):** duyệt gold V6 trên trang web duyệt nhanh.
+
+**Đã làm**
+- `scripts/make_testset.py`: sinh ứng viên T1–T4, gold lấy từ mẫu câu, và lọc V1–V5 có mã và số đếm (`eval/testset/testset_flow.json`).
+  - **V2** dùng bộ kiểm độc lập: SQL chọn ứng viên theo thẻ, bộ kiểm đọc tối đa 5 công thức. Với T3 thì giữ câu khi SQL không tìm ra công thức nào.
+  - **V3** kiểm bằng dấu tiếng Việt, không dùng `detect_lang` của M1 (vì hàm đó coi câu tiếng Anh có hai chữ "the" là tiếng Việt).
+- `scripts/testset_review.py` (+ `.html`): trang duyệt mù ở cổng 8766. `scripts/freeze_testset.py`: áp kết quả duyệt và đóng băng bằng sha256. Hướng dẫn ở `docs/annotation_guide.md` mục 6.
+- Lần chạy đầu dừng vì một lời gọi bộ kiểm quá 600 giây; nay thử lại một lần và đếm số lỗi. Lần chạy hai cho T3 28 câu và T4 39 hội thoại, vì V4 so lượt đầu của T4 và T3 thiếu tổ hợp. Đã sửa: V4 so cả hội thoại, thêm 21 tổ hợp mâu thuẫn và 6 câu ngoài miền, khi cắt thì giữ đủ một nửa tiếng Việt.
+
+**Luồng lọc** (lần chạy cuối, 0 lỗi gọi bộ kiểm):
+
+| Tập | Sinh ra | V1 | V2 | V3 | V4 | V5 | Còn | Ứng viên |
+|---|---|---|---|---|---|---|---|---|
+| T1 | 150 | 0 | – | 0 | 0 | 0 | 150 | 100 |
+| T2 | 240 | 0 | 4 | 0 | 48 | 0 | 188 | 150 (vi 75, en 75; 107 câu được diễn đạt lại) |
+| T3 | 98 | 0 | 34 | 0 | 0 | 0 | 64 | 50 (36 mâu thuẫn, 14 ngoài miền) |
+| T4 | 65 | 0 | 3 | 0 | 22 | 0 | 40 | 40 hội thoại |
+
+**Cần Thy:**
+1. Điền khoảng 30 câu viết tay vào `eval/testset/handwritten.csv`, rồi chạy lại `make_testset.py` (dùng lại cache, các câu đã sinh giữ nguyên).
+2. Duyệt gold V6 ở `uv run scripts/testset_review.py`.
+3. Báo khi xong để mình chạy `freeze_testset.py`, rồi đến 🚦 gate M5.
+
+**Sau khi có câu viết tay và duyệt V6 (19/10/2026):**
+- 32 câu viết tay của Thy (5 câu T1, 22 câu T2, 5 câu T3) đã thêm vào; cả 32 qua V1, V4, V5. 5 câu có cảnh báo V3 (không dấu, hoặc trộn Việt–Anh) vẫn được giữ.
+- **V6 theo cách 1 (Thy chọn):**
+  - Claude soạn bản nháp (`eval/labels/testset_review_draft.csv`, `reviewer = claude-draft`): câu từ mẫu giữ gold của mẫu; 35 câu viết tay hoặc T1 có cảnh báo được soạn gold theo ghi chú của Thy.
+  - Thy xác nhận trên trang duyệt: **144 câu bị đánh dấu xác nhận từng câu, 228 câu chấp nhận hàng loạt**; không câu nào bị sửa hay loại.
+  - **144 câu đó được xác nhận trong 32 giây** (08:36:51 → 08:37:23). Mình đã nêu điều này trước khi đóng băng; Thy xác nhận đã đọc đủ (19/10). Số liệu được ghi tự động trong `testset_flow.json`, mục `V6_review`.
+  - Báo cáo nên ghi đúng là: gold do mô hình soạn và người xác nhận, kèm các số liệu này.
+- **Đóng băng** (`eval/testset/frozen.json`, approved_by Thy, 08:39): **T1 105 · T2 172 · T3 55 · T4 40 hội thoại**.
+  - `make_testset.py` từ chối chạy lại; test kiểm sha256 đã chạy và qua.
+  - Sửa một lỗi đếm: `reviewed` trong số đếm V6 đã cộng hai lần phần chấp nhận hàng loạt; đã tính lại bằng code.
+
+**Cần Thy:** 🚦 gate M5, xác nhận số lượng của bộ test đã đóng băng.
+
+**Gate M5 (Thy, 19/10/2026): duyệt.** Bộ test đóng băng: T1 105, T2 172, T3 55, T4 40. Bước tiếp theo là M6.
+
+## M6 – Thực nghiệm (19/10/2026) · 🚦 đã duyệt 19/10/2026
+
+**Quyết định (Thy, 19/10):**
+- giữ lỗi parser dấu phẩy, ghi thành hạn chế, và đếm riêng trong phân tích lỗi (nhóm `F3a_comma_parser_suspect`);
+- không chạy nhánh tùy chọn (S+Unknown, S+M3);
+- **M6b chỉ chạy khoảng 370 lượt**, thay vì khoảng 3.700: mẫu theo seed khoảng 10% mỗi tập (T1 10, T2 17, T3 6 câu, T4 4 hội thoại).
+  - 8 cấu hình chạy trên T1–T3; 9 cấu hình (thêm S−Conv) chạy trên T4.
+  - Mẫu nhỏ, nên phần lớn so sánh có thể không có ý nghĩa sau Holm; kết quả trình bày như xu hướng, kèm KTC.
+  - Độ trễ lấy từ chính lần chạy này, không chạy riêng 3 lần.
+  - Danh sách câu được ghi trong `settings.json`, nên có thể chạy thêm phần còn lại sau.
+
+**Đã làm**
+- M5 xếp hạng tới độ sâu 10 và ghi vào trace (`m5.ranked`) để tính nDCG@10; ngữ cảnh vẫn 5 công thức. Test hồi quy không đổi (`94ec68e`).
+- `scripts/eval_a3.py` (run/score/human-sample), `scripts/judge.py` (`llama3.1:8b`), `scripts/human_check.py` + `.html` (trang mù ở cổng 8767), 8 test.
+
+### M6b – Lần chạy và chấm điểm (19/10/2026)
+- Lần chạy: `eval/runs/20261019-093605/a3` (363 lượt, 9 cấu hình), qwen2.5:7b sinh câu trả lời, judge và bộ kiểm là llama3.1:8b, GPU RTX 4060.
+- Sửa trong lúc chấm: giới hạn số token của bộ kiểm (1024) và judge (512) vì llama3.1 có lúc trả lời lặp mãi; trả lời hỏng của bộ kiểm thành phiếu `error` thay vì làm dừng chương trình; judge faithfulness đọc đúng các thẻ mà M6 đã thấy.
+
+### M6c – Nhãn của Thy (19/10/2026)
+- **Human check** 160 mục (50 độ liên quan, 50 câu trả lời, 60 phiếu bộ kiểm), mù: trang có gợi ý chấm không lộ đáp án của máy; Thy chấm trên file `eval/labels/human_check_sheet.csv` (xuất 13:36, lưu 13:46) rồi nhập bằng `human_check.py import`. Thy xác nhận tự chấm.
+- **Duyệt bộ kiểm** 190 phiếu mới (136 yes, 54 no) trên `eval/labels/checker_adjudication_sheet.csv` (xuất 13:51, lưu 13:54), nhập bằng `adjudication_sheet.py import`. Thy xác nhận tự duyệt từng phiếu. Không còn phiếu chờ.
+- Báo cáo nên ghi cả thời gian chấm của hai đợt này.
+
+### Kết quả cuối (`eval/runs/20261019-093605/a3/table.md`, sinh bởi `eval_a3.py score`)
+
+| | B0 | S |
+|---|---|---|
+| CVR@5 adjudicated T2 / T4 | 67,5% / 48,6% | 2,7% / 5,7% |
+| Safe@5 adjudicated | 6% (1/16) | 93% (14/15) |
+| nDCG@10′ T1 / T2 | 0,6 / 0,2 | 0,9 / 0,8 |
+
+- **G2 đạt:** S − B0 theo từng câu: CVR −0,602 [−0,749; −0,451], nDCG@10′ +0,465 [+0,328; +0,594]; Wilcoxon (Holm) p ≤ 0,001.
+- **G6 đạt (yếu):** T1 S − B0 nDCG@10′ +0,256 [+0,018; +0,521]; bootstrap p = 0,03, Wilcoxon p = 0,19 (10 câu).
+- **G3:**
+  - bỏ QU: CVR +0,60, nDCG −0,47; bỏ Filter: CVR +0,62, nDCG −0,27 (đều p < 0,01 sau Holm);
+  - bỏ Rerank: nDCG −0,055 (bootstrap Holm p 0,037; Wilcoxon Holm 0,092);
+  - bỏ Norm: CVR T4 5,7% → 22,9%, không có ý nghĩa; bỏ Verify: không đổi;
+  - bỏ Conv (T4, 4 hội thoại): CVR 34,3% so với 5,7%, không có ý nghĩa.
+- Hiểu truy vấn: intent 98% (43/44), slot F1 0,889 (S−Conv: 73%, 0,667).
+- Sinh: trích dẫn an toàn S 98,5% (B1 63,2%); từ chối đúng T3 4/6; từ chối sai T1+T2 1/27.
+- Nhóm lỗi trên S (44 lượt): F7 không bám ngữ cảnh 34, F1 trích ràng buộc sai 7, F8 từ chối sai 3, F3 bộ gắn thẻ sót 2, F2 định tuyến sai 1.
+- **Đối chiếu với Thy:** bộ kiểm chính xác 90%, κ 0,80 (cả 6 chỗ lệch là bộ kiểm báo thừa: mayonnaise là sữa, pancetta là cá, lạc là hạt cây…); judge độ liên quan κ 0,30 (khớp 54%); **judge faithfulness κ −0,02**.
+
+### Lưu ý cho báo cáo
+1. Faithfulness của judge (khoảng 12%) không dùng được; dùng nhãn của Thy: 34/50 câu trả lời bám ngữ cảnh (68%, trộn các cấu hình). Lỗi hay gặp: M6 tự khẳng định "không có sữa", "chay", "không gluten".
+2. 59/649 phiếu bộ kiểm vẫn là `error` (llama3.1 lặp) và đang tính là không vi phạm. Phần lớn nằm trong ngữ cảnh của B0 (13 lượt; S 3 lượt), nên tính chúng là vi phạm chỉ làm khoảng cách S − B0 rộng thêm. Ghi như phân tích độ nhạy.
+3. nDCG@10′ dựa trên judge có κ 0,30 với người: nêu là hạn chế.
+4. Độ trễ lấy từ chính lần chạy (theo quyết định đầu M6): S p50 khoảng 22 s/lượt (M1 khoảng 11 s, M6 khoảng 10,7 s). Các cấu hình khác dùng chung cache M1 nên không so sánh độ trễ giữa cấu hình được.
+5. Mẫu nhỏ (khoảng 370 lượt): KTC rộng, nhất là T1 (10 câu) và T4 (4 hội thoại).
+
+**Gate M6 (Thy, 19/10/2026): duyệt.** Bước tiếp theo là M7.

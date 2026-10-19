@@ -1,0 +1,10 @@
+{
+  "frozen_at": "2026-10-19T08:39:23",
+  "approved_by": "Thy",
+  "sha256": {
+    "t1.jsonl": "436480724daf5ec2a6d3b0492a1742dddba5fa649c664a3ed265b95d625b83bf",
+    "t2.jsonl": "62ee3a90eae5f9cebb95a4943d3d5263cec4cd09a6791105046432440550223f",
+    "t3.jsonl": "9d7b62561c843d87a3fc50faa29667fc6ffbd744e1400e27a144ccb26af6edf4",
+    "t4.jsonl": "420d988826093ace063d0038530b7cef140751050c697e0cf6094ed387e2e5f4"
+  }
+}

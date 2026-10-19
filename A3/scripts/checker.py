@@ -136,6 +136,7 @@ def parse(answers: list[dict], constraints: list[str], lines: list[str]) -> dict
 
 BATCH = 6  # questions per call: long answer lists were where the 8B model broke the JSON
 ATTEMPTS = 3
+MAX_TOKENS = 1024  # generated tokens per checker call (a cap, not a target)
 RETRIES: list[int] = []  # Recipes with at least one incomplete reply (reported in the run's JSON)
 
 
@@ -148,10 +149,15 @@ def ask(client: httpx.Client, title: str, lines: list[str], constraints: list[st
                            questions="\n".join(f"{k}. {describe(c)}" for k, c in enumerate(constraints, 1)))
     r = client.post(f"{OLLAMA_URL}/api/chat", json={
         "model": CHECKER_MODEL, "stream": False, "format": SCHEMA,
-        "options": {"temperature": 0, "seed": SEED, "num_ctx": 4096},
+        # num_predict: without a cap a looping reply ran 15 minutes per call under Ollama's context shift (M6b);
+        # six answers with their evidence lines need a few hundred tokens. The cache key (PROMPT_SHA) is unchanged.
+        "options": {"temperature": 0, "seed": SEED, "num_ctx": 4096, "num_predict": MAX_TOKENS},
         "messages": [{"role": "user", "content": prompt}]})
     r.raise_for_status()
-    return json.loads(r.json()["message"]["content"]).get("answers", [])
+    try:
+        return json.loads(r.json()["message"]["content"]).get("answers", [])
+    except json.JSONDecodeError:  # a reply cut at MAX_TOKENS: incomplete, so check() asks again, then "error"
+        return []
 
 
 def check(conn, client: httpx.Client, recipe_id: int, constraints: list[str],

@@ -44,6 +44,7 @@ from .m5_postprocess import nutrient_values, recipe_detail, top_recipes
 from .schemas import RecipeCard, SessionState, StateItem, Understanding, Verification, parse_limit
 
 ROOT = Path(__file__).resolve().parents[2]
+RANK_DEPTH = 10  # Recipes ranked per retrieve turn and traced (nDCG@10, M6)
 HISTORY_CHARS = 600  # an old assistant answer is cut to this for M1 and M6
 LOCKED_VI = "Ràng buộc này đến từ hồ sơ bệnh nhân, không gỡ được qua tin nhắn; cần xác nhận trên giao diện."
 LOCKED_EN = "This constraint comes from the patient's record and cannot be lifted by a chat message; confirm it in the interface."
@@ -376,13 +377,16 @@ class Assistant:
                                    unknown_strict=flags.unknown_strict, strategy=self.strategy, watch=timed)
                 p.update(chunks=len(chunks), recipes=len({x.recipe_id for x in chunks}), timings=sub)
             with tr.stage("m5", {"rerank": flags.rerank}) as p:
+                depth = max(self.k, RANK_DEPTH)  # ranked to 10 for the evaluation (M6); the context keeps k
                 if c.nutrient_soft:  # patient soft limits: rank, never filter (ADR-0007)
                     values = nutrient_values(self.conn, list({x.recipe_id for x in chunks}), c.nutrient_soft)
-                    ranked = top_recipes(text, chunks, self.scorer, k=self.k, use_rerank=flags.rerank,
-                                         soft=c.nutrient_soft, values=values)
+                    deep = top_recipes(text, chunks, self.scorer, k=depth, use_rerank=flags.rerank,
+                                       soft=c.nutrient_soft, values=values)
                     p["soft"] = sorted(c.nutrient_soft)
                 else:
-                    ranked = top_recipes(text, chunks, self.scorer, k=self.k, use_rerank=flags.rerank)
+                    deep = top_recipes(text, chunks, self.scorer, k=depth, use_rerank=flags.rerank)
+                ranked = deep[:self.k]  # top_recipes sorts then cuts: the first k are what k alone would give
+                p["ranked"] = [[rid, round(score, 4)] for rid, score in deep]
                 cards = load_cards(self.conn, ranked, constrained) if constrained else load_cards(self.conn, ranked)
                 p["recipes"] = [[r.id, r.score] for r in cards]
             shown = [r.id for r in cards]

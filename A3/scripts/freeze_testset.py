@@ -34,15 +34,19 @@ def apply(items: list[dict], reviews: dict[str, dict]) -> tuple[dict[str, list[d
     missing = [it["id"] for it in items if it["id"] not in reviews]
     if missing:
         raise ValueError(f"{len(missing)} items not reviewed yet, e.g. {', '.join(missing[:5])}")
+    not_thy = [i for i, r in reviews.items() if r.get("reviewer", "Thy") != "Thy"]
+    if not_thy:
+        raise ValueError(f"{len(not_thy)} review rows are not Thy's, e.g. {', '.join(not_thy[:5])}")
     sets: dict[str, list[dict]] = {s: [] for s in tr.SETS}
-    counts = {s: {"ok": 0, "edit": 0, "drop": 0} for s in tr.SETS}
+    counts = {s: {"ok": 0, "edit": 0, "drop": 0, "bulk_ok": 0} for s in tr.SETS}
     for it in items:
         r = reviews[it["id"]]
         counts[it["set"]][r["decision"]] += 1
+        counts[it["set"]]["bulk_ok"] += r["note"] == tr.BULK_NOTE
         if r["decision"] == "drop":
             continue
         out = {k: v for k, v in it.items() if k not in {"needs_gold", "v3_warning", "must"}}
-        if r["decision"] == "edit":
+        if r["gold"]:  # an edit, or an accepted draft
             gold = json.loads(r["gold"])
             if "turns" in out:
                 out["turns"] = [{**t, "gold": g} for t, g in zip(out["turns"], gold)]
@@ -69,8 +73,17 @@ def main():
     flow_path = OUT / "testset_flow.json"
     flow = json.loads(flow_path.read_text(encoding="utf-8"))
     for s in tr.SETS:
-        flow["sets"].setdefault(s, {})["V6"] = {"reviewed": sum(counts[s].values()), **counts[s],
+        flow["sets"].setdefault(s, {})["V6"] = {"reviewed": counts[s]["ok"] + counts[s]["edit"] + counts[s]["drop"], **counts[s],
                                                 "final": len(sets[s])}
+    reviews = tr.saved()  # how the confirmations were made, from the review file itself
+    single = sorted(r["reviewed_at"] for r in reviews.values() if r["note"] != tr.BULK_NOTE)
+    flow["V6_review"] = {
+        "draft": "Claude drafted (eval/labels/testset_review_draft.csv, reviewer claude-draft); Thy confirmed",
+        "confirmed_one_by_one": len(single), "bulk_accepted": sum(r["note"] == tr.BULK_NOTE for r in reviews.values()),
+        "one_by_one_first": single[0] if single else None, "one_by_one_last": single[-1] if single else None,
+        "one_by_one_seconds": (datetime.fromisoformat(single[-1]) - datetime.fromisoformat(single[0])).seconds
+        if single else None,
+        "drafts_changed_by_thy": sum(1 for r in reviews.values() if r["decision"] != "ok")}
     flow["frozen_at"] = datetime.now().isoformat(timespec="seconds")
     flow_path.write_text(json.dumps(flow, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     frozen.write_text(json.dumps({"frozen_at": flow["frozen_at"], "approved_by": args.approved_by,
