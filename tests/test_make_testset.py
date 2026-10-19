@@ -72,3 +72,18 @@ def test_v2_asks_the_independent_checker_not_the_tags():
             "dish_keyword": "soup"}
     res = mt.v2_fits(Conn(), check, item)
     assert res == {"ok": True, "recipe_id": 2, "read": [1, 2], "errors": []} and calls[0] == (1, ("allergen:milk",))
+
+
+def test_trimming_keeps_half_vietnamese_when_it_can():
+    items = [{"lang": "en", "i": i} for i in range(10)] + [{"lang": "vi", "i": i} for i in range(3)]
+    out = mt.balanced(items, 6)
+    assert sum(it["lang"] == "vi" for it in out) == 3 and len(out) == 6
+    assert sum(it["lang"] == "vi" for it in mt.balanced(items, 10)) == 3  # Vietnamese short: English fills
+
+
+def test_v4_compares_whole_dialogues():
+    base = [{"text": "gợi ý món gà cho bữa tối"}, {"text": "không dùng tỏi nhé"}]
+    other = [{"text": "gợi ý món gà cho bữa tối"}, {"text": "tôi dị ứng đậu phộng, cần nấu dưới 15 phút ngay"}]
+    items = [{"set": "t4", "lang": "vi", "turns": t, "text": ""} for t in (base, other)]
+    kept, counts = mt.apply_filters(items, [], None)
+    assert len(kept) == 2 and not counts

@@ -1,0 +1,82 @@
+{
+  "generated_at": "2026-10-19T08:12:36",
+  "seed": 42,
+  "paraphrase_model": "llama3.1:8b",
+  "checker_model": "llama3.1:8b",
+  "targets": {
+    "t1": 100,
+    "t2": 150,
+    "t3": 50,
+    "t4": 50
+  },
+  "sets": {
+    "t1": {
+      "generated": 150,
+      "rejected": {
+        "V1": 0,
+        "V2": 0,
+        "V3": 0,
+        "V4": 0,
+        "V5": 0
+      },
+      "kept": 150,
+      "trimmed_to_target": 50,
+      "candidates": 100,
+      "needs_gold": 3
+    },
+    "t2": {
+      "generated": 240,
+      "rejected": {
+        "V1": 0,
+        "V2": 4,
+        "V3": 0,
+        "V4": 48,
+        "V5": 0
+      },
+      "kept": 188,
+      "trimmed_to_target": 38,
+      "candidates": 150,
+      "paraphrased": 109,
+      "by_lang": {
+        "vi": 75,
+        "en": 75
+      }
+    },
+    "t3": {
+      "generated": 98,
+      "rejected": {
+        "V1": 0,
+        "V2": 34,
+        "V3": 0,
+        "V4": 0,
+        "V5": 0
+      },
+      "kept": 64,
+      "trimmed_to_target": 14,
+      "candidates": 50
+    },
+    "t4": {
+      "generated": 65,
+      "rejected": {
+        "V1": 0,
+        "V2": 3,
+        "V3": 0,
+        "V4": 22,
+        "V5": 0
+      },
+      "kept": 40,
+      "trimmed_to_target": 0,
+      "candidates": 40
+    }
+  },
+  "handwritten": {
+    "rows": 0,
+    "rejected": {
+      "V1": 0,
+      "V4": 0,
+      "V5": 0
+    },
+    "kept": 0,
+    "v3_warnings": 0
+  }
+}
