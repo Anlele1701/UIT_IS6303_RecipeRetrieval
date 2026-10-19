@@ -290,9 +290,11 @@ def score(run_dir: Path) -> dict:
             if cons:
                 for rid in set(t["recipe_ids"][:K]) | set(t["ranked"][:DEPTH]):
                     need[rid] |= set(cons)
-        for rid, cons in need.items():
+        for i, (rid, cons) in enumerate(need.items(), 1):
             for c, v in safe_check(checker, conn, client, rid, sorted(cons), cache).items():
                 verdicts[(rid, c)] = v
+            if i % 50 == 0 or i == len(need):
+                print(f"checker {i}/{len(need)} Recipes", flush=True)
         scored = {(s.recipe_id, s.constraint): s for s in adjudicate.score_all(conn, verdicts)}
         settings = json.loads((run_dir / "settings.json").read_text(encoding="utf-8"))
         queue = adjudicate.QUEUE if settings.get("sample") else run_dir / "checker_queue.csv"  # smoke runs stay out
@@ -325,7 +327,8 @@ def score(run_dir: Path) -> dict:
                 pool[(t["qid"], t["turn"])] |= set(t["ranked"][:DEPTH])
         rel: dict[tuple[str, int], dict[int, int]] = {}
         judged_raw: list[dict] = []  # the judge's own scores (before rel'), for the human check
-        for key, rids in pool.items():
+        for n_q, (key, rids) in enumerate(pool.items(), 1):
+            print(f"judge pool {n_q}/{len(pool)} queries", flush=True)
             t0 = next(t for t in turns if (t["qid"], t["turn"]) == key)
             g = gold_constraints(gold_of(t0))
             q = query_of(t0)
@@ -341,7 +344,9 @@ def score(run_dir: Path) -> dict:
 
         # 3. per turn
         rows = []
-        for t in turns:
+        for n_t, t in enumerate(turns, 1):
+            if n_t % 25 == 0 or n_t == len(turns):
+                print(f"judge answers {n_t}/{len(turns)} turns", flush=True)
             g = gold_constraints(gold_of(t))
             gold = gold_of(t)
             ctx = t["recipe_ids"][:K]

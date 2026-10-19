@@ -15,6 +15,7 @@ from api.pipeline.llm import LLMError, chat_json
 
 JUDGE_MODEL = "llama3.1:8b"
 JUDGE_CTX = 8192
+JUDGE_MAX_TOKENS = 512  # a judge reply is a score or a short list; the cap stops a looping one (M6b)
 
 REL = ("You judge how relevant a recipe is to a cooking request.\n"
        "2: the right kind of dish or need, matching the request's main point.\n"
@@ -44,7 +45,8 @@ def _ask(client: httpx.Client, schema: dict, system: str, user: str) -> dict | N
     msgs = [{"role": "system", "content": system}, {"role": "user", "content": user}]
     for _ in range(2):
         try:
-            return chat_json(client, schema, msgs, model=JUDGE_MODEL, temperature=0.0, num_ctx=JUDGE_CTX)
+            return chat_json(client, schema, msgs, model=JUDGE_MODEL, temperature=0.0, num_ctx=JUDGE_CTX,
+                             num_predict=JUDGE_MAX_TOKENS)
         except (LLMError, httpx.HTTPError):
             continue
     return None  # counted as missing, never as a score
