@@ -880,7 +880,7 @@ Kịch bản 1b sẽ thấy lại vấn đề đã biết của gate M3: R18880 
 
 **Gate M4 (Thy, 18/10/2026): duyệt.** Ảnh demo do Thy chụp. Các vấn đề đã biết (gate M3 và demo M4) giữ nguyên.
 
-## M5 – Bộ test A3 (19/10/2026) · đã đóng băng, 🚦 chờ duyệt
+## M5 – Bộ test A3 (19/10/2026) · 🚦 đã duyệt 19/10/2026
 
 **Quyết định (Thy, 18/10):** duyệt gold V6 trên trang web duyệt nhanh.
 
@@ -917,3 +917,5 @@ Kịch bản 1b sẽ thấy lại vấn đề đã biết của gate M3: R18880 
   - Sửa một lỗi đếm: `reviewed` trong số đếm V6 đã cộng hai lần phần chấp nhận hàng loạt; đã tính lại bằng code.
 
 **Cần Thy:** 🚦 gate M5, xác nhận số lượng của bộ test đã đóng băng.
+
+**Gate M5 (Thy, 19/10/2026): duyệt.** Bộ test đóng băng: T1 105, T2 172, T3 55, T4 40. Bước tiếp theo là M6.
