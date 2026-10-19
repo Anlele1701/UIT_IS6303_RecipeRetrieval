@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-19T08:12:36",
+  "generated_at": "2026-10-19T08:27:57",
   "seed": 42,
   "paraphrase_model": "llama3.1:8b",
   "checker_model": "llama3.1:8b",
@@ -70,13 +70,13 @@
     }
   },
   "handwritten": {
-    "rows": 0,
+    "rows": 32,
     "rejected": {
       "V1": 0,
       "V4": 0,
       "V5": 0
     },
-    "kept": 0,
-    "v3_warnings": 0
+    "kept": 32,
+    "v3_warnings": 5
   }
 }
