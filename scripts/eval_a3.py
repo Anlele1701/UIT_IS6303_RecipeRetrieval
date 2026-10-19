@@ -247,6 +247,8 @@ def score(run_dir: Path) -> dict:
     import adjudicate
     import checker
     import judge
+    from api.pipeline import m6_generate
+    from api.pipeline.m5_postprocess import cards as load_cards
     from eval_patient import compare, holm, names_in
     from significance import interval
     from stats import rate
@@ -357,7 +359,9 @@ def score(run_dir: Path) -> dict:
             r.update(citation_scores(t["answer"], ctx, ok))
             if t["preset"] not in {"B0"} and t["answer"]:
                 if ctx and t["route"] in {"retrieve", "detail"}:
-                    context = "\n\n".join(judge.recipe_text(recipe(x)["title"], recipe(x)["summary"], raw(x)) for x in ctx)
+                    # the cards M6 itself was given (time, allergens, may contain, diet, ingredients): a claim
+                    # read off them is supported (smoke run: titles and ingredients alone made every answer unfaithful)
+                    context = m6_generate.context_block(load_cards(conn, [(x, 0.0) for x in ctx]))
                     f_ = judge.faithful(client, context, t["answer"])
                     r["faithful"] = None if f_ is None else int(f_)
                 a = judge.answers_question(client, query_of(t), t["answer"])
