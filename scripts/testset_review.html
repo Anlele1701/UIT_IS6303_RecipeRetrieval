@@ -28,6 +28,9 @@
   .b-edit { background:var(--edit)!important; color:#fff; border:none!important; }
   .b-drop { background:var(--drop)!important; color:#fff; border:none!important; }
   .err { color:var(--drop); min-height:1.5em; } .saved { color:var(--ok); font-size:14px; }
+  .draft { background:#eef3ff; border:1px solid #b9c9f2; padding:6px 10px; border-radius:6px; font-size:14px; margin-top:8px; }
+  .flag { background:#fff4dd; border:1px solid #e9c46a; }
+  .toolbar { display:flex; gap:12px; align-items:center; flex-wrap:wrap; font-size:14px; }
 </style>
 </head>
 <body>
@@ -37,6 +40,11 @@
       <span class="muted">· chỉ hiện câu hỏi và gold đề xuất từ mẫu câu · không có dự đoán của máy</span></div>
     <div id="progress" class="muted"></div>
   </header>
+  <section class="card toolbar" id="toolbar" hidden>
+    <label><input type="checkbox" id="onlyFlagged" checked> Chỉ đi qua câu bị đánh dấu</label>
+    <span id="flagInfo" class="muted"></span>
+    <button id="bulk" class="b-ok" style="padding:6px 12px;border-radius:6px;border:none;cursor:pointer">Chấp nhận các câu không bị đánh dấu</button>
+  </section>
   <section class="card">
     <div class="muted" id="meta"></div>
     <div id="saved" class="saved"></div>
@@ -60,7 +68,7 @@
 const ALLERGENS = [["milk","Sữa"],["egg","Trứng"],["fish","Cá"],["crustacean_shellfish","Giáp xác"],["tree_nuts","Hạt cây"],
   ["peanut","Đậu phộng"],["wheat","Lúa mì"],["soy","Đậu nành"],["sesame","Mè"]];
 const INTENTS = ["search","refine","ask_detail","out_of_scope","chitchat"];
-let order = 1, item = null;
+let order = 1, item = null, st = null;
 const $ = id => document.getElementById(id);
 const EMPTY = {intent:"search", constraints:{allergens_exclude:[], ingredients_exclude:[], diet:null, max_total_minutes:null}};
 
@@ -98,8 +106,12 @@ async function load(n) {
   const s = item.saved;
   $("saved").textContent = s ? `Đã lưu: ${({ok:"Đúng", edit:"Sửa", drop:"Loại"})[s.decision]}` : "";
   $("note").value = s ? s.note : "";
-  const savedGold = s && s.decision === "edit" ? s.gold : null;
+  const d = item.draft;
+  const savedGold = s && s.gold ? s.gold : (d && d.gold ? d.gold : null);
   let html = "";
+  if (d) html += `<p class="draft ${d.flagged ? "flag" : ""}"><strong>Bản nháp của Claude</strong> (đề xuất của mô hình, Thy kiểm lại)`
+    + `${d.flagged ? " · <strong>bị đánh dấu:</strong> " + d.flag_reason : " · không bị đánh dấu"}`
+    + `${d.note ? "<br>Ghi chú nháp: " + d.note : ""}${d.decision === "edit" ? "<br>Form bên dưới đã điền gold nháp; \"Đúng\" = chấp nhận gold này." : ""}</p>`;
   if (item.needs_gold) html += `<p class="warn">Câu này chưa có gold chắc chắn${item.source === "a1" ? " (có từ giống ràng buộc)" : ""}: kiểm tra và sửa nếu cần.${item.note ? " Ghi chú: " + item.note : ""}</p>`;
   if (item.turns) {
     item.turns.forEach((t, i) => {
@@ -109,8 +121,21 @@ async function load(n) {
     html += `<div class="q">${item.text}</div>${form(savedGold || item.gold, 0, false)}`;
   }
   $("body").innerHTML = html;
-  const st = await (await fetch("/api/state")).json();
+  await refreshState();
+}
+
+async function refreshState() {
+  st = await (await fetch("/api/state")).json();
   $("progress").textContent = `Đã duyệt ${st.reviewed}/${st.total}`;
+  $("toolbar").hidden = !st.has_draft;
+  $("flagInfo").textContent = `Còn ${st.flagged_open} câu bị đánh dấu, ${st.unflagged_open} câu không bị đánh dấu chưa duyệt.`;
+  $("bulk").disabled = !st.unflagged_open;
+}
+
+async function goNext() {
+  const only = st && st.has_draft && $("onlyFlagged").checked;
+  const r = await (await fetch(`/api/next?after=${order}&only_flagged=${only}`)).json();
+  if (r.order) load(r.order); else { await refreshState(); $("err").textContent = only ? "Đã duyệt hết câu bị đánh dấu." : "Đã duyệt hết."; }
 }
 
 async function save(decision) {
@@ -120,8 +145,17 @@ async function save(decision) {
   const r = await fetch(`/api/review/${order}`, {method:"POST", headers:{"Content-Type":"application/json"},
     body: JSON.stringify({decision, gold, note: $("note").value})});
   if (!r.ok) { $("err").textContent = (await r.json()).detail; return; }
-  load(Math.min(order + 1, item.total));
+  await refreshState();
+  goNext();
 }
+
+$("bulk").onclick = async () => {
+  const n = st ? st.unflagged_open : 0;
+  if (!n || !confirm(`Chấp nhận ${n} câu không bị đánh dấu, giữ nguyên gold lấy từ mẫu câu? Mỗi câu được ghi là Thy chấp nhận hàng loạt.`)) return;
+  const r = await fetch("/api/bulk_accept", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({confirm:true})});
+  const out = await r.json(); $("err").textContent = r.ok ? "" : out.detail;
+  if (r.ok) { $("saved").textContent = `Đã chấp nhận hàng loạt ${out.accepted} câu.`; refreshState(); }
+};
 
 $("ok").onclick = () => save("ok"); $("edit").onclick = () => save("edit"); $("drop").onclick = () => save("drop");
 $("prev").onclick = () => load(Math.max(1, order - 1)); $("next").onclick = () => load(order + 1);
@@ -130,7 +164,7 @@ document.addEventListener("keydown", e => {
   if (e.key === "1") save("ok"); else if (e.key === "2") save("edit"); else if (e.key === "3") save("drop");
   else if (e.key === "ArrowRight") load(order + 1); else if (e.key === "ArrowLeft") load(Math.max(1, order - 1));
 });
-fetch("/api/state").then(r => r.json()).then(s => load(s.next || 1));
+fetch("/api/state").then(r => r.json()).then(s => load((s.has_draft && s.next_flagged) || s.next || 1));
 </script>
 </body>
 </html>

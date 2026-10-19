@@ -34,15 +34,19 @@ def apply(items: list[dict], reviews: dict[str, dict]) -> tuple[dict[str, list[d
     missing = [it["id"] for it in items if it["id"] not in reviews]
     if missing:
         raise ValueError(f"{len(missing)} items not reviewed yet, e.g. {', '.join(missing[:5])}")
+    not_thy = [i for i, r in reviews.items() if r.get("reviewer", "Thy") != "Thy"]
+    if not_thy:
+        raise ValueError(f"{len(not_thy)} review rows are not Thy's, e.g. {', '.join(not_thy[:5])}")
     sets: dict[str, list[dict]] = {s: [] for s in tr.SETS}
-    counts = {s: {"ok": 0, "edit": 0, "drop": 0} for s in tr.SETS}
+    counts = {s: {"ok": 0, "edit": 0, "drop": 0, "bulk_ok": 0} for s in tr.SETS}
     for it in items:
         r = reviews[it["id"]]
         counts[it["set"]][r["decision"]] += 1
+        counts[it["set"]]["bulk_ok"] += r["note"] == tr.BULK_NOTE
         if r["decision"] == "drop":
             continue
         out = {k: v for k, v in it.items() if k not in {"needs_gold", "v3_warning", "must"}}
-        if r["decision"] == "edit":
+        if r["gold"]:  # an edit, or an accepted draft
             gold = json.loads(r["gold"])
             if "turns" in out:
                 out["turns"] = [{**t, "gold": g} for t, g in zip(out["turns"], gold)]

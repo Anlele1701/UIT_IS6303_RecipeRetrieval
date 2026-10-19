@@ -100,3 +100,14 @@ Mở trang duyệt: `uv run scripts/testset_review.py`, rồi vào `http://local
 **T4 (hội thoại):** mỗi lượt có gold riêng. Ràng buộc của một lượt là **toàn bộ** ràng buộc đang áp dụng ở lượt đó, tức đã cộng các lượt trước và bỏ những gì người dùng đã gỡ.
 
 **Nhịp làm:** khoảng 350 câu. Phần lớn chỉ cần bấm "Đúng", nên ước tính 1,5–2 giờ. Xong thì báo; khi Thy bảo, mình sẽ chạy `scripts/freeze_testset.py --approved-by Thy`.
+
+**Chế độ bản nháp (Thy chọn, 19/10/2026).** `scripts/draft_testset_review.py` soạn một bản nháp vào `eval/labels/testset_review_draft.csv`, ghi `reviewer = claude-draft`:
+- câu từ mẫu giữ nguyên gold của mẫu;
+- 35 câu (viết tay và T1 có cảnh báo) có gold nháp, soạn theo ghi chú của Thy.
+
+Trên trang duyệt:
+- **Chỉ đi qua câu bị đánh dấu** (mặc định bật). Câu bị đánh dấu gồm: viết tay, đã diễn đạt lại, có cảnh báo V3, hoặc schema không biểu diễn đủ ý.
+  - Khung xanh là bản nháp, ghi rõ là đề xuất của mô hình.
+  - Bấm "Đúng" là chấp nhận gold nháp; muốn khác thì sửa form rồi "Lưu bản sửa".
+- **Chấp nhận các câu không bị đánh dấu:** một lần bấm, có hộp xác nhận. Dùng cho các câu từ mẫu không được diễn đạt lại. Mỗi dòng ghi `reviewer = Thy` kèm ghi chú "bulk-accepted", và được đếm riêng trong `testset_flow.json`.
+- `freeze_testset.py` chỉ đọc `eval/labels/testset_review.csv` (dòng của Thy), không bao giờ đọc file nháp.
