@@ -1,0 +1,25 @@
+sequenceDiagram
+  autonumber
+  participant U as Giao diện /chat
+  participant A as FastAPI
+  participant O as Bộ điều phối
+  participant L as Ollama
+  participant D as ParadeDB
+  U->>A: POST /chat (tin nhắn, phiên, bệnh nhân)
+  A->>O: run_turn(phiên, tin nhắn, cờ)
+  O->>D: trạng thái phiên, lịch sử, cây hồ sơ
+  O->>L: M1 hiểu truy vấn (JSON schema)
+  opt có bệnh nhân
+    O->>L: V2 chọn nút ngữ cảnh (khi cần)
+    O-->>U: SSE patient_profile
+  end
+  O->>D: M2 lưu ràng buộc phiên
+  O-->>U: SSE constraints
+  O->>D: M4 lọc WHERE + BM25 + vector
+  O->>O: M5 rerank, top 5
+  O-->>U: SSE recipes
+  O->>L: M6 sinh (stream)
+  L-->>U: SSE token …
+  O->>O: M7 hậu kiểm (sinh lại ≤ 1 lần)
+  O->>D: tin nhắn trả lời + retrieval_trace
+  O-->>U: SSE done (câu trả lời cuối, trích dẫn, độ trễ)

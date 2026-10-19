@@ -1,0 +1,69 @@
+erDiagram
+  recipe ||--o{ recipe_ingredient_norm : "dòng nguyên liệu"
+  recipe ||--|| recipe_tag : "thẻ tổng hợp"
+  ingredient ||--o{ ingredient_allergen : ""
+  allergen ||--o{ ingredient_allergen : ""
+  ingredient ||--o{ ingredient_alias_vi : "bí danh"
+  patient ||--o{ patient_node : "cây hồ sơ"
+  patient ||--o{ patient_profile_cache : "hồ sơ ràng buộc"
+  patient |o--o{ chat_session : "phiên chuyên môn"
+  chat_session ||--o{ chat_message : ""
+  chat_session ||--o{ session_constraint : ""
+  chat_session ||--o{ session_record_lift : "gỡ có xác nhận"
+  chat_message ||--o{ retrieval_trace : "truy vết"
+  chat_message ||--o{ feedback : ""
+  recipe { int id PK
+    text title
+    int total_minutes }
+  recipe_tag { int recipe_id PK
+    text_arr allergens
+    text_arr ingredients_norm
+    text_arr diet_flags
+    bool has_unknown }
+  recipe_ingredient_norm { int recipe_id
+    smallint position
+    text parsed_name
+    int_arr ingredient_ids }
+  ingredient { int id PK
+    text canonical_name
+    text_arr synonyms }
+  allergen { text code PK
+    text name_vi }
+  ingredient_allergen { int ingredient_id
+    text allergen_code
+    text kind }
+  ingredient_alias_vi { text alias
+    int ingredient_id }
+  patient { text patient_id PK
+    text source
+    date record_date }
+  patient_node { text patient_id
+    text node_id
+    text parent_id
+    text kind
+    text summary
+    jsonb facts }
+  patient_profile_cache { text patient_id
+    text ruleset_version
+    jsonb profile }
+  chat_session { uuid id PK
+    text preset
+    text patient_id FK }
+  chat_message { bigint id PK
+    uuid session_id FK
+    text role
+    text content }
+  session_constraint { bigint id PK
+    uuid session_id FK
+    text type
+    text value
+    text scope }
+  session_record_lift { uuid session_id FK
+    text constraint_id
+    text_arr members }
+  retrieval_trace { bigint message_id FK
+    text stage
+    jsonb payload
+    real latency_ms }
+  feedback { bigint message_id FK
+    smallint rating }

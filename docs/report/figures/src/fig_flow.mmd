@@ -1,0 +1,17 @@
+flowchart TB
+  R["Hồ sơ bệnh nhân<br/>C-CDA (Synthea)"]:::vl --> T["V1 · Cây mục lục hồ sơ<br/>dựng offline, tóm tắt nút"]:::vl
+  Q["Câu hỏi người dùng<br/>tiếng Việt / tiếng Anh"] --> M1["M1 · Hiểu truy vấn<br/>ý định, truy vấn tiếng Anh, ràng buộc"]
+  T --> V2["V2 · Duyệt cây có giới hạn<br/>nút cố định đọc bằng code<br/>+ ≤ 1 lời gọi chọn nút ngữ cảnh"]:::vl
+  M1 -->|"cần ngữ cảnh hồ sơ"| V2
+  V2 --> V3["V3 · Ánh xạ theo luật<br/>dị ứng · ngưỡng dinh dưỡng · thuốc<br/>kèm bằng chứng"]:::vl
+  V3 --> M2["M2 · Trạng thái phiên<br/>C_E ∪ C_dlg"]
+  M1 --> M2
+  M2 --> M3{"M3 · Định tuyến"}
+  M3 -->|retrieve| M4["M4 · Lọc cứng SQL<br/>+ BM25 + dense + RRF"]:::a1
+  M4 --> M5["M5 · Rerank, gom công thức<br/>top 5"]:::a1
+  M5 --> M6["M6 · Sinh câu trả lời<br/>trích [R] và [H:]"]
+  M3 -->|"detail · patient_info"| M6
+  M3 -->|"chat · clarify"| X["Từ chối / hỏi lại"]
+  M6 --> M7["M7 · Hậu kiểm tất định<br/>sinh lại ≤ 1 lần, fallback bằng code"]
+  classDef vl fill:#ece9fb,stroke:#7c6fd6,color:#1d1d1b
+  classDef a1 fill:#e3f4ee,stroke:#3c9a7a,color:#1d1d1b
