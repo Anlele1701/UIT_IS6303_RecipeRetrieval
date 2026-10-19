@@ -2,6 +2,8 @@
 
     uv run scripts/eval_a3.py human-sample eval/runs/<ts>/a3    # writes the sample (display only) and the key
     uv run scripts/human_check.py                               # then open http://localhost:8767
+    uv run scripts/human_check.py export                        # or label offline: eval/labels/human_check_sheet.csv
+    uv run scripts/human_check.py import [sheet.csv] [--replace]  # the filled sheet -> human_check.csv
 
 Tasks:
   relevance  50 (query, Recipe) pairs from the judged pool: 0 / 1 / 2 by rubric 7.2 (constraints are not part of it)
@@ -13,6 +15,7 @@ kappa, checker accuracy). Every save appends a row to eval/labels/human_check.cs
 """
 
 import csv
+import io
 import json
 import random
 import sys
@@ -224,7 +227,112 @@ def agreement(run_dir: Path, judged_faithful: dict[tuple, int | None]) -> dict:
                         if chk else None, "kappa": kappa([to_bool[a] for a, _ in chk], [to_bool[b] for _, b in chk])}}
 
 
+SHEET = LABELS / "human_check_sheet.csv"
+SHEET_FIELDS = ["order", "item_id", "task", "query_or_item", "recipe_or_answer", "context", "hint",
+                "score", "faithful", "answers", "wrong_citation", "contains", "note"]
+NEED = {"relevance": ("score",), "answer": ("faithful", "answers", "wrong_citation"), "checker": ("contains",)}
+# accepted spellings in the sheet -> the page's label values
+YES_NO = {"1": True, "co": True, "có": True, "yes": True, "true": True,
+          "0": False, "khong": False, "không": False, "no": False, "false": False}
+CONTAINS = {"yes": "yes", "co": "yes", "có": "yes", "1": "yes", "no": "no", "khong": "no", "không": "no", "0": "no",
+            "unsure": "unsure", "?": "unsure", "khong chac": "unsure", "không chắc": "unsure"}
+
+
+def _recipe_cell(r: dict) -> str:
+    return f"[R{r['recipe_id']}] {r['title']}\n" + "\n".join(f"- {line}" for line in r["ingredients"])
+
+
+def export_sheet(path: Path = SHEET) -> str:
+    """The sample as a spreadsheet (UTF-8 with BOM for Excel), same order and display fields as the page, no key."""
+    rows = json.loads(SAMPLE.read_text(encoding="utf-8"))["items"]
+    with open(path, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=SHEET_FIELDS)
+        w.writeheader()
+        for n, it in enumerate(rows, 1):
+            if it["task"] == "relevance":
+                q, body, ctx = it["query"], _recipe_cell(it["recipe"]), ""
+            elif it["task"] == "answer":
+                q, body, ctx = it["query"], it["answer"], "\n\n".join(_recipe_cell(r) for r in it["context"])
+            else:
+                q, body, ctx = f"Công thức này có chứa: {it['item']}?", _recipe_cell(it["recipe"]), ""
+            # cells the task does not use are marked so they are not filled by mistake
+            blank = {k: ("" if k in NEED[it["task"]] else "—") for k in NEED["relevance"] + NEED["answer"] + NEED["checker"]}
+            w.writerow({"order": n, "item_id": it["id"], "task": it["task"], "query_or_item": q,
+                        "recipe_or_answer": body, "context": ctx, "hint": "\n".join(it.get("hint", [])),
+                        **blank, "note": ""})
+    return f"{len(rows)} rows -> {path.relative_to(ROOT)}"
+
+
+def _parse(task: str, row: dict) -> dict:
+    out = {}
+    for k in NEED[task]:
+        v = (row.get(k) or "").strip().lower()
+        if k in ("score", "answers"):
+            if v not in {"0", "1", "2"}:
+                raise ValueError(f"{k} = {v!r} (0/1/2)")
+            out[k] = int(v)
+        elif k == "contains":
+            if v not in CONTAINS:
+                raise ValueError(f"contains = {v!r} (yes/no/unsure)")
+            out[k] = CONTAINS[v]
+        else:
+            if v not in YES_NO:
+                raise ValueError(f"{k} = {v!r} (1/0)")
+            out[k] = YES_NO[v]
+    return out
+
+
+def import_sheet(path: Path, replace: bool = False) -> str:
+    """Thy's filled sheet -> human_check.csv rows (reviewer Thy). Blank rows are skipped; items already labeled on
+    the page are kept unless --replace (the last row per item wins when reading)."""
+    ids = {it["id"]: it["task"] for it in json.loads(SAMPLE.read_text(encoding="utf-8"))["items"]}
+    done = labels()
+    raw = path.read_bytes()
+    try:
+        text = raw.decode("utf-8-sig")
+    except UnicodeDecodeError:  # Excel "CSV" (not "CSV UTF-8") on a Vietnamese Windows
+        text = raw.decode("cp1258")
+    first = text.split("\n", 1)[0]
+    sheet = list(csv.DictReader(io.StringIO(text, newline=""), delimiter=";" if first.count(";") > first.count(",") else ","))
+    new_rows, errors, skipped, kept = [], [], 0, 0
+    for r in sheet:
+        iid = r.get("item_id", "").strip()
+        if iid not in ids:
+            errors.append(f"{iid or '?'}: not in the sample")
+            continue
+        if not any((r.get(k) or "").strip() for k in NEED[ids[iid]]):
+            skipped += 1
+            continue
+        if iid in done and not replace:
+            kept += 1
+            continue
+        try:
+            lab = _parse(ids[iid], r)
+        except ValueError as e:
+            errors.append(f"{iid}: {e}")
+            continue
+        new_rows.append({"task": ids[iid], "item_id": iid, "label": json.dumps(lab, ensure_ascii=False),
+                         "note": (r.get("note") or "").strip(), "reviewer": "Thy",
+                         "labeled_at": datetime.now().isoformat(timespec="seconds")})
+    if errors:  # nothing is written while any row is wrong
+        return "not imported, fix these rows:\n  " + "\n  ".join(errors)
+    new = not OUT.exists()
+    with open(OUT, "a", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=FIELDS, lineterminator="\n")
+        if new:
+            w.writeheader()
+        w.writerows(new_rows)
+    total = len(set(labels()) & set(ids))
+    return (f"imported {len(new_rows)}, blank {skipped}, already labeled kept {kept} -> {OUT.relative_to(ROOT)} "
+            f"({total}/{len(ids)} labeled)")
+
+
 if __name__ == "__main__":
-    import uvicorn
-    print("Open http://localhost:8767  (Ctrl+C to stop; progress is saved after every item)")
-    uvicorn.run(create_app(), host="127.0.0.1", port=8767, log_level="warning")
+    if len(sys.argv) > 1 and sys.argv[1] == "export":
+        print(export_sheet(Path(sys.argv[2]) if len(sys.argv) > 2 else SHEET))
+    elif len(sys.argv) > 1 and sys.argv[1] == "import":
+        print(import_sheet(Path(sys.argv[2]) if len(sys.argv) > 2 else SHEET, replace="--replace" in sys.argv))
+    else:
+        import uvicorn
+        print("Open http://localhost:8767  (Ctrl+C to stop; progress is saved after every item)")
+        uvicorn.run(create_app(), host="127.0.0.1", port=8767, log_level="warning")

@@ -78,6 +78,45 @@ def test_the_scoring_hints_never_carry_the_machine_answer():
     assert "yes" not in " ".join(hc.GROUP_VI.values()) and hc.gold_text(None) == "không có ràng buộc"
 
 
+def test_the_sheet_round_trips_and_stays_blind(tmp_path, monkeypatch):
+    import csv
+    import json
+    sample = {"items": [
+        {"task": "relevance", "id": "rel_01", "query": "q", "recipe": {"recipe_id": 1, "title": "T", "ingredients": ["a"]},
+         "hint": ["h"]},
+        {"task": "answer", "id": "ans_01", "query": "q", "answer": "A [R1]", "hint": [],
+         "context": [{"recipe_id": 1, "title": "T", "ingredients": ["a"]}]},
+        {"task": "checker", "id": "chk_01", "item": "milk", "constraint": "allergen:milk",
+         "recipe": {"recipe_id": 2, "title": "U", "ingredients": ["butter"]}}]}
+    (tmp_path / "s.json").write_text(json.dumps(sample), encoding="utf-8")
+    monkeypatch.setattr(hc, "SAMPLE", tmp_path / "s.json")
+    monkeypatch.setattr(hc, "OUT", tmp_path / "out.csv")
+    monkeypatch.setattr(hc, "ROOT", tmp_path)
+    sheet = tmp_path / "sheet.csv"
+    hc.export_sheet(sheet)
+    text = sheet.read_text(encoding="utf-8-sig")
+    assert "judge" not in text and "allergen:milk" not in text  # display fields only
+    rows = list(csv.DictReader(text.splitlines()))
+    rows[0]["score"] = "2"
+    rows[1].update(faithful="có", answers="1", wrong_citation="0")
+    rows[2]["contains"] = "x"
+    with open(sheet, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=hc.SHEET_FIELDS)
+        w.writeheader()
+        w.writerows(rows)
+    assert hc.import_sheet(sheet).startswith("not imported") and not hc.OUT.exists()  # one bad row blocks all
+    rows[2]["contains"] = "không chắc"
+    with open(sheet, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=hc.SHEET_FIELDS)
+        w.writeheader()
+        w.writerows(rows)
+    hc.import_sheet(sheet)
+    lab = {i: json.loads(r["label"]) for i, r in hc.labels().items()}
+    assert lab == {"rel_01": {"score": 2}, "ans_01": {"faithful": True, "answers": 1, "wrong_citation": False},
+                   "chk_01": {"contains": "unsure"}}
+    assert "kept 3" in hc.import_sheet(sheet)  # a second import does not overwrite
+
+
 def test_a_broken_checker_reply_becomes_an_error_verdict_not_a_crash():
     import json
     from types import SimpleNamespace
