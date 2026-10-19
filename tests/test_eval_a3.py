@@ -67,6 +67,17 @@ def test_the_human_check_page_hides_the_machine():
     assert "judge" not in html.split("<script>")[1] and "contains\"]" not in html
 
 
+def test_the_scoring_hints_never_carry_the_machine_answer():
+    tree = ast.parse(Path(hc.__file__).read_text(encoding="utf-8"))
+    sample = next(n for n in ast.walk(tree) if isinstance(n, ast.FunctionDef) and n.name == "make_sample")
+    hints = [ast.unparse(v) for d in ast.walk(sample) if isinstance(d, ast.Dict)
+             for k, v in zip(d.keys, d.values) if isinstance(k, ast.Constant) and k.value == "hint"]
+    assert len(hints) == 3  # relevance, answer, checker
+    for h in hints:  # built from the query, the frozen gold, the answer text and fixed group notes only
+        assert not any(w in h for w in ("judge", "verdict", "contains", "key", "score", "rel["))
+    assert "yes" not in " ".join(hc.GROUP_VI.values()) and hc.gold_text(None) == "không có ràng buộc"
+
+
 def test_a_broken_checker_reply_becomes_an_error_verdict_not_a_crash():
     import json
     from types import SimpleNamespace

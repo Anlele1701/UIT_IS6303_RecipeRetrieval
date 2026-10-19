@@ -28,6 +28,27 @@ PAGE = Path(__file__).with_name("human_check.html")
 FIELDS = ["task", "item_id", "label", "note", "reviewer", "labeled_at"]
 SEED = 42
 N = {"relevance": 50, "answer": 50, "checker_yes": 30, "checker_no": 30}
+# Per-item hints (Thy, 19/10/2026): reading aids that never carry the judge's score or the checker's verdict
+GROUP_VI = {"milk": "sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+            "egg": "trứng (mayonnaise, aioli, meringue, mì trứng)",
+            "fish": "cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",
+            "crustacean_shellfish": "giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",
+            "tree_nuts": "hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",
+            "peanut": "đậu phộng (bơ đậu phộng, dầu đậu phộng, sốt satay)",
+            "wheat": "lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+            "soy": "đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",
+            "sesame": "mè: dầu mè, tahini, hạt mè",
+            "vegetarian": "chay: KHÔNG có thịt, gia cầm, cá, hải sản, gelatin, mỡ động vật, nước dùng thịt/cá",
+            "vegan": "thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)"}
+
+
+def gold_text(gold: dict | None) -> str:
+    c = (gold or {}).get("constraints") or {}
+    bits = [f"dị ứng {a}" for a in c.get("allergens_exclude") or []]
+    bits += [f"không {i}" for i in c.get("ingredients_exclude") or []]
+    bits += [f"chế độ {c['diet']}"] if c.get("diet") else []
+    bits += [f"≤ {c['max_total_minutes']} phút"] if c.get("max_total_minutes") else []
+    return ", ".join(bits) or "không có ràng buộc"
 
 
 def make_sample(run_dir: Path) -> str:
@@ -41,6 +62,17 @@ def make_sample(run_dir: Path) -> str:
     import checker
     from api import config
     rng = random.Random(SEED)
+    import re
+    testset = {}
+    for s_ in ("t1", "t2", "t3", "t4"):
+        for line in (ROOT / "eval" / "testset" / f"{s_}.jsonl").read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                it = json.loads(line)
+                testset[it["id"]] = it
+
+    def gold_of(qid, turn):
+        it = testset[qid]
+        return it["turns"][turn]["gold"] if it.get("turns") else it["gold"]
     pool = json.loads((run_dir / "pool.json").read_text(encoding="utf-8"))
     verdicts = json.loads((run_dir / "checker_verdicts.json").read_text(encoding="utf-8"))
     turns = [json.loads(line) for line in (run_dir / "turns.jsonl").read_text(encoding="utf-8").splitlines() if line]
@@ -56,13 +88,27 @@ def make_sample(run_dir: Path) -> str:
             rng.shuffle(by_score[s])
             rel += by_score[s][:N["relevance"] // 3 + (s == 2) * (N["relevance"] % 3)]
         for i, p in enumerate(rel, 1):
-            items.append({"task": "relevance", "id": f"rel_{i:02d}", "query": p["query"], "recipe": recipe(p["recipe_id"])})
+            kw = testset[p["qid"]].get("dish_keyword")
+            items.append({"task": "relevance", "id": f"rel_{i:02d}", "query": p["query"], "recipe": recipe(p["recipe_id"]),
+                          "hint": [f"Ý chính cần xét: {('loại món ' + repr(kw)) if kw else 'loại món hoặc nhu cầu trong câu hỏi'}"
+                                   + (" (câu hội thoại: xét lượt cuối, có tính các lượt trước)" if " / " in p["query"] else ""),
+                                   "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, "
+                                   "bữa, khẩu vị); 0 = món khác hẳn",
+                                   "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"]})
             key[f"rel_{i:02d}"] = p["judge"]
 
         answered = [t for t in turns if t["answer"] and t["recipe_ids"] and t["route"] in {"retrieve", "detail"}]
         rng.shuffle(answered)
         for i, t in enumerate(answered[:N["answer"]], 1):
+            ctx_ids = t["recipe_ids"][:5]
+            cited = [int(x) for x in dict.fromkeys(re.findall(r"\[R(\d+)\]", t["answer"]))]
+            cite_txt = ", ".join(f"R{c}" + ("" if c in ctx_ids else " (NGOÀI ngữ cảnh)") for c in cited) or "không trích món nào"
             items.append({"task": "answer", "id": f"ans_{i:02d}", "query": t["text"], "answer": t["answer"],
+                          "hint": [f"Ràng buộc của câu hỏi (gold): {gold_text(gold_of(t['qid'], t['turn']))}",
+                                   f"Món được trích: {cite_txt}",
+                                   "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, "
+                                   "'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+                                   "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"],
                           "context": [recipe(r) for r in t["recipe_ids"][:5]]})
             key[f"ans_{i:02d}"] = {"qid": t["qid"], "preset": t["preset"], "turn": t["turn"]}
 
@@ -71,7 +117,11 @@ def make_sample(run_dir: Path) -> str:
             rng.shuffle(pick)
             for v in pick[:n]:
                 iid = f"chk_{len([k for k in key if k.startswith('chk_')]) + 1:02d}"
+                grp = v["constraint"].split(":", 1)[1]
                 items.append({"task": "checker", "id": iid, "item": checker.describe(v["constraint"]),
+                              "hint": [f"Nhóm: {GROUP_VI.get(grp, grp)}",
+                                       "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) "
+                                       "thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"],
                               "constraint": v["constraint"], "recipe": recipe(v["recipe_id"])})
                 key[iid] = v["contains"]
     rng.shuffle(items)  # mixed order: the checker's yes and no are not in two blocks

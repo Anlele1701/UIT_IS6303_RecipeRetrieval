@@ -20,6 +20,8 @@
   textarea { width:100%; min-height:50px; font:inherit; } .err { color:var(--warn); min-height:1.5em; }
   .nav { display:flex; gap:8px; } .nav button { padding:10px 16px; border-radius:6px; cursor:pointer; border:1px solid var(--line); background:#fff; }
   .primary { background:var(--focus)!important; color:#fff; border:none!important; }
+  .hint { background:#f1f5ee; border:1px solid #c9d8bf; border-radius:6px; padding:8px 12px; font-size:14px; margin:8px 0; }
+  .hint ul { margin:4px 0 0; }
 </style>
 </head>
 <body>
@@ -62,6 +64,7 @@ function render() {
     h = `<div class="q">Công thức này có chứa: <b>${esc(item.item)}</b>?</div>${recipeHtml(item.recipe)}`
       + choice("contains", {label:"Chứa?", values:[["yes","Có"],["unsure","Không chắc"],["no","Không"]]});
   }
+  if (item.hint && item.hint.length) h = `<div class="hint"><b>Gợi ý chấm</b> (không phải đáp án của máy)<ul>${item.hint.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` + h;
   $("body").innerHTML = h;
   document.querySelectorAll("[data-f]").forEach(b => b.onclick = () => { label[b.dataset.f] = JSON.parse(b.dataset.v); render(); });
 }

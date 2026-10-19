@@ -7,6 +7,12 @@
    "id": "ans_27",
    "query": "creamy clam soup with potatoes",
    "answer": "[R10097] Classic Clam Chowder | A creamy clam chowder with potatoes, made from leftover mashed potatoes for a comforting dish. Preparation takes about 20 minutes, and it's free from milk but may contain cream, so check labels.\n\n[R9545] Manhattan Clam Chowder | This soup is zesty and flavorful, with a creamy texture from tomato and clam juice, potatoes, and green bell pepper. It takes about 45 minutes to prepare and is free from milk and wheat.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R10097, R9545",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 10097,
@@ -94,6 +100,12 @@
    "id": "ans_40",
    "query": "I'm allergic to sesame, can you suggest a beef dish that can be prepared in under 30 minutes?",
    "answer": "[R7226] Savory Beef Stir-Fry | 25 min | This quick version of stir-fry is a great option, containing no sesame and fitting your time constraint. Enjoy the flavorful dish in under 30 minutes.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng sesame, ≤ 30 phút",
+    "Món được trích: R7226",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 6848,
@@ -180,6 +192,12 @@
    "id": "ans_13",
    "query": "spicy lime chicken and bean salad",
    "answer": "[R25370] Spicy Southwest Chopped Salad with Salsa Verde | 75 min | This recipe combines chicken, beans, and a spicy salsa verde, offering a flavorful and refreshing option. It's suitable for those avoiding eggs and milk, though it may contain a bit of spice and creaminess from the jalapeño and mayonnaise-like consistency from the tomatillos. Adjust the spice level to your liking.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R25370",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 22215,
@@ -287,7 +305,12 @@
      "1 (8 ounce) package cream cheese, softened",
      "½ cup mild pepper jelly"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -306,7 +329,12 @@
      "¼ teaspoon oregano",
      "salt and ground black pepper to taste"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'salad'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -330,12 +358,21 @@
      "½ tablespoon sesame oil",
      "1 (15 ounce) package slider-size burger buns"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_37",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 1401,
@@ -367,7 +404,12 @@
      "1 scoop vanilla whey protein powder",
      "1 teaspoon honey, or to taste  (Optional)"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -387,7 +429,12 @@
      "2 tablespoons soy sauce",
      "2 tablespoons sesame seeds, toasted"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'beef'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -409,12 +456,21 @@
      "¾ cup any flavor fruit jam",
      "2 quarts vegetable oil for frying"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_55",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 12048,
@@ -450,7 +506,12 @@
      "½ cup chopped walnuts",
      "½ cup melted butter"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'bread'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -465,12 +526,21 @@
      "½ cup sweetened condensed milk",
      "16  ice cubes"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_16",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 5635,
@@ -500,6 +570,12 @@
    "id": "ans_30",
    "query": "I'm allergic to sesame, can you suggest a beef dish that can be prepared in under 30 minutes?",
    "answer": "[R7226] Savory Beef Stir-Fry | 25 min | This quick version of stir-fry is a great option, containing no sesame and fitting your time constraint. Enjoy the flavorful dish in under 30 minutes.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng sesame, ≤ 30 phút",
+    "Món được trích: R7226",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 6848,
@@ -586,6 +662,12 @@
    "id": "ans_19",
    "query": "tôi dị ứng lúa mì",
    "answer": "Tôi tìm thấy một số công thức không chứa lúa mì:\n\n[R20953] Lui's Zucchini Leek Pho - 40 phút, không có dị ứng, không chứa lúa mì. Công thức này thay thế mì bằng zucchini, tạo ra một món phở ngon miệng mà không gây dị ứng.\n\n[R10938] Jet Tila's Tom Yum Goong Soup - 45 phút, không có dị ứng, không chứa lúa mì. Món súp tôm cay này là lựa chọn tốt cho người dị ứng lúa mì.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng wheat",
+    "Món được trích: R20953, R10938",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 10938,
@@ -682,6 +764,10 @@
    "task": "checker",
    "id": "chk_56",
    "item": "soybeans or a product made from soy: soy sauce, tofu, miso, edamame, tempeh, soy lecithin",
+   "hint": [
+    "Nhóm: đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:soy",
    "recipe": {
     "recipe_id": 3557,
@@ -722,13 +808,24 @@
      "1 ½ cups confectioners' sugar",
      "1 (16 ounce) package prepared milk chocolate frosting"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'cake' (câu hội thoại: xét lượt cuối, có tính các lượt trước)",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_10",
    "query": "cần nấu dưới 30 phút",
    "answer": "[R13509] Creme Anglaise Sauce | 20 min | không chứa gluten | Creme Anglaise là một loại sauce creamy, phù hợp để trang trí các món dessert khác. Thời gian chuẩn bị chỉ khoảng 20 phút.\n\n[R7642] Sweetly Stewed Rhubarb | 30 min | không chứa gluten | Món stewed rhubarb ngọt ngào và độc đáo, dễ làm và phù hợp làm dessert nhanh chóng. Thời gian chuẩn bị là 30 phút.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng wheat, ≤ 30 phút",
+    "Món được trích: R13509, R7642",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 13509,
@@ -805,13 +902,24 @@
      "1 tablespoon Worcestershire sauce",
      "½ teaspoon seasoned salt"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'beef'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_38",
    "query": "cho mình món súp không có sữa và không có bơ",
    "answer": "Món súp Classic Dairy-Free Cream of Tomato and Basil Soup [R20851] không có sữa và không có bơ, mất khoảng 45 phút để nấu. Món súp này rất ngon và creamy, sử dụng kem dừa thay cho kem, phù hợp với người ăn chay và người ăn chay thực thụ.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng milk",
+    "Món được trích: R20851",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 22494,
@@ -930,13 +1038,24 @@
      "salt and ground black pepper to taste",
      "12  corn tortillas"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_45",
    "query": "cho mình xin công thức gà nướng mật ong",
    "answer": "[R17597] Spicy Honey-Roasted Chicken | 135 phút | Thành phần có thể chứa: sữa | Đảm bảo an toàn cho người dị ứng sữa, nhưng bạn nên kiểm tra nhãn thành phần. Gà nướng với mật ong và các gia vị cay tạo nên một lớp vỏ giòn, ngọt và cay, rất phù hợp cho cuối tuần.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R17597",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 17597,
@@ -1034,12 +1153,21 @@
      "1 ½ tablespoons dry milk powder",
      "2 teaspoons active dry yeast"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'bread'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_39",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 23687,
@@ -1061,6 +1189,10 @@
    "task": "checker",
    "id": "chk_31",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 4199,
@@ -1087,6 +1219,12 @@
    "id": "ans_25",
    "query": "gợi ý bánh mì chay",
    "answer": "[R20754] Vegetable Banh Mi | 40 phút | Nguyên liệu có thể thay thế: bỏ bớt nước fish sauce (mắm tôm) | Thời gian: 40 phút | Đây là một lựa chọn chay cho bánh mì, sử dụng các loại rau củ như cà rốt, jicama và nấm portobello sauté với mắm tôm, sriracha và bột five-spice.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): chế độ vegetarian",
+    "Món được trích: R20754",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 3536,
@@ -1220,7 +1358,12 @@
      "1 small jalapeno pepper - seeded and cut into 1/16-inch-thick matchsticks",
      "1 wedge lime"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -1252,13 +1395,24 @@
      "3 tablespoons white sugar",
      "¼ cup tamarind juice"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'pie' (câu hội thoại: xét lượt cuối, có tính các lượt trước)",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_24",
    "query": "suggest a bread without mushrooms",
    "answer": "Nothing in the provided recipes contains mushrooms, so any of them would be suitable. Here are a few options:\n\n- [R1692] Italian Bread Using a Bread Machine: A vegetarian bread made in a bread machine and then baked.\n- [R28385] Sourdough Wheat Bread: A whole wheat sourdough bread for the bread machine.\n- [R26230] Breakfast Bread: A dense bread that is great for toast, French toast, or sandwiches.\n- [R27970] Honey Multigrain Bread: A multi-grain bread with a good texture for toasting or sandwiches.\n- [R18961] Rye Bread Boat Dip: A rye bread boat dip, though note it is not a traditional bread recipe.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không mushroom",
+    "Món được trích: R1692, R28385, R26230, R27970, R18961",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 1692,
@@ -1350,13 +1504,24 @@
      "2 tablespoons vegetable oil",
      "1 ½ teaspoons active dry yeast"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'bread'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_04",
    "query": "milk-free fettuccine alfredo recipe",
    "answer": "[R18620] A Farewell to Basil Fettuccine | ? min | While not a traditional Alfredo, this recipe offers a milk-free pasta dish that can be paired with a creamy Alfredo sauce. It's vegetarian and made with fresh basil, offering a unique twist on fettuccine.\n\n[R11301] Spaghetti Aglio, Olio, e Peperoncino con Bottarga | 30 min | This recipe is not an Alfredo, but it provides a milk-free option using spaghetti, garlic, oil, and bottarga. It's quick and easy, taking about 30 minutes to prepare.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng milk",
+    "Món được trích: R18620, R11301",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 9643,
@@ -1427,6 +1592,10 @@
    "task": "checker",
    "id": "chk_33",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 16735,
@@ -1450,6 +1619,12 @@
    "id": "ans_18",
    "query": "món thứ 3 làm thế nào?",
    "answer": "Món thứ 3 là Chicken Massaman Curry [R7993]. Đây là một curry gà với hương vị tamarind và kem dừa, hoàn thành trong khoảng 55 phút. Món này không chứa gluten, đậu nành hoặc các chất bảo quản, phù hợp với người ăn chay.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng wheat, ≤ 30 phút",
+    "Món được trích: R7993",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 7993,
@@ -1560,6 +1735,12 @@
    "id": "ans_03",
    "query": "cho mình món súp không có sữa và không có bơ",
    "answer": "Món súp phù hợp với yêu cầu của bạn là Chompchae Deopbap (Korean Spicy Tuna and Rice) [R11009]. Món này không chứa sữa hay bơ, chỉ sử dụng nước dùng tôm và các nguyên liệu khác để tạo vị. Thời gian nấu khoảng 50 phút.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng milk",
+    "Món được trích: R11009",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 11009,
@@ -1671,6 +1852,10 @@
    "task": "checker",
    "id": "chk_48",
    "item": "fish (any finfish) or a product made from fish, including anchovies, anchovy paste, fish sauce, Worcestershire sauce (made with anchovies), Caesar dressing, bonito flakes and dashi",
+   "hint": [
+    "Nhóm: cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:fish",
    "recipe": {
     "recipe_id": 6335,
@@ -1702,6 +1887,10 @@
    "task": "checker",
    "id": "chk_08",
    "item": "soybeans or a product made from soy: soy sauce, tofu, miso, edamame, tempeh, soy lecithin",
+   "hint": [
+    "Nhóm: đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:soy",
    "recipe": {
     "recipe_id": 9884,
@@ -1733,6 +1922,10 @@
    "task": "checker",
    "id": "chk_09",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 19647,
@@ -1760,6 +1953,12 @@
    "id": "ans_23",
    "query": "suggest a bread without mushrooms",
    "answer": "Nothing in the provided recipes contains mushrooms, so any of them would be suitable. Here are a few options:\n\n- [R1692] Italian Bread Using a Bread Machine: A vegetarian bread made in a bread machine, taking about 200 minutes.\n- [R28385] Sourdough Wheat Bread: A whole wheat sourdough bread for the bread machine, taking about 185 minutes.\n- [R26230] Breakfast Bread: A dense bread that is great for toast, French toast, or sandwiches, taking about 170 minutes.\n- [R27970] Honey Multigrain Bread: A multi-grain bread with a good texture, taking about 150 minutes.\n- [R18961] Rye Bread Boat Dip: A rye bread boat dip, taking about 24 hours.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không mushroom",
+    "Món được trích: R1692, R28385, R26230, R27970, R18961",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 1692,
@@ -1840,6 +2039,12 @@
    "id": "ans_21",
    "query": "leftover pulled pork sloppy joes",
    "answer": "[R21661] Mini Sloppy Joes with Pulled Pork | 45 min | This recipe uses leftover pulled pork without sauce, making it perfect for using up leftovers. It's quick and easy, requiring just 45 minutes of preparation. Serve these mini sandwiches as an appetizer or main dish.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R21661",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 21926,
@@ -1943,6 +2148,10 @@
    "task": "checker",
    "id": "chk_01",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 25288,
@@ -1964,6 +2173,12 @@
    "id": "ans_09",
    "query": "gợi ý món tráng miệng",
    "answer": "[R27596] Four-Layer Mocha Cream Cake | 155 phút | phù hợp với người ăn chay | Món bánh kem mocha có nhiều lớp thơm ngon, dễ làm và phù hợp làm dessert. Thời gian chuẩn bị khoảng 155 phút.\n\n[R24574] Angel Fruit Trifle | 75 phút | phù hợp với người ăn chay | Trifle quả thơm mát, nhẹ nhàng với bánh angel food, trái cây tươi và kem tươi, rất phù hợp làm dessert mùa hè. Thời gian chuẩn bị khoảng 75 phút.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R27596, R24574",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 27596,
@@ -2056,7 +2271,12 @@
      "1 ½ teaspoons salt",
      "1 teaspoon orange oil"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'bread'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -2073,7 +2293,12 @@
      "2 tablespoons white sugar",
      "½ teaspoon salt"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'pie'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -2093,12 +2318,21 @@
      "1.3 cups chicken broth",
      "1 ¾ cups shredded Cheddar cheese"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'soup'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_34",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 24320,
@@ -2143,12 +2377,21 @@
      "1 sprig fresh mint, thinly sliced",
      "¼ cup roasted, salted peanuts"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_29",
    "item": "crustacean shellfish (shrimp, prawn, crab, lobster, crayfish) or a product made from them, such as shrimp paste; molluscs such as clams, oysters, scallops or squid do not count",
+   "hint": [
+    "Nhóm: giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:crustacean_shellfish",
    "recipe": {
     "recipe_id": 10882,
@@ -2198,12 +2441,21 @@
      "2  potatoes, diced",
      "2  tomatoes, diced"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'beef'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_28",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 30231,
@@ -2222,6 +2474,12 @@
    "id": "ans_44",
    "query": "mon an sang duoi 10 phut khong co bot mi",
    "answer": "Stir-Fried Kale and Broccoli Florets [R23505] là một lựa chọn phù hợp với thời gian nấu dưới 10 phút và không chứa bột mì. Đây là một món ăn nhẹ vegetarian, vegan với các nguyên liệu dễ tìm như rau xanh và tỏi. Thời gian nấu chỉ mất 10 phút.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng wheat, ≤ 10 phút",
+    "Món được trích: R23505",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 17134,
@@ -2289,6 +2547,10 @@
    "task": "checker",
    "id": "chk_38",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 30865,
@@ -2309,6 +2571,12 @@
    "id": "ans_48",
    "query": "công thức cá ngừ áp chảo không có cá",
    "answer": "Không tìm thấy công thức phù hợp trong CONTEXT. Công thức \"Khao Dom Pla (Rice Soup with Fish) [R12202]\" có chứa cá, trong khi bạn yêu cầu không có cá. Bạn có thể cân nhắc tìm kiếm công thức khác hoặc xem xét việc thay thế nguyên liệu cá bằng các loại rau củ hoặc đậu nành để phù hợp với yêu cầu của mình.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng fish",
+    "Món được trích: R12202",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 16630,
@@ -2416,6 +2684,10 @@
    "task": "checker",
    "id": "chk_13",
    "item": "any animal product: meat, poultry, fish, seafood, dairy, eggs, honey, gelatin or animal fat",
+   "hint": [
+    "Nhóm: thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "diet:vegan",
    "recipe": {
     "recipe_id": 29394,
@@ -2440,6 +2712,12 @@
    "id": "ans_31",
    "query": "peanut butter mango frosty blend",
    "answer": "[R15052] Peanut Butter Mango Smoothie | 5 min | This smoothie blends creamy peanut butter with sweet mango, creating a frosty and delicious blend. Contains milk and peanut allergens. [R31030] Mango Mayhem Peanut Butter Smoothie | 5 min | This smoothie is rich in protein and features peanut butter and frozen mango, making it a frosty treat. Contains milk and peanut allergens.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R15052, R31030",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 15052,
@@ -2507,6 +2785,10 @@
    "task": "checker",
    "id": "chk_24",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 29203,
@@ -2542,6 +2824,10 @@
    "task": "checker",
    "id": "chk_43",
    "item": "crustacean shellfish (shrimp, prawn, crab, lobster, crayfish) or a product made from them, such as shrimp paste; molluscs such as clams, oysters, scallops or squid do not count",
+   "hint": [
+    "Nhóm: giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:crustacean_shellfish",
    "recipe": {
     "recipe_id": 23238,
@@ -2561,6 +2847,10 @@
    "task": "checker",
    "id": "chk_03",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 13849,
@@ -2583,6 +2873,10 @@
    "task": "checker",
    "id": "chk_12",
    "item": "eggs or anything made with eggs (mayonnaise, aioli, meringue, egg noodles)",
+   "hint": [
+    "Nhóm: trứng (mayonnaise, aioli, meringue, mì trứng)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:egg",
    "recipe": {
     "recipe_id": 18929,
@@ -2613,12 +2907,21 @@
      "3 cups all-purpose flour",
      "1 ½ teaspoons active dry yeast"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'bread'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_17",
    "item": "soybeans or a product made from soy: soy sauce, tofu, miso, edamame, tempeh, soy lecithin",
+   "hint": [
+    "Nhóm: đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:soy",
    "recipe": {
     "recipe_id": 6487,
@@ -2641,6 +2944,10 @@
    "task": "checker",
    "id": "chk_52",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 13568,
@@ -2667,6 +2974,10 @@
    "task": "checker",
    "id": "chk_45",
    "item": "soybeans or a product made from soy: soy sauce, tofu, miso, edamame, tempeh, soy lecithin",
+   "hint": [
+    "Nhóm: đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:soy",
    "recipe": {
     "recipe_id": 16930,
@@ -2687,6 +2998,10 @@
    "task": "checker",
    "id": "chk_10",
    "item": "tree nuts (almond, walnut, pecan, cashew, pistachio, hazelnut, macadamia, Brazil nut, pine nut, chestnut) or a product made from them, such as pesto, marzipan, praline or nut butters other than peanut butter; coconut does not count",
+   "hint": [
+    "Nhóm: hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:tree_nuts",
    "recipe": {
     "recipe_id": 21860,
@@ -2715,6 +3030,10 @@
    "task": "checker",
    "id": "chk_07",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 32640,
@@ -2738,6 +3057,10 @@
    "task": "checker",
    "id": "chk_22",
    "item": "soybeans or a product made from soy: soy sauce, tofu, miso, edamame, tempeh, soy lecithin",
+   "hint": [
+    "Nhóm: đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:soy",
    "recipe": {
     "recipe_id": 23931,
@@ -2768,6 +3091,12 @@
    "id": "ans_22",
    "query": "món pasta healthy cho người dị ứng nuts",
    "answer": "Món Healthy Pasta Primavera [R8069] phù hợp với yêu cầu của bạn. Món pasta này chứa nhiều rau củ như asparagus, mushrooms, và cherry tomatoes, đồng thời không chứa bất kỳ loại hạt nào. Thời gian chuẩn bị khoảng 40 phút.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng tree_nuts",
+    "Món được trích: R8069",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 8069,
@@ -2866,6 +3195,10 @@
    "task": "checker",
    "id": "chk_36",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 22394,
@@ -2886,6 +3219,10 @@
    "task": "checker",
    "id": "chk_11",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 9643,
@@ -2915,13 +3252,24 @@
      "1 (1 ounce) package French onion soup mix",
      "1 (10.75 ounce) can  condensed cream of mushroom soup"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'rice' (câu hội thoại: xét lượt cuối, có tính các lượt trước)",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_35",
    "query": "how do I make the second one?",
    "answer": "It seems you're referring to the recipe [R24282] Pesto Chicken and Rice Bake. Here’s how to make it:\n\n### Ingredients:\n- cooking spray\n- 1 1/2 cups water\n- 1 (6.9 ounce) package chicken-flavored rice and vermicelli mix\n- 1/4 cup basil pesto, divided\n- 1 pound chicken tenderloins, tendons removed\n- 1/2 cup Alfredo sauce\n- 1/4 cup freshly grated Parmesan cheese\n\n### Steps:\n1. **Preheat the Oven:** Preheat your oven to 375 degrees F (190 degrees C).\n2. **Prepare the Casserole Dish:** Spray an 8-inch casserole dish with cooking spray.\n3. **Mix Rice and Seasoning:** In a bowl, mix 1 1/2 cups of water with the rice and seasoning packets from the rice and vermicelli mix. Stir in 2 tablespoons of pesto.\n4. **Pour into Dish:** Pour the rice mixture into the prepared casserole dish.\n5. **Prepare Chicken:** In a shallow dish, toss the chicken tenderloins with the remaining 2 tablespoons of pesto.\n6. **Arrange Ingredients:** Place the seasoned chicken pieces on top of the rice.\n7. **Bake First Stage:** Bake in the preheated oven for 30 minutes.\n8. **Add Sauce and Cheese:** Remove the dish from the oven. Mix the remaining 1/2 cup of water with the Alfredo sauce. Pour the Alfredo sauce over the chicken, stirring to combine. Top with the grated Parmesan cheese.\n9. **Bake Second Stage:** Return the dish to the oven and bake for an additional 15 minutes or until the cheese is melted.\n10. **Serve:** Serve the casserole immediately.\n\n### Allergen Information:\nThis recipe may contain milk (from the Alfredo sauce) and tree nuts (from the pesto). Always check the labels of the pesto and Alfredo sauce to ensure they are suitable for your dietary needs.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không onion",
+    "Món được trích: R24282",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 24282,
@@ -2943,6 +3291,12 @@
    "id": "ans_08",
    "query": "suggest a soup without onions",
    "answer": "[R13431] Simple Roasted Tomato Soup | 70 min | This tomato soup is free from onions and uses roasted Roma tomatoes for a deep, flavorful base. [R1233] Dry Onion Soup Mix | 5 min | This mix can be used as a replacement for traditional onion soup mix, ensuring no onions are included. Both recipes are suitable for those avoiding onions.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không onion",
+    "Món được trích: R13431, R1233",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 8599,
@@ -3025,6 +3379,10 @@
    "task": "checker",
    "id": "chk_59",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 3133,
@@ -3046,6 +3404,12 @@
    "id": "ans_29",
    "query": "I'm allergic to shellfish, suggest a cake",
    "answer": "No recipes in the provided context contain shellfish or crustacean ingredients. However, all the recipes listed may contain allergens such as milk, eggs, or wheat. You may want to check the ingredient labels carefully or consider swapping out the milk in [R14890] Moist Chocolate Layer Cake with a milk-free alternative.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng crustacean_shellfish",
+    "Món được trích: R14890",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 14890,
@@ -3144,6 +3508,12 @@
    "id": "ans_32",
    "query": "suggest a rice dish for dinner",
    "answer": "[R28354] Easy Curry Rice | 20 min | A simple and nice rice dish that can be prepared quickly for dinner. [R5944] Kickin' Rice | 35 min | A simple and versatile rice side dish that everyone loves! Both are suitable for a quick dinner.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R28354, R5944",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 24656,
@@ -3219,6 +3589,10 @@
    "task": "checker",
    "id": "chk_04",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 30176,
@@ -3252,7 +3626,12 @@
      "2  egg yolks, beaten",
      "⅜ cup white sugar"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'pie' (câu hội thoại: xét lượt cuối, có tính các lượt trước)",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -3275,7 +3654,12 @@
      "1 ½ cups unsalted butter, melted",
      "1 (16 ounce) package frozen phyllo pastry, thawed"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'rice' (câu hội thoại: xét lượt cuối, có tính các lượt trước)",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -3297,12 +3681,21 @@
      "salt and pepper to taste",
      "2  tomatoes, thinly sliced"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'rice' (câu hội thoại: xét lượt cuối, có tính các lượt trước)",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_15",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 25928,
@@ -3333,6 +3726,12 @@
    "id": "ans_43",
    "query": "món canh nào nấu với bí đỏ ngon",
    "answer": "[Tìm thấy 4 món canh với bí đỏ:]\n\n- [R1435] Pumpkin Soup | 75 phút: Canh bí đỏ ngon và creamy, thường được phục vụ vào ngày Lễ Tạ Ơn. Tuy nhiên, món này có chứa sữa, nên bạn cần kiểm tra nhãn thành phần.\n- [R22575] Simple Pumpkin Soup | 55 phút: Canh bí đỏ đơn giản và ấm cúng, dễ làm. Bạn có thể thêm kem tươi trên mặt để tăng hương vị.\n- [R27698] Cream of Pumpkin Soup | 50 phút: Canh bí đỏ creamy với hương vị truyền thống của mùa thu. Món này có chứa sữa, nên bạn cần kiểm tra nhãn thành phần.\n- [R29317] Judy's Pumpkin Soup | 60 phút: Canh bí đỏ ngon với hương vị đặc biệt, thích hợp phục vụ trong các bữa tiệc. Món này cũng có chứa sữa, nên bạn cần kiểm tra nhãn thành phần.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R1435, R22575, R27698, R29317",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 1435,
@@ -3424,6 +3823,12 @@
    "id": "ans_28",
    "query": "lam banh chuoi nuong the nao",
    "answer": "R8602 Grilled Peanut Butter and Banana Sandwich | 12 phút | Nguyên liệu gồm bơ đậu phộng, chuối và bánh mì. Sandwich này ngọt và ấm áp, thích hợp làm bữa sáng.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: không trích món nào",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 8602,
@@ -3500,6 +3905,12 @@
    "id": "ans_49",
    "query": "công thức cá ngừ áp chảo không có cá",
    "answer": "Không tìm thấy công thức phù hợp trong CONTEXT. Công thức \"Khao Dom Pla (Rice Soup with Fish) [R12202]\" có chứa cá, trong khi bạn yêu cầu không có cá. Bạn có thể cân nhắc tìm kiếm công thức khác hoặc yêu cầu loại bỏ cá trong công thức đã cho.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng fish",
+    "Món được trích: R12202",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 16630,
@@ -3607,6 +4018,10 @@
    "task": "checker",
    "id": "chk_41",
    "item": "crustacean shellfish (shrimp, prawn, crab, lobster, crayfish) or a product made from them, such as shrimp paste; molluscs such as clams, oysters, scallops or squid do not count",
+   "hint": [
+    "Nhóm: giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:crustacean_shellfish",
    "recipe": {
     "recipe_id": 7855,
@@ -3628,6 +4043,12 @@
    "id": "ans_05",
    "query": "mon an sang duoi 10 phut khong co bot mi",
    "answer": "[R18379] Gluten-Free Quinoa Noodles | 67 min | allergens: egg | may contain: none | diet: vegetarian | ingredients: 1 cup quinoa flour; 1 cup rice flour; 2 teaspoons xanthan gum; 1 teaspoon dried basil  (Optional); 1 teaspoon dried rosemary  (Optional); 1 teaspoon dried oregano  (Optional); ½ teaspoon salt; 2  eggs; 1  egg yolk; ⅓ cup water; 1 teaspoon olive oil; ⅓ cup rice flour, divided | Dù thời gian nấu vượt quá yêu cầu, công thức này vẫn không chứa bột mì và có thể thích hợp cho một bữa sáng nhanh chóng.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng wheat, ≤ 10 phút",
+    "Món được trích: R18379",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 21330,
@@ -3747,12 +4168,21 @@
      "1 small tomato, diced",
      "3  green onions, thinly sliced"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_25",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 30202,
@@ -3778,6 +4208,12 @@
    "id": "ans_17",
    "query": "mình thích ăn tôm lắm. gợi ý món tôm rang đi",
    "answer": "Món Old Bay® Fried Shrimp [R9696] có thể phù hợp với bạn. Đây là một món tôm rang truyền thống, ngon miệng và dễ làm. Thời gian nấu khoảng 105 phút. Tuy nhiên, món này có chứa sữa, trứng, tôm và bột mì, nên bạn cần kiểm tra kỹ nhãn sản phẩm.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R9696",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 9696,
@@ -3850,6 +4286,10 @@
    "task": "checker",
    "id": "chk_06",
    "item": "tree nuts (almond, walnut, pecan, cashew, pistachio, hazelnut, macadamia, Brazil nut, pine nut, chestnut) or a product made from them, such as pesto, marzipan, praline or nut butters other than peanut butter; coconut does not count",
+   "hint": [
+    "Nhóm: hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:tree_nuts",
    "recipe": {
     "recipe_id": 5119,
@@ -3871,6 +4311,10 @@
    "task": "checker",
    "id": "chk_46",
    "item": "fish (any finfish) or a product made from fish, including anchovies, anchovy paste, fish sauce, Worcestershire sauce (made with anchovies), Caesar dressing, bonito flakes and dashi",
+   "hint": [
+    "Nhóm: cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:fish",
    "recipe": {
     "recipe_id": 20627,
@@ -3893,6 +4337,10 @@
    "task": "checker",
    "id": "chk_44",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 4953,
@@ -3910,6 +4358,12 @@
    "id": "ans_14",
    "query": "cần nấu dưới 30 phút",
    "answer": "- 20-Minute Shrimp Fajitas Sheet Pan Dinner [R10342]: Đây là một bữa ăn nhanh chóng, chỉ mất 20 phút và không chứa các thành phần gây dị ứng. \n- Steak and Kale Soup [R21402]:Soup này chỉ mất 20 phút để nấu và không chứa các thành phần gây dị ứng.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng wheat, ≤ 30 phút",
+    "Món được trích: R10342, R21402",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 10342,
@@ -4002,7 +4456,12 @@
      "1 teaspoon salt",
      "½ teaspoon ground black pepper"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'beef'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -4023,7 +4482,12 @@
      "3 drops almond extract",
      "3 drops amaretto (almond-flavored liqueur)"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -4042,13 +4506,24 @@
      "¼ cup fresh mint leaves, or more to taste",
      "¼ head romaine lettuce, cut into bite-size pieces"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_07",
    "query": "cho mình xin công thức gà nướng mật ong",
    "answer": "Không tìm thấy công thức gà nướng mật ong trong CONTEXT. Bạn có thể thử mở rộng tìm kiếm với các từ khóa như \"gà nướng\" hoặc \"mật ong\" để tìm công thức phù hợp hơn?",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: không trích món nào",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 10223,
@@ -4167,6 +4642,10 @@
    "task": "checker",
    "id": "chk_49",
    "item": "meat, poultry, fish, seafood, gelatin, animal fat or a broth made from meat or fish",
+   "hint": [
+    "Nhóm: chay: KHÔNG có thịt, gia cầm, cá, hải sản, gelatin, mỡ động vật, nước dùng thịt/cá",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "diet:vegetarian",
    "recipe": {
     "recipe_id": 21946,
@@ -4190,6 +4669,12 @@
    "id": "ans_02",
    "query": "creamy clam soup with potatoes",
    "answer": "[R10097] Classic Clam Chowder | A creamy clam chowder with potatoes, made from scratch. It takes about 30 minutes and is free from milk but may contain none of your other allergens. [R9545] Manhattan Clam Chowder | This soup is zesty and flavorful, containing potatoes and tomato and clam juice cocktail. It takes about 45 minutes to prepare and has no milk allergens but may contain none of your other allergens.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R10097, R9545",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 10097,
@@ -4277,6 +4762,12 @@
    "id": "ans_06",
    "query": "refreshing japanese coffee jelly",
    "answer": "[R1769] Coffee Jelly is a refreshing Japanese summertime treat that can be served solid in glasses or cubed in bowls. It takes 370 minutes to prepare and has no listed allergens, though it may contain undeclared ingredients.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R1769",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 1769,
@@ -4353,7 +4844,12 @@
      "6 fluid ounces beef demi glace",
      "salt and freshly ground black pepper to taste"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'bread'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -4376,12 +4872,21 @@
      "½ teaspoon salt-free seasoning blend (such as Penzeys Mural of Flavor), or to taste",
      "salt and ground black pepper to taste"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_32",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 2503,
@@ -4429,13 +4934,24 @@
      "6  grilled boneless, skinless chicken thighs  (Optional)",
      "¼ cup Fresno chile peppers, cut into rings  (Optional)"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'pie' (câu hội thoại: xét lượt cuối, có tính các lượt trước)",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_34",
    "query": "mon an sang duoi 10 phut khong co bot mi",
    "answer": "R10230: Lemon and Garlic Shrimp [10 phút] - Đây là một món ăn nhẹ nhanh chóng, phù hợp với yêu cầu của bạn. Món tôm sốt chanh và tỏi không chứa bột mì và thời gian chuẩn bị chỉ mất 10 phút.\n\nR23505: Stir-Fried Kale and Broccoli Florets [10 phút] - Món xào rau cải xanh và bông cải xanh cũng đáp ứng yêu cầu của bạn. Món này không chứa bột mì và thời gian chuẩn bị chỉ mất 10 phút.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng wheat, ≤ 10 phút",
+    "Món được trích: không trích món nào",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 10230,
@@ -4527,12 +5043,21 @@
      "½ teaspoon ground cloves",
      "½ teaspoon salt"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'cookie'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_50",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 27657,
@@ -4575,7 +5100,12 @@
      "1 tablespoon sriracha sauce, or more to taste",
      "¾ cup salted peanuts"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -4615,7 +5145,12 @@
      "1 tablespoon chopped cilantro",
      "1 pinch paprika for garnish"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'pie' (câu hội thoại: xét lượt cuối, có tính các lượt trước)",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "relevance",
@@ -4630,13 +5165,24 @@
      "1 (8 ounce) jar medium salsa",
      "2 cups shredded Cheddar-Monterey Jack cheese blend"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_33",
    "query": "suggest a beef dish ready in under 30 minutes",
    "answer": "[R7226] Savory Beef Stir-Fry | 25 min | This quick version of stir-fry is easy to make and tastes great, just as good as any take-out. Ready in 25 minutes.\n\n[R16640] Korean BBQ Beef (Pul-Kogi) | 30 min | While this dish is close to the 30-minute mark, it offers a flavorful and unique beef dish that can be prepared in 30 minutes.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): ≤ 30 phút",
+    "Món được trích: R7226, R16640",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 6848,
@@ -4721,6 +5267,12 @@
    "id": "ans_47",
    "query": "bị tiểu đường thì nên uống thuốc gì",
    "answer": "Xin lỗi, CONTEXT không chứa thông tin về thuốc để điều trị tiểu đường. Tôi khuyên bạn nên tham khảo ý kiến bác sĩ hoặc chuyên gia y tế để được tư vấn về thuốc phù hợp.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: không trích món nào",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 2163,
@@ -4821,6 +5373,10 @@
    "task": "checker",
    "id": "chk_47",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 18669,
@@ -4871,13 +5427,24 @@
      "1 tablespoon paprika, or to taste",
      "1  lime, cut into wedges"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_11",
    "query": "lam banh chuoi nuong the nao",
    "answer": "Xin lỗi, trong CONTEXT không có công thức làm bánh chuối nướng. Bạn có thể thử tìm kiếm thêm công thức hoặc cung cấp thêm các hạn chế về nguyên liệu không?",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: không trích món nào",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 7993,
@@ -4984,6 +5551,12 @@
    "id": "ans_20",
    "query": "I'm allergic to sesame, suggest a bread",
    "answer": "No recipes in the provided context contain sesame as an ingredient, but [R1692] Italian Bread Using a Bread Machine does not list sesame as an allergen. However, it does contain wheat and egg. The cook can substitute the egg with a flax egg or another egg-replacement method if needed. This recipe might be suitable for you, but always check ingredient labels.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng sesame",
+    "Món được trích: R1692",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 1692,
@@ -5063,6 +5636,10 @@
    "task": "checker",
    "id": "chk_05",
    "item": "fish (any finfish) or a product made from fish, including anchovies, anchovy paste, fish sauce, Worcestershire sauce (made with anchovies), Caesar dressing, bonito flakes and dashi",
+   "hint": [
+    "Nhóm: cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:fish",
    "recipe": {
     "recipe_id": 12572,
@@ -5091,6 +5668,12 @@
    "id": "ans_01",
    "query": "tôi dị ứng lúa mì",
    "answer": "[R4289] Maja Blanca | 125 phút | không chứa gluten | Maja blanca là một lựa chọn tốt cho dessert, không chứa gluten và phù hợp với người dị ứng lúa mì. Thời gian chuẩn bị khoảng 125 phút.\n\n[R16053] Chocolate Strawberries | 70 phút | không chứa gluten | Dâu tây bọc sô cô la đơn giản nhưng ngon miệng và phù hợp với người dị ứng lúa mì. Thời gian chuẩn bị khoảng 70 phút.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng wheat",
+    "Món được trích: R4289, R16053",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 4289,
@@ -5159,6 +5742,12 @@
    "id": "ans_16",
    "query": "cookies without mushrooms",
    "answer": "Nothing found that strictly avoids mushrooms. All recipes contain ingredients that might be derived from mushrooms or have mushroom as a cross-reactive allergen. Consider relaxing the constraint to another ingredient or allergen.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không mushroom",
+    "Món được trích: không trích món nào",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 28798,
@@ -5260,12 +5849,21 @@
      "2  eggs, beaten  (Optional)",
      "salt and ground black pepper to taste"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'soup'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_20",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 26510,
@@ -5319,12 +5917,21 @@
      "1 tablespoon sesame oil",
      "1 tablespoon red pepper flakes, or to taste"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'beef' (câu hội thoại: xét lượt cuối, có tính các lượt trước)",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_26",
    "item": "crustacean shellfish (shrimp, prawn, crab, lobster, crayfish) or a product made from them, such as shrimp paste; molluscs such as clams, oysters, scallops or squid do not count",
+   "hint": [
+    "Nhóm: giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:crustacean_shellfish",
    "recipe": {
     "recipe_id": 10082,
@@ -5358,6 +5965,10 @@
    "task": "checker",
    "id": "chk_14",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 13247,
@@ -5379,6 +5990,10 @@
    "task": "checker",
    "id": "chk_27",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 24120,
@@ -5401,6 +6016,10 @@
    "task": "checker",
    "id": "chk_02",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 7944,
@@ -5420,6 +6039,10 @@
    "task": "checker",
    "id": "chk_54",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 17170,
@@ -5457,13 +6080,24 @@
      "2  eggs, beaten",
      "2 tablespoons chopped scallion"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_26",
    "query": "actually I can eat shellfish now, suggest a cake again",
    "answer": "Sure! Here are some cake options from the provided recipes:\n\n- [R14890] Moist Chocolate Layer Cake | 55 min: This rich and moist chocolate cake is a crowd-pleaser and can be enjoyed by those who can eat shellfish.\n- [R25492] Easy Heart-Shaped Cake | 145 min: This heart-shaped cake combines vanilla and almond flavors and is a delightful option.\n- [R17173] White Chocolate Strawberry Cake | 75 min: This cake features white chocolate and strawberries, providing a sweet and creamy treat.\n\nAll these cakes are free from milk, egg, and wheat allergens, and the Easy Heart-Shaped Cake may contain tree nuts, which you can substitute if needed.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R14890, R25492, R17173",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 14890,
@@ -5583,12 +6217,21 @@
      "½ cup chopped walnuts",
      "½ cup melted butter"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'bread'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_18",
    "item": "tree nuts (almond, walnut, pecan, cashew, pistachio, hazelnut, macadamia, Brazil nut, pine nut, chestnut) or a product made from them, such as pesto, marzipan, praline or nut butters other than peanut butter; coconut does not count",
+   "hint": [
+    "Nhóm: hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:tree_nuts",
    "recipe": {
     "recipe_id": 29568,
@@ -5638,12 +6281,21 @@
      "1 teaspoon salt",
      "2 teaspoons bread machine yeast"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'bread'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_58",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 26379,
@@ -5680,12 +6332,21 @@
      "½ pound zucchini, cut into bite-size pieces",
      "½ pound fresh okra"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_23",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 24574,
@@ -5704,6 +6365,10 @@
    "task": "checker",
    "id": "chk_19",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 317,
@@ -5739,13 +6404,24 @@
      "¼ cup milk, or as needed",
      "2 cups vegetable oil, or as needed"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_37",
    "query": "spicy lime chicken and bean salad",
    "answer": "[R25370] Spicy Southwest Chopped Salad with Salsa Verde | 75 min | This recipe combines spicy elements with lime and beans, making it a flavorful option. It's not specifically a salad, but it can be served as such and adjusted to your liking.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R25370",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 22215,
@@ -5847,6 +6523,12 @@
    "id": "ans_41",
    "query": "no onions please",
    "answer": "[R7919] Onion Rice is a simple and versatile rice side dish that everyone loves, taking about 40 minutes to prepare. While it traditionally includes onions, you can omit them to fit your needs.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không onion",
+    "Món được trích: R7919",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 6913,
@@ -5925,6 +6607,10 @@
    "task": "checker",
    "id": "chk_51",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 24253,
@@ -5959,13 +6645,24 @@
      "1 teaspoon salt",
      "¼ cup chopped fresh cilantro, or to taste"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_36",
    "query": "gợi ý món tráng miệng",
    "answer": "Không tìm thấy món tráng miệng trong danh sách trên. Bạn có thể cân nhắc mở rộng yêu cầu để bao gồm các loại thực phẩm khác như trái cây tươi, bánh mì hoặc các món ăn nhẹ khác.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: không trích món nào",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 11343,
@@ -6087,13 +6784,24 @@
      "1  bay leaf",
      "1 pinch ground black pepper, or to taste"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'rice' (câu hội thoại: xét lượt cuối, có tính các lượt trước)",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_12",
    "query": "nha minh co nguoi di ung trung, lam mon trang mieng gi duoc",
    "answer": "Trong danh sách các món ăn, món Peach-Raspberry Crisp [R28743] có thể phù hợp vì nó không chứa trứng. Tuy nhiên, món này có chứa sữa và bột mì, nên bạn cần kiểm tra nhãn thành phần kỹ.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng egg",
+    "Món được trích: R28743",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 28743,
@@ -6172,6 +6880,12 @@
    "id": "ans_39",
    "query": "gợi ý món tráng miệng",
    "answer": "Không tìm thấy món tráng miệng trong danh sách trên. Bạn có thể cân nhắc mở rộng yêu cầu thành bao gồm các món ăn nhẹ hoặc đồ uống để có thêm lựa chọn phù hợp?",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: không trích món nào",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 11343,
@@ -6278,6 +6992,10 @@
    "task": "checker",
    "id": "chk_60",
    "item": "crustacean shellfish (shrimp, prawn, crab, lobster, crayfish) or a product made from them, such as shrimp paste; molluscs such as clams, oysters, scallops or squid do not count",
+   "hint": [
+    "Nhóm: giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:crustacean_shellfish",
    "recipe": {
     "recipe_id": 8520,
@@ -6306,6 +7024,12 @@
    "id": "ans_42",
    "query": "công thức cá ngừ áp chảo không có cá",
    "answer": "Không tìm thấy công thức phù hợp với yêu cầu không có cá trong CONTEXT. Bạn có thể cân nhắc tìm kiếm công thức khác hoặc xem xét loại bỏ yêu cầu không có cá.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng fish",
+    "Món được trích: không trích món nào",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 3768,
@@ -6428,13 +7152,24 @@
      "2 tablespoons orange juice",
      "1 pinch salt to taste"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "answer",
    "id": "ans_15",
    "query": "actually I can eat shellfish now, suggest a cake again",
    "answer": "[R9028] Salmon and Shrimp Cakes | 40 min | These cakes are a tasty and different salmon dish that you will definitely enjoy! They contain shrimp but are also suitable for those who can eat shellfish. Note that they may contain milk, egg, fish, crustacean shellfish, and wheat, so always check labels. [R11148] Shrimp Cakes with Old Bay® | 35 min | These cakes use Old Bay® seasoning and are a variation of crab cakes. They are free from eggs and may be a good option, but they do contain crustacean shellfish. Always check labels to ensure safety.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R9028, R11148",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 9028,
@@ -6543,6 +7278,12 @@
    "id": "ans_46",
    "query": "tối nay ăn gì cho nhẹ bụng nhỉ",
    "answer": "[R22023] Boy, Oh Boy, Black Bean Salad | 30 phút | Không có thành phần gây dị ứng | Có thể thay thế nguyên liệu | Ăn nhẹ, ngon miệng, phù hợp cho bữa tối.\n\n[R10007] Love Mussels | 45 phút | Có chứa sữa | Có thể thay thế nguyên liệu | Món này nhẹ bụng, thích hợp cho bữa tối.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): không có ràng buộc",
+    "Món được trích: R22023, R10007",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 22613,
@@ -6628,6 +7369,10 @@
    "task": "checker",
    "id": "chk_53",
    "item": "eggs or anything made with eggs (mayonnaise, aioli, meringue, egg noodles)",
+   "hint": [
+    "Nhóm: trứng (mayonnaise, aioli, meringue, mì trứng)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:egg",
    "recipe": {
     "recipe_id": 23540,
@@ -6661,12 +7406,21 @@
      "cracked black pepper",
      "sea salt"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_21",
    "item": "any animal product: meat, poultry, fish, seafood, dairy, eggs, honey, gelatin or animal fat",
+   "hint": [
+    "Nhóm: thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "diet:vegan",
    "recipe": {
     "recipe_id": 4865,
@@ -6690,6 +7444,12 @@
    "id": "ans_50",
    "query": "tôi dị ứng sữa, gợi ý món bò",
    "answer": "Tìm thấy một số món bò phù hợp với yêu cầu của bạn:\n\n- Món Beef and Vegetable Soup [R26096]: Món súp bò và rau củ không chứa sữa, thời gian nấu khoảng 80 phút. Món này chứa bột mì, bạn có thể thay thế bằng bột yến mạch hoặc bột ngô nếu muốn.\n\n- Món Ground Beef and Vegetable Soup [R25823]: Món súp bò và rau củ khác cũng không chứa sữa, thời gian nấu khoảng 100 phút. Món này sử dụng nước sốt cà rốt, bạn có thể thay thế bằng nước sốt cà chua nếu thích.",
+   "hint": [
+    "Ràng buộc của câu hỏi (gold): dị ứng milk",
+    "Món được trích: R26096, R25823",
+    "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, 'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+    "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"
+   ],
    "context": [
     {
      "recipe_id": 26096,
@@ -6818,12 +7578,21 @@
      "1 ¼ teaspoons sea salt",
      "3 teaspoons active dry yeast"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món 'bread'",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   },
   {
    "task": "checker",
    "id": "chk_42",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 10230,
@@ -6842,6 +7611,10 @@
    "task": "checker",
    "id": "chk_57",
    "item": "wheat or a product made with wheat flour: flour, bread, breadcrumbs, pasta, noodles, crackers, tortillas, cake or biscuit mixes, and regular soy sauce, teriyaki or hoisin sauce",
+   "hint": [
+    "Nhóm: lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:wheat",
    "recipe": {
     "recipe_id": 12223,
@@ -6870,6 +7643,10 @@
    "task": "checker",
    "id": "chk_30",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 11968,
@@ -6889,6 +7666,10 @@
    "task": "checker",
    "id": "chk_40",
    "item": "sesame seeds or a product made from sesame: sesame oil, tahini, hummus",
+   "hint": [
+    "Nhóm: mè: dầu mè, tahini, hạt mè",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:sesame",
    "recipe": {
     "recipe_id": 27970,
@@ -6910,6 +7691,10 @@
    "task": "checker",
    "id": "chk_35",
    "item": "milk or any dairy product made from milk (butter, cheese, cream, sour cream, yogurt, buttermilk, whey, casein, ghee, milk chocolate)",
+   "hint": [
+    "Nhóm: sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+    "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"
+   ],
    "constraint": "allergen:milk",
    "recipe": {
     "recipe_id": 11851,
@@ -6950,7 +7735,12 @@
      "¼ teaspoon crushed red pepper",
      "2 teaspoons balsamic vinegar, or more to taste"
     ]
-   }
+   },
+   "hint": [
+    "Ý chính cần xét: loại món hoặc nhu cầu trong câu hỏi",
+    "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, bữa, khẩu vị); 0 = món khác hẳn",
+    "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"
+   ]
   }
  ]
 }
