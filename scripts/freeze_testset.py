@@ -73,8 +73,17 @@ def main():
     flow_path = OUT / "testset_flow.json"
     flow = json.loads(flow_path.read_text(encoding="utf-8"))
     for s in tr.SETS:
-        flow["sets"].setdefault(s, {})["V6"] = {"reviewed": sum(counts[s].values()), **counts[s],
+        flow["sets"].setdefault(s, {})["V6"] = {"reviewed": counts[s]["ok"] + counts[s]["edit"] + counts[s]["drop"], **counts[s],
                                                 "final": len(sets[s])}
+    reviews = tr.saved()  # how the confirmations were made, from the review file itself
+    single = sorted(r["reviewed_at"] for r in reviews.values() if r["note"] != tr.BULK_NOTE)
+    flow["V6_review"] = {
+        "draft": "Claude drafted (eval/labels/testset_review_draft.csv, reviewer claude-draft); Thy confirmed",
+        "confirmed_one_by_one": len(single), "bulk_accepted": sum(r["note"] == tr.BULK_NOTE for r in reviews.values()),
+        "one_by_one_first": single[0] if single else None, "one_by_one_last": single[-1] if single else None,
+        "one_by_one_seconds": (datetime.fromisoformat(single[-1]) - datetime.fromisoformat(single[0])).seconds
+        if single else None,
+        "drafts_changed_by_thy": sum(1 for r in reviews.values() if r["decision"] != "ok")}
     flow["frozen_at"] = datetime.now().isoformat(timespec="seconds")
     flow_path.write_text(json.dumps(flow, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     frozen.write_text(json.dumps({"frozen_at": flow["frozen_at"], "approved_by": args.approved_by,

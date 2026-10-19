@@ -880,7 +880,7 @@ Kịch bản 1b sẽ thấy lại vấn đề đã biết của gate M3: R18880 
 
 **Gate M4 (Thy, 18/10/2026): duyệt.** Ảnh demo do Thy chụp. Các vấn đề đã biết (gate M3 và demo M4) giữ nguyên.
 
-## M5 – Bộ test A3 (19/10/2026) · đang làm
+## M5 – Bộ test A3 (19/10/2026) · đã đóng băng, 🚦 chờ duyệt
 
 **Quyết định (Thy, 18/10):** duyệt gold V6 trên trang web duyệt nhanh.
 
@@ -904,3 +904,16 @@ Kịch bản 1b sẽ thấy lại vấn đề đã biết của gate M3: R18880 
 1. Điền khoảng 30 câu viết tay vào `eval/testset/handwritten.csv`, rồi chạy lại `make_testset.py` (dùng lại cache, các câu đã sinh giữ nguyên).
 2. Duyệt gold V6 ở `uv run scripts/testset_review.py`.
 3. Báo khi xong để mình chạy `freeze_testset.py`, rồi đến 🚦 gate M5.
+
+**Sau khi có câu viết tay và duyệt V6 (19/10/2026):**
+- 32 câu viết tay của Thy (5 câu T1, 22 câu T2, 5 câu T3) đã thêm vào; cả 32 qua V1, V4, V5. 5 câu có cảnh báo V3 (không dấu, hoặc trộn Việt–Anh) vẫn được giữ.
+- **V6 theo cách 1 (Thy chọn):**
+  - Claude soạn bản nháp (`eval/labels/testset_review_draft.csv`, `reviewer = claude-draft`): câu từ mẫu giữ gold của mẫu; 35 câu viết tay hoặc T1 có cảnh báo được soạn gold theo ghi chú của Thy.
+  - Thy xác nhận trên trang duyệt: **144 câu bị đánh dấu xác nhận từng câu, 228 câu chấp nhận hàng loạt**; không câu nào bị sửa hay loại.
+  - **144 câu đó được xác nhận trong 32 giây** (08:36:51 → 08:37:23). Mình đã nêu điều này trước khi đóng băng; Thy xác nhận đã đọc đủ (19/10). Số liệu được ghi tự động trong `testset_flow.json`, mục `V6_review`.
+  - Báo cáo nên ghi đúng là: gold do mô hình soạn và người xác nhận, kèm các số liệu này.
+- **Đóng băng** (`eval/testset/frozen.json`, approved_by Thy, 08:39): **T1 105 · T2 172 · T3 55 · T4 40 hội thoại**.
+  - `make_testset.py` từ chối chạy lại; test kiểm sha256 đã chạy và qua.
+  - Sửa một lỗi đếm: `reviewed` trong số đếm V6 đã cộng hai lần phần chấp nhận hàng loạt; đã tính lại bằng code.
+
+**Cần Thy:** 🚦 gate M5, xác nhận số lượng của bộ test đã đóng băng.
