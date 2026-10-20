@@ -1,0 +1,24 @@
+# Local dataset and logs (recipe.csv is ~61 MB)
+data/*
+!data/lexicon/
+# LLM replies (M1 golden, M2 checker): reproduce the numbers without hours of reruns
+!data/cache/
+# Patient rule tables (docs/plan/A3_vectorless_ho_so.md section 4)
+!data/rules/
+# Where the patient records come from (read by scripts/check_env.py and patient_ingest.py)
+!data/sources.json
+.pytest_cache/
+.venv/
+__pycache__/
+node_modules/
+.DS_Store
+# built by `npm run build` in ui/
+api/static/
+# Evaluation run folders; keep one for the report with `git add -f`
+eval/runs/
+# Local secrets, never committed
+.env
+.env.*
+!.env.example
+
+# Synthea C-CDA records (data/synthea_*) stay out via data/*; one sample is the fixture in tests/patient/fixtures

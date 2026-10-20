@@ -1,0 +1,338 @@
+"""M6 human check (build plan M6.7): Thy labels three seeded samples, blind to the machine's answers.
+
+    uv run scripts/eval_a3.py human-sample eval/runs/<ts>/a3    # writes the sample (display only) and the key
+    uv run scripts/human_check.py                               # then open http://localhost:8767
+    uv run scripts/human_check.py export                        # or label offline: eval/labels/human_check_sheet.csv
+    uv run scripts/human_check.py import [sheet.csv] [--replace]  # the filled sheet -> human_check.csv
+
+Tasks:
+  relevance  50 (query, Recipe) pairs from the judged pool: 0 / 1 / 2 by rubric 7.2 (constraints are not part of it)
+  answer     50 answers with their context Recipes: faithful? answers the question (0/1/2)? cites a wrong dish?
+  checker    60 checker verdicts (30 it called "yes", 30 "no"): does the Recipe contain the item?
+The page shows the query, the Recipe text and the answer only: never the judge's score or the checker's verdict.
+Those stay in the run folder (human_check_key.json); eval_a3.py score compares them with Thy's labels (Cohen's
+kappa, checker accuracy). Every save appends a row to eval/labels/human_check.csv (the last row per item wins).
+"""
+
+import csv
+import io
+import json
+import random
+import sys
+from datetime import datetime
+from pathlib import Path
+from typing import Literal
+
+ROOT = Path(__file__).resolve().parent.parent
+LABELS = ROOT / "eval" / "labels"
+SAMPLE = LABELS / "human_check_sample.json"
+OUT = LABELS / "human_check.csv"
+PAGE = Path(__file__).with_name("human_check.html")
+FIELDS = ["task", "item_id", "label", "note", "reviewer", "labeled_at"]
+SEED = 42
+N = {"relevance": 50, "answer": 50, "checker_yes": 30, "checker_no": 30}
+# Per-item hints (Thy, 19/10/2026): reading aids that never carry the judge's score or the checker's verdict
+GROUP_VI = {"milk": "sữa (bơ, phô mai, kem, sữa chua, whey, casein, ghee, sô-cô-la sữa)",
+            "egg": "trứng (mayonnaise, aioli, meringue, mì trứng)",
+            "fish": "cá (cá cơm, mắm cá, nước mắm, sốt Worcestershire, sốt Caesar, dashi)",
+            "crustacean_shellfish": "giáp xác: tôm, cua, tôm hùm, mắm tôm (nghêu, sò, mực KHÔNG tính)",
+            "tree_nuts": "hạt cây: hạnh nhân, óc chó, hồ đào, điều, dẻ cười, phỉ, mắc-ca, hạt thông, pesto (dừa KHÔNG tính)",
+            "peanut": "đậu phộng (bơ đậu phộng, dầu đậu phộng, sốt satay)",
+            "wheat": "lúa mì: bột mì, bánh mì, vụn bánh mì, mì Ý, mì sợi, bánh quy giòn, nước tương thường",
+            "soy": "đậu nành: đậu phụ, nước tương, miso, edamame, tempeh",
+            "sesame": "mè: dầu mè, tahini, hạt mè",
+            "vegetarian": "chay: KHÔNG có thịt, gia cầm, cá, hải sản, gelatin, mỡ động vật, nước dùng thịt/cá",
+            "vegan": "thuần chay: KHÔNG có bất kỳ sản phẩm động vật nào (thịt, cá, sữa, trứng, mật ong, gelatin)"}
+
+
+def gold_text(gold: dict | None) -> str:
+    c = (gold or {}).get("constraints") or {}
+    bits = [f"dị ứng {a}" for a in c.get("allergens_exclude") or []]
+    bits += [f"không {i}" for i in c.get("ingredients_exclude") or []]
+    bits += [f"chế độ {c['diet']}"] if c.get("diet") else []
+    bits += [f"≤ {c['max_total_minutes']} phút"] if c.get("max_total_minutes") else []
+    return ", ".join(bits) or "không có ràng buộc"
+
+
+def make_sample(run_dir: Path) -> str:
+    """Draw the three samples from a scored run; display fields go to the page, answers to the run's key file."""
+    run_dir = run_dir.resolve()
+    sys.path.insert(0, str(ROOT))
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import psycopg
+
+    import adjudicate
+    import checker
+    from api import config
+    rng = random.Random(SEED)
+    import re
+    testset = {}
+    for s_ in ("t1", "t2", "t3", "t4"):
+        for line in (ROOT / "eval" / "testset" / f"{s_}.jsonl").read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                it = json.loads(line)
+                testset[it["id"]] = it
+
+    def gold_of(qid, turn):
+        it = testset[qid]
+        return it["turns"][turn]["gold"] if it.get("turns") else it["gold"]
+    pool = json.loads((run_dir / "pool.json").read_text(encoding="utf-8"))
+    verdicts = json.loads((run_dir / "checker_verdicts.json").read_text(encoding="utf-8"))
+    turns = [json.loads(line) for line in (run_dir / "turns.jsonl").read_text(encoding="utf-8").splitlines() if line]
+    items, key = [], {}
+    with psycopg.connect(config.DATABASE_URL) as conn:
+        def recipe(rid):
+            title = conn.execute("SELECT title FROM recipe WHERE id = %s", [rid]).fetchone()[0]
+            return {"recipe_id": rid, "title": title, "ingredients": adjudicate.raw_lines(conn, rid)}
+
+        by_score = {s: [p for p in pool if p["judge"] == s] for s in (0, 1, 2)}
+        rel = []
+        for s in (2, 1, 0):  # as even over the judge's scores as the pool allows (the page does not show them)
+            rng.shuffle(by_score[s])
+            rel += by_score[s][:N["relevance"] // 3 + (s == 2) * (N["relevance"] % 3)]
+        for i, p in enumerate(rel, 1):
+            kw = testset[p["qid"]].get("dish_keyword")
+            items.append({"task": "relevance", "id": f"rel_{i:02d}", "query": p["query"], "recipe": recipe(p["recipe_id"]),
+                          "hint": [f"Ý chính cần xét: {('loại món ' + repr(kw)) if kw else 'loại món hoặc nhu cầu trong câu hỏi'}"
+                                   + (" (câu hội thoại: xét lượt cuối, có tính các lượt trước)" if " / " in p["query"] else ""),
+                                   "2 = đúng loại món/nhu cầu; 1 = đúng ý chính nhưng lệch chi tiết phụ (cách nấu, "
+                                   "bữa, khẩu vị); 0 = món khác hẳn",
+                                   "Không xét dị ứng, chay, nguyên liệu loại hay thời gian: phần đó chấm riêng"]})
+            key[f"rel_{i:02d}"] = p["judge"]
+
+        answered = [t for t in turns if t["answer"] and t["recipe_ids"] and t["route"] in {"retrieve", "detail"}]
+        rng.shuffle(answered)
+        for i, t in enumerate(answered[:N["answer"]], 1):
+            ctx_ids = t["recipe_ids"][:5]
+            cited = [int(x) for x in dict.fromkeys(re.findall(r"\[R(\d+)\]", t["answer"]))]
+            cite_txt = ", ".join(f"R{c}" + ("" if c in ctx_ids else " (NGOÀI ngữ cảnh)") for c in cited) or "không trích món nào"
+            items.append({"task": "answer", "id": f"ans_{i:02d}", "query": t["text"], "answer": t["answer"],
+                          "hint": [f"Ràng buộc của câu hỏi (gold): {gold_text(gold_of(t['qid'], t['turn']))}",
+                                   f"Món được trích: {cite_txt}",
+                                   "Bám ngữ cảnh: mọi điều câu trả lời nói về món (nguyên liệu, thời gian, dị ứng, "
+                                   "'không chứa gluten'...) phải thấy được trong thẻ bên dưới",
+                                   "Trích sai: một món được trích vi phạm ràng buộc gold, hoặc không hợp câu hỏi"],
+                          "context": [recipe(r) for r in t["recipe_ids"][:5]]})
+            key[f"ans_{i:02d}"] = {"qid": t["qid"], "preset": t["preset"], "turn": t["turn"]}
+
+        for want, n in (("yes", N["checker_yes"]), ("no", N["checker_no"])):
+            pick = [v for v in verdicts if v["contains"] == want]
+            rng.shuffle(pick)
+            for v in pick[:n]:
+                iid = f"chk_{len([k for k in key if k.startswith('chk_')]) + 1:02d}"
+                grp = v["constraint"].split(":", 1)[1]
+                items.append({"task": "checker", "id": iid, "item": checker.describe(v["constraint"]),
+                              "hint": [f"Nhóm: {GROUP_VI.get(grp, grp)}",
+                                       "Đọc từng dòng nguyên liệu; dòng ghi rõ 'không chứa' (dairy-free, gluten-free) "
+                                       "thì không tính; dòng có lựa chọn ('bơ hoặc margarine') tính nếu một lựa chọn chứa"],
+                              "constraint": v["constraint"], "recipe": recipe(v["recipe_id"])})
+                key[iid] = v["contains"]
+    rng.shuffle(items)  # mixed order: the checker's yes and no are not in two blocks
+    SAMPLE.write_text(json.dumps({"run": str(run_dir.relative_to(ROOT)), "seed": SEED, "items": items},
+                                 ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    (run_dir / "human_check_key.json").write_text(json.dumps(key, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    return f"{len(items)} items -> {SAMPLE.relative_to(ROOT)} (key in {run_dir.name}/human_check_key.json)"
+
+
+def labels() -> dict[str, dict]:
+    if not OUT.exists():
+        return {}
+    with open(OUT, newline="", encoding="utf-8") as f:
+        return {r["item_id"]: r for r in csv.DictReader(f)}
+
+
+def kappa(a: list, b: list) -> float | None:
+    """Cohen's kappa of two label lists (unweighted)."""
+    if not a or len(a) != len(b):
+        return None
+    cats = sorted(set(a) | set(b), key=str)
+    n = len(a)
+    po = sum(x == y for x, y in zip(a, b)) / n
+    pe = sum((a.count(c) / n) * (b.count(c) / n) for c in cats)
+    return round((po - pe) / (1 - pe), 4) if pe < 1 else 1.0
+
+
+def create_app():
+    import uvicorn  # noqa: F401  (the server below)
+    from fastapi import FastAPI, HTTPException
+    from fastapi.responses import HTMLResponse
+    from pydantic import BaseModel
+
+    app = FastAPI(title="A3 M6 human check")
+    data = json.loads(SAMPLE.read_text(encoding="utf-8"))
+    rows = data["items"]
+
+    class Label(BaseModel):
+        label: dict
+        note: str = ""
+
+    @app.get("/", response_class=HTMLResponse)
+    def page():
+        return PAGE.read_text(encoding="utf-8")
+
+    @app.get("/api/state")
+    def state():
+        done = labels()
+        first = next((i + 1 for i, it in enumerate(rows) if it["id"] not in done), len(rows))
+        return {"total": len(rows), "labeled": sum(it["id"] in done for it in rows), "next": first,
+                "by_task": {t: sum(it["task"] == t for it in rows) for t in ("relevance", "answer", "checker")}}
+
+    @app.get("/api/item/{order}")
+    def item(order: int):
+        if not 1 <= order <= len(rows):
+            raise HTTPException(404, "no such item")
+        prev = labels().get(rows[order - 1]["id"])
+        return {"order": order, "total": len(rows), **rows[order - 1],
+                "saved": None if prev is None else {"label": json.loads(prev["label"]), "note": prev["note"]}}
+
+    @app.post("/api/label/{order}")
+    def save(order: int, body: Label):
+        if not 1 <= order <= len(rows):
+            raise HTTPException(404, "no such item")
+        it = rows[order - 1]
+        need: dict[str, set] = {"relevance": {"score"}, "answer": {"faithful", "answers", "wrong_citation"},
+                                "checker": {"contains"}}
+        if set(body.label) != need[it["task"]]:
+            raise HTTPException(422, f"fill: {', '.join(sorted(need[it['task']]))}")
+        new = not OUT.exists()
+        with open(OUT, "a", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=FIELDS, lineterminator="\n")
+            if new:
+                w.writeheader()
+            w.writerow({"task": it["task"], "item_id": it["id"], "label": json.dumps(body.label, ensure_ascii=False),
+                        "note": body.note.strip(), "reviewer": "Thy",
+                        "labeled_at": datetime.now().isoformat(timespec="seconds")})
+        return state()
+
+    return app
+
+
+def agreement(run_dir: Path, judged_faithful: dict[tuple, int | None]) -> dict:
+    """Thy against the machine: kappa on relevance and faithfulness, checker accuracy (unsure counts as yes)."""
+    key_path = run_dir / "human_check_key.json"
+    if not key_path.exists() or not OUT.exists():
+        return {}
+    key = json.loads(key_path.read_text(encoding="utf-8"))
+    lab = {i: json.loads(r["label"]) for i, r in labels().items()}
+    rel = [(lab[i]["score"], key[i]) for i in key if i.startswith("rel_") and i in lab]
+    fa = [(int(lab[i]["faithful"]), judged_faithful.get((key[i]["qid"], key[i]["preset"], key[i]["turn"])))
+          for i in key if i.startswith("ans_") and i in lab]
+    fa = [(a, b) for a, b in fa if b is not None]
+    chk = [(lab[i]["contains"], key[i]) for i in key if i.startswith("chk_") and i in lab]
+    to_bool = {"yes": True, "unsure": True, "error": True, "no": False}
+    return {"relevance": {"n": len(rel), "kappa": kappa([a for a, _ in rel], [b for _, b in rel]),
+                         "agree": round(sum(a == b for a, b in rel) / len(rel), 4) if rel else None},
+            "faithfulness": {"n": len(fa), "kappa": kappa([a for a, _ in fa], [b for _, b in fa])},
+            "checker": {"n": len(chk), "accuracy": round(sum(to_bool[a] == to_bool[b] for a, b in chk) / len(chk), 4)
+                        if chk else None, "kappa": kappa([to_bool[a] for a, _ in chk], [to_bool[b] for _, b in chk])}}
+
+
+SHEET = LABELS / "human_check_sheet.csv"
+SHEET_FIELDS = ["order", "item_id", "task", "query_or_item", "recipe_or_answer", "context", "hint",
+                "score", "faithful", "answers", "wrong_citation", "contains", "note"]
+NEED = {"relevance": ("score",), "answer": ("faithful", "answers", "wrong_citation"), "checker": ("contains",)}
+# accepted spellings in the sheet -> the page's label values
+YES_NO = {"1": True, "co": True, "có": True, "yes": True, "true": True,
+          "0": False, "khong": False, "không": False, "no": False, "false": False}
+CONTAINS = {"yes": "yes", "co": "yes", "có": "yes", "1": "yes", "no": "no", "khong": "no", "không": "no", "0": "no",
+            "unsure": "unsure", "?": "unsure", "khong chac": "unsure", "không chắc": "unsure"}
+
+
+def _recipe_cell(r: dict) -> str:
+    return f"[R{r['recipe_id']}] {r['title']}\n" + "\n".join(f"- {line}" for line in r["ingredients"])
+
+
+def export_sheet(path: Path = SHEET) -> str:
+    """The sample as a spreadsheet (UTF-8 with BOM for Excel), same order and display fields as the page, no key."""
+    rows = json.loads(SAMPLE.read_text(encoding="utf-8"))["items"]
+    with open(path, "w", newline="", encoding="utf-8-sig") as f:
+        w = csv.DictWriter(f, fieldnames=SHEET_FIELDS)
+        w.writeheader()
+        for n, it in enumerate(rows, 1):
+            if it["task"] == "relevance":
+                q, body, ctx = it["query"], _recipe_cell(it["recipe"]), ""
+            elif it["task"] == "answer":
+                q, body, ctx = it["query"], it["answer"], "\n\n".join(_recipe_cell(r) for r in it["context"])
+            else:
+                q, body, ctx = f"Công thức này có chứa: {it['item']}?", _recipe_cell(it["recipe"]), ""
+            # cells the task does not use are marked so they are not filled by mistake
+            blank = {k: ("" if k in NEED[it["task"]] else "—") for k in NEED["relevance"] + NEED["answer"] + NEED["checker"]}
+            w.writerow({"order": n, "item_id": it["id"], "task": it["task"], "query_or_item": q,
+                        "recipe_or_answer": body, "context": ctx, "hint": "\n".join(it.get("hint", [])),
+                        **blank, "note": ""})
+    return f"{len(rows)} rows -> {path.relative_to(ROOT)}"
+
+
+def _parse(task: str, row: dict) -> dict:
+    out = {}
+    for k in NEED[task]:
+        v = (row.get(k) or "").strip().lower()
+        if k in ("score", "answers"):
+            if v not in {"0", "1", "2"}:
+                raise ValueError(f"{k} = {v!r} (0/1/2)")
+            out[k] = int(v)
+        elif k == "contains":
+            if v not in CONTAINS:
+                raise ValueError(f"contains = {v!r} (yes/no/unsure)")
+            out[k] = CONTAINS[v]
+        else:
+            if v not in YES_NO:
+                raise ValueError(f"{k} = {v!r} (1/0)")
+            out[k] = YES_NO[v]
+    return out
+
+
+def import_sheet(path: Path, replace: bool = False) -> str:
+    """Thy's filled sheet -> human_check.csv rows (reviewer Thy). Blank rows are skipped; items already labeled on
+    the page are kept unless --replace (the last row per item wins when reading)."""
+    ids = {it["id"]: it["task"] for it in json.loads(SAMPLE.read_text(encoding="utf-8"))["items"]}
+    done = labels()
+    raw = path.read_bytes()
+    try:
+        text = raw.decode("utf-8-sig")
+    except UnicodeDecodeError:  # Excel "CSV" (not "CSV UTF-8") on a Vietnamese Windows
+        text = raw.decode("cp1258")
+    first = text.split("\n", 1)[0]
+    sheet = list(csv.DictReader(io.StringIO(text, newline=""), delimiter=";" if first.count(";") > first.count(",") else ","))
+    new_rows, errors, skipped, kept = [], [], 0, 0
+    for r in sheet:
+        iid = r.get("item_id", "").strip()
+        if iid not in ids:
+            errors.append(f"{iid or '?'}: not in the sample")
+            continue
+        if not any((r.get(k) or "").strip() for k in NEED[ids[iid]]):
+            skipped += 1
+            continue
+        if iid in done and not replace:
+            kept += 1
+            continue
+        try:
+            lab = _parse(ids[iid], r)
+        except ValueError as e:
+            errors.append(f"{iid}: {e}")
+            continue
+        new_rows.append({"task": ids[iid], "item_id": iid, "label": json.dumps(lab, ensure_ascii=False),
+                         "note": (r.get("note") or "").strip(), "reviewer": "Thy",
+                         "labeled_at": datetime.now().isoformat(timespec="seconds")})
+    if errors:  # nothing is written while any row is wrong
+        return "not imported, fix these rows:\n  " + "\n  ".join(errors)
+    new = not OUT.exists()
+    with open(OUT, "a", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=FIELDS, lineterminator="\n")
+        if new:
+            w.writeheader()
+        w.writerows(new_rows)
+    total = len(set(labels()) & set(ids))
+    return (f"imported {len(new_rows)}, blank {skipped}, already labeled kept {kept} -> {OUT.relative_to(ROOT)} "
+            f"({total}/{len(ids)} labeled)")
+
+
+if __name__ == "__main__":
+    if len(sys.argv) > 1 and sys.argv[1] == "export":
+        print(export_sheet(Path(sys.argv[2]) if len(sys.argv) > 2 else SHEET))
+    elif len(sys.argv) > 1 and sys.argv[1] == "import":
+        print(import_sheet(Path(sys.argv[2]) if len(sys.argv) > 2 else SHEET, replace="--replace" in sys.argv))
+    else:
+        import uvicorn
+        print("Open http://localhost:8767  (Ctrl+C to stop; progress is saved after every item)")
+        uvicorn.run(create_app(), host="127.0.0.1", port=8767, log_level="warning")

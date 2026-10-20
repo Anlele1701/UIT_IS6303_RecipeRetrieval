@@ -1,0 +1,9 @@
+loinc,display,category,seen_in_data,version
+69737-5,Generalized anxiety disorder 7 item (GAD-7),mental_health,true,v1
+55757-9,Patient Health Questionnaire 2 item (PHQ-2) [Reported],mental_health,true,v1
+44249-1,PHQ-9 quick depression assessment panel [Reported.PHQ],mental_health,true,v1
+89206-7,Patient Health Questionnaire-9: Modified for Teens [Reported.PHQ.Teen],mental_health,true,v1
+82666-9,Drug Abuse Screening Test-10 [DAST-10],substance_use,true,v1
+72109-2,Alcohol Use Disorder Identification Test - Consumption [AUDIT-C],substance_use,true,v1
+76499-3,"Humiliation, Afraid, Rape, and Kick questionnaire [HARK]",violence,true,v1
+69409-1,U.S. standard certificate of death - 2003 revision,death,true,v1

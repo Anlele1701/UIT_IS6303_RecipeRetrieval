@@ -1,0 +1,10 @@
+loinc,display,use,seen_in_data,version
+58410-2,CBC panel - Blood by Automated count,anemia context,true,v1
+51990-0,Basic metabolic panel - Blood,glucose; sodium; potassium; kidney,true,v1
+24321-2,Basic metabolic 2000 panel - Serum or Plasma,glucose; sodium; potassium; creatinine; eGFR,true,v1
+24323-8,Comprehensive metabolic 2000 panel - Serum or Plasma,glucose; sodium; potassium; creatinine; eGFR; albumin,true,v1
+57698-3,Lipid panel with direct LDL - Serum or Plasma,cholesterol; triglycerides,true,v1
+24357-6,Urinalysis macro (dipstick) panel - Urine,urine glucose and protein,true,v1
+24356-8,Urinalysis complete panel - Urine,urine glucose and protein,true,v1
+75689-0,Iron panel - Serum or Plasma,iron status,true,v1
+50190-8,Iron and Iron binding capacity panel - Serum or Plasma,iron status,true,v1

@@ -1,0 +1,14 @@
+{
+  "seed": 42,
+  "queries": 20,
+  "top_k": 50,
+  "chunks": 166438,
+  "embedding_norm": {
+    "min": 0.999999,
+    "max": 1.000001
+  },
+  "identical_top_k_vs_cosine": {
+    "inner_product": "20/20",
+    "l2": "20/20"
+  }
+}

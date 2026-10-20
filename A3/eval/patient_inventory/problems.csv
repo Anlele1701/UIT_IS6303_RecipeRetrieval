@@ -1,0 +1,187 @@
+snomed_code,display,suffix,patients,patients_active,entries
+314529007,Medication review due (situation),situation,108,49,692
+160903007,Full-time employment (finding),finding,84,54,248
+66383009,Gingivitis (disorder),disorder,84,3,244
+73595000,Stress (finding),finding,82,48,260
+444814009,Viral sinusitis (disorder),disorder,71,0,103
+160904001,Part-time employment (finding),finding,67,19,148
+422650009,Social isolation (finding),finding,61,17,108
+224299000,Received higher education (finding),finding,55,55,55
+195662009,Acute viral pharyngitis (disorder),disorder,54,1,75
+423315002,Limited social contact (finding),finding,52,19,95
+18718003,Gingival disease (disorder),disorder,51,0,83
+162864005,Body mass index 30+ - obesity (finding),finding,44,44,44
+706893006,Victim of intimate partner abuse (finding),finding,42,13,66
+10509002,Acute bronchitis (disorder),disorder,41,0,50
+741062008,Not in labor force (finding),finding,40,7,70
+271737000,Anemia (disorder),disorder,39,35,39
+109570002,Primary dental caries (disorder),disorder,38,0,50
+714628002,Prediabetes (finding),finding,34,34,34
+424393004,Reports of violence in the environment (finding),finding,32,3,36
+160968000,Risk activity involvement (finding),finding,29,22,31
+73438004,Unemployed (finding),finding,29,5,38
+72892002,Normal pregnancy (finding),finding,28,4,84
+82423001,Chronic pain (finding),finding,27,27,27
+40055000,Chronic sinusitis (disorder),disorder,25,25,25
+312608009,Laceration - injury (disorder),disorder,22,0,24
+473461003,Educated to high school level (finding),finding,22,22,22
+161744009,Past pregnancy history of miscarriage (situation),situation,21,21,21
+59621000,Essential hypertension (disorder),disorder,20,20,20
+307426000,Acute infective cystitis (disorder),disorder,19,0,20
+278860009,Chronic low back pain (finding),finding,18,18,18
+10939881000119105,Unhealthy alcohol drinking behavior (finding),finding,17,6,22
+125605004,Fracture of bone (disorder),disorder,17,1,19
+65363002,Otitis media (disorder),disorder,17,0,27
+43878008,Streptococcal sore throat (disorder),disorder,16,1,19
+1121000119107,Chronic neck pain (finding),finding,15,15,15
+266948004,Has a criminal record (finding),finding,15,15,15
+278588009,Fractured dental filling (finding),finding,14,0,19
+105531004,Housing unsatisfactory (finding),finding,13,13,13
+274531002,Abnormal findings diagnostic imaging heart+coronary circulat (finding),finding,13,13,13
+414545008,Ischemic heart disease (disorder),disorder,13,13,13
+427898007,Infection of tooth (disorder),disorder,13,0,14
+80583007,Severe anxiety (panic) (finding),finding,13,3,13
+278558000,Dental filling lost (finding),finding,12,0,12
+384709000,Sprain (morphologic abnormality),morphologic abnormality,11,0,12
+237602007,Metabolic syndrome X (disorder),disorder,10,10,10
+37320007,Loss of teeth (disorder),disorder,10,10,10
+267020005,History of tubal ligation (situation),situation,9,9,9
+361055000,Misuses drugs (finding),finding,9,5,9
+55822004,Hyperlipidemia (disorder),disorder,9,9,9
+224295006,Only received primary school education (finding),finding,8,8,8
+36971009,Sinusitis (disorder),disorder,8,0,8
+110030002,Concussion injury of brain (disorder),disorder,7,1,8
+183996000,Sterilization requested (situation),situation,7,0,7
+19169002,Miscarriage in first trimester (disorder),disorder,7,0,8
+278598003,Leaking dental filling (finding),finding,7,0,9
+399211009,History of myocardial infarction (situation),situation,7,7,7
+44465007,Sprain of ankle (disorder),disorder,7,0,8
+127013003,Disorder of kidney due to diabetes mellitus (disorder),disorder,6,6,6
+196416002,Impacted molars (disorder),disorder,6,6,6
+232353008,Perennial allergic rhinitis with seasonal variation (disorder),disorder,6,3,6
+266934004,Transport problem (finding),finding,6,6,6
+399261000,History of coronary artery bypass grafting (situation),situation,6,6,6
+428251008,History of appendectomy (situation),situation,6,6,6
+431855005,Chronic kidney disease stage 1 (disorder),disorder,6,6,6
+44054006,Diabetes mellitus type 2 (disorder),disorder,6,6,6
+65966004,Fracture of forearm (disorder),disorder,6,1,7
+713458007,Lack of access to transportation (finding),finding,6,6,6
+75498004,Acute bacterial sinusitis (disorder),disorder,6,0,6
+85116003,Miscarriage in second trimester (disorder),disorder,6,0,6
+16114001,Fracture of ankle (disorder),disorder,5,0,5
+195967001,Asthma (disorder),disorder,5,5,5
+239873007,Osteoarthritis of knee (disorder),disorder,5,5,5
+267253006,Fetus with chromosomal abnormality (disorder),disorder,5,0,5
+278602001,Loose dental filling (finding),finding,5,0,5
+283371005,Laceration of forearm (disorder),disorder,5,0,5
+283385000,Laceration of thigh (disorder),disorder,5,0,5
+284551006,Laceration of foot (disorder),disorder,5,0,5
+302870006,Hypertriglyceridemia (disorder),disorder,5,5,5
+370247008,Facial laceration (disorder),disorder,5,0,5
+386661006,Fever (finding),finding,5,1,5
+49727002,Cough (finding),finding,5,1,5
+62106007,Concussion with no loss of consciousness (disorder),disorder,5,0,5
+68496003,Polyp of colon (disorder),disorder,5,4,5
+840544004,Suspected disease caused by Severe acute respiratory coronavirus 2 (situation),situation,5,0,5
+284549007,Laceration of hand (disorder),disorder,4,0,4
+398254007,Pre-eclampsia (disorder),disorder,4,1,4
+39898005,Sleep disorder (disorder),disorder,4,4,4
+401314000,Acute non-ST segment elevation myocardial infarction (disorder),disorder,4,4,4
+431856006,Chronic kidney disease stage 2 (disorder),disorder,4,4,4
+64859006,Osteoporosis (disorder),disorder,4,4,4
+70704007,Sprain of wrist (disorder),disorder,4,0,4
+840539006,Disease caused by severe acute respiratory syndrome coronavirus 2 (disorder),disorder,4,0,4
+90781000119102,Microalbuminuria due to type 2 diabetes mellitus (disorder),disorder,4,4,4
+124171000119105,Chronic intractable migraine without aura (disorder),disorder,3,3,3
+156073000,Complete miscarriage (disorder),disorder,3,0,3
+157141000119108,Proteinuria due to type 2 diabetes mellitus (disorder),disorder,3,3,3
+197927001,Recurrent urinary tract infection (disorder),disorder,3,3,3
+201834006,"Localized, primary osteoarthritis of the hand (disorder)",disorder,3,3,3
+203646004,Adolescent idiopathic scoliosis (disorder),disorder,3,3,3
+233678006,Childhood asthma (disorder),disorder,3,1,3
+24079001,Atopic dermatitis (disorder),disorder,3,2,3
+263102004,Fracture subluxation of wrist (disorder),disorder,3,0,3
+267036007,Dyspnea (finding),finding,3,1,3
+307731004,Injury of tendon of the rotator cuff of shoulder (disorder),disorder,3,0,3
+35999006,Blighted ovum (disorder),disorder,3,0,3
+433144002,Chronic kidney disease stage 3 (disorder),disorder,3,3,3
+56018004,Wheezing (finding),finding,3,1,3
+58150001,Fracture of clavicle (disorder),disorder,3,0,3
+80394007,Hyperglycemia (disorder),disorder,3,3,3
+91302008,Sepsis (disorder),disorder,3,3,3
+1149222004,Overdose (disorder),disorder,2,1,6
+1187604002,Serving in military service (finding),finding,2,2,2
+1231000119100,History of aortic valve replacement (situation),situation,2,2,2
+1551000119108,Nonproliferative diabetic retinopathy due to type II diabetes mellitus,,2,2,2
+198992004,Eclampsia in pregnancy (disorder),disorder,2,0,2
+203082005,Fibromyalgia (disorder),disorder,2,2,2
+22298006,Myocardial infarction (disorder),disorder,2,0,2
+241929008,Acute allergic reaction (disorder),disorder,2,0,2
+26929004,Alzheimer's disease (disorder),disorder,2,2,2
+32911000,Homeless (finding),finding,2,0,2
+367498001,Seasonal allergic rhinitis (disorder),disorder,2,1,2
+368581000119106,Neuropathy due to type 2 diabetes mellitus (disorder),disorder,2,2,2
+36955009,Loss of taste (finding),finding,2,1,2
+39848009,Whiplash injury to neck (disorder),disorder,2,0,2
+401303003,Acute ST segment elevation myocardial infarction (disorder),disorder,2,2,2
+403190006,Epidermal burn of skin (disorder),disorder,2,0,3
+408512008,Body mass index 40+ - severely obese (finding),finding,2,2,2
+431857002,Chronic kidney disease stage 4 (disorder),disorder,2,2,2
+443165006,Osteoporotic fracture of bone (disorder),disorder,2,0,3
+446654005,Refugee (person),person,2,2,2
+48333001,Burn injury (morphologic abnormality),morphologic abnormality,2,0,3
+60573004,Aortic valve stenosis (disorder),disorder,2,2,2
+61804006,Alveolitis of jaw (disorder),disorder,2,0,2
+62564004,Concussion with loss of consciousness (disorder),disorder,2,0,2
+6525002,Dependent drug abuse (disorder),disorder,2,2,2
+698306007,Awaiting transplantation of kidney (situation),situation,2,2,2
+713197008,Recurrent rectal polyp (disorder),disorder,2,2,2
+73430006,Sleep apnea (disorder),disorder,2,2,2
+78275009,Obstructive sleep apnea syndrome (disorder),disorder,2,2,2
+79586000,Tubal pregnancy (disorder),disorder,2,0,2
+88805009,Chronic congestive heart failure (disorder),disorder,2,2,2
+90460009,Injury of neck (disorder),disorder,2,0,2
+90560007,Gout,,2,2,2
+125601008,Injury of knee (disorder),disorder,1,0,1
+128188000,Cerebral palsy (disorder),disorder,1,1,1
+128613002,Seizure disorder (disorder),disorder,1,1,1
+1290882004,History of seizure (situation),situation,1,1,1
+132281000119108,Acute deep venous thrombosis (disorder),disorder,1,0,1
+190905008,Cystic fibrosis (disorder),disorder,1,1,1
+221360009,Spasticity (finding),finding,1,1,1
+230690007,Cerebrovascular accident (disorder),disorder,1,0,1
+233604007,Pneumonia (disorder),disorder,1,0,1
+235595009,Gastroesophageal reflux disease (disorder),disorder,1,1,1
+239720000,Tear of meniscus of knee (disorder),disorder,1,0,1
+239872002,Osteoarthritis of hip (disorder),disorder,1,1,1
+248595008,Sputum finding (finding),finding,1,1,1
+25064002,Headache (finding),finding,1,0,1
+254837009,Malignant neoplasm of breast (disorder),disorder,1,1,1
+262574004,Bullet wound (disorder),disorder,1,0,1
+263172003,Fracture of mandible (disorder),disorder,1,0,1
+267102003,Sore throat (finding),finding,1,0,1
+271825005,Respiratory distress (finding),finding,1,0,1
+283545005,Gunshot wound (disorder),disorder,1,0,1
+288959006,Unable to swallow saliva (finding),finding,1,1,1
+312157006,Infectious mediastinitis (disorder),disorder,1,0,1
+33737001,Fracture of rib (disorder),disorder,1,0,1
+37849005,Congenital uterine anomaly (disorder),disorder,1,0,1
+389087006,Hypoxemia (disorder),disorder,1,0,1
+406602003,Infection caused by Staphylococcus aureus (disorder),disorder,1,1,1
+427089005,Diabetes mellitus due to cystic fibrosis (disorder),disorder,1,1,1
+446096008,Perennial allergic rhinitis (disorder),disorder,1,0,1
+448417001,Sepsis caused by Staphylococcus aureus (disorder),disorder,1,1,1
+4557003,Preinfarction syndrome (disorder),disorder,1,1,1
+46752004,Torus palatinus (disorder),disorder,1,0,1
+49436004,Atrial fibrillation (disorder),disorder,1,1,1
+53827007,Excessive salivation (disorder),disorder,1,1,1
+5602001,Opioid abuse,,1,1,1
+62479008,Acquired immune deficiency syndrome (disorder),disorder,1,1,1
+65710008,Acute respiratory failure (disorder),disorder,1,1,1
+67782005,Acute respiratory distress syndrome (disorder),disorder,1,1,1
+707577004,Female infertility due to cystic fibrosis (disorder),disorder,1,1,1
+74400008,Appendicitis (disorder),disorder,1,0,1
+76571007,Septic shock (disorder),disorder,1,1,1
+81629009,Traumatic dislocation of temporomandibular joint (disorder),disorder,1,0,1
+84229001,Fatigue (finding),finding,1,0,1
+87433001,Pulmonary emphysema (disorder),disorder,1,1,1

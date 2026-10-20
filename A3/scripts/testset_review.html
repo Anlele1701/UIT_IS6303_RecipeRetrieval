@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Duyệt gold bộ test (V6)</title>
+<style>
+  :root { --bg:#fafaf8; --fg:#1d1d1b; --muted:#6b6b66; --line:#ddd9d0; --card:#fff;
+          --ok:#2e6b3a; --edit:#b26a00; --drop:#b3261e; --focus:#2457c5; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:16px/1.5 system-ui, "Segoe UI", sans-serif; background:var(--bg); color:var(--fg); }
+  main { max-width:1000px; margin:0 auto; padding:16px; display:grid; gap:16px; }
+  header { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:16px; }
+  .muted { color:var(--muted); font-size:14px; } .q { font-size:20px; margin:6px 0 2px; }
+  .turn { border-top:1px solid var(--line); padding-top:12px; margin-top:12px; }
+  .grid { display:grid; grid-template-columns: 140px 1fr; gap:6px 12px; align-items:center; margin-top:8px; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chips label { border:1px solid var(--line); border-radius:999px; padding:2px 10px; font-size:14px; cursor:pointer; }
+  .chips input { margin-right:4px; }
+  input[type=text], input[type=number], select, textarea { font:inherit; padding:4px 6px; border:1px solid var(--line); border-radius:5px; }
+  input[type=text] { width:100%; } textarea { width:100%; min-height:50px; }
+  .badge { display:inline-block; font-size:12px; padding:1px 8px; border-radius:999px; background:#eee; margin-right:6px; }
+  .warn { background:#fff4dd; border:1px solid #e9c46a; padding:6px 10px; border-radius:6px; font-size:14px; }
+  .actions { display:flex; gap:8px; flex-wrap:wrap; margin-top:12px; }
+  .actions button { padding:10px 16px; font-size:15px; border-radius:6px; cursor:pointer; border:1px solid var(--line); background:#fff; }
+  .b-ok { background:var(--ok)!important; color:#fff; border:none!important; }
+  .b-edit { background:var(--edit)!important; color:#fff; border:none!important; }
+  .b-drop { background:var(--drop)!important; color:#fff; border:none!important; }
+  .err { color:var(--drop); min-height:1.5em; } .saved { color:var(--ok); font-size:14px; }
+  .draft { background:#eef3ff; border:1px solid #b9c9f2; padding:6px 10px; border-radius:6px; font-size:14px; margin-top:8px; }
+  .flag { background:#fff4dd; border:1px solid #e9c46a; }
+  .toolbar { display:flex; gap:12px; align-items:center; flex-wrap:wrap; font-size:14px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div><strong>Duyệt gold bộ test – V6</strong>
+      <span class="muted">· chỉ hiện câu hỏi và gold đề xuất từ mẫu câu · không có dự đoán của máy</span></div>
+    <div id="progress" class="muted"></div>
+  </header>
+  <section class="card toolbar" id="toolbar" hidden>
+    <label><input type="checkbox" id="onlyFlagged" checked> Chỉ đi qua câu bị đánh dấu</label>
+    <span id="flagInfo" class="muted"></span>
+    <button id="bulk" class="b-ok" style="padding:6px 12px;border-radius:6px;border:none;cursor:pointer">Chấp nhận các câu không bị đánh dấu</button>
+  </section>
+  <section class="card">
+    <div class="muted" id="meta"></div>
+    <div id="saved" class="saved"></div>
+    <div id="body"></div>
+    <textarea id="note" placeholder="Ghi chú (bắt buộc khi Loại: lý do)"></textarea>
+    <div class="err" id="err"></div>
+    <div class="actions">
+      <button id="prev">← Trước</button>
+      <button id="ok" class="b-ok" title="Gold đúng như đề xuất (phím 1)">Đúng (1)</button>
+      <button id="edit" class="b-edit" title="Lưu gold đã sửa trong form (phím 2)">Lưu bản sửa (2)</button>
+      <button id="drop" class="b-drop" title="Loại câu này khỏi bộ test (phím 3)">Loại (3)</button>
+      <button id="next">Sau →</button>
+    </div>
+  </section>
+  <section class="card muted">
+    Hướng dẫn: <code>docs/annotation_guide.md</code> mục "Duyệt gold bộ test (V6)". Gold là ý định và ràng buộc mà
+    người hỏi muốn, theo schema của M1. Câu viết tay chưa có gold: điền vào form rồi bấm "Lưu bản sửa".
+  </section>
+</main>
+<script>
+const ALLERGENS = [["milk","Sữa"],["egg","Trứng"],["fish","Cá"],["crustacean_shellfish","Giáp xác"],["tree_nuts","Hạt cây"],
+  ["peanut","Đậu phộng"],["wheat","Lúa mì"],["soy","Đậu nành"],["sesame","Mè"]];
+const INTENTS = ["search","refine","ask_detail","out_of_scope","chitchat"];
+let order = 1, item = null, st = null;
+const $ = id => document.getElementById(id);
+const EMPTY = {intent:"search", constraints:{allergens_exclude:[], ingredients_exclude:[], diet:null, max_total_minutes:null}};
+
+function form(g, k, isTurn) {
+  g = g || EMPTY; const c = g.constraints || EMPTY.constraints;
+  const opt = (v, cur, label) => `<option value="${v}" ${v === cur ? "selected" : ""}>${label ?? v}</option>`;
+  return `<div class="grid" data-k="${k}">
+    <span>Ý định</span><select name="intent">${INTENTS.map(i => opt(i, g.intent)).join("")}</select>
+    <span>Dị ứng</span><div class="chips">${ALLERGENS.map(([v, l]) =>
+      `<label><input type="checkbox" name="allergen" value="${v}" ${(c.allergens_exclude||[]).includes(v) ? "checked" : ""}>${l}</label>`).join("")}</div>
+    <span>Loại nguyên liệu</span><input type="text" name="ingredients" value="${(c.ingredients_exclude||[]).join(", ")}" placeholder="tên tiếng Anh, cách nhau dấu phẩy: onion, garlic">
+    <span>Chế độ ăn</span><select name="diet">${opt("", c.diet || "", "—")}${opt("vegetarian", c.diet)}${opt("vegan", c.diet)}</select>
+    <span>Tối đa (phút)</span><input type="number" name="minutes" min="1" value="${c.max_total_minutes ?? ""}">
+    ${isTurn ? `<span>Hỏi món thứ</span><input type="number" name="ref" min="1" value="${g.ref_recipe ?? ""}">` : ""}
+  </div>`;
+}
+
+function readForm(el) {
+  const v = n => el.querySelector(`[name=${n}]`);
+  const g = {intent: v("intent").value, constraints: {
+    allergens_exclude: [...el.querySelectorAll("[name=allergen]:checked")].map(x => x.value),
+    ingredients_exclude: v("ingredients").value.split(",").map(s => s.trim().toLowerCase()).filter(Boolean),
+    diet: v("diet").value || null,
+    max_total_minutes: v("minutes").value ? parseInt(v("minutes").value, 10) : null}};
+  const ref = el.querySelector("[name=ref]");
+  if (ref && ref.value) g.ref_recipe = parseInt(ref.value, 10);
+  return g;
+}
+
+async function load(n) {
+  const r = await fetch(`/api/item/${n}`); if (!r.ok) return;
+  item = await r.json(); order = item.order; $("err").textContent = "";
+  $("meta").innerHTML = `<span class="badge">${item.set.toUpperCase()}</span><span class="badge">${item.lang}</span>`
+    + `<span class="badge">${item.source}${item.kind ? " · " + item.kind : ""}</span> ${item.id} · ${item.order}/${item.total}`;
+  const s = item.saved;
+  $("saved").textContent = s ? `Đã lưu: ${({ok:"Đúng", edit:"Sửa", drop:"Loại"})[s.decision]}` : "";
+  $("note").value = s ? s.note : "";
+  const d = item.draft;
+  const savedGold = s && s.gold ? s.gold : (d && d.gold ? d.gold : null);
+  let html = "";
+  if (d) html += `<p class="draft ${d.flagged ? "flag" : ""}"><strong>Bản nháp của Claude</strong> (đề xuất của mô hình, Thy kiểm lại)`
+    + `${d.flagged ? " · <strong>bị đánh dấu:</strong> " + d.flag_reason : " · không bị đánh dấu"}`
+    + `${d.note ? "<br>Ghi chú nháp: " + d.note : ""}${d.decision === "edit" ? "<br>Form bên dưới đã điền gold nháp; \"Đúng\" = chấp nhận gold này." : ""}</p>`;
+  if (item.needs_gold) html += `<p class="warn">Câu này chưa có gold chắc chắn${item.source === "a1" ? " (có từ giống ràng buộc)" : ""}: kiểm tra và sửa nếu cần.${item.note ? " Ghi chú: " + item.note : ""}</p>`;
+  if (item.turns) {
+    item.turns.forEach((t, i) => {
+      html += `<div class="turn"><div class="muted">Lượt ${i + 1}</div><div class="q">${t.text}</div>${form(savedGold ? savedGold[i] : t.gold, i, true)}</div>`;
+    });
+  } else {
+    html += `<div class="q">${item.text}</div>${form(savedGold || item.gold, 0, false)}`;
+  }
+  $("body").innerHTML = html;
+  await refreshState();
+}
+
+async function refreshState() {
+  st = await (await fetch("/api/state")).json();
+  $("progress").textContent = `Đã duyệt ${st.reviewed}/${st.total}`;
+  $("toolbar").hidden = !st.has_draft;
+  $("flagInfo").textContent = `Còn ${st.flagged_open} câu bị đánh dấu, ${st.unflagged_open} câu không bị đánh dấu chưa duyệt.`;
+  $("bulk").disabled = !st.unflagged_open;
+}
+
+async function goNext() {
+  const only = st && st.has_draft && $("onlyFlagged").checked;
+  const r = await (await fetch(`/api/next?after=${order}&only_flagged=${only}`)).json();
+  if (r.order) load(r.order); else { await refreshState(); $("err").textContent = only ? "Đã duyệt hết câu bị đánh dấu." : "Đã duyệt hết."; }
+}
+
+async function save(decision) {
+  const forms = [...document.querySelectorAll("#body .grid")].map(readForm);
+  const gold = decision === "edit" ? (item.turns ? forms : forms[0]) : null;
+  if (decision === "drop" && !$("note").value.trim()) { $("err").textContent = "Ghi lý do loại vào ô ghi chú."; return; }
+  const r = await fetch(`/api/review/${order}`, {method:"POST", headers:{"Content-Type":"application/json"},
+    body: JSON.stringify({decision, gold, note: $("note").value})});
+  if (!r.ok) { $("err").textContent = (await r.json()).detail; return; }
+  await refreshState();
+  goNext();
+}
+
+$("bulk").onclick = async () => {
+  const n = st ? st.unflagged_open : 0;
+  if (!n || !confirm(`Chấp nhận ${n} câu không bị đánh dấu, giữ nguyên gold lấy từ mẫu câu? Mỗi câu được ghi là Thy chấp nhận hàng loạt.`)) return;
+  const r = await fetch("/api/bulk_accept", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({confirm:true})});
+  const out = await r.json(); $("err").textContent = r.ok ? "" : out.detail;
+  if (r.ok) { $("saved").textContent = `Đã chấp nhận hàng loạt ${out.accepted} câu.`; refreshState(); }
+};
+
+$("ok").onclick = () => save("ok"); $("edit").onclick = () => save("edit"); $("drop").onclick = () => save("drop");
+$("prev").onclick = () => load(Math.max(1, order - 1)); $("next").onclick = () => load(order + 1);
+document.addEventListener("keydown", e => {
+  if (["INPUT","TEXTAREA","SELECT"].includes(document.activeElement.tagName)) return;
+  if (e.key === "1") save("ok"); else if (e.key === "2") save("edit"); else if (e.key === "3") save("drop");
+  else if (e.key === "ArrowRight") load(order + 1); else if (e.key === "ArrowLeft") load(Math.max(1, order - 1));
+});
+fetch("/api/state").then(r => r.json()).then(s => load((s.has_draft && s.next_flagged) || s.next || 1));
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+task,item_id,label,note,reviewer,labeled_at
+answer,ans_27,"{""faithful"": false, ""answers"": 2, ""wrong_citation"": false}",Nói không có sữa nhưng R10097 có heavy cream,Thy,2026-10-19T13:47:19
+answer,ans_40,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Cảnh báo teriyaki có thể chứa mè: hợp lý,Thy,2026-10-19T13:47:19
+answer,ans_13,"{""faithful"": false, ""answers"": 2, ""wrong_citation"": false}",Nói không có sữa nhưng món có cotija,Thy,2026-10-19T13:47:19
+relevance,rel_30,"{""score"": 0}",,Thy,2026-10-19T13:47:19
+relevance,rel_32,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+relevance,rel_34,"{""score"": 0}",,Thy,2026-10-19T13:47:19
+checker,chk_37,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+relevance,rel_28,"{""score"": 1}",Sinh tố xoài nhưng không có bơ đậu phộng,Thy,2026-10-19T13:47:19
+relevance,rel_20,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+relevance,rel_23,"{""score"": 0}",,Thy,2026-10-19T13:47:19
+checker,chk_55,"{""contains"": ""no""}",Mayonnaise không tính là sữa,Thy,2026-10-19T13:47:19
+relevance,rel_49,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+relevance,rel_31,"{""score"": 1}","Đồ uống cà phê, không phải thạch",Thy,2026-10-19T13:47:19
+checker,chk_16,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+answer,ans_30,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",,Thy,2026-10-19T13:47:19
+answer,ans_19,"{""faithful"": false, ""answers"": 2, ""wrong_citation"": false}",'không có dị ứng' sai: tom yum có tôm và nước mắm,Thy,2026-10-19T13:47:19
+checker,chk_56,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+relevance,rel_01,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+answer,ans_10,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",,Thy,2026-10-19T13:47:19
+relevance,rel_08,"{""score"": 1}",Món khai vị dip làm từ thịt bò khô,Thy,2026-10-19T13:47:19
+answer,ans_38,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",,Thy,2026-10-19T13:47:19
+relevance,rel_21,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+answer,ans_45,"{""faithful"": false, ""answers"": 2, ""wrong_citation"": false}",Nói an toàn cho dị ứng sữa nhưng món có bơ (butter),Thy,2026-10-19T13:47:19
+relevance,rel_13,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+checker,chk_39,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+checker,chk_31,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+answer,ans_25,"{""faithful"": false, ""answers"": 1, ""wrong_citation"": true}",Nước mắm vi phạm chay; dịch sai thành 'mắm tôm',Thy,2026-10-19T13:47:19
+relevance,rel_19,"{""score"": 1}","Bánh mì kẹp mayo, không thật sự nhẹ bụng",Thy,2026-10-19T13:47:19
+relevance,rel_36,"{""score"": 0}",,Thy,2026-10-19T13:47:19
+answer,ans_24,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": true}","R18961 là món dip, không phải bánh mì (câu trả lời có ghi chú điều này)",Thy,2026-10-19T13:47:19
+relevance,rel_15,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+answer,ans_04,"{""faithful"": false, ""answers"": 1, ""wrong_citation"": true}",Bịa 'ăn kèm sốt Alfredo'; món bottarga không phải alfredo,Thy,2026-10-19T13:47:19
+checker,chk_33,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+answer,ans_18,"{""faithful"": false, ""answers"": 0, ""wrong_citation"": true}",R7993 là Khao Man Gai bị gọi là Massaman; bịa 'chay/không gluten/không đậu nành',Thy,2026-10-19T13:47:19
+answer,ans_03,"{""faithful"": false, ""answers"": 0, ""wrong_citation"": true}",R11009 không phải món súp; 'nước dùng tôm' là bịa,Thy,2026-10-19T13:47:19
+checker,chk_48,"{""contains"": ""no""}",Pancetta không phải cá,Thy,2026-10-19T13:47:19
+checker,chk_08,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+checker,chk_09,"{""contains"": ""no""}","Bún gạo, không có lúa mì",Thy,2026-10-19T13:47:19
+answer,ans_23,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": true}","R18961 là món dip, không phải bánh mì; thời gian không kiểm được trên thẻ",Thy,2026-10-19T13:47:19
+answer,ans_21,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",,Thy,2026-10-19T13:47:19
+checker,chk_01,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+answer,ans_09,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Thời gian không kiểm được trên thẻ,Thy,2026-10-19T13:47:19
+relevance,rel_09,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+relevance,rel_03,"{""score"": 2}",Hint ghi 'pie' hẹp hơn câu hỏi; chấm theo nhu cầu tráng miệng (nếu chấm đúng nghĩa 'pie' thì được 1),Thy,2026-10-19T13:47:19
+relevance,rel_29,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+checker,chk_34,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+relevance,rel_39,"{""score"": 1}","Salad sợi bí, không phải pasta",Thy,2026-10-19T13:47:19
+checker,chk_29,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+relevance,rel_02,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+checker,chk_28,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+answer,ans_44,"{""faithful"": true, ""answers"": 1, ""wrong_citation"": false}",Món không hợp bữa sáng,Thy,2026-10-19T13:47:19
+checker,chk_38,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+answer,ans_48,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Từ chối đúng,Thy,2026-10-19T13:47:19
+checker,chk_13,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+answer,ans_31,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",,Thy,2026-10-19T13:47:19
+checker,chk_24,"{""contains"": ""no""}","Bún gạo và bột đậu gà, không có lúa mì",Thy,2026-10-19T13:47:19
+checker,chk_43,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+checker,chk_03,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+checker,chk_12,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+relevance,rel_04,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+checker,chk_17,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+checker,chk_52,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+checker,chk_45,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+checker,chk_10,"{""contains"": ""no""}","Chỉ có lạc (peanut), không tính là hạt cây",Thy,2026-10-19T13:47:19
+checker,chk_07,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+checker,chk_22,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+answer,ans_22,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",,Thy,2026-10-19T13:47:19
+checker,chk_36,"{""contains"": ""no""}",Nước cốt dừa không tính là sữa,Thy,2026-10-19T13:47:19
+checker,chk_11,"{""contains"": ""yes""}",Alfredo sauce có ghi (Optional) nhưng vẫn tính,Thy,2026-10-19T13:47:19
+relevance,rel_22,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+answer,ans_35,"{""faithful"": false, ""answers"": 2, ""wrong_citation"": false}","Lượng nước ghi 1 1/2 cup, thẻ ghi 1 ¾ cup; các bước nấu không có trên thẻ",Thy,2026-10-19T13:47:19
+answer,ans_08,"{""faithful"": false, ""answers"": 0, ""wrong_citation"": true}",Nói không có hành nhưng R13431 có hành tây vàng; R1233 là hỗn hợp súp hành,Thy,2026-10-19T13:47:19
+checker,chk_59,"{""contains"": ""no""}",Viên bouillon gà thường không có sữa,Thy,2026-10-19T13:47:19
+answer,ans_29,"{""faithful"": true, ""answers"": 1, ""wrong_citation"": false}",Không có giáp xác: đúng; nhưng không đưa ra gợi ý rõ ràng,Thy,2026-10-19T13:47:19
+answer,ans_32,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Thời gian không kiểm được trên thẻ,Thy,2026-10-19T13:47:19
+checker,chk_04,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+relevance,rel_14,"{""score"": 2}",Hint ghi 'pie'; chấm theo nhu cầu tráng miệng (nếu chấm đúng nghĩa 'pie' thì được 1),Thy,2026-10-19T13:47:19
+relevance,rel_42,"{""score"": 0}",,Thy,2026-10-19T13:47:19
+relevance,rel_38,"{""score"": 0}",,Thy,2026-10-19T13:47:19
+checker,chk_15,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+answer,ans_43,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",R22575 dùng red squash; ghi chú có sữa: đúng,Thy,2026-10-19T13:47:19
+answer,ans_28,"{""faithful"": true, ""answers"": 0, ""wrong_citation"": true}",Hỏi bánh chuối nướng (banana bread) nhưng gợi ý sandwich R8602 (không đặt trong ngoặc []); thẻ có R6402/R16764 đúng loại,Thy,2026-10-19T13:47:19
+answer,ans_49,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Từ chối đúng,Thy,2026-10-19T13:47:19
+checker,chk_41,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+answer,ans_05,"{""faithful"": true, ""answers"": 0, ""wrong_citation"": true}","R18379 mất 67 phút, vượt giới hạn 10 phút; còn gọi là 'nhanh chóng'",Thy,2026-10-19T13:47:19
+relevance,rel_11,"{""score"": 1}","Cơm chiên tôm, không phải tôm rang",Thy,2026-10-19T13:47:19
+checker,chk_25,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+answer,ans_17,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Món chiên chứ không phải tôm rang; thời gian không kiểm được,Thy,2026-10-19T13:47:19
+checker,chk_06,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+checker,chk_46,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+checker,chk_44,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+answer,ans_14,"{""faithful"": false, ""answers"": 1, ""wrong_citation"": true}",R10342 có flour tortillas: vi phạm ràng buộc lúa mì; câu 'không chứa thành phần gây dị ứng' sai,Thy,2026-10-19T13:47:19
+relevance,rel_24,"{""score"": 1}","Nước sốt bò, không phải món bò hoàn chỉnh",Thy,2026-10-19T13:47:19
+relevance,rel_44,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+relevance,rel_50,"{""score"": 0}",,Thy,2026-10-19T13:47:19
+answer,ans_07,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Thẻ không có món phù hợp; trả lời không tìm thấy là đúng,Thy,2026-10-19T13:47:19
+checker,chk_49,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+answer,ans_02,"{""faithful"": false, ""answers"": 2, ""wrong_citation"": false}",Nói không có sữa nhưng R10097 có heavy cream,Thy,2026-10-19T13:47:19
+answer,ans_06,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Thời gian không kiểm được trên thẻ,Thy,2026-10-19T13:47:19
+relevance,rel_48,"{""score"": 0}",,Thy,2026-10-19T13:47:19
+relevance,rel_16,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+checker,chk_32,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+relevance,rel_43,"{""score"": 0}",,Thy,2026-10-19T13:47:19
+answer,ans_34,"{""faithful"": true, ""answers"": 1, ""wrong_citation"": false}",Không có bột mì: đúng; nhưng không phải món sáng; mã món không đặt trong []; thời gian không kiểm được,Thy,2026-10-19T13:47:19
+relevance,rel_07,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+checker,chk_50,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+relevance,rel_46,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+relevance,rel_37,"{""score"": 0}",,Thy,2026-10-19T13:47:19
+relevance,rel_25,"{""score"": 0}",,Thy,2026-10-19T13:47:19
+answer,ans_33,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Thời gian không kiểm được trên thẻ,Thy,2026-10-19T13:47:19
+answer,ans_47,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}","Từ chối đúng, khuyên hỏi bác sĩ",Thy,2026-10-19T13:47:19
+checker,chk_47,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+relevance,rel_33,"{""score"": 0}","Pad Thai gà, không có tôm",Thy,2026-10-19T13:47:19
+answer,ans_11,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Thẻ không có bánh chuối; trả lời không tìm thấy là đúng (lỗi nằm ở bước truy hồi),Thy,2026-10-19T13:47:19
+answer,ans_20,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",,Thy,2026-10-19T13:47:19
+checker,chk_05,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+answer,ans_01,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Thời gian không kiểm được trên thẻ,Thy,2026-10-19T13:47:19
+answer,ans_16,"{""faithful"": false, ""answers"": 0, ""wrong_citation"": false}","Các bánh quy đều không có nấm, nhưng câu trả lời nói không tìm thấy và bịa chuyện 'dị ứng chéo'",Thy,2026-10-19T13:47:19
+relevance,rel_40,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+checker,chk_20,"{""contains"": ""yes""}",Hạt mè có ghi (Optional) nhưng vẫn tính,Thy,2026-10-19T13:47:19
+relevance,rel_41,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+checker,chk_26,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+checker,chk_14,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+checker,chk_27,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+checker,chk_02,"{""contains"": ""yes""}",Nước tương thường có lúa mì,Thy,2026-10-19T13:47:19
+checker,chk_54,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+relevance,rel_26,"{""score"": 2}",Trứng bác kiểu Nhật: hợp bữa sáng,Thy,2026-10-19T13:47:19
+answer,ans_26,"{""faithful"": false, ""answers"": 2, ""wrong_citation"": false}","Nói không có sữa, trứng, lúa mì: sai (cả 3 món đều có)",Thy,2026-10-19T13:47:19
+relevance,rel_10,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+checker,chk_18,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+relevance,rel_17,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+checker,chk_58,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+relevance,rel_47,"{""score"": 0}","Món hầm/canh, không phải món xào",Thy,2026-10-19T13:47:19
+checker,chk_23,"{""contains"": ""yes""}",Bánh angel food làm từ bột mì,Thy,2026-10-19T13:47:19
+checker,chk_19,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+relevance,rel_45,"{""score"": 0}","Chỉ trùng ẩm thực Ai Cập, không phải món dip",Thy,2026-10-19T13:47:19
+answer,ans_37,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Câu 'không hẳn là salad' lệch với tên món nhưng không ảnh hưởng,Thy,2026-10-19T13:47:19
+answer,ans_41,"{""faithful"": true, ""answers"": 0, ""wrong_citation"": true}",Onion Rice vi phạm ràng buộc không hành,Thy,2026-10-19T13:47:19
+checker,chk_51,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+relevance,rel_35,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+answer,ans_36,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Thẻ không có món tráng miệng; trả lời không tìm thấy là đúng,Thy,2026-10-19T13:47:19
+relevance,rel_27,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+answer,ans_12,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",,Thy,2026-10-19T13:47:19
+answer,ans_39,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Thẻ không có món tráng miệng; trả lời không tìm thấy là đúng,Thy,2026-10-19T13:47:19
+checker,chk_60,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+answer,ans_42,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",Từ chối đúng,Thy,2026-10-19T13:47:19
+relevance,rel_05,"{""score"": 1}",Salad đậu nhưng không có gà,Thy,2026-10-19T13:47:19
+answer,ans_15,"{""faithful"": false, ""answers"": 0, ""wrong_citation"": true}",Hiểu 'cake' thành bánh hải sản; R11148 có trứng nhưng câu trả lời nói không có trứng,Thy,2026-10-19T13:47:19
+answer,ans_46,"{""faithful"": true, ""answers"": 2, ""wrong_citation"": false}",,Thy,2026-10-19T13:47:19
+checker,chk_53,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+relevance,rel_12,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+checker,chk_21,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+answer,ans_50,"{""faithful"": false, ""answers"": 2, ""wrong_citation"": false}",Bịa 'nước sốt cà rốt' cho R25823 (thẻ ghi vegetable juice),Thy,2026-10-19T13:47:19
+relevance,rel_06,"{""score"": 2}",,Thy,2026-10-19T13:47:19
+checker,chk_42,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+checker,chk_57,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+checker,chk_30,"{""contains"": ""yes""}",,Thy,2026-10-19T13:47:19
+checker,chk_40,"{""contains"": ""no""}",,Thy,2026-10-19T13:47:19
+checker,chk_35,"{""contains"": ""no""}",Nam prik pao không có sữa,Thy,2026-10-19T13:47:19
+relevance,rel_18,"{""score"": 1}","Chỉ là nước sốt marinara, không phải món pasta hoàn chỉnh",Thy,2026-10-19T13:47:19

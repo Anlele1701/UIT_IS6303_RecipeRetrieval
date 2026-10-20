@@ -1,0 +1,44 @@
+{
+  "seed": 42,
+  "queries": 10,
+  "torch": "2.14.0+cpu",
+  "torch_threads": 8,
+  "candidate_chars_median": 190.0,
+  "settings": {
+    "mxbai-base len512 top50 (served)": {
+      "model": "mixedbread-ai/mxbai-rerank-base-v1",
+      "max_length": 512,
+      "candidates": 50,
+      "p50_ms": 31218.2,
+      "max_ms": 57674.1
+    },
+    "mxbai-base len512 top20": {
+      "model": "mixedbread-ai/mxbai-rerank-base-v1",
+      "max_length": 512,
+      "candidates": 20,
+      "p50_ms": 15387.5,
+      "max_ms": 18213.8
+    },
+    "mxbai-base len256 top50": {
+      "model": "mixedbread-ai/mxbai-rerank-base-v1",
+      "max_length": 256,
+      "candidates": 50,
+      "p50_ms": 31060.6,
+      "max_ms": 56830.1
+    },
+    "minilm-l6 len512 top50": {
+      "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+      "max_length": 512,
+      "candidates": 50,
+      "p50_ms": 404.2,
+      "max_ms": 745.2
+    },
+    "minilm-l6 len512 top20": {
+      "model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
+      "max_length": 512,
+      "candidates": 20,
+      "p50_ms": 175.1,
+      "max_ms": 209.6
+    }
+  }
+}

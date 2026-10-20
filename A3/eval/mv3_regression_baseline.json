@@ -1,0 +1,220 @@
+[
+  {
+    "scenario": "1 allergy",
+    "preset": "B0",
+    "message": "Tôi dị ứng đậu phộng, gợi ý món gà xào sốt đậu phộng kiểu Thái",
+    "intent": "search",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "notices": [],
+    "recipe_ids": [
+      7993,
+      25039,
+      25774,
+      26094,
+      2806
+    ]
+  },
+  {
+    "scenario": "1 allergy",
+    "preset": "S",
+    "message": "Tôi dị ứng đậu phộng, gợi ý món gà xào sốt đậu phộng kiểu Thái",
+    "intent": "search",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [
+        "peanut"
+      ],
+      "ingredients_exclude": [
+        "peanut"
+      ],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "notices": [],
+    "recipe_ids": [
+      18880,
+      13249,
+      76,
+      15598,
+      138
+    ]
+  },
+  {
+    "scenario": "2 three turns",
+    "preset": "S",
+    "message": "gợi ý món gà cho bữa tối",
+    "intent": "search",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "notices": [],
+    "recipe_ids": [
+      18603,
+      22291,
+      24822,
+      7192,
+      25122
+    ]
+  },
+  {
+    "scenario": "2 three turns",
+    "preset": "S",
+    "message": "không dùng sữa nhé",
+    "intent": "search",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [
+        "milk"
+      ],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "notices": [],
+    "recipe_ids": [
+      1490,
+      25122,
+      14238,
+      925,
+      14977
+    ]
+  },
+  {
+    "scenario": "2 three turns",
+    "preset": "S",
+    "message": "món thứ 2 làm thế nào?",
+    "intent": "ask_detail",
+    "route": "detail",
+    "constraints": {
+      "allergens_exclude": [
+        "milk"
+      ],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "notices": [],
+    "recipe_ids": [
+      25122
+    ]
+  },
+  {
+    "scenario": "3 no answer",
+    "preset": "S",
+    "message": "công thức bánh chưng thuần chay không gạo nếp, không đậu xanh",
+    "intent": "search",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [],
+      "ingredients_exclude": [
+        "rice"
+      ],
+      "ingredients_include": [],
+      "diet": "vegan",
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "notices": [],
+    "recipe_ids": [
+      503,
+      28102,
+      1188,
+      29741,
+      16576
+    ]
+  },
+  {
+    "scenario": "3 out of scope",
+    "preset": "S",
+    "message": "dự báo thời tiết Hà Nội ngày mai",
+    "intent": "out_of_scope",
+    "route": "chat",
+    "constraints": {
+      "allergens_exclude": [],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "notices": [],
+    "recipe_ids": []
+  },
+  {
+    "scenario": "4 lift",
+    "preset": "S",
+    "message": "I'm allergic to shellfish, suggest a quick pasta dinner",
+    "intent": "search",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [
+        "crustacean_shellfish"
+      ],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "notices": [],
+    "recipe_ids": [
+      24671,
+      985,
+      29686,
+      4615,
+      29870
+    ]
+  },
+  {
+    "scenario": "4 lift",
+    "preset": "S",
+    "message": "actually I can eat shellfish now, shrimp pasta please",
+    "intent": "refine",
+    "route": "retrieve",
+    "constraints": {
+      "allergens_exclude": [],
+      "ingredients_exclude": [],
+      "ingredients_include": [],
+      "diet": null,
+      "max_total_minutes": null,
+      "max_calories": null,
+      "category": null
+    },
+    "notices": [],
+    "recipe_ids": [
+      9760,
+      19459,
+      660,
+      19364,
+      9604
+    ]
+  }
+]

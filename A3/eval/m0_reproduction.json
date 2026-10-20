@@ -1,0 +1,220 @@
+{
+  "checked_at": "2026-10-12T03:20:28",
+  "strategy": "semantic",
+  "reference_run": "A1 eval/pooled/20261006-224100",
+  "new_run": "eval/runs/20261012-002242",
+  "reference_settings": {
+    "started_at": "2026-10-06T22:41:00",
+    "seconds": 743.7,
+    "git_commit": "80e3c33",
+    "configs": [
+      "fusion",
+      "hybrid"
+    ],
+    "strategies": [
+      "fixed",
+      "semantic",
+      "sentence"
+    ],
+    "query_set": "eval/queries.jsonl",
+    "query_set_sha256": "c1877d4d8f1f17c2c8c1161b8074bfbac03f4311e94b83542e21bceef720501e",
+    "qrels": "eval/qrels.csv",
+    "qrels_sha256": "86282b2ba0f09b712a636b8eefc68ad44b859aca94669d190181b0ec2ffac5a2",
+    "queries": 298,
+    "limit": null,
+    "chunk_pool": 50,
+    "depth": 20,
+    "hybrid_candidates": 50,
+    "rerank_top": 50,
+    "rrf_k": 60,
+    "embed_model": "nomic-embed-text",
+    "rerank_model": "mixedbread-ai/mxbai-rerank-base-v1",
+    "warmup_queries": 1,
+    "config_order": "rotated",
+    "arm": null,
+    "pg_search_version": "0.25.9",
+    "vector_cluster_max_probe": 0.02,
+    "rescored_from": "eval/runs/20261006-224100"
+  },
+  "new_settings": {
+    "started_at": "2026-10-12T00:22:42",
+    "seconds": 10394.9,
+    "git_commit": "1984230",
+    "configs": [
+      "fusion",
+      "hybrid"
+    ],
+    "strategies": [
+      "semantic"
+    ],
+    "query_set": "eval\\queries.jsonl",
+    "query_set_sha256": "aa46e7c1c264dd368333132fc9f3583db864eb2db4585f15869c50da647bda49",
+    "qrels": "eval\\qrels.csv",
+    "qrels_sha256": "86282b2ba0f09b712a636b8eefc68ad44b859aca94669d190181b0ec2ffac5a2",
+    "queries": 298,
+    "limit": null,
+    "chunk_pool": 50,
+    "depth": 20,
+    "hybrid_candidates": 50,
+    "rerank_top": 50,
+    "rrf_k": 60,
+    "embed_model": "nomic-embed-text",
+    "rerank_model": "mixedbread-ai/mxbai-rerank-base-v1",
+    "warmup_queries": 1,
+    "config_order": "rotated",
+    "arm": null,
+    "pg_search_version": "0.25.9",
+    "vector_cluster_max_probe": 0.02
+  },
+  "tolerance": {
+    "fusion": 0.01,
+    "hybrid": 0.015
+  },
+  "configs": {
+    "fusion": {
+      "metrics": {
+        "recall@5": {
+          "a1": 0.8792,
+          "a3": 0.8859,
+          "delta": 0.0067,
+          "within": true
+        },
+        "recall@10": {
+          "a1": 0.9396,
+          "a3": 0.9262,
+          "delta": -0.0134,
+          "within": false
+        },
+        "mrr": {
+          "a1": 0.7246,
+          "a3": 0.7219,
+          "delta": -0.0027,
+          "within": true
+        },
+        "ndcg@10": {
+          "a1": 0.7757,
+          "a3": 0.7702,
+          "delta": -0.0055,
+          "within": true
+        }
+      },
+      "match": false,
+      "latency_p50_ms": {
+        "a1": 67.4,
+        "a3": 2148.7
+      }
+    },
+    "hybrid": {
+      "metrics": {
+        "recall@5": {
+          "a1": 0.9664,
+          "a3": 0.9664,
+          "delta": 0.0,
+          "within": true
+        },
+        "recall@10": {
+          "a1": 0.9765,
+          "a3": 0.9765,
+          "delta": 0.0,
+          "within": true
+        },
+        "mrr": {
+          "a1": 0.8952,
+          "a3": 0.8926,
+          "delta": -0.0025,
+          "within": true
+        },
+        "ndcg@10": {
+          "a1": 0.9157,
+          "a3": 0.9139,
+          "delta": -0.0018,
+          "within": true
+        }
+      },
+      "match": true,
+      "latency_p50_ms": {
+        "a1": 724.9,
+        "a3": 33149.7
+      }
+    }
+  },
+  "match": false,
+  "exact": {
+    "reference_run": "A1 eval/pooled/20260929-195231 (arm exact-dense, probe 1.0)",
+    "new_run": "eval/runs/20261012-031749",
+    "new_probe": 1.0,
+    "tolerance": {
+      "dense": 0.0005,
+      "fusion": 0.0005
+    },
+    "configs": {
+      "dense": {
+        "metrics": {
+          "recall@5": {
+            "a1": 0.8725,
+            "a3": 0.8725,
+            "delta": 0.0,
+            "within": true
+          },
+          "recall@10": {
+            "a1": 0.9195,
+            "a3": 0.9195,
+            "delta": 0.0,
+            "within": true
+          },
+          "mrr": {
+            "a1": 0.7028,
+            "a3": 0.7028,
+            "delta": 0.0,
+            "within": true
+          },
+          "ndcg@10": {
+            "a1": 0.7544,
+            "a3": 0.7544,
+            "delta": 0.0,
+            "within": true
+          }
+        },
+        "match": true,
+        "latency_p50_ms": {
+          "a1": 83.7,
+          "a3": 133.7
+        }
+      },
+      "fusion": {
+        "metrics": {
+          "recall@5": {
+            "a1": 0.8893,
+            "a3": 0.8893,
+            "delta": 0.0,
+            "within": true
+          },
+          "recall@10": {
+            "a1": 0.9329,
+            "a3": 0.9329,
+            "delta": 0.0,
+            "within": true
+          },
+          "mrr": {
+            "a1": 0.7376,
+            "a3": 0.7376,
+            "delta": 0.0,
+            "within": true
+          },
+          "ndcg@10": {
+            "a1": 0.784,
+            "a3": 0.784,
+            "delta": 0.0,
+            "within": true
+          }
+        },
+        "match": true,
+        "latency_p50_ms": {
+          "a1": 71.6,
+          "a3": 188.5
+        }
+      }
+    },
+    "match": true
+  }
+}

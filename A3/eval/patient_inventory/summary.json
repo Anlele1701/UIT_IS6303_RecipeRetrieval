@@ -1,0 +1,223 @@
+{
+  "ran_at": "2026-10-17T16:29:30",
+  "git_commit": "6012ad2",
+  "seed": 42,
+  "data_dir": "data/synthea_sample_data_ccda_latest",
+  "files": 108,
+  "parsed": 108,
+  "distinct_patient_ids": 108,
+  "parse_errors": [],
+  "software_name": {
+    "https://github.com/synthetichealth/synthea": 108
+  },
+  "record_date": {
+    "min": "1961-08-25",
+    "max": "2026-08-25"
+  },
+  "record_year": {
+    "1961": 1,
+    "1991": 1,
+    "1998": 1,
+    "2015": 2,
+    "2016": 1,
+    "2018": 1,
+    "2023": 1,
+    "2026": 100
+  },
+  "deceased": {
+    "patients": 8,
+    "rule": "Results organizer 69409-1 present",
+    "record_date_min": "1961-08-25",
+    "record_date_max": "2026-05-12"
+  },
+  "sex": {
+    "F": 51,
+    "M": 57
+  },
+  "age_band": {
+    "0-17": 22,
+    "18-39": 38,
+    "40-64": 38,
+    "65+": 10
+  },
+  "food_allergy_kind_code": "414285001",
+  "active_problems_dropped_by_suffix": {
+    "finding": 513,
+    "situation": 103,
+    "none": 5,
+    "person": 2
+  },
+  "dropped_section_entries": {
+    "29762-2": 108,
+    "47420-5": 2431
+  },
+  "p7_results_organizers": {
+    "include": {
+      "organizers": 2788,
+      "patients": 108
+    },
+    "exclude": {
+      "organizers": 2248,
+      "patients": 94
+    },
+    "not_relevant": {
+      "organizers": 327,
+      "patients": 21
+    }
+  },
+  "p7_lists": {
+    "include": [
+      "24321-2",
+      "24323-8",
+      "24356-8",
+      "24357-6",
+      "50190-8",
+      "51990-0",
+      "57698-3",
+      "58410-2",
+      "75689-0"
+    ],
+    "exclude": [
+      "44249-1",
+      "55757-9",
+      "69409-1",
+      "69737-5",
+      "72109-2",
+      "76499-3",
+      "82666-9",
+      "89206-7"
+    ],
+    "overlap": []
+  },
+  "spec_loinc_patients": {
+    "29463-7": 108,
+    "39156-5": 106,
+    "8480-6": 0,
+    "8462-4": 0,
+    "33914-3": 21,
+    "4548-4": 0,
+    "2951-2": 16,
+    "2823-3": 16,
+    "2160-0": 16,
+    "2339-0": 43,
+    "2345-7": 16
+  },
+  "p8_excludes_deceased": 8,
+  "p8_candidates": {
+    "food_allergy": 11,
+    "diabetes": 5,
+    "hypertension": 18,
+    "ckd": 4,
+    "multi": 5,
+    "none": 70
+  },
+  "p8_candidate_codes": {
+    "diabetes": [
+      {
+        "code": "44054006",
+        "display": "Diabetes mellitus type 2 (disorder)",
+        "patients": 4
+      },
+      {
+        "code": "127013003",
+        "display": "Disorder of kidney due to diabetes mellitus (disorder)",
+        "patients": 4
+      },
+      {
+        "code": "90781000119102",
+        "display": "Microalbuminuria due to type 2 diabetes mellitus (disorder)",
+        "patients": 3
+      },
+      {
+        "code": "157141000119108",
+        "display": "Proteinuria due to type 2 diabetes mellitus (disorder)",
+        "patients": 3
+      },
+      {
+        "code": "80394007",
+        "display": "Hyperglycemia (disorder)",
+        "patients": 2
+      },
+      {
+        "code": "368581000119106",
+        "display": "Neuropathy due to type 2 diabetes mellitus (disorder)",
+        "patients": 2
+      }
+    ],
+    "hypertension": [
+      {
+        "code": "59621000",
+        "display": "Essential hypertension (disorder)",
+        "patients": 18
+      }
+    ],
+    "ckd": [
+      {
+        "code": "431855005",
+        "display": "Chronic kidney disease stage 1 (disorder)",
+        "patients": 4
+      },
+      {
+        "code": "433144002",
+        "display": "Chronic kidney disease stage 3 (disorder)",
+        "patients": 3
+      },
+      {
+        "code": "431856006",
+        "display": "Chronic kidney disease stage 2 (disorder)",
+        "patients": 3
+      },
+      {
+        "code": "431857002",
+        "display": "Chronic kidney disease stage 4 (disorder)",
+        "patients": 2
+      }
+    ]
+  },
+  "p8_rules": {
+    "food_allergy": "active allergy with kind 414285001",
+    "diabetes": "active (disorder) matching /diabetes|prediabetes|hyperglycemia/i",
+    "hypertension": "active (disorder) matching /hypertension/i",
+    "ckd": "active (disorder) matching /kidney disease|renal disease|renal failure|nephropathy|end-stage renal/i",
+    "multi": ">= 2 of diabetes, hypertension, ckd",
+    "none": "none of the above"
+  },
+  "rule_check": {
+    "present": true,
+    "rows": 7,
+    "extra_ingredients": [
+      "abalone",
+      "baby clam",
+      "bay scallop",
+      "calamari",
+      "clam",
+      "clam in shell",
+      "clam juice",
+      "clamato",
+      "conch",
+      "escargot",
+      "littleneck clam",
+      "mussel",
+      "octopus",
+      "oyster",
+      "oyster sauce",
+      "scallop",
+      "sea scallop",
+      "shucked oyster",
+      "snail",
+      "squid"
+    ],
+    "missing_in_ingredient_table": [],
+    "db": "ok",
+    "codes": [
+      "735029006",
+      "102263004",
+      "442571000124108",
+      "3718001",
+      "412071004",
+      "256355007",
+      "762952008"
+    ],
+    "unmapped": []
+  }
+}

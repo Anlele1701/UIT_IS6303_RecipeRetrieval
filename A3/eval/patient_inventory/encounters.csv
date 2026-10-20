@@ -1,0 +1,45 @@
+snomed_code,display,patients,entries
+185345009,Encounter for symptom (procedure),105,386
+185349003,Encounter for check up (procedure),105,899
+162673000,General examination of patient (procedure),85,862
+185347001,Encounter for problem (procedure),75,914
+33879002,Administration of vaccine to produce active immunity (procedure),71,135
+50849002,Emergency room admission (procedure),69,199
+410620009,Well child visit (procedure),62,391
+698314001,Consultation for treatment (procedure),37,156
+424619006,Prenatal visit (regime/therapy),34,417
+702927004,Urgent care clinic (environment),34,192
+390906007,Follow-up encounter (procedure),33,147
+308335008,Patient encounter procedure (procedure),30,202
+424441002,Prenatal initial visit (regime/therapy),28,85
+169762003,Postnatal visit (regime/therapy),23,46
+183460006,Obstetric emergency hospital admission (procedure),23,46
+32485007,Hospital admission (procedure),17,23
+305408004,Admission to surgical department (procedure),11,11
+270427003,Patient-initiated encounter (procedure),10,20
+305336008,Admission to hospice (procedure),8,8
+308646001,Death Certification,8,8
+394701000,Asthma follow-up (regime/therapy),7,32
+183478001,Emergency hospital admission for asthma (procedure),5,6
+305342007,Admission to ward (procedure),5,6
+36228007,Ophthalmic examination and evaluation (procedure),5,45
+170837001,Allergic disorder initial assessment (regime/therapy),4,4
+170838006,Allergic disorder follow-up assessment (regime/therapy),4,4
+183452005,Emergency hospital admission (procedure),4,4
+371883000,Outpatient procedure (procedure),4,183
+397821002,Patient transfer to intensive care unit (procedure),4,4
+185389009,Follow-up visit (procedure),3,7
+305351004,Admission to intensive care unit (procedure),3,5
+439708006,Home visit (procedure),3,63
+439740005,Postoperative follow-up visit (procedure),3,17
+56876005,Drug rehabilitation and detoxification (regime/therapy),2,8
+108219001,Physician visit with evaluation AND/OR management service (procedure),1,1
+1505002,Hospital admission for isolation (procedure),1,1
+185317003,Telephone encounter (procedure),1,1
+210098006,Domiciliary or rest home patient evaluation and management (procedure),1,7
+223484005,Discussion about treatment (procedure),1,1
+410410006,Screening surveillance (regime/therapy),1,5
+448337001,Telemedicine consultation with patient (procedure),1,17
+453131000124105,Videotelephony encounter (procedure),1,1
+67799006,"Cystic fibrosis, prenatal detection (procedure)",1,1
+86013001,Periodic reevaluation and management of healthy individual (procedure),1,1

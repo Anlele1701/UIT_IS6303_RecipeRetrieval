@@ -1,0 +1,13 @@
+{
+  "file": "eval/labels/allergen_gold.csv",
+  "label_kind": "silver",
+  "labeled_by": "Claude Sonnet 5.5 (claude-sonnet-5-5), guided by Thy",
+  "blind": "yes: the labeling session saw only the audit_tool page and docs/annotation_guide.md (no rules.csv, lexicon, recipe_tag or checker output) - confirmed by Thy 14/10/2026",
+  "human_gold": "none (Thy's decision 14/10/2026)",
+  "known_risk": "same model family (Claude) as the author of the tagger rules (Claude Opus 5.5): tagger P/R against these labels may be inflated; the llama3.1:8b checker is a different family",
+  "rows": 205,
+  "recipes": 200,
+  "labeled_from": "2026-10-14T20:39:31",
+  "labeled_to": "2026-10-14T21:03:01",
+  "sha256": "fad97446163766a25056005674a38f95e818c929b07da19b976db0c365573213"
+}

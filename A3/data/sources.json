@@ -1,0 +1,29 @@
+{
+  "sample": {
+    "dir": "data/synthea_sample_data_ccda_latest",
+    "description": "100 Sample Synthetic Patient Records, C-CDA (latest)",
+    "download_page": "https://synthea.mitre.org/downloads",
+    "file_url": "https://github.com/synthetichealth/synthea-sample-data/raw/9959d9178e/downloads/latest/synthea_sample_data_ccda_latest.zip",
+    "downloaded": "2026-10-17",
+    "sample_data_repo_commit": "9959d9178e",
+    "synthea_commit": "d9d07a6eef91ee5144293b42ab64224d84d124f8",
+    "synthea_commit_note": "from the sample-data commit message; synthea tag master-branch-latest on 2026-08-18, newer than v4.0.0",
+    "zip_sha256": "cac8f607b8acd56d38b69a3a8fd4877b3606e37ce486a670c8c232f2e0c4719d",
+    "files": 108,
+    "files_sha256_of_sorted_list": "0ef5872be883c3807e20fd8d782a9ad6763c9aff3d61dd796d5d59fc06aec1f9",
+    "verified": "2026-10-17: all 108 files match the zip at sample-data commit 9959d9178e (sha256)"
+  },
+  "generated": {
+    "dir": "data/synthea_generated_ccda",
+    "description": "12 Synthea patients chosen from a run of 1000",
+    "synthea_commit": "d9d07a6eef91ee5144293b42ab64224d84d124f8",
+    "command": "./run_synthea -s 42 -cs 42 -p 1000 -a 40-90 --exporter.ccda.export=true --exporter.fhir.export=false --generate.only_alive_patients=true",
+    "seed": 42,
+    "population": 1000,
+    "selection": "scripts/patient_select.py, seed 42, eval/patient_selection.json",
+    "files": 12,
+    "files_sha256_of_sorted_list": "caad75b0114d8965de9477551dc03b9d9b202657b7199d29e6f0e55fd2595171",
+    "generated": "2026-10-17",
+    "synthea_commit_note": "same commit and default settings as the sample (generate_samples.sh), plus the seed, the age range and only_alive_patients"
+  }
+}

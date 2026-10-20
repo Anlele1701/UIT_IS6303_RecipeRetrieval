@@ -1,0 +1,4 @@
+match,action,target,message_vi,source,version
+warfarin,warn,kale;baby kale;spinach;baby spinach;collard green;swiss chard;mustard green;broccoli;brussels sprout;parsley,"Giữ lượng vitamin K ổn định (rau cải xoăn, rau bina, bông cải xanh…)","nhóm soạn, cần chuyên gia xác nhận",v1
+simvastatin,exclude,grapefruit,Bưởi chùm làm tăng nồng độ thuốc,"nhóm soạn, cần chuyên gia xác nhận",v1
+atorvastatin,exclude,grapefruit,Bưởi chùm làm tăng nồng độ thuốc,"nhóm soạn, cần chuyên gia xác nhận",v1

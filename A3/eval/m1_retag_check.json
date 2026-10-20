@@ -1,0 +1,45 @@
+{
+  "checked_at": "2026-10-14T20:13:26",
+  "before": "eval/runs/20261012-031749",
+  "after": "eval/runs/20261014-201028",
+  "probe": {
+    "before": 1.0,
+    "after": 1.0
+  },
+  "configs": {
+    "dense/semantic": {
+      "metric_delta": {
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "recall@20": 0.0,
+        "mrr": 0.0,
+        "ndcg@5": 0.0,
+        "ndcg@10": 0.0
+      },
+      "queries": 298,
+      "same_rank": 298,
+      "same_top20": 297,
+      "top20_changed": [
+        "q080"
+      ]
+    },
+    "fusion/semantic": {
+      "metric_delta": {
+        "recall@5": 0.0,
+        "recall@10": 0.0,
+        "recall@20": 0.0,
+        "mrr": 0.0,
+        "ndcg@5": 0.0,
+        "ndcg@10": 0.0
+      },
+      "queries": 298,
+      "same_rank": 298,
+      "same_top20": 296,
+      "top20_changed": [
+        "q050",
+        "q080"
+      ]
+    }
+  },
+  "identical_metrics": true
+}
