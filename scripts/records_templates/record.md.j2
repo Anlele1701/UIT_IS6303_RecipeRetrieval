@@ -1,0 +1,52 @@
+# Patient Record {{ patient_id }}
+
+## Demographics
+
+- Name: {{ demographics.name }}
+- Date of birth: {{ demographics.dob }}
+- Sex: {{ demographics.sex }}
+- MRN (synthetic): {{ demographics.mrn }}
+- Primary clinic: {{ demographics.clinic }}
+
+This is a synthetic chart for research on nutrition-constrained recipe retrieval. It is not a real patient record.
+
+## Medications
+
+{% for line in medications %}
+- {{ line }}
+{% endfor %}
+
+## Laboratory
+
+{% for line in laboratory %}
+{{ line }}
+
+{% endfor %}
+
+## Social History
+
+{% for line in social %}
+{{ line }}
+
+{% endfor %}
+
+{% for visit in visits %}
+## Visit {{ visit.date }} — {{ visit.role_label }}
+
+<!-- section_id: {{ visit.section_id }} -->
+
+{{ visit.vitals }}
+
+{% for para in visit.noise %}
+{{ para }}
+
+{% endfor %}
+{% if visit.diet_orders %}
+### Nutrition orders
+
+{% for order in visit.diet_orders %}
+{{ order }}
+
+{% endfor %}
+{% endif %}
+{% endfor %}

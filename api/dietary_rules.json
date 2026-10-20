@@ -1,0 +1,119 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "rule_id": "htn-sodium",
+      "label": "Essential hypertension",
+      "snomed_codes": [
+        "59621000"
+      ],
+      "limits": [
+        {
+          "nutrient": "sodium_mg",
+          "op": "max",
+          "daily": 1500
+        }
+      ],
+      "source": "AHA, 'How Much Sodium Should I Eat Per Day?' (last reviewed 2025-07-15): no more than 2,300 mg/day, optimal goal no more than 1,500 mg/day for most adults. VERIFIED, but it is general-adult guidance, not hypertension-specific, and it does not apply to people directed otherwise by their healthcare team. https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/sodium/how-much-sodium-should-i-eat-per-day",
+      "status": "proposed"
+    },
+    {
+      "rule_id": "chf-sodium",
+      "label": "Chronic congestive heart failure",
+      "snomed_codes": [
+        "88805009"
+      ],
+      "limits": [
+        {
+          "nutrient": "sodium_mg",
+          "op": "max",
+          "daily": 2000
+        }
+      ],
+      "source": "UNVERIFIED assumption: about 2,000 mg/day sodium is commonly used in heart failure. No source checked yet; confirm against the ACC/AHA heart failure guideline.",
+      "status": "proposed"
+    },
+    {
+      "rule_id": "diabetes-carbs",
+      "label": "Diabetes, prediabetes, metabolic syndrome and diabetic complications",
+      "snomed_codes": [
+        "44054006",
+        "714628002",
+        "237602007",
+        "127013003",
+        "90781000119102",
+        "157141000119108",
+        "368581000119106",
+        "1551000119108",
+        "1501000119109",
+        "97331000119101"
+      ],
+      "limits": [
+        {
+          "nutrient": "carbohydrates_g",
+          "op": "max",
+          "daily": 180
+        }
+      ],
+      "source": "NOT FROM A GUIDELINE. The ADA says there is 'no magic number' of carbs per meal and that needs depend on body size, activity and treatment (diabetes.org, carb counting page). 180 g/day (60 g per serving) is this project's own assumption. https://diabetes.org/food-nutrition/understanding-carbs/carb-counting-and-diabetes",
+      "status": "proposed"
+    },
+    {
+      "rule_id": "lipid-satfat",
+      "label": "Hyperlipidemia, hypertriglyceridemia, ischemic heart disease",
+      "snomed_codes": [
+        "55822004",
+        "302870006",
+        "414545008"
+      ],
+      "limits": [
+        {
+          "nutrient": "saturated_fat_g",
+          "op": "max",
+          "daily": 13
+        }
+      ],
+      "source": "AHA, 'Saturated Fats' (last reviewed 2024-08-23): less than 6% of calories from saturated fat, about 13 g/day or less on 2,000 kcal. VERIFIED, but it is general-population guidance applied to these conditions by assumption. https://www.heart.org/en/healthy-living/healthy-eating/eat-smart/fats/saturated-fats",
+      "status": "proposed"
+    },
+    {
+      "rule_id": "gout-unsupported",
+      "label": "Gout",
+      "snomed_codes": [
+        "90560007"
+      ],
+      "limits": [],
+      "unsupported_reason": "Diet advice for gout is about purine, and the recipe data has no purine column.",
+      "source": "n/a",
+      "status": "proposed"
+    },
+    {
+      "rule_id": "ckd-unsupported",
+      "label": "Chronic kidney disease and end-stage renal disease",
+      "snomed_codes": [
+        "431855005",
+        "431856006",
+        "433144002",
+        "431857002",
+        "433146000",
+        "46177005"
+      ],
+      "limits": [],
+      "unsupported_reason": "Kidney diet limits depend on lab values (eGFR, potassium) and need phosphorus, which the recipe data lacks. Out of scope for v1.",
+      "source": "n/a",
+      "status": "proposed"
+    },
+    {
+      "rule_id": "obesity-unsupported",
+      "label": "Obesity",
+      "snomed_codes": [
+        "162864005",
+        "408512008"
+      ],
+      "limits": [],
+      "unsupported_reason": "No agreed per-serving calorie limit yet; undecided for v1 (see ehr-and-rules-planning.md).",
+      "source": "n/a",
+      "status": "proposed"
+    }
+  ]
+}

@@ -13,7 +13,14 @@ dependencies = [
 ]
 
 [dependency-groups]
-dev = ["pytest>=8", "tokenizers>=0.19", "snowballstemmer>=3.1"]  # scripts imported by their tests
+dev = [
+    "pytest>=8",
+    "tokenizers>=0.19",
+    "snowballstemmer>=3.1",  # scripts imported by their tests
+    "jinja2>=3.1",
+    "faker>=30",
+    "fpdf2>=2.8",  # pure Python PDF; WeasyPrint needs system Pango/GObject
+]
 
 [tool.uv]
 package = false

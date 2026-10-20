@@ -1,0 +1,90 @@
+graph TD
+    subgraph Client_Layer [Client Layer]
+        UI["User Interface / Mobile App"]
+    end
+
+    subgraph Backend_Layer [Backend Application - FastAPI]
+        API["POST /recommend - api/main.py"]
+        Orchestrator["Recommend Orchestrator - api/recommend.py"]
+        Profile["Patient Profile - api/patients.py<br/>bệnh đang hoạt động: STOP rỗng"]
+        RuleEngine["Dietary Rule Engine - api/dietary_rules.py<br/>mã SNOMED, rule, daily chia serving, strictest wins"]
+        Retrieval["Hybrid Retrieval - api/retrieval.py<br/>sparse, dense, RRF"]
+        Reranker["Cross-encoder Reranker - api/rerank.py<br/>mxbai-rerank-base-v1"]
+        Safety["Gom Chunk thành Recipe + Safety re-check"]
+    end
+
+    subgraph Data_Layer [Data Infrastructure - ParadeDB]
+        EHR[("Medical DB - Vectorless<br/>schema ehr: Synthea CSV<br/>condition, observation, medication")]
+        Rules[("Bảng Dietary rule<br/>api/dietary_rules.json")]
+        DB_Food[("chunk partition theo strategy<br/>BM25 + vector + Filters trong 1 index<br/>recipe, recipe_nutrition")]
+    end
+
+    subgraph AI_Layer [Ollama - local]
+        LLM_Norm["LLM Condition Normalizer - tuỳ chọn<br/>chỉ chọn rule_id trong tập có sẵn<br/>qwen2.5:7b, JSON mode"]
+        Embedding["Embedding: nomic-embed-text"]
+        LLM_Gen["LLM Generator<br/>qwen2.5:7b"]
+    end
+
+    Synthea["Synthea - sinh offline<br/>scripts/load_synthea.py"]
+
+    subgraph Compare_Branch [Nhánh B - so sánh và đo, KHÔNG quyết định Filter]
+        Navigator["Record Navigator - api/ehr_navigator.py<br/>tree index trên tài liệu Markdown<br/>LLM chọn mục, trích bệnh"]
+        DenseBase["Dense baseline<br/>chunk tài liệu, nomic-embed-text"]
+        EvalEHR["scripts/evaluate_ehr_retrieval.py<br/>so với SQL: recall, stale leak, chi phí"]
+    end
+
+    Docs[("ehr.record_document<br/>Markdown dựng từ ehr, không LLM")]
+
+    %% Offline
+    Synthea -.->|"0. Nạp CSV một lần"| EHR
+
+    %% Request
+    UI -->|"1. Request: patient_id, query, strategy"| API
+    API --> Orchestrator
+
+    %% Stage A: Patient profile (SQL, no embedding)
+    Orchestrator -->|"2. Lấy hồ sơ bệnh nhân"| Profile
+    Profile <-->|"3. SQL: bệnh đang hoạt động"| EHR
+    Profile -->|"4. Active conditions: SNOMED code"| RuleEngine
+
+    %% Stage B: Condition to Filters
+    RuleEngine <-->|"5. Tra rule theo mã bệnh"| Rules
+    RuleEngine <-.->|"6. Bệnh lạ: gán vào rule_id có sẵn"| LLM_Norm
+    RuleEngine -->|"7. Filters: max_sodium_mg, ... + evidence + unapplied + unsupported"| Orchestrator
+
+    %% Branch B (offline / evaluation only)
+    EHR -.->|"B1. Dựng tài liệu"| Docs
+    Docs -.->|"B2. Điều hướng cây"| Navigator
+    Docs -.->|"B3. Chunk và embed"| DenseBase
+    Navigator -.-> EvalEHR
+    DenseBase -.-> EvalEHR
+    Profile -.->|"B4. Đáp án chuẩn từ SQL"| EvalEHR
+
+    %% Stage C: Hybrid RAG on food
+    Orchestrator -->|"8. Nhúng câu hỏi"| Embedding
+    Embedding -->|"9. Trả về query vector"| Orchestrator
+    Orchestrator -->|"10. query, vector, Filters"| Retrieval
+    Retrieval <-->|"11. BM25 và vector, WHERE Filters, RRF top 50"| DB_Food
+    Retrieval -->|"12. Ứng viên đã hợp nhất"| Reranker
+    Reranker -->|"13. Chunk đã rerank"| Safety
+    Safety <-->|"14. Kiểm lại dinh dưỡng từng Recipe"| DB_Food
+    Safety -->|"15. Top 5 Recipe an toàn"| Orchestrator
+
+    %% Stage D: Generation
+    Orchestrator -->|"16. Bệnh, rule, Recipes"| LLM_Gen
+    LLM_Gen -->|"17. Câu trả lời giải thích"| Orchestrator
+    Orchestrator -->|"18. Response: answer, recipes, evidence, applied_filters"| UI
+
+    %% Styling
+    classDef client fill:#e1f5fe,stroke:#03a9f4,stroke-width:2px;
+    classDef backend fill:#f3e5f5,stroke:#9c27b0,stroke-width:2px;
+    classDef database fill:#e8f5e9,stroke:#4caf50,stroke-width:2px;
+    classDef ai fill:#fff3e0,stroke:#ff9800,stroke-width:2px;
+    classDef offline fill:#eeeeee,stroke:#757575,stroke-width:2px,stroke-dasharray: 5 5;
+
+    class UI client;
+    class API,Orchestrator,Profile,RuleEngine,Retrieval,Reranker,Safety backend;
+    class EHR,Rules,DB_Food database;
+    class LLM_Norm,LLM_Gen,Embedding ai;
+    class Synthea,Navigator,DenseBase,EvalEHR offline;
+    class Docs database;

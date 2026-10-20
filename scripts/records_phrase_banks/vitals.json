@@ -1,0 +1,7 @@
+[
+  "Blood pressure {{bp_sys}}/{{bp_dia}} mmHg, heart rate {{hr}} bpm, temperature {{temp}} °C, SpO2 {{spo2}}%.",
+  "Vitals stable: BP {{bp_sys}}/{{bp_dia}}, HR {{hr}}, afebrile at {{temp}} °C, oxygen saturation {{spo2}}% on room air.",
+  "Measured BP {{bp_sys}}/{{bp_dia}} mmHg seated, pulse {{hr}} regular, temp {{temp}} °C, SpO2 {{spo2}}%.",
+  "Clinic vitals today: blood pressure {{bp_sys}}/{{bp_dia}}, heart rate {{hr}}, temperature {{temp}} °C, SpO2 {{spo2}}%.",
+  "Patient ambulatory. BP {{bp_sys}}/{{bp_dia}} mmHg, HR {{hr}} bpm, T {{temp}} °C, SpO2 {{spo2}}% RA."
+]

@@ -6,7 +6,8 @@
 import time
 from contextlib import asynccontextmanager
 from pathlib import Path
-from typing import Annotated
+from typing import Annotated, Literal
+from uuid import UUID
 
 import httpx
 from fastapi import Depends, FastAPI, HTTPException, Query, Request
@@ -15,8 +16,8 @@ from fastapi.staticfiles import StaticFiles
 from psycopg_pool import ConnectionPool
 from pydantic import BaseModel
 
-from . import config, retrieval, strategies
-from .embed import embed_query
+from . import allergens, config, dietary_rules, ehr_navigator, llm, patients, recommend, retrieval, strategies
+from .embed import embed_documents, embed_query, embed_query_array
 from .filters import SearchParams
 from .rerank import Reranker
 
@@ -26,6 +27,8 @@ async def lifespan(app: FastAPI):
     app.state.pool = ConnectionPool(config.DATABASE_URL, min_size=1, max_size=8, open=True)
     app.state.http = httpx.Client(timeout=30)
     app.state.reranker = Reranker()
+    app.state.rules = dietary_rules.load_rules(config.RULES_PATH)  # a bad rule file stops startup
+    app.state.allergens = allergens.load_allergens(config.ALLERGENS_PATH)
     yield
     app.state.http.close()
     app.state.pool.close()
@@ -110,6 +113,12 @@ def report():
     return FileResponse(STATIC / "index.html")
 
 
+@app.get("/diet", include_in_schema=False)
+def diet_page():
+    """The patient recommender page: the same app, which switches on the path."""
+    return FileResponse(STATIC / "index.html")
+
+
 @app.get("/report.json", include_in_schema=False)
 def report_bundle():
     """The report bundle, copied from ui/public by `npm run build`."""
@@ -138,6 +147,113 @@ def search_hybrid(params: Params, request: Request, conn=Depends(get_conn)):
     qvec = _embed(request, params.q)
     hits = retrieval.hybrid(conn, params, qvec, request.app.state.reranker.score)
     return _response("hybrid", params, started, hits)
+
+
+@app.get("/patients")
+def list_patients(limit: int = Query(50, ge=1, le=200), offset: int = Query(0, ge=0),
+                  q: str | None = Query(None, max_length=100, description="Part of the name"),
+                  order: Literal["name", "conditions"] = "name", conn=Depends(get_conn)) -> list[dict]:
+    """A page of patient records (Synthea, synthetic) for picking a patient."""
+    return patients.list_patients(conn, limit, offset, q, order)
+
+
+def _profile(conn, patient_id: UUID) -> patients.PatientProfile:
+    try:
+        return patients.get_profile(conn, patient_id)
+    except patients.PatientNotFound:
+        raise HTTPException(404, f"no patient {patient_id}") from None
+
+
+@app.get("/patients/{patient_id}")
+def patient_profile(patient_id: UUID, conn=Depends(get_conn)) -> patients.PatientProfile:
+    """One patient and their active conditions: a keyed SQL lookup, no embeddings."""
+    return _profile(conn, patient_id)
+
+
+@app.get("/patients/{patient_id}/diet-plan")
+def patient_diet_plan(patient_id: UUID, request: Request, conn=Depends(get_conn)) -> dietary_rules.DietPlan:
+    """The Filters a patient's active conditions imply, with the evidence behind each.
+
+    Runs only the Dietary Rule Engine: no embedding, reranker or LLM. Pass `filters` to the search
+    endpoints as max_<nutrient> to search under them.
+    """
+    plan = dietary_rules.derive_diet_plan(_profile(conn, patient_id), request.app.state.rules,
+                                          dietary_rules.filterable_nutrients(), config.MEALS_PER_DAY)
+    return plan
+
+
+class ConditionOut(BaseModel):
+    code: str
+    description: str
+
+
+class ActiveConditionsOut(BaseModel):
+    source: Literal["sql", "tree", "dense"]
+    conditions: list[ConditionOut]
+    sql_conditions: list[ConditionOut]  # the answer key, always from the tables
+    missing_vs_sql: list[str]  # codes SQL has and this source did not return
+    extra_vs_sql: list[str]  # codes this source returned that SQL does not call active
+    selected: list[str]  # sections (tree) or pieces (dense) that were read
+    chars_read: int
+    llm_calls: int
+    invented_codes: list[str]  # named by the model but not in the text it read; dropped
+    error: str | None
+    timings_ms: dict[str, float]
+
+
+@app.get("/patients/{patient_id}/active-conditions", response_model=ActiveConditionsOut)
+def patient_active_conditions(patient_id: UUID, request: Request, source: Literal["sql", "tree", "dense"] = "sql",
+                              conn=Depends(get_conn)):
+    """The patient's active conditions as `source` finds them, next to the SQL answer.
+
+    For demonstration and measurement of the vectorless branch only: `tree` has the LLM navigate the record
+    document by its table of contents, `dense` retrieves pieces by embedding. Neither feeds /recommend,
+    which always reads the tables.
+    """
+    profile = _profile(conn, patient_id)
+    sql = [ConditionOut(code=c.code, description=c.description) for c in profile.active_conditions]
+    if source == "sql":
+        return ActiveConditionsOut(source=source, conditions=sql, sql_conditions=sql, missing_vs_sql=[],
+                                   extra_vs_sql=[], selected=[], chars_read=0, llm_calls=0, invented_codes=[],
+                                   error=None, timings_ms={})
+    row = conn.execute("SELECT markdown FROM ehr.record_document WHERE patient_id = %s", [str(patient_id)]).fetchone()
+    if row is None:
+        raise HTTPException(409, "this patient has no record document; run scripts/render_ehr_documents.py")
+    http = request.app.state.http
+    ask = lambda messages: llm.chat(http, messages, json_mode=True)  # noqa: E731
+    if source == "tree":
+        found = ehr_navigator.tree_active_conditions(row[0], ask)
+    else:
+        found = ehr_navigator.dense_active_conditions(
+            row[0], ask, lambda texts: embed_documents(http, texts), lambda text: embed_query_array(http, text))
+    truth = {c.code for c in sql}
+    return ActiveConditionsOut(
+        source=source, conditions=[ConditionOut(code=c.code, description=c.description) for c in found.conditions],
+        sql_conditions=sql, missing_vs_sql=sorted(truth - found.codes), extra_vs_sql=sorted(found.codes - truth),
+        selected=found.selected, chars_read=found.chars_read, llm_calls=found.llm_calls, invented_codes=found.rejected,
+        error=found.error, timings_ms=found.timings_ms)
+
+
+@app.post("/recommend", response_model=recommend.RecommendResponse)
+def recommend_for_patient(req: recommend.RecommendRequest, request: Request, conn=Depends(get_conn)):
+    """Recipes for a patient and a question, within the limits their conditions imply.
+
+    Runs the Dietary Rule Engine, then Hybrid retrieval under the resulting Filters, re-checks every Recipe
+    against its nutrition, and asks the LLM to explain. Filters are never relaxed; the LLM never chooses them.
+    """
+    problem = strategies.strategy_problem(req.strategy, strategies.registry(conn))
+    if problem:
+        raise HTTPException(422, [{"type": "value_error", "loc": ["body", "strategy"], "msg": problem}])
+    http = request.app.state.http
+    try:
+        return recommend.recommend(
+            conn, req, rules=request.app.state.rules, allergen_book=request.app.state.allergens,
+            embed=lambda text: embed_query(http, text),
+            scorer=request.app.state.reranker.score, explain=lambda messages: llm.chat(http, messages))
+    except patients.PatientNotFound:
+        raise HTTPException(404, f"no patient {req.patient_id}") from None
+    except httpx.HTTPError as e:  # only the embedder can raise this; llm.chat reports its own failures
+        raise HTTPException(503, f"embedding service unavailable: {e}") from e
 
 
 @app.get("/strategies")
