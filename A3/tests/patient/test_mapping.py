@@ -7,6 +7,7 @@ from pathlib import Path
 import pytest
 
 from api.patient import ccda, rules
+from api.patient.dietary_rules import parse_rules
 from api.patient.mapping import build_profile
 from api.patient.models import PatientNode
 from api.patient.tree import build_tree
@@ -72,13 +73,64 @@ def test_non_food_allergy_yields_nothing(rs):
 
 
 def test_strictest_limit_wins_and_the_overridden_rule_stays_in_evidence(rs):
-    p = build_profile(tree(problems=[problem("59621000", "Essential hypertension (disorder)")]), rs, TODAY)
+    csv_only = replace(rs, diet=None)  # the CSV tables alone: the Dietary Rule Engine is tested below
+    p = build_profile(tree(problems=[problem("59621000", "Essential hypertension (disorder)")]), csv_only, TODAY)
     assert p.nutrient_limits["sodium_mg"] == ("max", pytest.approx(2000 / 3))  # default 2000 mg beats DASH 2300 mg
     sources = [e.text for e in p.evidence["nutrient:sodium_mg"]]
     assert any("WHO" in s for s in sources) and any("DASH" in s for s in sources)
     assert "sat_fat_pct_kcal" not in p.nutrient_limits  # soft since v2 (ADR-0007): ranking + warning
     assert p.nutrient_soft["sat_fat_pct_kcal"] == ("max", 6.0)
     assert any("chất béo bão hòa" in w for w in p.warnings) and "soft:sat_fat_pct_kcal" in p.evidence
+
+
+# ---- the Dietary Rule Engine's hard limits beside the CSV rules (docs/adr/0009) ------------------------------------
+
+
+def test_the_diet_engine_is_stricter_for_hypertension_and_every_rule_stays_in_the_evidence(rs):
+    p = build_profile(tree(problems=[problem("59621000", "Essential hypertension (disorder)", "p7")]), rs, TODAY)
+    assert p.nutrient_limits["sodium_mg"] == ("max", 500.0)  # AHA 1500 mg / 3 beats the default 2000 mg / 3
+    evidence = p.evidence["nutrient:sodium_mg"]
+    assert any("WHO" in e.text for e in evidence) and any("DASH" in e.text for e in evidence)  # CSV rules, kept
+    (engine,) = [e for e in evidence if "htn-sodium" in e.text]
+    assert (engine.node_id, engine.entry_id) == ("problems.active", "p7")
+    assert engine.text == "Essential hypertension – htn-sodium (proposed)"
+
+
+def test_a_diet_limit_on_a_column_the_csv_does_not_limit_is_added_with_evidence(rs):
+    p = build_profile(tree(problems=[problem("44054006", "Diabetes mellitus type 2 (disorder)", "p3")]), rs, TODAY)
+    assert p.nutrient_limits["carbohydrates_g"] == ("max", 60.0)  # 180 g / 3
+    assert [(e.node_id, e.entry_id) for e in p.evidence["nutrient:carbohydrates_g"]] == [("problems.active", "p3")]
+    assert p.nutrient_limits["sodium_mg"] == ("max", pytest.approx(2000 / 3))  # untouched: the engine has no limit
+
+
+def test_a_patient_without_a_listed_condition_keeps_exactly_the_csv_limits(rs):
+    p = build_profile(tree(problems=[problem("203646004", "Adolescent idiopathic scoliosis (disorder)")]), rs, TODAY)
+    assert p == build_profile(tree(problems=[problem("203646004", "Adolescent idiopathic scoliosis (disorder)")]),
+                              replace(rs, diet=None), TODAY)
+    assert set(p.nutrient_limits) == {"sodium_mg"} and p.nutrient_limits["sodium_mg"][1] == pytest.approx(2000 / 3)
+
+
+def test_the_csv_limit_stays_when_it_is_stricter_than_the_diet_engines(rs):
+    book = parse_rules({"version": 1, "rules": [{
+        "rule_id": "loose", "label": "x", "snomed_codes": ["59621000"], "source": "s", "status": "proposed",
+        "limits": [{"nutrient": "sodium_mg", "op": "max", "daily": 2500}]}]})  # 833.3 per serving > the CSV's 666.67
+    p = build_profile(tree(problems=[problem("59621000", "Hypertension")]), replace(rs, diet=book), TODAY)
+    assert p.nutrient_limits["sodium_mg"] == ("max", pytest.approx(2000 / 3))
+    assert any("loose" in e.text for e in p.evidence["nutrient:sodium_mg"])  # overridden, still evidence
+
+
+def test_a_diet_max_against_a_csv_min_on_one_column_is_a_warning_not_a_filter(rs):
+    down = rules.NutrientRule(("2",), "B", "sodium_mg", "min", 1000, "mg", "filter", "s2")
+    p = build_profile(tree(problems=[problem("2", "B", "p2"), problem("59621000", "Hypertension", "p3")]),
+                      replace(rs, nutrient=[down]), TODAY)
+    assert "sodium_mg" not in p.nutrient_limits and any("trái chiều" in w for w in p.warnings)
+    assert "nutrient:sodium_mg" not in p.evidence
+    assert {e.entry_id for e in p.evidence["warning:sodium_mg"]} == {"p2", "p3"}
+
+
+def test_the_diet_engine_cannot_filter_saturated_fat_so_the_csv_soft_rule_is_all_there_is(rs):
+    p = build_profile(tree(problems=[problem("55822004", "Hyperlipidemia (disorder)")]), rs, TODAY)
+    assert "saturated_fat_g" not in p.nutrient_limits  # the engine reports it as unapplied (/diet-plan)
 
 
 def test_t2d_complication_triggers_the_fiber_rule(rs):

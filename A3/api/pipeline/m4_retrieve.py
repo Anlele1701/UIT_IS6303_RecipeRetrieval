@@ -31,7 +31,8 @@ NAIVE_ALLERGEN = {
     "wheat": ["flour", "wheat", "bread", "pasta"], "soy": ["soy", "tofu"], "sesame": ["sesame", "tahini"],
 }
 NUTRIENT_COLUMNS = {"sodium_mg", "sat_fat_pct_kcal", "sugar_pct_kcal", "fiber_per_1000kcal", "protein_g",
-                    "potassium_mg"}  # chunk columns a patient limit may name (migration 006)
+                    "potassium_mg",  # chunk columns a patient limit may name (migration 006)
+                    "calories", "fat_g", "carbohydrates_g"}  # base chunk columns the Dietary Rule Engine may limit
 NAIVE_DIET = {
     "vegetarian": ["beef", "pork", "chicken", "turkey", "bacon", "ham", "sausage", "fish", "shrimp", "lamb", "gelatin"],
     "vegan": ["beef", "pork", "chicken", "turkey", "bacon", "ham", "sausage", "fish", "shrimp", "lamb", "gelatin",
@@ -81,7 +82,8 @@ def conditions(c: Constraints, norm: bool, unknown_strict: bool) -> tuple[sql.Co
 
 
 NUTRIENT_WORDS = {"sodium_mg": "low sodium", "protein_g": "low protein", "sat_fat_pct_kcal": "low saturated fat",
-                  "fiber_per_1000kcal": "high fiber", "sugar_pct_kcal": "low sugar", "potassium_mg": "low potassium"}
+                  "fiber_per_1000kcal": "high fiber", "sugar_pct_kcal": "low sugar", "potassium_mg": "low potassium",
+                  "calories": "low calorie", "fat_g": "low fat", "carbohydrates_g": "low carbohydrate"}
 
 
 def constraints_as_text(c: Constraints) -> str:

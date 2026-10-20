@@ -3,6 +3,7 @@
     GET /patients                      the patients a session may be about (no name: the table holds none)
     GET /patients/{id}/tree            the record tree as a model sees it: prompt views only (ADR-0006)
     GET /patients/{id}/profile         the constraints the rule tables derive, with their evidence
+    GET /patients/{id}/diet-plan       the Dietary Rule Engine's per-serving Filters for the active problems (read-only)
 
 The UI gets exactly what a model may see: allow-listed facts (api/patient/prompt_view.py), never the raw facts,
 entry ids, names or P7 data. 404 for an unknown patient, 409 for a deceased one (no session either).
@@ -13,8 +14,9 @@ from typing import Literal
 import psycopg
 from fastapi import APIRouter, Depends, HTTPException
 
+from . import config
 from .deps import get_conn
-from .patient import profile_store
+from .patient import dietary_rules, profile_store
 from .patient import rules as patient_rules
 from .patient.mapping import record_groups
 from .patient.prompt_view import prompt_view
@@ -75,3 +77,14 @@ def patient_profile(patient_id: str, mode: Literal["vectorless", "direct"] = "ve
     _living(conn, patient_id)
     profile = profile_store.load_or_build(conn, patient_id, rules(), mode)
     return {**profile_view(profile), "groups": record_groups(profile, profile_store.load_nodes(conn, patient_id))}
+
+
+@router.get("/{patient_id}/diet-plan")
+def patient_diet_plan(patient_id: str, conn=Depends(get_conn)) -> dietary_rules.DietPlan:
+    """The Dietary Rule Engine alone on this patient's active problems: every limit it found, including those the
+    chat's profile cannot use (a nutrient the search cannot filter, a condition with no limit). /profile has the
+    merged limits the chat applies."""
+    _living(conn, patient_id)
+    nodes = profile_store.load_nodes(conn, patient_id)
+    return dietary_rules.derive_diet_plan(dietary_rules.profile_from_nodes(patient_id, nodes), rules().diet,
+                                          dietary_rules.filterable_nutrients(), config.MEALS_PER_DAY)

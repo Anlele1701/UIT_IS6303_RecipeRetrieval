@@ -57,7 +57,8 @@ PATIENT_INFO = """You are a cooking assistant reading one patient's record to he
 
 NUTRIENT_LABEL = {"sodium_mg": "sodium mg", "protein_g": "protein g", "sat_fat_pct_kcal": "saturated fat % kcal",
                   "fiber_per_1000kcal": "fiber g/1000 kcal", "sugar_pct_kcal": "sugar % kcal",
-                  "potassium_mg": "potassium mg"}
+                  "potassium_mg": "potassium mg", "calories": "calories kcal", "fat_g": "fat g",
+                  "carbohydrates_g": "carbohydrates g"}
 
 
 def _limit(col: str, op: str, value: float) -> str:

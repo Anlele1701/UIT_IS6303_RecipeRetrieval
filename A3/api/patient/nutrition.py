@@ -24,7 +24,9 @@ SQL = {
 # chunk column a patient limit names -> the same value over recipe_nutrition AS n (M5 ranking, pass-rate counts)
 COLUMN_SQL = {"sodium_mg": SQL["sodium_mg"], "sat_fat_pct_kcal": SQL["sat_fat_pct_kcal"],
               "fiber_per_1000kcal": SQL["fiber_per_1000kcal"], "sugar_pct_kcal": SQL["sugar_pct_kcal"],
-              "protein_g": "n.protein_g", "potassium_mg": SQL["potassium_mg"]}
+              "protein_g": "n.protein_g", "potassium_mg": SQL["potassium_mg"],
+              # the Dietary Rule Engine's filterable nutrients (dietary_rules.filterable_nutrients) that are not above
+              "calories": "n.calories", "fat_g": "n.fat_g", "carbohydrates_g": "n.carbohydrates_g"}
 
 
 def meets(value: float | None, op: str, limit: float) -> bool | None:

@@ -30,3 +30,6 @@ PATIENT_DATA_DIR = os.environ.get("PATIENT_DATA_DIR", "data/synthea_sample_data_
 PATIENT_GENERATED_DIR = os.environ.get("PATIENT_GENERATED_DIR", "data/synthea_generated_ccda")  # source "generated"
 # A daily nutrient limit becomes a per-serving one as daily * PER_MEAL_FRACTION (spec 4.4, ADR-0007)
 PER_MEAL_FRACTION = float(os.environ.get("PER_MEAL_FRACTION", 1 / 3))
+# Dietary Rule Engine (api/patient/dietary_rules.py): daily limit / MEALS_PER_DAY, rounded down to 0.1. The same idea as
+# PER_MEAL_FRACTION above in whole meals; the two are read by different code paths, so keep them consistent.
+MEALS_PER_DAY = int(os.environ.get("MEALS_PER_DAY", 3))

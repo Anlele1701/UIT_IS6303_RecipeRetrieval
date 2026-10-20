@@ -13,6 +13,7 @@ const NUTRIENT: Record<string, [label: string, unit: string]> = {
   sodium_mg: ['Natri', 'mg'], protein_g: ['Đạm', 'g'], potassium_mg: ['Kali', 'mg'],
   sat_fat_pct_kcal: ['Chất béo bão hòa', '% năng lượng'], sugar_pct_kcal: ['Đường', '% năng lượng'],
   fiber_per_1000kcal: ['Chất xơ', 'g/1000 kcal'],
+  calories: ['Năng lượng', 'kcal'], fat_g: ['Chất béo', 'g'], carbohydrates_g: ['Carbohydrate', 'g'],
 }
 
 const num = (v: number) => (Math.round(v * 10) / 10).toLocaleString('vi-VN')

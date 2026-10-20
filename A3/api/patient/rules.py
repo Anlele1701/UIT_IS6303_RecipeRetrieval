@@ -9,6 +9,9 @@ import hashlib
 from dataclasses import dataclass
 from pathlib import Path
 
+from .. import config
+from . import dietary_rules
+
 RULES_DIR = Path(__file__).resolve().parents[2] / "data" / "rules"
 
 
@@ -142,6 +145,7 @@ class RuleSet:
     p7: P7Rules
     version: str
     log: tuple[str, ...] = ()  # rules turned into warnings at load time, and why
+    diet: dietary_rules.RuleBook | None = None  # Dietary Rule Engine's book (hard limits); None = CSV limits only
 
     def condition_codes(self) -> set[str]:
         """Every SNOMED code a nutrient rule names: the allow-list of problems a prompt may show."""
@@ -156,6 +160,8 @@ def ruleset_version(folder: Path = RULES_DIR) -> str:
     h = hashlib.sha256()
     for name in RULE_SET_FILES:
         h.update(name.encode() + b"\0" + (folder / name).read_bytes())
+    # the Dietary Rule Engine's book and its meals per day change the hard limits, so they are part of the version
+    h.update(b"dietary_rules.json\0" + dietary_rules.RULES_FILE.read_bytes() + b"\0" + str(config.MEALS_PER_DAY).encode())
     return h.hexdigest()[:12]
 
 
@@ -184,7 +190,8 @@ def load_rules(folder: Path = RULES_DIR) -> RuleSet:
         drug.append(DrugRule(r["match"].strip().lower(), r["action"], _split(r["target"]), r["message_vi"], r["source"]))
     enc = {r["snomed_code"]: r["class"] for r in read("encounter_class.csv", ["snomed_code", "class"], folder)}
     vitals = frozenset(r["loinc"] for r in read("prompt_vitals.csv", ["loinc"], folder))
-    return RuleSet(allergy, nutrient, drug, enc, vitals, load_p7(folder), ruleset_version(folder), tuple(log))
+    return RuleSet(allergy, nutrient, drug, enc, vitals, load_p7(folder), ruleset_version(folder), tuple(log),
+                   dietary_rules.load_rules())
 
 
 def validate_against_db(rs: RuleSet, conn) -> None:

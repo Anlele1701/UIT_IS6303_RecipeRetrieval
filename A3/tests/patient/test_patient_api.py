@@ -5,6 +5,7 @@ from pathlib import Path
 
 import pytest
 from fastapi.testclient import TestClient
+from psycopg.types.json import Jsonb
 
 import patient_ingest as pi
 from api.main import app, get_conn
@@ -60,9 +61,41 @@ def test_unknown_is_404_and_deceased_is_409(client, db):
     assert client.get("/patients?alive_only=false").json()[0]["deceased"] is True
 
 
+def test_the_diet_plan_of_a_record_without_a_listed_condition_is_empty(client):
+    p = client.get(f"/patients/{PID}/diet-plan").json()  # the sample patient's only problem is scoliosis
+    assert p["patient_id"] == PID and p["status"] == "no_applicable_rules" and p["filters"] == {}
+    assert p["unmatched_conditions"] == 1
+
+
+def test_the_diet_plan_turns_an_active_problem_into_a_per_serving_filter(client, db):
+    db.execute("UPDATE patient_node SET facts = %s WHERE patient_id = %s AND node_id = 'problems.active'",
+               [Jsonb([{"entry_id": "p1", "code": "59621000", "display": "Hypertension (disorder)"}]), PID])
+    p = client.get(f"/patients/{PID}/diet-plan").json()
+    assert p["status"] == "filtered" and p["filters"] == {"max_sodium_mg": 500.0}
+    (e,) = p["evidence"]
+    assert e["rule_id"] == "htn-sodium" and e["binding"] is True
+    assert e["conditions"] == [{"code": "59621000", "description": "Hypertension (disorder)", "since": None}]
+
+
+def test_the_profile_applies_the_diet_engine_and_cites_the_problem_node(client, db):
+    db.execute("UPDATE patient_node SET facts = %s WHERE patient_id = %s AND node_id = 'problems.active'",
+               [Jsonb([{"entry_id": "p1", "code": "59621000", "display": "Hypertension (disorder)"}]), PID])
+    p = client.get(f"/patients/{PID}/profile").json()
+    assert p["nutrient_limits"]["sodium_mg"] == ["max", 500.0]  # the CSV alone would give 666.67
+    assert {"node_id": "problems.active", "text": "Hypertension – htn-sodium (proposed)"} in p["evidence"]["nutrient:sodium_mg"]
+    assert all(set(e) == {"node_id", "text"} for e in p["evidence"]["nutrient:sodium_mg"])  # still no entry ids
+
+
+def test_the_diet_plan_has_the_same_404_and_409_as_the_other_endpoints(client, db):
+    assert client.get("/patients/nobody/diet-plan").status_code == 404
+    db.execute("UPDATE patient SET deceased = true WHERE patient_id = %s", [PID])
+    assert client.get(f"/patients/{PID}/diet-plan").status_code == 409
+
+
 def test_no_name_in_any_patient_endpoint(client):
     text = json.dumps([client.get(u).json() for u in
-                       ("/patients", f"/patients/{PID}/tree", f"/patients/{PID}/profile")])
+                       ("/patients", f"/patients/{PID}/tree", f"/patients/{PID}/profile",
+                        f"/patients/{PID}/diet-plan")])
     for name in NAMES:
         assert name not in text
 

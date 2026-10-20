@@ -8,6 +8,9 @@
   and per kind the strictest limit wins; the evidence
   keeps every rule that named it (an overridden one too). Opposite rules on one nutrient -> no filter, a warning.
   A per-kg limit needs a weight measured within WEIGHT_MAX_AGE_DAYS of the record date, else it is a warning.
+- The Dietary Rule Engine (dietary_rules.py, dietary_rules.json) adds hard per-serving limits for the same
+  conditions. Where the CSV rules already limit the column the stricter one wins, and its evidence is added to the
+  CSV rules' (docs/adr/0009). Soft rules, warnings and ratio nutrients stay with the CSV tables.
 - Medications in meds.active -> excluded ingredients or warnings (drug_food.csv, substring of the RxNorm name).
 """
 
@@ -15,7 +18,8 @@ import re
 from collections import defaultdict
 from datetime import date
 
-from . import nutrition
+from .. import config
+from . import dietary_rules, nutrition
 from .models import Evidence, PatientNode, PatientProfile, constraint_ids
 from .rules import NUTRIENT_COLUMN, RuleSet
 
@@ -122,6 +126,9 @@ def build_profile(nodes: list[PatientNode], rs: RuleSet, record_date: date, mode
                 if kind == "soft" and SOFT_TEXT.get(nutrient) and SOFT_TEXT[nutrient] not in warnings:
                     warnings.append(SOFT_TEXT[nutrient])
 
+    if rs.diet is not None:
+        _diet_limits(nodes, rs.diet, pid, problems, limits, warnings, evidence)
+
     # ---- medications ----------------------------------------------------------------------------------------
     for f in _facts(nodes, "meds.active"):
         name = (f.get("display") or "").lower()
@@ -139,6 +146,29 @@ def build_profile(nodes: list[PatientNode], rs: RuleSet, record_date: date, mode
 
     return PatientProfile(pid, frozenset(allergens), frozenset(ingredients), limits, warnings, unmapped,
                           dict(evidence), rs.version, mode, soft)
+
+
+def _diet_limits(nodes, book, pid, problems, limits, warnings, evidence):
+    """The Dietary Rule Engine's filters into `limits`: the stricter of its value and the CSV's wins, and its evidence
+    sits beside the CSV rules' (an overridden one too). What the engine cannot filter (saturated fat in g, gout) stays
+    in its own plan, GET /patients/{id}/diet-plan; the CSV already covers saturated fat as a share of energy."""
+    plan = dietary_rules.derive_diet_plan(dietary_rules.profile_from_nodes(pid, nodes), book,
+                                          dietary_rules.filterable_nutrients(), config.MEALS_PER_DAY)
+    for key, value in plan.filters.items():
+        column = key.removeprefix("max_")
+        # the evidence text names the rule and its review status; the full source is in dietary_rules.json and /diet-plan
+        ev = [Evidence("problems.active", problems[c.code].get("entry_id") or "",
+                       f"{_short(c.description)} – {a.rule_id} ({a.rule_status})")
+              for a in plan.evidence if a.nutrient == column for c in a.conditions]
+        have = limits.get(column)
+        if have and have[0] != "max":  # a max beside a min on one column: no filter, a warning (spec 4.4.4)
+            del limits[column]
+            warnings.append(f"Các khuyến nghị về {NUTRIENT_VI.get(column, column)} trái chiều nhau; "
+                            "không lọc theo chất này.")
+            evidence[f"warning:{column}"].extend([*evidence.pop(f"nutrient:{column}", []), *ev])
+            continue
+        limits[column] = ("max", value if have is None else min(value, have[1]))
+        evidence[f"nutrient:{column}"].extend(ev)
 
 
 def _limit(nutrient, rows, target, key, weight, weight_fact, warnings, evidence):

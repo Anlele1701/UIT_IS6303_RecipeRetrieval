@@ -4,7 +4,8 @@ import shutil
 
 import pytest
 
-from api.patient import rules
+from api import config
+from api.patient import dietary_rules, rules
 
 
 @pytest.fixture
@@ -48,6 +49,23 @@ def test_version_changes_with_any_rule_file(folder):
     before = rules.ruleset_version(folder)
     append(folder, "prompt_vitals.csv", "8867-4,Heart rate,v1")
     assert rules.ruleset_version(folder) != before
+
+
+def test_version_changes_with_the_diet_rule_book_and_with_meals_per_day(folder, tmp_path, monkeypatch):
+    """Both change the hard limits, so a profile cached under the old version must not be reused."""
+    before = rules.ruleset_version(folder)
+    monkeypatch.setattr(config, "MEALS_PER_DAY", config.MEALS_PER_DAY + 1)
+    assert rules.ruleset_version(folder) != before
+    monkeypatch.undo()
+    assert rules.ruleset_version(folder) == before
+    edited = tmp_path / "dietary_rules.json"
+    edited.write_bytes(dietary_rules.RULES_FILE.read_bytes() + b" ")
+    monkeypatch.setattr(dietary_rules, "RULES_FILE", edited)
+    assert rules.ruleset_version(folder) != before
+
+
+def test_the_loaded_rule_set_carries_the_diet_rule_book(folder):
+    assert rules.load_rules(folder).diet.rules == dietary_rules.load_rules().rules
 
 
 def test_db_check_refuses_an_unknown_ingredient(folder, db):
