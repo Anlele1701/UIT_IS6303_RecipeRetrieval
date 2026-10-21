@@ -32,6 +32,7 @@ def client(db, tmp_path):
 def test_list_shows_the_patient_and_a_summary_of_its_constraints(client):
     rows = client.get("/patients").json()
     assert [r["patient_id"] for r in rows] == [PID]
+    assert rows[0]["name"] == "Barton Upton"  # from the file name; the raw Synthea tokens stay out
     s = rows[0]["summary"]
     assert {"wheat", "crustacean_shellfish"} <= set(s["allergens"]) and "sodium_mg" in s["nutrient_limits"]
 
@@ -61,10 +62,14 @@ def test_unknown_is_404_and_deceased_is_409(client, db):
 
 
 def test_no_name_in_any_patient_endpoint(client):
-    text = json.dumps([client.get(u).json() for u in
-                       ("/patients", f"/patients/{PID}/tree", f"/patients/{PID}/profile")])
-    for name in NAMES:
-        assert name not in text
+    listed = json.dumps(client.get("/patients").json())
+    assert "Barton Upton" in listed  # the picker name only
+    record = json.dumps([client.get(u).json() for u in
+                         ("/patients", f"/patients/{PID}/tree", f"/patients/{PID}/profile")])
+    for name in NAMES:  # the file's raw tokens never leave the API, including the list
+        assert name not in record
+    tree = json.dumps([client.get(u).json() for u in (f"/patients/{PID}/tree", f"/patients/{PID}/profile")])
+    assert "Barton" not in tree and "Upton" not in tree
 
 
 def test_the_profile_lists_one_group_per_allergy_entry(client):
