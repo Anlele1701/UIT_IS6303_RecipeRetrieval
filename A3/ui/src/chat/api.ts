@@ -98,6 +98,7 @@ export interface SessionView {
 
 export interface PatientSummary {
   patient_id: string
+  name: string
   source: string
   sex: string | null
   age_years: number | null

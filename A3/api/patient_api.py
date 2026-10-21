@@ -1,13 +1,15 @@
 """Patient record endpoints for the UI (MV5; contract in docs/plan/A3_ke_hoach_build.md section 6.5).
 
-    GET /patients                      the patients a session may be about (no name: the table holds none)
+    GET /patients                      the patients a session may be about, plus a display name
     GET /patients/{id}/tree            the record tree as a model sees it: prompt views only (ADR-0006)
     GET /patients/{id}/profile         the constraints the rule tables derive, with their evidence
 
-The UI gets exactly what a model may see: allow-listed facts (api/patient/prompt_view.py), never the raw facts,
-entry ids, names or P7 data. 404 for an unknown patient, 409 for a deceased one (no session either).
+The list's `name` is Synthea's fake name parsed from `source_file` (the table has no name column) so the
+picker can show it. Tree, profile, chat events and prompts still omit the name, raw facts, entry ids and
+P7 data. 404 for an unknown patient, 409 for a deceased one (no session either).
 """
 
+import re
 from typing import Literal
 
 import psycopg
@@ -21,6 +23,17 @@ from .patient.prompt_view import prompt_view
 
 router = APIRouter(prefix="/patients", tags=["patients"])
 _RULES = None
+# Synthea writes Given123_Family456_<uuid>.xml; a middle name is another token before the family name.
+_FILE_UUID = re.compile(r"_[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\.xml$", re.IGNORECASE)
+
+
+def display_name(source_file: str) -> str:
+    """Barton704_Upton904_<uuid>.xml -> Barton Upton. The trailing digits only keep Synthea names unique."""
+    stem = _FILE_UUID.sub("", source_file)
+    if stem == source_file:
+        stem = source_file.removesuffix(".xml")
+    parts = [re.sub(r"\d+$", "", part) or part for part in stem.split("_") if part]
+    return " ".join(parts)
 
 
 def rules():
@@ -47,17 +60,19 @@ def _living(conn: psycopg.Connection, pid: str) -> None:
 
 @router.get("")
 def list_patients(alive_only: bool = True, conn=Depends(get_conn)) -> list[dict]:
-    rows = conn.execute("""SELECT patient_id, source, sex, age_years, record_date, deceased FROM patient
-                           WHERE NOT (%s AND deceased) ORDER BY source, patient_id""", [alive_only]).fetchall()
+    rows = conn.execute("""SELECT patient_id, source, sex, age_years, record_date, deceased, source_file
+                           FROM patient WHERE NOT (%s AND deceased) ORDER BY source, patient_id""",
+                        [alive_only]).fetchall()
     out = []
-    for pid, source, sex, age, record_date, deceased in rows:
-        item = {"patient_id": pid, "source": source, "sex": sex, "age_years": age,
-                "record_date": record_date.isoformat(), "deceased": deceased}
+    for pid, source, sex, age, record_date, deceased, source_file in rows:
+        item = {"patient_id": pid, "name": display_name(source_file), "source": source, "sex": sex,
+                "age_years": age, "record_date": record_date.isoformat(), "deceased": deceased}
         if not deceased:  # a deceased patient has no profile to summarize (P8, no session)
             p = profile_store.load_or_build(conn, pid, rules())
             item["summary"] = {"allergens": sorted(p.allergens_exclude), "nutrient_limits": sorted(p.nutrient_limits),
                                "nutrient_soft": sorted(p.nutrient_soft), "warnings": len(p.warnings)}
         out.append(item)
+    out.sort(key=lambda item: (item["name"].casefold(), item["patient_id"]))
     return out
 
 
